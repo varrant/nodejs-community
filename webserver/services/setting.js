@@ -67,6 +67,13 @@ exports.get = function (key, callback) {
     else {
         setting.findOne({
             key: key
-        }, callback);
+        }, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            doc = doc || {};
+            callback(err, doc[key]);
+        });
     }
 };

@@ -7,8 +7,10 @@
 'use strict';
 
 var user = require('../models/').user;
+var setting = require('../models/').setting;
 var ydrUtil = require('ydr-util');
 var config = require('../../webconfig/');
+var qs = require('querystring');
 
 
 /**
@@ -72,13 +74,42 @@ exports.increaseCoins = function (conditions, count, callback) {
 };
 
 
-exports.createOauthURL = function (redirect, callback) {
-    var state = redirect + '|' + ydrUtil.random.number(1, 100);
+/**
+ * 创建 oauth 链接
+ * @param oauth
+ * @param redirect
+ * @returns {string}
+ */
+exports.createOauthURL = function (oauth, redirect) {
+    var state = redirect + '\n' + ydrUtil.random.number(1, 100);
     var params = {
         scope: 'user:email',
         redirect_uri: redirect,
-        state: ydrUtil.crypto.encode(state, config.secret.session.secret),
-        client_id: 1
+        state: ydrUtil.crypto.encode(state, config.secret.session.secret)
+    };
+
+    ydrUtil.dato.extend(true, params, oauth);
+
+    var qss = qs.stringify(params);
+    var url = 'https://github.com/login/oauth/authorize';
+
+    url += '?' + qss;
+
+    return url;
+};
+
+
+/**
+ * 解析 oauth 回来的 state 值
+ * @param state
+ */
+exports.parseOauthState = function (state) {
+    var ret = ydrUtil.crypto.decode(state, config.secret.session.secret);
+    var arr = ret.split('\n');
+
+    return {
+        redirect: arr[0] || '/',
+        number: arr[1] || ''
     };
 };
 

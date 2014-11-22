@@ -8,5 +8,6 @@
 
 
 module.exports = function(app, controller){
-    app.get('/test', controller.test);
+    app.get('/test1', controller.test1);
+    app.get('/test2', controller.test2);
 };

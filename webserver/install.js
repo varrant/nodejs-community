@@ -12,25 +12,34 @@ var ydrUtil = require('ydr-util');
 var file = process.argv[2];
 var json = fs.readJSONFileSync(file);
 var mongoose = require('./mongoose.js');
-var service = require('./services/').setting;
+var setting = require('./services/').setting;
+var user = require('./services/').user;
+var howdo = require('howdo');
 
 mongoose(function (err) {
-    if(err){
+    if (err) {
         console.error(err);
         return process.exit(-1);
     }
 
     var settings = [];
+    var userData = json.owner;
 
     ydrUtil.dato.each(json, function (key, val) {
-        settings.push({
-            key: key,
-            val: val
-        });
+        if (key !== 'owner') {
+            settings.push({
+                key: key,
+                val: val
+            });
+        }
     });
 
-    service.set(settings, function (err) {
-        if(err){
+    howdo.task(function (next) {
+        user.signUp(userData, next);
+    }).task(function (next) {
+        setting.set(settings, next);
+    }).follow(function (err) {
+        if (err) {
             console.error(err);
             return process.exit(-1);
         }

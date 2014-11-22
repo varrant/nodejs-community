@@ -1,4 +1,16 @@
 {
+  "owner": {
+    "email": "cloudcome@163.com",
+    "github": "cloudcome",
+    "nickname": "云淡然",
+    "role": 9,
+    "meta": {
+      "location": "杭州",
+      "company": "网易",
+      "position": "前端开发工程师",
+      "url": "http://ydr.me"
+    }
+  },
   "oauth": {
     "app_name": "github_oauth_app_name",
     "client_id": "github_oauth_client_id",

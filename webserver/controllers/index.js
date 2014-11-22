@@ -6,9 +6,11 @@
 
 'use strict';
 
-var fs = require('fs');
 
-module.exports = {
-    error: require('./error.js'),
-    test: require('./test.js')
+module.exports = function (app) {
+    return {
+        error: require('./error.js')(app),
+        test: require('./test.js')(app),
+        user: require('./user.js')(app)
+    };
 };

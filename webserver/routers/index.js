@@ -9,6 +9,9 @@
 var controllers = require('../controllers/');
 
 module.exports = function (app) {
-    require('./test.js')(app, controllers.test);
-    require('./error.js')(app, controllers.error);
+    var exports = controllers(app);
+
+    require('./test.js')(app, exports.test);
+    require('./user.js')(app, exports.user);
+    require('./error.js')(app, exports.error);
 };
