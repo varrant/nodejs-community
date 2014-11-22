@@ -7,36 +7,36 @@
 'use strict';
 
 var express = require('express');
-var config = require('../config/');
+var config = require('../webconfig/');
 var path = require('path');
+
+// cookie 支持
+var cookieParser = require('cookie-parser');
+
+// session 支持
+// https://github.com/aliyun-UED/aliyun-sdk-js
+var sessionParser = require('express-session');
+
+// POST 支持
+var bodyParser = require('body-parser');
+
+// upload FILE 支持
+var multer = require('multer');
+
+// gzip 支持
+var compression = require('compression');
+
+// 模板引擎
+var ydrTemplate = require('ydr-template');
+
+// 工具库
+var ydrUtil = require('ydr-util');
+
+// 路由表
+var routers = require('./routers/');
 
 module.exports = function (callback) {
     var app = express();
-
-    // cookie 支持
-    var cookieParser = require('cookie-parser');
-
-    // session 支持
-    // https://github.com/aliyun-UED/aliyun-sdk-js
-    var sessionParser = require('express-session');
-
-    // POST 支持
-    var bodyParser = require('body-parser');
-
-    // upload FILE 支持
-    var multer = require('multer');
-
-    // favicon 支持
-    var favicon = require('serve-favicon');
-
-    // gzip 支持
-    var compression = require('compression');
-
-    // 模板引擎
-    var ydrTemplate = require('ydr-template');
-
-    // 路由表
-    var routers = require('./routers/');
 
 
     //////////////////////////////////////////////////////////////////////
@@ -65,8 +65,7 @@ module.exports = function (callback) {
         app.use(compression());
     }
 
-    app.use(favicon(path.join(config.dir.resource, './img/favicon.ico')));
-    app.use('/resource/', express.static(config.dir.resource));
+    app.use('/', express.static(config.dir.webroot));
     app.use('/static/', express.static(config.dir.static));
 
 
@@ -89,7 +88,7 @@ module.exports = function (callback) {
 
     app.use(multer({
         // 上传目录
-        dest: config.upload.path,
+        dest: config.dir.upload,
         // fieldNameSize - integer - Max field name size (Default: 100 bytes)
         // fieldSize - integer - Max field value size (Default: 1MB)
         // fields - integer - Max number of non-file fields (Default: Infinity)
@@ -98,12 +97,12 @@ module.exports = function (callback) {
         // parts - integer - For multipart forms, the max number of parts (fields + files) (Default: Infinity)
         // headerPairs - integer - For multipart forms, the max number of header key=>value pairs to parse Default: 2000 (same as node's http).
         limits: {
-            fileSize: config.upload.maxSize + 'B',
-            files: config.upload.maxCount
+            fileSize: 5 * 1024 * 1024 + 'B',
+            files: 10
         },
         // 自定义重命名规则
         rename: function (fieldname, filename) {
-            return libs.util.guid() + path.extname(filename);
+            return ydrUtil.random.guid() + path.extname(filename);
         }
         // onError: function() {},
         // // 文件数量超过限制
@@ -136,12 +135,11 @@ module.exports = function (callback) {
 
     app.locals.name = '嘻嘻';
 
+
     ////////////////////////////////////////////////////////////////////
     ///////////////////////////[ router ]///////////////////////////////
     ////////////////////////////////////////////////////////////////////
     routers(app);
-    app.use(libs.error.serverError);
-    app.use(libs.error.notFound);
 
     app.listen(config.app.port, callback);
 };

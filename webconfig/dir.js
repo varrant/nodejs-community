@@ -11,10 +11,10 @@ var path = require('path');
 module.exports = function (app) {
     return {
         // 静态
-        static: path.join(__dirname, '../static-' + app.env),
+        static: path.join(__dirname, '../webroot/static-' + app.env),
         // 资源
-        resource: path.join(__dirname, '../resouce'),
+        webroot: path.join(__dirname, '../webroot'),
         // 资源
-        upload: path.join(__dirname, '../resouce/upload')
+        upload: path.join(__dirname, '../webroot/upload')
     };
 };

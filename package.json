@@ -4,7 +4,7 @@
   "private": true,
   "description": "前端开发者社区",
   "scripts": {
-    "start": "node ./server/"
+    "start": "node ./webserver/"
   },
   "preferGlobal": false,
   "bin": {},
@@ -44,7 +44,6 @@
     "moment": "^2.8.4",
     "mongoose": "^3.8.19",
     "multer": "^0.1.6",
-    "serve-favicon": "^2.1.7",
     "xss": "^0.1.12",
     "ydr-template": "*",
     "ydr-util": "*"
