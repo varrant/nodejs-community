@@ -4,8 +4,9 @@
   "private": true,
   "description": "前端开发者社区",
   "scripts": {
-    "install": "node ./webserver/install.js ~/Documents/aliyun/f2ec.com/config.json",
-    "start": "node ./webserver/"
+    "install": "node ./webserver/install.js ./settings.json",
+    "start": "node ./webserver/index.js",
+    "supervisor": "supervisor -w ./webserver ./webserver/index.js"
   },
   "preferGlobal": false,
   "bin": {},

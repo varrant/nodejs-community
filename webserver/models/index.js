@@ -9,8 +9,8 @@
 var ydrUtil = require('ydr-util');
 var validators = require('../validators/');
 var models = {
-    user: require('./user.js'),
-    config: require('./config.js')
+    setting: require('./setting.js'),
+    user: require('./user.js')
 };
 var config = require('../../webconfig/');
 var DBNAME = config.app.mongodb.match(/\/([^/]*)$/)[1];
@@ -185,6 +185,9 @@ ydrUtil.dato.each(models, function (key, model) {
     exports[key].existOne = function (conditions, data, callback) {
         data = _toPureData(data, ['_id']);
 
+
+
+
         this.findOne(conditions, function (err, doc) {
             if (err) {
                 return callback(err);
@@ -214,7 +217,7 @@ ydrUtil.dato.each(models, function (key, model) {
                     });
                 });
             } else {
-                saveData = data;
+                saveData = ydrUtil.dato.extend(true, {}, conditions, data);
                 validator.validateAll(saveData, function (err, data) {
                     if (err) {
                         return callback(err);
@@ -259,7 +262,7 @@ ydrUtil.dato.each(models, function (key, model) {
  * @private
  */
 function _toPureData(data, removeKeys) {
-    if (data.constructor !== Object) {
+    if (data && data.constructor !== Object) {
         data = data.toObject();
     }
 
@@ -269,11 +272,15 @@ function _toPureData(data, removeKeys) {
         }
 
         ydrUtil.dato.each(removeKeys, function (index, key) {
-            delete(data[key]);
+            if(data){
+                delete(data[key]);
+            }
         });
     }
 
-    delete(data.__v);
+    if(data){
+        delete(data.__v);
+    }
 
     return data;
 }

@@ -6,7 +6,7 @@
 
 'use strict';
 
-var configModel = require('../models/').user;
+var setting = require('../models/').setting;
 var ydrUtil = require('ydr-util');
 var howdo = require('howdo');
 
@@ -18,19 +18,23 @@ var howdo = require('howdo');
  * @param callback
  */
 exports.set = function (key, val, callback) {
-    var map = {};
+    var map = [];
 
     if (ydrUtil.typeis(val) === 'function') {
+        callback = val;
         map = key;
     } else {
-        map[key] = val;
+        map.push({
+            key: key,
+            val: val
+        });
     }
 
-    howdo.each(map, function (key, val, done) {
-        configModel.existOne({
-            key: key
+    howdo.each(map, function (index, json, done) {
+        setting.existOne({
+            key: json.key
         }, {
-            val: val
+            val: json.val
         }, done);
     }).together(callback);
 };
@@ -44,11 +48,11 @@ exports.set = function (key, val, callback) {
 exports.get = function (key, callback) {
     // find all
     if (ydrUtil.typeis(key) === 'function') {
-        configModel.find({}, callback);
+        setting.find({}, callback);
     }
     // fine one
     else {
-        configModel.findOne({
+        setting.findOne({
             key: key
         }, callback);
     }

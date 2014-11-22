@@ -8,5 +8,6 @@
 
 
 module.exports = {
+    setting: require('./setting.js'),
     user: require('./user.js')
 };

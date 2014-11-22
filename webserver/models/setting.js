@@ -27,4 +27,4 @@ var schema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Config', schema);
+module.exports = mongoose.model('Setting', schema);
