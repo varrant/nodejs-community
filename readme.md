@@ -2,5 +2,5 @@
 
 ## 启动
 ```
-npm run start
+npm start
 ```

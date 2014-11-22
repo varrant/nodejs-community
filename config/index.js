@@ -7,4 +7,9 @@
 'use strict';
 
 
-module.exports = {};
+var app = require('./app.js');
+
+module.exports = {
+    app: app,
+    dir: require('./dir.js')(app)
+};
