@@ -8,7 +8,7 @@
 
 var configModel = require('../models/').user;
 var ydrUtil = require('ydr-util');
-var config = require('../../webconfig/');
+var howdo = require('howdo');
 
 
 /**
@@ -17,6 +17,39 @@ var config = require('../../webconfig/');
  * @param val
  * @param callback
  */
-exports.set = function(key, val, callback){
+exports.set = function (key, val, callback) {
+    var map = {};
 
+    if (ydrUtil.typeis(val) === 'function') {
+        map = key;
+    } else {
+        map[key] = val;
+    }
+
+    howdo.each(map, function (key, val, done) {
+        configModel.existOne({
+            key: key
+        }, {
+            val: val
+        }, done);
+    }).together(callback);
+};
+
+
+/**
+ * 获取配置
+ * @param [key]
+ * @param callback
+ */
+exports.get = function (key, callback) {
+    // find all
+    if (ydrUtil.typeis(key) === 'function') {
+        configModel.find({}, callback);
+    }
+    // fine one
+    else {
+        configModel.findOne({
+            key: key
+        }, callback);
+    }
 };

@@ -33,7 +33,7 @@ ydrUtil.dato.each(models, function (key, model) {
      * @returns {*|Query}
      */
     exports[key].findOne = function (conditions, callback) {
-        model.findOne.call(model, conditions, callback);
+        model.findOne(conditions, callback);
     };
 
 
@@ -97,10 +97,10 @@ ydrUtil.dato.each(models, function (key, model) {
             }
 
             var meta = doc.meta;
-            var data = doc = _toPureData(doc, ['_id']);
+            var data = _toPureData(doc, ['_id']);
 
             data.meta = ydrUtil.dato.extend(true, {}, meta, metaMap);
-            model.findOneAndUpdate.call(model, conditions, data, callback);
+            model.findOneAndUpdate(conditions, data, callback);
         });
     };
 
@@ -131,7 +131,7 @@ ydrUtil.dato.each(models, function (key, model) {
                     return callback(err);
                 }
 
-                model.findOneAndUpdate.call(model, conditions, data, callback);
+                model.findOneAndUpdate(conditions, data, callback);
             });
         })
     };
@@ -145,7 +145,7 @@ ydrUtil.dato.each(models, function (key, model) {
      */
 
     exports[key].findOneAndRemove = function (conditions, callback) {
-        model.findOneAndRemove.call(model, conditions, callback);
+        model.findOneAndRemove(conditions, callback);
     };
 
 
@@ -204,7 +204,7 @@ ydrUtil.dato.each(models, function (key, model) {
 
                     var rules = this.rules;
 
-                    model.findOneAndUpdate.call(model, conditions, data, function (err, doc) {
+                    model.findOneAndUpdate(conditions, data, function (err, doc) {
                         if (err) {
                             err = _parseError(rules, err);
                             return callback(err);
