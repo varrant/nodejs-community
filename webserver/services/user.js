@@ -29,6 +29,13 @@ exports.signUp = user.createOne;
  */
 exports.findOne = user.findOne;
 
+
+/**
+ * 查找更新
+ */
+exports.findOneAndUpdate = user.findOneAndUpdate;
+
+
 /**
  * 获取meta
  */
@@ -141,7 +148,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
 
             var url = urls.accessToken + '?' + qs.stringify(params);
 
-            ydrUtil.request.post(url, requestOptions, function (err, data) {
+            ydrUtil.request.post(url, requestOptions, function (err, data, res) {
                 if (err) {
                     return next(err);
                 }
@@ -158,6 +165,10 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                     return next(new Error('认证信息解析失败'));
                 }
 
+                if (res.statusCode !== 200) {
+                    return next(new Error(json.message || '请求认证失败'));
+                }
+
                 next(err, json);
             });
         })
@@ -168,7 +179,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
             };
             var url = urls.user + '?' + qs.stringify(params);
 
-            ydrUtil.request.post(url, requestOptions, function (err, data) {
+            ydrUtil.request.get(url, requestOptions, function (err, data, res) {
                 if (err) {
                     return next(err);
                 }
@@ -185,6 +196,10 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                     return next(new Error('用户信息解析失败'));
                 }
 
+                if (res.statusCode !== 200) {
+                    return next(new Error(json.message || '请求认证失败'));
+                }
+
                 next(err, json);
             });
         })
@@ -194,12 +209,46 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                 return callback(err);
             }
 
+            //{ login: 'cloudcome',
+            //    id: 3362033,
+            //    avatar_url: 'https://avatars.githubusercontent.com/u/3362033?v=3',
+            //    gravatar_id: '',
+            //    url: 'https://api.github.com/users/cloudcome',
+            //    html_url: 'https://github.com/cloudcome',
+            //    followers_url: 'https://api.github.com/users/cloudcome/followers',
+            //    following_url: 'https://api.github.com/users/cloudcome/following{/other_user}',
+            //    gists_url: 'https://api.github.com/users/cloudcome/gists{/gist_id}',
+            //    starred_url: 'https://api.github.com/users/cloudcome/starred{/owner}{/repo}',
+            //    subscriptions_url: 'https://api.github.com/users/cloudcome/subscriptions',
+            //    organizations_url: 'https://api.github.com/users/cloudcome/orgs',
+            //    repos_url: 'https://api.github.com/users/cloudcome/repos',
+            //    events_url: 'https://api.github.com/users/cloudcome/events{/privacy}',
+            //    received_events_url: 'https://api.github.com/users/cloudcome/received_events',
+            //    type: 'User',
+            //    site_admin: false,
+            //    name: '云淡然',
+            //    company: 'netease',
+            //    blog: 'http://ydr.me',
+            //    location: 'hangzhou',
+            //    email: 'cloudcome@163.com',
+            //    hireable: true,
+            //    bio: null,
+            //    public_repos: 41,
+            //    public_gists: 0,
+            //    followers: 18,
+            //    following: 4,
+            //    created_at: '2013-01-24T01:59:23Z',
+            //    updated_at: '2014-11-22T16:26:16Z' }
+
             var ret = {
                 github: json.login,
                 email: json.email,
                 nickname: json.name,
                 meta: {
-                    bio: json.bio
+                    bio: json.bio,
+                    location: json.location,
+                    company: json.company,
+                    blog: json.blog
                 }
             };
 

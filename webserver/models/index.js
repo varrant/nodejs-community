@@ -6,6 +6,7 @@
 
 'use strict';
 
+var howdo = require('howdo');
 var ydrUtil = require('ydr-util');
 var validators = require('../validators/');
 var models = {
@@ -115,7 +116,7 @@ ydrUtil.dato.each(models, function (key, model) {
     exports[key].findOneAndUpdate = function (conditions, data, callback) {
         data = _toPureData(data, ['_id']);
 
-        this.findOne(conditions, function (err, doc) {
+        model.findOne(conditions, function (err, doc) {
             if (err) {
                 return callback(err);
             }
@@ -126,14 +127,28 @@ ydrUtil.dato.each(models, function (key, model) {
                 return callback(err);
             }
 
-            validator.validateAll(data, function (err, data) {
+            var newData = {};
+
+            howdo.each(data, function (key, val, next) {
+                var validateData = {};
+
+                validateData[key] = val;
+                validator.validateOne(validateData, function (err, data) {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    ydrUtil.dato.extend(true, newData, data);
+                    next();
+                });
+            }).follow(function (err) {
                 if (err) {
                     return callback(err);
                 }
 
-                model.findOneAndUpdate(conditions, data, callback);
+                model.findOneAndUpdate(conditions, newData, callback);
             });
-        })
+        });
     };
 
 
@@ -184,8 +199,6 @@ ydrUtil.dato.each(models, function (key, model) {
      */
     exports[key].existOne = function (conditions, data, callback) {
         data = _toPureData(data, ['_id']);
-
-
 
 
         this.findOne(conditions, function (err, doc) {
@@ -278,13 +291,13 @@ function _toPureData(data, removeKeys) {
         }
 
         ydrUtil.dato.each(removeKeys, function (index, key) {
-            if(data){
+            if (data) {
                 delete(data[key]);
             }
         });
     }
 
-    if(data){
+    if (data) {
         delete(data.__v);
     }
 

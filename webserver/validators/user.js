@@ -27,28 +27,14 @@ validator.pushRule({
     maxLength: 100
 });
 
-
 validator.pushRule({
-    name: 'location',
-    alias: '位置信息',
+    name: 'nickname',
+    alias: '昵称',
     type: 'string',
-    // 存在才验证
-    exist: true,
-    required: false,
+    required: true,
     trim: true,
-    maxLength: 100
-});
-
-
-validator.pushRule({
-    name: 'organization',
-    alias: '组织信息',
-    type: 'string',
-    // 存在才验证
-    exist: true,
-    required: false,
-    trim: true,
-    maxLength: 100
+    minLength: 2,
+    maxLength: 12
 });
 
 module.exports = validator;

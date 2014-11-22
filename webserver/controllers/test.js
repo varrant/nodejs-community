@@ -19,9 +19,17 @@ module.exports = function (app) {
             return next();
         }
 
-        var url = user.createOauthURL(app.locals.settings2.oauth, 'http://sb.com:18084/test2');
+        var conditions = {_id: '5470c3d40736a4a22dbf3f81'};
 
-        res.redirect(url);
+
+        user.findOneAndUpdate(conditions, {
+            email: 'cloudcome@163.com',
+            nickname: '云淡然22222',
+            signInAt: new Date()
+        },function () {
+            console.log(arguments);
+            res.send('done');
+        });
     };
 
     exports.test2 = function (req, res, next) {

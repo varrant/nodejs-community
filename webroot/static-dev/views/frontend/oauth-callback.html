@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+ - 授权跳转
+ - @author ydr.me
+ - @create 2014-11-22 22:38
+ -->
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0,minimal-ui">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="author" content="云淡然;http://ydr.me">
+    <meta name="keywords" content="关键词1,关键词2">
+    <meta name="description" content="描述语句">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <title>oauth-callback.html</title>
+</head>
+<body ontouchstart="">
+<p>头像：{{user.email}}</p>
+
+<P>你好：{{user.nickname}}</P>
+
+<p>{{isSignIn ? '正在登录……':'确认登录信息。'}}</p>
+
+{{if !isSignIn}}
+<ul>
+    <li>邮箱：{{user.email}}</li>
+    <li>github：{{user.github}}</li>
+</ul>
+
+<button>确定授权登录</button>
+{{/if}}
+</body>
+</html>
