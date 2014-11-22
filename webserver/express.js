@@ -32,8 +32,6 @@ var ydrTemplate = require('ydr-template');
 // 工具库
 var ydrUtil = require('ydr-util');
 
-// 路由表
-var routers = require('./routers/');
 
 module.exports = function (next) {
     var app = express();
@@ -134,14 +132,8 @@ module.exports = function (next) {
     }));
 
 
-
-
     ////////////////////////////////////////////////////////////////////
     ///////////////////////////[ router ]///////////////////////////////
     ////////////////////////////////////////////////////////////////////
-    routers(app);
-
-    app.listen(config.app.port, function (err) {
-        next(err, app);
-    });
+    next(null, app);
 };

@@ -11,7 +11,12 @@ var setting = require('../models/').setting;
 var ydrUtil = require('ydr-util');
 var config = require('../../webconfig/');
 var qs = require('querystring');
-
+var howdo = require('howdo');
+var urls = {
+    authorize: 'https://github.com/login/oauth/authorize',
+    accessToken: 'https://github.com/login/oauth/access_token',
+    user: 'https://api.github.com/user'
+};
 
 /**
  * 注册
@@ -80,22 +85,20 @@ exports.increaseCoins = function (conditions, count, callback) {
  * @param redirect
  * @returns {string}
  */
-exports.createOauthURL = function (oauth, redirect) {
-    var state = redirect + '\n' + ydrUtil.random.number(1, 100);
+exports.createOauthURL = function (oauthSettings, redirect) {
+    var num1 = ydrUtil.random.number(1, 100);
+    var num2 = ydrUtil.random.number(1, 100);
+    var num3 = num1 + num2;
+    var state = num1 + '\n' + num2 + '\n' + num3;
     var params = {
         scope: 'user:email',
         redirect_uri: redirect,
         state: ydrUtil.crypto.encode(state, config.secret.session.secret)
     };
 
-    ydrUtil.dato.extend(true, params, oauth);
+    ydrUtil.dato.extend(true, params, oauthSettings);
 
-    var qss = qs.stringify(params);
-    var url = 'https://github.com/login/oauth/authorize';
-
-    url += '?' + qss;
-
-    return url;
+    return urls.authorize + '?' + qs.stringify(params);
 };
 
 
@@ -103,14 +106,105 @@ exports.createOauthURL = function (oauth, redirect) {
  * 解析 oauth 回来的 state 值
  * @param state
  */
-exports.parseOauthState = function (state) {
+exports.isSafeOauthState = function (state) {
     var ret = ydrUtil.crypto.decode(state, config.secret.session.secret);
     var arr = ret.split('\n');
+    var num1 = ydrUtil.dato.parseInt(arr[0], 0);
+    var num2 = ydrUtil.dato.parseInt(arr[1], 0);
+    var num3 = ydrUtil.dato.parseInt(arr[2], 0);
 
-    return {
-        redirect: arr[0] || '/',
-        number: arr[1] || ''
+    return num1 + num2 === num3;
+};
+
+
+/**
+ * oauth 回调
+ * @param oauthSettings
+ * @param code
+ * @param callback
+ */
+exports.oauthCallback = function (oauthSettings, code, callback) {
+    var requestOptions = {
+        headers: {
+            Accept: 'application/json',
+            'User-Agent': oauthSettings.app_name
+        }
     };
+    howdo
+        // 1. 获取 accessToken
+        .task(function (next) {
+            var params = {
+                code: code
+            };
+
+            ydrUtil.dato.extend(true, params, oauthSettings);
+
+            var url = urls.accessToken + '?' + qs.stringify(params);
+
+            ydrUtil.request.post(url, requestOptions, function (err, data) {
+                if (err) {
+                    return next(err);
+                }
+
+                var json;
+
+                try {
+                    json = JSON.parse(data);
+                } catch (err) {
+                    json = null;
+                }
+
+                if (!json) {
+                    return next(new Error('认证信息解析失败'));
+                }
+
+                next(err, json);
+            });
+        })
+        // 获得 userInfo
+        .task(function (next, json) {
+            var params = {
+                access_token: json.access_token
+            };
+            var url = urls.user + '?' + qs.stringify(params);
+
+            ydrUtil.request.post(url, requestOptions, function (err, data) {
+                if (err) {
+                    return next(err);
+                }
+
+                var json;
+
+                try {
+                    json = JSON.parse(data);
+                } catch (err) {
+                    json = null;
+                }
+
+                if (!json) {
+                    return next(new Error('用户信息解析失败'));
+                }
+
+                next(err, json);
+            });
+        })
+        // 异步串行
+        .follow(function (err, json) {
+            if (err) {
+                return callback(err);
+            }
+
+            var ret = {
+                github: json.login,
+                email: json.email,
+                nickname: json.name,
+                meta: {
+                    bio: json.bio
+                }
+            };
+
+            callback(null, ret);
+        });
 };
 
 

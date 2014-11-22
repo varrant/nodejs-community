@@ -14,7 +14,7 @@ var setting = require('../services/').setting;
 
 module.exports = function (app) {
     var exports = {};
-
+    var oauthSettings = app.locals.settings2.oauth;
 
     /**
      * 跳转至授权地址
@@ -24,11 +24,7 @@ module.exports = function (app) {
      * @returns {*}
      */
     exports.oauthAuthorize = function (req, res, next) {
-        if (config.app.env === 'pro') {
-            return next();
-        }
-
-        var url = user.createOauthURL(app.locals.settings2.oauth, 'http://sb.com:18084/api/user/oauth/callback/');
+        var url = user.createOauthURL(oauthSettings, 'http://sb.com:18084/api/user/oauth/callback/');
 
         res.render('frontend/oauth-authorize.html', {
             url: url
@@ -44,16 +40,22 @@ module.exports = function (app) {
      * @returns {*}
      */
     exports.oauthCallback = function (req, res, next) {
-        if (config.app.env === 'pro') {
-            return next();
-        }
-
         var query = req.query;
         var code = query.code;
         var state = query.state;
-        var ret = user.parseOauthState(state);
+        var isSafe = user.isSafeOauthState(state);
 
-        res.send(JSON.stringify(ret, null, 4));
+        if (!isSafe) {
+            return next(new Error('非法授权'));
+        }
+
+        user.oauthCallback(oauthSettings, code, function (err, json) {
+            if (err) {
+                return next(err);
+            }
+
+            res.send(JSON.stringify(json, null, 4));
+        });
     };
 
     return exports;
