@@ -247,6 +247,12 @@ ydrUtil.dato.each(models, function (key, model) {
     exports[key].count = function (conditions, callback) {
         model.count(conditions, callback);
     };
+
+
+    /**
+     * 原始 model
+     */
+    exports[key].rawModel = model;
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////

@@ -35,7 +35,7 @@ var ydrUtil = require('ydr-util');
 // 路由表
 var routers = require('./routers/');
 
-module.exports = function (callback) {
+module.exports = function (next) {
     var app = express();
 
 
@@ -133,7 +133,7 @@ module.exports = function (callback) {
         secret: config.secret.session.secret
     }));
 
-    app.locals.name = '嘻嘻';
+
 
 
     ////////////////////////////////////////////////////////////////////
@@ -141,5 +141,7 @@ module.exports = function (callback) {
     ////////////////////////////////////////////////////////////////////
     routers(app);
 
-    app.listen(config.app.port, callback);
+    app.listen(config.app.port, function (err) {
+        next(err, app);
+    });
 };

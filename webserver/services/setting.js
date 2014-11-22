@@ -48,7 +48,20 @@ exports.set = function (key, val, callback) {
 exports.get = function (key, callback) {
     // find all
     if (ydrUtil.typeis(key) === 'function') {
-        setting.find({}, callback);
+        callback = key;
+        setting.rawModel.find({}, function (err, docs) {
+            if (err) {
+                return callback(err);
+            }
+
+            var ret = {};
+            docs = docs || [];
+            docs.forEach(function (doc) {
+                ret[doc.key] = doc.val;
+            });
+
+            callback(err, ret);
+        });
     }
     // fine one
     else {

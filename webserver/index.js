@@ -6,12 +6,12 @@
 
 'use strict';
 
-var config = require('../webconfig/');
 var howdo = require('howdo');
-var express = require('./express.js');
 var mongoose = require('./mongoose.js');
+var express = require('./express.js');
+var middleware = require('./middleware.js');
 
-howdo.task(mongoose).task(express).follow(function (err) {
+howdo.task(mongoose).task(express).task(middleware).follow(function (err, app) {
     if (err) {
         console.log(err);
         return process.exit(-1);
@@ -19,7 +19,7 @@ howdo.task(mongoose).task(express).follow(function (err) {
 
     console.log('');
     console.log('#########################################################');
-    console.log('f2ec.com running at ' + config.app.port);
+    console.log('f2ec.com running at ' + app.locals.settings.port);
     console.log('#########################################################');
     console.log('');
 });

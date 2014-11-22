@@ -11,14 +11,11 @@ var config = require('../webconfig/');
 // mongoose
 var mongoose = require('mongoose');
 
-module.exports = function (callback) {
+module.exports = function (next) {
     mongoose.connect(config.app.mongodb);
-
-    mongoose.connection.on('connected', callback);
-
-    mongoose.connection.on('error', callback);
-
-    mongoose.connection.on('disconnected', callback);
+    mongoose.connection.on('connected', next);
+    mongoose.connection.on('error', next);
+    mongoose.connection.on('disconnected', next);
 };
 
 
