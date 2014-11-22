@@ -46,7 +46,8 @@
     "multer": "^0.1.6",
     "xss": "^0.1.12",
     "ydr-template": "*",
-    "ydr-util": "*"
+    "ydr-util": "*",
+    "ydr-validator": "*"
   },
   "devDependencies": {},
   "licenses": "MIT"

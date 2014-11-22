@@ -61,7 +61,7 @@ ydrUtil.dato.each(models, function (key, model) {
     exports[key].findOneAndUpdate = function (conditions, data, callback) {
         if (ydrUtil.typeis(conditions) === 'object' && !conditions._bsontype && ydrUtil.typeis(data) === 'object' && ydrUtil.typeis(callback) === 'function') {
             data = _toPureData(data, ['_id']);
-            validator.validate(data, function (err) {
+            validator.validateAll(data, function (err, data) {
                 if (err) {
                     return callback(err);
                 }
@@ -132,7 +132,7 @@ ydrUtil.dato.each(models, function (key, model) {
     exports[key].createOne = function (data, callback) {
         if (ydrUtil.typeis(data) === 'object' && ydrUtil.typeis(callback) === 'function') {
             data = _toPureData(data, ['_id']);
-            validator.validate(data, function (err) {
+            validator.validateAll(data, function (err, data) {
                 if (err) {
                     return callback(err);
                 }
