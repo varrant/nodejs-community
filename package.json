@@ -1,0 +1,54 @@
+{
+  "name": "nodejs-community",
+  "version": "0.0.1",
+  "private": true,
+  "description": "前端开发者社区",
+  "scripts": {
+    "start": "node ./server/"
+  },
+  "preferGlobal": false,
+  "bin": {},
+  "main": "index.js",
+  "keywords": [
+    "cloudcome",
+    "ydr.me",
+    "f2e",
+    "front-end",
+    "community"
+  ],
+  "author": [
+    {
+      "name": "cloudcome",
+      "email": "cloudcome@163.com",
+      "url": "http://ydr.me"
+    }
+  ],
+  "homepage": "https://f2ec.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudcome/nodejs-community"
+  },
+  "bugs": {
+    "url": "https://github.com/cloudcome/nodejs-community/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.9.2",
+    "compression": "^1.2.0",
+    "cookie-parser": "^1.3.3",
+    "emailjs": "^0.3.12",
+    "express": "^4.10.2",
+    "express-session": "^1.9.1",
+    "fs-extra": "^0.12.0",
+    "glob": "^4.2.1",
+    "howdo": "^1.1.4",
+    "moment": "^2.8.4",
+    "mongoose": "^3.8.19",
+    "multer": "^0.1.6",
+    "serve-favicon": "^2.1.7",
+    "xss": "^0.1.12",
+    "ydr-template": "*",
+    "ydr-util": "*"
+  },
+  "devDependencies": {},
+  "licenses": "MIT"
+}
