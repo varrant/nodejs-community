@@ -6,26 +6,15 @@
 
 'use strict';
 
-var config = require('../../webconfig/');
-
-module.exports = function (app) {
+module.exports = function (app, controller) {
     /**
      * server error
      */
-    app.use(function (err, req, res, next) {
-        if ('pro' === config.app.env) {
-            res.status(500).send('server error');
-        } else {
-            console.log(err);
-            res.status(500).send(err.message);
-        }
-    });
+    app.use(controller.serverError);
 
 
     /**
      * client error
      */
-    app.use(function (req, res, next) {
-        res.status(404).send('client error');
-    });
+    app.use(controller.clientError);
 };

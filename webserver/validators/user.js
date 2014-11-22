@@ -11,6 +11,7 @@ var validator = new Validator();
 
 validator.pushRule({
     name: 'email',
+    alias: '邮箱帐号',
     type: 'email',
     required: true,
     trim: true
@@ -18,6 +19,7 @@ validator.pushRule({
 
 validator.pushRule({
     name: 'github',
+    alias: 'github 帐号',
     type: 'string',
     required: true,
     trim: true,
@@ -25,17 +27,10 @@ validator.pushRule({
     maxLength: 100
 });
 
-validator.pushRule({
-    name: 'password',
-    type: 'string',
-    required: true,
-    trim: false,
-    minLength: 6,
-    maxLength: 20
-});
 
 validator.pushRule({
     name: 'location',
+    alias: '位置信息',
     type: 'string',
     // 存在才验证
     exist: true,
@@ -47,6 +42,7 @@ validator.pushRule({
 
 validator.pushRule({
     name: 'organization',
+    alias: '组织信息',
     type: 'string',
     // 存在才验证
     exist: true,

@@ -21,11 +21,6 @@ var schema = mongoose.Schema({
         required: true,
         unique: true
     },
-    // 密码
-    password: {
-        type: String,
-        required: true
-    },
     // 昵称
     nickname: {
         type: String,

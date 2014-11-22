@@ -11,14 +11,19 @@ var validators = require('../validators/');
 var models = {
     user: require('./user.js')
 };
+var config = require('../../webconfig/');
+var DBNAME = config.app.mongodb.match(/\/([^/]*)$/)[1];
+var REG_DUPLICATE = new RegExp(DBNAME + '\\..*\\.\\$(.*)_1');
+
 
 ydrUtil.dato.each(models, function (key, model) {
-    if (validators[key]) {
+    var validator = validators[key];
+
+    if (!validator) {
         throw new Error('`' + key + '`验证规则不存在');
     }
 
-    var validator = validators[key];
-
+    exports[key] = {};
 
     /**
      * 查找一个对象
@@ -137,14 +142,23 @@ ydrUtil.dato.each(models, function (key, model) {
                     return callback(err);
                 }
 
-                model.create(data, callback);
+                var rules = this.rules;
+
+                model.create(data, function (err, doc) {
+
+                    if (err) {
+                        err = _parseError(rules, err);
+                        return callback(err);
+                    }
+
+                    callback(err, doc);
+                });
             });
         } else {
             throw new Error('`data`必须为对象，`callback`必须为函数');
         }
     };
 });
-
 
 /////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -168,7 +182,7 @@ function _toPureData(data, removeKeys) {
             removeKeys = [removeKeys];
         }
 
-        util.each(removeKeys, function (index, key) {
+        ydrUtil.dato.each(removeKeys, function (index, key) {
             delete(data[key]);
         });
     }
@@ -178,3 +192,32 @@ function _toPureData(data, removeKeys) {
     return data;
 }
 
+
+/**
+ * 解析错误对象
+ * @param rules
+ * @param err
+ * @returns {*}
+ * @private
+ */
+function _parseError(rules, err) {
+    // insertDocument :: caused by :: 11000 E11000 duplicate
+    // key error index: f2ec.users.$email_1  dup key: { : "cloudcome@163.com" }
+    var msg = err.message;
+    var code = err.code;
+    var path = '';
+
+    // mongodb error
+    if (err.name === 'MongoError') {
+        switch (code) {
+            case 11000:
+                path = (msg.match(REG_DUPLICATE) || ['', ''])[1];
+                msg = (path ? rules[path].alias : '未知字段') + '重复';
+                break;
+        }
+
+        err = new Error(msg);
+    }
+
+    return err;
+}

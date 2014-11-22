@@ -6,7 +6,9 @@
 
 'use strict';
 
+var controllers = require('../controllers/');
 
 module.exports = function (app) {
-    require('./error.js')(app);
+    require('./test.js')(app, controllers.test);
+    require('./error.js')(app, controllers.error);
 };
