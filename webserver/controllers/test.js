@@ -34,7 +34,7 @@ exports.test = function (req, res, next) {
     //});
 
     //userService.findOne({
-    //    email: 'cloudcome@163.com'
+    //    email: 'cloudcom2e@163.com'
     //}, function (err, doc) {
     //    if (err) {
     //        console.log(err);
@@ -44,4 +44,44 @@ exports.test = function (req, res, next) {
     //    res.set('Content-Type', 'text/plain');
     //    res.send(JSON.stringify(doc, null, 4));
     //});
+
+    //userService.setMeta({
+    //    email: 'cloudcome@163.com'
+    //}, {
+    //    location: '杭州',
+    //    organization: '网易',
+    //    position: '前端开发工程师'
+    //},function (err, meta) {
+    //    if (err) {
+    //        console.log(err);
+    //        return res.send(err.message);
+    //    }
+    //
+    //    res.set('Content-Type', 'text/plain');
+    //    res.send(JSON.stringify(meta, null, 4));
+    //});
+
+    //userService.getMeta({
+    //    email: 'cloudcome@163.com'
+    //}, function (err, meta) {
+    //    if (err) {
+    //        console.log(err);
+    //        return res.send(err.message);
+    //    }
+    //
+    //    res.set('Content-Type', 'text/plain');
+    //    res.send(JSON.stringify(meta, null, 4));
+    //});
+
+    userService.increaseComment({
+        email: 'cloudcome@163.com'
+    }, function (err, meta) {
+        if (err) {
+            console.log(err);
+            return res.send(err.message);
+        }
+
+        res.set('Content-Type', 'text/plain');
+        res.send(JSON.stringify(meta, null, 4));
+    });
 };

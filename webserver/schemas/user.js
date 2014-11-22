@@ -30,7 +30,7 @@ var schema = mongoose.Schema({
     // 角色标识
     // 9 = 超管（owner）
     // 3 = 管理（admin）
-    // 2 = 认证（vip）
+    // 2 = 领导（leader）
     // 1 = 会员（member）
     role: {
         type: Number,
@@ -45,34 +45,11 @@ var schema = mongoose.Schema({
         type: Date,
         default: new Date
     },
-    // 登录时间
-    signInAt: {
-        type: Date
-    },
-    // 文章数量
-    posts: {
-        type: Number,
-        default: 0
-    },
-    // 评论数量
-    comments: {
-        type: Number,
-        default: 0
-    },
-    // 评论数量
-    praises: {
-        type: Number,
-        default: 0
-    },
-    // 所在地
-    location: {
-        type: String
-    },
-    // 所在组织、公司、企业
-    organization: {
-        type: String
-    },
-    // 用户元信息（方便扩展）
+    // 元信息（方便扩展）
+    // 因为是复合数据，因此不会做数据验证
+    // 因此必须再写入的时候自行验证
+    // 一般这些数据都是由程序主动写入的
+    // 与访问者无关
     meta: {
         type: Object,
         default: {}

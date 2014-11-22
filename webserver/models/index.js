@@ -39,20 +39,72 @@ ydrUtil.dato.each(models, function (key, model) {
         }
     };
 
+
     /**
-     *
-     * @param {String} id值
-     * @param {Function} callback
-     * @returns {*|Query}
+     * 获取某个 meta
+     * @param conditions
+     * @param [metaKey]
+     * @param callback
      */
-    exports[key].findById = function (id, callback) {
-        if (ydrUtil.typeis.mongoId(id) && ydrUtil.typeis(callback) === 'function') {
-            return this.findOne({
-                _id: id
-            }, callback);
-        } else {
-            throw new Error('`id`必须为mongoose ObjectId或24位小写英文数字字符串，`callback`必须为函数');
+    exports[key].getMeta = function (conditions, metaKey, callback) {
+        if (ydrUtil.typeis(metaKey) === 'function') {
+            callback = metaKey;
+            metaKey = null;
         }
+
+        this.findOne(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!doc) {
+                err = new Error('要查找的数据不存在');
+                err.type = 'notFound';
+                return callback(err);
+            }
+
+            var meta = doc.meta;
+
+            callback(err, metaKey ? meta[metaKey] : meta, doc);
+        });
+    };
+
+
+    /**
+     * 设置某个 meta
+     * @param conditions
+     * @param metaKey
+     * @param [metaVal]
+     * @param callback
+     */
+    exports[key].setMeta = function (conditions, metaKey, metaVal, callback) {
+        var metaMap = {};
+
+        if (ydrUtil.typeis(metaVal) === 'function') {
+            metaMap = metaKey;
+            callback = metaVal;
+            metaVal = null;
+        } else {
+            metaMap[metaKey] = metaVal;
+        }
+
+        this.findOne(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!doc) {
+                err = new Error('要更新的数据不存在');
+                err.type = 'notFound';
+                return callback(err);
+            }
+
+            var meta = doc.meta;
+            var data = doc = _toPureData(doc, ['_id']);
+
+            data.meta = ydrUtil.dato.extend(true, {}, meta, metaMap);
+            model.findOneAndUpdate.call(model, conditions, data, callback);
+        });
     };
 
 
@@ -66,34 +118,31 @@ ydrUtil.dato.each(models, function (key, model) {
     exports[key].findOneAndUpdate = function (conditions, data, callback) {
         if (ydrUtil.typeis(conditions) === 'object' && !conditions._bsontype && ydrUtil.typeis(data) === 'object' && ydrUtil.typeis(callback) === 'function') {
             data = _toPureData(data, ['_id']);
-            validator.validateAll(data, function (err, data) {
+
+            this.findOne(conditions, function (err, doc) {
                 if (err) {
                     return callback(err);
                 }
 
-                model.findOneAndUpdate.call(model, conditions, data, callback);
-            });
+                if (!doc) {
+                    err = new Error('要更新的数据不存在');
+                    err.type = 'notFound';
+                    return callback(err);
+                }
+
+                validator.validateAll(data, function (err, data) {
+                    if (err) {
+                        return callback(err);
+                    }
+
+                    model.findOneAndUpdate.call(model, conditions, data, callback);
+                });
+            })
         } else {
             throw new Error('`conditions`必须为对象且不能为mongoose数据对象，`data`必须为对象，`callback`必须为函数');
         }
     };
 
-    /**
-     * 查找一个并更新
-     * @param {String} id值
-     * @param {Object} data
-     * @param {Function} callback
-     * @returns {Query|*}
-     */
-    exports[key].findByIdAndUpdate = function (id, data, callback) {
-        if (ydrUtil.typeis.mongoId(id) && ydrUtil.typeis(data) === 'object' && ydrUtil.typeis(callback) === 'function') {
-            this.findOneAndUpdate({
-                _id: id
-            }, data, callback);
-        } else {
-            throw new Error('`id`必须为mongoose ObjectId或24位小写英文数字字符串，`data`必须为对象，`callback`必须为函数');
-        }
-    };
 
     /**
      * 查找一个并删除
@@ -107,23 +156,6 @@ ydrUtil.dato.each(models, function (key, model) {
             return model.findOneAndRemove.call(model, conditions, callback);
         } else {
             throw new Error('`conditions`必须为对象且不能为mongoose数据对象，`callback`必须为函数');
-        }
-    };
-
-
-    /**
-     * 查找一个并删除
-     * @param {String} id值
-     * @param {Function} callback
-     * @returns {Query|*}
-     */
-    exports[key].findByIdAndRemove = function (id, callback) {
-        if (ydrUtil.typeis.mongoId(id) && ydrUtil.typeis(callback) === 'function') {
-            return this.findOneAndRemove({
-                _id: id
-            }, callback);
-        } else {
-            throw new Error('`id`必须为mongoose ObjectId或24位小写英文数字字符串，`callback`必须为函数');
         }
     };
 
