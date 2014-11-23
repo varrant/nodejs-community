@@ -7,6 +7,7 @@
 'use strict';
 
 var ydrUtil = require('ydr-util');
+var config = require('../../webconfig/');
 
 module.exports = function (app) {
     var exports = {};
@@ -19,9 +20,10 @@ module.exports = function (app) {
      * @param next
      */
     exports.createCsrf = function (req, res, next) {
-        var csrf = ydrUtil.random.string(32);
+        var csrf = _generatorCsrf();
 
-        res.session.csrf = res.locals._csrf = csrf;
+        req.session.csrf = res.locals._csrf = csrf;
+        console.log(res.locals._csrf);
         next();
     };
 
@@ -34,14 +36,19 @@ module.exports = function (app) {
      */
     exports.safeDetection = function (req, res, next) {
         var headers = req.headers;
+        var headersCsrf = headers['x-request-csrf'];
 
         if (headers.accept === 'application/json' &&
             headers['x-request-with'] === 'XMLHttpRequest' &&
             headers['content-type'] === 'application/json; charset=utf-8' &&
             req.session && req.session.csrf &&
-            headers['x-request-csrf'] === req.session.csrf) {
+            headersCsrf === req.session.csrf) {
 
             return next();
+        }
+
+        if (req.session.csrf && req.session.csrf !== headersCsrf) {
+            return next(new Error('请求认证已过期'));
         }
 
         next(new Error('非法请求'));
@@ -49,3 +56,16 @@ module.exports = function (app) {
 
     return exports;
 };
+
+
+/**
+ * 生成 csrf
+ * @retunrs {String}
+ * @private
+ */
+function _generatorCsrf() {
+    var timeString = ydrUtil.dato.parseInt(Date.now() / config.secret.session.csrfAge, 0) + '';
+    var csrf = ydrUtil.crypto.encode(timeString, config.secret.session.secret);
+
+    return csrf;
+}
