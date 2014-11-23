@@ -25,17 +25,24 @@ module.exports = function (app) {
     exports.signIn = function (req, res, next) {
         var body = req.body || {};
         var accessToken = body.accessToken;
+        var githubOauth;
+        var github;
 
-        if (!(req.session && req.session.accessToken && req.session.accessToken === accessToken)) {
-            console.log(req.session.accessToken);
-            console.log(accessToken);
-            return next(new Error('非法操作'));
+        if (!(req.session && req.session.githubOauth &&
+            req.session.githubOauth.accessToken === accessToken)) {
+            return next(new Error('请重新授权操作'));
         }
 
-        body.signInAt = new Date();
+        githubOauth = req.session.githubOauth;
+        github = githubOauth.github;
+        delete(githubOauth.github);
+        githubOauth.signInAt = new Date();
+
         user.signIn({
-            _id: body._id
-        }, body, function (err, data) {
+            github: github
+        }, githubOauth, function (err, data) {
+            req.session.githubOauth = null;
+
             if (err) {
                 return next(err);
             }
@@ -58,7 +65,7 @@ module.exports = function (app) {
             };
 
             res.json({
-                code: 1,
+                code: 200,
                 message: '登录成功'
             });
         });

@@ -23,7 +23,6 @@ module.exports = function (app) {
         var csrf = _generatorCsrf();
 
         req.session.csrf = res.locals._csrf = csrf;
-        console.log(res.locals._csrf);
         next();
     };
 
@@ -37,10 +36,11 @@ module.exports = function (app) {
     exports.safeDetection = function (req, res, next) {
         var headers = req.headers;
         var headersCsrf = headers['x-request-csrf'];
+        var headerConentType = headers['content-type'].toLowerCase();
 
         if (headers.accept === 'application/json' &&
             headers['x-request-with'] === 'XMLHttpRequest' &&
-            headers['content-type'] === 'application/json; charset=utf-8' &&
+            headerConentType === 'application/json; charset=utf-8' &&
             req.session && req.session.csrf &&
             headersCsrf === req.session.csrf) {
 

@@ -85,7 +85,7 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                req.session.accessToken = json.accessToken;
+                req.session.githubOauth = json;
                 res.render('frontend/oauth-callback.html', {
                     hasSignUp: !!data,
                     user: json
