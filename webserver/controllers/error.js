@@ -7,11 +7,11 @@
 'use strict';
 
 var config = require('../../webconfig/');
+var ydrUtil = require('ydr-util');
 
 
 module.exports = function (app) {
     var exports = {};
-
 
     /**
      * server error
@@ -21,11 +21,36 @@ module.exports = function (app) {
      * @param next
      */
     exports.serverError = function (err, req, res, next) {
-        if ('pro' === config.app.env) {
-            res.status(500).send('server error');
+        var resError;
+
+        if (req.headers.accept === 'application/json') {
+            if (err.message) {
+                resError = err.message;
+            } else {
+                resError = {};
+                ydrUtil.dato.each(err, function (key, err) {
+                    resError[key] = err.message;
+                });
+            }
+
+            res.json({
+                code: 500,
+                message: resError
+            });
         } else {
-            console.log(err);
-            res.status(500).send(err.message);
+            resError = [];
+
+            if (err.message) {
+                resError.push(err.message);
+            } else {
+                ydrUtil.dato.each(err, function (key, err) {
+                    resError.push(err.message);
+                });
+            }
+
+            res.status(500).render('server-error.html', {
+                errors: resError
+            });
         }
     }
 

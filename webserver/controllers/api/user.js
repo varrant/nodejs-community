@@ -10,6 +10,7 @@
 var config = require('../../../webconfig/');
 var user = require('../../services/').user;
 var setting = require('../../services/').setting;
+var ydrUtil = require('ydr-util');
 
 
 module.exports = function (app) {
@@ -25,14 +26,16 @@ module.exports = function (app) {
         var body = req.body || {};
         var accessToken = body.accessToken;
 
-        if (req.session.accessToken !== accessToken) {
+        if (!(req.session && req.session.accessToken && req.session.accessToken === accessToken)) {
+            console.log(req.session.accessToken);
+            console.log(accessToken);
             return next(new Error('非法操作'));
         }
 
-        data.signInAt = new Date();
-        user.existOne({
+        body.signInAt = new Date();
+        user.signIn({
             _id: body._id
-        }, data, function (err, data) {
+        }, body, function (err, data) {
             if (err) {
                 return next(err);
             }

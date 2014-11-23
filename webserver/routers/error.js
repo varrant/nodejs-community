@@ -6,15 +6,15 @@
 
 'use strict';
 
-module.exports = function (app, controller) {
+module.exports = function (app, ctrlError) {
     /**
      * server error
      */
-    app.use(controller.serverError);
+    app.use(ctrlError.serverError);
 
 
     /**
      * client error
      */
-    app.use(controller.clientError);
+    app.use(ctrlError.clientError);
 };

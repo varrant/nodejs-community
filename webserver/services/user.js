@@ -23,6 +23,11 @@ var urls = {
  */
 exports.signUp = user.createOne;
 
+/**
+ * 登录
+ */
+exports.signIn = user.existOne;
+
 
 /**
  * 查找

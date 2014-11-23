@@ -11,6 +11,7 @@ var controllers = require('../controllers/');
 module.exports = function (app) {
     var exports = controllers(app);
 
+    require('./middleware.js')(app, exports.middleware)
     require('./test.js')(app, exports.test);
     require('./frontend.js')(app, exports.frontend);
     require('./backend.js')(app, exports.backend);

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
- - 授权跳转
+ - 文件描述
  - @author ydr.me
- - @create 2014-11-22 22:38
+ - @create 2014-11-23 13:03
  -->
 <html>
 <head lang="zh-cn">
@@ -19,31 +19,15 @@
     <meta name="keywords" content="关键词1,关键词2">
     <meta name="description" content="描述语句">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-    <title>oauth-callback.html</title>
-    <script>
-
-        var locals = {
-            csrf: '{{locals._csrf}}',
-            github: '{{user.github}}',
-            accessToken: '{{user.accessToken}}'
-        };
-
-    </script>
+    <title>error.html</title>
 </head>
 <body ontouchstart="">
-<p>头像：{{user.email}}</p>
 
-<P>你好：{{user.nickname}}</P>
+<ol>
+    {{list errors as error}}
+    <li>{{error}}</li>
+    {{/list}}
+</ol>
 
-<p>{{hasSignUp ? '正在登录……':'确认登录信息。'}}</p>
-
-{{if !hasSignUp}}
-<ul>
-    <li>邮箱：{{user.email}}</li>
-    <li>github：{{user.github}}</li>
-</ul>
-
-<button>确定授权登录</button>
-{{/if}}
 </body>
 </html>
