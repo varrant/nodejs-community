@@ -95,7 +95,7 @@ exports.increaseCoins = function (conditions, count, callback) {
  * 创建 oauth 链接
  * @param oauth
  * @param redirect
- * @returns {string}
+ * @returns {Object}
  */
 exports.createOauthURL = function (oauthSettings, redirect) {
     var num1 = ydrUtil.random.number(1, 100);
@@ -105,12 +105,15 @@ exports.createOauthURL = function (oauthSettings, redirect) {
     var params = {
         scope: 'user:email',
         redirect_uri: redirect,
-        state: ydrUtil.crypto.encode(state, config.secret.session.secret)
+        state: state = ydrUtil.crypto.encode(state, config.secret.session.secret)
     };
 
     ydrUtil.dato.extend(true, params, oauthSettings);
 
-    return urls.authorize + '?' + qs.stringify(params);
+    return {
+        url: urls.authorize + '?' + qs.stringify(params),
+        state: state
+    };
 };
 
 

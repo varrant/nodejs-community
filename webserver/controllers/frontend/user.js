@@ -25,10 +25,11 @@ module.exports = function (app) {
      * @returns {*}
      */
     exports.oauthAuthorize = function (req, res, next) {
-        var url = user.createOauthURL(oauthSettings, 'http://sb.com:18084/user/oauth/callback/');
+        var oauth = user.createOauthURL(oauthSettings, 'http://sb.com:18084/user/oauth/callback/');
 
+        req.session.state = oauth.state;
         res.render('frontend/oauth-authorize.html', {
-            url: url
+            url: oauth.url
         });
     };
 
@@ -45,9 +46,20 @@ module.exports = function (app) {
         var code = query.code;
         var state = query.state;
         var isSafe = user.isSafeOauthState(state);
+        var err;
+
+        if (!req.session.state) {
+            err = new Error('请重新进行授权操作');
+            err.redirect = '/user/oauth/authorize';
+
+            return next(err);
+        }
 
         if (!isSafe) {
-            return next(new Error('非法授权'));
+            err = new Error('非法授权操作');
+            err.redirect = '/user/oauth/authorize';
+
+            return next(err);
         }
 
         howdo
@@ -67,6 +79,8 @@ module.exports = function (app) {
             })
             // 异步串行
             .follow(function (err, data, json) {
+                req.session.state = null;
+
                 if (err) {
                     return next(err);
                 }

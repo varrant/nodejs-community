@@ -19,17 +19,7 @@ module.exports = function (app) {
             return next();
         }
 
-        var conditions = {_id: '5470c3d40736a4a22dbf3f81'};
-
-
-        user.findOneAndUpdate(conditions, {
-            email: 'cloudcome@163.com',
-            nickname: '云淡然22222',
-            signInAt: new Date()
-        },function () {
-            console.log(arguments);
-            res.send('done');
-        });
+        res.send('<!doctype html><meta charset="utf8"><iframe src="/user/oauth/authorize"></iframe>');
     };
 
     exports.test2 = function (req, res, next) {
