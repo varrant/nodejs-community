@@ -26,7 +26,7 @@ module.exports = function (app) {
      * @returns {*}
      */
     exports.oauthAuthorize = function (req, res, next) {
-        var url = user.createOauthURL(oauthSettings, 'http://sb.com:18084/api/user/oauth/callback/');
+        var url = user.createOauthURL(oauthSettings, 'http://sb.com:18084/user/oauth/callback/');
 
         res.render('frontend/oauth-authorize.html', {
             url: url
