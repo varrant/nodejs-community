@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * 前端路由
  * @author ydr.me
  * @create 2014-11-23 12:00
  */
@@ -7,7 +7,7 @@
 'use strict';
 
 
-module.exports = function(app, controller){
-    app.post('/user/oauth/authorize', controller.test1);
-    app.post('/user/oauth/callback', controller.test1);
+module.exports = function(app, ctrlFrontend){
+    app.get('/user/oauth/authorize', ctrlFrontend.user.oauthAuthorize);
+    app.get('/user/oauth/callback', ctrlFrontend.user.oauthCallback);
 };

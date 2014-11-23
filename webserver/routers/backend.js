@@ -1,11 +1,11 @@
 /*!
- * 文件描述
+ * 后端路由
  * @author ydr.me
  * @create 2014-11-23 12:00
  */
 
 'use strict';
 
-var fs = require('fs');
 
-module.exports = {};
+module.exports = function(app, ctrlBackend){
+};
