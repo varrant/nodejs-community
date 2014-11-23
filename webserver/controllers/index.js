@@ -9,8 +9,10 @@
 
 module.exports = function (app) {
     return {
+        api: require('./api/')(app),
+        frontend: require('./frontend/')(app),
+        backend: require('./backend/')(app),
         error: require('./error.js')(app),
-        test: require('./test.js')(app),
-        user: require('./user.js')(app)
+        test: require('./test.js')(app)
     };
 };
