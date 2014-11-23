@@ -6,7 +6,7 @@
   "scripts": {
     "install": "node ./webserver/install.js ./settings.json",
     "start": "node ./webserver/index.js",
-    "supervisor": "supervisor -w ./webserver ./webserver/index.js"
+    "supervisor": "supervisor -w ./webserver ~/Documents/aliyun/f2ec.com/webserver/index.js"
   },
   "preferGlobal": false,
   "bin": {},

@@ -15,6 +15,7 @@ var schema = mongoose.Schema({
         unique: true
     },
     // github用户名，由 github 过来
+    // 用户的识别符号
     github: {
         type: String,
         required: true,

@@ -7,7 +7,6 @@
 'use strict';
 
 
-
 var config = require('../../../webconfig/');
 var user = require('../../services/').user;
 var setting = require('../../services/').setting;
@@ -23,11 +22,16 @@ module.exports = function (app) {
      * @param next
      */
     exports.signIn = function (req, res, next) {
-        var data = req.body.data || {};
+        var body = req.body || {};
+        var accessToken = body.accessToken;
+
+        if (req.session.accessToken !== accessToken) {
+            return next(new Error('非法操作'));
+        }
 
         data.signInAt = new Date();
         user.existOne({
-            _id: data._id
+            _id: body._id
         }, data, function (err, data) {
             if (err) {
                 return next(err);
@@ -50,7 +54,10 @@ module.exports = function (app) {
                 role: data.role
             };
 
-            res.send('登录成功');
+            res.json({
+                code: 1,
+                message: '登录成功'
+            });
         });
     };
 

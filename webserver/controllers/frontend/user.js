@@ -7,7 +7,6 @@
 'use strict';
 
 
-
 var config = require('../../../webconfig/');
 var user = require('../../services/').user;
 var setting = require('../../services/').setting;
@@ -72,8 +71,9 @@ module.exports = function (app) {
                     return next(err);
                 }
 
+                req.session.accessToken = json.accessToken;
                 res.render('frontend/oauth-callback.html', {
-                    isSignIn: !!data,
+                    hasSignUp: !!data,
                     user: json
                 });
             });

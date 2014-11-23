@@ -188,6 +188,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
 
                 try {
                     json = JSON.parse(data);
+                    json.accessToken = params.access_token;
                 } catch (err) {
                     json = null;
                 }
@@ -241,6 +242,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
             //    updated_at: '2014-11-22T16:26:16Z' }
 
             var ret = {
+                accessToken: json.accessToken,
                 github: json.login,
                 email: json.email,
                 nickname: json.name,
