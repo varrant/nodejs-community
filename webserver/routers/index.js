@@ -12,6 +12,8 @@ module.exports = function (app) {
     var exports = controllers(app);
 
     require('./test.js')(app, exports.test);
-    require('./user.js')(app, exports.user);
+    require('./frontend.js')(app, exports.frontend);
+    require('./backend.js')(app, exports.backend);
+    require('./api.js')(app, exports.api);
     require('./error.js')(app, exports.error);
 };

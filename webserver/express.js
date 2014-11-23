@@ -49,8 +49,8 @@ module.exports = function (next) {
     // 路由区分大小写，默认 disabled
     app.set('case sensitive routing', true);
 
-    // 严格路由，即 /a/b !== /a/b/
-    app.set('strict routing', true);
+    // 严格路由，即 /a/b === /a/b/
+    app.set('strict routing', false);
     app.set('jsonp callback name', 'callback');
     app.set('json spaces', 0);
     app.set('view cache', 'pro' === config.app.env);

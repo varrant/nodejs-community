@@ -7,6 +7,5 @@
 'use strict';
 
 module.exports = function(app, controller){
-    app.get('/api/', controller.test1);
-    app.get('/test2', controller.test2);
+    app.post('/api/user/sign_in/', controller.test1);
 };

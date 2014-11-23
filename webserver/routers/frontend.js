@@ -6,6 +6,8 @@
 
 'use strict';
 
-var fs = require('fs');
 
-module.exports = {};
+module.exports = function(app, controller){
+    app.post('/user/oauth/authorize', controller.test1);
+    app.post('/user/oauth/callback', controller.test1);
+};
