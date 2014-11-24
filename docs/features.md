@@ -13,7 +13,7 @@
 - 只能通过 github 注册
 - 权限
 	- 游客：阅读、订阅分类
-	- 注册：阅读、订阅分类、评论、点赞、提问、回答、收藏实例
+	- 注册：阅读、订阅分类、评论、点赞、提问、回答、收藏实例、关注
 	- 超管：所有
 - 资产
 	- 积分
@@ -25,9 +25,20 @@
 - 修改
 - 删除
 - 被
-	- 评论 1comment = 1coin
-	- 点赞 1praise = 2coin
-	- 置顶 1stick = 5coin
+	- 评论 1comment = +1
+	- 回答 1answer = +1
+	- 点赞 1praise = +2
+	- 取消点赞 1unpraise = -2
+	- 收藏 1favorite = +2
+	- 取消收藏 1unfavorite = -2
+	- 采纳 1accept = +5
+	- 取消采纳 1unaccept = -1（特殊）
+	- 关注 1follow = +5
+	- 取消关注 1unfollow = -1（特殊）
+	- 精华 1essence = +10
+	- 取消精华 1unessence = -10
+	- 推荐 1recommend = +20
+	- 取消推荐 1unrecommend = -20
 
 
 ## 问答
