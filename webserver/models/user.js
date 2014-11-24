@@ -27,17 +27,13 @@ var schema = mongoose.Schema({
         required: true,
         unique: true
     },
-    // 角色标识
-    // 9 = 超管（owner）
-    // 3 = 管理（admin）
-    // 2 = 领导（leader）
-    // 1 = 会员（member）
+    // 角色标识，详细配置参考配置文件
     role: {
         type: Number,
         required: true,
         unique: false,
         min: 1,
-        max: 9,
+        max: 1048576,
         default: 1
     },
     // 注册时间

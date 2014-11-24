@@ -10,6 +10,7 @@ var howdo = require('howdo');
 var ydrUtil = require('ydr-util');
 var validators = require('../validators/');
 var models = {
+    role: require('./role.js'),
     setting: require('./setting.js'),
     user: require('./user.js')
 };
