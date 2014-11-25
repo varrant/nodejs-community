@@ -22,17 +22,13 @@ module.exports = function (app) {
         res.send('<!doctype html><meta charset="utf8"><iframe src="/user/oauth/authorize"></iframe>');
     };
 
-    exports.test2 = function (req, res, next) {
-        if (config.app.env === 'pro') {
-            return next();
-        }
+    exports.test2Page = function (req, res, next) {
+        res.render('test2.html');
+    };
 
-        var query = req.query;
-        var code = query.code;
-        var state = query.state;
-        var ret = user.parseOauthState(state);
-
-        res.send(JSON.stringify(ret, null, 4));
+    exports.test2Upload = function (req, res, next) {
+        console.log(req.files);
+        res.send('test2');
     };
 
     return exports;

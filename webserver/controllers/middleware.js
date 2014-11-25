@@ -36,11 +36,9 @@ module.exports = function (app) {
     exports.safeDetection = function (req, res, next) {
         var headers = req.headers;
         var headersCsrf = headers['x-request-csrf'];
-        var headerConentType = headers['content-type'].toLowerCase();
 
         if (headers.accept === 'application/json' &&
             headers['x-request-with'] === 'XMLHttpRequest' &&
-            headerConentType === 'application/json; charset=utf-8' &&
             req.session && req.session.csrf &&
             headersCsrf === req.session.csrf) {
 

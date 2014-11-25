@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+ - 文件描述
+ - @author ydr.me
+ - @create 2014-11-25 13:09
+ -->
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0,minimal-ui">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="author" content="云淡然;http://ydr.me">
+    <meta name="keywords" content="关键词1,关键词2">
+    <meta name="description" content="描述语句">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <title>test2.html</title>
+</head>
+<body ontouchstart="">
+
+<form action="./test2" method="post" enctype="multipart/form-data" id="form">
+    <input type="file" id="img" contenteditable="false" accept="image/*" multiple="true"/>
+    <input type="file" id="img1" contenteditable="false" accept="image/*" multiple="true"/>
+    <button id="upload">异步上传</button>
+</form>
+
+
+<script>
+
+    (function () {
+        var $form = document.getElementById('form');
+        var $img = document.getElementById('img');
+        var $img1 = document.getElementById('img1');
+        var $btn = document.getElementById('upload');
+
+        $btn.onclick = function (eve) {
+            $img.name = 'img';
+            $img1.name = 'img1';
+
+            var fd = new FormData($form);
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('POST', '/test2');
+            xhr.setRequestHeader('accept', 'application/json');
+            xhr.setRequestHeader('x-request-csrf', '{{_csrf}}');
+            xhr.setRequestHeader('x-request-with', 'XMLHttpRequest');
+            xhr.send(fd);
+
+            eve.preventDefault();
+        };
+    })();
+
+</script>
+
+</body>
+</html>
