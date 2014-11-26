@@ -7,30 +7,21 @@
 'use strict';
 
 var howdo = require('howdo');
-var mongoose = require('./mongoose.js');
 var express = require('./express.js');
+var mongoose = require('./mongoose.js');
 var middleware = require('./middleware.js');
+var http = require('./http.js');
 var config = require('../webconfig/');
-var routers = require('./routers/');
 
-howdo.task(mongoose).task(express).task(middleware).follow(function (err, app) {
+howdo.task(mongoose).task(express).task(middleware).task(http).follow(function (err, app) {
     if (err) {
         console.log(err);
         return process.exit(-1);
     }
 
-    routers(app);
-
-    app.listen(config.app.port, function (err) {
-        if (err) {
-            console.log(err);
-            return process.exit(-1);
-        }
-
-        console.log('');
-        console.log('#########################################################');
-        console.log('f2ec.com running at ' + app.locals.settings.port);
-        console.log('#########################################################');
-        console.log('');
-    });
+    console.log('');
+    console.log('#########################################################');
+    console.log('f2ec.com running at ' + app.locals.settings.port);
+    console.log('#########################################################');
+    console.log('');
 });

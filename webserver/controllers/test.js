@@ -23,7 +23,7 @@ module.exports = function (app) {
     };
 
     exports.test2Page = function (req, res, next) {
-        res.render('test2.html');
+        a();
     };
 
     exports.test2Upload = function (req, res, next) {

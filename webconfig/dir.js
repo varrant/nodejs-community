@@ -15,6 +15,8 @@ module.exports = function (app) {
         // 资源
         webroot: path.join(__dirname, '../webroot'),
         // 资源
+        weblog: path.join(__dirname, '../weblog'),
+        // 资源
         upload: path.join(__dirname, '../webroot/upload')
     };
 };
