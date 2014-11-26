@@ -10,6 +10,12 @@ var express = require('express');
 var config = require('../webconfig/');
 var path = require('path');
 
+// 更为详尽配置的静态服务器
+var serverStatic = require('serve-static');
+var staticOptions = {
+    maxAge: 24 * 60 * 60 * 1000
+};
+
 // cookie 支持
 var cookieParser = require('cookie-parser');
 
@@ -63,8 +69,8 @@ module.exports = function (next) {
         app.use(compression());
     }
 
-    app.use('/', express.static(config.dir.webroot));
-    app.use('/static/', express.static(config.dir.static));
+    app.use('/', serverStatic(config.dir.webroot, staticOptions));
+    app.use('/static/', serverStatic(config.dir.static, staticOptions));
 
 
     // strict - only parse objects and arrays. (default: true)
