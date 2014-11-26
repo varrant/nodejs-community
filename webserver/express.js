@@ -11,9 +11,16 @@ var config = require('../webconfig/');
 var path = require('path');
 
 // 更为详尽配置的静态服务器
-var serverStatic = require('serve-static');
 var staticOptions = {
-    maxAge: 24 * 60 * 60 * 1000
+    dotfiles: 'ignore',
+    etag: false,
+    extensions: ['html'],
+    index: false,
+    maxAge: '1d',
+    redirect: true,
+    setHeaders: function (res, path, stat) {
+        res.set('x-timestamp', Date.now())
+    }
 };
 
 // cookie 支持
@@ -69,8 +76,8 @@ module.exports = function (next) {
         app.use(compression());
     }
 
-    app.use('/', serverStatic(config.dir.webroot, staticOptions));
-    app.use('/static/', serverStatic(config.dir.static, staticOptions));
+    app.use('/', express.static(config.dir.webroot, staticOptions));
+    app.use('/static/', express.static(config.dir.static, staticOptions));
 
 
     // strict - only parse objects and arrays. (default: true)
