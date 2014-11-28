@@ -13,5 +13,6 @@ module.exports = function (app, ctrlMiddleware) {
     app.use(ctrlMiddleware.createCsrf);
     app.post('*', ctrlMiddleware.safeDetection);
     app.put('*', ctrlMiddleware.safeDetection);
+    app.option('*', ctrlMiddleware.safeDetection);
     app.delete('*', ctrlMiddleware.safeDetection);
 };

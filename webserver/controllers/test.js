@@ -23,11 +23,12 @@ module.exports = function (app) {
     };
 
     exports.test2Page = function (req, res, next) {
-        a();
+        res.render('test2.html');
     };
 
     exports.test2Upload = function (req, res, next) {
         console.log(req.files);
+        console.log(req.body);
         res.send('test2');
     };
 

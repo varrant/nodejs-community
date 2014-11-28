@@ -24,38 +24,16 @@
 <body ontouchstart="">
 
 <form action="./test2" method="post" enctype="multipart/form-data" id="form">
-    <input type="file" id="img" contenteditable="false" accept="image/*" multiple="true"/>
-    <input type="file" id="img1" contenteditable="false" accept="image/*" multiple="true"/>
-    <button id="upload">异步上传</button>
+    <select name="select" id="">
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+    <input type="file" name="file" id="file"/>
+    <button type="submit">提交</button>
 </form>
 
 
-<script>
 
-    (function () {
-        var $form = document.getElementById('form');
-        var $img = document.getElementById('img');
-        var $img1 = document.getElementById('img1');
-        var $btn = document.getElementById('upload');
-
-        $btn.onclick = function (eve) {
-            $img.name = 'img';
-            $img1.name = 'img1';
-
-            var fd = new FormData($form);
-            var xhr = new XMLHttpRequest();
-
-            xhr.open('POST', '/test2');
-            xhr.setRequestHeader('accept', 'application/json');
-            xhr.setRequestHeader('x-request-csrf', '{{_csrf}}');
-            xhr.setRequestHeader('x-request-with', 'XMLHttpRequest');
-            xhr.send(fd);
-
-            eve.preventDefault();
-        };
-    })();
-
-</script>
 
 </body>
 </html>
