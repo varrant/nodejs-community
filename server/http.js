@@ -7,11 +7,11 @@
 'use strict';
 
 var routers = require('./routers/');
-var config = require('../webconfig/');
+var configs = require('../configs/');
 
 module.exports = function (nextHowdo, app) {
     routers(app);
-    app.listen(config.app.port, function (err) {
+    app.listen(configs.app.port, function (err) {
         nextHowdo(err, app);
     });
 }

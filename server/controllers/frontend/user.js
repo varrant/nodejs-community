@@ -7,7 +7,6 @@
 'use strict';
 
 
-var config = require('../../../webconfig/');
 var user = require('../../services/').user;
 var setting = require('../../services/').setting;
 var howdo = require('howdo');

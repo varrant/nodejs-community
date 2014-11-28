@@ -7,7 +7,7 @@
 'use strict';
 
 
-var config = require('../../../webconfig/');
+var configs = require('../../../configs/');
 var user = require('../../services/').user;
 var setting = require('../../services/').setting;
 var ydrUtil = require('ydr-util');
@@ -47,15 +47,15 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            var cookie = ydrUtil.crypto.encode(data.id, config.secret.cookie.secret);
+            var cookie = ydrUtil.crypto.encode(data.id, configs.secret.cookie.secret);
 
-            res.cookie(config.secret.cookie.userKey, cookie, {
+            res.cookie(configs.secret.cookie.userKey, cookie, {
                 domain: '',
                 path: '/',
                 secure: false,
                 httpOnly: true,
-                expires: new Date(Date.now() + config.secret.cookie.userAge),
-                maxAge: config.secret.cookie.userAge
+                expires: new Date(Date.now() + configs.secret.cookie.userAge),
+                maxAge: configs.secret.cookie.userAge
             });
             res.locals._user = {
                 id: data.id,

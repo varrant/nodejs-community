@@ -6,13 +6,13 @@
 
 'use strict';
 
-var config = require('../webconfig/');
+var configs = require('../configs/');
 
 // mongoose
 var mongoose = require('mongoose');
 
 module.exports = function (next) {
-    mongoose.connect(config.app.mongodb);
+    mongoose.connect(configs.app.mongodb);
     mongoose.connection.on('connected', next);
     mongoose.connection.on('error', next);
     mongoose.connection.on('disconnected', next);

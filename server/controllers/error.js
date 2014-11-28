@@ -6,7 +6,6 @@
 
 'use strict';
 
-var config = require('../../webconfig/');
 var ydrUtil = require('ydr-util');
 
 

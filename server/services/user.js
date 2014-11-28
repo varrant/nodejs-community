@@ -9,7 +9,7 @@
 var user = require('../models/').user;
 var setting = require('../models/').setting;
 var ydrUtil = require('ydr-util');
-var config = require('../../webconfig/');
+var configs = require('../../configs/');
 var qs = require('querystring');
 var howdo = require('howdo');
 var urls = {
@@ -105,7 +105,7 @@ exports.createOauthURL = function (oauthSettings, redirect) {
     var params = {
         scope: 'user:email',
         redirect_uri: redirect,
-        state: state = ydrUtil.crypto.encode(state, config.secret.session.secret)
+        state: state = ydrUtil.crypto.encode(state, configs.secret.session.secret)
     };
 
     ydrUtil.dato.extend(true, params, oauthSettings);
@@ -122,7 +122,7 @@ exports.createOauthURL = function (oauthSettings, redirect) {
  * @param state
  */
 exports.isSafeOauthState = function (state) {
-    var ret = ydrUtil.crypto.decode(state, config.secret.session.secret);
+    var ret = ydrUtil.crypto.decode(state, configs.secret.session.secret);
     var arr = ret.split('\n');
     var num1 = ydrUtil.dato.parseInt(arr[0], 0);
     var num2 = ydrUtil.dato.parseInt(arr[1], 0);

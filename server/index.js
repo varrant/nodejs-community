@@ -11,7 +11,6 @@ var express = require('./express.js');
 var mongoose = require('./mongoose.js');
 var middleware = require('./middleware.js');
 var http = require('./http.js');
-var config = require('../webconfig/');
 
 howdo.task(mongoose).task(express).task(middleware).task(http).follow(function (err, app) {
     if (err) {

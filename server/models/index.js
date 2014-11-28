@@ -13,8 +13,8 @@ var models = {
     setting: require('./setting.js'),
     user: require('./user.js')
 };
-var config = require('../../webconfig/');
-var DBNAME = config.app.mongodb.match(/\/([^/]*)$/)[1];
+var configs = require('../../configs/');
+var DBNAME = configs.app.mongodb.match(/\/([^/]*)$/)[1];
 var REG_DUPLICATE = new RegExp(DBNAME + '\\..*\\.\\$(.*)_1');
 
 

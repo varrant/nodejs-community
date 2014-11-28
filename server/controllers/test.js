@@ -6,7 +6,7 @@
 
 'use strict';
 
-var config = require('../../webconfig/');
+var configs = require('../../configs/');
 var user = require('../services/').user;
 var setting = require('../services/').setting;
 
@@ -15,7 +15,7 @@ module.exports = function (app) {
     var exports = {};
 
     exports.test1 = function (req, res, next) {
-        if (config.app.env === 'pro') {
+        if (configs.app.env === 'pro') {
             return next();
         }
 

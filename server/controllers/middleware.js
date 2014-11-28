@@ -7,7 +7,7 @@
 'use strict';
 
 var ydrUtil = require('ydr-util');
-var config = require('../../webconfig/');
+var configs = require('../../configs/');
 
 module.exports = function (app) {
     var exports = {};
@@ -62,8 +62,8 @@ module.exports = function (app) {
  * @private
  */
 function _generatorCsrf() {
-    var timeString = ydrUtil.dato.parseInt(Date.now() / config.secret.session.csrfAge, 0) + '';
-    var csrf = ydrUtil.crypto.encode(timeString, config.secret.session.secret);
+    var timeString = ydrUtil.dato.parseInt(Date.now() / configs.secret.session.csrfAge, 0) + '';
+    var csrf = ydrUtil.crypto.encode(timeString, configs.secret.session.secret);
 
     return csrf;
 }
