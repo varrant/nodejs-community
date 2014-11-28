@@ -11,12 +11,12 @@ var path = require('path');
 module.exports = function (app) {
     return {
         // 静态
-        static: path.join(__dirname, '../webroot/static-' + app.env),
+        statics: path.join(__dirname, '../resource/static-' + app.env),
         // 资源
-        webroot: path.join(__dirname, '../webroot'),
+        resource: path.join(__dirname, '../resource'),
         // 资源
-        weblog: path.join(__dirname, '../weblog'),
+        logs: path.join(__dirname, '../logs'),
         // 资源
-        upload: path.join(__dirname, '../webroot/upload')
+        uploads: path.join(__dirname, '../resource/upload')
     };
 };

@@ -7,7 +7,7 @@
 'use strict';
 
 var express = require('express');
-var config = require('../webconfig/');
+var configs = require('../configs/');
 var path = require('path');
 
 // 更为详尽配置的静态服务器
@@ -53,9 +53,9 @@ module.exports = function (next) {
     //////////////////////////////////////////////////////////////////////
     ////////////////////////////[ setting ]///////////////////////////////
     //////////////////////////////////////////////////////////////////////
-    app.set('env', config.app.env);
-    app.set('port', config.app.port);
-    app.set('views', path.join(config.dir.static, './views/'));
+    app.set('env', configs.app.env);
+    app.set('port', configs.app.port);
+    app.set('views', path.join(configs.dir.statics, './views/'));
     app.engine('html', ydrTemplate.__express);
     app.set('view engine', 'html');
 
@@ -66,18 +66,18 @@ module.exports = function (next) {
     app.set('strict routing', false);
     app.set('jsonp callback name', 'callback');
     app.set('json spaces', 0);
-    app.set('view cache', 'pro' === config.app.env);
+    app.set('view cache', 'pro' === configs.app.env);
 
 
     ////////////////////////////////////////////////////////////////////
     /////////////////////////[ middleware ]/////////////////////////////
     ////////////////////////////////////////////////////////////////////
-    if ('pro' === config.app.env) {
+    if ('pro' === configs.app.env) {
         app.use(compression());
     }
 
-    app.use('/', express.static(config.dir.webroot, staticOptions));
-    app.use('/static/', express.static(config.dir.static, staticOptions));
+    app.use('/', express.static(configs.dir.resource, staticOptions));
+    app.use('/static/', express.static(configs.dir.statics, staticOptions));
 
 
     // strict - only parse objects and arrays. (default: true)
@@ -99,7 +99,7 @@ module.exports = function (next) {
 
     app.use(multer({
         // 上传目录
-        dest: config.dir.upload,
+        dest: configs.dir.uploads,
         // fieldNameSize - integer - Max field name size (Default: 100 bytes)
         // fieldSize - integer - Max field value size (Default: 1MB)
         // fields - integer - Max number of non-file fields (Default: Infinity)
@@ -127,7 +127,7 @@ module.exports = function (next) {
 
     // 解析cookie请求
     // http://www.cnblogs.com/qiuyeyaozhuai/archive/2013/04/28/3043157.html
-    app.use(cookieParser(config.secret.cookie.secret));
+    app.use(cookieParser(configs.secret.cookie.secret));
 
 
     // 要放在cookieParser后面
@@ -141,7 +141,7 @@ module.exports = function (next) {
         // reducing server storage usage, or complying with laws that require permission
         // before setting a cookie. (default: true)
         saveUninitialized: false,
-        secret: config.secret.session.secret
+        secret: configs.secret.session.secret
     }));
 
 

@@ -7,11 +7,11 @@
 'use strict';
 
 var controllers = require('../controllers/');
-var config = require('../../webconfig/');
+var configs = require('../../configs/');
 var log = require('ydr-util').log;
 
-log.setOptions('env', config.app.env);
-log.setOptions('path', config.dir.weblog);
+log.setOptions('env', configs.app.env);
+log.setOptions('path', configs.dir.logs);
 
 module.exports = function (app) {
     var exports = controllers(app);
