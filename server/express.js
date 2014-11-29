@@ -36,9 +36,6 @@ var compression = require('compression');
 // 模板引擎
 var ydrTemplate = require('ydr-template');
 
-// 文件上传解析
-var Busboy = require('busboy');
-
 
 module.exports = function (next) {
     var app = express();
@@ -93,58 +90,6 @@ module.exports = function (next) {
     app.use(bodyParser.urlencoded({
         extended: true
     }));
-
-
-    app.use(function (req, res, next) {
-        if (!(req.method === 'POST' || req.method === 'PUT')) {
-            return next();
-        }
-
-        var busboy = new Busboy({headers: req.headers});
-        var hasFinish = false;
-
-        req.uploads = [];
-
-        // handle text field data
-        busboy.on('field', function (fieldname, val, valTruncated, keyTruncated) {
-            if (req.body.hasOwnProperty(fieldname)) {
-                if (Array.isArray(req.body[fieldname])) {
-                    req.body[fieldname].push(val);
-                } else {
-                    req.body[fieldname] = [req.body[fieldname], val];
-                }
-            } else {
-                req.body[fieldname] = val;
-            }
-        });
-
-        // handle files
-        busboy.on('file', function (fieldName, fileStream, fileName, encoding, mimeType) {
-            if (!fileName) {
-                return fileStream.resume();
-            }
-
-            var upload = {
-                fieldName: fieldName,
-                stream: fileStream,
-                fileName: fileName,
-                encoding: encoding,
-                mimeType: mimeType,
-                extname: path.extname(fileName)
-            };
-            req.uploads.push(upload);
-            fileStream.resume();
-        });
-
-        busboy.on('finish', function () {
-            hasFinish = true;
-            next();
-        });
-
-        busboy.on('error', next);
-
-        req.pipe(busboy);
-    });
 
 
     // 解析cookie请求
