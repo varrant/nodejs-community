@@ -8,6 +8,6 @@
 
 
 module.exports = function(app, ctrlFrontend){
-    app.get('/user/oauth/authorize', ctrlFrontend.user.oauthAuthorize);
-    app.get('/user/oauth/callback', ctrlFrontend.user.oauthCallback);
+    app.get('/user/oauth/authorize/', ctrlFrontend.user.oauthAuthorize);
+    app.get('/user/oauth/callback/', ctrlFrontend.user.oauthCallback);
 };

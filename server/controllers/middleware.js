@@ -1,16 +1,38 @@
 /*!
- * 文件描述
+ * 路由过滤
  * @author ydr.me
  * @create 2014-11-23 13:18
  */
 
 'use strict';
 
+var URL = require('url');
 var ydrUtil = require('ydr-util');
 var configs = require('../../configs/');
+var REG_ENDXIE = /(\/|\.[^\.\/]+)$/;
 
 module.exports = function (app) {
     var exports = {};
+
+
+    /**
+     * 严格路由
+     * @param req
+     * @param res
+     * @param next
+     * @returns {*}
+     */
+    exports.strictRouting = function (req, res, next) {
+        var urlParser = URL.parse(req.url);
+        var pathname = urlParser.pathname;
+        var search = urlParser.search;
+
+        if (!REG_ENDXIE.test(pathname)) {
+            return res.redirect(pathname + '/' + (search ? search : ''));
+        }
+
+        next();
+    };
 
 
     /**

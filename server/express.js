@@ -13,14 +13,11 @@ var path = require('path');
 // 更为详尽配置的静态服务器
 var staticOptions = {
     dotfiles: 'ignore',
-    etag: false,
+    etag: true,
     extensions: ['html'],
     index: false,
     maxAge: '1d',
-    redirect: true,
-    setHeaders: function (res, path, stat) {
-        res.set('x-timestamp', Date.now())
-    }
+    redirect: true
 };
 
 // cookie 支持
@@ -33,17 +30,14 @@ var sessionParser = require('express-session');
 // POST 支持
 var bodyParser = require('body-parser');
 
-// upload FILE 支持
-var multer = require('multer');
-
 // gzip 支持
 var compression = require('compression');
 
 // 模板引擎
 var ydrTemplate = require('ydr-template');
 
-// 工具库
-var ydrUtil = require('ydr-util');
+// 文件上传解析
+var Busboy = require('busboy');
 
 
 module.exports = function (next) {
@@ -63,7 +57,7 @@ module.exports = function (next) {
     app.set('case sensitive routing', true);
 
     // 严格路由，即 /a/b === /a/b/
-    app.set('strict routing', false);
+    app.set('strict routing', true);
     app.set('jsonp callback name', 'callback');
     app.set('json spaces', 0);
     app.set('view cache', 'pro' === configs.app.env);
@@ -85,7 +79,11 @@ module.exports = function (next) {
     // reviver - passed to JSON.parse()
     // type - request content-type to parse (default: json)
     // verify - function to verify body content
-    app.use(bodyParser.json());
+    app.use(bodyParser.json({
+        strict: true,
+        limit: '100kb',
+        type: 'json'
+    }));
 
 
     // extended - parse extended syntax with the qs module. (default: true)
@@ -97,32 +95,56 @@ module.exports = function (next) {
     }));
 
 
-    app.use(multer({
-        // 上传目录
-        dest: configs.dir.uploads,
-        // fieldNameSize - integer - Max field name size (Default: 100 bytes)
-        // fieldSize - integer - Max field value size (Default: 1MB)
-        // fields - integer - Max number of non-file fields (Default: Infinity)
-        // fileSize - integer - For multipart forms, the max file size (Default: Infinity)
-        // files - integer - For multipart forms, the max number of file fields (Default: Infinity)
-        // parts - integer - For multipart forms, the max number of parts (fields + files) (Default: Infinity)
-        // headerPairs - integer - For multipart forms, the max number of header key=>value pairs to parse Default: 2000 (same as node's http).
-        limits: {
-            fileSize: 5 * 1024 * 1024 + 'B',
-            files: 10
-        },
-        // 自定义重命名规则
-        rename: function (fieldname, filename) {
-            return ydrUtil.random.guid() + path.extname(filename);
+    app.use(function (req, res, next) {
+        if (!(req.method === 'POST' || req.method === 'PUT')) {
+            return next();
         }
-        // onError: function() {},
-        // // 文件数量超过限制
-        // onFilesLimit: function() {},
-        // // 字段数量超过限制
-        // onFieldsLimit: function() {},
-        // // 头信息键值对数量超过限制
-        // onPartsLimit: function() {},
-    }));
+
+        var busboy = new Busboy({headers: req.headers});
+        var hasFinish = false;
+
+        req.uploads = [];
+
+        // handle text field data
+        busboy.on('field', function (fieldname, val, valTruncated, keyTruncated) {
+            if (req.body.hasOwnProperty(fieldname)) {
+                if (Array.isArray(req.body[fieldname])) {
+                    req.body[fieldname].push(val);
+                } else {
+                    req.body[fieldname] = [req.body[fieldname], val];
+                }
+            } else {
+                req.body[fieldname] = val;
+            }
+        });
+
+        // handle files
+        busboy.on('file', function (fieldName, fileStream, fileName, encoding, mimeType) {
+            if (!fileName) {
+                return fileStream.resume();
+            }
+
+            var upload = {
+                fieldName: fieldName,
+                stream: fileStream,
+                fileName: fileName,
+                encoding: encoding,
+                mimeType: mimeType,
+                extname: path.extname(fileName)
+            };
+            req.uploads.push(upload);
+            fileStream.resume();
+        });
+
+        busboy.on('finish', function () {
+            hasFinish = true;
+            next();
+        });
+
+        busboy.on('error', next);
+
+        req.pipe(busboy);
+    });
 
 
     // 解析cookie请求
