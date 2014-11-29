@@ -1,11 +1,10 @@
 /*!
- * 文件描述
+ * 首次安装
  * @author ydr.me
  * @create 2014-11-22 20:00
  */
 
 'use strict';
-
 
 var fs = require('fs-extra');
 var ydrUtil = require('ydr-util');
@@ -18,6 +17,7 @@ var howdo = require('howdo');
 
 mongoose(function (err) {
     if (err) {
+        console.log('install error');
         console.error(err);
         return process.exit(-1);
     }

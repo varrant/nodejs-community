@@ -9,10 +9,14 @@
 var configs = require('../../configs/');
 var user = require('../services/').user;
 var setting = require('../services/').setting;
+var ydrAliOss = require('ydr-ali-oss');
+var random = require('ydr-util').random;
 
 
 module.exports = function (app) {
     var exports = {};
+    var settings2 = app.locals.settings2;
+    var alioss = new ydrAliOss(settings2.alioss);
 
     exports.test1 = function (req, res, next) {
         if (configs.app.env === 'pro') {
@@ -27,9 +31,15 @@ module.exports = function (app) {
     };
 
     exports.test2Upload = function (req, res, next) {
-        console.log(req.files);
-        console.log(req.body);
-        res.send('test2');
+        alioss.upload(req, {
+            object: '/test/'+ random.guid()
+        }, function (err, ret) {
+            if(err){
+                return res.send(err.message);
+            }
+
+            res.send(JSON.stringify(ret, null, 4));
+        });
     };
 
     return exports;
