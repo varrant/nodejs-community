@@ -8,13 +8,12 @@
 
 module.exports = function (app, ctrlError) {
     /**
-     * server error
-     */
-    app.use(ctrlError.serverError);
-
-
-    /**
      * client error
      */
     app.use(ctrlError.clientError);
+
+    /**
+     * server error
+     */
+    app.use(ctrlError.serverError);
 };
