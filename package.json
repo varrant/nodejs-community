@@ -47,7 +47,7 @@
     "mongoose": "^3.8.19",
     "ydr-ali-oss": "^1.1.1",
     "ydr-template": "^1.0.3",
-    "ydr-util": "^1.10.1",
+    "ydr-util": "^1.10.5",
     "ydr-validator": "^1.0.5"
   },
   "devDependencies": {},
