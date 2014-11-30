@@ -13,7 +13,7 @@ module.exports = function (app) {
         frontend: require('./frontend/')(app),
         backend: require('./backend/')(app),
         error: require('./error.js')(app),
-        middleware: require('./middleware.js')(app),
+        preRouter: require('./pre-router.js')(app),
         test: require('./test.js')(app)
     };
 };

@@ -47,7 +47,6 @@ module.exports = function (app) {
                 });
             }
 
-            console.log(err.redirect);
             res.status(500).render('server-error.html', {
                 redirect: err.redirect,
                 errors: resError

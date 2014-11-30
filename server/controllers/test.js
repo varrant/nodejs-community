@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * 测试控制器
  * @author ydr.me
  * @create 2014-11-22 15:37
  */
@@ -27,19 +27,11 @@ module.exports = function (app) {
     };
 
     exports.test2Page = function (req, res, next) {
-        res.render('test2.html');
+        res2.render('test2.html');
     };
 
     exports.test2Upload = function (req, res, next) {
-        alioss.upload(req, {
-            object: '/test/'+ random.guid()
-        }, function (err, ret) {
-            if(err){
-                return res.send(err.message);
-            }
-
-            res.send(JSON.stringify(ret, null, 4));
-        });
+        res.send('hehe');
     };
 
     return exports;

@@ -9,13 +9,13 @@
 var howdo = require('howdo');
 var mongoose = require('./mongoose.js');
 var express = require('./express.js');
-var prestart = require('./prestart.js');
+var preHttp = require('./pre-http.js');
 var http = require('./http.js');
 
 howdo
     .task(mongoose)
     .task(express)
-    .task(prestart)
+    .task(preHttp)
     .task(http)
     .follow(function (err, app) {
         if (err) {
