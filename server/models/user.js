@@ -41,7 +41,7 @@ var schema = mongoose.Schema({
         type: Date,
         default: new Date
     },
-    // 注册时间
+    // 登录时间
     signInAt: {
         type: Date
     },

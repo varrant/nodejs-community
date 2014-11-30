@@ -142,17 +142,18 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
     var requestOptions = {
         headers: {
             Accept: 'application/json',
-            'User-Agent': oauthSettings.app_name
+            'User-Agent': oauthSettings.appName
         }
     };
     howdo
         // 1. 获取 accessToken
         .task(function (next) {
             var params = {
-                code: code
+                code: code,
+                app_name: oauthSettings.appName,
+                client_id: oauthSettings.clientId,
+                client_secret: oauthSettings.clientSecret
             };
-
-            ydrUtil.dato.extend(true, params, oauthSettings);
 
             var url = urls.accessToken + '?' + qs.stringify(params);
 

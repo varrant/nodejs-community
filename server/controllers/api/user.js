@@ -25,16 +25,14 @@ module.exports = function (app) {
     exports.signIn = function (req, res, next) {
         var body = req.body || {};
         var accessToken = body.accessToken;
-        var githubOauth;
-        var github;
 
         if (!(req.session && req.session.githubOauth &&
             req.session.githubOauth.accessToken === accessToken)) {
             return next(new Error('请重新授权操作'));
         }
 
-        githubOauth = req.session.githubOauth;
-        github = githubOauth.github;
+        var githubOauth = req.session.githubOauth;
+        var github = githubOauth.github;
         delete(githubOauth.github);
         githubOauth.signInAt = new Date();
 
