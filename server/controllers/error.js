@@ -7,6 +7,7 @@
 'use strict';
 
 var ydrUtil = require('ydr-util');
+var REG_ACCEPT = /^application\/json;\s*charset=utf-8$/i;
 
 
 module.exports = function (app) {
@@ -22,7 +23,7 @@ module.exports = function (app) {
     exports.serverError = function (err, req, res, next) {
         var resError;
 
-        if (req.headers.accept === 'application/json') {
+        if (REG_ACCEPT.test(req.headers.accept)) {
             if (err.message) {
                 resError = err.message;
             } else {
