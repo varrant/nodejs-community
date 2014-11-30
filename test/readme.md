@@ -4,3 +4,6 @@
 ![](http://ydrimg.oss-cn-hangzhou.aliyuncs.com/test/20141130002405346407034865)
 ![](http://s.ydr.me/test/error.png)
 ![](http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/test/error.png)
+![](http://s.ydr.me/f2ec.com/img/geren@2x.png)
+![](http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f2ec.com/img/geren@2x.png)
+![](http://s.ydr.me/f2ec.com/img/20141130152815583266708865)

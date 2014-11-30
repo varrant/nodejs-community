@@ -10,6 +10,7 @@ var URL = require('url');
 var ydrUtil = require('ydr-util');
 var configs = require('../../configs/');
 var REG_ENDXIE = /(\/|\.[^\.\/]+)$/;
+var REG_ACCEPT = /^application\/json;\s*charset=utf-8$/i;
 
 module.exports = function (app) {
     var exports = {};
@@ -59,10 +60,11 @@ module.exports = function (app) {
         var headers = req.headers;
         var headersCsrf = headers['x-request-csrf'];
 
-        if (headers.accept === 'application/json' &&
+        if (REG_ACCEPT.test(headers.accept) &&
             headers['x-request-with'] === 'XMLHttpRequest' &&
             req.session && req.session.csrf &&
-            headersCsrf === req.session.csrf) {
+            headersCsrf === req.session.csrf
+        ) {
 
             return next();
         }

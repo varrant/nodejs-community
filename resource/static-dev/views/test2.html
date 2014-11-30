@@ -39,7 +39,7 @@
 
         xhr.open('PUT', '/api/oss/');
         xhr.setRequestHeader('x-request-with', 'XMLHttpRequest');
-        xhr.setRequestHeader('accept', 'application/json');
+        xhr.setRequestHeader('accept', 'application/json; charset=utf-8');
         xhr.setRequestHeader('x-request-csrf', $csrf.value);
         var fd = new FormData();
         fd.append('img', files[0]);
