@@ -45,9 +45,9 @@
     "howdo": "^1.1.4",
     "moment": "^2.8.4",
     "mongoose": "^3.8.19",
-    "ydr-ali-oss": "^1.1.1",
+    "ydr-ali-oss": "^1.1.3",
     "ydr-template": "^1.0.3",
-    "ydr-util": "^1.10.5",
+    "ydr-util": "^1.10.6",
     "ydr-validator": "^1.0.5"
   },
   "devDependencies": {},

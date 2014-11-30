@@ -11,7 +11,6 @@ var configs = require('../../configs/');
 var log = require('ydr-util').log;
 
 log.setOptions('env', configs.app.env);
-log.setOptions('env', 'pro');
 log.setOptions('path', configs.dir.logs);
 
 module.exports = function (app) {

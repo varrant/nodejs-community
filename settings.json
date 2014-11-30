@@ -15,7 +15,8 @@
     "accessKeyId": "access_key_id",
     "accessKeySecret": "aceess_key_Secret",
     "host": "oss-cn-hangzhou.aliyuncs.com",
-    "bucket": "img"
+    "bucket": "your_oss_bucket",
+    "domain": "static_your_domain_com"
   },
   "oauth": {
     "appName": "github_oauth_app_name",
