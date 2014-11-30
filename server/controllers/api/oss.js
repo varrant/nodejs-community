@@ -13,7 +13,14 @@ module.exports = function (app) {
     var exports = {};
     var oss = new Oss(app.locals.settings2.alioss);
 
-    exports.upload = function (req, res, next) {
+
+    /**
+     * 上传
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.put = function (req, res, next) {
         oss.upload(req, {
             object: '/f2ec.com/img/' + random.guid()
         }, function (err, ret) {

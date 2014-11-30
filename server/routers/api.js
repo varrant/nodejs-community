@@ -8,4 +8,5 @@
 
 module.exports = function(app, ctrlApi){
     app.post('/api/user/sign_in/', ctrlApi.user.signIn);
+    app.put('/api/oss/', ctrlApi.oss.put);
 };

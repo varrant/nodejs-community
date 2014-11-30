@@ -27,11 +27,7 @@ module.exports = function (app) {
     };
 
     exports.test2Page = function (req, res, next) {
-        res2.render('test2.html');
-    };
-
-    exports.test2Upload = function (req, res, next) {
-        res.send('hehe');
+        res.render('test2.html');
     };
 
     return exports;

@@ -23,16 +23,30 @@
 </head>
 <body ontouchstart="">
 
-<form action="/test2/" method="post" enctype="multipart/form-data" id="form">
-    <select name="select" id="">
-        <option value="1">1</option>
-        <option value="2">2</option>
-    </select>
-    <input type="file" name="file" id="file"/>
-    <button type="submit">提交</button>
-</form>
+<input type="text" name="csrf" id="csrf" value="{{_csrf}}"/>
+<input type="file" name="file" id="file"/>
+<button type="button" id="btn">提交</button>
 
+<script>
 
+    var $btn = document.getElementById('btn');
+    var $file = document.getElementById('file');
+    var $csrf = document.getElementById('csrf');
+
+    $btn.onclick = function(){
+        var xhr = new XMLHttpRequest();
+        var files = $file.files;
+
+        xhr.open('PUT', '/api/oss/');
+        xhr.setRequestHeader('x-request-with', 'XMLHttpRequest');
+        xhr.setRequestHeader('accept', 'application/json');
+        xhr.setRequestHeader('x-request-csrf', $csrf.value);
+        var fd = new FormData();
+        fd.append('img', files[0]);
+        xhr.send(fd);
+    };
+
+</script>
 
 
 </body>
