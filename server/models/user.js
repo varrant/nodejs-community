@@ -39,6 +39,7 @@ var schema = mongoose.Schema({
         unique: false,
         min: 1,
         // 管理管理者具有所有权限，即 2^0 + 2^1 + ... + 2^20
+        // = 2097151
         max: _powAll(20),
         default: 1
     },
