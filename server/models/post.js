@@ -30,19 +30,16 @@ var schema = mongoose.Schema({
         unique: true,
         default: ''
     },
-    // 资源类型
-    // 1 = 普通文章
-    // 2 = 普通问题
-    // 3 = 分享链接
+    // 文章类型
     type: {
         type: Number,
         default: 1
     },
-    // 分类
-    category: {
+    // 范围
+    scope: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'category'
+        ref: 'scope'
     },
     // 标签
     labels: {
@@ -114,7 +111,7 @@ var schema = mongoose.Schema({
         }]
     },
     // 阅读数
-    views: {
+    viewCount: {
         type: Number,
         default: 1
     },
@@ -148,6 +145,11 @@ var schema = mongoose.Schema({
     // 是否被接受了
     // 通常指问题类的 post
     hasAccepted: {
+        type: Boolean,
+        default: false
+    },
+    // 是否关闭了评论
+    isCloseComment: {
         type: Boolean,
         default: false
     },
