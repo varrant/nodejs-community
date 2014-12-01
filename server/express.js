@@ -56,7 +56,7 @@ module.exports = function (next) {
     // 严格路由，即 /a/b === /a/b/
     app.set('strict routing', true);
     app.set('jsonp callback name', 'callback');
-    app.set('json spaces', 0);
+    app.set('json spaces', 'pro' === configs.app.env ? 0 : 4);
     app.set('view cache', 'pro' === configs.app.env);
 
 
