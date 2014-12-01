@@ -27,13 +27,19 @@ var schema = mongoose.Schema({
         required: true,
         unique: true
     },
-    // 角色标识，详细配置参考配置文件
+    // 角色标识，分成0-19的20阶，与运算计算是否有权限
+    // 2^0
+    // 2^1
+    // 2^2
+    // ...
+    // 2^20
     role: {
         type: Number,
         required: true,
         unique: false,
         min: 1,
-        max: 1048576,
+        // 管理管理者具有所有权限，即 2^0 + 2^1 + ... + 2^20
+        max: _powAll(20),
         default: 1
     },
     // 注册时间
@@ -44,6 +50,56 @@ var schema = mongoose.Schema({
     // 登录时间
     signInAt: {
         type: Date
+    },
+    // 积分
+    score: {
+        type: Number,
+        default: 0
+    },
+    // 评论次数
+    commentCount: {
+        type: Number,
+        default: 0
+    },
+    // 回答次数
+    answerCount: {
+        type: Number,
+        default: 0
+    },
+    // 被点赞次数
+    praisedCount: {
+        type: Number,
+        default: 0
+    },
+    // 被收藏次数
+    favoritedCount: {
+        type: Number,
+        default: 0
+    },
+    // 被接受次数
+    acceptedCount: {
+        type: Number,
+        default: 0
+    },
+    // 关注人数
+    followCount: {
+        type: Number,
+        default: 0
+    },
+    // 被关注人数
+    followedCount: {
+        type: Number,
+        default: 0
+    },
+    // 被精华次数
+    essencedCount: {
+        type: Number,
+        default: 0
+    },
+    // 被推荐次数
+    recommendCount: {
+        type: Number,
+        default: 0
     },
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证
@@ -56,4 +112,17 @@ var schema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('User', schema);
+module.exports = mongoose.model('user', schema);
+
+
+/**
+ * 阶乘
+ * @param n
+ */
+function _powAll(n) {
+    if(n === 0){
+        return 1;
+    }
+
+    return Math.pow(2, n) + _powAll(n - 1);
+}
