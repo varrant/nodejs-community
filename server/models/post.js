@@ -115,32 +115,20 @@ var schema = mongoose.Schema({
         type: Number,
         default: 1
     },
-    // 评论
-    // {
-    //    user: id,
-    //    date: date
-    // }
-    comments: {
-        type: Array,
-        default: []
+    // 评论次数
+    commentCount: {
+        type: Number,
+        default: 0
     },
-    // 点赞
-    // {
-    //    user: id,
-    //    date: date
-    // }
-    praises: {
-        type: Array,
-        default: []
+    // 点赞次数
+    praiseCount: {
+        type: Number,
+        default: 0
     },
-    // 收藏
-    // {
-    //    user: id,
-    //    date: date
-    // }
+    // 收藏次数
     favorites: {
-        type: Array,
-        default: []
+        type: Number,
+        default: 0
     },
     // 是否被接受了
     // 通常指问题类的 post
