@@ -83,8 +83,8 @@ var schema = mongoose.Schema({
         type: Boolean,
         default: true
     },
-    // 是否置顶
-    isStick: {
+    // 是否推荐，置顶
+    isRecommend: {
         type: Boolean,
         default: false
     },
