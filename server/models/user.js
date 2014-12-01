@@ -55,15 +55,10 @@ var schema = mongoose.Schema({
     // 积分
     score: {
         type: Number,
-        default: 0
+        default: 1
     },
     // 评论次数
     commentCount: {
-        type: Number,
-        default: 0
-    },
-    // 回答次数
-    answerCount: {
         type: Number,
         default: 0
     },
@@ -102,6 +97,11 @@ var schema = mongoose.Schema({
         type: Number,
         default: 0
     },
+    // 是否被阻止登入
+    isBlock: {
+        type: Boolean,
+        default: false
+    },
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证
     // 因此必须再写入的时候自行验证
@@ -121,7 +121,7 @@ module.exports = mongoose.model('user', schema);
  * @param n
  */
 function _powAll(n) {
-    if(n === 0){
+    if (n === 0) {
         return 1;
     }
 
