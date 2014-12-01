@@ -102,6 +102,12 @@ var schema = mongoose.Schema({
         type: Boolean,
         default: false
     },
+    // 加入的组织、团队
+    organizations: [{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'organization'
+    }],
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证
     // 因此必须再写入的时候自行验证
