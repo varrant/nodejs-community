@@ -3,7 +3,7 @@
     "email": "cloudcome@163.com",
     "github": "cloudcome",
     "nickname": "云淡然",
-    "role": 1048576,
+    "role": 2097151,
     "meta": {
       "location": "杭州",
       "company": "网易",
@@ -33,5 +33,15 @@
     "host": "smtp_host",
     "ssl": true,
     "port": "smtp_port"
-  }
+  },
+  "types": [
+    {"11": "帮助"},
+    {"12": "官方"},
+    {"1": "观点"},
+    {"2": "智问"},
+    {"3": "笔记"},
+    {"4": "链接"},
+    {"5": "资源"},
+    {"6": "招聘"}
+  ]
 }
