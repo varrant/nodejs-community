@@ -1,0 +1,25 @@
+# post
+- `author` 作者
+- `title` 标题
+- `uri` URI
+- `type` 类型
+- `scope` 范围，即分类
+- `labels` 标签
+- `content` 内容
+- `publishAt` 发布时间
+- `updateAt` 最近修改时间
+- `updateList` 修改历史
+- `isDisplay` 是否前台可见
+- `isRecommend` 是否被推荐
+- `isEssence` 是否被精华
+- `color` 加色，默认`normal`
+- `score` 被加分，默认系统添加1分
+- `scoreList` 被加分历史
+- `viewCount` 阅读次数
+- `comments` 评论历史
+- `praises` 点赞历史
+- `favorites` 收藏历史
+- `hasAccepted` 是否被接受了
+- `isCloseComment` 是否关闭了评论
+- `meta` 元信息
+	- 暂无

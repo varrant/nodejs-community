@@ -1,0 +1,15 @@
+# organiation
+- `creator` 创建者
+- `name` 组织名称
+- `createAt` 创建时间
+- `updateAt` 最近更新时间
+- `updateList` 更新历史
+- `isPublic` 是公开，true：允许任何人申请加入，false：只允许创建者才可以添加成员
+- `introduction` 组织说明介绍
+- `url` 组织链接，通常为官网
+- `memberCount` 组织成员数量
+- `commentCount` 组织成员数量
+- `meta` 元信息
+	- `company` 组织所在企业
+	- `location` 组织所在地
+	- `time` 组织创立时间
