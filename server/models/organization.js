@@ -19,10 +19,6 @@ var schema = mongoose.Schema({
         required: true,
         unique: true
     },
-    // 所属企业，可以为空
-    company: {
-        type: String
-    },
     // 创建时间
     createAt: {
         type: Date,
@@ -47,10 +43,30 @@ var schema = mongoose.Schema({
     },
     // 是否公开
     // true: 公开，所有注册用户都可以申请加入
-    // false: 半公开，只有创建者才可以添加成员
+    // false: 非公开，只有创建者才可以添加成员
     isPublic: {
         type: Boolean,
         default: true
+    },
+    // 组织介绍
+    introduction: {
+        type: String,
+        required: true
+    },
+    // 组织链接
+    url: {
+        type: String,
+        required: true
+    },
+    // 组织成员数量
+    memberCount: {
+        type: Number,
+        default: 1
+    },
+    // 评论数量
+    commentCount: {
+        type: Number,
+        default: 1
     },
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证
