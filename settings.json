@@ -10,7 +10,8 @@
       "location": "杭州",
       "company": "网易",
       "position": "前端开发工程师",
-      "blog": "http://ydr.me"
+      "blog": "http://ydr.me",
+      "bio": "我是一枚纯前端开发工程师"
     }
   },
   // 阿里云 OSS
@@ -63,13 +64,13 @@
     {
       "role": 0,
       "title": "智问",
-      "name": "ask",
+      "name": "question",
       "isDisplay": true
     },
     {
       "role": 1,
       "title": "观点",
-      "name": "point",
+      "name": "opinion",
       "isDisplay": true
     },
     {
@@ -92,14 +93,14 @@
     },
     {
       "role": 5,
-      "title": "招聘",
-      "name": "job",
+      "title": "雇佣",
+      "name": "employ",
       "isDisplay": true
     },
     {
       "role": 6,
-      "title": "教程",
-      "name": "course",
+      "title": "引路",
+      "name": "guide",
       "isDisplay": true
     },
     {
