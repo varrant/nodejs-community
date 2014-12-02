@@ -9,16 +9,16 @@
 var ydrUtil = require('ydr-util');
 var setting = require('./services/').setting;
 
-module.exports = function (nextHowdo, app) {
+module.exports = function (next, app) {
     setting.get(function (err, settings) {
         if (err) {
-            return nextHowdo(err);
+            return next(err);
         }
 
         ydrUtil.dato.extend(true, app.locals, {
             settings2: settings
         });
 
-        nextHowdo(null, app);
+        next(null, app);
     });
 };
