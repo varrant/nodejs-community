@@ -38,7 +38,7 @@ mongoose(function (err) {
     });
 
     howdo.task(function (next) {
-        user.signUp(userData, next);
+        user.register(userData, next);
     }).task(function (next) {
         setting.set(settings, next);
     }).follow(function (err) {
