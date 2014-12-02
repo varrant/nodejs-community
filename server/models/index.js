@@ -23,6 +23,20 @@ var DBNAME = configs.app.mongodb.match(/\/([^/]*)$/)[1];
 var REG_DUPLICATE = new RegExp(DBNAME + '\\..*\\.\\$(.*)_1');
 
 
+/**
+ * 添加了以下方法
+ * @function .find
+ * @function .findOne
+ * @function .count
+ * @function .createOne
+ * @function .existOne
+ * @function .findOneAndUpdate
+ * @function .getMeta
+ * @function .setMeta
+ * @function .increase
+ * @function .push
+ * @function .rawModel
+ */
 ydrUtil.dato.each(models, function (key, model) {
     var validator = validators[key];
 
@@ -31,6 +45,35 @@ ydrUtil.dato.each(models, function (key, model) {
     }
 
     exports[key] = {};
+
+    /**
+     * 查找多个
+     * @param conditions
+     * @param callback
+     */
+    exports[key].find = function (conditions, callback) {
+        model.find(conditions, callback);
+    };
+
+
+    /**
+     * 查找一个
+     * @param conditions
+     * @param callback
+     */
+    exports[key].findOne = function (conditions, callback) {
+        model.findOne(conditions, callback);
+    };
+
+
+    /**
+     * 计算数量
+     * @param conditions
+     * @param callback
+     */
+    exports[key].count = function (conditions, callback) {
+        model.count(conditions, callback);
+    };
 
 
     /**

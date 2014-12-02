@@ -54,6 +54,12 @@ exports.setMeta = user.setMeta;
 
 
 /**
+ * count
+ */
+exports.count = user.count;
+
+
+/**
  * 评论自增
  * @param conditions
  * @param callback

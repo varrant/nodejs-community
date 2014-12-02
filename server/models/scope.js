@@ -11,12 +11,14 @@ var schema = mongoose.Schema({
     // 名称
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     // URI
     uri: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     // 封面
     cover: {

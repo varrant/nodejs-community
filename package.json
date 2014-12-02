@@ -4,8 +4,8 @@
   "private": true,
   "description": "前端开发者社区",
   "scripts": {
-    "install": "node ./server/install.js ./settings.json",
-    "start": "node ./server/index.js",
+    "install": "node ./cli/install.js ./settings.json",
+    "start": "node ./cli/start.js",
     "dev": "supervisor -w ./server ./server/index.js"
   },
   "preferGlobal": false,
