@@ -7,13 +7,16 @@
 'use strict';
 
 var fs = require('fs-extra');
-var ydrUtil = require('ydr-util');
+var dato = require('ydr-util').dato;
 var file = process.argv[2];
-var json = fs.readJSONFileSync(file);
+var json = fs.readFileSync(file, 'utf8');
 var mongoose = require('./mongoose.js');
 var setting = require('./services/').setting;
 var user = require('./services/').user;
 var howdo = require('howdo');
+
+json = dato.removeComments(json);
+json = JSON.parse(json);
 
 mongoose(function (err) {
     if (err) {
@@ -25,7 +28,7 @@ mongoose(function (err) {
     var settings = [];
     var userData = json.owner;
 
-    ydrUtil.dato.each(json, function (key, val) {
+    dato.each(json, function (key, val) {
         if (key !== 'owner') {
             settings.push({
                 key: key,
