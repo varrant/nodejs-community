@@ -21,12 +21,12 @@ var urls = {
 /**
  * 注册
  */
-exports.signUp = user.createOne;
+exports.register = user.createOne;
 
 /**
  * 登录
  */
-exports.signIn = user.existOne;
+exports.login = user.existOne;
 
 
 /**

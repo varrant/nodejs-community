@@ -22,7 +22,7 @@ module.exports = function (app) {
      * @param res
      * @param next
      */
-    exports.signIn = function (req, res, next) {
+    exports.login = function (req, res, next) {
         var body = req.body || {};
         var accessToken = body.accessToken;
 
@@ -33,10 +33,11 @@ module.exports = function (app) {
 
         var githubOauth = req.session.githubOauth;
         var github = githubOauth.github;
-        delete(githubOauth.github);
-        githubOauth.signInAt = new Date();
 
-        user.signIn({
+        delete(githubOauth.github);
+        githubOauth.loginAt = new Date();
+
+        user.login({
             github: github
         }, githubOauth, function (err, data) {
             req.session.githubOauth = null;

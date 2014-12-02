@@ -7,6 +7,6 @@
 'use strict';
 
 module.exports = function(app, ctrlApi){
-    app.post('/api/user/sign_in/', ctrlApi.user.signIn);
+    app.post('/api/user/login/', ctrlApi.user.login);
     app.put('/api/oss/', ctrlApi.oss.put);
 };
