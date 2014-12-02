@@ -87,8 +87,8 @@
     },
     {
       "role": 6,
-      "name": "未定义",
-      "isDisplay": false
+      "name": "教程",
+      "isDisplay": true
     },
     {
       "role": 7,
