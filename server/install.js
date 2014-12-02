@@ -43,7 +43,17 @@ mongoose(function (err) {
         setting.set(settings, next);
     }).follow(function (err) {
         if (err) {
-            console.error(err);
+            if (err.mongoose && err.mongoose.type === 'duplicate') {
+                console.log('#########################################################');
+                console.log(err);
+                console.log('可能已经配置初始化过了，略过……');
+                console.log('后续配置修改可以访问`/admin/settings/`继续操作。');
+                console.log('#########################################################');
+            } else {
+                console.log(err.message);
+                console.log(err.stack);
+            }
+
             return process.exit(-1);
         }
 

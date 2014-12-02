@@ -318,6 +318,7 @@ function _parseError(rules, err) {
     var msg = err.message;
     var code = err.code;
     var path = '';
+    var mongoose = {};
 
     // mongodb error
     if (err.name === 'MongoError') {
@@ -325,10 +326,16 @@ function _parseError(rules, err) {
             case 11000:
                 path = (msg.match(REG_DUPLICATE) || ['', ''])[1];
                 msg = (path ? rules[path].alias : '未知字段') + '重复';
+                mongoose = {
+                    type: 'duplicate',
+                    path: path
+                };
                 break;
         }
 
         err = new Error(msg);
+        err.code = 11000;
+        err.mongoose = mongoose;
     }
 
     return err;
