@@ -27,142 +27,6 @@ ydrUtil.dato.each(models, function (key, model) {
 
     exports[key] = {};
 
-    /**
-     * 查找一个对象
-     * @param conditions
-     * @param callback
-     * @returns {*|Query}
-     */
-    exports[key].findOne = function (conditions, callback) {
-        model.findOne(conditions, callback);
-    };
-
-
-    /**
-     * 获取某个 meta
-     * @param conditions
-     * @param [metaKey]
-     * @param callback
-     */
-    exports[key].getMeta = function (conditions, metaKey, callback) {
-        if (ydrUtil.typeis(metaKey) === 'function') {
-            callback = metaKey;
-            metaKey = null;
-        }
-
-        this.findOne(conditions, function (err, doc) {
-            if (err) {
-                return callback(err);
-            }
-
-            if (!doc) {
-                err = new Error('要查找的数据不存在');
-                err.type = 'notFound';
-                return callback(err);
-            }
-
-            var meta = doc.meta;
-
-            callback(err, metaKey ? meta[metaKey] : meta, doc);
-        });
-    };
-
-
-    /**
-     * 设置某个 meta
-     * @param conditions
-     * @param metaKey
-     * @param [metaVal]
-     * @param callback
-     */
-    exports[key].setMeta = function (conditions, metaKey, metaVal, callback) {
-        var metaMap = {};
-
-        if (ydrUtil.typeis(metaVal) === 'function') {
-            metaMap = metaKey;
-            callback = metaVal;
-            metaVal = null;
-        } else {
-            metaMap[metaKey] = metaVal;
-        }
-
-        this.findOne(conditions, function (err, doc) {
-            if (err) {
-                return callback(err);
-            }
-
-            if (!doc) {
-                err = new Error('要更新的数据不存在');
-                err.type = 'notFound';
-                return callback(err);
-            }
-
-            var meta = doc.meta;
-            var data = _toPureData(doc, ['_id']);
-
-            data.meta = ydrUtil.dato.extend(true, {}, meta, metaMap);
-            model.findOneAndUpdate(conditions, data, callback);
-        });
-    };
-
-
-    /**
-     * 查找一个并更新
-     * @param {Object} conditions
-     * @param {Object} data
-     * @param {Function} callback
-     * @returns {Query|*}
-     */
-    exports[key].findOneAndUpdate = function (conditions, data, callback) {
-        data = _toPureData(data, ['_id']);
-
-        model.findOne(conditions, function (err, doc) {
-            if (err) {
-                return callback(err);
-            }
-
-            if (!doc) {
-                err = new Error('要更新的数据不存在');
-                err.type = 'notFound';
-                return callback(err);
-            }
-
-            var newData = {};
-
-            howdo.each(data, function (key, val, next) {
-                var validateData = {};
-
-                validateData[key] = val;
-                validator.validateOne(validateData, function (err, data) {
-                    if (err) {
-                        return next(err);
-                    }
-
-                    ydrUtil.dato.extend(true, newData, data);
-                    next();
-                });
-            }).follow(function (err) {
-                if (err) {
-                    return callback(err);
-                }
-
-                model.findOneAndUpdate(conditions, newData, callback);
-            });
-        });
-    };
-
-
-    /**
-     * 查找一个并删除
-     * @param {Object} conditions
-     * @param {Function} callback
-     * @returns {Query|*}
-     */
-
-    exports[key].findOneAndRemove = function (conditions, callback) {
-        model.findOneAndRemove(conditions, callback);
-    };
-
 
     /**
      * 创建一个
@@ -199,7 +63,6 @@ ydrUtil.dato.each(models, function (key, model) {
      */
     exports[key].existOne = function (conditions, data, callback) {
         data = _toPureData(data, ['_id']);
-
 
         this.findOne(conditions, function (err, doc) {
             if (err) {
@@ -253,12 +116,181 @@ ydrUtil.dato.each(models, function (key, model) {
 
 
     /**
-     * 查询数量
+     * 查找一个并更新
+     * @param {Object} conditions
+     * @param {Object} data
+     * @param {Function} callback
+     * @returns {Query|*}
+     */
+    exports[key].findOneAndUpdate = function (conditions, data, callback) {
+        data = _toPureData(data, ['_id']);
+
+        model.findOne(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!doc) {
+                err = new Error('要更新的数据不存在');
+                err.type = 'notFound';
+                return callback(err);
+            }
+
+            var newData = {};
+
+            howdo.each(data, function (key, val, next) {
+                var validateData = {};
+
+                validateData[key] = val;
+                validator.validateOne(validateData, function (err, data) {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    ydrUtil.dato.extend(true, newData, data);
+                    next();
+                });
+            }).follow(function (err) {
+                if (err) {
+                    return callback(err);
+                }
+
+                model.findOneAndUpdate(conditions, newData, callback);
+            });
+        });
+    };
+
+
+    /**
+     * 获取某个 meta
      * @param conditions
+     * @param [metaKey]
      * @param callback
      */
-    exports[key].count = function (conditions, callback) {
-        model.count(conditions, callback);
+    exports[key].getMeta = function (conditions, metaKey, callback) {
+        if (ydrUtil.typeis(metaKey) === 'function') {
+            callback = metaKey;
+            metaKey = null;
+        }
+
+        model.findOne(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!doc) {
+                err = new Error('要查找的数据不存在');
+                err.type = 'notFound';
+                return callback(err);
+            }
+
+            var meta = doc.meta;
+
+            callback(err, metaKey ? meta[metaKey] : meta, doc);
+        });
+    };
+
+
+    /**
+     * 设置某个 meta
+     * @param conditions
+     * @param metaKey
+     * @param [metaVal]
+     * @param callback
+     */
+    exports[key].setMeta = function (conditions, metaKey, metaVal, callback) {
+        var metaMap = {};
+
+        if (ydrUtil.typeis(metaVal) === 'function') {
+            metaMap = metaKey;
+            callback = metaVal;
+            metaVal = null;
+        } else {
+            metaMap[metaKey] = metaVal;
+        }
+
+        model.findOne(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!doc) {
+                err = new Error('要更新的数据不存在');
+                err.type = 'notFound';
+                return callback(err);
+            }
+
+            var meta = doc.meta;
+            var data = _toPureData(doc, ['_id']);
+
+            data.meta = ydrUtil.dato.extend(true, {}, meta, metaMap);
+            model.findOneAndUpdate(conditions, data, callback);
+        });
+    };
+
+
+    /**
+     * 加操作
+     * @param conditions
+     * @param path
+     * @param count
+     * @param callback
+     */
+    exports[key].increase = function (conditions, path, count, callback) {
+        model.findOne(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!doc) {
+                err = new Error('要更新的数据不存在');
+                err.type = 'notFound';
+                return callback(err);
+            }
+
+            count = ydrUtil.dato.parseInt(count, 0);
+
+            if (count === 0) {
+                return callback(err, doc);
+            }
+
+            var old = ydrUtil.dato.parseInt(doc[path], 0);
+
+            doc[path] = old + count;
+            doc.save(callback);
+        });
+    };
+
+
+    /**
+     * 推操作
+     * @param conditions
+     * @param path
+     * @param item
+     * @param callback
+     */
+    exports[key].push = function (conditions, path, item, callback) {
+        model.findOne(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!doc) {
+                err = new Error('要更新的数据不存在');
+                err.type = 'notFound';
+                return callback(err);
+            }
+
+            var push = {};
+            push[path] = item;
+            var options = {
+                upsert: true
+            };
+
+            model.findByIdAndUpdate(conditions, {
+                $push: push
+            }, options, callback);
+        });
     };
 
 
