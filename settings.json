@@ -45,26 +45,110 @@
   // 板块类型
   "types": [
     // 权限序号: 板块名称, 是否显示
-    {"0": ["智问", true]},
-    {"1": ["观点", true]},
-    {"2": ["笔记", true]},
-    {"3": ["链接", true]},
-    {"4": ["资源", true]},
-    {"5": ["招聘", false]},
-    {"6": ["未定义", false]},
-    {"7": ["未定义", false]},
-    {"8": ["未定义", false]},
-    {"9": ["未定义", false]},
-    {"10": ["未定义", false]},
-    {"11": ["未定义", false]},
-    {"12": ["未定义", false]},
-    {"13": ["未定义", false]},
-    {"14": ["未定义", false]},
-    {"15": ["未定义", false]},
-    {"16": ["未定义", false]},
-    {"17": ["未定义", false]},
-    {"18": ["未定义", false]},
-    {"19": ["帮助", true]},
-    {"20": ["官方", true]}
+    {
+      "role": 20,
+      "name": "官方",
+      "isDisplay": true
+    },
+    {
+      "role": 19,
+      "name": "帮助",
+      "isDisplay": true
+    },
+    {
+      "role": 0,
+      "name": "智问",
+      "isDisplay": true
+    },
+    {
+      "role": 1,
+      "name": "观点",
+      "isDisplay": true
+    },
+    {
+      "role": 2,
+      "name": "笔记",
+      "isDisplay": true
+    },
+    {
+      "role": 3,
+      "name": "链接",
+      "isDisplay": true
+    },
+    {
+      "role": 4,
+      "name": "资源",
+      "isDisplay": true
+    },
+    {
+      "role": 5,
+      "name": "招聘",
+      "isDisplay": true
+    },
+    {
+      "role": 6,
+      "name": "未定义",
+      "isDisplay": false
+    },
+    {
+      "role": 7,
+      "name": "未定义",
+      "isDisplay": false
+    },
+    {
+      "role": 8,
+      "name": "未定义",
+      "isDisplay": false
+    },
+    {
+      "role": 9,
+      "name": "未定义",
+      "isDisplay": false
+    },
+    {
+      "role": 10,
+      "name": "未定义",
+      "isDisplay": false
+    },
+    {
+      "role": 11,
+      "name": "未定义",
+      "isDisplay": false
+    },
+    {
+      "role": 12,
+      "name": "未定义",
+      "isDisplay": false
+    },
+    {
+      "role": 13,
+      "name": "未定义",
+      "isDisplay": false
+    },
+    {
+      "role": 14,
+      "name": "未定义",
+      "isDisplay": false
+    },
+    {
+      "role": 15,
+      "name": "未定义",
+      "isDisplay": false
+    },
+    {
+      "role": 16,
+      "name": "未定义",
+      "isDisplay": false
+    },
+    {
+      "role": 17,
+      "name": "未定义",
+      "isDisplay": false
+    },
+    {
+      "role": 18,
+      "name": "未定义",
+      "isDisplay": false
+    }
   ]
 }
