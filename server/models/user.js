@@ -46,7 +46,7 @@ var schema = mongoose.Schema({
     // 注册时间
     registerAt: {
         type: Date,
-        default: new Date
+        default: new Date()
     },
     // 登录时间
     loginAt: {
