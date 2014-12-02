@@ -33,17 +33,22 @@
     var $file = document.getElementById('file');
     var $csrf = document.getElementById('csrf');
 
-    $btn.onclick = function(){
+    $btn.onclick = function () {
         var xhr = new XMLHttpRequest();
         var files = $file.files;
 
         xhr.open('PUT', '/api/oss/');
         xhr.setRequestHeader('x-request-with', 'XMLHttpRequest');
+        xhr.setRequestHeader('content-type', 'application/json; charset=utf-8');
         xhr.setRequestHeader('accept', 'application/json; charset=utf-8');
         xhr.setRequestHeader('x-request-csrf', $csrf.value);
         var fd = new FormData();
         fd.append('img', files[0]);
-        xhr.send(fd);
+        fd.append('number', 199);
+        xhr.send(JSON.stringify({
+            number: 123,
+            string: '123'
+        }));
     };
 
 </script>

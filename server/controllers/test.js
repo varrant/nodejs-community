@@ -23,7 +23,7 @@ module.exports = function (app) {
             return next();
         }
 
-        res.send('<!doctype html><meta charset="utf8"><iframe src="/user/oauth/authorize"></iframe>');
+        res.send('');
     };
 
     exports.test2Page = function (req, res, next) {
