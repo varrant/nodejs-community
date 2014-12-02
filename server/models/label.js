@@ -8,7 +8,7 @@
 
 var mongoose = require('mongoose');
 var schema = mongoose.Schema({
-    // 名称
+    // 标注名称
     name: {
         type: String,
         required: true,
