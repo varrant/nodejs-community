@@ -1,4 +1,4 @@
-# user
+# `user` 模型
 
 - `email` 邮箱
 - `github` github 帐号

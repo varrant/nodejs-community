@@ -1,10 +1,11 @@
-# post
+# `post` 模型
 - `author` 作者
 - `title` 标题
 - `uri` URI
 - `type` 类型
 - `scope` 范围，即分类
 - `labels` 标签
+- `introduction` 简介
 - `content` 内容
 - `publishAt` 发布时间
 - `updateAt` 最近修改时间
@@ -15,11 +16,15 @@
 - `color` 加色，默认`normal`
 - `score` 被加分，默认系统添加1分
 - `scoreList` 被加分历史
-- `viewCount` 阅读次数
-- `comments` 评论历史
-- `praises` 点赞历史
-- `favorites` 收藏历史
+- `viewCount` 被阅读次数
+- `commentCount` 被评论次数
+- `praiseCount` 被点赞次数
+- `favoriteCount` 被收藏次数
+- `applyCount` 被申请次数
 - `hasAccepted` 是否被接受了
-- `isCloseComment` 是否关闭了评论
 - `meta` 元信息
-	- 暂无
+	- `url` 组织链接，通常为官网
+	- `company` 组织所在企业
+	- `location` 组织所在地
+	- `memberCount` 组织成员数量
+	- `time` 组织创立时间

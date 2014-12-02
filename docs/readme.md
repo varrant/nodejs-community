@@ -1,1 +1,8 @@
-# 文档目录
+# 功能
+
+
+# 参考项目
+- <https://cnodejs.org/>
+- <http://www.html-js.com/>
+- <http://aroundnode.org/>
+- <http://f2e.im/>
