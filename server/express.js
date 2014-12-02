@@ -24,7 +24,6 @@ var staticOptions = {
 var cookieParser = require('cookie-parser');
 
 // session 支持
-// https://github.com/aliyun-UED/aliyun-sdk-js
 var sessionParser = require('express-session');
 
 // POST 支持
@@ -53,7 +52,7 @@ module.exports = function (next) {
     // 路由区分大小写，默认 disabled
     app.set('case sensitive routing', true);
 
-    // 严格路由，即 /a/b === /a/b/
+    // 严格路由，即 /a/b !== /a/b/
     app.set('strict routing', true);
     app.set('jsonp callback name', 'callback');
     app.set('json spaces', 'pro' === configs.app.env ? 0 : 4);
