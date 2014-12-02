@@ -44,12 +44,12 @@ var schema = mongoose.Schema({
         default: 1
     },
     // 注册时间
-    signUpAt: {
+    registerAt: {
         type: Date,
         default: new Date
     },
     // 登录时间
-    signInAt: {
+    loginAt: {
         type: Date
     },
     // 积分
