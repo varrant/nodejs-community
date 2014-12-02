@@ -9,9 +9,9 @@
 var routers = require('./routers/');
 var configs = require('../configs/');
 
-module.exports = function (nextHowdo, app) {
+module.exports = function (next, app) {
     routers(app);
     app.listen(configs.app.port, function (err) {
-        nextHowdo(err, app);
+        next(err, app);
     });
 }
