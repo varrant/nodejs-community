@@ -16,14 +16,14 @@ var schema = mongoose.Schema({
         unique: false,
         ref: 'user'
     },
-    // 文章标题
+    // 标题
     title: {
         type: String,
         required: true,
         unique: true,
         default: ''
     },
-    // 文章的uri
+    // uri
     uri: {
         type: String,
         required: true,
@@ -31,22 +31,28 @@ var schema = mongoose.Schema({
         default: ''
     },
     // 文章类型
+    // 0 - 20
     type: {
         type: Number,
-        default: 1
+        default: 0
     },
     // 范围
     scope: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        required: false,
         ref: 'scope'
     },
     // 标签
     labels: {
         type: [String],
-        required: true
+        required: false
     },
-    // 文章内容
+    // 简介
+    introduction: {
+        type: String,
+        required: false
+    },
+    // 内容
     content: {
         type: String,
         required: true
@@ -110,7 +116,7 @@ var schema = mongoose.Schema({
             date: new Date()
         }]
     },
-    // 阅读数
+    // 被阅读数
     viewCount: {
         type: Number,
         default: 1
@@ -120,24 +126,24 @@ var schema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    // 点赞次数
+    // 被点赞次数
     praiseCount: {
         type: Number,
         default: 0
     },
-    // 收藏次数
-    favorites: {
+    // 被收藏次数
+    favoriteCount: {
+        type: Number,
+        default: 0
+    },
+    // 被申请次数
+    applyCount: {
         type: Number,
         default: 0
     },
     // 是否被接受了
     // 通常指问题类的 post
     hasAccepted: {
-        type: Boolean,
-        default: false
-    },
-    // 是否关闭了评论
-    isCloseComment: {
         type: Boolean,
         default: false
     },
