@@ -41,6 +41,8 @@ var schema = mongoose.Schema({
         default: new Date()
     },
     // 是否被允许，默认 true
+    // 是否被读取了
+    // 通常为新消息、新申请时，设置为 false
     isApprove: {
         type: Boolean,
         default: true
