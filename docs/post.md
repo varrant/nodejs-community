@@ -22,6 +22,7 @@
 - `favoriteCount` 被收藏次数
 - `applyCount` 被申请次数
 - `hasAccepted` 是否被接受了
+- `isCertification` 是否被认证了
 - `meta` 元信息
 	- `url` 组织链接，通常为官网
 	- `company` 组织所在企业
