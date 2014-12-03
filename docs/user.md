@@ -17,6 +17,7 @@
 - `recommendCount` 被推荐次数
 - `isBlock` 是否被阻止登入
 - `organizations` 加入的组织、团队
+- `isCertification` 是否被认证了
 - `meta` 元信息
 	- `location` 位置
 	- `position` 职位
