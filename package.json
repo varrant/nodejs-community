@@ -6,7 +6,7 @@
   "scripts": {
     "install": "node ./cli/install.js ./settings.json",
     "start": "node ./cli/start.js",
-    "dev": "supervisor -w ./server ./server/index.js"
+    "dev": "supervisor -w ./server ./cli/start.js"
   },
   "preferGlobal": false,
   "bin": {},
