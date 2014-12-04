@@ -8,6 +8,7 @@
 
 module.exports = function (app) {
     return {
+        frontend: require('./frontend.js')(app),
         user: require('./user.js')(app)
     };
 };
