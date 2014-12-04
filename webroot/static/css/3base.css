@@ -5,6 +5,12 @@
  * @ref amazeui.css@2.0.0
  */
 
+kbd{
+    background: #333;
+    color: #fff;
+    border-radius: 3px;
+    padding: 0 2px;
+}
 /* Inline code */
 code {
     padding: 2px 4px;
@@ -26,7 +32,7 @@ pre {
     color: #555555;
     background-color: #f8f8f8;
     border: 1px solid #dedede;
-    border-radius: 0;
+    border-radius: 4px;
 }
 pre code {
     padding: 0;
@@ -34,13 +40,18 @@ pre code {
     color: inherit;
     white-space: pre-wrap;
     background-color: transparent;
-    border-radius: 0;
 }
 
 table {
     max-width: 100%;
     background-color: transparent;
     empty-cells: show;
+}
+caption {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: #777;
+    text-align: center;
 }
 table code {
     white-space: normal;
@@ -139,7 +150,7 @@ th {
 /* Hover effect */
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
-    background-color: #e9e9e9;
+    background-color: #feffef;
 }
 .table > thead > tr > td.active,
 .table > tbody > tr > td.active,
