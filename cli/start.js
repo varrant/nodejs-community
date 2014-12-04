@@ -8,10 +8,10 @@
 'use strict';
 
 var howdo = require('howdo');
-var mongoose = require('../server/mongoose.js');
-var express = require('../server/express.js');
-var preHttp = require('../server/pre-http.js');
-var http = require('../server/http.js');
+var mongoose = require('../webserver/mongoose.js');
+var express = require('../webserver/express.js');
+var preHttp = require('../webserver/pre-http.js');
+var http = require('../webserver/http.js');
 
 howdo
     .task(mongoose)

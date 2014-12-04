@@ -10,9 +10,9 @@ var fs = require('fs-extra');
 var dato = require('ydr-util').dato;
 var file = process.argv[2];
 var json = fs.readFileSync(file, 'utf8');
-var mongoose = require('../server/mongoose.js');
-var setting = require('../server/services/').setting;
-var user = require('../server/services/').user;
+var mongoose = require('../webserver/mongoose.js');
+var setting = require('../webserver/services/').setting;
+var user = require('../webserver/services/').user;
 var howdo = require('howdo');
 
 json = dato.removeComments(json);
