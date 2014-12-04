@@ -5,13 +5,21 @@
  */
 body {
   background: #f6f6f6;
+  margin-top: 80px;
 }
 /*nav*/
 nav {
-  background: #128cc2;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: rgba(18, 140, 194, 0.9);
   height: 40px;
   line-height: 40px;
-  margin-bottom: 2rem;
+  z-index: 9;
+}
+nav:hover {
+  background: #128cc2;
 }
 nav .i-bars {
   position: absolute;
@@ -42,14 +50,19 @@ nav .nav-right li:last-child {
   margin-right: 0;
 }
 @media (max-width: 767px) {
+  nav .nav-logo {
+    margin-left: 50px;
+  }
   nav .nav-left {
+    display: none;
     position: fixed;
-    top: 0;
+    top: 40px;
     left: 0;
     bottom: 0;
     background: #128cc2;
     min-width: 100px;
     width: 33%;
+    z-index: 9;
   }
   nav .nav-left li {
     float: none;
@@ -90,15 +103,67 @@ nav .nav-right li:last-child {
   border-radius: 4px;
   border: 1px solid #ddd;
   overflow: hidden;
+  margin-bottom: 30px;
 }
 .m-card .card-title {
   border-bottom: 1px solid #ddd;
   padding: 10px 20px;
   background: #fafafa;
+  margin: 0;
+  font-size: 16px;
+  font-weight: normal;
 }
 .m-card .card-body {
-  padding: 20px;
+  padding: 15px 20px;
 }
 .m-summarylist {
   list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.m-summarylist * {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.m-summarylist .summarylist-item {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.m-summarylist .summarylist-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.m-summarylist .summarylist-body {
+  height: 25px;
+  line-height: 25px;
+  margin-left: 60px;
+}
+.m-summarylist .summarylist-name {
+  height: 30px;
+  line-height: 30px;
+  font-weight: 600;
+}
+.m-summarylist .summarylist-meta {
+  height: 20px;
+  line-height: 20px;
+}
+.m-summarylist .summarylist-part li {
+  text-align: center;
+}
+.m-summarylist .summarylist-part a {
+  opacity: .7;
+}
+.m-summarylist .summarylist-part a:hover {
+  opacity: 1;
+}
+@media (max-width: 767px) {
+  .summarylist-part li {
+    margin-right: 5px;
+  }
+}
+footer {
+  margin-top: 100px;
 }

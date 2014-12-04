@@ -4,54 +4,64 @@
  * @create 2014-12-04 17:25
  * @ref netease@1.0.0
  */
-.f-cb:before,
+.f-clearfix:before,
 .row:before,
-.f-cb:after,
+.f-clearfix:after,
 .row:after {
     display: table;
     content: " ";
 }
 
-.f-cb:after,
+.f-clearfix:after,
 .row:after {
     clear: both;
 }
 
-.f-tal {
-    text-align: left !important;
-}
-
-.f-tac {
-    text-align: center !important;
-}
-
-.f-tar {
-    text-align: right !important;
-}
-
-.f-toe {
+.f-ellipsis {
     overflow: hidden;
     word-wrap: normal;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.f-dn {
+.f-text-left {
+    text-align: left;
+}
+
+.f-text-center {
+    text-align: center;
+}
+
+.f-text-right {
+    text-align: right;
+}
+
+.f-none {
     display: none !important;
 }
 
-.f-fl {
+.f-left,
+.f-list-left > li {
     float: left !important;
 }
 
-.f-fr {
+.f-right,
+.f-list-right > li {
     float: right !important;
 }
 
-.f-vv {
+.f-visible {
     visibility: visible !important;
 }
 
-.f-vh {
+.f-hidden {
     visibility: hidden !important;
+}
+
+.f-large {
+    font-size: 120%;
+}
+
+.f-small {
+    font-size: 80%;
 }

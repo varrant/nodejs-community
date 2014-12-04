@@ -4,6 +4,10 @@
  * @create 2014-12-04 22:20
  */
 
+.s-light {
+    color: #aaa;
+}
+
 .s-muted {
     color: #777;
 }
