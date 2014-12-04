@@ -10,8 +10,8 @@
 module.exports = function (app) {
     return {
         api: require('./api/')(app),
-        frontend: require('./frontend/')(app),
-        backend: require('./backend/')(app),
+        admin: require('./admin/')(app),
+        front: require('./front/')(app),
         error: require('./error.js')(app),
         middleware: require('./middleware.js')(app),
         test: require('./test.js')(app)
