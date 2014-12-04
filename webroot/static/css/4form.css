@@ -1,10 +1,72 @@
-@charset "utf-8";
 /*!
  * form
  * @author ydr.me
  * @create 2014-12-04 17:28
  * @ref bootstrap@3.3.0
  */
+
+legend {
+    display: block;
+    width: 100%;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    line-height: inherit;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 0.5rem;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="search"] {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin: 4px 0 0;
+}
+
+input[type="file"] {
+    display: block;
+}
+
+select[multiple],
+select[size] {
+    height: auto;
+}
+
+select optgroup {
+    font-size: inherit;
+    font-style: inherit;
+    font-family: inherit;
+}
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    height: auto;
+}
+
+output {
+    display: block;
+    padding-top: 1.6rem;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #555555;
+    vertical-align: middle;
+}
 
 /*ipt*/
 .ipt {
@@ -264,16 +326,14 @@ fieldset[disabled] .btn-primary.active {
 .btn-success:focus,
 .btn-success.focus,
 .btn-success:active,
-.btn-success.active,
-.open > .dropdown-toggle.btn-success {
+.btn-success.active {
     color: #fff;
     background-color: #449d44;
     border-color: #398439;
 }
 
 .btn-success:active,
-.btn-success.active,
-.open > .dropdown-toggle.btn-success {
+.btn-success.active {
     background-image: none;
 }
 
@@ -314,16 +374,14 @@ fieldset[disabled] .btn-success.active {
 .btn-info:focus,
 .btn-info.focus,
 .btn-info:active,
-.btn-info.active,
-.open > .dropdown-toggle.btn-info {
+.btn-info.active {
     color: #fff;
     background-color: #31b0d5;
     border-color: #269abc;
 }
 
 .btn-info:active,
-.btn-info.active,
-.open > .dropdown-toggle.btn-info {
+.btn-info.active {
     background-image: none;
 }
 
@@ -364,8 +422,7 @@ fieldset[disabled] .btn-info.active {
 .btn-warning:focus,
 .btn-warning.focus,
 .btn-warning:active,
-.btn-warning.active,
-.open > .dropdown-toggle.btn-warning {
+.btn-warning.active {
     color: #fff;
     background-color: #ec971f;
     border-color: #d58512;
@@ -414,16 +471,14 @@ fieldset[disabled] .btn-warning.active {
 .btn-danger:focus,
 .btn-danger.focus,
 .btn-danger:active,
-.btn-danger.active,
-.open > .dropdown-toggle.btn-danger {
+.btn-danger.active {
     color: #fff;
     background-color: #c9302c;
     border-color: #ac2925;
 }
 
 .btn-danger:active,
-.btn-danger.active,
-.open > .dropdown-toggle.btn-danger {
+.btn-danger.active {
     background-image: none;
 }
 

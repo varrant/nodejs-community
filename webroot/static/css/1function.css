@@ -1,0 +1,54 @@
+/*!
+ * function
+ * @author ydr.me
+ * @create 2014-12-04 17:25
+ * @ref netease@1.0.0
+ */
+.f-cb:before,
+.f-cb:after {
+    display: table;
+    content: " ";
+}
+
+.f-cb:after {
+    clear: both;
+}
+
+.f-tal {
+    text-align: left !important;
+}
+
+.f-tac {
+    text-align: center !important;
+}
+
+.f-tar {
+    text-align: right !important;
+}
+
+.f-toe {
+    overflow: hidden;
+    word-wrap: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.f-dn {
+    display: none !important;
+}
+
+.f-fl {
+    float: left !important;
+}
+
+.f-fr {
+    float: right !important;
+}
+
+.f-vv {
+    visibility: visible !important;
+}
+
+.f-vh {
+    visibility: hidden !important;
+}
