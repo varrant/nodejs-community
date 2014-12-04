@@ -30,8 +30,8 @@ module.exports = function (app) {
     app.use('/', express.static(configs.dir.webroot, staticOptions));
     app.use('/static/', express.static(configs.dir.static, staticOptions));
     require('./test.js')(app, exports.test);
-    require('./frontend.js')(app, exports.frontend);
-    require('./backend.js')(app, exports.backend);
+    require('./admin.js')(app, exports.admin);
+    require('./front.js')(app, exports.front);
     require('./api.js')(app, exports.api);
     app.use(log());
     require('./error.js')(app, exports.error);

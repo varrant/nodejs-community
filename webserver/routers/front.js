@@ -13,5 +13,5 @@ module.exports = function(app, ctrlFrontend){
     app.get('/user/oauth/callback/', ctrlFrontend.user.oauthCallback);
 
     // home
-    app.get('/', ctrlFrontend.user.oauthCallback);
+    app.get('/', ctrlFrontend.frontend.home);
 };
