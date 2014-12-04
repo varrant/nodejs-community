@@ -3,5 +3,102 @@
  * @author ydr.me
  * @create 2014-12-04 20:52
  */
-
-
+body {
+  background: #f6f6f6;
+}
+/*nav*/
+nav {
+  background: #128cc2;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 2rem;
+}
+nav .i-bars {
+  position: absolute;
+  top: 4px;
+  left: 10px;
+  color: #fff;
+}
+nav .nav-logo {
+  width: 100px;
+  color: #fff;
+}
+nav .nav-left li {
+  border-left: 1px solid #107bab;
+}
+nav .nav-left li:last-child {
+  border-right: 1px solid #107bab;
+}
+nav .nav-left li:last-child a {
+  border-right: 1px solid #149dd9;
+}
+nav .nav-left a {
+  border-left: 1px solid #149dd9;
+}
+nav .nav-right li {
+  margin-right: 10px;
+}
+nav .nav-right li:last-child {
+  margin-right: 0;
+}
+@media (max-width: 767px) {
+  nav .nav-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: #128cc2;
+    min-width: 100px;
+    width: 33%;
+  }
+  nav .nav-left li {
+    float: none;
+    display: block;
+    text-align: center;
+  }
+  nav .nav-left a {
+    display: block;
+  }
+}
+/*m-nav*/
+.m-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.m-nav li {
+  float: left;
+}
+.m-nav a {
+  display: block;
+  color: #D6F2FF;
+  padding: 0 20px;
+}
+.m-nav a:hover {
+  background: #149dd9;
+  color: #fff;
+}
+.m-nav .label {
+  font-size: 100%;
+  padding: 0 10px;
+  line-height: 30px;
+  margin-top: 5px;
+  font-weight: normal;
+}
+.m-card {
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+.m-card .card-title {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+  background: #fafafa;
+}
+.m-card .card-body {
+  padding: 20px;
+}
+.m-summarylist {
+  list-style: none;
+}

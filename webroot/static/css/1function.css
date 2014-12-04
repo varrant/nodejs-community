@@ -5,12 +5,15 @@
  * @ref netease@1.0.0
  */
 .f-cb:before,
-.f-cb:after {
+.row:before,
+.f-cb:after,
+.row:after {
     display: table;
     content: " ";
 }
 
-.f-cb:after {
+.f-cb:after,
+.row:after {
     clear: both;
 }
 

@@ -1,0 +1,137 @@
+/*!
+ * 前端
+ * @author ydr.me
+ * @create 2014-12-04 20:52
+ */
+
+@primary-bg-color: #128CC2;
+@primary-fg-color: lighten(@primary-bg-color, 90%);
+
+body {
+  background: #f6f6f6;
+}
+
+/*nav*/
+nav {
+  background: @primary-bg-color;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 2rem;
+
+  .i-bars {
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    color: #fff;
+  }
+
+  .nav-logo {
+    width: 100px;
+    color: #fff;
+  }
+
+  .nav-left {
+    li {
+      border-left: 1px solid darken(@primary-bg-color, 5%);
+
+      &:last-child {
+        border-right: 1px solid darken(@primary-bg-color, 5%);
+
+        a {
+          border-right: 1px solid lighten(@primary-bg-color, 5%);
+        }
+      }
+    }
+
+    a {
+      border-left: 1px solid lighten(@primary-bg-color, 5%);
+    }
+  }
+
+  .nav-right {
+    li {
+      margin-right: 10px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  nav {
+    .nav-left {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      background: @primary-bg-color;
+      min-width: 100px;
+      width: 33%;
+    }
+
+    .nav-left li {
+      float: none;
+      display: block;
+      text-align: center;
+    }
+
+    .nav-left a {
+      display: block;
+    }
+  }
+}
+
+/*m-nav*/
+.m-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    float: left;
+  }
+
+  a {
+    display: block;
+    color: #D6F2FF;
+    padding: 0 20px;
+  }
+
+  a:hover {
+    background: lighten(@primary-bg-color, 5%);
+    color: #fff;
+  }
+
+  .label {
+    font-size: 100%;
+    padding: 0 10px;
+    line-height: 30px;
+    margin-top: 5px;
+    font-weight: normal;
+  }
+}
+
+// card
+.m-card{
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+
+  .card-title{
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+    background: #fafafa;
+  }
+
+  .card-body{
+    padding: 20px;
+  }
+}
+
+//summarylist
+.m-summarylist {
+  list-style: none;
+}
