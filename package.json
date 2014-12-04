@@ -46,7 +46,7 @@
     "moment": "^2.8.4",
     "mongoose": "^3.8.19",
     "ydr-ali-oss": "^1.1.7",
-    "ydr-template": "^1.0.3",
+    "ydr-template": "^1.1.2",
     "ydr-util": "^1.10.9",
     "ydr-validator": "^1.0.8"
   },
