@@ -26,7 +26,7 @@ log.setOptions('path', configs.dir.log);
 module.exports = function (app) {
     var exports = controllers(app);
 
-    require('./pre-router.js')(app, exports.preRouter);
+    require('./middleware.js')(app, exports.middleware);
     app.use('/', express.static(configs.dir.webroot, staticOptions));
     app.use('/static/', express.static(configs.dir.static, staticOptions));
     require('./test.js')(app, exports.test);
