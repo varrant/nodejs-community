@@ -6,7 +6,7 @@
   "scripts": {
     "install": "node ./cli/install.js ./settings.json",
     "start": "node ./cli/start.js",
-    "dev": "supervisor -w ./server ./cli/start.js"
+    "dev": "supervisor -w ./webserver ./cli/start.js"
   },
   "preferGlobal": false,
   "bin": {},
@@ -47,8 +47,8 @@
     "mongoose": "^3.8.19",
     "ydr-ali-oss": "^1.1.7",
     "ydr-template": "^1.0.3",
-    "ydr-util": "^1.10.8",
-    "ydr-validator": "^1.0.5"
+    "ydr-util": "^1.10.9",
+    "ydr-validator": "^1.0.8"
   },
   "devDependencies": {},
   "licenses": "MIT"
