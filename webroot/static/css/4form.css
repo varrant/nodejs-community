@@ -75,7 +75,7 @@ output {
     height: 34px;
     padding: 6px 12px;
     font-size: 14px;
-    line-height: 1.42857143;
+    line-height: normal;
     color: #555;
     background-color: #fff;
     background-image: none;
@@ -547,24 +547,21 @@ fieldset[disabled] .btn-link:focus {
     text-decoration: none;
 }
 
-.btn-lg,
-.btn-group-lg > .btn {
+.btn-lg {
     padding: 10px 16px;
     font-size: 18px;
     line-height: 1.33;
     border-radius: 6px;
 }
 
-.btn-sm,
-.btn-group-sm > .btn {
+.btn-sm {
     padding: 5px 10px;
     font-size: 12px;
     line-height: 1.5;
     border-radius: 3px;
 }
 
-.btn-xs,
-.btn-group-xs > .btn {
+.btn-xs {
     padding: 1px 5px;
     font-size: 12px;
     line-height: 1.5;
