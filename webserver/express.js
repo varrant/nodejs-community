@@ -24,6 +24,10 @@ var compression = require('compression');
 
 // 模板引擎
 var ydrTemplate = require('ydr-template');
+ydrTemplate.setOptions({
+    cacahe: 'pro' === configs.app.env,
+    compress: 'pro' === configs.app.env
+});
 
 
 module.exports = function (next) {
