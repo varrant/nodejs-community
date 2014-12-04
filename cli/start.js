@@ -8,6 +8,7 @@
 'use strict';
 
 var howdo = require('howdo');
+var configs = require('../configs/');
 var mongoose = require('../webserver/mongoose.js');
 var express = require('../webserver/express.js');
 var middleware = require('../webserver/middleware.js');
@@ -26,7 +27,7 @@ howdo
 
         console.log('');
         console.log('#########################################################');
-        console.log('f2ec.com running at ' + app.locals.settings.port);
+        console.log(configs.app.domain + ' running at ' + app.locals.settings.port);
         console.log('#########################################################');
         console.log('');
     });
