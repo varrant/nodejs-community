@@ -9,14 +9,25 @@
 var controllers = require('../controllers/');
 var configs = require('../../configs/');
 var log = require('ydr-util').log;
+// 更为详尽配置的静态服务器
+var staticOptions = {
+    dotfiles: 'ignore',
+    etag: true,
+    extensions: ['html'],
+    index: false,
+    maxAge: '1d',
+    redirect: true
+};
 
 log.setOptions('env', configs.app.env);
-log.setOptions('path', configs.dir.logs);
+log.setOptions('path', configs.dir.log);
 
 module.exports = function (app) {
     var exports = controllers(app);
 
-    require('./pre-router.js')(app, exports.preRouter)
+    require('./pre-router.js')(app, exports.preRouter);
+    app.use('/', express.static(configs.dir.webroot, staticOptions));
+    app.use('/static/', express.static(configs.dir.static, staticOptions));
     require('./test.js')(app, exports.test);
     require('./frontend.js')(app, exports.frontend);
     require('./backend.js')(app, exports.backend);

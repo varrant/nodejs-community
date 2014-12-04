@@ -10,16 +10,6 @@ var express = require('express');
 var configs = require('../configs/');
 var path = require('path');
 
-// 更为详尽配置的静态服务器
-var staticOptions = {
-    dotfiles: 'ignore',
-    etag: true,
-    extensions: ['html'],
-    index: false,
-    maxAge: '1d',
-    redirect: true
-};
-
 // cookie 支持
 var cookieParser = require('cookie-parser');
 
@@ -45,7 +35,7 @@ module.exports = function (next) {
     //////////////////////////////////////////////////////////////////////
     app.set('env', configs.app.env);
     app.set('port', configs.app.port);
-    app.set('views', path.join(configs.dir.statics, './views/'));
+    app.set('views', path.join(configs.dir.static, './views/'));
     app.engine('html', ydrTemplate.__express);
     app.set('view engine', 'html');
 
@@ -65,10 +55,6 @@ module.exports = function (next) {
     if ('pro' === configs.app.env) {
         app.use(compression());
     }
-
-    app.use('/', express.static(configs.dir.resource, staticOptions));
-    app.use('/static/', express.static(configs.dir.statics, staticOptions));
-
 
     // strict - only parse objects and arrays. (default: true)
     // limit - maximum request body size. (default: <100kb>)
