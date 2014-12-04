@@ -7,5 +7,5 @@
 'use strict';
 
 
-module.exports = function(app, ctrlBackend){
+module.exports = function(app, ctrlAdmin){
 };

@@ -7,11 +7,11 @@
 'use strict';
 
 
-module.exports = function(app, ctrlFrontend){
+module.exports = function(app, ctrlFront){
     // user
-    app.get('/user/oauth/authorize/', ctrlFrontend.user.oauthAuthorize);
-    app.get('/user/oauth/callback/', ctrlFrontend.user.oauthCallback);
+    app.get('/user/oauth/authorize/', ctrlFront.user.oauthAuthorize);
+    app.get('/user/oauth/callback/', ctrlFront.user.oauthCallback);
 
     // home
-    app.get('/', ctrlFrontend.frontend.home);
+    app.get('/', ctrlFront.main.home);
 };

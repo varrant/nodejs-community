@@ -8,7 +8,7 @@
 
 module.exports = function (app) {
     return {
-        frontend: require('./frontend.js')(app),
+        main: require('./main.js')(app),
         user: require('./user.js')(app)
     };
 };
