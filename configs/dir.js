@@ -11,7 +11,7 @@ var path = require('path');
 module.exports = function (app) {
     return {
         // 静态
-        static: path.join(__dirname, '../webroot/static-' + app.env),
+        static: path.join(__dirname, '../webroot/', 'pro' === app.env ? 'static-pro' : 'static'),
         // 资源
         webroot: path.join(__dirname, '../webroot'),
         // 资源
