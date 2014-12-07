@@ -25,7 +25,8 @@
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-right: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 /* makes the font 33% larger relative to the icon container */
 .i-lg {

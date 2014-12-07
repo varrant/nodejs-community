@@ -70,16 +70,6 @@ exports.increaseCommentCount = function (id, count, callback) {
 };
 
 /**
- * 增加文章点赞数量
- * @param id
- * @param count
- * @param callback
- */
-exports.increasePraiseCount = function (id, count, callback) {
-    post.increase({_id: id}, 'praiseCount', count, callback);
-};
-
-/**
  * 增加文章点赞收藏数量
  * @param id
  * @param count

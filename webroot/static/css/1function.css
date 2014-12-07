@@ -6,14 +6,23 @@
  */
 .f-clearfix:before,
 .row:before,
+[class*=avg-]:before,
+.f-list-left:before,
+.f-list-right:before,
 .f-clearfix:after,
-.row:after {
+.row:after,
+[class*=avg-]:after,
+.f-list-left:after,
+.f-list-right:after{
     display: table;
     content: " ";
 }
 
 .f-clearfix:after,
-.row:after {
+.row:after,
+[class*=avg-]:after,
+.f-list-left:after,
+.f-list-right:after {
     clear: both;
 }
 
@@ -38,6 +47,11 @@
 
 .f-none {
     display: none !important;
+}
+
+.f-list-left,
+.f-list-right{
+    list-style: none;
 }
 
 .f-left,
@@ -66,7 +80,7 @@
     font-size: 80%;
 }
 
-.f-space{
+.f-space {
     display: inline;
     margin: 0 5px;
 }
