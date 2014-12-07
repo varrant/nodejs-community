@@ -1,0 +1,17 @@
+{
+    "js": [
+        "./js/app/"
+    ],
+    "html": [
+        "./views/**/*.html"
+    ],
+    "css": {
+        "path": "./",
+        "url": "/static/css/"
+    },
+    "dest": "../static-pro/",
+    "coolie-config.js": "./js/coolie-config.js",
+    "copy": [
+        "./**/*.*"
+    ]
+}

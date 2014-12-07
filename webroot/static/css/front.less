@@ -23,7 +23,7 @@ nav {
   line-height: 40px;
   z-index: 9;
 
-  &:hover{
+  &:hover {
     background: fade(@primary-bg-color, 100%);
   }
 
@@ -70,7 +70,7 @@ nav {
 
 @media (max-width: 767px) {
   nav {
-    .nav-logo{
+    .nav-logo {
       margin-left: 50px;
     }
 
@@ -129,14 +129,13 @@ nav {
 }
 
 // card
-.m-card{
+.m-card {
   background: #fff;
   border-radius: 4px;
   border: 1px solid #ddd;
-  overflow: hidden;
   margin-bottom: 30px;
 
-  .card-title{
+  .card-title {
     border-bottom: 1px solid #ddd;
     padding: 10px 20px;
     background: #fafafa;
@@ -145,7 +144,7 @@ nav {
     font-weight: normal;
   }
 
-  .card-body{
+  .card-body {
     padding: 15px 20px;
   }
 }
@@ -156,48 +155,48 @@ nav {
   padding: 0;
   margin: 0;
 
-  *{
+  * {
     padding: 0;
     margin: 0;
     list-style: none;
   }
 
-  .summarylist-item{
+  .summarylist-item {
     border-bottom: 1px solid #eee;
     padding-bottom: 15px;
     margin-bottom: 15px;
 
-    &:last-child{
+    &:last-child {
       border-bottom: 0;
       padding-bottom: 0;
       margin-bottom: 0;
     }
   }
 
-  .summarylist-body{
+  .summarylist-body {
     height: 25px;
     line-height: 25px;
     margin-left: 60px;
   }
 
-  .summarylist-name{
+  .summarylist-name {
     height: 30px;
     line-height: 30px;
     font-weight: 600;
   }
 
-  .summarylist-meta{
+  .summarylist-meta {
     height: 20px;
     line-height: 20px;
   }
 
   .summarylist-part {
-    li{
+    li {
       text-align: center;
     }
-    a{
+    a {
       opacity: .7;
-      &:hover{
+      &:hover {
         opacity: 1;
       }
     }
@@ -205,12 +204,46 @@ nav {
 }
 
 @media (max-width: 767px) {
-  .summarylist-part li{
+  .summarylist-part li {
     margin-right: 5px;
   }
 }
 
+//m-postmain
+.m-postmain {
+  position: relative;
+
+  .postmain-head {
+    margin-bottom: 20px;
+  }
+
+  .postmain-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .postmain-info {
+    margin-left: 110px;
+  }
+
+  .postmain-title {
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-weight: normal;
+  }
+
+  .postmain-meta {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-right: 10px;
+    }
+  }
+}
+
 //footer
-footer{
+footer {
   margin-top: 100px;
 }

@@ -65,3 +65,8 @@
 .f-small {
     font-size: 80%;
 }
+
+.f-space{
+    display: inline;
+    margin: 0 5px;
+}

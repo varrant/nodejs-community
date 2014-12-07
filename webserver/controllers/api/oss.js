@@ -12,7 +12,7 @@ var REG_IMAGE = /^image\/.*$/;
 
 module.exports = function (app) {
     var exports = {};
-    var settings = app.locals.settings2.alioss;
+    var settings = app.locals.options.alioss;
     settings.onbeforeput = function(fileStream, next){
         if(!REG_IMAGE.test(fileStream.contentType)){
             return next(new Error('只能上传图片文件'));

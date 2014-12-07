@@ -15,8 +15,8 @@ var random = require('ydr-util').random;
 
 module.exports = function (app) {
     var exports = {};
-    var settings2 = app.locals.settings2;
-    var alioss = new ydrAliOss(settings2.alioss);
+    var options = app.locals.options;
+    var alioss = new ydrAliOss(options.alioss);
 
     exports.test1 = function (req, res, next) {
         if (configs.app.env === 'pro') {

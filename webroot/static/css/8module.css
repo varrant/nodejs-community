@@ -237,3 +237,14 @@ a.badge:focus {
 .label-danger[href]:focus {
     background-color: #c9302c;
 }
+
+.label-light,
+.badge-light{
+    background: #eee;
+    color: #888;
+}
+
+.label-light[href]:hover,
+.label-light[href]:focus{
+    color: #666;
+}

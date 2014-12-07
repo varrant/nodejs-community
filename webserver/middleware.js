@@ -16,7 +16,7 @@ module.exports = function (next, app) {
         }
 
         ydrUtil.dato.extend(true, app.locals, {
-            settings2: settings
+            options: settings
         });
 
         next(null, app);

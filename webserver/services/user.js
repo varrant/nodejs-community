@@ -65,7 +65,7 @@ exports.count = user.count;
  * @param callback
  */
 exports.increaseComment = function (conditions, callback) {
-    _increase(conditions, 'comments', 1, callback);
+    user.increase(conditions, 'commentCount', 1, callback);
 };
 
 /**
@@ -74,7 +74,7 @@ exports.increaseComment = function (conditions, callback) {
  * @param callback
  */
 exports.increaseView = function (conditions, callback) {
-    _increase(conditions, 'views', 1, callback);
+    user.increase(conditions, 'viewCount', 1, callback);
 };
 
 /**
@@ -83,7 +83,7 @@ exports.increaseView = function (conditions, callback) {
  * @param callback
  */
 exports.increasePraise = function (conditions, callback) {
-    _increase(conditions, 'praises', 1, callback);
+    user.increase(conditions, 'praiseCount', 1, callback);
 };
 
 
@@ -93,7 +93,7 @@ exports.increasePraise = function (conditions, callback) {
  * @param callback
  */
 exports.increaseCoins = function (conditions, count, callback) {
-    _increase(conditions, 'coins', count, callback);
+    user.increase(conditions, 'score', count, callback);
 };
 
 
@@ -272,39 +272,3 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
             callback(null, ret);
         });
 };
-
-
-////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////[private api]//////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-
-/**
- * 增加数量，比如评论数、点赞数、阅读数等
- * @param conditions
- * @param metaKey
- * @param count
- * @param callback
- * @private
- */
-function _increase(conditions, metaKey, count, callback) {
-    count = ydrUtil.dato.parseInt(count, 0);
-
-    user.getMeta(conditions, function (err, meta) {
-        if (err) {
-            return callback(err);
-        }
-
-        if (!meta[metaKey]) {
-            meta[metaKey] = count;
-        } else {
-            meta[metaKey] = ydrUtil.dato.parseInt(meta[metaKey], 0) + count;
-        }
-
-        if (meta[metaKey] < 0) {
-            meta[metaKey] = 0;
-        }
-
-        user.setMeta(conditions, meta, callback);
-    });
-}

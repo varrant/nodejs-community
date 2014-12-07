@@ -112,7 +112,7 @@ var schema = mongoose.Schema({
         type: Array,
         default: [{
             user: 0,
-            score: 1,
+            value: 1,
             date: new Date()
         }]
     },
