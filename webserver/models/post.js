@@ -126,11 +126,6 @@ var schema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    // 被点赞次数
-    praiseCount: {
-        type: Number,
-        default: 0
-    },
     // 被收藏次数
     favoriteCount: {
         type: Number,
