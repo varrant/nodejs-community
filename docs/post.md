@@ -18,7 +18,6 @@
 - `scoreList` 被加分历史
 - `viewCount` 被阅读次数
 - `commentCount` 被评论次数
-- `praiseCount` 被点赞次数
 - `favoriteCount` 被收藏次数
 - `applyCount` 被申请次数
 - `hasAccepted` 是否被接受了

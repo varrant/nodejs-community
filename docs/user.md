@@ -9,7 +9,6 @@
 - `score` 积分，默认1
 - `commentCount` 评论次数
 - `praisedCount` 被点赞次数
-- `favoritedCount` 被收藏次数
 - `acceptedCount` 被接受次数
 - `followCount` 关注人数
 - `followedCount` 被关注人数
