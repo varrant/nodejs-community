@@ -95,6 +95,6 @@ exports.increaseFavoriteCount = function (id, count, callback) {
  * @param count
  * @param callback
  */
-exports.increaseApplyCount= function (id, count, callback) {
+exports.increaseApplyCount = function (id, count, callback) {
     post.increase({_id: id}, 'applyCount', count, callback);
 };
