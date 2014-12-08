@@ -29,7 +29,7 @@ module.exports = function (app) {
         var search = urlParser.search;
 
         res.set('X-Frame-Options', 'deny');
-        res.set('X-Website-User', 'ydr.me');
+        res.set('X-Website-Author', 'ydr.me');
 
         if (!REG_ENDXIE.test(pathname)) {
             return res.redirect(pathname + '/' + (search ? search : ''));
