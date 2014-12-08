@@ -53,127 +53,149 @@
       // URI 名称
       "name": "official",
       // 是否显示
-      "isDisplay": true
+      "isDisplay": false,
+      // 描述
+      "desc": ""
     },
     {
       "role": 19,
       "title": "帮助",
       "name": "help",
-      "isDisplay": true
+      "isDisplay": true,
+      "desc": ""
     },
     {
       "role": 0,
       "title": "智问",
       "name": "question",
-      "isDisplay": true
+      "isDisplay": true,
+      "desc": ""
     },
     {
       "role": 1,
       "title": "观点",
       "name": "opinion",
-      "isDisplay": true
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 2,
       "title": "笔记",
       "name": "note",
-      "isDisplay": true
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 3,
       "title": "链接",
       "name": "link",
-      "isDisplay": true
+      "isDisplay": true,
+      "desc": ""
     },
     {
       "role": 4,
       "title": "资源",
       "name": "resource",
-      "isDisplay": true
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 5,
       "title": "雇佣",
       "name": "employ",
-      "isDisplay": true
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 6,
       "title": "引路",
       "name": "guide",
-      "isDisplay": true
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 7,
       "title": "未定义",
       "name": "undefined",
-      "isDisplay": false
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 8,
       "title": "未定义",
       "name": "undefined",
-      "isDisplay": false
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 9,
       "title": "未定义",
       "name": "undefined",
-      "isDisplay": false
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 10,
       "title": "未定义",
       "name": "undefined",
-      "isDisplay": false
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 11,
       "title": "未定义",
       "name": "undefined",
-      "isDisplay": false
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 12,
       "title": "未定义",
       "name": "undefined",
-      "isDisplay": false
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 13,
       "title": "未定义",
       "name": "undefined",
-      "isDisplay": false
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 14,
       "title": "未定义",
       "name": "undefined",
-      "isDisplay": false
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 15,
       "title": "未定义",
       "name": "undefined",
-      "isDisplay": false
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 16,
       "title": "未定义",
       "name": "undefined",
-      "isDisplay": false
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 17,
       "title": "未定义",
       "name": "undefined",
-      "isDisplay": false
+      "isDisplay": false,
+      "desc": ""
     },
     {
       "role": 18,
       "title": "未定义",
       "name": "undefined",
-      "isDisplay": false
+      "isDisplay": false,
+      "desc": ""
     }
   ]
 }

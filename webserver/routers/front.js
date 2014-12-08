@@ -12,7 +12,7 @@ module.exports = function(app, ctrlFront){
     var names = [];
 
     types.forEach(function (type) {
-        if(names.indexOf(type.name) === -1){
+        if(names.indexOf(type.name) === -1 && type.isDisplay){
             names.push(type.name);
         }
     });

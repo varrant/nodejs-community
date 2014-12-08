@@ -200,6 +200,7 @@ nav .nav-right li:last-child {
   line-height: 20px;
   font-size: 18px;
   margin: 0 0 10px;
+  font-weight: normal;
 }
 .m-summarylist .summarylist-meta {
   height: 20px;
