@@ -22,12 +22,21 @@
                 <!--观点-->
                 <div class="m-card">
                     <h2 class="card-title">
-                        <i class="i i-bullhorn"></i>观点
-                        <small class="card-subtitle s-muted">——启迪你的代码观，发现你的认知点。</small>
+                        <i class="i i-question"></i>智问
+                        <small class="card-subtitle s-muted">——智慧提问，智慧回答。</small>
                         <span class="card-statistics s-light"><i class="i i-file-word-o"></i>12,2100,013</span>
                     </h2>
 
                     <div class="card-body">
+                        <div class="m-scopes">
+                            <div class="scopes-title s-muted">scope</div>
+                            <ul class="scopes-list f-list-left">
+                                {{list list as index,item}}
+                                <li><a href="/scope/scope-name/type/question/" class="label label-default">scope{{index}}</a></li>
+                                {{/list}}
+                            </ul>
+                        </div>
+
                         <ul class="m-summarylist">
                             {{list list as item}}
                             <li class="summarylist-item f-clearfix">
@@ -36,7 +45,7 @@
                                 </div>
                                 <div class="summarylist-body">
                                     <h2 class="summarylist-name f-ellipsis"><a
-                                            href="/opinion/abc.def-title_hehe.html">{{item.title}}</a></h2>
+                                            href="/question/abc.def-title_hehe.html">{{item.title}}</a></h2>
 
                                     <div class="summarylist-meta s-light f-small row">
                                         <div class="col-sm-8">
@@ -90,7 +99,7 @@
 
                     <div class="card-footer">
                         <div class="card-more f-text-center">
-                            <a href="#" class="btn btn-default">更多观点<i class="i i-angle-double-right"></i></a>
+                            <a href="#" class="btn btn-default">更多智问<i class="i i-angle-double-right"></i></a>
                         </div>
                     </div>
                 </div>
