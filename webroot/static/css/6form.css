@@ -216,6 +216,13 @@ fieldset[disabled] .btn {
     opacity: .65;
 }
 
+.btn[readonly]{
+    pointer-events: none;
+    cursor: default;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 .btn-default {
     color: #333;
     background-color: #fff;
