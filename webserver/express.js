@@ -44,7 +44,7 @@ module.exports = function (next) {
     app.set('view engine', 'html');
 
     // 路由区分大小写，默认 disabled
-    app.set('case sensitive routing', true);
+    app.set('case sensitive routing', false);
 
     // 严格路由，即 /a/b !== /a/b/
     app.set('strict routing', true);
