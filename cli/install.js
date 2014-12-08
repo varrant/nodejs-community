@@ -54,7 +54,6 @@ mongoose(function (err) {
                     return process.exit();
                 }
 
-                process.exit();
                 next();
             });
         })
