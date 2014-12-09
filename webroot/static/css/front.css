@@ -337,6 +337,10 @@ nav .nav-right li:last-child {
   margin-left: 40px;
   font-size: 14px;
 }
+.m-listcomments .listcomments-children .listcomments-body .i {
+  margin: 0 2px;
+  min-width: 10px;
+}
 .m-listcomments .listcomments-children .m-respond {
   margin: 20px -20px -20px;
   border-bottom: 0;
