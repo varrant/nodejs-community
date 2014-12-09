@@ -5,8 +5,7 @@
   "description": "前端开发者社区",
   "scripts": {
     "install": "node ./cli/install.js ./settings.json",
-    "start": "node ./cli/start.js",
-    "dev": "supervisor -w ./webserver ./cli/start.js"
+    "start": "node ./cli/start.js"
   },
   "preferGlobal": false,
   "bin": {},
@@ -45,6 +44,7 @@
     "howdo": "^1.1.4",
     "moment": "^2.8.4",
     "mongoose": "^3.8.19",
+    "supervisor": "^0.6.0",
     "ydr-ali-oss": "^1.1.7",
     "ydr-template": "^1.1.2",
     "ydr-util": "^1.10.14",

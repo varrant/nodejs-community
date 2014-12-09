@@ -14,18 +14,25 @@ var schema = mongoose.Schema({
         required: true,
         unique: true
     },
-    // github用户名，由 github 过来
+    // github 用户名，由 github 授权过来
     // 用户的识别符号
     github: {
         type: String,
         required: true,
         unique: true
     },
+    // weibo 用户名，由 weibo 授权过来
+    // 用户的认证符号
+    weibo: {
+        type: String,
+        required: false,
+        unique: true
+    },
     // 昵称
     nickname: {
         type: String,
         required: true,
-        unique: true
+        unique: false
     },
     // 角色标识，分成0-19的20阶，与运算计算是否有权限
     // 2^0

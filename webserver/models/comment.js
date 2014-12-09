@@ -32,12 +32,12 @@ var schema = mongoose.Schema({
         type: Date,
         default: new Date()
     },
-    // 评论文章
-    post: {
+    // 评论对象
+    object: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         unique: false,
-        ref: 'post',
+        ref: 'object',
         default: null
     },
     // 评论父级
@@ -47,6 +47,16 @@ var schema = mongoose.Schema({
         unique: false,
         ref: 'comment',
         default: null
+    },
+    // 赞同数量
+    agreeCount: {
+        type: Number,
+        default: 0
+    },
+    // 回复数量
+    replyCount: {
+        type: Number,
+        default: 0
     },
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证

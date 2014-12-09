@@ -337,6 +337,13 @@ nav .nav-right li:last-child {
   margin-left: 40px;
   font-size: 14px;
 }
+<<<<<<< HEAD
+=======
+.m-listcomments .listcomments-children .listcomments-body .i {
+  margin: 0 2px;
+  min-width: 10px;
+}
+>>>>>>> FETCH_HEAD
 .m-listcomments .listcomments-children .m-respond {
   margin: 20px -20px -20px;
   border-bottom: 0;

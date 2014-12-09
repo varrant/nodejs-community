@@ -1,0 +1,229 @@
+/*!
+ * 前端
+ * @author ydr.me
+ * @create 2014-12-04 20:52
+ */
+
+@primary-bg-color: #128CC2;
+@primary-fg-color: lighten(@primary-bg-color, 90%);
+
+body {
+  background: #f6f6f6;
+  margin-top: 80px;
+}
+
+/*nav*/
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: fade(@primary-bg-color, 90%);
+  height: 40px;
+  line-height: 40px;
+  z-index: 9;
+
+  &:hover{
+    background: fade(@primary-bg-color, 100%);
+  }
+
+  .i-bars {
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    color: #fff;
+  }
+
+  .nav-logo {
+    width: 100px;
+    color: #fff;
+  }
+
+  .nav-left {
+    li {
+      border-left: 1px solid darken(@primary-bg-color, 5%);
+
+      &:last-child {
+        border-right: 1px solid darken(@primary-bg-color, 5%);
+
+        a {
+          border-right: 1px solid lighten(@primary-bg-color, 5%);
+        }
+      }
+    }
+
+    a {
+      border-left: 1px solid lighten(@primary-bg-color, 5%);
+    }
+  }
+
+  .nav-right {
+    li {
+      margin-right: 10px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  nav {
+    .nav-logo{
+      margin-left: 50px;
+    }
+
+    .nav-left {
+      display: none;
+      position: fixed;
+      top: 40px;
+      left: 0;
+      bottom: 0;
+      background: @primary-bg-color;
+      min-width: 100px;
+      width: 33%;
+      z-index: 9;
+    }
+
+    .nav-left li {
+      float: none;
+      display: block;
+      text-align: center;
+    }
+
+    .nav-left a {
+      display: block;
+    }
+  }
+}
+
+/*m-nav*/
+.m-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    float: left;
+  }
+
+  a {
+    display: block;
+    color: #D6F2FF;
+    padding: 0 20px;
+  }
+
+  a:hover {
+    background: lighten(@primary-bg-color, 5%);
+    color: #fff;
+  }
+
+  .label {
+    font-size: 100%;
+    padding: 0 10px;
+    line-height: 30px;
+    margin-top: 5px;
+    font-weight: normal;
+  }
+}
+
+// card
+.m-card{
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin-bottom: 30px;
+
+  .card-title{
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+    background: #fafafa;
+    margin: 0;
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  .card-body{
+    padding: 15px 20px;
+  }
+}
+
+//summarylist
+.m-summarylist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  *{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .summarylist-item{
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+
+    &:last-child{
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .summarylist-body{
+    height: 25px;
+    line-height: 25px;
+    margin-left: 60px;
+  }
+
+  .summarylist-name{
+    height: 30px;
+    line-height: 30px;
+    font-weight: 600;
+  }
+
+  .summarylist-meta{
+    height: 20px;
+    line-height: 20px;
+  }
+
+  .summarylist-part {
+    li{
+      text-align: center;
+    }
+    a{
+      opacity: .7;
+      &:hover{
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .summarylist-part li{
+    margin-right: 5px;
+  }
+}
+
+//m-postmain
+.m-postmain{
+  position: relative;
+
+  .postmain-head{
+
+  }
+
+  .postmain-avatar{
+    width: 100px;
+    height: 100px;
+  }
+}
+
+//footer
+footer{
+  margin-top: 100px;
+}

@@ -8,7 +8,7 @@
 
 var mongoose = require('mongoose');
 var schema = mongoose.Schema({
-    // 模型，支持 post、organization、user等
+    // 模型，支持 object、user、comment 等
     model: {
         type: String,
         required: true

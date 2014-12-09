@@ -14,17 +14,8 @@ validator.pushRule({
     alias: '邮箱帐号',
     type: 'email',
     required: true,
+    maxLength: 256,
     trim: true
-});
-
-validator.pushRule({
-    name: 'github',
-    alias: 'github 帐号',
-    type: 'string',
-    required: true,
-    trim: true,
-    minLength: 1,
-    maxLength: 100
 });
 
 validator.pushRule({

@@ -7,27 +7,22 @@
 
 'use strict';
 
-var howdo = require('howdo');
 var configs = require('../configs/');
-var mongoose = require('../webserver/mongoose.js');
-var express = require('../webserver/express.js');
-var middleware = require('../webserver/middleware.js');
-var http = require('../webserver/http.js');
+var supervisor = require('supervisor');
+var args = [];
 
-howdo
-    .task(mongoose)
-    .task(express)
-    .task(middleware)
-    .task(http)
-    .follow(function (err, app) {
-        if (err) {
-            console.log(err);
-            return process.exit(-1);
-        }
+args.push(__filename);
+args.push('-w');
+args.push('./webserver/');
+args.push('./webserver/index.js');
 
-        console.log('');
-        console.log('#########################################################');
-        console.log(configs.app.domain + ' running at ' + app.locals.settings.port);
-        console.log('#########################################################');
-        console.log('');
-    });
+
+// 开发环境
+if (configs.app.env === 'dev') {
+    supervisor.run(args);
+}
+// 生产环境
+else {
+    require('../webserver/index.js');
+}
+
