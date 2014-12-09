@@ -48,6 +48,14 @@ var schema = mongoose.Schema({
         ref: 'comment',
         default: null
     },
+    // 赞同数量
+    agreeCount: {
+        type: Number
+    },
+    // 回复数量
+    replyCount: {
+        type: Number
+    },
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证
     // 因此必须再写入的时候自行验证
