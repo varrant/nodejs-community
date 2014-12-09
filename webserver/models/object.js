@@ -1,5 +1,5 @@
 /*!
- * post 数据库模型
+ * object 数据库模型
  * @author ydr.me
  * @create 2014-12-01 21:41
  */

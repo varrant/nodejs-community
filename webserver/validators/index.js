@@ -11,7 +11,7 @@ module.exports = {
     comment: require('./comment.js'),
     interactive: require('./interactive.js'),
     label: require('./label.js'),
-    post: require('./post.js'),
+    object: require('./object.js'),
     scope: require('./scope.js'),
     setting: require('./setting.js'),
     user: require('./user.js')
