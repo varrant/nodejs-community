@@ -20,8 +20,7 @@ nav {
   right: 0;
   left: 0;
   background: fade(@primary-bg-color, 90%);
-  height: 40px;
-  line-height: 40px;
+  line-height: 50px;
   z-index: 9;
 
   &:hover {
@@ -36,26 +35,15 @@ nav {
   }
 
   .nav-logo {
-    width: 100px;
-    color: #fff;
+    width: 120px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    line-height: 45px;
+    text-align: center;
   }
 
   .nav-left {
-    li {
-      border-left: 1px solid darken(@primary-bg-color, 5%);
-
-      &:last-child {
-        border-right: 1px solid darken(@primary-bg-color, 5%);
-
-        a {
-          border-right: 1px solid lighten(@primary-bg-color, 5%);
-        }
-      }
-    }
-
-    a {
-      border-left: 1px solid lighten(@primary-bg-color, 5%);
-    }
   }
 
   .nav-right {
@@ -120,11 +108,16 @@ nav {
     color: #fff;
   }
 
+  li.active a{
+    background: darken(@primary-bg-color, 5%);
+    color: #fff;
+  }
+
   .label {
     font-size: 100%;
     padding: 0 10px;
     line-height: 30px;
-    margin-top: 5px;
+    margin-top: 10px;
     font-weight: normal;
   }
 }
@@ -161,6 +154,57 @@ nav {
     }
   }
 }
+
+// m-home
+.m-home{
+  li{
+    line-height: 30px;
+  }
+
+  a{
+    position: relative;
+    display: block;
+    padding: 20px 0;
+  }
+
+  .home-name{
+    display: block;
+    font-size: 50px;
+    line-height: 100px;
+  }
+
+  .i{
+    margin-left: 0;
+  }
+
+  .home-desc{
+    display: block;
+    font-size: 16px;
+    line-height: 40px;
+  }
+
+  @color-question: #FFFCF0;
+  @color-help: #FFEBEB;
+
+  .home-question a{
+    background: @color-question;
+    color: darken(@color-question, 60%);
+
+    &:hover{
+      background: darken(@color-question, 3%);
+    }
+  }
+
+  .home-help a{
+    background: @color-help;
+    color: darken(@color-help, 60%);
+
+    &:hover{
+      background: darken(@color-help, 3%);
+    }
+  }
+}
+
 
 // card
 .m-card {
@@ -251,12 +295,14 @@ nav {
 
   .scopes-title {
     font-size: 20px;
-    border-left: 4px solid #444;
+    border-left: 4px solid #ddd;
     padding-left: 10px;
+    margin-bottom: 15px;
   }
 
   .scopes-list {
     padding: 0;
+    margin: 0;
     > li {
       margin-right: 10px;
       line-height: 30px;
