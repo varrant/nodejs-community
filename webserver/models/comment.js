@@ -50,11 +50,13 @@ var schema = mongoose.Schema({
     },
     // 赞同数量
     agreeCount: {
-        type: Number
+        type: Number,
+        default: 0
     },
     // 回复数量
     replyCount: {
-        type: Number
+        type: Number,
+        default: 0
     },
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证
