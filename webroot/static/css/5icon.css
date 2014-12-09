@@ -31,6 +31,12 @@
     min-width: 14px;
 }
 
+.i-small{
+    margin-left: 2px;
+    margin-right: 2px;
+    min-width: 10px;
+}
+
 .btn > .i:first-child {
     margin-left: 0;
 }

@@ -23,6 +23,8 @@ module.exports = function (app, ctrlFront) {
 
     // home
     app.get('/', ctrlFront.main.getHome);
+
+    // list + detail
     names.forEach(function (name) {
         app.get('/' + name + '/', ctrlFront.main.getList(name));
         app.get('/' + name + '/' + 'page/:page/', ctrlFront.main.getList(name));
@@ -35,4 +37,7 @@ module.exports = function (app, ctrlFront) {
         app.get('/' + name + '/' + 'on/:label/in/:scope/page/:page/', ctrlFront.main.getList(name));
         app.get('/' + name + '/' + ':uri.html', ctrlFront.main.getPost(name));
     });
+
+    // engineer
+    app.get('/engineer/:engineer/', ctrlFront.user.getEngineer);
 };

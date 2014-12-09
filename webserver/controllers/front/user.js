@@ -27,7 +27,7 @@ module.exports = function (app) {
         var oauth = user.createOauthURL(oauthSettings, 'http://sb.com:18084/user/oauth/callback/');
 
         req.session.state = oauth.state;
-        res.render('frontend/oauth-authorize.html', {
+        res.render('front/oauth-authorize.html', {
             url: oauth.url
         });
     };
@@ -85,11 +85,24 @@ module.exports = function (app) {
                 }
 
                 req.session.githubOauth = json;
-                res.render('frontend/oauth-callback.html', {
+                res.render('front/oauth-callback.html', {
                     hasSignUp: !!data,
                     user: json
                 });
             });
+    };
+
+
+    /**
+     * 工程师主页
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.getEngineer = function (req, res, next) {
+        res.render('front/engineer.html', {
+            title: req.params.engineer
+        });
     };
 
     return exports;

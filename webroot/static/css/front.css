@@ -135,11 +135,12 @@ nav .nav-right li:last-child {
   font-size: 20px;
 }
 .m-card .card-subtitle {
+  display: inline;
   font-size: 40%;
   margin-left: 10px;
   line-height: 1;
 }
-.m-card .card-statistics {
+.m-card .card-endtitle {
   position: absolute;
   right: 10px;
   bottom: 10px;
@@ -384,6 +385,29 @@ nav .nav-right li:last-child {
   cursor: not-allowed;
   background: transparent;
   pointer-events: none;
+}
+.m-usercard .usercard-main {
+  margin-bottom: 20px;
+}
+.m-usercard .usercard-avatar {
+  width: 100px;
+  height: 100px;
+}
+.m-usercard .usercard-body {
+  margin-left: 110px;
+}
+.m-usercard .usercard-bio {
+  margin-bottom: 20px;
+}
+.m-usercard .usercard-statistics {
+  background-color: #fcfcfc;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 2px 2px #f0f0f0 inset;
+  margin: 0 -20px -20px -20px;
+  padding: 20px;
+}
+.m-usercard .usercard-statistics li {
+  margin-right: 20px;
 }
 footer {
   margin-top: 100px;
