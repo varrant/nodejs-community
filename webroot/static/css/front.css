@@ -4,7 +4,7 @@
  * @create 2014-12-04 20:52
  */
 body {
-  background: #f2f2f2;
+  background: #f5f5f5;
   margin-top: 100px;
 }
 /*nav*/
@@ -108,6 +108,19 @@ nav .nav-right li:last-child {
 }
 .g-container .g-main {
   border-right: 1px solid #e6e6e6;
+}
+.g-container .g-sub {
+  border-left: 1px solid #e6e6e6;
+  margin-left: -1px;
+}
+@media (max-width: 991px) {
+  .g-container .g-main {
+    border-right: 0;
+  }
+  .g-container .g-sub {
+    border-left: 0;
+    margin-left: 0;
+  }
 }
 .m-card .card-title,
 .m-card .card-tab {
@@ -257,28 +270,115 @@ nav .nav-right li:last-child {
 .m-postmain {
   position: relative;
 }
-.m-postmain .postmain-head {
-  margin-bottom: 20px;
-}
-.m-postmain .postmain-avatar {
-  width: 100px;
-  height: 100px;
-}
-.m-postmain .postmain-info {
-  margin-left: 110px;
-}
-.m-postmain .postmain-title {
-  margin: 0 0 10px 0;
-  padding: 0;
-  font-weight: normal;
-}
 .m-postmain .postmain-meta {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 .m-postmain .postmain-meta li {
+  line-height: 2;
+}
+.m-respond {
+  margin: -20px -20px 20px;
+  background: #F9F9F9;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+.m-respond .respond-body {
+  margin-left: 60px;
+  overflow: hidden;
+}
+.m-respond .respond-input {
+  height: 50px;
+}
+.m-respond .respond-action {
+  margin-top: 15px;
+}
+.m-listcomments {
+  list-style: none;
+  padding: 0;
+}
+.m-listcomments .listcomments-item {
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.m-listcomments .listcomments-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.m-listcomments .listcomments-body {
+  margin-left: 60px;
+  overflow: hidden;
+}
+.m-listcomments .listcomments-meta {
+  padding: 0;
+  margin: 0;
+}
+.m-listcomments .listcomments-meta li {
   margin-right: 10px;
+}
+.m-listcomments .listcomments-action {
+  margin-top: 20px;
+}
+.m-listcomments .listcomments-number {
+  margin-left: 10px;
+  font-weight: 900;
+}
+.m-listcomments .listcomments-children {
+  position: relative;
+  margin: 20px 60px;
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid #F0F0F0;
+}
+.m-listcomments .listcomments-children .listcomments-body {
+  margin-left: 40px;
+  font-size: 14px;
+}
+.m-listcomments .listcomments-children .m-respond {
+  margin: 20px -20px -20px;
+  border-bottom: 0;
+  border-top: 1px solid #eee;
+  border-radius: 0 0 4px 4px;
+}
+.m-listcomments .listcomments-children::before,
+.m-listcomments .listcomments-children::after {
+  content: ' ';
+  position: absolute;
+  border: 10px solid transparent;
+  left: 20px;
+}
+.m-listcomments .listcomments-children::before {
+  border-bottom-color: #ddd;
+  top: -20px;
+}
+.m-listcomments .listcomments-children::after {
+  border-bottom-color: #fff;
+  top: -19px;
+}
+.m-pager a {
+  display: block;
+  color: #888;
+  font-size: 16px;
+  background: #fff;
+}
+.m-pager a:hover {
+  color: #333;
+  background: #f9f9f9;
+}
+.m-pager li {
+  border: 1px solid #e6e6e6;
+}
+.m-pager li:last-child {
+  border-left: 0;
+}
+.m-pager li.disabled a,
+.m-pager li.disabled a:hover {
+  color: #ccc;
+  cursor: not-allowed;
+  background: transparent;
 }
 footer {
   margin-top: 100px;

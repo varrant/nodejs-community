@@ -14,30 +14,16 @@
 {{include ./include/nav.html}}
 
 <div class="container">
+<div class="row g-container">
+<!--主-->
+<div class="col-md-9 g-main">
+    <!--内容-->
     <div class="m-card">
+        <h2 class="card-title">
+            <i class="i i-question"></i>组合输入另显示组合输入框使用Glyphicon在一个手机上显示正常，另外一个手机显示
+        </h2>
+
         <div class="card-body m-postmain">
-            <div class="postmain-head f-clearfix">
-                <img src="/static/img/avatar.png" alt="avatar" width="100" height="100" class="postmain-avatar f-left"/>
-                <div class="postmain-info">
-                    <h2 class="postmain-title">组合输入框使用Glyphicon在一个手机上显示正常，另外一个手机显示</h2>
-                    <ul class="postmain-meta f-list-left f-clearfix f-small">
-                        <li>
-                            <a href="#"><i class="i i-user"></i>云淡然</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="i i-clock-o"></i>2014-12-12 12:21:19</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="i i-comment"></i>201,111</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="i i-heart"></i>199,999</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-
             <div class="postmain-content">
                 <p>举例，开始状态：1 准备选择：2 结束后：3，想成为 单击：2 然后 右侧显示指定页 ，左侧 显示4 </p>
 
@@ -56,7 +42,7 @@
             <ul class="postmain-meta s-light">
                 <li>
                     <i class="i i-book"></i>
-                    <a href="#">scope1</a>
+                    <a href="#" class="label label-default">scope1</a>
                 </li>
                 <li>
                     <i class="i i-tags"></i>
@@ -65,9 +51,185 @@
                     <a class="label label-light" href="#">label3</a>
                     <a class="label label-light" href="#">label4</a>
                 </li>
+                <li>
+                    <i class="i i-clock-o"></i>
+                    2014-12-21 12:21:19 &times; 21
+                </li>
             </ul>
         </div>
     </div>
+    <!--/内容-->
+
+    <!--评论-->
+    <div class="m-card">
+        <div class="card-title"><i class="i i-comments"></i>回答与补充
+            <small class="card-subtitle s-muted">21个回答，19个补充</small>
+        </div>
+        <div class="card-body">
+            <!--评论-->
+            <div class="m-respond f-clearfix">
+                <div class="respond-avatar f-left">
+                    <a href="#"><img src="/static/img/avatar.png" alt="avatar" width="50" height="50"/></a>
+                </div>
+                <div class="respond-body">
+                    <textarea class="respond-input ipt" placeholder="你的智慧回答"></textarea>
+
+                    <div class="respond-action f-text-right">
+                        <a href="#" class="f-small"><i class="i i-question"></i>markdown 编辑器使用帮助</a>
+                        <i class="f-space"></i>
+                        <button class="btn btn-primary"><i class="i i-comment"></i>回答</button>
+                    </div>
+                </div>
+            </div>
+            <!--/评论-->
+
+            <!--父评论列表-->
+            <ul class="m-listcomments">
+                {{list list as index,item}}
+                <li class="listcomments-item {{if index*1===0}}listcomments-best{{/if}}">
+                    <div class="f-clearfix listcomments-main">
+                        <div class="listcomments-avatar f-left">
+                            <a href="#"><img src="/static/img/avatar.png" alt="avatar" width="50" height="50"/></a>
+                        </div>
+                        <div class="listcomments-body">
+                            <ul class="listcomments-meta s-light f-list-left">
+                                <li><a href="#"><i class="i i-user"></i>云淡然</a></li>
+                                <li><i class="i i-clock-o"></i> 2014-12-12 21:21:11</li>
+                            </ul>
+
+                            <div class="listcomments-content">{{item.content}}</div>
+
+                            <ul class="listcomments-meta listcomments-action s-light f-list-left">
+                                <li>
+                                    <button class="btn btn-success btn-xs"><i class="i i-plus"></i>补充<span
+                                            class="listcomments-number">99,123</span></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-primary btn-xs"><i class="i i-thumbs-up"></i>赞同<span
+                                            class="listcomments-number">99,123</span></button>
+                                </li>
+                                <li>
+                                    <span class="btn btn-warning btn-xs active" readonly><i
+                                            class="i i-check"></i>采纳回答</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="listcomments-children">
+                        <!--子评论列表-->
+                        <ul class="m-listcomments">
+                            {{list list as item}}
+                            <li class="listcomments-item">
+                                <div class="f-clearfix listcomments-main">
+                                    <div class="listcomments-avatar f-left">
+                                        <a href="#"><img src="/static/img/avatar.png" alt="avatar" width="30"
+                                                         height="30"/></a>
+                                    </div>
+                                    <div class="listcomments-body">
+                                        <ul class="listcomments-meta s-light f-list-left">
+                                            <li><a href="#"><i class="i i-user"></i>云淡然</a></li>
+                                            <li><i class="i i-clock-o"></i> 2014-12-12 21:21:11</li>
+                                        </ul>
+                                        <div class="listcomments-content s-muted">{{item.content}}</div>
+                                    </div>
+                                </div>
+                            </li>
+                            {{/list}}
+                        </ul>
+                        <!--/子评论列表-->
+
+                        <!--子分页器-->
+                        <ul class="m-pager avg-xs-2 f-text-center">
+                            <li class="pager-prev disabled"><a href="#"><i
+                                    class="i i-angle-double-left"></i></a></li>
+                            <li class="pager-next"><a href="#"><i class="i i-angle-double-right"></i></a></li>
+                        </ul>
+                        <!--/子分页器-->
+
+                        <!--评论-->
+                        <div class="m-respond f-clearfix">
+                            <div class="respond-avatar f-left">
+                                <a href="#"><img src="/static/img/avatar.png" alt="avatar" width="50" height="50"/></a>
+                            </div>
+                            <div class="respond-body">
+                                <textarea class="respond-input ipt" placeholder="你的智慧补充"></textarea>
+
+                                <div class="respond-action f-text-right">
+                                    <button class="btn btn-primary"><i class="i i-plus"></i>补充</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/评论-->
+                    </div>
+                </li>
+                {{/list}}
+            </ul>
+            <!--/父评论列表-->
+        </div>
+        <div class="card-footer">
+            <div class="card-more f-text-center">
+                <button class="btn btn-default">更多回答<i class="i i-angle-double-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <!--/评论-->
+</div>
+<!--/主-->
+<!--副-->
+<div class="col-md-3 g-sub">
+    <!--作者-->
+    <div class="m-card">
+        <div class="card-title"><i class="i i-user"></i>作者</div>
+        <div class="card-body f-text-center">
+            <div>
+                <a href="#"><img src="/static/img/avatar.png" alt="avatar" width="100" height="100"/></a>
+            </div>
+            <div>
+                <a href="#"><i class="i i-user"></i>云淡然<i class="i i-check-circle-o s-success"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--/作者-->
+
+    <!--最佳-->
+    <div class="m-card">
+        <div class="card-title"><i class="i i-check"></i>最佳</div>
+        <div class="card-body f-text-center">
+            <ul class="m-simplelist s-muted">
+                <li><i class="i i-clock-o"></i>2014-12-1 12:21:19</li>
+                <li>
+                    <a href="#"><i class="i i-user"></i>云淡然2</a>
+                </li>
+                <li class="f-text-center">
+                    <button class="btn btn-success"><i class="i i-plus"></i>补充</button>
+                    <button class="btn btn-primary"><i class="i i-thumbs-up"></i>赞同</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--/最佳-->
+
+    <!--统计-->
+    <div class="m-card">
+        <div class="card-title"><i class="i i-bar-chart"></i>统计</div>
+        <div class="card-body">
+            <ul class="m-simplelist s-muted">
+                <li><i class="i i-clock-o"></i>2014-12-1 12:21:19</li>
+                <li><i class="i i-eye"></i>1,223,901</li>
+                <li><i class="i i-comment"></i>90,312,901</li>
+                <li><i class="i i-star"></i>31,091,331</li>
+                <li class="f-text-center">
+                    <button class="btn btn-success"><i class="i i-comment"></i>回答</button>
+                    <button class="btn btn-primary"><i class="i i-star"></i>关注</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--/统计-->
+</div>
+<!--/副-->
+</div>
 </div>
 
 {{include ./include/footer.html}}
