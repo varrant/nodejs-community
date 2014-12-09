@@ -1,4 +1,4 @@
-# `post` 模型
+# `object` 模型
 - `author` 作者
 - `title` 标题
 - `uri` URI
