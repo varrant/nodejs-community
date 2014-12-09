@@ -1,5 +1,7 @@
 # `user` 模型
 
+适用于：用户。
+
 - `email` 邮箱
 - `github` github 帐号
 - `nickname` 昵称
