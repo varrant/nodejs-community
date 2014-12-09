@@ -21,6 +21,7 @@ module.exports = function (app) {
      */
     exports.getHome = function (req, res, next) {
         res.render('front/home.html', {
+            title: '主页',
             list: [{
                 title: '完善简历，抽“金卡”，高薪工作送到家！！',
                 viewCount: random.number(20, 10000),
@@ -91,6 +92,7 @@ module.exports = function (app) {
             page = dato.parseInt(page, 1);
 
             res.json({
+                title: type,
                 type: type,
                 scope: scope,
                 label: label,
@@ -110,6 +112,7 @@ module.exports = function (app) {
             var uri = req.params.uri;
 
             res.render('front/post-' + type + '.html', {
+                title: type,
                 list: [{
                     content: '清除浏览器缓存的文件试试看！不知道有没有童鞋遇到过这样的？我用QQ,搜狗，猎豹，chrome，UC都没问题！！手机wifi调试页面，浏览器是小米3内置浏览器童鞋遇到过这样的？我用QQ,搜狗，猎豹，chrome，UC都没问题！！手机wifi调试'
                 }, {
