@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--
+ - 文件描述
+ - @author ydr.me
+ - @create 2014-12-09 22:48
+ -->
+<html>
+<head lang="zh-cn">
+    {{include ../include/meta.html}}
+    {{include ./include/meta.html}}
+</head>
+<body ontouchstart="" class="p-home">
+{{include ./include/nav.html}}
+
+
+<div class="container">
+    <div class="row g-container">
+        <!--主-->
+        <div class="col-md-9 g-main">
+            <!--智问-->
+            <div class="m-card">
+                <h2 class="card-title">
+                    <i class="i i-cube"></i>智问
+                    <small class="card-subtitle s-muted">——智慧提问，智慧回答。</small>
+                    <span class="card-endtitle s-light"><i class="i i-file-o"></i>12,2100,013</span>
+                </h2>
+
+                <div class="card-body">
+                    <div class="m-scopes">
+                        <div class="scopes-title s-muted"><i class="i i-book"></i>scope</div>
+                        <ul class="scopes-list f-list-left">
+                            {{list list as index,item}}
+                            <li><a href="/question/in/scope-name/" class="label label-default">scope{{index}}</a>
+                            </li>
+                            {{/list}}
+                        </ul>
+                    </div>
+
+                    <ul class="m-summarylist">
+                        {{list list as item}}
+                        <li class="summarylist-item f-clearfix">
+                            <div class="summarylist-avatar f-left">
+                                <a href="#"><img src="/static/img/avatar.png" alt="avatar" width="50" height="50"/></a>
+                            </div>
+                            <div class="summarylist-body">
+                                <h2 class="summarylist-name f-ellipsis"><a
+                                        href="/question/abc.def-title_hehe.html">{{item.title}}</a></h2>
+
+                                <div class="summarylist-meta s-light f-small row">
+                                    <div class="col-sm-8">
+                                        <ul class="avg-xs-4">
+                                            <li><i class="i i-user"></i><a href="#">cloudcome</a></li>
+                                            <li><i class="i i-comments"></i>{{item.commentCount}}</li>
+                                            <li><i class="i i-eye"></i>{{item.viewCount}}</li>
+                                            <li><i class="i i-star"></i>{{item.favoriteCount}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <ul class="summarylist-contributors f-list-right">
+                                            <li>
+                                                <a href="#">
+                                                    <img src="http://wenda.bootcss.com/uploads/avatar/000/00/00/27_avatar_mid.jpg"
+                                                         width="20" height="20" alt="avatar"/>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="http://wenda.bootcss.com/uploads/avatar/000/00/00/23_avatar_mid.jpg"
+                                                         width="20" height="20" alt="avatar"/>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="http://wenda.bootcss.com/uploads/avatar/000/00/00/25_avatar_mid.jpg"
+                                                         width="20" height="20" alt="avatar"/>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="http://wenda.bootcss.com/uploads/avatar/000/00/00/02_avatar_mid.jpg"
+                                                         width="20" height="20" alt="avatar"/>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="http://wenda.bootcss.com/uploads/avatar/000/00/00/06_avatar_mid.jpg"
+                                                         width="20" height="20" alt="avatar"/>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {{/list}}
+                    </ul>
+                </div>
+
+                <div class="card-footer">
+                    <div class="card-more f-text-center">
+                        <a href="#" class="btn btn-default">更多智问<i class="i i-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!--/智问-->
+        </div>
+        <!--/主-->
+
+        <!--副-->
+        <div class="col-md-3 g-sub">
+            <div class="m-card">
+                <ul class="card-tab avg-xs-2 f-text-center">
+                    <li class="active"><a href="#"><i class="i i-thumbs-up"></i>推荐</a></li>
+                    <li><a href="#"><i class="i i-fire"></i>热门</a></li>
+                </ul>
+
+                <div class="card-body">
+                    <ul class="m-simplelist">
+                        {{list list as item}}
+                        <li class="f-ellipsis"><a href="#">{{item.title}}</a></li>
+                        {{/list}}
+                    </ul>
+                </div>
+            </div>
+            <div class="m-card">
+                <ul class="card-tab avg-xs-2 f-text-center">
+                    <li><a href="#"><i class="i i-heart"></i>好评</a></li>
+                    <li class="active"><a href="#"><i class="i i-random"></i>随机</a></li>
+                </ul>
+
+                <div class="card-body">
+                    <ul class="m-simplelist">
+                        {{list list as item}}
+                        <li class="f-ellipsis"><a href="#">{{item.title}}</a></li>
+                        {{/list}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/副-->
+    </div>
+</div>
+
+
+{{include ./include/footer.html}}
+</body>
+</html>
