@@ -5,6 +5,8 @@
 - `publishAt` 发布时间
 - `post` 评论文章
 - `parent` 评论父级
+- `agreeCount` 赞同数量
+- `replyCount` 回复数量
 - `meta` 评论元信息
 	- `ua` 评论者UA
 	- `ip` 评论者IP
