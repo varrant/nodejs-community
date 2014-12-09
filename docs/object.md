@@ -1,4 +1,7 @@
 # `object` 模型
+
+适用于：文字、问题、帮助等展示性资源。
+
 - `author` 作者
 - `title` 标题
 - `uri` URI
