@@ -6,8 +6,8 @@
         "./views/**/*.html"
     ],
     "css": {
-        "path": "./",
-        "url": "/static/css/"
+        "path": "./css/",
+        "root": "../"
     },
     "dest": "../static-pro/",
     "coolie-config.js": "./js/coolie-config.js",
