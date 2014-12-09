@@ -30,8 +30,8 @@ module.exports = function (app) {
     require('./middleware.js')(app, exports.middleware);
 
     // 静态路由
-    app.use('/', express.static(configs.dir.webroot, staticOptions));
     app.use('/static/', express.static(configs.dir.static, staticOptions));
+    app.use('/', express.static(configs.dir.webroot, staticOptions));
 
     // 测试
     require('./test.js')(app, exports.test);
