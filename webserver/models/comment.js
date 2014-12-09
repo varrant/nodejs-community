@@ -32,12 +32,12 @@ var schema = mongoose.Schema({
         type: Date,
         default: new Date()
     },
-    // 评论文章
-    post: {
+    // 评论对象
+    object: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         unique: false,
-        ref: 'post',
+        ref: 'object',
         default: null
     },
     // 评论父级
