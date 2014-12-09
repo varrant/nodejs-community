@@ -14,18 +14,18 @@ var schema = mongoose.Schema({
         required: true,
         unique: true
     },
-    // github 用户名，由 github 过来
+    // github 用户名，由 github 授权过来
     // 用户的识别符号
     github: {
         type: String,
         required: true,
         unique: true
     },
-    // weibo 用户名，由 github 过来
+    // weibo 用户名，由 weibo 授权过来
     // 用户的认证符号
     weibo: {
         type: String,
-        required: true,
+        required: false,
         unique: true
     },
     // 昵称
