@@ -158,4 +158,4 @@ var schema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('post', schema);
+module.exports = mongoose.model('object', schema);
