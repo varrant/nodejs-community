@@ -31,7 +31,7 @@ var schema = mongoose.Schema({
         required: false
     },
     // 项目数量
-    postCount: {
+    objectCount: {
         type: Number,
         default: 0
     },
