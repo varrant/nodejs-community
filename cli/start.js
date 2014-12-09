@@ -12,10 +12,9 @@ var supervisor = require('supervisor');
 var args = [];
 
 args.push(__filename);
-//-w ./webserver ./cli/start.js
 args.push('-w');
-args.push('../webserver/');
-args.push('../webserver/index.js');
+args.push('./webserver/');
+args.push('./webserver/index.js');
 
 
 // 开发环境
