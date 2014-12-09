@@ -1,4 +1,7 @@
 # `comment` 模型
+
+适用于：评论、讨论、回答、回复、补充等。
+
 - `author` 评论作者
 - `content` 评论内容
 - `isDisplay` 是否在前台显示
