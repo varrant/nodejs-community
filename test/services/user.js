@@ -12,8 +12,8 @@ var user = require('../../webserver/services/').user;
 var random = require('ydr-util').random;
 
 test
-    .push('user.increaseCommentCount', function (next) {
-        user.increaseCommentCount({
+    .push('user.increaseScore', function (next) {
+        user.increaseScore({
             github: 'cloudcome'
         }, 1, function () {
             console.log(arguments);
@@ -28,8 +28,16 @@ test
             next();
         });
     })
-    .push('user.increasePraisedCount', function (next) {
-        user.increasePraisedCount({
+    .push('user.increaseCommentCount', function (next) {
+        user.increaseCommentCount({
+            github: 'cloudcome'
+        }, 1, function () {
+            console.log(arguments);
+            next();
+        });
+    })
+    .push('user.increaseAgreedCount', function (next) {
+        user.increaseAgreedCount({
             github: 'cloudcome'
         }, 1, function () {
             console.log(arguments);
@@ -40,6 +48,42 @@ test
         user.increaseAcceptedCount({
             github: 'cloudcome'
         }, 1, function () {
+            console.log(arguments);
+            next();
+        });
+    })
+    .push('user.follow', function (next) {
+        user.follow('5487fa5fc57b05a81f23037d', '5487fab2eb3108d014e6abad', function () {
+            console.log(arguments);
+            next();
+        });
+    })
+    .push('user.unfollow', function (next) {
+        user.unfollow('5487fa5fc57b05a81f23037d', '5487fab2eb3108d014e6abad', function () {
+            console.log(arguments);
+            next();
+        });
+    })
+    .push('user.setBlock', function (next) {
+        user.setBlock({
+            github: 'cloudcome'
+        }, function () {
+            console.log(arguments);
+            next();
+        });
+    })
+    .push('user.cancelBlock', function (next) {
+        user.cancelBlock({
+            github: 'cloudcome'
+        }, function () {
+            console.log(arguments);
+            next();
+        });
+    })
+    .push('user.joinOrganization', function (next) {
+        user.joinOrganization({
+            github: 'cloudcome'
+        }, random.string(24), function () {
             console.log(arguments);
             next();
         });

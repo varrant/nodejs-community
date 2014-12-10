@@ -67,7 +67,7 @@ var schema = mongoose.Schema({
     // 用户主页访问数量
     viewCount: {
         type: Number,
-        default: 0
+        default: 1
     },
     // 评论次数
     commentCount: {
@@ -75,7 +75,7 @@ var schema = mongoose.Schema({
         default: 0
     },
     // 回答被赞同次数
-    praisedCount: {
+    agreedCount: {
         type: Number,
         default: 0
     },

@@ -10,7 +10,7 @@ var role = require('../../configs/').role;
 var user = require('../models/').user;
 var setting = require('../models/').setting;
 var object = require('../models/').object;
-var interactive = require('../models/').interactive;
+var interactive = require('./interactive.js');
 var random = require('ydr-util').random;
 var dato = require('ydr-util').dato;
 var crypto = require('ydr-util').dato;
@@ -23,6 +23,9 @@ var urls = {
     authorize: 'https://github.com/login/oauth/authorize',
     accessToken: 'https://github.com/login/oauth/access_token',
     user: 'https://api.github.com/user'
+};
+var noop = function () {
+    // ignore
 };
 
 /**
@@ -67,6 +70,28 @@ exports.count = user.count;
 
 
 /**
+ * 增加积分
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseScore = function (conditions, count, callback) {
+    user.increase(conditions, 'score', count, callback);
+};
+
+
+/**
+ * 增加阅读数量（主页访问数量）
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseViewCount = function (conditions, count, callback) {
+    user.increase(conditions, 'viewCount', count, callback);
+};
+
+
+/**
  * 增加评论数量
  * @param conditions {Object} 查询条件
  * @param count {Number} 更新值
@@ -78,25 +103,15 @@ exports.increaseCommentCount = function (conditions, count, callback) {
 
 
 /**
- * 增加阅读数量
+ * 增加同意数量
  * @param conditions {Object} 查询条件
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
-exports.increaseViewCount = function (conditions, count, callback) {
-    user.increase(conditions, 'viewCount', count, callback);
+exports.increaseAgreedCount = function (conditions, count, callback) {
+    user.increase(conditions, 'agreedCount', count, callback);
 };
 
-
-/**
- * 增加赞同数量
- * @param conditions {Object} 查询条件
- * @param count {Number} 更新值
- * @param callback {Function} 回调
- */
-exports.increasePraisedCount = function (conditions, count, callback) {
-    user.increase(conditions, 'praisedCount', count, callback);
-};
 
 
 /**
@@ -111,46 +126,50 @@ exports.increaseAcceptedCount = function (conditions, count, callback) {
 
 
 /**
- * 增加关注数量
+ * 关注某人
  * @param conditions {Object} 查询条件
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
-exports.follow = function (operatorId,  userId, callback) {
-    user.increase({_id: operatorId}, 'followCount', 1, function (err, doc) {
-        callback.apply(this, arguments);
+exports.follow = function (operatorId, userId, callback) {
+    interactive.active({
+        operator: operatorId,
+        model: 'user',
+        path: 'followedCount',
+        object: userId,
+        value: 1
+    }, function (err, isModified) {
+        callback(err);
 
-        if(!err && doc){
-            interactive.push({
-                model: 'user',
-                path: 'followedCount',
-                operator: doc._id,
-                object: ''
-            });
+        if (isModified) {
+            user.increase({_id: operatorId}, 'followCount', 1, noop);
+            user.increase({_id: userId}, 'followedCount', 1, noop);
         }
     });
 };
 
 
 /**
- * 增加被关注数量
+ * 取消关注某人
  * @param conditions {Object} 查询条件
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
-exports.increaseFollowedCount = function (conditions, count, callback) {
-    user.increase(conditions, 'followedCount', count, callback);
-};
+exports.unfollow = function (operatorId, userId, callback) {
+    interactive.active({
+        operator: operatorId,
+        model: 'user',
+        path: 'followedCount',
+        object: userId,
+        value: 0
+    }, function (err, isModified) {
+        callback(err);
 
-
-/**
- * 增加积分
- * @param conditions {Object} 查询条件
- * @param count {Number} 更新值
- * @param callback {Function} 回调
- */
-exports.increaseScore = function (conditions, count, callback) {
-    user.increase(conditions, 'score', count, callback);
+        if (isModified) {
+            user.increase({_id: operatorId}, 'followCount', -1, noop);
+            user.increase({_id: userId}, 'followedCount', -1, noop);
+        }
+    });
 };
 
 
@@ -188,7 +207,7 @@ exports.joinOrganization = function (conditions, organizationId, callback) {
         }
 
         if (!doc) {
-            err = new Error('organization is not exist');
+            err = new Error('the organization is not exist');
             err.type = 'notFound';
             return callback(err);
         }
