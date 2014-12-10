@@ -60,40 +60,85 @@ exports.count = user.count;
 
 
 /**
- * 评论自增
- * @param conditions
- * @param callback
+ * 增加评论数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
  */
-exports.increaseComment = function (conditions, callback) {
-    user.increase(conditions, 'commentCount', 1, callback);
+exports.increaseCommentCount = function (conditions, count, callback) {
+    user.increase(conditions, 'commentCount', count, callback);
 };
 
 /**
- * 阅读自增
- * @param conditions
- * @param callback
+ * 增加阅读数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
  */
-exports.increaseView = function (conditions, callback) {
-    user.increase(conditions, 'viewCount', 1, callback);
+exports.increaseViewCount = function (conditions,count, callback) {
+    user.increase(conditions, 'viewCount', count, callback);
 };
 
 /**
- * 点赞自增
- * @param conditions
- * @param callback
+ * 增加赞同数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
  */
-exports.increasePraise = function (conditions, callback) {
-    user.increase(conditions, 'praiseCount', 1, callback);
+exports.increasePraiseCount = function (conditions, count, callback) {
+    user.increase(conditions, 'praiseCount', count, callback);
+};
+
+
+/**
+ * 增加关注数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increasePraiseCount = function (conditions, count, callback) {
+    user.increase(conditions, 'followCount', count, callback);
 };
 
 
 /**
  * 增加积分
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseScore = function (conditions, count, callback) {
+    user.increase(conditions, 'score', count, callback);
+};
+
+
+/**
+ * 设置阻止
+ * @param conditions {Object} 查询条件
+ * @param callback {Function} 回调
+ */
+exports.setBlock = function (conditions, callback) {
+    user.toggle(conditions, 'isBlock', true, callback);
+};
+
+/**
+ * 取消阻止
+ * @param conditions {Object} 查询条件
+ * @param callback {Function} 回调
+ */
+exports.cancelBlock = function (conditions, callback) {
+    user.toggle(conditions, 'isBlock', false, callback);
+};
+
+
+/**
+ * 加入组织
  * @param conditions
+ * @param organizationId
  * @param callback
  */
-exports.increaseCoins = function (conditions, count, callback) {
-    user.increase(conditions, 'score', count, callback);
+exports.pushOrganizations = function (conditions, organizationId, callback) {
+    user.push(conditions, 'organizations', organizationId, callback);
 };
 
 
