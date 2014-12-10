@@ -14,8 +14,8 @@ var schema = mongoose.Schema({
         required: true,
         unique: true
     },
-    // 文章数量
-    postCount: {
+    // object 数量
+    objectCount: {
         type: Number,
         default: 1
     },
