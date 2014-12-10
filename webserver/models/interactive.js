@@ -18,22 +18,27 @@ var schema = mongoose.Schema({
         type: String,
         required: true
     },
-    // 对象，即ID
-    object: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
-    },
     // 操作者
     operator: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        unique: false,
         ref: 'user'
+    },
+    // 被操作对象，即ID
+    object: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
     },
     // 影响值，默认1
     value: {
         type: Number,
         default: 1
+    },
+    // 描述语句
+    // 如：xx发表了一篇文章yy
+    desc: {
+        type: String,
+        required: true
     },
     // 操作时间
     at: {
