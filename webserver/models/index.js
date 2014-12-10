@@ -94,7 +94,7 @@ dato.each(models, function (key, model) {
     /**
      * 计算数量
      * @param conditions {Object} 查询条件
-     * @param callback
+     * @param callback {Function} 回调
      */
     exports[key].count = function (conditions, callback) {
         model.count(conditions, callback);
@@ -104,8 +104,7 @@ dato.each(models, function (key, model) {
     /**
      * 创建一个
      * @param conditions {Object} 查询条件
-     * @param {Function} callback
-     * @returns {Query|*}
+     * @param callback {Function} 回调
      */
     exports[key].createOne = function (data, callback) {
         data = _toPureData(data, ['_id']);
@@ -132,7 +131,7 @@ dato.each(models, function (key, model) {
      * 确保存在一个，不存在时新建，存在时更新
      * @param conditions {Object} 查询条件
      * @param data
-     * @param callback
+     * @param callback {Function} 回调
      */
     exports[key].existOne = function (conditions, data, callback) {
         data = _toPureData(data, ['_id']);
@@ -192,8 +191,7 @@ dato.each(models, function (key, model) {
      * 查找一个并更新
      * @param conditions {Object} 查询条件
      * @param {Object} data
-     * @param {Function} callback
-     * @returns {Query|*}
+     * @param callback {Function} 回调
      */
     exports[key].findOneAndUpdate = function (conditions, data, callback) {
         data = _toPureData(data, ['_id']);
@@ -238,7 +236,7 @@ dato.each(models, function (key, model) {
      * 获取某个 meta
      * @param conditions {Object} 查询条件
      * @param [metaKey]
-     * @param callback
+     * @param callback {Function} 回调
      */
     exports[key].getMeta = function (conditions, metaKey, callback) {
         if (typeis(metaKey) === 'function') {
@@ -269,7 +267,7 @@ dato.each(models, function (key, model) {
      * @param conditions {Object} 查询条件
      * @param metaKey
      * @param [metaVal]
-     * @param callback
+     * @param callback {Function} 回调
      */
     exports[key].setMeta = function (conditions, metaKey, metaVal, callback) {
         var metaMap = {};
