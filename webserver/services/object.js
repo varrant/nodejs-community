@@ -22,7 +22,7 @@ exports.createOne = function (authorId, data, callback) {
     howdo
         // 1.检查 scope 是否存在
         .task(function (next) {
-            scope.findOne(data.scope, function (err, doc) {
+            scope.findOne({_id: data.scope}, function (err, doc) {
                 if (err) {
                     return next(err);
                 }
@@ -79,7 +79,7 @@ exports.updateOne = function (userId, conditions, data, callback) {
     howdo
         // 1.检查 scope 是否存在
         .task(function (next) {
-            scope.findOne(data.scope, function (err, doc) {
+            scope.findOne({_id: data.scope}, function (err, doc) {
                 if (err) {
                     return next(err);
                 }

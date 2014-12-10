@@ -32,7 +32,7 @@ exports.createOne = function (data, callback) {
  * @param data
  * @param callback
  */
-exports.createOne = function (conditions, data, callback) {
+exports.updateOne = function (conditions, data, callback) {
     var newData = {
         name: data.name,
         uri: data.uri,
@@ -45,13 +45,9 @@ exports.createOne = function (conditions, data, callback) {
 
 
 /**
- * 根据 scope ID 查找
- * @param id
- * @param callback
+ * 查找
  */
-exports.findById = function (id, callback) {
-    scope.findOne({_id: id}, callback);
-};
+exports.findOne = scope.findOne;
 
 
 /**
