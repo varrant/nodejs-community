@@ -8,6 +8,7 @@
 
 var user = require('../models/').user;
 var setting = require('../models/').setting;
+var object = require('../models/').object;
 var ydrUtil = require('ydr-util');
 var configs = require('../../configs/');
 var qs = require('querystring');
@@ -133,19 +134,31 @@ exports.cancelBlock = function (conditions, callback) {
 
 /**
  * 加入组织
- * @param conditions
- * @param organizationId
- * @param callback
+ * @param conditions {Object} 查询条件
+ * @param organizationId {String} 组织 ID
+ * @param callback {Function} 回调
  */
 exports.joinOrganization = function (conditions, organizationId, callback) {
-    user.push(conditions, 'organizations', organizationId, callback);
+    object.findOne({
+        _id: organizationId
+    }, function (err, doc) {
+        if (err) {
+            return callback(err);
+        }
+
+        if (!doc) {
+            return callback(new Error('organization is not exist'));
+        }
+
+        user.push(conditions, 'organizations', organizationId, callback);
+    });
 };
 
 
 /**
  * 创建 oauth 链接
- * @param oauth
- * @param redirect
+ * @param oauthSettings {Object} oauth 配置
+ * @param redirect {String} 跳转地址
  * @returns {Object}
  */
 exports.createOauthURL = function (oauthSettings, redirect) {
@@ -170,7 +183,8 @@ exports.createOauthURL = function (oauthSettings, redirect) {
 
 /**
  * 解析 oauth 回来的 state 值
- * @param state
+ * @param state {String} state 值
+ * @returns {Boolean}
  */
 exports.isSafeOauthState = function (state) {
     var ret = ydrUtil.crypto.decode(state, configs.secret.session.secret);
@@ -185,9 +199,9 @@ exports.isSafeOauthState = function (state) {
 
 /**
  * oauth 回调
- * @param oauthSettings
- * @param code
- * @param callback
+ * @param oauthSettings {Object} oauth 配置
+ * @param code {String} 授权 code
+ * @param callback {Function} 回调
  */
 exports.oauthCallback = function (oauthSettings, code, callback) {
     var requestOptions = {

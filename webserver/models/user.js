@@ -47,7 +47,7 @@ var schema = mongoose.Schema({
         min: 1,
         // 管理管理者具有所有权限，即 2^0 + 2^1 + ... + 2^20
         // = 2097151
-        max: _powAll(20),
+        max: 2097151,
         default: 1
     },
     // 注册时间
@@ -127,16 +127,16 @@ var schema = mongoose.Schema({
 });
 
 module.exports = mongoose.model('user', schema);
-
-
-/**
- * 阶乘
- * @param n
- */
-function _powAll(n) {
-    if (n === 0) {
-        return 1;
-    }
-
-    return Math.pow(2, n) + _powAll(n - 1);
-}
+//
+//
+///**
+// * 阶乘
+// * @param n
+// */
+//function _powAll(n) {
+//    if (n === 0) {
+//        return 1;
+//    }
+//
+//    return Math.pow(2, n) + _powAll(n - 1);
+//}
