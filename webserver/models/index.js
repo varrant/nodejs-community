@@ -118,66 +118,6 @@ dato.each(models, function (key, model) {
 
 
     /**
-     * 确保存在一个，不存在时新建，存在时更新
-     * @param conditions {Object} 查询条件
-     * @param data {Object} 更新数据
-     * @param callback {Function} 回调
-     */
-    exports[key].existOne = function (conditions, data, callback) {
-        data = _toPureData(data, ['_id']);
-
-        this.findOne(conditions, function (err, doc) {
-            if (err) {
-                return callback(err);
-            }
-
-            var docData = _toPureData(doc, ['_id']);
-            var saveData;
-
-            // 存在
-            if (doc) {
-                saveData = dato.extend(true, {}, docData, data);
-
-                validator.validateAll(saveData, function (err, data) {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    var rules = this.rules;
-
-                    model.findOneAndUpdate(conditions, data, function (err, doc) {
-                        if (err) {
-                            err = _parseError(rules, err);
-                            return callback(err);
-                        }
-
-                        callback(err, doc);
-                    });
-                });
-            } else {
-                saveData = dato.extend(true, {}, conditions, data);
-                validator.validateAll(saveData, function (err, data) {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    var rules = this.rules;
-
-                    model.create(data, function (err, doc) {
-                        if (err) {
-                            err = _parseError(rules, err);
-                            return callback(err);
-                        }
-
-                        callback(err, doc);
-                    });
-                });
-            }
-        });
-    };
-
-
-    /**
      * 查找一个并更新
      * @param conditions {Object} 查询条件
      * @param data {Object} 更新数据
@@ -218,6 +158,33 @@ dato.each(models, function (key, model) {
 
                 model.findOneAndUpdate(conditions, newData, callback);
             });
+        });
+    };
+
+
+    /**
+     * 确保存在一个，不存在时新建，存在时更新
+     * @param conditions {Object} 查询条件
+     * @param data {Object} 更新数据
+     * @param callback {Function} 回调
+     */
+    exports[key].existOne = function (conditions, data, callback) {
+        data = _toPureData(data, ['_id']);
+
+        this.findOne(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            var saveData;
+
+            // 存在
+            if (doc) {
+                exports[key].findOneAndUpdate(conditions, data, callback);
+            } else {
+                saveData = dato.extend(true, {}, conditions, data);
+                exports[key].createOne(saveData, callback);
+            }
         });
     };
 
