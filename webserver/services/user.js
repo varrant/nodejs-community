@@ -6,10 +6,15 @@
 
 'use strict';
 
+var role = require('../../configs/').role;
 var user = require('../models/').user;
 var setting = require('../models/').setting;
 var object = require('../models/').object;
-var ydrUtil = require('ydr-util');
+var random = require('ydr-util').random;
+var dato = require('ydr-util').dato;
+var crypto = require('ydr-util').dato;
+var request = require('ydr-util').request;
+var typeis = require('ydr-util').typeis;
 var configs = require('../../configs/');
 var qs = require('querystring');
 var howdo = require('howdo');
@@ -162,17 +167,17 @@ exports.joinOrganization = function (conditions, organizationId, callback) {
  * @returns {Object}
  */
 exports.createOauthURL = function (oauthSettings, redirect) {
-    var num1 = ydrUtil.random.number(1, 100);
-    var num2 = ydrUtil.random.number(1, 100);
+    var num1 = random.number(1, 100);
+    var num2 = random.number(1, 100);
     var num3 = num1 + num2;
     var state = num1 + '\n' + num2 + '\n' + num3;
     var params = {
         scope: 'user:email',
         redirect_uri: redirect,
-        state: state = ydrUtil.crypto.encode(state, configs.secret.session.secret)
+        state: state = crypto.encode(state, configs.secret.session.secret)
     };
 
-    ydrUtil.dato.extend(true, params, oauthSettings);
+    dato.extend(true, params, oauthSettings);
 
     return {
         url: urls.authorize + '?' + qs.stringify(params),
@@ -187,11 +192,11 @@ exports.createOauthURL = function (oauthSettings, redirect) {
  * @returns {Boolean}
  */
 exports.isSafeOauthState = function (state) {
-    var ret = ydrUtil.crypto.decode(state, configs.secret.session.secret);
+    var ret = crypto.decode(state, configs.secret.session.secret);
     var arr = ret.split('\n');
-    var num1 = ydrUtil.dato.parseInt(arr[0], 0);
-    var num2 = ydrUtil.dato.parseInt(arr[1], 0);
-    var num3 = ydrUtil.dato.parseInt(arr[2], 0);
+    var num1 = dato.parseInt(arr[0], 0);
+    var num2 = dato.parseInt(arr[1], 0);
+    var num3 = dato.parseInt(arr[2], 0);
 
     return num1 + num2 === num3;
 };
@@ -222,7 +227,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
 
             var url = urls.accessToken + '?' + qs.stringify(params);
 
-            ydrUtil.request.post(url, requestOptions, function (err, data, res) {
+            request.post(url, requestOptions, function (err, data, res) {
                 if (err) {
                     return next(err);
                 }
@@ -253,7 +258,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
             };
             var url = urls.user + '?' + qs.stringify(params);
 
-            ydrUtil.request.get(url, requestOptions, function (err, data, res) {
+            request.get(url, requestOptions, function (err, data, res) {
                 if (err) {
                     return next(err);
                 }
@@ -284,7 +289,8 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                 return callback(err);
             }
 
-            //{ login: 'cloudcome',
+            //{
+            //    login: 'cloudcome',
             //    id: 3362033,
             //    avatar_url: 'https://avatars.githubusercontent.com/u/3362033?v=3',
             //    gravatar_id: '',
@@ -313,7 +319,8 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
             //    followers: 18,
             //    following: 4,
             //    created_at: '2013-01-24T01:59:23Z',
-            //    updated_at: '2014-11-22T16:26:16Z' }
+            //    updated_at: '2014-11-22T16:26:16Z'
+            // }
 
             var ret = {
                 accessToken: json.accessToken,
@@ -330,4 +337,47 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
 
             callback(null, ret);
         });
+};
+
+
+/**
+ * 判断用户是否有权限做指定的事
+ * @param conditionsOrRole {Object|Number} 查询条件或角色值
+ * @param doWhat {String} 事
+ * @param callback {Function} 回调
+ * @returns {*}
+ */
+exports.can = function (conditionsOrRole, doWhat, callback) {
+    // 没有限制的，表示可做
+    if (role[doWhat] === undefined) {
+        return callback(null, true);
+    }
+
+    var canRole = role[doWhat];
+    var userRole;
+    var canDo;
+
+    if (typeis(conditionsOrRole) === 'number') {
+        userRole = conditionsOrRole;
+        canDo = userRole & canRole > 0;
+
+        return callback(null, canDo);
+    }
+
+    user.findOne(conditionsOrRole, function (err, doc) {
+        if (err) {
+            return callback(err);
+        }
+
+        if (!doc) {
+            err = new Error('user is not exist');
+            err.type = 'notFound';
+            return callback(err);
+        }
+
+        userRole = doc.role;
+        canDo = userRole & canRole > 0;
+
+        callback(null, canDo);
+    });
 };
