@@ -10,6 +10,7 @@
 - `signUpAt` 注册时间
 - `signInAt` 登录时间
 - `score` 积分，默认1
+- `viewCount` 用户主页访问数量
 - `commentCount` 评论次数
 - `praisedCount` 被点赞次数
 - `acceptedCount` 被接受次数
