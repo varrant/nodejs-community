@@ -137,6 +137,7 @@ dato.each(models, function (key, model) {
                 return callback(err);
             }
 
+            var docData = _toPureData(doc, ['_id']);
             var newData = {};
 
             howdo.each(data, function (key, val, next) {
@@ -152,6 +153,7 @@ dato.each(models, function (key, model) {
                     next();
                 });
             }).follow(function (err) {
+                newData = dato.extend(true, {}, docData, newData);
                 callback(err, newData);
             });
         });
