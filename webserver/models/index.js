@@ -49,8 +49,8 @@ dato.each(models, function (key, model) {
 
     /**
      * 查找多个
-     * @param conditions
-     * @param callback
+     * @param conditions {Object} 查询条件
+     * @param callback {Function} 回调
      */
     exports[key].find = function (conditions, callback) {
         model.find(conditions, callback);
@@ -59,8 +59,8 @@ dato.each(models, function (key, model) {
 
     /**
      * 查找一个
-     * @param conditions
-     * @param callback
+     * @param conditions {Object} 查询条件
+     * @param callback {Function} 回调
      */
     exports[key].findOne = function (conditions, callback) {
         model.findOne(conditions, callback);
@@ -93,7 +93,7 @@ dato.each(models, function (key, model) {
 
     /**
      * 计算数量
-     * @param conditions
+     * @param conditions {Object} 查询条件
      * @param callback
      */
     exports[key].count = function (conditions, callback) {
@@ -103,7 +103,7 @@ dato.each(models, function (key, model) {
 
     /**
      * 创建一个
-     * @param {Object} data
+     * @param conditions {Object} 查询条件
      * @param {Function} callback
      * @returns {Query|*}
      */
@@ -130,7 +130,7 @@ dato.each(models, function (key, model) {
 
     /**
      * 确保存在一个，不存在时新建，存在时更新
-     * @param conditions
+     * @param conditions {Object} 查询条件
      * @param data
      * @param callback
      */
@@ -190,7 +190,7 @@ dato.each(models, function (key, model) {
 
     /**
      * 查找一个并更新
-     * @param {Object} conditions
+     * @param conditions {Object} 查询条件
      * @param {Object} data
      * @param {Function} callback
      * @returns {Query|*}
@@ -236,7 +236,7 @@ dato.each(models, function (key, model) {
 
     /**
      * 获取某个 meta
-     * @param conditions
+     * @param conditions {Object} 查询条件
      * @param [metaKey]
      * @param callback
      */
@@ -266,7 +266,7 @@ dato.each(models, function (key, model) {
 
     /**
      * 设置某个 meta
-     * @param conditions
+     * @param conditions {Object} 查询条件
      * @param metaKey
      * @param [metaVal]
      * @param callback
@@ -304,10 +304,10 @@ dato.each(models, function (key, model) {
 
     /**
      * 加操作
-     * @param conditions
-     * @param path
-     * @param count
-     * @param callback
+     * @param conditions {Object} 查询条件
+     * @param path {String} 查询字段
+     * @param count {Number} 加值
+     * @param callback {Function} 回调
      */
     exports[key].increase = function (conditions, path, count, callback) {
         model.findOne(conditions, function (err, doc) {
@@ -337,10 +337,10 @@ dato.each(models, function (key, model) {
 
     /**
      * 推操作
-     * @param conditions
-     * @param path
-     * @param item
-     * @param callback
+     * @param conditions {Object} 查询条件
+     * @param path {String} 查询字段
+     * @param item {*} 项目
+     * @param callback {Function} 回调
      */
     exports[key].push = function (conditions, path, item, callback) {
         model.findOne(conditions, function (err, doc) {
@@ -362,6 +362,38 @@ dato.each(models, function (key, model) {
 
             model.findByIdAndUpdate(conditions, {
                 $push: push
+            }, options, callback);
+        });
+    };
+
+
+    /**
+     * 拉操作
+     * @param conditions {Object} 查询条件
+     * @param path {String} 查询字段
+     * @param item {*} 项目
+     * @param callback {Function} 回调
+     */
+    exports[key].pull = function (conditions, path, item, callback) {
+        model.findOne(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!doc) {
+                err = new Error('要更新的数据不存在');
+                err.type = 'notFound';
+                return callback(err);
+            }
+
+            var pull = {};
+            pull[path] = item;
+            var options = {
+                upsert: true
+            };
+
+            model.findByIdAndUpdate(conditions, {
+                $pull: pull
             }, options, callback);
         });
     };
