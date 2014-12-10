@@ -12,5 +12,6 @@ var app = require('./app.js');
 module.exports = {
     app: app,
     dir: require('./dir.js')(app),
+    role: require('./role.js')(app),
     secret: require('./secret.js')(app)
 };
