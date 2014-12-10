@@ -6,11 +6,7 @@
 
 'use strict';
 
-var typeis = require('ydr-util').typeis;
 var interactive = require('../models/').interactive;
-var noop = function () {
-    // ignore
-};
 
 
 /**
@@ -23,7 +19,7 @@ var noop = function () {
  * @param [data.value=0] {Number} 影响值
  * @param [data.isApprove=true] {Number} 是否通过了
  * @param [data.at] {Date} 操作时间
- * @param [callback] {Function} 回调
+ * @param callback {Function} 回调
  */
 exports.active = function (data, callback) {
     // 四个的组合一定是唯一的
@@ -40,13 +36,19 @@ exports.active = function (data, callback) {
         isApprove: data.isApprove
     };
 
-    if (typeis(callback) !== 'function') {
-        callback = noop;
-    }
-
     if (data.model === 'user' || data.model === 'object') {
         // 发送邮件给被动用户
     }
 
-    interactive.existOne(conditions, data2, callback);
+    interactive.existOne(conditions, data2, function (err, newDoc, oldDoc) {
+        if (err) {
+            return callback(err);
+        }
+
+        if (!oldDoc) {
+            return callback(err, true);
+        }
+
+        callback(err, newDoc.value !== oldDoc.value);
+    });
 };
