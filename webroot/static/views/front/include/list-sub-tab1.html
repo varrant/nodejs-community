@@ -1,0 +1,16 @@
+<!--推荐+热门-->
+<div class="m-card">
+    <ul class="card-tab avg-xs-2 f-text-center">
+        <li class="active"><a href="#"><i class="i i-thumbs-up"></i>推荐</a></li>
+        <li><a href="#"><i class="i i-fire"></i>热门</a></li>
+    </ul>
+
+    <div class="card-body">
+        <ul class="m-simplelist">
+            {{list list as item}}
+            <li class="f-ellipsis"><a href="#">{{item.title}}</a></li>
+            {{/list}}
+        </ul>
+    </div>
+</div>
+<!--/推荐+热门-->

@@ -76,14 +76,14 @@
       "role": 1,
       "title": "观点",
       "name": "opinion",
-      "isDisplay": false,
+      "isDisplay": true,
       "desc": ""
     },
     {
       "role": 2,
-      "title": "笔记",
-      "name": "note",
-      "isDisplay": false,
+      "title": "微博",
+      "name": "weibo",
+      "isDisplay": true,
       "desc": ""
     },
     {

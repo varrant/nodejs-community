@@ -167,24 +167,32 @@ nav {
     padding: 20px 0;
   }
 
-  .home-name{
-    display: block;
-    font-size: 50px;
-    line-height: 100px;
+  .home-icon{
+    font-size: 80px;
   }
 
-  .i{
-    margin-left: 0;
+  .home-name{
+    font-size: 30px;
+    line-height: 60px;
   }
 
   .home-desc{
-    display: block;
-    font-size: 16px;
-    line-height: 40px;
+    font-size: 14px;
   }
 
+  @color-opinion: #F6E3FF;
   @color-question: #FFFCF0;
-  @color-help: #FFEBEB;
+  @color-weibo: #E3FFF9;
+  @color-help: #FFF3F3;
+
+  .home-opinion a{
+    background: @color-opinion;
+    color: darken(@color-opinion, 60%);
+
+    &:hover{
+      background: darken(@color-opinion, 3%);
+    }
+  }
 
   .home-question a{
     background: @color-question;
@@ -192,6 +200,15 @@ nav {
 
     &:hover{
       background: darken(@color-question, 3%);
+    }
+  }
+
+  .home-weibo a{
+    background: @color-weibo;
+    color: darken(@color-weibo, 60%);
+
+    &:hover{
+      background: darken(@color-weibo, 3%);
     }
   }
 
@@ -287,7 +304,6 @@ nav {
 
 // m-scopes
 .m-scopes {
-  background: #F2F2F2;
   padding: 20px;
   margin-bottom: 30px;
   border-radius: 4px;
@@ -326,8 +342,8 @@ nav {
     border-bottom: 1px solid lighten(@border-color, 4%);
     padding-bottom: 20px;
     margin-bottom: 20px;
-
-    &:last-child {
+    
+    &:last-child{
       border-bottom: 0;
       padding-bottom: 0;
       margin-bottom: 0;
@@ -513,10 +529,12 @@ nav {
 
 //m-pager
 .m-pager {
+  margin: 50px 0 20px;
+
   a {
     display: block;
     color: #888;
-    font-size: 16px;
+    font-size: 20px;
     background: #fff;
 
     &:hover {
