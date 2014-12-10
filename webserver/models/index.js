@@ -130,7 +130,7 @@ dato.each(models, function (key, model) {
     /**
      * 确保存在一个，不存在时新建，存在时更新
      * @param conditions {Object} 查询条件
-     * @param data
+     * @param data {Object} 更新数据
      * @param callback {Function} 回调
      */
     exports[key].existOne = function (conditions, data, callback) {
@@ -190,7 +190,7 @@ dato.each(models, function (key, model) {
     /**
      * 查找一个并更新
      * @param conditions {Object} 查询条件
-     * @param {Object} data
+     * @param data {Object} 更新数据
      * @param callback {Function} 回调
      */
     exports[key].findOneAndUpdate = function (conditions, data, callback) {
@@ -235,7 +235,7 @@ dato.each(models, function (key, model) {
     /**
      * 获取某个 meta
      * @param conditions {Object} 查询条件
-     * @param [metaKey]
+     * @param [metaKey] {String} meta 键
      * @param callback {Function} 回调
      */
     exports[key].getMeta = function (conditions, metaKey, callback) {
@@ -265,8 +265,8 @@ dato.each(models, function (key, model) {
     /**
      * 设置某个 meta
      * @param conditions {Object} 查询条件
-     * @param metaKey
-     * @param [metaVal]
+     * @param [metaKey] {String|Object} meta 键、meta 键值对
+     * @param [metaVal] {*} meta 值
      * @param callback {Function} 回调
      */
     exports[key].setMeta = function (conditions, metaKey, metaVal, callback) {
