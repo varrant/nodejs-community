@@ -495,7 +495,7 @@ function _parseError(rules, err) {
         switch (code) {
             case 11000:
                 path = (msg.match(REG_DUPLICATE) || ['', ''])[1];
-                msg = (path ? rules[path].alias : '未知字段') + '重复';
+                msg = (rules[path] ? rules[path].alias || rules[path].name : path) + ' duplicate';
                 mongoose = {
                     type: 'duplicate',
                     path: path
