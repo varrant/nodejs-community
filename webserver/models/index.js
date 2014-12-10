@@ -368,6 +368,41 @@ dato.each(models, function (key, model) {
 
 
     /**
+     * 切换 boolean 值
+     * @param conditions {Object} 查询条件
+     * @param path {String} 查询字段
+     * @param [boolean] {Boolean} 更新布尔值，默认为原来反值
+     * @param callback {Function} 回调
+     */
+    exports[key].toggle = function (conditions, path, boolean, callback) {
+        if (arguments.length === 3) {
+            callback = arguments[2];
+            boolean = null;
+        }
+
+        model.findOne(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!doc) {
+                err = new Error('要更新的数据不存在');
+                err.type = 'notFound';
+                return callback(err);
+            }
+
+            if (boolean === null) {
+                doc[path] = !doc[path];
+            } else {
+                doc[path] == !!boolean;
+            }
+
+            doc.save(callback);
+        });
+    };
+
+
+    /**
      * 原始 model
      */
     exports[key].rawModel = model;
