@@ -75,7 +75,7 @@ exports.increaseCommentCount = function (conditions, count, callback) {
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
-exports.increaseViewCount = function (conditions,count, callback) {
+exports.increaseViewCount = function (conditions, count, callback) {
     user.increase(conditions, 'viewCount', count, callback);
 };
 
@@ -137,7 +137,7 @@ exports.cancelBlock = function (conditions, callback) {
  * @param organizationId
  * @param callback
  */
-exports.pushOrganizations = function (conditions, organizationId, callback) {
+exports.joinOrganization = function (conditions, organizationId, callback) {
     user.push(conditions, 'organizations', organizationId, callback);
 };
 
