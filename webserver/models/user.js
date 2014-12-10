@@ -26,7 +26,7 @@ var schema = mongoose.Schema({
     weibo: {
         type: String,
         required: false,
-        unique: true
+        unique: false
     },
     // 昵称
     nickname: {
