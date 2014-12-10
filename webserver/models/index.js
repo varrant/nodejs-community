@@ -111,7 +111,7 @@ dato.each(models, function (key, model) {
                     return callback(err);
                 }
 
-                callback(err, doc);
+                callback(err, doc, null);
             });
         });
     };
@@ -156,7 +156,9 @@ dato.each(models, function (key, model) {
                     return callback(err);
                 }
 
-                model.findOneAndUpdate(conditions, newData, callback);
+                model.findOneAndUpdate(conditions, newData, function (err, newDoc) {
+                    callback.call(this, err, newDoc, doc);
+                });
             });
         });
     };
