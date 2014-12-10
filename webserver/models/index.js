@@ -118,6 +118,45 @@ dato.each(models, function (key, model) {
 
 
     /**
+     * 查找一个并进行更新前数据验证
+     * @param conditions {Object} 查询条件
+     * @param data {Object} 更新数据
+     * @param callback {Function} 回调
+     */
+    exports[key].findOneAndValidate = function (conditions, data, callback) {
+        data = _toPureData(data, ['_id']);
+
+        model.findOne(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!doc) {
+                err = new Error('doc is not exist');
+                err.type = 'notFound';
+                return callback(err);
+            }
+
+            var newData = {};
+
+            howdo.each(data, function (key, val, next) {
+                var validateData = {};
+
+                validateData[key] = val;
+                validator.validateOne(validateData, function (err, data) {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    dato.extend(true, newData, data);
+                    next();
+                });
+            }).follow(callback);
+        });
+    };
+
+
+    /**
      * 查找一个并更新
      * @param conditions {Object} 查询条件
      * @param data {Object} 更新数据
