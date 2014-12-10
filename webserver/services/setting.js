@@ -7,7 +7,7 @@
 'use strict';
 
 var setting = require('../models/').setting;
-var ydrUtil = require('ydr-util');
+var typeis = require('ydr-util').typeis;
 var howdo = require('howdo');
 
 
@@ -20,7 +20,7 @@ var howdo = require('howdo');
 exports.set = function (key, val, callback) {
     var map = [];
 
-    if (ydrUtil.typeis(val) === 'function') {
+    if (typeis(val) === 'function') {
         callback = val;
         map = key;
     } else {
@@ -47,7 +47,7 @@ exports.set = function (key, val, callback) {
  */
 exports.get = function (key, callback) {
     // find all
-    if (ydrUtil.typeis(key) === 'function') {
+    if (typeis(key) === 'function') {
         callback = key;
         setting.rawModel.find({}, function (err, docs) {
             if (err) {
