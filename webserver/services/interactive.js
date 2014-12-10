@@ -34,5 +34,9 @@ exports.push = function (data, callback) {
         callback = noop;
     }
 
+    if (data.model === 'user' || data.model === 'object') {
+        // 发送邮件给被动用户
+    }
+
     interactive.createOne(data, callback);
 };

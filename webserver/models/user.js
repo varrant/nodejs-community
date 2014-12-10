@@ -69,12 +69,12 @@ var schema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    // 被点赞次数
+    // 回答被赞同次数
     praisedCount: {
         type: Number,
         default: 0
     },
-    // 被接受次数
+    // 回答被接受次数
     acceptedCount: {
         type: Number,
         default: 0
@@ -86,16 +86,6 @@ var schema = mongoose.Schema({
     },
     // 被关注人数
     followedCount: {
-        type: Number,
-        default: 0
-    },
-    // 被精华次数
-    essencedCount: {
-        type: Number,
-        default: 0
-    },
-    // 被推荐次数
-    recommendCount: {
         type: Number,
         default: 0
     },

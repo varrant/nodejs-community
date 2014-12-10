@@ -10,6 +10,7 @@ var role = require('../../configs/').role;
 var user = require('../models/').user;
 var setting = require('../models/').setting;
 var object = require('../models/').object;
+var interactive = require('../models/').interactive;
 var random = require('ydr-util').random;
 var dato = require('ydr-util').dato;
 var crypto = require('ydr-util').dato;
@@ -93,8 +94,19 @@ exports.increaseViewCount = function (conditions, count, callback) {
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
-exports.increasePraiseCount = function (conditions, count, callback) {
-    user.increase(conditions, 'praiseCount', count, callback);
+exports.increasePraisedCount = function (conditions, count, callback) {
+    user.increase(conditions, 'praisedCount', count, callback);
+};
+
+
+/**
+ * 增加赞同数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseAcceptedCount = function (conditions, count, callback) {
+    user.increase(conditions, 'acceptedCount', count, callback);
 };
 
 
@@ -104,8 +116,30 @@ exports.increasePraiseCount = function (conditions, count, callback) {
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
-exports.increasePraiseCount = function (conditions, count, callback) {
-    user.increase(conditions, 'followCount', count, callback);
+exports.follow = function (operatorId,  userId, callback) {
+    user.increase({_id: operatorId}, 'followCount', 1, function (err, doc) {
+        callback.apply(this, arguments);
+
+        if(!err && doc){
+            interactive.push({
+                model: 'user',
+                path: 'followedCount',
+                operator: doc._id,
+                object: ''
+            });
+        }
+    });
+};
+
+
+/**
+ * 增加被关注数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseFollowedCount = function (conditions, count, callback) {
+    user.increase(conditions, 'followedCount', count, callback);
 };
 
 
