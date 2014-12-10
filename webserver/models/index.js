@@ -48,16 +48,6 @@ dato.each(models, function (key, model) {
     exports[key] = {};
 
     /**
-     * 查找多个
-     * @param conditions {Object} 查询条件
-     * @param callback {Function} 回调
-     */
-    exports[key].find = function (conditions, callback) {
-        model.find(conditions, callback);
-    };
-
-
-    /**
      * 查找一个
      * @param conditions {Object} 查询条件
      * @param callback {Function} 回调
@@ -358,7 +348,7 @@ dato.each(models, function (key, model) {
                 upsert: true
             };
 
-            model.findByIdAndUpdate(conditions, {
+            model.findOneAndUpdate(conditions, {
                 $push: push
             }, options, callback);
         });
@@ -390,7 +380,7 @@ dato.each(models, function (key, model) {
                 upsert: true
             };
 
-            model.findByIdAndUpdate(conditions, {
+            model.findOneAndUpdate(conditions, {
                 $pull: pull
             }, options, callback);
         });
@@ -424,7 +414,7 @@ dato.each(models, function (key, model) {
             if (boolean === null) {
                 doc[path] = !doc[path];
             } else {
-                doc[path] == !!boolean;
+                doc[path] = !!boolean;
             }
 
             doc.save(callback);
