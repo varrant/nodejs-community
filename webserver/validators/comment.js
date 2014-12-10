@@ -9,6 +9,7 @@
 
 var Validator = require('ydr-validator');
 var validator = new Validator();
+var REG_LINES = /[\n\s]{2,}/g;
 
 validator.pushRule({
     name: 'content',
@@ -16,7 +17,10 @@ validator.pushRule({
     alias: '评论内容',
     trim: true,
     minLength: 5,
-    maxLength: 10000
+    maxLength: 10000,
+    onafter: function (val) {
+        return val.replace(REG_LINES, '\n\n');
+    }
 });
 
 module.exports = validator;
