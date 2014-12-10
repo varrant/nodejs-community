@@ -8,6 +8,8 @@
 
 
 module.exports = {
+    interactive: require('./interactive.js'),
+    object: require('./object.js'),
     setting: require('./setting.js'),
     user: require('./user.js')
 };
