@@ -192,7 +192,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('要更新的数据不存在');
+                err = new Error('doc is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
@@ -240,7 +240,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('要查找的数据不存在');
+                err = new Error('doc is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
@@ -276,7 +276,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('要更新的数据不存在');
+                err = new Error('doc is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
@@ -304,7 +304,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('要更新的数据不存在');
+                err = new Error('doc is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
@@ -337,7 +337,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('要更新的数据不存在');
+                err = new Error('doc is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
@@ -369,7 +369,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('要更新的数据不存在');
+                err = new Error('doc is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
@@ -406,7 +406,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('要更新的数据不存在');
+                err = new Error('doc is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
