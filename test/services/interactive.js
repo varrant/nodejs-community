@@ -17,8 +17,7 @@ test
             path: 'followCount',
             object: random.string(24, 'a0'),
             operator: random.string(24, 'a0'),
-            value: 1,
-            desc: 'A关注了B'
+            value: 1
         }, function () {
             console.log(arguments);
             next();
