@@ -5,10 +5,11 @@
  */
 
 
-var mongoose = require('../server/mongoose.js');
-var user = require('../server/models/').user;
-var post = require('../server/models/').post;
-var scope = require('../server/models/').scope;
+var howdo = require('howdo');
+var mongoose = require('../webserver/mongoose.js');
+var user = require('../webserver/models/').user;
+var object = require('../webserver/models/').object;
+var scope = require('../webserver/models/').scope;
 
 mongoose(function (err) {
     if (err) {
@@ -17,17 +18,33 @@ mongoose(function (err) {
         return process.exit(-1);
     }
 
-    //user.increase({
-    //    _id: '547db3547eb55b21d51f7b56'
-    //}, 'followCount', 1, function(){
-    //    console.log(arguments);
-    //});
+    console.log('=========== test start ===========');
 
-    scope.createOne({
-        name: '测试域',
-        uri: 'test-scope',
-        cover: '1.png'
-    }, function () {
-        console.log(arguments);
-    });
+    howdo
+        //.task(function (next) {
+        //    console.log('\n=========== test increase ===========');
+        //
+        //    user.increase({
+        //        _id: '54869e75cf25bf7823b80ed5'
+        //    }, 'followCount', 1, function () {
+        //        console.log(arguments);
+        //        next();
+        //    });
+        //})
+        .task(function (next) {
+            console.log('\n=========== test createOne ===========');
+
+            scope.createOne({
+                name: '测试域',
+                uri: 'test-scope',
+                cover: '1.png'
+            }, function () {
+                console.log(arguments);
+                next();
+            });
+        })
+        .follow(function () {
+            console.log('=========== test end ===========');
+            process.exit();
+        });
 });
