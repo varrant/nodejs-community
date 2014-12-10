@@ -127,8 +127,8 @@ exports.increaseAcceptedCount = function (conditions, count, callback) {
 
 /**
  * 关注某人
- * @param conditions {Object} 查询条件
- * @param count {Number} 更新值
+ * @param operatorId {String} 关注者 ID
+ * @param userId {String} 被关注者 ID
  * @param callback {Function} 回调
  */
 exports.follow = function (operatorId, userId, callback) {
@@ -151,8 +151,8 @@ exports.follow = function (operatorId, userId, callback) {
 
 /**
  * 取消关注某人
- * @param conditions {Object} 查询条件
- * @param count {Number} 更新值
+ * @param operatorId {String} 取消关注者 ID
+ * @param userId {String} 被取消关注者 ID
  * @param callback {Function} 回调
  */
 exports.unfollow = function (operatorId, userId, callback) {
