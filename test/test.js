@@ -52,7 +52,10 @@ pro.start = function () {
         }).follow(function () {
             var t = Date.now() - t1;
             console.log('\n=========== test end (' + t + 'ms) ===========');
-            process.exit();
+
+            setTimeout(function () {
+                process.exit();
+            }, 1000);
         })
     });
 };
