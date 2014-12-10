@@ -107,14 +107,14 @@ var schema = mongoose.Schema({
         default: 1
     },
     // 被加分历史
-    // 默认有一次系统加分
+    // [{
+    //    user: userId,
+    //    date: date,
+    //    score: score
+    // }]
     scoreList: {
         type: Array,
-        default: [{
-            user: 0,
-            value: 1,
-            date: new Date()
-        }]
+        default: []
     },
     // 被阅读数
     viewCount: {
@@ -137,7 +137,7 @@ var schema = mongoose.Schema({
         default: 0
     },
     // 是否被接受了
-    // 通常指问题类的 post
+    // 通常指问题类的 object
     hasAccepted: {
         type: Boolean,
         default: false

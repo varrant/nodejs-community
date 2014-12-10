@@ -10,6 +10,7 @@
 module.exports = {
     interactive: require('./interactive.js'),
     object: require('./object.js'),
+    scope: require('./scope.js'),
     setting: require('./setting.js'),
     user: require('./user.js')
 };
