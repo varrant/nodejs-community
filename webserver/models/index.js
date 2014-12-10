@@ -151,7 +151,9 @@ dato.each(models, function (key, model) {
                     dato.extend(true, newData, data);
                     next();
                 });
-            }).follow(callback);
+            }).follow(function (err) {
+                callback(err, newData);
+            });
         });
     };
 
