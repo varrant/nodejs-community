@@ -152,7 +152,9 @@ exports.joinOrganization = function (conditions, organizationId, callback) {
         }
 
         if (!doc) {
-            return callback(new Error('organization is not exist'));
+            err = new Error('organization is not exist');
+            err.type = 'notFound';
+            return callback(err);
         }
 
         user.push(conditions, 'organizations', organizationId, callback);

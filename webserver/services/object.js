@@ -27,12 +27,12 @@ exports.get = function (type, uri, callback) {
 
 /**
  * 增加 object 分数
- * @param user {Object} 操作者
+ * @param operator {Object} 操作者
  * @param id {String} 操作 object ID
  * @param count {Number} 分值
  * @param callback {Function} 回调
  */
-exports.increaseScore = function (user, id, count, callback) {
+exports.increaseScore = function (operator, id, count, callback) {
     var conditions = {
         _id: id
     };
@@ -43,7 +43,7 @@ exports.increaseScore = function (user, id, count, callback) {
         object.push(conditions, 'score', {
             date: new Date(),
             value: count,
-            user: user.id
+            user: operator.id
         }, done);
     }).together(callback);
 };
@@ -51,40 +51,40 @@ exports.increaseScore = function (user, id, count, callback) {
 
 /**
  * 增加 object 阅读数量
- * @param id
+ * @param conditions
  * @param count
  * @param callback
  */
-exports.increaseViewCount = function (id, count, callback) {
-    object.increase({_id: id}, 'viewCount', count, callback);
+exports.increaseViewCount = function (conditions, count, callback) {
+    object.increase(conditions, 'viewCount', count, callback);
 };
 
 /**
  * 增加 object 评论数量
- * @param id
+ * @param conditions
  * @param count
  * @param callback
  */
-exports.increaseCommentCount = function (id, count, callback) {
-    object.increase({_id: id}, 'commentCount', count, callback);
+exports.increaseCommentCount = function (conditions, count, callback) {
+    object.increase(conditions, 'commentCount', count, callback);
 };
 
 /**
  * 增加 object 点赞收藏数量
- * @param id
+ * @param conditions
  * @param count
  * @param callback
  */
-exports.increaseFavoriteCount = function (id, count, callback) {
-    object.increase({_id: id}, 'favoriteCount', count, callback);
+exports.increaseFavoriteCount = function (conditions, count, callback) {
+    object.increase(conditions, 'favoriteCount', count, callback);
 };
 
 /**
  * 增加组织申请数量
- * @param id
+ * @param conditions
  * @param count
  * @param callback
  */
-exports.increaseApplyCount = function (id, count, callback) {
-    object.increase({_id: id}, 'applyCount', count, callback);
+exports.increaseApplyCount = function (conditions, count, callback) {
+    object.increase(conditions, 'applyCount', count, callback);
 };
