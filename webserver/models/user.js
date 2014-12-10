@@ -64,6 +64,11 @@ var schema = mongoose.Schema({
         type: Number,
         default: 1
     },
+    // 用户主页访问数量
+    viewCount: {
+        type: Number,
+        default: 0
+    },
     // 评论次数
     commentCount: {
         type: Number,
