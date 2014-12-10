@@ -215,6 +215,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
             'User-Agent': oauthSettings.appName
         }
     };
+    s
     howdo
         // 1. 获取 accessToken
         .task(function (next) {
