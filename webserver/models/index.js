@@ -132,7 +132,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('doc is not exist');
+                err = new Error('the document is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
@@ -173,7 +173,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('doc is not exist');
+                err = new Error('the document is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
@@ -250,7 +250,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('doc is not exist');
+                err = new Error('the document is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
@@ -286,7 +286,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('doc is not exist');
+                err = new Error('the document is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
@@ -314,7 +314,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('doc is not exist');
+                err = new Error('the document is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
@@ -347,7 +347,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('doc is not exist');
+                err = new Error('the document is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
@@ -379,7 +379,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('doc is not exist');
+                err = new Error('the document is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
@@ -416,7 +416,7 @@ dato.each(models, function (key, model) {
             }
 
             if (!doc) {
-                err = new Error('doc is not exist');
+                err = new Error('the document is not exist');
                 err.type = 'notFound';
                 return callback(err);
             }
