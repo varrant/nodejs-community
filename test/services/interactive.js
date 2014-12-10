@@ -12,11 +12,11 @@ var random = require('ydr-util').random;
 
 test
     .push('interactive.push', function (next) {
-        interactive.push({
+        interactive.active({
+            operator: '5487fa5fc57b05a81f23037d',
             model: 'user',
             path: 'followCount',
-            object: random.string(24, 'a0'),
-            operator: random.string(24, 'a0'),
+            object: '5487fab2eb3108d014e6abad',
             value: 1
         }, function () {
             console.log(arguments);

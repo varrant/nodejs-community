@@ -8,6 +8,12 @@
 
 var mongoose = require('mongoose');
 var schema = mongoose.Schema({
+    // 操作者
+    operator: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'user'
+    },
     // 模型，支持 object、user、comment 等
     model: {
         type: String,
@@ -18,21 +24,15 @@ var schema = mongoose.Schema({
         type: String,
         required: true
     },
-    // 操作者
-    operator: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'user'
-    },
     // 被操作对象，即ID
     object: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
-    // 影响值，默认1
+    // 影响值，默认0
     value: {
         type: Number,
-        default: 1
+        default: 0
     },
     // 操作时间
     at: {
