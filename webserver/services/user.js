@@ -75,6 +75,7 @@ exports.increaseCommentCount = function (conditions, count, callback) {
     user.increase(conditions, 'commentCount', count, callback);
 };
 
+
 /**
  * 增加阅读数量
  * @param conditions {Object} 查询条件
@@ -84,6 +85,7 @@ exports.increaseCommentCount = function (conditions, count, callback) {
 exports.increaseViewCount = function (conditions, count, callback) {
     user.increase(conditions, 'viewCount', count, callback);
 };
+
 
 /**
  * 增加赞同数量

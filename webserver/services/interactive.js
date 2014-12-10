@@ -21,7 +21,6 @@ var noop = function () {
  * @param data.operator {String} 操作者 ID
  * @param data.object {String} 被操作者 ID
  * @param [data.value=1] {Number} 影响值
- * @param data.desc {String} 描述
  * @param [data.isApprove=true] {Number} 是否通过了
  * @param [data.at] {Date} 操作时间
  * @param [callback] {Function} 回调

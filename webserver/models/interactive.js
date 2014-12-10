@@ -34,12 +34,6 @@ var schema = mongoose.Schema({
         type: Number,
         default: 1
     },
-    // 描述语句
-    // 如：xx发表了一篇文章yy
-    desc: {
-        type: String,
-        required: true
-    },
     // 操作时间
     at: {
         type: Date,
