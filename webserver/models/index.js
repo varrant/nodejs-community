@@ -25,17 +25,20 @@ var REG_DUPLICATE = new RegExp(DBNAME + '\\..*\\.\\$(.*)_1');
 
 
 /**
- * 添加了以下方法
- * @function .find
+ * 抽象模型方法
  * @function .findOne
+ * @function .find
  * @function .count
  * @function .createOne
- * @function .existOne
+ * @function .findOneAndValidate
  * @function .findOneAndUpdate
+ * @function .existOne
  * @function .getMeta
  * @function .setMeta
  * @function .increase
  * @function .push
+ * @function .pull
+ * @function .toggle
  * @function .rawModel
  */
 dato.each(models, function (key, model) {
