@@ -7,7 +7,8 @@
 'use strict';
 
 var howdo = require('howdo');
-var ydrUtil = require('ydr-util');
+var dato = require('ydr-util').dato;
+var typeis = require('ydr-util').typeis;
 var validators = require('../validators/');
 var models = {
     comment: require('./comment.js'),
@@ -37,7 +38,7 @@ var REG_DUPLICATE = new RegExp(DBNAME + '\\..*\\.\\$(.*)_1');
  * @function .push
  * @function .rawModel
  */
-ydrUtil.dato.each(models, function (key, model) {
+dato.each(models, function (key, model) {
     var validator = validators[key];
 
     if (!validator) {
@@ -63,6 +64,30 @@ ydrUtil.dato.each(models, function (key, model) {
      */
     exports[key].findOne = function (conditions, callback) {
         model.findOne(conditions, callback);
+    };
+
+
+    /**
+     * 多条件查询
+     * @param conditions {Object} 查询条件
+     * @param [options] {Object} 约束条件
+     * @param callback {Function} 回调
+     */
+    exports[key].find = function (conditions, options, callback) {
+        if (arguments.length === 2) {
+            callback = arguments[1];
+            options = {};
+        }
+
+        var query = model.find(conditions);
+
+        dato.each(options, function (key, val) {
+            if (query[key] && typeis(query[key]) === 'function') {
+                query = query[key](val);
+            }
+        });
+
+        query.exec(callback);
     };
 
 
@@ -122,7 +147,7 @@ ydrUtil.dato.each(models, function (key, model) {
 
             // 存在
             if (doc) {
-                saveData = ydrUtil.dato.extend(true, {}, docData, data);
+                saveData = dato.extend(true, {}, docData, data);
 
                 validator.validateAll(saveData, function (err, data) {
                     if (err) {
@@ -141,7 +166,7 @@ ydrUtil.dato.each(models, function (key, model) {
                     });
                 });
             } else {
-                saveData = ydrUtil.dato.extend(true, {}, conditions, data);
+                saveData = dato.extend(true, {}, conditions, data);
                 validator.validateAll(saveData, function (err, data) {
                     if (err) {
                         return callback(err);
@@ -195,7 +220,7 @@ ydrUtil.dato.each(models, function (key, model) {
                         return next(err);
                     }
 
-                    ydrUtil.dato.extend(true, newData, data);
+                    dato.extend(true, newData, data);
                     next();
                 });
             }).follow(function (err) {
@@ -216,7 +241,7 @@ ydrUtil.dato.each(models, function (key, model) {
      * @param callback
      */
     exports[key].getMeta = function (conditions, metaKey, callback) {
-        if (ydrUtil.typeis(metaKey) === 'function') {
+        if (typeis(metaKey) === 'function') {
             callback = metaKey;
             metaKey = null;
         }
@@ -249,7 +274,7 @@ ydrUtil.dato.each(models, function (key, model) {
     exports[key].setMeta = function (conditions, metaKey, metaVal, callback) {
         var metaMap = {};
 
-        if (ydrUtil.typeis(metaVal) === 'function') {
+        if (typeis(metaVal) === 'function') {
             metaMap = metaKey;
             callback = metaVal;
             metaVal = null;
@@ -271,7 +296,7 @@ ydrUtil.dato.each(models, function (key, model) {
             var meta = doc.meta;
             var data = _toPureData(doc, ['_id']);
 
-            data.meta = ydrUtil.dato.extend(true, {}, meta, metaMap);
+            data.meta = dato.extend(true, {}, meta, metaMap);
             model.findOneAndUpdate(conditions, data, callback);
         });
     };
@@ -296,13 +321,13 @@ ydrUtil.dato.each(models, function (key, model) {
                 return callback(err);
             }
 
-            count = ydrUtil.dato.parseInt(count, 0);
+            count = dato.parseInt(count, 0);
 
             if (count === 0) {
                 return callback(err, doc);
             }
 
-            var old = ydrUtil.dato.parseInt(doc[path], 0);
+            var old = dato.parseInt(doc[path], 0);
 
             doc[path] = old + count;
             doc.save(callback);
@@ -366,11 +391,11 @@ function _toPureData(data, removeKeys) {
     }
 
     if (removeKeys) {
-        if (ydrUtil.typeis(removeKeys) === 'string') {
+        if (typeis(removeKeys) === 'string') {
             removeKeys = [removeKeys];
         }
 
-        ydrUtil.dato.each(removeKeys, function (index, key) {
+        dato.each(removeKeys, function (index, key) {
             if (data) {
                 delete(data[key]);
             }
