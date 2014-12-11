@@ -6,7 +6,7 @@
         "./views/**/*.html"
     ],
     "css": {
-        "path": "./css/",
+        "path": "./static/css/",
         "root": "./"
     },
     "dest": "../webroot-pro/",

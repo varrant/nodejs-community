@@ -8,6 +8,6 @@
 
 
 module.exports = function(app, ctrlTest){
-    app.get('/test1/', ctrlTest.test1);
-    app.get('/test2/', ctrlTest.test2Page);
+    //app.get('/test1/', ctrlTest.test1);
+    //app.get('/test2/', ctrlTest.test2);
 };

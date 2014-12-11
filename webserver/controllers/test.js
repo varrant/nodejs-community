@@ -15,20 +15,14 @@ var random = require('ydr-util').random;
 
 module.exports = function (app) {
     var exports = {};
-    var options = app.locals.options;
-    var alioss = new ydrAliOss(options.alioss);
 
-    exports.test1 = function (req, res, next) {
-        if (configs.app.env === 'pro') {
-            return next();
-        }
-
-        res.send('');
-    };
-
-    exports.test2Page = function (req, res, next) {
-        res.render('test2.html');
-    };
+    //exports.test1 = function (req, res, next) {
+    //    res.render('test1.html');
+    //};
+    //
+    //exports.test2 = function (req, res, next) {
+    //    res.render('test2.html');
+    //};
 
     return exports;
 };
