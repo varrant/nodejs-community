@@ -16,58 +16,12 @@
     <div class="row g-container">
         <!--主-->
         <div class="col-md-9 g-main">
-            <div class="m-card">
-                <h2 class="card-title"><i class="i i-user"></i>云淡然<i class="i i-check-circle s-success" title="个人认证"></i>
-                    <div class="card-endtitle">
-                        <a href="#" class="s-danger"><i class="i i-weibo"></i></a>
-                        <a href="#" class="s-danger"><i class="i i-github"></i></a>
-                    </div>
-                </h2>
-                <div class="card-body">
-                    <div class="m-usercard">
-                        <div class="usercard-main f-clearfix">
-                            <div class="usercard-avatar f-left">
-                                <a href="#"><img src="/static/img/avatar.png" alt="avatar" width="100"
-                                                 height="100"/></a>
-                            </div>
-                            <div class="usercard-body">
-                                <ul class="m-simplelist">
-                                    <li><i class="i i-map-marker"></i>浙江杭州</li>
-                                    <li><i class="i i-group"></i>网易杭州</li>
-                                    <li><i class="i i-link"></i><a href="#">http://ydr.me/</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="usercard-bio s-muted">世界上所有的角色都有人出演，唯独你自己。</div>
-
-                        <ul class="usercard-statistics f-list-left s-light f-small">
-                            <li class="s-warning"><i class="i i-cube i-small"></i>20,123,900 次智问</li>
-                            <li class="s-success"><i class="i i-comment i-small"></i>20,123,900 次回答</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            {{include ./include/engineer-main-body.html}}
         </div>
         <!--/主-->
         <!--副-->
         <div class="col-md-3 g-sub">
-            <!--统计-->
-            <div class="m-card">
-                <div class="card-title"><i class="i i-bar-chart"></i>统计</div>
-                <div class="card-body">
-                    <ul class="m-simplelist s-muted">
-                        <li><i class="i i-clock-o"></i>2014-12-1 12:21:19 时加入</li>
-                        <li><i class="i i-eye"></i>1,223,901 次访问</li>
-                        <li><i class="i i-thumbs-up"></i>31,091,331 次赞同</li>
-                        <li><i class="i i-star"></i>31,091,331 次关注</li>
-                        <li class="f-text-center">
-                            <button class="btn btn-primary"><i class="i i-star"></i>关注</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!--/统计-->
+            {{include ./include/engineer-sub-statistics.html}}
         </div>
         <!--/副-->
     </div>
