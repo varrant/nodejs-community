@@ -29,10 +29,6 @@ module.exports = function (app) {
     // 中间件：路由验证、安全验证、访问验证等
     require('./middleware.js')(app, exports.middleware);
 
-    // 静态路由
-    app.use('/static/', express.static(configs.dir.static, staticOptions));
-    app.use('/', express.static(configs.dir.webroot, staticOptions));
-
     // 测试
     require('./test.js')(app, exports.test);
 
@@ -44,6 +40,9 @@ module.exports = function (app) {
 
     // API 路由
     require('./api.js')(app, exports.api);
+
+    // 程序路由优先，最后静态路由
+    app.use('/', express.static(configs.dir.webroot, staticOptions));
 
     // notFound/serverError 日志
     app.use(log());
