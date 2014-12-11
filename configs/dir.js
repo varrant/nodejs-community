@@ -10,13 +10,9 @@ var path = require('path');
 
 module.exports = function (app) {
     return {
-        // 静态
-        static: path.join(__dirname, '../webroot/', 'pro' === app.env ? 'static-pro' : 'static'),
         // 资源
-        webroot: path.join(__dirname, '../webroot'),
+        webroot: path.join(__dirname, '../webroot-' + app.env),
         // 资源
-        log: path.join(__dirname, '../logs'),
-        // 资源
-        upload: path.join(__dirname, '../webroot/upload')
+        log: path.join(__dirname, '../logs')
     };
 };
