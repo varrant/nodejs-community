@@ -70,7 +70,11 @@ exports.createOne = function (authorId, data, callback) {
             scope.increaseObjectCount({
                 _id: data.scope
             }, 1, noop);
+
             // 更新 label
+            label.increaseObjectCount({
+                _id: data.scope
+            }, 1, noop);
         });
 };
 
