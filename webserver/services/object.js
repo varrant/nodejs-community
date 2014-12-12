@@ -9,6 +9,7 @@
 var typeis = require('ydr-util').typeis;
 var object = require('../models').object;
 var scope = require('./scope.js');
+var label = require('./label.js');
 var howdo = require('howdo');
 var noop = function () {
     // ignore
@@ -123,6 +124,12 @@ exports.updateOne = function (userId, conditions, data, callback) {
 
         });
 };
+
+
+/**
+ * findOne
+ */
+exports.findOne = object.findOne;
 
 
 /**
