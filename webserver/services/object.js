@@ -11,6 +11,8 @@ var object = require('../models').object;
 var scope = require('./scope.js');
 var label = require('./label.js');
 var howdo = require('howdo');
+var dato = require('ydr-util').dato;
+var keys = ['title', 'uri', 'type', 'scope', 'labels', 'introduction', 'content', 'isDisplay'];
 var noop = function () {
     // ignore
 };
@@ -24,7 +26,7 @@ var noop = function () {
  */
 exports.createOne = function (authorId, data, callback) {
     howdo
-        // 1.检查 scope 是否存在
+        // 1. 检查 scope 是否存在
         .task(function (next) {
             scope.findOne({_id: data.scope}, function (err, doc) {
                 if (err) {
@@ -43,24 +45,18 @@ exports.createOne = function (authorId, data, callback) {
         // 2. 新建数据
         .task(function (next) {
             var date = new Date();
-            var data2 = {
+            var data2 = dato.pick(data, keys);
+            var data3 = {
                 author: authorId,
-                title: data.title,
-                uri: data.uri,
-                type: data.type,
-                scope: data.scope,
-                labels: data.labels,
-                introduction: data.introduction,
-                content: data.content,
                 updateAt: date,
                 updateList: [{
                     user: authorId,
                     date: date
-                }],
-                isDisplay: typeis(data.isDisplay) === 'undefined' ? true : !!data.isDisplay
+                }]
             };
+            var data4 = dato.extend(data2, data3);
 
-            object.createOne(data2, next);
+            object.createOne(data4, next);
         })
         // 顺序串行
         .follow(function (err, doc) {
@@ -106,26 +102,40 @@ exports.updateOne = function (userId, conditions, data, callback) {
         })
         // 2. 数据预验证
         .task(function (next) {
-            object.findOneAndValidate(conditions, data, next);
+            var data2 = dato.pick(data, keys);
+
+            object.findOneAndValidate(conditions, data2, next);
         })
         // 3. 原生更新
-        .task(function (next, newData) {
-            newData.updateAt = date;
-            newData.updateList.push({
+        .task(function (next, data3) {
+            data3.updateAt = date;
+            data3.updateList.push({
                 user: userId,
                 date: date
             });
-            newData.isDisplay = typeis(newData.isDisplay) === 'undefined' ? true : !!newData.isDisplay
 
-            object.rawModel.findOneAndUpdate(conditions, newData, next);
+            object.findOneAndUpdate(conditions, data3, next);
         })
         // 顺序串行
-        .follow(function (err, doc) {
+        .follow(function (err, doc, oldDoc) {
             callback.apply(this, arguments);
 
             // 更新 scope
-            // 更新 label
+            scope.increaseObjectCount({_id: doc.scope}, 1, noop);
+            scope.increaseObjectCount({_id: oldDoc.scope}, -1, noop);
 
+            // 更新 label
+            var diff = dato.compare(doc.labels, oldDoc.labels);
+            var only1 = diff.only[0];
+            var only2 = diff.only[1];
+
+            only1.forEach(function (name) {
+                label.increaseObjectCount({name: name}, 1, noop);
+            });
+
+            only2.forEach(function (name) {
+                label.increaseObjectCount({name: name}, -1, noop);
+            });
         });
 };
 
