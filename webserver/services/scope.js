@@ -7,7 +7,9 @@
 'use strict';
 
 var scope = require('../models/').scope;
-var howdo = require('howdo');
+//var howdo = require('howdo');
+var dato = require('ydr-util').dato;
+var keys = ['name', 'uri', 'cover', 'introduction'];
 
 
 ///**
@@ -64,12 +66,7 @@ var howdo = require('howdo');
  * @param callback {Function} 回调
  */
 exports.createOne = function (data, callback) {
-    var data2 = {
-        name: data.name,
-        uri: data.uri,
-        cover: data.cover,
-        introduction: data.introduction
-    };
+    var data2 = dato.pick(data, keys);
 
     scope.createOne(data2, callback);
 };
@@ -82,12 +79,7 @@ exports.createOne = function (data, callback) {
  * @param callback {Function} 回调
  */
 exports.updateOne = function (conditions, data, callback) {
-    var data2 = {
-        name: data.name,
-        uri: data.uri,
-        cover: data.cover,
-        introduction: data.introduction
-    };
+    var data2 = dato.pick(data, keys);
 
     scope.findOneAndUpdate(conditions, data2, callback);
 };
