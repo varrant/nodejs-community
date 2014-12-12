@@ -141,8 +141,7 @@ dato.each(models, function (key, model) {
                 return callback(err);
             }
 
-            var docData = _toPureData(doc, ['_id']);
-            var newData = {};
+            var data2 = {};
 
             howdo.each(data, function (key, val, next) {
                 var validateData = {};
@@ -153,12 +152,11 @@ dato.each(models, function (key, model) {
                         return next(err);
                     }
 
-                    dato.extend(true, newData, data);
-                    next();
+                    dato.extend(true, data2, data);
+                    next(err, data2);
                 });
-            }).follow(function (err) {
-                newData = dato.extend(true, {}, docData, newData);
-                callback(err, newData);
+            }).follow(function (err, data2) {
+                callback(err, data2);
             });
         });
     };
@@ -332,9 +330,15 @@ dato.each(models, function (key, model) {
             }
 
             var old = dato.parseInt(doc[path], 0);
+            var data = {};
 
-            doc[path] = old + count;
-            doc.save(callback);
+            data[path] = old + count;
+
+            if (data[path] < 0) {
+                data[path] = 0;
+            }
+
+            exports[key].findOneAndUpdate(conditions, data, callback);
         });
     };
 
@@ -364,9 +368,15 @@ dato.each(models, function (key, model) {
             }
 
             var old = dato.parseInt(doc[path], 0);
+            var data = {};
 
-            doc[path] = old + count;
-            doc.save(callback);
+            data[path] = old + count;
+
+            if (data[path] < 0) {
+                data[path] = 0;
+            }
+
+            exports[key].findOneAndUpdate(conditions, data, callback);
         });
     };
 

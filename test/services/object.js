@@ -30,4 +30,18 @@ test
             next();
         });
     })
+    .push('object.updateOne', function (next) {
+        object.updateOne(author, {
+            type: 'help',
+            uri: 'hello-world'
+        }, {
+            scope: scope1Id,
+            title: '世界，你好',
+            content: content,
+            labels: ['label2', 'label3', 'label4', 'label5']
+        }, function () {
+            console.log(arguments);
+            next();
+        });
+    })
     .start();
