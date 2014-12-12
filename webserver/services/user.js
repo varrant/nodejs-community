@@ -102,6 +102,17 @@ exports.increaseCommentCount = function (conditions, count, callback) {
 
 
 /**
+ * 增加回复数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseRepliedCount = function (conditions, count, callback) {
+    user.increase(conditions, 'repliedCount', count, callback);
+};
+
+
+/**
  * 增加同意数量
  * @param conditions {Object} 查询条件
  * @param count {Number} 更新值

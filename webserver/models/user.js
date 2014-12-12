@@ -74,6 +74,11 @@ var schema = mongoose.Schema({
         type: Number,
         default: 0
     },
+    // 被回复次数
+    repliedCount: {
+        type: Number,
+        default: 0
+    },
     // 回答被赞同次数
     agreedCount: {
         type: Number,

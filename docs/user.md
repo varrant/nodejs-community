@@ -12,6 +12,7 @@
 - `score` 积分，默认1
 - `viewCount` 用户主页访问数量
 - `commentCount` 评论次数
+- `repliedCount` 被回复次数
 - `agreedCount` 被赞同次数
 - `acceptedCount` 被接受次数
 - `followCount` 关注人数
