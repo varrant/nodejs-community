@@ -8,8 +8,11 @@
 
 var typeis = require('ydr-util').typeis;
 var object = require('../models').object;
-var scope = require('../models').scope;
+var scope = require('./scope.js');
 var howdo = require('howdo');
+var noop = function () {
+    // ignore
+};
 
 
 /**
@@ -63,6 +66,9 @@ exports.createOne = function (authorId, data, callback) {
             callback.apply(this, arguments);
 
             // 更新 scope
+            scope.increaseObjectCount({
+                _id: data.scope
+            }, 1, noop);
             // 更新 label
         });
 };
