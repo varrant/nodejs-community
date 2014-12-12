@@ -63,6 +63,12 @@ test
             next();
         });
     })
+    .push('increaseObjectTypeCount', function (next) {
+        user.increaseObjectTypeCount({github: 'cloudcome'}, 'help', 1, function () {
+            console.log(arguments);
+            next();
+        });
+    })
     .push('user.setBlock', function (next) {
         user.setBlock({
             github: 'cloudcome'

@@ -15,7 +15,7 @@ var howdo = require('howdo');
 var dato = require('ydr-util').dato;
 var keys = ['title', 'uri', 'type', 'scope', 'labels', 'introduction', 'content', 'isDisplay'];
 var noop = function (err) {
-    if(err){
+    if (err) {
         console.error(err);
     }
 };
@@ -88,16 +88,20 @@ exports.createOne = function (author, data, callback) {
         })
         // 顺序串行
         .follow(function (err, doc) {
-            callback.apply(this, arguments);
+            callback(err, doc);
 
-            // 更新 scope.objectCount
-            scope.increaseObjectCount({_id: data.scope}, 1, noop);
+            if (!err && doc) {
+                // 更新 scope.objectCount
+                scope.increaseObjectCount({_id: data.scope}, 1, noop);
 
-            // 更新 label.objectCount
-            label.increaseObjectCount({_id: data.scope}, 1, noop);
+                // 更新 label.objectCount
+                doc.labels.forEach(function (name) {
+                    label.increaseObjectCount({name: name}, 1, noop);
+                });
 
-            // 更新 user.objectStatistics
-            user.increaseObjectTypeCount({_id: author.id}, data.type, 1, noop);
+                // 更新 user.objectStatistics
+                user.increaseObjectTypeCount({_id: author.id}, data.type, 1, noop);
+            }
         });
 };
 
@@ -169,28 +173,30 @@ exports.updateOne = function (author, conditions, data, callback) {
         })
         // 顺序串行
         .follow(function (err, doc, oldDoc) {
-            callback.apply(this, arguments);
+            callback(err, doc);
 
-            // 更新 scope.objectCount
-            scope.increaseObjectCount({_id: doc.scope}, 1, noop);
-            scope.increaseObjectCount({_id: oldDoc.scope}, -1, noop);
+            if (!err && doc) {
+                // 更新 scope.objectCount
+                scope.increaseObjectCount({_id: doc.scope}, 1, noop);
+                scope.increaseObjectCount({_id: oldDoc.scope}, -1, noop);
 
-            // 更新 label.objectCount
-            var diff = dato.compare(doc.labels, oldDoc.labels);
-            var only1 = diff.only[0];
-            var only2 = diff.only[1];
+                // 更新 label.objectCount
+                var diff = dato.compare(doc.labels, oldDoc.labels);
+                var only1 = diff.only[0];
+                var only2 = diff.only[1];
 
-            only1.forEach(function (name) {
-                label.increaseObjectCount({name: name}, 1, noop);
-            });
+                only1.forEach(function (name) {
+                    label.increaseObjectCount({name: name}, 1, noop);
+                });
 
-            only2.forEach(function (name) {
-                label.increaseObjectCount({name: name}, -1, noop);
-            });
+                only2.forEach(function (name) {
+                    label.increaseObjectCount({name: name}, -1, noop);
+                });
 
-            // 更新 user.objectStatistics
-            user.increaseObjectTypeCount({_id: author.id}, doc.type, 1, noop);
-            user.increaseObjectTypeCount({_id: author.id}, oldDoc.type, -1, noop);
+                // 更新 user.objectStatistics
+                user.increaseObjectTypeCount({_id: author.id}, doc.type, 1, noop);
+                user.increaseObjectTypeCount({_id: author.id}, oldDoc.type, -1, noop);
+            }
         });
 };
 

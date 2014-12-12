@@ -190,12 +190,19 @@ exports.increaseObjectTypeCount = function (conditions, type, count, callback) {
             return callback(err);
         }
 
+        if (!doc.objectStatistics) {
+            doc.objectStatistics = {};
+        }
         var one = dato.parseInt(doc.objectStatistics[type], 0) + count;
         var all = dato.parseInt(doc.objectStatistics._all, 0) + count;
+        var data = {};
 
-        doc.objectStatistics[type] = one;
-        doc.objectStatistics._all = all;
-        doc.save(callback);
+        data[type] = one;
+        data._all = all;
+
+        var data2 = dato.extend(doc.objectStatistics, data);
+
+        user.findOneAndUpdate(conditions, {objectStatistics: data2}, callback);
     });
 };
 

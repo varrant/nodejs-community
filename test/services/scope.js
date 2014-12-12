@@ -12,8 +12,8 @@ var scope = require('../../webserver/services/').scope;
 test
     .push('scope.createOne', function (next) {
         scope.createOne({
-            name: 'scope2',
-            uri: 'scope2',
+            name: 'scope1',
+            uri: 'scope1',
             introduction: '呵呵\n\n\n\n\n\n\n哈哈',
             cover: '1234567890'
         }, function () {
