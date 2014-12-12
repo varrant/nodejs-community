@@ -6,6 +6,7 @@
 
 'use strict';
 
+var random = require('ydr-util').random;
 var test = require('../test.js');
 var object = require('../../webserver/services/').object;
 var author = {
@@ -35,10 +36,10 @@ test
             type: 'help',
             uri: 'hello-world'
         }, {
-            scope: scope1Id,
+            scope: scope2Id,
             title: '世界，你好',
             content: content,
-            labels: ['label2', 'label3', 'label4', 'label5']
+            labels: ['label6']
         }, function () {
             console.log(arguments);
             next();

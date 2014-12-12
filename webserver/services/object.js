@@ -183,7 +183,7 @@ exports.updateOne = function (author, conditions, data, callback) {
 
             data3.updateAt = date;
             data3.$push = {
-                updateAtList: {
+                updateList: {
                     user: author.id,
                     date: date
                 }
