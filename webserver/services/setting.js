@@ -80,7 +80,7 @@ exports.get = function (key, callback) {
 
 
 /**
- * 查找某一个 type 的配置
+ * 查找某一个可见的 type
  * @param typeName {String} type 名称
  * @param callback {Function} 回调
  */
@@ -99,7 +99,7 @@ exports.getType = function (typeName, callback) {
         var find = null;
 
         dato.each(doc, function (index, type) {
-            if (type.name === typeName) {
+            if (type.name === typeName && type.isDisplay === true) {
                 find = type;
                 return false;
             }
