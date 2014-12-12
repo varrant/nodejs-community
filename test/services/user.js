@@ -7,7 +7,6 @@
 'use strict';
 
 var test = require('../test.js');
-var mongoose = require('../../webserver/mongoose.js');
 var user = require('../../webserver/services/').user;
 var random = require('ydr-util').random;
 
