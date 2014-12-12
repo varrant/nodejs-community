@@ -11,9 +11,9 @@ var label = require('../models/').label;
 
 
 /**
- * 创建一个 scope
- * @param data
- * @param callback
+ * 创建一个 label
+ * @param data {Object} 数据
+ * @param callback {Function} 回调
  */
 exports.createOne = function (data, callback) {
     var newData = {
@@ -25,10 +25,10 @@ exports.createOne = function (data, callback) {
 
 
 /**
- * 更新一个 scope
- * @param conditions
- * @param data
- * @param callback
+ * 更新一个 label
+ * @param conditions {Object} 查询条件
+ * @param data {Object} 数据
+ * @param callback {Function} 回调
  */
 exports.updateOne = function (conditions, data, callback) {
     var newData = {
@@ -47,10 +47,10 @@ exports.findOne = label.findOne;
 
 /**
  * 增加 scope 中的 object 数量
- * @param id
- * @param count
- * @param callback
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新数量
+ * @param callback {Function} 回调
  */
-exports.increaseObjectCount = function (id, count, callback) {
-    label.increase({_id: id}, 'objectCount', count, callback);
+exports.increaseObjectCount = function (conditions, count, callback) {
+    label.increase(conditions, 'objectCount', count, callback);
 };
