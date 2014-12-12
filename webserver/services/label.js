@@ -50,5 +50,5 @@ exports.findOne = label.findOne;
  * @param callback {Function} 回调
  */
 exports.increaseObjectCount = function (conditions, count, callback) {
-    label.increase(conditions, 'objectCount', count, callback);
+    label.mustIncrease(conditions, 'objectCount', count, callback);
 };
