@@ -9,6 +9,7 @@
 var Oss = require('ydr-ali-oss');
 var random = require('ydr-util').random;
 var REG_IMAGE = /^image\/.*$/;
+var configs = require('../../../configs/');
 
 module.exports = function (app) {
     var exports = {};
@@ -31,7 +32,7 @@ module.exports = function (app) {
      */
     exports.put = function (req, res, next) {
         oss.put(req, {
-            object: '/f2ec.com/img/' + random.guid()
+            object: configs.dir.upload + random.guid()
         }, function (err, ret) {
             if (err) {
                 return next(err);
