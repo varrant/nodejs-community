@@ -8,8 +8,7 @@
 
 var role = require('../../configs/').role;
 var user = require('../models/').user;
-var setting = require('../models/').setting;
-var object = require('../models/').object;
+var object = require('./object.js');
 var interactive = require('./interactive.js');
 var random = require('ydr-util').random;
 var dato = require('ydr-util').dato;
