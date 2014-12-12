@@ -36,6 +36,7 @@ var REG_DUPLICATE = new RegExp(DBNAME + '\\..*\\.\\$(.*)_1');
  * @function .getMeta
  * @function .setMeta
  * @function .increase
+ * @function .mustIncrease
  * @function .push
  * @function .pull
  * @function .toggle
@@ -322,6 +323,38 @@ dato.each(models, function (key, model) {
                 err = new Error('the document is not exist');
                 err.type = 'notFound';
                 return callback(err);
+            }
+
+            count = dato.parseInt(count, 0);
+
+            if (count === 0) {
+                return callback(err, doc);
+            }
+
+            var old = dato.parseInt(doc[path], 0);
+
+            doc[path] = old + count;
+            doc.save(callback);
+        });
+    };
+
+
+    /**
+     * 必须加操作，存在时增加，不存在时设置为此值
+     * @param conditions {Object} 查询条件
+     * @param path {String} 查询字段
+     * @param count {Number} 加值
+     * @param callback {Function} 回调
+     */
+    exports[key].mustIncrease = function (conditions, path, count, callback) {
+        model.findOne(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!doc) {
+                conditions[path] = count;
+                return exports[key].createOne(conditions, callback);
             }
 
             count = dato.parseInt(count, 0);
