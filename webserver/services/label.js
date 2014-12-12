@@ -8,6 +8,8 @@
 
 
 var label = require('../models/').label;
+var dato = require('ydr-util').dato;
+var keys = ['name'];
 
 
 /**
@@ -16,11 +18,9 @@ var label = require('../models/').label;
  * @param callback {Function} 回调
  */
 exports.createOne = function (data, callback) {
-    var newData = {
-        name: data.name
-    };
+    var data2 = dato.pick(data, keys);
 
-    label.createOne(newData, callback);
+    label.createOne(data2, callback);
 };
 
 
@@ -31,11 +31,9 @@ exports.createOne = function (data, callback) {
  * @param callback {Function} 回调
  */
 exports.updateOne = function (conditions, data, callback) {
-    var newData = {
-        name: data.name
-    };
+    var data2 = dato.pick(data, keys);
 
-    label.findOneAndUpdate(conditions, newData, callback);
+    label.findOneAndUpdate(conditions, data2, callback);
 };
 
 
