@@ -12,6 +12,14 @@ var validator = new Validator();
 var REG_LINES = /[\n\s]{2,}/g;
 
 validator.pushRule({
+    name: 'name',
+    alias: '名称',
+    type: 'string',
+    minLength: 1,
+    maxLength: 50
+});
+
+validator.pushRule({
     name: 'cover',
     alias: '封面',
     type: 'string',
