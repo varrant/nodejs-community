@@ -20,13 +20,6 @@ var schema = mongoose.Schema({
         type: String,
         required: true
     },
-    // 是否显示评论
-    // true = 显示评论，审核通过的
-    // false = 待审核评论，审核不通过或者待审的
-    isDisplay: {
-        type: Boolean,
-        default: true
-    },
     // 评论时间
     publishAt: {
         type: Date,

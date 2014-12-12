@@ -8,6 +8,7 @@
 
 
 module.exports = {
+    comment: require('./comment.js'),
     interactive: require('./interactive.js'),
     label: require('./label.js'),
     object: require('./object.js'),

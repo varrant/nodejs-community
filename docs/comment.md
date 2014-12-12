@@ -4,7 +4,6 @@
 
 - `author` 评论作者
 - `content` 评论内容
-- `isDisplay` 是否在前台显示
 - `publishAt` 发布时间
 - `post` 评论文章
 - `parent` 评论父级
