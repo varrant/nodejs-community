@@ -33,7 +33,7 @@ var schema = mongoose.Schema({
     // 项目数量
     objectCount: {
         type: Number,
-        default: 1
+        default: 0
     },
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证
