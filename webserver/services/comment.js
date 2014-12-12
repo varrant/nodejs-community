@@ -40,7 +40,25 @@ exports.createOne = function (author, data, meta, callback) {
     data2.meta = meta;
 
     howdo
-        // 1. 检查父级分类是否存在
+        // 1. 检查 object 是否存在
+        .task(function (next) {
+            object.findOne({
+                _id: data2.object
+            }, function (err, doc) {
+                if (err) {
+                    return next(err);
+                }
+
+                if (!doc) {
+                    err = new Error('the object is not exist');
+                    err.type = 'notFound';
+                    return next(err);
+                }
+
+                next();
+            });
+        })
+        // 2. 检查父级分类是否存在
         .task(function (next) {
             if (!data2.parent) {
                 return next();
@@ -59,25 +77,7 @@ exports.createOne = function (author, data, meta, callback) {
                     return next(err);
                 }
 
-                next();
-            });
-        })
-        // 2. 检查 object 是否存在
-        .task(function (next) {
-            object.findOne({
-                _id: data2.object
-            }, function (err, doc) {
-                if (err) {
-                    return next(err);
-                }
-
-                if (!doc) {
-                    err = new Error('the object is not exist');
-                    err.type = 'notFound';
-                    return next(err);
-                }
-
-                next();
+                next(err, doc);
             });
         })
         // 3. 写入
@@ -89,7 +89,26 @@ exports.createOne = function (author, data, meta, callback) {
             callback(err, doc);
 
             if (!err && doc) {
+                // object.commentCount
+                object.increaseCommentCount({_id: doc.object}, 1, noop);
+
+                // user.commentCount
                 user.increaseCommentCount({_id: author.id}, 1, noop);
+
+                if (doc.parent) {
+                    // commnet2.replyCount
+                    comment.increase({_id: doc.parent}, 'replyCount', 1, function (err, doc) {
+                        if (err) {
+                            console.error(err);
+                        }
+
+                        // 忽略错误
+                        if (doc) {
+                            // user2.repliedCount
+                            user.increaseRepliedCount({_id: doc.author}, 1, noop);
+                        }
+                    });
+                }
             }
         });
 };

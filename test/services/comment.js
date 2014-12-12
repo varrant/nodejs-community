@@ -17,6 +17,7 @@ test
     .push('createOne', function (next) {
         comment.createOne(author, {
             object: '548aaf893b003d0824c43ce5',
+            parent: '548ab47229202f8c25beeef3',
             content: '呵呵呵呵呵呵呵呵'
         }, {}, function () {
             console.log(arguments);
