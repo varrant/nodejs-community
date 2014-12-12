@@ -112,7 +112,6 @@ exports.increaseAgreedCount = function (conditions, count, callback) {
 };
 
 
-
 /**
  * 增加赞同数量
  * @param conditions {Object} 查询条件
@@ -168,6 +167,35 @@ exports.unfollow = function (operatorId, userId, callback) {
             user.increase({_id: operatorId}, 'followCount', -1, noop);
             user.increase({_id: userId}, 'followedCount', -1, noop);
         }
+    });
+};
+
+
+/**
+ * 增加 object 类别的数量
+ * @param conditions {Object} 查询条件
+ * @param type {string} 类别名称
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseTypeCount = function (conditions, type, count, callback) {
+    user.findOne(conditions, function (err, doc) {
+        if (err) {
+            return callback(err);
+        }
+
+        if (!doc) {
+            err = new Error('the user is not exist');
+            err.type = 'notFound';
+            return callback(err);
+        }
+
+        var one = dato.parseInt(doc.objectStatistics[type], 0) + count;
+        var all = dato.parseInt(doc.objectStatistics._all, 0) + count;
+
+        doc.objectStatistics[type] = one;
+        doc.objectStatistics._all = all;
+        doc.save(callback);
     });
 };
 
