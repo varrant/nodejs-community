@@ -6,8 +6,9 @@
 
 'use strict';
 
-var ydrUtil = require('ydr-util');
-var REG_ACCEPT = /^application\/json;\s*charset=utf-8$/i;
+var dato = require('ydr-util').dato;
+var httpStatus = require('ydr-util').httpStatus;
+var REG_ACCEPT_JSON = /^application\/json;\s*charset=utf-8$/i;
 
 
 module.exports = function (app) {
@@ -23,12 +24,12 @@ module.exports = function (app) {
     exports.serverError = function (err, req, res, next) {
         var resError;
 
-        if (REG_ACCEPT.test(req.headers.accept)) {
+        if (REG_ACCEPT_JSON.test(req.headers.accept)) {
             if (err.message) {
                 resError = err.message;
             } else {
                 resError = {};
-                ydrUtil.dato.each(err, function (key, err) {
+                dato.each(err, function (key, err) {
                     resError[key] = err.message;
                 });
             }
@@ -43,7 +44,7 @@ module.exports = function (app) {
             if (err.message) {
                 resError.push(err.message);
             } else {
-                ydrUtil.dato.each(err, function (key, err) {
+                dato.each(err, function (key, err) {
                     resError.push(err.message);
                 });
             }
@@ -63,7 +64,14 @@ module.exports = function (app) {
      * @param next
      */
     exports.clientError = function (req, res, next) {
-        res.status(404).send('client error');
+        if (REG_ACCEPT_JSON.test(req.headers.accept)) {
+            res.status(200).json({
+                code: 404,
+                message: httpStatus.get(404)
+            });
+        }else{
+            res.status(404).render('client-error.html');
+        }
     };
 
     return exports;
