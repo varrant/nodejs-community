@@ -6,10 +6,10 @@
 
 'use strict';
 
-var typeis = require('ydr-util').typeis;
 var object = require('../models').object;
 var scope = require('./scope.js');
 var label = require('./label.js');
+var setting = require('./setting.js');
 var howdo = require('howdo');
 var dato = require('ydr-util').dato;
 var keys = ['title', 'uri', 'type', 'scope', 'labels', 'introduction', 'content', 'isDisplay'];
@@ -42,7 +42,23 @@ exports.createOne = function (authorId, data, callback) {
                 next();
             });
         })
-        // 2. 新建数据
+        // 2. 检查 type 是否存在
+        .task(function (next) {
+            setting.getType(data.type, function (err, type) {
+                if (err) {
+                    return next(err);
+                }
+
+                if (!type) {
+                    err = new Error('the type is not exist');
+                    err.type = 'notFound';
+                    return next(err);
+                }
+
+                next();
+            });
+        })
+        // 3. 新建数据
         .task(function (next) {
             var date = new Date();
             var data2 = dato.pick(data, keys);
@@ -100,13 +116,29 @@ exports.updateOne = function (userId, conditions, data, callback) {
                 next();
             });
         })
-        // 2. 数据预验证
+        // 2. 检查 type 是否存在
+        .task(function (next) {
+            setting.getType(data.type, function (err, type) {
+                if (err) {
+                    return next(err);
+                }
+
+                if (!type) {
+                    err = new Error('the type is not exist');
+                    err.type = 'notFound';
+                    return next(err);
+                }
+
+                next();
+            });
+        })
+        // 3. 数据预验证
         .task(function (next) {
             var data2 = dato.pick(data, keys);
 
             object.findOneAndValidate(conditions, data2, next);
         })
-        // 3. 原生更新
+        // 4. 更新
         .task(function (next, data3) {
             data3.updateAt = date;
             data3.updateList.push({
