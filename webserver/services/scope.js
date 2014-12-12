@@ -10,52 +10,52 @@ var scope = require('../models/').scope;
 var howdo = require('howdo');
 
 
-/**
- * 插入一个 scope，如果存在则 objectCount + 1，否则新建一个 scope
- * @param data {Object} 插入数据
- * @param callback {Function} 回调
- */
-exports.insertOne = function (data, callback) {
-    var conditions = {
-        name: data.name,
-        uri: data.uri
-    };
-
-    howdo
-        // 1. find one scope
-        .task(function (next) {
-            scope.findOne(conditions, function (err, doc) {
-                if (err) {
-                    return next(err);
-                }
-
-                if (!doc) {
-                    return next();
-                }
-
-                next(err, doc);
-            });
-        })
-        // 2. if exist update
-        .task(function (next, doc) {
-            if (!doc) {
-                return next();
-            }
-
-            data.objectCount = doc.objectCount + 1;
-            exports.createOne(data, next);
-        })
-        // 3. else create
-        .task(function (next, doc) {
-            if (doc) {
-                return next();
-            }
-
-            exports.updateOne(conditions, data, next);
-        })
-        // 顺序串行
-        .follow(callback);
-};
+///**
+// * 插入一个 scope，如果存在则 objectCount + 1，否则新建一个 scope
+// * @param data {Object} 插入数据
+// * @param callback {Function} 回调
+// */
+//exports.insertOne = function (data, callback) {
+//    var conditions = {
+//        name: data.name,
+//        uri: data.uri
+//    };
+//
+//    howdo
+//        // 1. find one scope
+//        .task(function (next) {
+//            scope.findOne(conditions, function (err, doc) {
+//                if (err) {
+//                    return next(err);
+//                }
+//
+//                if (!doc) {
+//                    return next();
+//                }
+//
+//                next(err, doc);
+//            });
+//        })
+//        // 2. if exist update
+//        .task(function (next, doc) {
+//            if (!doc) {
+//                return next();
+//            }
+//
+//            data.objectCount = doc.objectCount + 1;
+//            exports.createOne(data, next);
+//        })
+//        // 3. else create
+//        .task(function (next, doc) {
+//            if (doc) {
+//                return next();
+//            }
+//
+//            exports.updateOne(conditions, data, next);
+//        })
+//        // 顺序串行
+//        .follow(callback);
+//};
 
 
 /**
