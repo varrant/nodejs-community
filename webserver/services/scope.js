@@ -60,7 +60,7 @@ var howdo = require('howdo');
 
 /**
  * 创建一个 scope
- * @param data {Object} 插入数据
+ * @param data {Object} 数据
  * @param callback {Function} 回调
  */
 exports.createOne = function (data, callback) {
@@ -78,7 +78,7 @@ exports.createOne = function (data, callback) {
 /**
  * 更新一个 scope
  * @param conditions {Object} 查询条件
- * @param data {Object} 插入数据
+ * @param data {Object} 数据
  * @param callback {Function} 回调
  */
 exports.updateOne = function (conditions, data, callback) {
