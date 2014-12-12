@@ -8,14 +8,15 @@
 
 var setting = require('../models/').setting;
 var typeis = require('ydr-util').typeis;
+var dato = require('ydr-util').dato;
 var howdo = require('howdo');
 
 
 /**
  * 设置配置
- * @param key
- * @param val
- * @param callback
+ * @param [key] {String} 键
+ * @param [val] {String} 值
+ * @param callback {Function} 回调
  */
 exports.set = function (key, val, callback) {
     var map = [];
@@ -42,8 +43,8 @@ exports.set = function (key, val, callback) {
 
 /**
  * 获取配置
- * @param [key]
- * @param callback
+ * @param [key] {String} 键
+ * @param callback {Function} 回调
  */
 exports.get = function (key, callback) {
     // find all
@@ -72,8 +73,39 @@ exports.get = function (key, callback) {
                 return callback(err);
             }
 
-            doc = doc || {};
-            callback(err, doc[key]);
+            callback(err, doc);
         });
     }
 };
+
+
+/**
+ * 查找某一个 type 的配置
+ * @param typeName {String} type 名称
+ * @param callback {Function} 回调
+ */
+exports.getType = function (typeName, callback) {
+    exports.get({
+        key: 'types'
+    }, function (err, doc) {
+        if (err) {
+            return callback(err);
+        }
+
+        if (!doc) {
+            return callback();
+        }
+
+        var find = null;
+
+        dato.each(doc, function (index, type) {
+            if (type.name === typeName) {
+                find = type;
+                return false;
+            }
+        });
+
+        callback(null, find);
+    });
+};
+
