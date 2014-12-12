@@ -13,6 +13,8 @@ module.exports = function (app) {
         // 资源
         webroot: path.join(__dirname, '../webroot-' + app.env),
         // 资源
-        log: path.join(__dirname, '../logs')
+        log: path.join(__dirname, '../logs'),
+        // oss 上传目录
+        upload: '/f2ec.org/img/'
     };
 };
