@@ -10,21 +10,26 @@ var object = require('../models').object;
 var scope = require('./scope.js');
 var label = require('./label.js');
 var setting = require('./setting.js');
+var user = require('./user.js');
 var howdo = require('howdo');
 var dato = require('ydr-util').dato;
 var keys = ['title', 'uri', 'type', 'scope', 'labels', 'introduction', 'content', 'isDisplay'];
-var noop = function () {
-    // ignore
+var noop = function (err) {
+    if(err){
+        console.error(err);
+    }
 };
 
 
 /**
  * 新建一个 object
- * @param authorId {String} 作者 ID
+ * @param author {Object} 作者信息对象
+ * @param author.id {String} 作者的ID
+ * @param author.role {Number} 作者的权限
  * @param data {Object} 更新数据
  * @param callback {Function} 回调
  */
-exports.createOne = function (authorId, data, callback) {
+exports.createOne = function (author, data, callback) {
     howdo
         // 1. 检查 scope 是否存在
         .task(function (next) {
@@ -42,7 +47,7 @@ exports.createOne = function (authorId, data, callback) {
                 next();
             });
         })
-        // 2. 检查 type 是否存在
+        // 2. 检查 type 是否存在 && 检查权限
         .task(function (next) {
             setting.getType(data.type, function (err, type) {
                 if (err) {
@@ -55,6 +60,12 @@ exports.createOne = function (authorId, data, callback) {
                     return next(err);
                 }
 
+                if (author.role & type.role <= 0) {
+                    err = new Error('insufficient permissions');
+                    err.type = 'permissions';
+                    return next(err);
+                }
+
                 next();
             });
         })
@@ -63,10 +74,11 @@ exports.createOne = function (authorId, data, callback) {
             var date = new Date();
             var data2 = dato.pick(data, keys);
             var data3 = {
-                author: authorId,
+                author: author.id,
+                publishAt: date,
                 updateAt: date,
                 updateList: [{
-                    user: authorId,
+                    user: author.id,
                     date: date
                 }]
             };
@@ -78,27 +90,28 @@ exports.createOne = function (authorId, data, callback) {
         .follow(function (err, doc) {
             callback.apply(this, arguments);
 
-            // 更新 scope
-            scope.increaseObjectCount({
-                _id: data.scope
-            }, 1, noop);
+            // 更新 scope.objectCount
+            scope.increaseObjectCount({_id: data.scope}, 1, noop);
 
-            // 更新 label
-            label.increaseObjectCount({
-                _id: data.scope
-            }, 1, noop);
+            // 更新 label.objectCount
+            label.increaseObjectCount({_id: data.scope}, 1, noop);
+
+            // 更新 user.objectStatistics
+            user.increaseObjectTypeCount({_id: author.id}, data.type, 1, noop);
         });
 };
 
 
 /**
  * 更新 object
- * @param userId {String} 更新用户
+ * @param author {Object} 作者信息对象
+ * @param author.id {String} 作者的ID
+ * @param author.role {Number} 作者的权限
  * @param conditions {Object} 查询条件
  * @param data {Object} 更新数据
  * @param callback {Function} 回调
  */
-exports.updateOne = function (userId, conditions, data, callback) {
+exports.updateOne = function (author, conditions, data, callback) {
     howdo
         // 1.检查 scope 是否存在
         .task(function (next) {
@@ -116,7 +129,7 @@ exports.updateOne = function (userId, conditions, data, callback) {
                 next();
             });
         })
-        // 2. 检查 type 是否存在
+        // 2. 检查 type 是否存在 && 检查权限
         .task(function (next) {
             setting.getType(data.type, function (err, type) {
                 if (err) {
@@ -126,6 +139,12 @@ exports.updateOne = function (userId, conditions, data, callback) {
                 if (!type) {
                     err = new Error('the type is not exist');
                     err.type = 'notFound';
+                    return next(err);
+                }
+
+                if (author.role & type.role <= 0) {
+                    err = new Error('insufficient permissions');
+                    err.type = 'permissions';
                     return next(err);
                 }
 
@@ -142,7 +161,7 @@ exports.updateOne = function (userId, conditions, data, callback) {
         .task(function (next, data3) {
             data3.updateAt = date;
             data3.updateList.push({
-                user: userId,
+                user: author.id,
                 date: date
             });
 
@@ -152,11 +171,11 @@ exports.updateOne = function (userId, conditions, data, callback) {
         .follow(function (err, doc, oldDoc) {
             callback.apply(this, arguments);
 
-            // 更新 scope
+            // 更新 scope.objectCount
             scope.increaseObjectCount({_id: doc.scope}, 1, noop);
             scope.increaseObjectCount({_id: oldDoc.scope}, -1, noop);
 
-            // 更新 label
+            // 更新 label.objectCount
             var diff = dato.compare(doc.labels, oldDoc.labels);
             var only1 = diff.only[0];
             var only2 = diff.only[1];
@@ -168,6 +187,10 @@ exports.updateOne = function (userId, conditions, data, callback) {
             only2.forEach(function (name) {
                 label.increaseObjectCount({name: name}, -1, noop);
             });
+
+            // 更新 user.objectStatistics
+            user.increaseObjectTypeCount({_id: author.id}, doc.type, 1, noop);
+            user.increaseObjectTypeCount({_id: author.id}, oldDoc.type, -1, noop);
         });
 };
 

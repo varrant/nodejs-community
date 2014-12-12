@@ -55,8 +55,8 @@ pro.start = function () {
 
             setTimeout(function () {
                 process.exit();
-            }, 1000);
-        })
+            }, 2000);
+        });
     });
 };
 

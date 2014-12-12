@@ -30,6 +30,16 @@ validator.pushRule({
 });
 
 validator.pushRule({
+    name: 'type',
+    type: 'string',
+    alias: '类别',
+    trim: true,
+    minLength: 1,
+    maxLength: 20,
+    regexp: /^[a-z\d]{1,20}$/i
+});
+
+validator.pushRule({
     name: 'introduction',
     type: 'string',
     alias: '简介',
@@ -37,19 +47,19 @@ validator.pushRule({
     exist: true,
     maxLength: 500,
     onafter: function (val) {
-        return val.replace(REG_LINES, '\n\n');
+        return val && val.replace(REG_LINES, '\n\n');
     }
 });
 
 validator.pushRule({
     name: 'content',
     type: 'string',
-    alias: '简介',
+    alias: '内容',
     trim: true,
     minLength: 100,
     maxLength: 50000,
     onafter: function (val) {
-        return val.replace(REG_LINES, '\n\n');
+        return val && val.replace(REG_LINES, '\n\n');
     }
 });
 

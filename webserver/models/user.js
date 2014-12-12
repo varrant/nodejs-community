@@ -94,6 +94,11 @@ var schema = mongoose.Schema({
         type: Number,
         default: 0
     },
+    // object 统计
+    objectStatistics: {
+        type: Object,
+        default: {}
+    },
     // 是否被阻止登入
     isBlock: {
         type: Boolean,

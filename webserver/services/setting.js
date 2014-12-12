@@ -99,6 +99,7 @@ exports.getType = function (typeName, callback) {
         dato.each(doc, function (index, type) {
             if (type && type.name === typeName && type.isDisplay === true) {
                 find = type;
+                find.id = index;
                 return false;
             }
         });

@@ -178,7 +178,7 @@ exports.unfollow = function (operatorId, userId, callback) {
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
-exports.increaseTypeCount = function (conditions, type, count, callback) {
+exports.increaseObjectTypeCount = function (conditions, type, count, callback) {
     user.findOne(conditions, function (err, doc) {
         if (err) {
             return callback(err);

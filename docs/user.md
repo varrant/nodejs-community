@@ -16,6 +16,7 @@
 - `acceptedCount` 被接受次数
 - `followCount` 关注人数
 - `followedCount` 被关注人数
+- `objectStatistics` object 统计
 - `isBlock` 是否被阻止登入
 - `organizations` 加入的组织、团队
 - `isCertification` 是否被认证了

@@ -20,21 +20,18 @@ var schema = mongoose.Schema({
     title: {
         type: String,
         required: true,
-        unique: true,
-        default: ''
+        unique: true
     },
     // uri
     uri: {
         type: String,
         required: true,
-        unique: true,
-        default: ''
+        unique: true
     },
     // 文章类型
-    // 0 - 20
     type: {
-        type: Number,
-        default: 0
+        type: String,
+        required: true
     },
     // 范围
     scope: {
