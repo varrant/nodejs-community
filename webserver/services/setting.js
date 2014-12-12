@@ -73,7 +73,7 @@ exports.get = function (key, callback) {
                 return callback(err);
             }
 
-            callback(err, doc);
+            callback(err, doc.val);
         });
     }
 };
@@ -85,9 +85,7 @@ exports.get = function (key, callback) {
  * @param callback {Function} 回调
  */
 exports.getType = function (typeName, callback) {
-    exports.get({
-        key: 'types'
-    }, function (err, doc) {
+    exports.get('types', function (err, doc) {
         if (err) {
             return callback(err);
         }
@@ -99,7 +97,7 @@ exports.getType = function (typeName, callback) {
         var find = null;
 
         dato.each(doc, function (index, type) {
-            if (type.name === typeName && type.isDisplay === true) {
+            if (type && type.name === typeName && type.isDisplay === true) {
                 find = type;
                 return false;
             }
