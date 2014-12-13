@@ -9,7 +9,7 @@
 var test = require('../test.js');
 var comment = require('../../webserver/services/').comment;
 var author = {
-    id: '548c136f274b6f0000dcf8d9',
+    _id: '548c136f274b6f0000dcf8d9',
     role: 2097151
 };
 var emailjs = require('emailjs');

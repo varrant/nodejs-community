@@ -11,18 +11,18 @@ var notification = require('../../webserver/services/').notification;
 
 
 var activeUser = {
-    id: '548c136f274b6f0000dcf8d9',
+    _id: '548c136f274b6f0000dcf8d9',
     nickname: '呵呵1'
 };
 
 var activedUser = {
-    id: '548c136f274b6f0000dcf8d9',
+    _id: '548c136f274b6f0000dcf8d9',
     nickname: '呵呵2',
     email: 'cloudcome@163.com'
 };
 
 var object = {
-    id: '548c136f274b6f0000dcf8d9'
+    _id: '548c136f274b6f0000dcf8d9'
 };
 
 test
