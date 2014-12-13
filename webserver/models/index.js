@@ -14,6 +14,7 @@ var models = {
     comment: require('./comment.js'),
     interactive: require('./interactive.js'),
     label: require('./label.js'),
+    notification: require('./notification.js'),
     object: require('./object.js'),
     scope: require('./scope.js'),
     setting: require('./setting.js'),

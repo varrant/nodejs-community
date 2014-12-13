@@ -9,11 +9,11 @@
 
 module.exports = function (app, ctrlFront) {
     var types = app.locals.$options.types;
-    var names = [];
+    var uris = [];
 
     types.forEach(function (type) {
-        if (names.indexOf(type.name) === -1 && type.isDisplay) {
-            names.push(type.name);
+        if (uris.indexOf(type.uri) === -1 && type.isDisplay) {
+            uris.push(type.uri);
         }
     });
 
@@ -25,17 +25,17 @@ module.exports = function (app, ctrlFront) {
     app.get('/', ctrlFront.main.getHome);
 
     // list + detail
-    names.forEach(function (name) {
-        app.get('/' + name + '/', ctrlFront.main.getList(name));
-        app.get('/' + name + '/' + 'page/:page/', ctrlFront.main.getList(name));
-        app.get('/' + name + '/' + 'in/:scope/', ctrlFront.main.getList(name));
-        app.get('/' + name + '/' + 'in/:scope/page/:page/', ctrlFront.main.getList(name));
-        app.get('/' + name + '/' + 'on/:label/page/:page/', ctrlFront.main.getList(name));
-        app.get('/' + name + '/' + 'in/:scope/on/:label/', ctrlFront.main.getList(name));
-        app.get('/' + name + '/' + 'in/:scope/on/:label/page/:page/', ctrlFront.main.getList(name));
-        app.get('/' + name + '/' + 'on/:label/in/:scope/', ctrlFront.main.getList(name));
-        app.get('/' + name + '/' + 'on/:label/in/:scope/page/:page/', ctrlFront.main.getList(name));
-        app.get('/' + name + '/' + ':uri.html', ctrlFront.main.getPost(name));
+    uris.forEach(function (uri) {
+        app.get('/' + uri + '/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'in/:scope/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'in/:scope/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'on/:label/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'in/:scope/on/:label/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'in/:scope/on/:label/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'on/:label/in/:scope/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'on/:label/in/:scope/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + ':uri.html', ctrlFront.main.getPost(uri));
     });
 
     // engineer
