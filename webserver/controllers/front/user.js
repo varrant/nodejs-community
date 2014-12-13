@@ -49,21 +49,26 @@ module.exports = function (app) {
         var isSafe = user.isSafeOauthState(state);
         var err;
 
+        if (!isSafe) {
+            err = new Error('非法授权操作');
+            err.redirect = '/user/oauth/authorize/';
+
+            return next(err);
+        }
 
         if (!req.session.$state) {
             err = new Error('请重新进行授权操作');
-            err.redirect = '/user/oauth/authorize';
+            err.redirect = '/user/oauth/authorize/';
 
             return next(err);
         }
 
-        if (!isSafe) {
-            err = new Error('非法授权操作');
-            err.redirect = '/user/oauth/authorize';
-
-            return next(err);
+        if(req.session.$github ){
+            return res.render('front/oauth-callback.html', {
+                title: '确认登录',
+                user: req.session.$github
+            });
         }
-
 
         howdo
             // 1. 授权
@@ -82,16 +87,14 @@ module.exports = function (app) {
             })
             // 异步串行
             .follow(function (err, data, json) {
-                req.session.$state = null;
-
                 if (err) {
                     return next(err);
                 }
 
-                req.session.$githubOauth = json;
+                json.hasRegister = !!data;
+                req.session.$github = json;
                 res.render('front/oauth-callback.html', {
                     title: '确认登录',
-                    hasSignUp: !!data,
                     user: json
                 });
             });

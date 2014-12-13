@@ -9,6 +9,7 @@
 var express = require('express');
 var configs = require('../configs/');
 var path = require('path');
+var dato = require('ydr-util').dato;
 
 // cookie 支持
 var cookieParser = require('cookie-parser');
@@ -24,9 +25,16 @@ var compression = require('compression');
 
 // 模板引擎
 var ydrTemplate = require('ydr-template');
+
 ydrTemplate.setOptions({
     cache: 'pro' === configs.app.env,
     compress: 'pro' === configs.app.env
+});
+
+ydrTemplate.addFilter('gravatar', function (val, size) {
+    return dato.gravatar(val, {
+        size: size || 100
+    });
 });
 
 

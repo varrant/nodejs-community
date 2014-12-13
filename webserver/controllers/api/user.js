@@ -26,12 +26,12 @@ module.exports = function (app) {
         var body = req.body || {};
         var accessToken = body.accessToken;
 
-        if (!(req.session && req.session.githubOauth &&
-            req.session.githubOauth.accessToken === accessToken)) {
+        if (!(req.session && req.session.$github &&
+            req.session.$github.accessToken === accessToken)) {
             return next(new Error('请重新授权操作'));
         }
 
-        var githubOauth = req.session.githubOauth;
+        var githubOauth = req.session.$github;
         var github = githubOauth.github;
 
         delete(githubOauth.github);
@@ -40,7 +40,7 @@ module.exports = function (app) {
         user.login({
             github: github
         }, githubOauth, function (err, doc) {
-            req.session.githubOauth = null;
+            req.session.$github = null;
 
             if (err) {
                 return next(err);

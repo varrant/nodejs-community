@@ -17,19 +17,23 @@
     </script>
 </head>
 <body ontouchstart="">
-<p>头像：{{user.email}}</p>
 
-<P>你好：{{user.nickname}}</P>
+<div class="container f-text-center">
+    <p><img src="{{user.email|gravatar:200}}" alt="avatar" width="100" height="100"/></p>
 
-<p>{{hasSignUp ? '正在登录……':'确认登录信息。'}}</p>
+    <h1>{{user.nickname}}</h1>
 
-{{if !hasSignUp}}
-<ul>
-    <li>邮箱：{{user.email}}</li>
-    <li>github：{{user.github}}</li>
-</ul>
+    <p class="s-muted">{{user.hasRegister ? '正在登录……':'确认登录信息。'}}</p>
 
-<button>确定授权登录</button>
-{{/if}}
+    {{if !user.hasRegister}}
+    <ul>
+        <li>邮箱：{{user.email}}</li>
+        <li>github：{{user.github}}</li>
+    </ul>
+
+    <button class="btn btn-primary">确定授权登录</button>
+    {{/if}}
+</div>
+
 </body>
 </html>
