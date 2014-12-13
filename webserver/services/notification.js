@@ -7,15 +7,28 @@
 'use strict';
 
 var notification = require('../models/').notification;
+var configs = require('../../configs/');
+var email = require('./email.js');
+var from = configs.smtp.from;
+var log = require('ydr-util').log;
+var notitemplate = configs.notification;
 
 
 /**
  * 创建一条通知
- * @type {*|exports.createOne}
+ * @param activeUser
+ * @param activedUser
+ * @param bject
  */
-exports.createOne = notification.createOne;
-exports.createOne = function (data, email, callback) {
+exports.createOne = function (activeUser, activedUser, object) {
+    var data = {
+        activeUser: activedUser.id,
+        activedUser: activedUser.id,
+        obejct: object.id
+    };
 
+    notification.createOne(data, log.holdError);
+    email.send(activedUser.nickname, activedUser.email, 1);
 };
 
 
