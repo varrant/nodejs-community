@@ -10,7 +10,7 @@ var random = require('ydr-util').random;
 var test = require('../test.js');
 var object = require('../../webserver/services/').object;
 var author = {
-    id: '548a9fca75cb8cf00877b994',
+    id: '548c136f274b6f0000dcf8d9',
     role: 2097151
 };
 var scope1Id = '548c15505bb70f0000bf806e';

@@ -8,7 +8,8 @@
 
 
 var configs = require('../../configs/');
-var noticonfig = configs.notification.comment;
+var notiComment = configs.notification.comment;
+var notiReply = configs.notification.reply;
 var comment = require('../models/').comment;
 var object = require('./object.js');
 var user = require('./user.js');
@@ -95,20 +96,15 @@ exports.createOne = function (author, data, meta, callback) {
                 // user.commentCount
                 user.increaseCommentCount({_id: author.id}, 1, log.holdError);
 
-                // 通知作者
-                object.findOne({_id: author.id});
-                notification.createOne({
-                    type: 'comment',
-                    activeUser: author.id,
-                    activedUser: 1
-                });
+                // 通知 object 作者
+                _noticeObjectAuthor(author.id, doc.object);
 
                 // 评论父级
                 if (doc.parent) {
                     // commnet2.replyCount
                     comment.increase({_id: doc.parent}, 'replyCount', 1, function (err, doc) {
                         if (err) {
-                            console.error(err);
+                            return log.holdError(err);
                         }
 
                         // 忽略错误
@@ -117,8 +113,88 @@ exports.createOne = function (author, data, meta, callback) {
                             user.increaseRepliedCount({_id: doc.author}, 1, log.holdError);
                         }
                     });
+
+                    // 通知被 comment 作者
+                    _noticeCommentAuthor(author.id, doc.parent);
                 }
             }
         });
 };
+
+
+/**
+ * 通知 object 作者
+ * @param activeUserId
+ * @param objectId
+ * @private
+ */
+function _noticeObjectAuthor(activeUserId, objectId){
+    howdo
+        // 1. 查找 object
+        .task(function (next) {
+            object.findOne({_id: objectId}, next);
+        })
+        // 2. 查找作者
+        .task(function (next, doc) {
+            user.findOne({_id: doc.author}, next);
+        })
+        // 顺序串行
+        .follow(function (err, user) {
+            if (err) {
+                return log.holdError(err);
+            }
+
+            // 通知 object 作者
+            notification.createOne({
+                type: 'comment',
+                activeUser: activeUserId,
+                activedUser: user.id,
+                object: objectId
+            }, log.holdError);
+
+            var subject = notiComment.subject;
+            var content = notiComment.template.render({});
+
+            // 邮件 object 作者
+            email.send(user.nickname, user.email, subject, content);
+        });
+}
+
+
+/**
+ * 通知 comment 作者
+ * @param commentId
+ * @private
+ */
+function _noticeCommentAuthor(activeUserId, commentId){
+    howdo
+        // 1. 查找 comment
+        .task(function (next) {
+            comment.findOne({_id: commentId}, next);
+        })
+        // 2. 查找作者
+        .task(function (next, doc) {
+            user.findOne({_id: doc.author}, next);
+        })
+        // 顺序串行
+        .follow(function (err, user) {
+            if (err) {
+                return log.holdError(err);
+            }
+
+            // 通知 object 作者
+            notification.createOne({
+                type: 'comment',
+                activeUser: activeUserId,
+                activedUser: user.id,
+                object: commentId
+            }, log.holdError);
+
+            var subject = notiReply.subject;
+            var content = notiReply.template.render({});
+
+            // 邮件 object 作者
+            email.send(user.nickname, user.email, subject, content);
+        });
+}
 

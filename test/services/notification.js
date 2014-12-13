@@ -7,10 +7,7 @@
 'use strict';
 
 var test = require('../test.js');
-var setting = require('../../webserver/services/').setting;
-var email = require('../../webserver/services/').email;
 var notification = require('../../webserver/services/').notification;
-var emailjs = require('emailjs');
 
 
 var activeUser = {
@@ -29,19 +26,6 @@ var object = {
 };
 
 test
-    .push('get config', function (next) {
-        setting.get('smtp', function (err, options) {
-            if (err) {
-                console.error(err);
-                return process.exit();
-            }
-
-            var smtp = emailjs.server.connect(options);
-
-            email.init(smtp);
-            next();
-        });
-    })
     .push('notification.createOne', function (next) {
         notification.createOne('comment', activeUser, activedUser, object);
         next();
