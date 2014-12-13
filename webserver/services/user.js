@@ -455,13 +455,13 @@ exports.can = function (conditionsOrRole, doWhat, callback) {
         return callback(null, true);
     }
 
-    var permission = role[doWhat];
+    var mustRole = Math.pow(2, role[doWhat]);
     var userRole;
     var canDo;
 
     if (typeis(conditionsOrRole) === 'number') {
         userRole = conditionsOrRole;
-        canDo = userRole & Math.pow(2, permission.role) > 0;
+        canDo = userRole & mustRole > 0;
 
         return callback(null, canDo);
     }
@@ -478,7 +478,7 @@ exports.can = function (conditionsOrRole, doWhat, callback) {
         }
 
         userRole = doc.role;
-        canDo = userRole & permission.role > 0;
+        canDo = userRole & mustRole > 0;
 
         callback(null, canDo);
     });
