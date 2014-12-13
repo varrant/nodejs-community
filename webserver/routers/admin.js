@@ -8,5 +8,9 @@
 
 
 module.exports = function(app, ctrlAdmin){
-    //
+    // 中间件
+    app.use(/^\/admin\/.*$/i, ctrlAdmin.middleware.login);
+
+    // 主页
+    app.get('/admin/', ctrlAdmin.main.home);
 };

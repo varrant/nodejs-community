@@ -9,6 +9,7 @@
 
 module.exports = function (app) {
     return {
-
+        main: require('./main.js')(app),
+        middleware: require('./middleware.js')(app)
     };
 };

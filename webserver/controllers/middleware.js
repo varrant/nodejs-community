@@ -88,11 +88,11 @@ module.exports = function (app) {
      * @param next
      */
     exports.readUser = function (req, res, next) {
-        if(!req.cookie){
+        if(!req.cookies){
             return next();
         }
 
-        var userCookie = req.cookie[configs.secret.cookie.userKey];
+        var userCookie = req.cookies[configs.secret.cookie.userKey];
 
         // 不存在 cookie
         if (!userCookie) {
