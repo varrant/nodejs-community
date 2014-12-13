@@ -47,7 +47,7 @@
     "supervisor": "^0.6.0",
     "ydr-ali-oss": "^1.1.7",
     "ydr-template": "^1.1.2",
-    "ydr-util": "^1.10.22",
+    "ydr-util": "^1.10.23",
     "ydr-validator": "^1.1.0"
   },
   "devDependencies": {
