@@ -4,6 +4,8 @@
 - app.locals.$admin 网站管理员
 - req.session.$csrf 请求令牌
 - req.session.$user 请求用户
+- req.session.$github github授权
+- req.session.$state 授权状态值
 - res.locals.$csrf 响应令牌
 - res.locals.$user 响应用户
 
