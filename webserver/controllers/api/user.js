@@ -56,8 +56,9 @@ module.exports = function (app) {
                 expires: new Date(Date.now() + configs.secret.cookie.userAge),
                 maxAge: configs.secret.cookie.userAge
             });
-            res.locals._user = {
+            res.locals.$user = {
                 id: data.id,
+                github: data.github,
                 email: data.email,
                 nickname: data.nickname,
                 role: data.role

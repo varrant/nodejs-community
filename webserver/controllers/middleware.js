@@ -48,7 +48,7 @@ module.exports = function (app) {
     exports.createCsrf = function (req, res, next) {
         var csrf = _generatorCsrf();
 
-        req.session.csrf = res.locals.$csrf = csrf;
+        req.session.$csrf = res.locals.$csrf = csrf;
         next();
     };
 
@@ -65,18 +65,37 @@ module.exports = function (app) {
 
         if (REG_ACCEPT.test(headers.accept) &&
             headers['x-request-with'] === 'XMLHttpRequest' &&
-            req.session && req.session.csrf &&
-            headersCsrf === req.session.csrf
+            req.session && req.session.$csrf &&
+            headersCsrf === req.session.$csrf
         ) {
 
             return next();
         }
 
-        if (req.session.csrf && req.session.csrf !== headersCsrf) {
+        if (req.session.$csrf && req.session.$csrf !== headersCsrf) {
             return next(new Error('请求认证已过期'));
         }
 
         next(new Error('非法请求'));
+    };
+
+
+    /**
+     * 读取请求信息中的用户数据
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.readUser = function (req, res, next) {
+        var userCookie = req.cookie[configs.secret.cookie.userKey];
+
+        if(!userCookie){
+            return next();
+        }
+
+        var userId = ydrUtil.crypto.decode(userCookie, configs.secret.cookie.secret);
+
+        next();
     };
 
     return exports;
@@ -89,7 +108,7 @@ module.exports = function (app) {
  * @private
  */
 function _generatorCsrf() {
-    var timeString = ydrUtil.dato.parseInt(Date.now() / configs.secret.session.csrfAge, 0) + '';
+    var timeString = ydrUtil.dato.parseInt(Date.now() / configs.secret.session.$csrfAge, 0) + '';
     var csrf = ydrUtil.crypto.encode(timeString, configs.secret.session.secret);
 
     return csrf;
