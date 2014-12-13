@@ -85,10 +85,10 @@ exports.get = function (key, callback) {
 
 /**
  * 查找某一个可见的 type
- * @param typeName {String} type 名称
+ * @param typeURI {String} type URI
  * @param callback {Function} 回调
  */
-exports.getType = function (typeName, callback) {
+exports.getType = function (typeURI, callback) {
     exports.get('types', function (err, doc) {
         if (err) {
             return callback(err);
@@ -101,7 +101,7 @@ exports.getType = function (typeName, callback) {
         var find = null;
 
         dato.each(doc, function (index, type) {
-            if (type && type.name === typeName && type.isDisplay === true) {
+            if (type && type.uri === typeURI && type.isDisplay === true) {
                 find = type;
                 find.id = index;
                 return false;

@@ -7,9 +7,13 @@
 'use strict';
 
 
+var configs = require('../../configs/');
+var noticonfig = configs.notification.comment;
 var comment = require('../models/').comment;
 var object = require('./object.js');
 var user = require('./user.js');
+var notification = require('./notification.js');
+var email = require('./email.js');
 var dato = require('ydr-util').dato;
 var howdo = require('howdo');
 var log = require('ydr-util').log;
@@ -91,6 +95,15 @@ exports.createOne = function (author, data, meta, callback) {
                 // user.commentCount
                 user.increaseCommentCount({_id: author.id}, 1, log.holdError);
 
+                // 通知作者
+                object.findOne({_id: author.id});
+                notification.createOne({
+                    type: 'comment',
+                    activeUser: author.id,
+                    activedUser: 1
+                });
+
+                // 评论父级
                 if (doc.parent) {
                     // commnet2.replyCount
                     comment.increase({_id: doc.parent}, 'replyCount', 1, function (err, doc) {
