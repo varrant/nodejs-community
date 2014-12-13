@@ -1,4 +1,4 @@
-# nodejs-community@0.0.1 alpha5
+# nodejs-community@0.0.1 alpha6
 
 
 ## 1、安装
