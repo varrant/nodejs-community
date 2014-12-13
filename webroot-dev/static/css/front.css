@@ -163,6 +163,28 @@ nav .nav-right li:last-child {
 .m-home .home-help a:hover {
   background: #ffe4e4;
 }
+.m-oauth {
+  width: 500px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 50px 30px;
+  border: 1px solid #EFEFEF;
+  border-radius: 6px;
+}
+.m-oauth .oauth-info {
+  list-style: none;
+}
+.m-oauth .oauth-info li {
+  position: relative;
+  padding-left: 80px;
+  line-height: 2;
+}
+.m-oauth .oauth-info strong {
+  position: absolute;
+  width: 70px;
+  left: 0;
+  text-align: right;
+}
 .m-card .card-title,
 .m-card .card-tab {
   position: relative;

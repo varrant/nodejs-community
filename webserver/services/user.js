@@ -425,9 +425,12 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
 
             var ret = {
                 accessToken: json.accessToken,
-                github: json.login,
-                email: json.email,
-                nickname: json.name,
+                //github: json.login,
+                github: random.string(12),
+                //email: json.email,
+                email: random.string(12)+'@qq.com',
+                //nickname: json.name,
+                nickname: random.string(12),
                 meta: {
                     bio: json.bio,
                     location: json.location,
