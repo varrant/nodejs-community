@@ -10,6 +10,7 @@
 var user = require('../../services/').user;
 var setting = require('../../services/').setting;
 var howdo = require('howdo');
+var configs = require('../../../configs/');
 
 
 module.exports = function (app) {
@@ -24,9 +25,9 @@ module.exports = function (app) {
      * @returns {*}
      */
     exports.oauthAuthorize = function (req, res, next) {
-        var oauth = user.createOauthURL(oauthSettings, 'http://sb.com:18084/user/oauth/callback/');
+        var oauth = user.createOauthURL(oauthSettings, 'http://'+configs.app.domain+':18084/user/oauth/callback/');
 
-        req.session.state = oauth.state;
+        req.session.$state = oauth.state;
         res.render('front/oauth-authorize.html', {
             url: oauth.url
         });
@@ -47,7 +48,7 @@ module.exports = function (app) {
         var isSafe = user.isSafeOauthState(state);
         var err;
 
-        if (!req.session.state) {
+        if (!req.session.$state) {
             err = new Error('请重新进行授权操作');
             err.redirect = '/user/oauth/authorize';
 
@@ -78,13 +79,13 @@ module.exports = function (app) {
             })
             // 异步串行
             .follow(function (err, data, json) {
-                req.session.state = null;
+                req.session.$state = null;
 
                 if (err) {
                     return next(err);
                 }
 
-                req.session.githubOauth = json;
+                req.session.$githubOauth = json;
                 res.render('front/oauth-callback.html', {
                     hasSignUp: !!data,
                     user: json

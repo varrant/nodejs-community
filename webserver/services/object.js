@@ -223,6 +223,12 @@ exports.updateOne = function (author, conditions, data, callback) {
 
 
 /**
+ * count
+ */
+exports.count = object.count;
+
+
+/**
  * findOne
  */
 exports.findOne = object.findOne;

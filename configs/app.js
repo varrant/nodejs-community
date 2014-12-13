@@ -12,8 +12,8 @@ module.exports = {
     env: 'dev',
     // 端口
     port: 18084,
-    // 域名
-    domain: 'f2ec.org',
+    // 主机
+    host: 'http://sb.com:18084',
     // mongodb
     mongodb: 'mongodb://localhost:27017/f2ec-org'
 };

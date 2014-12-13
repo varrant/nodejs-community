@@ -14,6 +14,7 @@ var middleware = require('./middleware.js');
 var smtp = require('./smtp.js');
 var http = require('./http.js');
 var services = require('./services/');
+var time = Date.now();
 
 howdo
     .task(mongoose)
@@ -27,9 +28,10 @@ howdo
             return process.exit(-1);
         }
 
+        app.locals.$startTime = time;
         console.log('');
         console.log('#########################################################');
-        console.log(configs.app.domain + ' running at ' + app.locals.settings.port);
+        console.log(configs.app.host + ' is running');
         console.log('#########################################################');
         console.log('');
     });
