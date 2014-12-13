@@ -1,15 +1,15 @@
-# nodejs-community@0.0.1 alpha6
+# nodejs-community@0.0.1 alpha7
 
 
-## 1、安装
-配置文件参考`settings.json`
+## install
+read `./settings.json` first
 
 ```
 npm install
 ```
 
 
-## 2、启动
+## start
 ```
 npm start
 ```
