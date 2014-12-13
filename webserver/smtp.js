@@ -13,7 +13,7 @@ module.exports = function (next, app) {
     var options = app.locals.$options.smtp;
     var smtp = emailjs.server.connect(options);
 
-    email.init(smtp);
+    email.init(smtp, app.locals.$admin);
     app.locals.$smtp = smtp;
     next(null, app);
 };

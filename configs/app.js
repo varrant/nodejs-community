@@ -9,7 +9,7 @@
 
 module.exports = {
     // 可选环境: dev/pro
-    env: 'dev',
+    env: 'pro',
     // 端口
     port: 18084,
     // 域名

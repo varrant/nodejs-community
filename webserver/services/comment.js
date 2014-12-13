@@ -12,10 +12,9 @@ var object = require('./object.js');
 var user = require('./user.js');
 var dato = require('ydr-util').dato;
 var howdo = require('howdo');
+var log = require('ydr-util').log;
 var noop = function (err) {
-    if (err) {
-        console.error(err);
-    }
+    log.holdError(err);
 };
 
 

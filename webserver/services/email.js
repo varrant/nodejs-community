@@ -8,19 +8,20 @@
 
 var configs = require('../../configs/');
 var setting = require('./setting.js');
+var date = require('ydr-util').date;
 var list = [];
 var smtp = null;
-var admin = {};
 
 
 /**
  * 初始化一个 smtp
  */
-exports.init = function (_smtp) {
+exports.init = function (_smtp, admin) {
     smtp = _smtp;
+    var time = date.format('YYYY年MM月DD日 HH:mm:ss.SSS 星期e a');
 
     if(configs.app.env === 'pro'){
-        exports.send('云淡然', 'cloudcome@qq.com', '呵呵', '呵呵呵呵');
+        exports.send(admin.nickname, admin.email, '服务器启动', time);
     }
 };
 
@@ -33,8 +34,7 @@ exports.init = function (_smtp) {
  * @param content {String} 内容
  */
 exports.send = function (username, useremail, subject, content) {
-    // 执行推送时，写入列表
-    list.push({
+    var data = {
         from: configs.smtp.from,
         to: username + ' <' + useremail + '>',
         subject: subject,
@@ -42,28 +42,8 @@ exports.send = function (username, useremail, subject, content) {
             data: content,
             alternative: true
         }]
-    });
-
-    // 队列中只有一封待发邮件时启动
-    if (list.length === 1) {
-        _send();
-    }
-};
-
-
-/**
- * 邮件发送中心
- * @private
- */
-function _send() {
-    var data = list.shift();
-
-    if (!data) {
-        return;
-    }
+    };
 
     smtp.send(data, function () {
-        console.log(arguments);
-        _send();
     });
-}
+};
