@@ -25,10 +25,11 @@ module.exports = function (app) {
      * @returns {*}
      */
     exports.oauthAuthorize = function (req, res, next) {
-        var oauth = user.createOauthURL(oauthSettings, 'http://'+configs.app.domain+':18084/user/oauth/callback/');
+        var oauth = user.createOauthURL(oauthSettings, configs.app.host + '/user/oauth/callback/');
 
         req.session.$state = oauth.state;
         res.render('front/oauth-authorize.html', {
+            title: '授权登录',
             url: oauth.url
         });
     };
@@ -48,6 +49,7 @@ module.exports = function (app) {
         var isSafe = user.isSafeOauthState(state);
         var err;
 
+
         if (!req.session.$state) {
             err = new Error('请重新进行授权操作');
             err.redirect = '/user/oauth/authorize';
@@ -61,6 +63,7 @@ module.exports = function (app) {
 
             return next(err);
         }
+
 
         howdo
             // 1. 授权
@@ -87,6 +90,7 @@ module.exports = function (app) {
 
                 req.session.$githubOauth = json;
                 res.render('front/oauth-callback.html', {
+                    title: '确认登录',
                     hasSignUp: !!data,
                     user: json
                 });

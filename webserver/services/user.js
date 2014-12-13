@@ -272,13 +272,13 @@ exports.createOauthURL = function (oauthSettings, redirect) {
     var num2 = random.number(1, 100);
     var num3 = num1 + num2;
     var state = num1 + '\n' + num2 + '\n' + num3;
+    // https://developer.github.com/v3/oauth/#redirect-users-to-request-github-access
     var params = {
-        scope: 'user:email',
+        client_id: oauthSettings.clientId,
         redirect_uri: redirect,
+        scope: 'user:email',
         state: state = crypto.encode(state, configs.secret.session.secret)
     };
-
-    dato.extend(true, params, oauthSettings);
 
     return {
         url: urls.authorize + '?' + qs.stringify(params),
@@ -327,9 +327,8 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                 client_secret: oauthSettings.clientSecret
             };
 
-            var url = urls.accessToken + '?' + qs.stringify(params);
-
-            request.post(url, requestOptions, function (err, data, res) {
+            requestOptions.url = urls.accessToken + '?' + qs.stringify(params);
+            request.post(requestOptions, function (err, data, res) {
                 if (err) {
                     return next(err);
                 }
@@ -358,9 +357,9 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
             var params = {
                 access_token: json.access_token
             };
-            var url = urls.user + '?' + qs.stringify(params);
+            requestOptions.url = urls.user + '?' + qs.stringify(params);
 
-            request.get(url, requestOptions, function (err, data, res) {
+            request.get(requestOptions, function (err, data, res) {
                 if (err) {
                     return next(err);
                 }
