@@ -14,6 +14,6 @@ module.exports = function (next, app) {
     var smtp = emailjs.server.connect(options);
 
     email.init(smtp);
-    app.locals._smtp = smtp;
+    app.locals.$smtp = smtp;
     next(null, app);
 };

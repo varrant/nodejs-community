@@ -28,7 +28,7 @@ module.exports = function (app) {
     var exports = controllers(app);
 
     log.setOptions('email', {
-        sender: 'pro' !== configs.app.env ? app.locals._smtp.send : null,
+        sender: 'pro' !== configs.app.env ? app.locals.$smtp.send : null,
         from: '服务器错误',
         to: 'cloudcome@qq.com',
         subject: '服务器错误'

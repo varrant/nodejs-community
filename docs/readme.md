@@ -1,4 +1,5 @@
 # 功能
+- app.locals.$smtp smtp 服务器
 - app.locals.$options 网站配置
 - app.locals.$admin 网站管理员
 - req.session.$csrf 请求令牌

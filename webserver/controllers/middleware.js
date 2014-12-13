@@ -88,6 +88,10 @@ module.exports = function (app) {
      * @param next
      */
     exports.readUser = function (req, res, next) {
+        if(!req.cookie){
+            return next();
+        }
+
         var userCookie = req.cookie[configs.secret.cookie.userKey];
 
         // 不存在 cookie
