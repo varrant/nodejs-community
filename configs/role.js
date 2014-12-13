@@ -10,16 +10,24 @@
 module.exports = function (app) {
     var exports = {};
 
-    // 操作权限表的权限
-    // 社区创建者才有权限
-    exports['review permission'] = {
+    exports['owner'] = {
         role: _pow(20),
-        name: '权限 0'
+        name: '社区创建者'
     };
 
-    exports['review permission'] = {
-        role: _pow(20),
-        name: '权限 0'
+    exports['set user title'] = {
+        role: _pow(19),
+        name: '设置/取消用户的头衔'
+    };
+
+    exports['set object property'] = {
+        role: _pow(18),
+        name: '设置/取消 object 属性，如加色/加分/设置精华/设置推荐/设置认证等'
+    };
+
+    exports['update object content'] = {
+        role: _pow(17),
+        name: '更新他人的 object 内容'
     };
 
     return exports;
