@@ -410,8 +410,8 @@ nav .nav-right li:last-child {
 .m-pager a {
   display: block;
   color: #888;
-  font-size: 20px;
   background: #fff;
+  padding: 4px 0;
 }
 .m-pager a:hover {
   color: #333;
