@@ -1,5 +1,6 @@
 /*!
  * post service
+ * @todo 设置object的各种属性
  * @author ydr.me
  * @create 2014-12-07 16:58
  */
