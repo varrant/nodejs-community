@@ -39,14 +39,14 @@ module.exports = function (app) {
 
         user.login({
             github: github
-        }, githubOauth, function (err, data) {
+        }, githubOauth, function (err, doc) {
             req.session.githubOauth = null;
 
             if (err) {
                 return next(err);
             }
 
-            var cookie = ydrUtil.crypto.encode(data.id, configs.secret.cookie.secret);
+            var cookie = ydrUtil.crypto.encode(doc.id, configs.secret.cookie.secret);
 
             res.cookie(configs.secret.cookie.userKey, cookie, {
                 domain: '',
@@ -56,14 +56,7 @@ module.exports = function (app) {
                 expires: new Date(Date.now() + configs.secret.cookie.userAge),
                 maxAge: configs.secret.cookie.userAge
             });
-            res.locals.$user = {
-                id: data.id,
-                github: data.github,
-                email: data.email,
-                nickname: data.nickname,
-                role: data.role
-            };
-
+            req.session.$user = res.locals.$user = doc.toObject();
             res.json({
                 code: 200,
                 message: '登录成功'
