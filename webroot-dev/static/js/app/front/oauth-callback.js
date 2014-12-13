@@ -22,11 +22,11 @@ define(function (require) {
             data: locals
         }).on('success', function (json) {
             if(json.login){
-                window.close();
-
                 if(window.opener){
-                    window.opener.reload();
+                    window.opener.location.reload();
                 }
+
+                window.close();
             }
             $msg.innerHTML = json.message;
         }).on('error', function (err) {
