@@ -82,11 +82,13 @@ exports.createOne = function (author, data, meta, callback) {
             });
         })
         // 3. 写入
-        .task(function (next) {
-            comment.createOne(data2, next);
+        .task(function (next, parent) {
+            comment.createOne(data2, function (err, doc) {
+                next(err, doc, parent);
+            });
         })
         // 顺序串行
-        .follow(function (err, doc) {
+        .follow(function (err, doc, parent) {
             callback(err, doc);
 
             if (!err && doc) {
@@ -100,9 +102,9 @@ exports.createOne = function (author, data, meta, callback) {
                 _noticeObjectAuthor(author.id, doc.object);
 
                 // 评论父级
-                if (doc.parent) {
+                if (parent) {
                     // commnet2.replyCount
-                    comment.increase({_id: doc.parent}, 'replyCount', 1, function (err, doc) {
+                    comment.increase({_id: parent.id}, 'replyCount', 1, function (err, doc) {
                         if (err) {
                             return log.holdError(err);
                         }
@@ -115,7 +117,7 @@ exports.createOne = function (author, data, meta, callback) {
                     });
 
                     // 通知被 comment 作者
-                    _noticeCommentAuthor(author.id, doc.parent);
+                    _noticeCommentAuthor(author.id, parent);
                 }
             }
         });
@@ -128,19 +130,25 @@ exports.createOne = function (author, data, meta, callback) {
  * @param objectId
  * @private
  */
-function _noticeObjectAuthor(activeUserId, objectId){
+function _noticeObjectAuthor(activeUserId, objectId) {
     howdo
         // 1. 查找 object
         .task(function (next) {
             object.findOne({_id: objectId}, next);
         })
-        // 2. 查找作者
+        // 2. 查找 object 作者
         .task(function (next, doc) {
             user.findOne({_id: doc.author}, next);
         })
         // 顺序串行
         .follow(function (err, user) {
             if (err) {
+                return log.holdError(err);
+            }
+
+            if (!user) {
+                err = new Error('_noticeObjectAuthor author is not exist');
+                err.type = 'notFound';
                 return log.holdError(err);
             }
 
@@ -166,19 +174,21 @@ function _noticeObjectAuthor(activeUserId, objectId){
  * @param commentId
  * @private
  */
-function _noticeCommentAuthor(activeUserId, commentId){
+function _noticeCommentAuthor(activeUserId, comment) {
     howdo
-        // 1. 查找 comment
+        // 1. 查找 comment 作者
         .task(function (next) {
-            comment.findOne({_id: commentId}, next);
-        })
-        // 2. 查找作者
-        .task(function (next, doc) {
-            user.findOne({_id: doc.author}, next);
+            user.findOne({_id: comment.author}, next);
         })
         // 顺序串行
         .follow(function (err, user) {
             if (err) {
+                return log.holdError(err);
+            }
+
+            if (!user) {
+                err = new Error('_noticeCommentAuthor author is not exist');
+                err.type = 'notFound';
                 return log.holdError(err);
             }
 
@@ -187,7 +197,7 @@ function _noticeCommentAuthor(activeUserId, commentId){
                 type: 'comment',
                 activeUser: activeUserId,
                 activedUser: user.id,
-                object: commentId
+                object: comment.id
             }, log.holdError);
 
             var subject = notiReply.subject;
