@@ -46,7 +46,7 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            var cookie = ydrUtil.crypto.encode(doc.id, configs.secret.cookie.secret);
+            var cookie = ydrUtil.crypto.encode(doc._id, configs.secret.cookie.secret);
 
             res.cookie(configs.secret.cookie.userKey, cookie, {
                 domain: '',

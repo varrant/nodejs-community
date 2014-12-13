@@ -20,7 +20,7 @@ var log = require('ydr-util').log;
 /**
  * 新建一个 object
  * @param author {Object} 作者信息对象
- * @param author.id {String} 作者的ID
+ * @param author._id {String} 作者的ID
  * @param author.role {Number} 作者的权限
  * @param data {Object} 更新数据
  * @param callback {Function} 回调
@@ -71,11 +71,11 @@ exports.createOne = function (author, data, callback) {
             var data2 = dato.pick(data, ['title', 'uri', 'type', 'scope', 'labels',
                 'introduction', 'content', 'isDisplay']);
             var data3 = {
-                author: author.id,
+                author: author._id,
                 publishAt: date,
                 updateAt: date,
                 updateList: [{
-                    user: author.id,
+                    user: author._id,
                     date: date
                 }]
             };
@@ -97,7 +97,7 @@ exports.createOne = function (author, data, callback) {
                 });
 
                 // 更新 user.objectStatistics
-                user.increaseObjectTypeCount({_id: author.id}, data.type, 1, log.holdError);
+                user.increaseObjectTypeCount({_id: author._id}, data.type, 1, log.holdError);
             }
         });
 };
@@ -106,7 +106,7 @@ exports.createOne = function (author, data, callback) {
 /**
  * 更新 object
  * @param author {Object} 作者信息对象
- * @param author.id {String} 作者的ID
+ * @param author._id {String} 作者的ID
  * @param author.role {Number} 作者的权限
  * @param conditions {Object} 查询条件
  * @param data {Object} 更新数据
@@ -181,7 +181,7 @@ exports.updateOne = function (author, conditions, data, callback) {
             data3.updateAt = date;
             data3.$push = {
                 updateList: {
-                    user: author.id,
+                    user: author._id,
                     date: date
                 }
             };
@@ -214,8 +214,8 @@ exports.updateOne = function (author, conditions, data, callback) {
 
                 // 更新 user.objectStatistics
                 if (doc.type !== oldDoc.type) {
-                    user.increaseObjectTypeCount({_id: author.id}, doc.type, 1, log.holdError);
-                    user.increaseObjectTypeCount({_id: author.id}, oldDoc.type, -1, log.holdError);
+                    user.increaseObjectTypeCount({_id: author._id}, doc.type, 1, log.holdError);
+                    user.increaseObjectTypeCount({_id: author._id}, oldDoc.type, -1, log.holdError);
                 }
             }
         });
@@ -268,7 +268,7 @@ exports.increaseScore = function (operator, id, count, callback) {
         object.push(conditions, 'scoreList', {
             date: new Date(),
             score: count,
-            user: operator.id
+            user: operator._id
         }, done);
     }).together(callback);
 };

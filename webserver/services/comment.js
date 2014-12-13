@@ -29,7 +29,7 @@ exports.findOne = comment.findOne;
 /**
  * 创建一条评论
  * @param author {Object} 评论者
- * @param author.id {String} 评论者 ID
+ * @param author._id {String} 评论者 ID
  * @param data {Object} 评论数据
  * @param meta {Object} 评论 meta 数据，如IP、UA等
  * @param callback {Function} 回调
@@ -37,7 +37,7 @@ exports.findOne = comment.findOne;
 exports.createOne = function (author, data, meta, callback) {
     var data2 = dato.pick(data, ['content', 'parent', 'object']);
 
-    data2.author = author.id;
+    data2.author = author._id;
     data2.meta = meta;
 
     howdo
@@ -96,15 +96,15 @@ exports.createOne = function (author, data, meta, callback) {
                 object.increaseCommentCount({_id: doc.object}, 1, log.holdError);
 
                 // user.commentCount
-                user.increaseCommentCount({_id: author.id}, 1, log.holdError);
+                user.increaseCommentCount({_id: author._id}, 1, log.holdError);
 
                 // 通知 object 作者
-                _noticeObjectAuthor(author.id, doc.object);
+                _noticeObjectAuthor(author._id, doc.object);
 
                 // 评论父级
                 if (parent) {
                     // commnet2.replyCount
-                    comment.increase({_id: parent.id}, 'replyCount', 1, function (err, doc) {
+                    comment.increase({_id: parent._id}, 'replyCount', 1, function (err, doc) {
                         if (err) {
                             return log.holdError(err);
                         }
@@ -117,7 +117,7 @@ exports.createOne = function (author, data, meta, callback) {
                     });
 
                     // 通知被 comment 作者
-                    _noticeCommentAuthor(author.id, parent);
+                    _noticeCommentAuthor(author._id, parent);
                 }
             }
         });
@@ -156,7 +156,7 @@ function _noticeObjectAuthor(activeUserId, objectId) {
             notification.createOne({
                 type: 'comment',
                 activeUser: activeUserId,
-                activedUser: user.id,
+                activedUser: user._id,
                 object: objectId
             }, log.holdError);
 
@@ -196,8 +196,8 @@ function _noticeCommentAuthor(activeUserId, comment) {
             notification.createOne({
                 type: 'comment',
                 activeUser: activeUserId,
-                activedUser: user.id,
-                object: comment.id
+                activedUser: user._id,
+                object: comment._id
             }, log.holdError);
 
             var subject = notiReply.subject;

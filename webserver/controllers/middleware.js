@@ -109,13 +109,13 @@ module.exports = function (app) {
         }
 
         // 与 session 不匹配
-        if (req.session.$user && req.session.$user.id !== userId) {
+        if (req.session.$user && req.session.$user._id !== userId) {
             req.session.$user = res.locals.$user = null;
             return next();
         }
 
         // 与 session 匹配
-        if(req.session.$user && req.session.$user.id === userId){
+        if(req.session.$user && req.session.$user._id === userId){
             res.locals.$user = req.session.$user;
             return next();
         }
