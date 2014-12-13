@@ -37,6 +37,10 @@ ydrTemplate.addFilter('gravatar', function (val, size) {
     });
 });
 
+ydrTemplate.addFilter('humanize', function (val) {
+    return dato.humanize(val);
+});
+
 
 module.exports = function (next) {
     var app = express();
