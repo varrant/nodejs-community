@@ -14,14 +14,23 @@ define(function (require, exports, module) {
     var locals = window.locals || {};
 
     page._login = function () {
+        var $msg = document.getElementById('msg');
+
         ajax({
             url: '/api/user/login/',
             method: 'post',
             data: locals
         }).on('success', function (json) {
-            console.log(json);
+            if(json.login){
+                window.close();
+
+                if(window.opener){
+                    window.opener.reload();
+                }
+            }
+            $msg.innerHTML = json.message;
         }).on('error', function (err) {
-            console.log(err);
+            $msg.innerHTML = err.message;
         });
     };
 
