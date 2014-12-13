@@ -10,27 +10,130 @@
 module.exports = function (app) {
     var exports = {};
 
-    exports['role 0'] = _pow(0);
-    exports['role 1'] = _pow(1);
-    exports['role 2'] = _pow(2);
-    exports['role 3'] = _pow(3);
-    exports['role 4'] = _pow(4);
-    exports['role 5'] = _pow(5);
-    exports['role 6'] = _pow(6);
-    exports['role 7'] = _pow(7);
-    exports['role 8'] = _pow(8);
-    exports['role 9'] = _pow(9);
-    exports['role 10'] = _pow(10);
-    exports['role 11'] = _pow(11);
-    exports['role 12'] = _pow(12);
-    exports['role 13'] = _pow(13);
-    exports['role 14'] = _pow(14);
-    exports['role 15'] = _pow(15);
-    exports['role 16'] = _pow(16);
-    exports['role 17'] = _pow(17);
-    exports['role 18'] = _pow(18);
-    exports['role 19'] = _pow(19);
-    exports['role 20'] = _pow(20);
+    exports['permission 0'] = {
+        role: _pow(0),
+        name: '权限 0'
+    };
+
+    exports['permission 1'] = {
+        role: _pow(1),
+        name: '权限 1'
+    };
+
+
+    exports['permission 2'] = {
+        role: _pow(2),
+        name: '权限 2'
+    };
+
+
+    exports['permission 3'] = {
+        role: _pow(3),
+        name: '权限 3'
+    };
+
+
+    exports['permission 4'] = {
+        role: _pow(4),
+        name: '权限 4'
+    };
+
+
+    exports['permission 5'] = {
+        role: _pow(5),
+        name: '权限 5'
+    };
+
+
+    exports['permission 6'] = {
+        role: _pow(6),
+        name: '权限 6'
+    };
+
+
+    exports['permission 7'] = {
+        role: _pow(7),
+        name: '权限 7'
+    };
+
+
+    exports['permission 8'] = {
+        role: _pow(8),
+        name: '权限 8'
+    };
+
+
+    exports['permission 9'] = {
+        role: _pow(9),
+        name: '权限 9'
+    };
+
+
+    exports['permission 10'] = {
+        role: _pow(10),
+        name: '权限 10'
+    };
+
+
+    exports['permission 11'] = {
+        role: _pow(11),
+        name: '权限 11'
+    };
+
+
+    exports['permission 12'] = {
+        role: _pow(12),
+        name: '权限 12'
+    };
+
+
+    exports['permission 13'] = {
+        role: _pow(13),
+        name: '权限 13'
+    };
+
+
+    exports['permission 14'] = {
+        role: _pow(14),
+        name: '权限 14'
+    };
+
+
+    exports['permission 15'] = {
+        role: _pow(15),
+        name: '权限 15'
+    };
+
+
+    exports['permission 16'] = {
+        role: _pow(16),
+        name: '权限 16'
+    };
+
+
+    exports['permission 17'] = {
+        role: _pow(17),
+        name: '权限 17'
+    };
+
+
+    exports['permission 18'] = {
+        role: _pow(18),
+        name: '权限 18'
+    };
+
+
+    exports['permission 19'] = {
+        role: _pow(19),
+        name: '权限 19'
+    };
+
+
+    exports['permission 20'] = {
+        role: _pow(20),
+        name: '权限 20'
+    };
+
 
     return exports;
 };
