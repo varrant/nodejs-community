@@ -81,7 +81,7 @@ module.exports = function(app){
  * @private
  */
 function _template(file){
-    file = path.join(__dirname, '../template/', file);
+    file = path.join(__dirname, '../templates/', file);
 
     var template = fs.readFileSync(file, 'utf8');
 
