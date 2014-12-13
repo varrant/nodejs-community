@@ -45,5 +45,6 @@ exports.send = function (username, useremail, subject, content) {
     };
 
     smtp.send(data, function () {
+        // ignore
     });
 };

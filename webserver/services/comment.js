@@ -13,9 +13,6 @@ var user = require('./user.js');
 var dato = require('ydr-util').dato;
 var howdo = require('howdo');
 var log = require('ydr-util').log;
-var noop = function (err) {
-    log.holdError(err);
-};
 
 
 /**
@@ -89,10 +86,10 @@ exports.createOne = function (author, data, meta, callback) {
 
             if (!err && doc) {
                 // object.commentCount
-                object.increaseCommentCount({_id: doc.object}, 1, noop);
+                object.increaseCommentCount({_id: doc.object}, 1, log.holdError);
 
                 // user.commentCount
-                user.increaseCommentCount({_id: author.id}, 1, noop);
+                user.increaseCommentCount({_id: author.id}, 1, log.holdError);
 
                 if (doc.parent) {
                     // commnet2.replyCount
@@ -104,7 +101,7 @@ exports.createOne = function (author, data, meta, callback) {
                         // 忽略错误
                         if (doc) {
                             // user2.repliedCount
-                            user.increaseRepliedCount({_id: doc.author}, 1, noop);
+                            user.increaseRepliedCount({_id: doc.author}, 1, log.holdError);
                         }
                     });
                 }

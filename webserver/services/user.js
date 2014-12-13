@@ -15,6 +15,7 @@ var dato = require('ydr-util').dato;
 var crypto = require('ydr-util').dato;
 var request = require('ydr-util').request;
 var typeis = require('ydr-util').typeis;
+var log = require('ydr-util').log;
 var configs = require('../../configs/');
 var qs = require('querystring');
 var howdo = require('howdo');
@@ -23,9 +24,7 @@ var urls = {
     accessToken: 'https://github.com/login/oauth/access_token',
     user: 'https://api.github.com/user'
 };
-var noop = function () {
-    // ignore
-};
+
 
 /**
  * 注册
@@ -151,8 +150,8 @@ exports.follow = function (operatorId, userId, callback) {
         callback(err);
 
         if (isModified) {
-            user.increase({_id: operatorId}, 'followCount', 1, noop);
-            user.increase({_id: userId}, 'followedCount', 1, noop);
+            user.increase({_id: operatorId}, 'followCount', 1, log.holdError);
+            user.increase({_id: userId}, 'followedCount', 1, log.holdError);
         }
     });
 };
@@ -175,8 +174,8 @@ exports.unfollow = function (operatorId, userId, callback) {
         callback(err);
 
         if (isModified) {
-            user.increase({_id: operatorId}, 'followCount', -1, noop);
-            user.increase({_id: userId}, 'followedCount', -1, noop);
+            user.increase({_id: operatorId}, 'followCount', -1, log.holdError);
+            user.increase({_id: userId}, 'followedCount', -1, log.holdError);
         }
     });
 };

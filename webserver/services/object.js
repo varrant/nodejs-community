@@ -13,11 +13,7 @@ var setting = require('./setting.js');
 var user = require('./user.js');
 var howdo = require('howdo');
 var dato = require('ydr-util').dato;
-var noop = function (err) {
-    if (err) {
-        console.error(err);
-    }
-};
+var log = require('ydr-util').log;
 
 
 /**
@@ -92,15 +88,15 @@ exports.createOne = function (author, data, callback) {
 
             if (!err && doc) {
                 // 更新 scope.objectCount
-                scope.increaseObjectCount({_id: data.scope}, 1, noop);
+                scope.increaseObjectCount({_id: data.scope}, 1, log.holdError);
 
                 // 更新 label.objectCount
                 doc.labels.forEach(function (name) {
-                    label.increaseObjectCount({name: name}, 1, noop);
+                    label.increaseObjectCount({name: name}, 1, log.holdError);
                 });
 
                 // 更新 user.objectStatistics
-                user.increaseObjectTypeCount({_id: author.id}, data.type, 1, noop);
+                user.increaseObjectTypeCount({_id: author.id}, data.type, 1, log.holdError);
             }
         });
 };
@@ -198,8 +194,8 @@ exports.updateOne = function (author, conditions, data, callback) {
             if (!err && doc) {
                 // 更新 scope.objectCount
                 if (doc.scope !== oldDoc.scope) {
-                    scope.increaseObjectCount({_id: doc.scope}, 1, noop);
-                    scope.increaseObjectCount({_id: oldDoc.scope}, -1, noop);
+                    scope.increaseObjectCount({_id: doc.scope}, 1, log.holdError);
+                    scope.increaseObjectCount({_id: oldDoc.scope}, -1, log.holdError);
                 }
 
                 // 更新 label.objectCount
@@ -208,17 +204,17 @@ exports.updateOne = function (author, conditions, data, callback) {
                 var only2 = diff[1];
 
                 only1.forEach(function (name) {
-                    label.increaseObjectCount({name: name}, 1, noop);
+                    label.increaseObjectCount({name: name}, 1, log.holdError);
                 });
 
                 only2.forEach(function (name) {
-                    label.increaseObjectCount({name: name}, -1, noop);
+                    label.increaseObjectCount({name: name}, -1, log.holdError);
                 });
 
                 // 更新 user.objectStatistics
                 if (doc.type !== oldDoc.type) {
-                    user.increaseObjectTypeCount({_id: author.id}, doc.type, 1, noop);
-                    user.increaseObjectTypeCount({_id: author.id}, oldDoc.type, -1, noop);
+                    user.increaseObjectTypeCount({_id: author.id}, doc.type, 1, log.holdError);
+                    user.increaseObjectTypeCount({_id: author.id}, oldDoc.type, -1, log.holdError);
                 }
             }
         });
