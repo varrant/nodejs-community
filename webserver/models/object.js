@@ -140,7 +140,7 @@ var schema = mongoose.Schema({
         default: false
     },
     // 是否通过了组织、团体认证
-    isCertification: {
+    isCertificated: {
         type: Boolean,
         default: false
     },
