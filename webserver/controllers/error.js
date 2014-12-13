@@ -25,33 +25,15 @@ module.exports = function (app) {
         var resError;
 
         if (REG_ACCEPT_JSON.test(req.headers.accept)) {
-            if (err.message) {
-                resError = err.message;
-            } else {
-                resError = {};
-                dato.each(err, function (key, err) {
-                    resError[key] = err.message;
-                });
-            }
-
             res.json({
                 code: 500,
-                message: resError
+                message: err.message
             });
         } else {
-            resError = [];
-
-            if (err.message) {
-                resError.push(err.message);
-            } else {
-                dato.each(err, function (key, err) {
-                    resError.push(err.message);
-                });
-            }
-
             res.status(500).render('server-error.html', {
+                title: '500',
                 redirect: err.redirect,
-                errors: resError
+                error: err.message
             });
         }
     }
@@ -70,7 +52,9 @@ module.exports = function (app) {
                 message: httpStatus.get(404)
             });
         }else{
-            res.status(404).render('client-error.html');
+            res.status(404).render('client-error.html', {
+                title: '404'
+            });
         }
     };
 
