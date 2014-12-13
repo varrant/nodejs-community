@@ -1,17 +1,18 @@
 {
-    "js": [
-        "./static/js/app/"
-    ],
-    "html": [
-        "./views/**/*.html"
-    ],
-    "css": {
-        "path": "./static/css/",
-        "root": "./"
-    },
-    "dest": "../webroot-pro/",
-    "coolie-config.js": "./static/js/coolie-config.js",
-    "copy": [
-        "./**/*.*"
-    ]
+  "js": {
+    "main": "./static/js/app/",
+    "host": "/"
+  },
+  "css": {
+    "path": "./static/css/",
+    "host": "/"
+  },
+  "html": [
+    "./views/**/*.html"
+  ],
+  "dest": "../webroot-pro/",
+  "coolie-config.js": "./static/js/coolie-config.js",
+  "copy": [
+    "./**/*.*"
+  ]
 }
