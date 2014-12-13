@@ -461,7 +461,7 @@ exports.can = function (conditionsOrRole, doWhat, callback) {
 
     if (typeis(conditionsOrRole) === 'number') {
         userRole = conditionsOrRole;
-        canDo = userRole & permission.role > 0;
+        canDo = userRole & Math.pow(2, permission.role) > 0;
 
         return callback(null, canDo);
     }

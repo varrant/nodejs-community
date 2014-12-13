@@ -55,7 +55,7 @@ exports.createOne = function (author, data, callback) {
                     return next(err);
                 }
 
-                if (author.role & type.role <= 0) {
+                if (author.role & Math.pow(2, type.role) <= 0) {
                     err = new Error('insufficient permissions');
                     err.type = 'permissions';
                     return next(err);
@@ -158,7 +158,7 @@ exports.updateOne = function (author, conditions, data, callback) {
                     return next(err);
                 }
 
-                if (author.role & type.role <= 0) {
+                if (author.role & Math.pow(2, type.role) <= 0) {
                     err = new Error('insufficient permissions');
                     err.type = 'permissions';
                     return next(err);

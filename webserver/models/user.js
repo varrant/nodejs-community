@@ -50,6 +50,11 @@ var schema = mongoose.Schema({
         max: 2097151,
         default: 1
     },
+    // 用户头衔
+    title: {
+        type: String,
+        required: false
+    },
     // 注册时间
     registerAt: {
         type: Date,
