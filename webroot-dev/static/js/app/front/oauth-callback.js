@@ -8,9 +8,33 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var xhr = require('../../alien/core/communication/xhr.js');
+    var ajax = require('../../libs/ajax.js');
     var selector = require('../../alien/core/dom/selector.js');
-    var event = require('../../alien/core/event/base.js');
+    var page = {};
+    var locals = window.locals || {};
 
-    module.exports = {};
+    page._login = function () {
+        ajax({
+            url: '/api/user/login/',
+            method: 'post',
+            data: locals
+        }).on('success', function (json) {
+            console.log(json);
+        }).on('error', function (err) {
+            console.log(err);
+        });
+    };
+
+    page.init = function () {
+        var the = this;
+        var $btn = document.getElementById('btn');
+
+        if (!$btn) {
+            return the._login();
+        }
+
+        $btn.onclick = the._login;
+    };
+
+    page.init();
 });

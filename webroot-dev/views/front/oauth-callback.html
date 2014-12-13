@@ -10,7 +10,6 @@
     {{include ./include/meta.html}}
     <script>
         var locals = {
-            csrf: '{{$csrf}}',
             github: '{{user.github}}',
             accessToken: '{{user.accessToken}}'
         };
@@ -31,7 +30,7 @@
         <li>github：{{user.github}}</li>
     </ul>
 
-    <button class="btn btn-primary">确定授权登录</button>
+    <button class="btn btn-primary" id="btn">确定授权登录</button>
     {{/if}}
 </div>
 
