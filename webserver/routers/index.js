@@ -31,7 +31,7 @@ module.exports = function (app) {
         to: app.locals.$admin.email,
         subject: '服务器错误'
     });
-    log.setOptions('smtp', 'pro' !== configs.app.env ? app.locals.$smtp : null);
+    log.setOptions('smtp', 'pro' === configs.app.env ? app.locals.$smtp : null);
 
     // 中间件：路由验证、安全验证、访问验证等
     require('./middleware.js')(app, exports.middleware);
