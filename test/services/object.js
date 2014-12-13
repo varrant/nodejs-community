@@ -45,4 +45,10 @@ test
             next();
         });
     })
+    .push('object.findOne', function (next) {
+        object.findOne({uri: 'hello-world'}, function (err, doc) {
+            console.log(doc);
+            next();
+        });
+    })
     .start();
