@@ -48,7 +48,7 @@ module.exports = function (app) {
     exports.createCsrf = function (req, res, next) {
         var csrf = _generatorCsrf();
 
-        req.session.csrf = res.locals._csrf = csrf;
+        req.session.csrf = res.locals.$csrf = csrf;
         next();
     };
 
