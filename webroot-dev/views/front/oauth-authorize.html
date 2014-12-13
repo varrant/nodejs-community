@@ -10,15 +10,21 @@
     {{include ./include/meta.html}}
 </head>
 <body ontouchstart="">
-    <div class="container">
-        <div class="row f-text-center">
-            <p>正跳转至 github 进行授权操作，请稍候……</p>
-            <p><a href="{{url}}" class="btn btn-danger">如果没有跳转，请点击这里</a></p>
-        </div>
+    <div class="m-oauth f-text-center">
+        <h1>正跳转至 <i class="i i-github"></i>github 进行授权操作</h1>
+        <p class="s-muted" id="m">……</p>
     </div>
 
     <script>
+        var $m = document.getElementById('m');
+
         window.location.href = '{{url}}';
+        setTimeout(function () {
+            $m.innerHTML = '<i class="i i-smile-o"></i>稍等片刻，请勿关闭窗口……';
+        }, 2000);
+        setTimeout(function () {
+            $m.innerHTML = '<i class="i i-coffee"></i>先喝杯咖啡吧……';
+        }, 5000);
     </script>
 </body>
 </html>
