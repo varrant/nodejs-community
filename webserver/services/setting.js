@@ -73,6 +73,10 @@ exports.get = function (key, callback) {
                 return callback(err);
             }
 
+            if (!doc) {
+                return callback(err, doc);
+            }
+
             callback(err, doc.val);
         });
     }

@@ -15,5 +15,5 @@ module.exports = {
     // 域名
     domain: 'f2ec.org',
     // mongodb
-    mongodb: 'mongodb://localhost:27017/f2ec.org'
+    mongodb: 'mongodb://localhost:27017/f2ec-org'
 };

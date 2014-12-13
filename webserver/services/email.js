@@ -9,18 +9,22 @@
 var configs = require('../../configs/');
 var setting = require('./setting.js');
 var date = require('ydr-util').date;
+var log = require('ydr-util').log;
+var typeis = require('ydr-util').typeis;
 var list = [];
 var smtp = null;
 
 
 /**
  * 初始化一个 smtp
+ * @param _smtp {Object} 邮件发送服务
+ * @param [admin] {Object} 管理员
  */
 exports.init = function (_smtp, admin) {
     smtp = _smtp;
     var time = date.format('YYYY年MM月DD日 HH:mm:ss.SSS 星期e a');
 
-    if(configs.app.env === 'pro'){
+    if (configs.app.env === 'pro' && admin) {
         exports.send(admin.nickname, admin.email, '服务器启动', time);
     }
 };
@@ -44,7 +48,7 @@ exports.send = function (username, useremail, subject, content) {
         }]
     };
 
-    smtp.send(data, function () {
-        // ignore
-    });
+    if (smtp && typeis(smtp.send) === 'function') {
+        smtp.send(data, log.holdError);
+    }
 };

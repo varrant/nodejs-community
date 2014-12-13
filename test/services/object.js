@@ -13,7 +13,7 @@ var author = {
     id: '548a9fca75cb8cf00877b994',
     role: 2097151
 };
-var scope1Id = '548aa0638a5cc85c27c6fffa';
+var scope1Id = '548c15505bb70f0000bf806e';
 var scope2Id = '548aa07592a2a9dc252266b9';
 var content = 'url:/customer/rest/statistics/chat/custom?platformId=14&customId=25&startTime=1414800000000&endTime=1418256000000&pageNo=1&pageSize=10url:/customer/rest/statistics/chat/custom?platformId=14&customId=25&startTime=1414800000000&endTime=1418256000000&pageNo=1&pageSize=10url:/customer/rest/statistics/chat/custom?platformId=14&customId=25&startTime=1414800000000&endTime=1418256000000&pageNo=1&pageSize=10';
 
