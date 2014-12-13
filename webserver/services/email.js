@@ -10,6 +10,7 @@ var configs = require('../../configs/');
 var setting = require('./setting.js');
 var list = [];
 var smtp = null;
+var admin = {};
 
 
 /**
@@ -18,10 +19,9 @@ var smtp = null;
 exports.init = function (_smtp) {
     smtp = _smtp;
 
-    if(configs.app.env === 'dev'){
-        // 生产环境下，启动服务器发一封邮件到指定邮箱
+    if(configs.app.env === 'pro'){
+        exports.send('云淡然', 'cloudcome@qq.com', '呵呵', '呵呵呵呵');
     }
-    exports.send('云淡然', 'cloudcome@qq.com', '呵呵', '呵呵呵呵');
 };
 
 

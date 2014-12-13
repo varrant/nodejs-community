@@ -16,7 +16,7 @@ var staticOptions = {
     etag: true,
     extensions: ['html'],
     index: false,
-    maxAge: '1d',
+    maxAge: '30d',
     redirect: true
 };
 

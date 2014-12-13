@@ -8,7 +8,7 @@
 
 
 module.exports = function (app, ctrlFront) {
-    var types = app.locals.options.types;
+    var types = app.locals.$options.types;
     var names = [];
 
     types.forEach(function (type) {

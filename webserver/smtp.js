@@ -10,9 +10,10 @@ var emailjs = require('emailjs');
 var email = require('./services/email.js');
 
 module.exports = function (next, app) {
-    var options = app.locals.options.smtp;
+    var options = app.locals.$options.smtp;
     var smtp = emailjs.server.connect(options);
 
     email.init(smtp);
+    app.locals._smtp = smtp;
     next(null, app);
 };

@@ -14,7 +14,7 @@ var howdo = require('howdo');
 
 module.exports = function (app) {
     var exports = {};
-    var oauthSettings = app.locals.options.oauth;
+    var oauthSettings = app.locals.$options.oauth;
 
     /**
      * 跳转至授权地址
