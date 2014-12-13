@@ -36,6 +36,15 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
+                if(!doc){
+                    console.log('');
+                    console.log('#########################################################');
+                    console.log('miss a owner, please read readme.md and use `npm install`');
+                    console.log('#########################################################');
+                    console.log('');
+                    return process.exit();
+                }
+
                 app.locals.$admin = doc.toObject();
                 done();
             });
