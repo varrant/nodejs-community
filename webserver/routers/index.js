@@ -23,8 +23,16 @@ var staticOptions = {
 log.setOptions('env', configs.app.env);
 log.setOptions('path', configs.dir.log);
 
+
 module.exports = function (app) {
     var exports = controllers(app);
+
+    log.setOptions('email', {
+        sender: 'pro' !== configs.app.env ? app.locals._smtp.send : null,
+        from: '服务器错误',
+        to: 'cloudcome@qq.com',
+        subject: '服务器错误'
+    });
 
     // 中间件：路由验证、安全验证、访问验证等
     require('./middleware.js')(app, exports.middleware);
