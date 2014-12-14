@@ -8,7 +8,7 @@
 - req.session.$state 授权状态值
 - res.locals.$csrf 响应令牌
 - res.locals.$user 响应用户
-- res.locals.$options 响应社区配置
+- res.locals.$settings 响应社区设置
 
 
 # 参考项目

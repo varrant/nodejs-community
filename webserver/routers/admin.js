@@ -13,4 +13,7 @@ module.exports = function(app, ctrlAdmin){
 
     // 主页
     app.get('/admin/', ctrlAdmin.main.home);
+
+    // 板块
+    app.get('/admin/types/', ctrlAdmin.type.list);
 };

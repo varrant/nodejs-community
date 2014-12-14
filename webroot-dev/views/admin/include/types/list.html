@@ -1,0 +1,19 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>名称</th>
+        <th>URI</th>
+        <th>发布权限</th>
+        <th>描述</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-repeat="type:types">
+        <td>\{{$index}}</td>
+        <td><input class="ipt" type="text" name="title" value="\{{type.title}}" v-model="title"/></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>

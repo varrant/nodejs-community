@@ -17,7 +17,8 @@ module.exports = function (app) {
      */
     exports.home = function (req, res, next) {
         var data = {
-            title: '管理首页'
+            title: '管理首页',
+            nav: 1
         };
 
         res.render('admin/home.html', data);
