@@ -135,7 +135,6 @@ define(function (require, exports, module) {
          */
         _init: function (template) {
             var the = this;
-            var options = the._options;
             var _var = 'alienTemplateOutput_' + Date.now();
             var fnStr = 'var ' + _var + '="";';
             var output = [];

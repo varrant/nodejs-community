@@ -19,8 +19,7 @@ module.exports = function (app) {
     exports.list = function (req, res, next) {
         var data = {
             title: '板块管理',
-            nav: 2,
-            types: app.locals.$settings.types
+            nav: 2
         };
 
         res.render('admin/types.html', data);

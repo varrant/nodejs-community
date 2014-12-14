@@ -9,7 +9,9 @@
 
 module.exports = function (app) {
     return {
-        user: require('./user.js')(app),
-        oss: require('./oss.js')(app)
+        object: require('./object.js')(app),
+        oss: require('./oss.js')(app),
+        type: require('./type.js')(app),
+        user: require('./user.js')(app)
     };
 };

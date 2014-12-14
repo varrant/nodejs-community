@@ -1,19 +1,30 @@
-<table class="table">
-    <thead>
-    <tr>
-        <th>序号</th>
-        <th>名称</th>
-        <th>URI</th>
-        <th>发布权限</th>
-        <th>描述</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr v-repeat="type:types">
-        <td>\{{$index}}</td>
-        <td><input class="ipt" type="text" name="title" value="\{{type.title}}" v-model="title"/></td>
-        <td></td>
-        <td></td>
-    </tr>
-    </tbody>
-</table>
+<div id="types" class="f-none">
+    <div class="alert alert-warning alert-line">
+        <p><i class="i i-info-circle"></i>发布权限请控制在<strong>[0-10]</strong>之间</p>
+    </div>
+    <div class="alert alert-danger alert-line">
+        <p><i class="i i-exclamation-triangle"></i>URI修改无法及时体现在前端，需要重启服务器以更新。</p>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th width="10%">序号</th>
+            <th width="15%">名称</th>
+            <th width="20%">URI</th>
+            <th width="10%">发布权限</th>
+            <th width="*">描述</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-repeat="type:types">
+            <td>\{{$index}}</td>
+            <td><input class="ipt" type="text" name="title" value="\{{type.title}}" v-model="type.title"/></td>
+            <td><input class="ipt" type="text" name="uri" value="\{{type.uri}}" v-model="type.url"/></td>
+            <td><input class="ipt" type="text" name="role" value="\{{type.role}}" v-model="type.role"/></td>
+            <td><textarea name="desc" class="ipt" v-model="type.desc" rows="2">\{{type.desc}}</textarea></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p class="f-text-center"><button class="btn btn-primary" v-on="click:onsave">保存修改</button></p>
+</div>

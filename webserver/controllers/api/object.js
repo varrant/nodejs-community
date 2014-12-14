@@ -8,4 +8,8 @@
 
 var server = require('../../services/').object;
 
-module.exports = {};
+module.exports = function (app) {
+    var exports = {};
+
+    return exports;
+};
