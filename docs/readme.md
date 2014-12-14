@@ -8,6 +8,7 @@
 - req.session.$state 授权状态值
 - res.locals.$csrf 响应令牌
 - res.locals.$user 响应用户
+- res.locals.$types 响应板块
 
 
 # 参考项目

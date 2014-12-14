@@ -5,6 +5,7 @@
  */
 
 'use strict';
+var setting = require('../../services/').setting;
 
 module.exports = function (app) {
     var exports = {};

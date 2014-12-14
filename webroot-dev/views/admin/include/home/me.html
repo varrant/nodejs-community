@@ -1,0 +1,24 @@
+<div class="m-me">
+    <div class="f-clearfix">
+        <div class="me-avatar f-left">
+            <img src="{{$user.email|gravatar:200}}" alt="avatar" width="100" height="100"/>
+        </div>
+        <ul class="me-profile">
+            <li><i class="i i-user"></i><strong>{{$user.nickname}}</strong></li>
+            <li><i class="i i-location-arrow"></i>{{$user.meta.location}}</li>
+            <li><i class="i i-link"></i>{{$user.meta.blog}}</li>
+        </ul>
+    </div>
+
+    <blockquote class="me-bio">{{$user.meta.bio?$user.meta.bio:'你还没来得及向大家介绍你自己。'}}</blockquote>
+
+    <ul class="me-get f-small f-list-left">
+        <li><i class="i i-comment"></i>{{$user.commentCount}}评论</li>
+        <li><i class="i i-reply"></i>{{$user.repliedCount}}回复</li>
+        <li><i class="i i-thumbs-up"></i>{{$user.agreedCount}}赞同</li>
+        <li><i class="i i-check-square-o"></i>{{$user.acceptedCount}}采纳</li>
+        <li><i class="i i-star"></i>{{$user.followCount}}关注/{{$user.followedCount}}被关注</li>
+    </ul>
+
+    <a href="/admin/user/profile/" class="btn btn-success btn-sm me-edit"><i class="i i-edit"></i>编辑</a>
+</div>

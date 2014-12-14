@@ -1,0 +1,110 @@
+@primary-bg-color: #128CC2;
+@primary-fg-color: lighten(@primary-bg-color, 90%);
+@border-color: #e6e6e6;
+
+
+// 管理员
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.g-sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background: #333;
+  overflow: auto;
+}
+
+.g-main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 200px;
+  overflow: auto;
+}
+
+nav {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  a {
+    display: block;
+    padding: 10px;
+    color: #ccc;
+
+    &:hover,&.active {
+      background: #222;
+      color: #fff;
+    }
+  }
+}
+
+.m-main {
+  .main-title{
+    font-size: 20px;
+    font-weight: normal;
+    color: #444;
+    padding: 20px;
+    margin: 0;
+  }
+  .main-body{
+    padding: 20px;
+  }
+}
+
+.m-welcome{
+  padding: 20px;
+  background: lighten(@border-color, 7%);
+  border-bottom: 1px solid @border-color;
+}
+
+.m-me{
+  position: relative;
+
+  .me-avatar{
+    width: 100px;
+    height: 100px;
+  }
+
+  .me-profile{
+    padding: 0;
+    margin: 0 0 0 110px;
+    list-style: none;
+    
+    li{
+      border-bottom: 1px solid @border-color;
+      padding: 5px 0;
+
+      &:last-child{
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+    }
+  }
+
+  .me-get{
+    border-top: 1px solid @border-color;
+    border-bottom: 1px solid @border-color;
+    background-color: #fcfcfc;
+    margin: 0 -20px;
+    padding: 20px;
+    list-style: none;
+    li{
+      margin-right: 20px;
+    }
+  }
+
+  .me-edit{
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+

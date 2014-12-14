@@ -10,7 +10,11 @@ module.exports = function (app) {
     var exports = {};
 
     exports.home = function (req, res, next) {
-        res.send('管理员首页');
+        var data = {
+            title: '管理首页'
+        };
+
+        res.render('admin/home.html', data);
     };
 
     return exports;
