@@ -1,6 +1,7 @@
 # 功能
 - app.locals.$smtp smtp 服务器
 - app.locals.$options 社区配置
+- app.locals.$owner 社区主人
 - req.session.$csrf 请求令牌
 - req.session.$user 请求用户
 - req.session.$github github授权

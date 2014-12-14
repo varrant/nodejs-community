@@ -28,7 +28,7 @@ module.exports = function (app) {
 
     log.setOptions('email', {
         from: configs.smtp.from,
-        to: app.locals.$admin.email,
+        to: app.locals.$owner.email,
         subject: '服务器错误'
     });
     log.setOptions('smtp', 'pro' === configs.app.env ? app.locals.$smtp : null);
