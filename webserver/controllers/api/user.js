@@ -59,8 +59,7 @@ module.exports = function (app) {
             req.session.$user = res.locals.$user = doc.toObject();
             res.json({
                 code: 200,
-                login: true,
-                message: '登录成功'
+                data: true
             });
         });
     };

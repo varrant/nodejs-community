@@ -15,6 +15,13 @@ var log = require('ydr-util').log;
  */
 exports.createOne = notification.createOne;
 
+
+/**
+ * 计数
+ */
+exports.count = notification.count;
+
+
 /**
  * 设置为已激活
  * @param conditions {Object} 查询条件

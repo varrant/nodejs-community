@@ -21,7 +21,7 @@ define(function (require) {
             method: 'post',
             data: locals
         }).on('success', function (json) {
-            if(json.login){
+            if(json.data){
                 if(window.opener){
                     window.opener.location.reload();
                 }
