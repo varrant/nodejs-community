@@ -2,8 +2,6 @@
 
 
 ## install
-read `./settings.json` first
-
 ```
 npm install
 ```
