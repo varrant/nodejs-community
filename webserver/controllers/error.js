@@ -22,11 +22,9 @@ module.exports = function (app) {
      * @param next
      */
     exports.serverError = function (err, req, res, next) {
-        var resError;
-
         if (REG_ACCEPT_JSON.test(req.headers.accept)) {
             res.json({
-                code: 500,
+                code: err.status || 500,
                 message: err.message
             });
         } else {

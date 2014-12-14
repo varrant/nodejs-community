@@ -22,12 +22,14 @@ module.exports = function (app) {
         if (!req.session.$user) {
             err = new Error('必须先登录');
             err.redirect = '/';
+            err.status = 401;
             return next(err);
         }
 
         if (req.session.$user.isBlock) {
             err = new Error('您已被禁止登录');
             err.redirect = '/';
+            err.status = 403;
             return next(err);
         }
 

@@ -10,6 +10,7 @@ define(function (require) {
 
     var ajax = require('../ajax.js');
     var selector = require('../../alien/core/dom/selector.js');
+    var event = require('../../alien/core/event/base.js');
     var page = {};
 
     // 通知
@@ -35,7 +36,13 @@ define(function (require) {
 
     // 退出
     page.logout = function () {
+        event.on(document, 'click', '.j-logout', function (eve) {
+            eve.preventDefault();
 
+            ajax({
+                url: '/api/user/logout/'
+            });
+        });
     };
 
     page.notification();

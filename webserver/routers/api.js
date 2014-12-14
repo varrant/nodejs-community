@@ -7,6 +7,10 @@
 'use strict';
 
 module.exports = function (app, ctrlApi) {
+    // notification
+    app.get('/api/notification/count/', ctrlApi.notification.count);
+
+
     // object
     //app.post('/api/user/login/', ctrlApi.user.login);
 

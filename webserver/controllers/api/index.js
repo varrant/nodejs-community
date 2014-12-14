@@ -9,6 +9,7 @@
 
 module.exports = function (app) {
     return {
+        notification: require('./notification.js')(app),
         object: require('./object.js')(app),
         oss: require('./oss.js')(app),
         type: require('./type.js')(app),

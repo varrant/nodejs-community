@@ -21,8 +21,8 @@ define(function (require) {
             method: 'post',
             data: locals
         }).on('success', function (json) {
-            if(json.data){
-                if(window.opener){
+            if (json.data) {
+                if (window.opener && !window.opener['-norefresh-']) {
                     window.opener.location.reload();
                 }
 
