@@ -1,6 +1,6 @@
-<div id="types" class="f-none">
+<div id="types" class="m-types f-none">
     <div class="alert alert-warning alert-line">
-        <p><i class="i i-info-circle"></i>发布权限请控制在<strong>[0-10]</strong>之间</p>
+        <p><i class="i i-info-circle"></i>发布权限请控制在<strong>[0-10]</strong>之间。</p>
     </div>
     <div class="alert alert-danger alert-line">
         <p><i class="i i-exclamation-triangle"></i>URI修改无法及时体现在前端，需要重启服务器以更新。</p>
@@ -8,23 +8,35 @@
     <table class="table">
         <thead>
         <tr>
-            <th width="10%">序号</th>
+            <th width="8%">排序</th>
             <th width="15%">名称</th>
+            <th width="10%">前端</th>
             <th width="20%">URI</th>
             <th width="10%">发布权限</th>
             <th width="*">描述</th>
+            <th width="5%">操作</th>
         </tr>
         </thead>
         <tbody>
         <tr v-repeat="type:types">
-            <td>\{{$index}}</td>
+            <td>
+                <button class="btn btn-primary btn-xs types-up" v-on="click:onup(type, $index)"><i class="i i-long-arrow-up i-striped"></i></button>
+                <button class="btn btn-info btn-xs types-down" v-on="click:ondown(type, $index)"><i class="i i-long-arrow-down i-striped"></i></button>
+            </td>
             <td><input class="ipt" type="text" name="title" value="\{{type.title}}" v-model="type.title"/></td>
+            <td><label for="show-\{{$index}}"><input type="checkbox" name="show" id="show-\{{$index}}" v-model="type.isDisplay"/>显示</label></td>
             <td><input class="ipt" type="text" name="uri" value="\{{type.uri}}" v-model="type.url"/></td>
             <td><input class="ipt" type="text" name="role" value="\{{type.role}}" v-model="type.role"/></td>
             <td><textarea name="desc" class="ipt" v-model="type.desc" rows="2">\{{type.desc}}</textarea></td>
+            <td>
+                <button class="btn btn-danger btn-xs" v-on="click:onremove($index)"><i class="i i-remove i-striped"></i></button>
+            </td>
         </tr>
         </tbody>
     </table>
 
-    <p class="f-text-center"><button class="btn btn-primary" v-on="click:onsave">保存修改</button></p>
+    <p class="f-text-center">
+        <button class="btn btn-success" v-on="click:oncreate">新建一个</button>
+        <button class="btn btn-primary" v-on="click:onsave">保存修改</button>
+    </p>
 </div>

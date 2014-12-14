@@ -8,9 +8,9 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var event = require('../alien/core/event/base.js');
-    var modification = require('../alien/core/dom/modification.js');
-    var Dialog = require('../alien/ui/Dialog/index.js');
+    var event = require('../../alien/core/event/base.js');
+    var modification = require('../../alien/core/dom/modification.js');
+    var Dialog = require('../../alien/ui/Dialog/index.js');
     var page = {};
 
     page.initDom = function () {

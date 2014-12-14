@@ -8,7 +8,7 @@ body {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 200px;
+  width: 120px;
   background: #333;
   overflow: auto;
 }
@@ -17,7 +17,7 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
-  left: 200px;
+  left: 120px;
   overflow: auto;
 }
 nav ul {
@@ -93,4 +93,10 @@ nav li.active a {
   position: absolute;
   top: 0;
   right: 0;
+}
+.m-types tr:first-child .types-up {
+  display: none;
+}
+.m-types tr:last-child .types-down {
+  display: none;
 }

@@ -41,6 +41,10 @@
     margin-left: 0;
 }
 
+.i-striped{
+    margin: 0;
+}
+
 
 /* makes the font 33% larger relative to the icon container */
 .i-lg {

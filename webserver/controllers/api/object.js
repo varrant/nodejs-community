@@ -11,5 +11,11 @@ var server = require('../../services/').object;
 module.exports = function (app) {
     var exports = {};
 
+    exports.get = function (type) {
+        return function (req, res, next) {
+
+        };
+    };
+
     return exports;
 };
