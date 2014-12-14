@@ -34,6 +34,11 @@ module.exports = function (app) {
     exports.save = function (req, res, next) {
         var body = req.body;
 
+        return res.json({
+            code: 300,
+            message: '呵呵'
+        });
+
         setting.set('types', body.types, function (err, doc) {
             if (err) {
                 return next(err);

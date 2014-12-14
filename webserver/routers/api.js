@@ -8,7 +8,7 @@
 
 module.exports = function (app, ctrlApi) {
     // notification
-    app.get('/api/notification/count/', ctrlApi.notification.count);
+    app.get('/admin/api/notification/count/', ctrlApi.notification.count);
 
 
     // object
@@ -16,12 +16,12 @@ module.exports = function (app, ctrlApi) {
 
 
     // oss
-    app.put('/api/oss/', ctrlApi.oss.put);
+    app.put('/admin/api/oss/', ctrlApi.oss.put);
 
 
     // type
-    app.get('/api/type/', ctrlApi.type.list);
-    app.put('/api/type/', ctrlApi.type.save);
+    app.get('/admin/api/type/', ctrlApi.type.list);
+    app.put('/admin/api/type/', ctrlApi.type.save);
 
 
     // user

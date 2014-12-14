@@ -19,7 +19,7 @@ define(function (require) {
         var html_1 = '<i class="i i-exclamation-triangle s-danger"></i>';
 
         ajax({
-            url: '/api/notification/count/'
+            url: '/admin/api/notification/count/'
         }).on('success', function (json) {
             if (json.code === 200) {
                 $span.innerHTML = '<a class="badge badge-' +

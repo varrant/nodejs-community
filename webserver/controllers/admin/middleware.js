@@ -20,14 +20,14 @@ module.exports = function (app) {
         var err;
 
         if (!req.session.$user) {
-            err = new Error('必须先登录');
+            err = new Error('您尚未登录，或登录信息已过期。');
             err.redirect = '/';
             err.status = 401;
             return next(err);
         }
 
         if (req.session.$user.isBlock) {
-            err = new Error('您已被禁止登录');
+            err = new Error('您已被禁止访问管理后台，如有疑问请联系管理员。');
             err.redirect = '/';
             err.status = 403;
             return next(err);

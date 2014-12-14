@@ -11,7 +11,7 @@ define(function (require) {
     var ajax = require('../../libs/ajax.js');
     var alert = require('../../libs/alert.js');
     var confirm = require('../../libs/confirm.js');
-    var url = '/api/type/';
+    var url = '/admin/api/type/';
     var page = {};
 
     require('../../libs/admin/welcome.js');
