@@ -1,7 +1,7 @@
 <div class="m-me">
     <div class="f-clearfix">
         <div class="me-avatar f-left">
-            <img src="{{$user.email|gravatar:200}}" alt="avatar" width="100" height="100"/>
+            <a href="/admin/engineer/profile/"><img src="{{$user.email|gravatar:200}}" alt="avatar" width="100" height="100"/></a>
         </div>
         <ul class="me-profile">
             <li><i class="i i-user"></i><strong>{{$user.nickname}}</strong></li>
@@ -12,13 +12,17 @@
 
     <blockquote class="me-bio">{{$user.meta.bio?$user.meta.bio:'你还没来得及向大家介绍你自己。'}}</blockquote>
 
-    <ul class="me-get f-small f-list-left">
-        <li><i class="i i-comment"></i>{{$user.commentCount}}评论</li>
-        <li><i class="i i-reply"></i>{{$user.repliedCount}}回复</li>
-        <li><i class="i i-thumbs-up"></i>{{$user.agreedCount}}赞同</li>
-        <li><i class="i i-check-square-o"></i>{{$user.acceptedCount}}采纳</li>
-        <li><i class="i i-star"></i>{{$user.followCount}}关注/{{$user.followedCount}}被关注</li>
+    <ul class="me-get f-small f-list-left s-muted">
+        <li><i class="i i-eye"></i><strong>{{$user.viewCount|humanize}}</strong>次访问</li>
+        <li><i class="i i-comment"></i><a href="/engineer/{{$user.github}}/comment/"><strong>{{$user.commentCount|humanize}}</strong>次评论</a></li>
+        <li><i class="i i-reply"></i><a href="/engineer/{{$user.github}}/replied/"><strong>{{$user.repliedCount|humanize}}</strong>次被回复</a></li>
+        <li><i class="i i-thumbs-up"></i><a href="/engineer/{{$user.github}}/agreed/"><strong>{{$user.agreedCount|humanize}}</strong>次被赞同</a></li>
+        <li><i class="i i-check-square-o"></i><a href="/engineer/{{$user.github}}/accepted/"><strong>{{$user.acceptedCount|humanize}}</strong>次被采纳</a></li>
+        <li><i class="i i-star"></i>
+            <a href="/engineer/{{$user.github}}/follow/"><strong>{{$user.followCount|humanize}}</strong>已关注</a>/
+            <a href="/engineer/{{$user.github}}/followed/"><strong>{{$user.followedCount|humanize}}</strong>被关注</a>
+        </li>
     </ul>
 
-    <a href="/admin/user/profile/" class="btn btn-success btn-sm me-edit"><i class="i i-edit"></i>编辑</a>
+    <a href="/admin/engineer/profile/" class="btn btn-success btn-sm me-edit"><i class="i i-edit"></i>编辑</a>
 </div>

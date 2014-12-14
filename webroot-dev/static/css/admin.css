@@ -81,6 +81,9 @@ nav a.active {
 .m-me .me-get li {
   margin-right: 20px;
 }
+.m-me .me-get strong {
+  margin-right: 2px;
+}
 .m-me .me-edit {
   position: absolute;
   top: 0;

@@ -1,30 +1,28 @@
 /*!
  * 文件描述
  * @author ydr.me
- * @create 2014-12-13 23:10
+ * @create 2014-12-14 14:52
  */
 
 'use strict';
+
 
 module.exports = function (app) {
     var exports = {};
 
     /**
-     * 管理首页
+     * 板块列表
      * @param req
      * @param res
      * @param next
      */
-    exports.home = function (req, res, next) {
+    exports.list = function (req, res, next) {
         var data = {
-            title: '管理首页'
+            types: app.locals.$settings.types
         };
 
-        res.render('admin/home.html', data);
+        res.render('/admin/types.html', data);
     };
-
-
-
 
     return exports;
 };
