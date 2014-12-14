@@ -14,6 +14,8 @@ define(function (require) {
     var url = '/api/type/';
     var page = {};
 
+    require('../../libs/admin/welcome.js');
+
     /**
      * 请求展示列表
      */
