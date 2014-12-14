@@ -53,13 +53,14 @@ define(function (require) {
      */
     page.onsave = function (eve) {
         var $btn = eve.target;
+        var the = this;
 
         confirm('确定更新吗？', function () {
             $btn.disabled = true;
             ajax({
                 url: url,
                 method: 'put',
-                data: this.$data
+                data: the.$data
             }).on('success', function (json) {
                 $btn.disabled = false;
                 if (json.code !== 200) {
