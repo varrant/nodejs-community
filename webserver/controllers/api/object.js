@@ -27,7 +27,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.list = function (req, res, next) {
-        var conditions = {};
+        var conditions = dato.pick(req.query, ['type', 'author']);
         var options = filter.skipLimit(req);
 
         object.find(conditions, options, function(err, docs){

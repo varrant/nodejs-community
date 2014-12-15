@@ -8,6 +8,7 @@
 
 var notification = require('../../services/').notification;
 var dato = require('ydr-util').dato;
+var filter = require('../../utils/').filter;
 
 module.exports = function (app) {
     var exports = {};
@@ -63,15 +64,9 @@ module.exports = function (app) {
      * @param next
      */
     exports.list = function (req, res, next) {
-        var page = dato.parseInt(req.query.page, 1);
-        var limit = dato.parseInt(req.query.limit, 10);
-        var actived = req.query.actived === 'true' ? true : false;
         var userId = res.locals.$user._id;
         var conditions = {activedUser: userId};
-
-        if(page < 1){
-            page = 1;
-        }
+        var options = filter.skipLimit(req);
 
         switch (req.query.type) {
             case 'actived':
@@ -83,10 +78,7 @@ module.exports = function (app) {
                 break;
         }
 
-        notification.find(conditions, {
-            skip: (page - 1 ) * limit,
-            limit: limit
-        }, function (err, docs) {
+        notification.find(conditions, options, function (err, docs) {
             if (err) {
                 return next(err);
             }
