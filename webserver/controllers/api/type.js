@@ -7,6 +7,7 @@
 'use strict';
 
 var setting = require('../../services/').setting;
+var locals = require('../../utils/').locals;
 
 module.exports = function (app) {
     var exports = {};
@@ -40,6 +41,7 @@ module.exports = function (app) {
             }
 
             app.locals.$settings.types = doc.toObject().val;
+            locals.$settings(app);
             res.json({
                 code: 200
             });
