@@ -12,8 +12,9 @@ define(function (require, exports, module) {
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
-    var url = '/admin/api/object/' + window['-type-'];
+    var url = '/admin/api/object/?type=' + window['-type-'];
     var page = {};
+    var reqPage = 1;
 
     require('../../widget/admin/welcome.js');
 
@@ -22,7 +23,7 @@ define(function (require, exports, module) {
      */
     page.list = function () {
         ajax({
-            url: url
+            url: url + '&page=' + reqPage
         }).on('success', page.onsuccess).on('error', alert);
     };
 
@@ -39,11 +40,10 @@ define(function (require, exports, module) {
         var vue = new Vue({
             el: '#list',
             data: {
-                roles: json.data
+                objects: json.data,
+                page: reqPage
             },
-            methods: {
-
-            }
+            methods: {}
         });
 
         vue.$el.classList.remove('f-none');

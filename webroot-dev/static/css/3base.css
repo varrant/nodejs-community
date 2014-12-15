@@ -240,3 +240,7 @@ th {
     color: #dd514c;
     background-color: rgba(221, 81, 76, 0.115);
 }
+.table .table-empty-td{
+    padding: 30px;
+    text-align: center;
+}

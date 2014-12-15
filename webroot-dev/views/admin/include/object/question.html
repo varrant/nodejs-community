@@ -1,3 +1,29 @@
 <div id="list" class="m-object-question f-none">
-
+    <table class="table">
+        <thead>
+        <tr>
+            <th width="8%">序号</th>
+            <th width="*">标题</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-if="objects.length == 0">
+            <td colspan="2" class="table-empty-td">暂无相关智问，<a class="btn btn-primary btn-sm" href="/admin/question/">点击新建智问</a></td>
+        </tr>
+        <tr v-repeat="object:objects">
+            <td>\{{$index}}</td>
+            <td>《\{{object.title}}》</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="2">
+                <ul class="m-pager avg-xs-2 f-text-center">
+                    <li class="pager-prev" v-class="disabled: page == 1"><a href="#"><i class="i i-angle-double-left"></i>上一页</a></li>
+                    <li class="pager-next" v-class="disabled: objects.length == 0"><a href="#">下一页<i class="i i-angle-double-right"></i></a></li>
+                </ul>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
 </div>
