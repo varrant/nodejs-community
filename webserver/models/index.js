@@ -223,7 +223,19 @@ dato.each(models, function (key, model) {
      * @param callback {Function} 回调
      */
     exports[key].findOneAndRemove = function (conditions, callback) {
-        model.findOneAndRemove(conditions, callback);
+        model.findOneAndRemove(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!doc) {
+                err = new Error('the document is not exist');
+                err.type = 'notFound';
+                return callback(err);
+            }
+
+            callback(err, doc);
+        });
     };
 
 
