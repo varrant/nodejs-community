@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * notification  API
  * @author ydr.me
  * @create 2014-12-14 19:41
  */
@@ -69,6 +69,10 @@ module.exports = function (app) {
         var userId = res.locals.$user._id;
         var conditions = {activedUser: userId};
 
+        if(page < 1){
+            page = 1;
+        }
+
         switch (req.query.type) {
             case 'actived':
                 conditions.hasActived = true;
@@ -94,7 +98,7 @@ module.exports = function (app) {
                 data: docs
             });
         });
-    }
+    };
 
     return exports;
 };

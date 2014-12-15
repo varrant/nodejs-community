@@ -18,6 +18,23 @@ var log = require('ydr-util').log;
 
 
 /**
+ * count
+ */
+exports.count = object.count;
+
+
+/**
+ * findOne
+ */
+exports.findOne = object.findOne;
+
+/**
+ * find
+ */
+exports.find = object.find;
+
+
+/**
  * 新建一个 object
  * @param author {Object} 作者信息对象
  * @param author._id {String} 作者的ID
@@ -221,17 +238,6 @@ exports.updateOne = function (author, conditions, data, callback) {
         });
 };
 
-
-/**
- * count
- */
-exports.count = object.count;
-
-
-/**
- * findOne
- */
-exports.findOne = object.findOne;
 
 
 /**
