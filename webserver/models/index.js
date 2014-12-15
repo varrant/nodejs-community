@@ -116,6 +116,12 @@ dato.each(models, function (key, model) {
                     return callback(err);
                 }
 
+                if (!doc) {
+                    err = new Error('create one error');
+                    err = _parseError(rules, err);
+                    return callback(err);
+                }
+
                 callback(err, doc, null);
             });
         });
