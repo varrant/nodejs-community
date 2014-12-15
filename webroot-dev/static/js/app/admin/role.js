@@ -58,8 +58,8 @@ define(function (require, exports, module) {
     page.onremove = function (index) {
         var the = this;
 
-        confirm('确认要删除该板块吗？', function () {
-            the.$data.types.splice(index, 1);
+        confirm('确认要删除该权限吗？<br>错误操作可能会导致程序出现错误。', function () {
+            the.$data.roles.splice(index, 1);
         });
     };
 
@@ -68,11 +68,9 @@ define(function (require, exports, module) {
      * 新建一个
      */
     page.oncreate = function () {
-        this.$data.types.push({
-            title: '未定义',
-            uri: 'undefined',
-            isDisplay: false,
-            role: 0,
+        this.$data.roles.push({
+            name: '未定义',
+            role: 20,
             desc: '未定义'
         });
     };
@@ -86,7 +84,7 @@ define(function (require, exports, module) {
         var $btn = eve.target;
         var the = this;
 
-        confirm('确认更新所有权限控制信息吗？', function () {
+        confirm('确认更新所有权限控制信息吗？<br>错误操作可能会导致程序出现错误。', function () {
             $btn.disabled = true;
             ajax({
                 url: url,

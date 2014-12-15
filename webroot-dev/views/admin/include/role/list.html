@@ -9,7 +9,7 @@
         <thead>
         <tr>
             <th width="8%">序号</th>
-            <th width="15%">名称</th>
+            <th width="20%">名称</th>
             <th width="10%">操作权限</th>
             <th width="*">描述</th>
             <th width="5%">操作</th>
@@ -20,7 +20,7 @@
             <td>\{{$index}}</td>
             <td><input class="ipt" type="text" name="name" v-model="role.name" value="\{{role.name}}"/></td>
             <td><input class="ipt" type="text" name="role" v-model="role.role" value="\{{role.role}}"/></td>
-            <td><textarea class="ipt" rows="2" name="desc" v-model="role.desc">\{{role.role}}</textarea></td>
+            <td><textarea class="ipt" rows="2" name="desc" v-model="role.desc">\{{role.desc}}</textarea></td>
             <td>
                 <button class="btn btn-danger btn-xs" v-on="click:onremove($index)"><i class="i i-remove i-striped"></i></button>
             </td>
