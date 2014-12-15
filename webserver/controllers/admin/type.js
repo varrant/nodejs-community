@@ -22,7 +22,7 @@ module.exports = function (app) {
             nav: 2
         };
 
-        res.render('admin/types.html', data);
+        res.render('admin/type.html', data);
     };
 
     return exports;
