@@ -9,6 +9,7 @@
 var setting = require('./services/').setting;
 var user = require('./services/').user;
 var howdo = require('howdo');
+var locals = require('./utils/').locals;
 
 module.exports = function (next, app) {
     howdo
@@ -20,6 +21,7 @@ module.exports = function (next, app) {
                 }
 
                 app.locals.$settings = settings;
+                locals.$settings(app);
 
                 done();
             });
