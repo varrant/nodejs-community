@@ -20,6 +20,15 @@ validator.pushRule({
 });
 
 validator.pushRule({
+    name: 'uri',
+    alias: 'URI',
+    type: 'string',
+    minLength: 1,
+    maxLength: 20,
+    regexp: /^[a-z-_\d]{1,20}$/i
+});
+
+validator.pushRule({
     name: 'cover',
     alias: '封面',
     type: 'string',

@@ -11,6 +11,7 @@ define(function (require, exports, module) {
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
+    var selector = require('../../alien/core/dom/selector.js');
     var url = '/admin/api/scope/';
     var page = {};
 
@@ -55,11 +56,28 @@ define(function (require, exports, module) {
      * 删除
      * @param index
      */
-    page.onremove = function (index) {
+    page.onremove = function (eve, index) {
+        var $btn = selector.closest(eve.target, '.btn')[0];
         var the = this;
 
         confirm('确认要删除该scope吗？<br>错误操作可能会导致路由出现404错误。', function () {
-            the.$data.list.splice(index, 1);
+            $btn.disabled = true;
+            ajax({
+                url: url,
+                method: 'delete',
+                data: {id: the.$data.list[index]._id}
+            })
+                .on('success', function (json) {
+                    if (json.code === 200) {
+                        the.$data.list.splice(index, 1);
+                    } else {
+                        alert(json);
+                    }
+                })
+                .on('error', alert)
+                .on('finish', function () {
+                    $btn.disabled = false;
+                });
         });
     };
 
@@ -69,9 +87,10 @@ define(function (require, exports, module) {
      */
     page.oncreate = function () {
         this.$data.list.push({
-            name: '未定义',
-            role: 20,
-            desc: '未定义'
+            name: '',
+            uri: '',
+            cover: '',
+            introduction: ''
         });
     };
 
@@ -80,23 +99,27 @@ define(function (require, exports, module) {
      * 保存
      * @param eve
      */
-    page.onsave = function (eve) {
-        var $btn = eve.target;
+    page.onsave = function (eve, index) {
+        var $btn = selector.closest(eve.target, '.btn')[0];
+        var the = this;
 
         $btn.disabled = true;
         ajax({
             url: url,
             method: 'put',
-            data: this.$data.list
-        }).on('success', function (json) {
-            $btn.disabled = false;
-            if (json.code !== 200) {
-                return alert(json);
-            }
-        }).on('error', function (err) {
-            $btn.disabled = false;
-            alert(err);
-        });
+            data: the.$data.list[index]
+        })
+            .on('success', function (json) {
+                if (json.code === 200) {
+                    the.$data.list[index]._id = json.data;
+                } else {
+                    alert(json);
+                }
+            })
+            .on('error', alert)
+            .on('finish', function () {
+                $btn.disabled = false;
+            });
     };
 
     page.list();

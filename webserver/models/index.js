@@ -33,6 +33,7 @@ var REG_DUPLICATE = new RegExp(DBNAME + '\\..*\\.\\$(.*)_1');
  * @function .createOne
  * @function .findOneAndValidate
  * @function .findOneAndUpdate
+ * @function .findOneAndRemove
  * @function .existOne
  * @function .getMeta
  * @function .setMeta
@@ -213,6 +214,16 @@ dato.each(models, function (key, model) {
                 });
             });
         });
+    };
+
+
+    /**
+     * 查找一个并删除
+     * @param conditions {Object} 查询条件
+     * @param callback {Function} 回调
+     */
+    exports[key].findOneAndRemove = function (conditions, callback) {
+        model.findOneAndRemove(conditions, callback);
     };
 
 

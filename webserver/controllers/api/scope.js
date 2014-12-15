@@ -56,21 +56,33 @@ module.exports = function (app) {
 
 
     /**
-     * 更新所有 scope
+     * 更新或创建一个 scope
      * @param req
      * @param res
      * @param next
      */
     exports.put = function (req, res, next) {
-        var list = req.body;
+        scope.existOne({_id: req.body._id}, req.body, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
 
-        if (typeis(list) !== 'array') {
-            return next(new Error('put data must be an array'));
-        }
+            res.json({
+                code: 200,
+                data: doc._id
+            });
+        });
+    };
 
-        howdo.each(list, function (index, data, done) {
-            scope.existOne({_id: data._id}, data, done);
-        }).together(function (err) {
+
+    /**
+     * 删除 scope
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.delete = function (req, res, next) {
+        scope.findOneAndRemove({_id: req.body.id}, function (err) {
             if (err) {
                 return next(err);
             }

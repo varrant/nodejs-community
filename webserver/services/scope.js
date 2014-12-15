@@ -112,6 +112,12 @@ exports.find = scope.find;
 
 
 /**
+ * 删除
+ */
+exports.findOneAndRemove = scope.findOneAndRemove;
+
+
+/**
  * 增加 scope 中的 object 数量
  * @param conditions {Object} 查询条件
  * @param count {Number} 更新数量
