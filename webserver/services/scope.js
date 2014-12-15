@@ -85,6 +85,20 @@ exports.updateOne = function (conditions, data, callback) {
 };
 
 
+
+/**
+ * 确保由一个 scope
+ * @param conditions {Object} 查询条件
+ * @param data {Object} 数据
+ * @param callback {Function} 回调
+ */
+exports.existOne = function (conditions, data, callback) {
+    var data2 = dato.pick(data, keys);
+
+    scope.existOne(conditions, data2, callback);
+};
+
+
 /**
  * 查找
  */

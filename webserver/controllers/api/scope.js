@@ -68,8 +68,8 @@ module.exports = function (app) {
             return next(new Error('put data must be an array'));
         }
 
-        howdo.each(list, function (index, scope, done) {
-            scope.updateOne({_id: scope.id}, scope, done);
+        howdo.each(list, function (index, data, done) {
+            scope.existOne({_id: data._id}, data, done);
         }).together(function (err) {
             if (err) {
                 return next(err);
