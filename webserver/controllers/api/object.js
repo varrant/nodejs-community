@@ -13,10 +13,15 @@ var filter = require('../../utils/filter.js');
 module.exports = function (app) {
     var exports = {};
 
-    exports.get = function (type) {
-        return function (req, res, next) {
 
-        };
+    /**
+     * 根据条件获取 object
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.get = function (req, res, next) {
+        //
     };
 
 
