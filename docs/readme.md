@@ -11,6 +11,12 @@
 - res.locals.$settings 响应社区设置
 
 
+# 全局变量
+- window['-csrf-'] 请求令牌
+- window['-refresh-'] 登录之后是否刷新【部分页面】
+- window['-type-'] 页面类型【部分页面】
+
+
 # 参考项目
 - <https://cnodejs.org/>
 - <http://www.html-js.com/>

@@ -12,7 +12,7 @@ define(function (require, exports, module) {
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
-    var url = '/admin/api/object/question/';
+    var url = '/admin/api/object/' + window['-type-'];
     var page = {};
 
     require('../../widget/admin/welcome.js');
