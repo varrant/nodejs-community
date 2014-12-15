@@ -8,6 +8,7 @@
 
 var object = require('../../services/').object;
 var dato = require('ydr-util').dato;
+var filter = require('../../utils/filter.js');
 
 module.exports = function (app) {
     var exports = {};
@@ -26,17 +27,10 @@ module.exports = function (app) {
      * @param next
      */
     exports.list = function (req, res, next) {
-        var page = dato.parseInt(req.query.page, 1);
-        var limit = dato.parseInt(req.query.limit, 10);
         var conditions = {};
+        var options = filter.skipLimit(req);
 
-        if(page < 1){
-            page = 1;
-        }
-
-        object.find(conditions, {
-            skip: (page - 1) * limit
-        }, function(err, docs){
+        object.find(conditions, options, function(err, docs){
             if (err) {
                 return next(err);
             }

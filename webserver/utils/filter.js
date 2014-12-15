@@ -17,7 +17,7 @@ var maxValue = Math.pow(2, 53);
  * @param [defaultLimit=10] {Number} 默认每页数量
  * @returns {{page: *, limit: *}}
  */
-exports.pageLimit = function (req, defaultPage, defaultLimit) {
+exports.skipLimit = function (req, defaultPage, defaultLimit) {
     var query = req.query || {};
     var page = query.page;
     var limit = query.limit;
@@ -41,7 +41,7 @@ exports.pageLimit = function (req, defaultPage, defaultLimit) {
     }
 
     return {
-        page: page,
+        skip: (page - 1) * limit,
         limit: limit
     };
 };
