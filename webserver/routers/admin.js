@@ -26,7 +26,7 @@ module.exports = function(app, ctrlAdmin){
     app.get('/admin/role/', ctrlAdmin.role.list);
 
     
-    // list + detail
+    // list
     uris.forEach(function (uri) {
         app.get('/admin/' + uri + '/', ctrlAdmin.object.list(uri));
     });

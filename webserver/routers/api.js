@@ -12,6 +12,7 @@ module.exports = function (app, ctrlApi) {
 
 
     // object
+    app.get('/admin/object/', ctrlApi.object.list);
 
 
     // oss

@@ -36,7 +36,7 @@ define(function (require) {
         }
 
         var vue = new Vue({
-            el: '#types',
+            el: '#list',
             data: {
                 types: json.data
             },

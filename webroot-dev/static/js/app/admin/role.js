@@ -36,7 +36,7 @@ define(function (require, exports, module) {
         }
 
         var vue = new Vue({
-            el: '#roles',
+            el: '#list',
             data: {
                 roles: json.data
             },
