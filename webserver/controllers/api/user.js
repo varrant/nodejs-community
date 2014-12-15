@@ -10,7 +10,7 @@
 var configs = require('../../../configs/');
 var user = require('../../services/').user;
 var setting = require('../../services/').setting;
-var ydrUtil = require('ydr-util');
+var cookie = require('../../utils/').cookie;
 
 
 module.exports = function (app) {
@@ -46,16 +46,7 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            var cookie = ydrUtil.crypto.encode(doc._id, configs.secret.cookie.secret);
-
-            res.cookie(configs.secret.cookie.userKey, cookie, {
-                domain: '',
-                path: '/',
-                secure: false,
-                httpOnly: true,
-                expires: new Date(Date.now() + configs.secret.cookie.userAge),
-                maxAge: configs.secret.cookie.userAge
-            });
+            cookie.login(res, doc._id);
             req.session.$user = res.locals.$user = doc.toObject();
             res.json({
                 code: 200,

@@ -7,6 +7,7 @@
 'use strict';
 
 module.exports = {
+    cookie: require('./cookie.js'),
     filter: require('./filter.js')
 };
 

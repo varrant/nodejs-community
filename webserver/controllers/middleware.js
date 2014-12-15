@@ -10,6 +10,7 @@ var URL = require('url');
 var ydrUtil = require('ydr-util');
 var configs = require('../../configs/');
 var user = require('../services/').user;
+var cookie = require('../utils/').cookie;
 var REG_ENDXIE = /(\/|\.[^\.\/]+)$/;
 var REG_ACCEPT = /^application\/json;\s*charset=utf-8$/i;
 
@@ -88,7 +89,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.readUser = function (req, res, next) {
-        if(!req.cookies){
+        if (!req.cookies) {
             return next();
         }
 
@@ -105,17 +106,19 @@ module.exports = function (app) {
         // 解析错误
         if (!userId) {
             req.session.$user = res.locals.$user = null;
+            cookie.logout();
             return next();
         }
 
         // 与 session 不匹配
         if (req.session.$user && req.session.$user._id !== userId) {
             req.session.$user = res.locals.$user = null;
+            cookie.logout();
             return next();
         }
 
         // 与 session 匹配
-        if(req.session.$user && req.session.$user._id === userId){
+        if (req.session.$user && req.session.$user._id === userId) {
             res.locals.$user = req.session.$user;
             return next();
         }
@@ -123,6 +126,16 @@ module.exports = function (app) {
         user.findOne({_id: userId}, function (err, doc) {
             if (err) {
                 req.session.$user = res.locals.$user = null;
+                cookie.logout();
+                return next(err);
+            }
+
+            if (!doc) {
+                req.session.$user = res.locals.$user = null;
+                err = new Error('the user is not exist');
+                err.type = 'notFound';
+                err.redirect = '/';
+                cookie.logout();
                 return next(err);
             }
 
