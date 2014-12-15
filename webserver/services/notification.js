@@ -23,6 +23,12 @@ exports.count = notification.count;
 
 
 /**
+ * 查找
+ */
+exports.find = notification.find;
+
+
+/**
  * 设置为已激活
  * @param conditions {Object} 查询条件
  * @param callback {Function} 回调
