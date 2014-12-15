@@ -7,6 +7,7 @@
 'use strict';
 
 var scope = require('../../services/').scope;
+var howdo = require('howdo');
 
 module.exports = function (app) {
     var exports = {};
@@ -54,7 +55,7 @@ module.exports = function (app) {
 
 
     /**
-     * 更新一个 scope
+     * 更新所有 scope
      * @param req
      * @param res
      * @param next

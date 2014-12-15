@@ -33,9 +33,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        var body = req.body;
-
-        setting.set('types', body.types, function (err, doc) {
+        setting.set('types', req.body, function (err, doc) {
             if (err) {
                 return next(err);
             }

@@ -87,7 +87,7 @@ define(function (require, exports, module) {
         ajax({
             url: url,
             method: 'put',
-            data: this.$data
+            data: this.$data.list
         }).on('success', function (json) {
             $btn.disabled = false;
             if (json.code !== 200) {
