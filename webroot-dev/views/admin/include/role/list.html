@@ -26,10 +26,13 @@
             </td>
         </tr>
         </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5" class="f-text-center">
+                <button class="btn btn-success" v-on="click:oncreate">新建一个</button>
+                <button class="btn btn-primary" v-on="click:onsave">保存修改</button>
+            </td>
+        </tr>
+        </tfoot>
     </table>
-
-    <p class="f-text-center">
-        <button class="btn btn-success" v-on="click:oncreate">新建一个</button>
-        <button class="btn btn-primary" v-on="click:onsave">保存修改</button>
-    </p>
 </div>
