@@ -8,7 +8,7 @@
 define(function (require) {
     'use strict';
 
-    var ajax = require('../ajax.js');
+    var ajax = require('../../util/ajax.js');
     var selector = require('../../alien/core/dom/selector.js');
     var event = require('../../alien/core/event/base.js');
     var page = {};

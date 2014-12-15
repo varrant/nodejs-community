@@ -9,7 +9,7 @@ define(function (require, exports, module) {
     'use strict';
 
     var Msg = require('../alien/ui/Msg/index.js');
-    var login = require('./login.js');
+    var login = require('../modules/login.js');
 
     module.exports = function (content) {
         return new Msg({
