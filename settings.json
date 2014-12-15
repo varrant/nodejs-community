@@ -80,5 +80,21 @@
       "isDisplay": true,
       "desc": ""
     }
+  ],
+  // 权限
+  "roles": [
+    {
+      // 权限名称
+      "name": "owner",
+      // 11 - 20
+      "role": "20",
+      // 权限描述
+      "desc": "社区创建者"
+    },
+    {
+      "name": "set object property",
+      "role": "19",
+      "desc": "设置/取消 object 属性，如加色/加分/设置精华/设置推荐/设置认证等"
+    }
   ]
 }

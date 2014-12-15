@@ -11,6 +11,7 @@ define(function (require) {
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
+    var loading = require('../../widget/common/loading.js');
     var url = '/admin/api/type/';
     var page = {};
 

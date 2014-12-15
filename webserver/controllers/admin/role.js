@@ -1,7 +1,7 @@
 /*!
- * 板块类型
+ * 角色权限
  * @author ydr.me
- * @create 2014-12-14 14:52
+ * @create 2014-12-15 19:59
  */
 
 'use strict';
@@ -11,18 +11,17 @@ module.exports = function (app) {
     var exports = {};
 
     /**
-     * 板块列表
+     * 列出权限
      * @param req
      * @param res
      * @param next
      */
     exports.list = function (req, res, next) {
         var data = {
-            title: '板块管理',
-            nav: 2
+            title: '权限管理'
         };
 
-        res.render('admin/types.html', data);
+        res.render('admin/role.html', data);
     };
 
     return exports;

@@ -11,8 +11,9 @@ define(function (require, exports, module) {
     var Msg = require('../../alien/ui/Msg/index.js');
 
     module.exports = function (content) {
-        new Msg({
-            content: content || '加载中……',
+        return new Msg({
+            title: null,
+            content: content || '<div class="f-text-center">加载中……</div>',
             buttons: null,
             addClass: 'm-dialog-loading'
         });
