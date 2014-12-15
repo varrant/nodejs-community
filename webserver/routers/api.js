@@ -21,7 +21,7 @@ module.exports = function (app, ctrlApi) {
 
     // type
     app.get('/admin/api/type/', ctrlApi.type.list);
-    app.put('/admin/api/type/', ctrlApi.type.save);
+    app.put('/admin/api/type/', ctrlApi.type.put);
 
 
     // user
