@@ -24,6 +24,5 @@ module.exports = function (app) {
 
         res.render('admin/role.html', data);
     };
-
     return exports;
 };

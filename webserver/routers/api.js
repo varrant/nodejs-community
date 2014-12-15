@@ -23,6 +23,11 @@ module.exports = function (app, ctrlApi) {
     app.put('/admin/api/type/', ctrlApi.type.put);
 
 
+    // role
+    app.get('/admin/api/role/', ctrlApi.role.list);
+    app.put('/admin/api/role/', ctrlApi.role.put);
+
+
     // user
     app.post('/api/user/login/', ctrlApi.user.login);
 };

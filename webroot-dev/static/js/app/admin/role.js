@@ -1,17 +1,17 @@
 /*!
  * 文件描述
  * @author ydr.me
- * @create 2014-12-14 16:09
+ * @create 2014-12-15 20:51
  */
 
 
-define(function (require) {
+define(function (require, exports, module) {
     'use strict';
 
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
-    var url = '/admin/api/type/';
+    var url = '/admin/api/role/';
     var page = {};
 
     require('../../widget/admin/welcome.js');
@@ -36,13 +36,11 @@ define(function (require) {
         }
 
         var vue = new Vue({
-            el: '#types',
+            el: '#roles',
             data: {
-                types: json.data
+                roles: json.data
             },
             methods: {
-                onup: page.onup,
-                ondown: page.ondown,
                 onremove: page.onremove,
                 oncreate: page.oncreate,
                 onsave: page.onsave
@@ -50,27 +48,6 @@ define(function (require) {
         });
 
         vue.$el.classList.remove('f-none');
-    };
-
-    /**
-     * 向上移动
-     * @param item
-     * @param index
-     */
-    page.onup = function (item, index) {
-        this.$data.types.splice(index, 1);
-        this.$data.types.splice(index - 1, 0, item);
-    };
-
-
-    /**
-     * 向下移动
-     * @param item
-     * @param index
-     */
-    page.ondown = function (item, index) {
-        this.$data.types.splice(index, 1);
-        this.$data.types.splice(index + 1, 0, item);
     };
 
 
@@ -109,7 +86,7 @@ define(function (require) {
         var $btn = eve.target;
         var the = this;
 
-        confirm('确认更新所有板块信息吗？', function () {
+        confirm('确认更新所有权限控制信息吗？', function () {
             $btn.disabled = true;
             ajax({
                 url: url,

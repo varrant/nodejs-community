@@ -12,6 +12,7 @@ module.exports = function (app) {
         notification: require('./notification.js')(app),
         object: require('./object.js')(app),
         oss: require('./oss.js')(app),
+        role: require('./role.js')(app),
         type: require('./type.js')(app),
         user: require('./user.js')(app)
     };
