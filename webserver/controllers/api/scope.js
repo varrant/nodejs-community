@@ -7,6 +7,7 @@
 'use strict';
 
 var scope = require('../../services/').scope;
+var typeis = require('ydr-util').typeis;
 var howdo = require('howdo');
 
 module.exports = function (app) {
@@ -61,9 +62,15 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        var id = req.body.id;
+        var list = req.body;
 
-        scope.updateOne({_id: id}, req.body, function (err, doc) {
+        if (typeis(list) !== 'array') {
+            return next(new Error('put data must be an array'));
+        }
+
+        howdo.each(list, function (index, scope, done) {
+            scope.updateOne({_id: scope.id}, scope, done);
+        }).together(function (err) {
             if (err) {
                 return next(err);
             }
