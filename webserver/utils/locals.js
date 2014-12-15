@@ -17,19 +17,19 @@ exports.$settings = function (app) {
     var map1 = {};
     var list1 = [];
     var map2 = {};
-    var list2 = [];
 
     types.forEach(function (type) {
+        if(type.isDisplay === true){
+            list1.push(type.uri);
+        }
+
         map1[type.uri] = type;
-        list1.push(type.uri);
     });
-    app.locals.$settings.typesMap = map1;
-    app.locals.$settings.typesList = list1;
+    app.locals.$settings._typesMap = map1;
+    app.locals.$settings._displayTypeUris = list1;
 
     roles.forEach(function (role) {
         map2[role.name] = role;
-        list2.push(role.name);
     });
-    app.locals.$settings.rolesMap = map2;
-    app.locals.$settings.rolesList = list2;
+    app.locals.$settings._rolesMap = map2;
 };

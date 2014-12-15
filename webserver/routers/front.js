@@ -8,21 +8,17 @@
 
 
 module.exports = function (app, ctrlFront) {
-    var types = app.locals.$settings.types;
-    var uris = [];
+    var uris = app.locals.$settings._displayTypeUris;
 
-    types.forEach(function (type) {
-        if (uris.indexOf(type.uri) === -1 && type.isDisplay) {
-            uris.push(type.uri);
-        }
-    });
 
     // user
     app.get('/user/oauth/authorize/', ctrlFront.user.oauthAuthorize);
     app.get('/user/oauth/callback/', ctrlFront.user.oauthCallback);
 
+
     // home
     app.get('/', ctrlFront.main.getHome);
+
 
     // list + detail
     uris.forEach(function (uri) {
@@ -37,6 +33,7 @@ module.exports = function (app, ctrlFront) {
         app.get('/' + uri + '/' + 'on/:label/in/:scope/page/:page/', ctrlFront.main.getList(uri));
         app.get('/' + uri + '/' + ':uri.html', ctrlFront.main.getPost(uri));
     });
+
 
     // engineer
     app.get('/engineer/:engineer/', ctrlFront.user.getEngineer);
