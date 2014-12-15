@@ -6,5 +6,5 @@
 
 
 define(function (require, exports, module) {
-    require('../../modules/front/login.js');
+    require('../../widget/front/login.js');
 });
