@@ -33,8 +33,36 @@ module.exports = function (app) {
     };
 
 
+    /**
+     * 创建一个 scope
+     * @param req
+     * @param res
+     * @param next
+     */
     exports.post = function (req, res, next) {
         scope.createOne(req.body, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                code: 200,
+                data: true
+            });
+        });
+    };
+
+
+    /**
+     * 更新一个 scope
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.put = function (req, res, next) {
+        var id = req.body.id;
+
+        scope.updateOne({_id: id}, req.body, function (err, doc) {
             if (err) {
                 return next(err);
             }

@@ -13,6 +13,7 @@ module.exports = function (app) {
         object: require('./object.js')(app),
         oss: require('./oss.js')(app),
         role: require('./role.js')(app),
+        scope: require('./scope.js')(app),
         type: require('./type.js')(app),
         user: require('./user.js')(app)
     };
