@@ -15,5 +15,8 @@ module.exports = function(app, ctrlAdmin){
     app.get('/admin/', ctrlAdmin.main.home);
 
     // 板块
-    app.get('/admin/types/', ctrlAdmin.type.list);
+    app.get('/admin/type/', ctrlAdmin.type.list);
+
+    // 权限
+    app.get('/admin/role/', ctrlAdmin.role.list);
 };
