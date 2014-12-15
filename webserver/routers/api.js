@@ -12,7 +12,6 @@ module.exports = function (app, ctrlApi) {
 
 
     // object
-    //app.post('/api/user/login/', ctrlApi.user.login);
 
 
     // oss
