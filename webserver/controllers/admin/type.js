@@ -18,8 +18,7 @@ module.exports = function (app) {
      */
     exports.list = function (req, res, next) {
         var data = {
-            title: '板块管理',
-            nav: 2
+            title: '板块管理'
         };
 
         res.render('admin/type.html', data);

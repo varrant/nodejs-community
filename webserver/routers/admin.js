@@ -8,15 +8,26 @@
 
 
 module.exports = function(app, ctrlAdmin){
+    var uris = app.locals.$settings._displayTypeUris;
+
     // 中间件
     app.use(/^\/admin\/.*$/i, ctrlAdmin.middleware.login);
+
 
     // 主页
     app.get('/admin/', ctrlAdmin.main.home);
 
+
     // 板块
     app.get('/admin/type/', ctrlAdmin.type.list);
 
+
     // 权限
     app.get('/admin/role/', ctrlAdmin.role.list);
+
+    
+    // list + detail
+    uris.forEach(function (uri) {
+        app.get('/admin/' + uri + '/', ctrlAdmin.object.list(uri));
+    });
 };

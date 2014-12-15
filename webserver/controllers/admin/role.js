@@ -18,8 +18,7 @@ module.exports = function (app) {
      */
     exports.list = function (req, res, next) {
         var data = {
-            title: '权限管理',
-            nav: 3
+            title: '权限管理'
         };
 
         res.render('admin/role.html', data);
