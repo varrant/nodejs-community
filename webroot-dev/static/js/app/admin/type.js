@@ -32,6 +32,7 @@ define(function (require) {
      * @returns {*}
      */
     page.onsuccess = function (json) {
+        debugger;
         if (json.code !== 200) {
             return alert(json);
         }
