@@ -26,7 +26,7 @@ module.exports = function (app) {
         var type = conditions.type;
 
         // 未指定 type 直接返回空
-        if(!type){
+        if (!type) {
             return res.json({
                 code: 200,
                 data: []
@@ -41,10 +41,15 @@ module.exports = function (app) {
             });
         }
 
-        var can = (res.locals.$user.role & app.locals.$settings._typesMap[type].role) > 0;
-        console.log(res.locals.$user.role);
-        console.log(app.locals.$settings._typesMap[type].role);
-        console.log(can);
+        //var can = (res.locals.$user.role & app.locals.$settings._typesMap[type].roleVal) > 0;
+        //
+        //if(!can){
+        //    return res.json({
+        //        code: 403,
+        //        data: [],
+        //        message: '无权限'
+        //    });
+        //}
 
         object.find(conditions, options, function (err, docs) {
             if (err) {
