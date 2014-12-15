@@ -1,1 +1,25 @@
-item-question
+<ul class="m-form" id="form">
+    <li class="row">
+       <div class="col-xs-2">title</div>
+       <div class="col-xs-10">
+           <input class="ipt" type="text" name="title" v-model="form.title" value="\{{form.title}}"/>
+           <p class="form-desc">问题的标题，5-100字符以内。</p>
+       </div>
+    </li>
+
+    <li class="row">
+       <div class="col-xs-2">URI</div>
+       <div class="col-xs-10">
+           <input class="ipt" type="text" name="uri" v-model="form.uri" value="\{{form.uri}}"/>
+           <p class="form-desc">问题的URI展示，5-100字符以内。</p>
+       </div>
+    </li>
+
+    <li class="row">
+        <div class="col-xs-2">scope</div>
+        <div class="col-xs-10">
+            <select name="scope" v-model="form.scope" options="form.scopes"></select>
+            <p class="form-desc">问题所在的域。</p>
+        </div>
+    </li>
+</ul>
