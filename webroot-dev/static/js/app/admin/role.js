@@ -38,7 +38,7 @@ define(function (require, exports, module) {
         var vue = new Vue({
             el: '#list',
             data: {
-                roles: json.data
+                list: json.data
             },
             methods: {
                 onremove: page.onremove,

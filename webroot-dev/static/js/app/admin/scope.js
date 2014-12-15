@@ -1,17 +1,17 @@
 /*!
  * 文件描述
  * @author ydr.me
- * @create 2014-12-14 16:09
+ * @create 2014-12-15 23:06
  */
 
 
-define(function (require) {
+define(function (require, exports, module) {
     'use strict';
 
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
-    var url = '/admin/api/type/';
+    var url = '/admin/api/scope/';
     var page = {};
 
     require('../../widget/admin/welcome.js');
@@ -41,8 +41,6 @@ define(function (require) {
                 list: json.data
             },
             methods: {
-                onup: page.onup,
-                ondown: page.ondown,
                 onremove: page.onremove,
                 oncreate: page.oncreate,
                 onsave: page.onsave
@@ -50,27 +48,6 @@ define(function (require) {
         });
 
         vue.$el.classList.remove('f-none');
-    };
-
-    /**
-     * 向上移动
-     * @param item
-     * @param index
-     */
-    page.onup = function (item, index) {
-        this.$data.types.splice(index, 1);
-        this.$data.types.splice(index - 1, 0, item);
-    };
-
-
-    /**
-     * 向下移动
-     * @param item
-     * @param index
-     */
-    page.ondown = function (item, index) {
-        this.$data.types.splice(index, 1);
-        this.$data.types.splice(index + 1, 0, item);
     };
 
 
@@ -81,8 +58,8 @@ define(function (require) {
     page.onremove = function (index) {
         var the = this;
 
-        confirm('确认要删除该板块吗？', function () {
-            the.$data.types.splice(index, 1);
+        confirm('确认要删除该scope吗？<br>错误操作可能会导致路由出现404错误。', function () {
+            the.$data.roles.splice(index, 1);
         });
     };
 
@@ -91,11 +68,9 @@ define(function (require) {
      * 新建一个
      */
     page.oncreate = function () {
-        this.$data.types.push({
-            title: '未定义',
-            uri: 'undefined',
-            isDisplay: false,
-            role: 0,
+        this.$data.roles.push({
+            name: '未定义',
+            role: 20,
             desc: '未定义'
         });
     };
@@ -107,23 +82,20 @@ define(function (require) {
      */
     page.onsave = function (eve) {
         var $btn = eve.target;
-        var the = this;
 
-        confirm('确认更新所有板块信息吗？', function () {
-            $btn.disabled = true;
-            ajax({
-                url: url,
-                method: 'put',
-                data: the.$data
-            }).on('success', function (json) {
-                $btn.disabled = false;
-                if (json.code !== 200) {
-                    return alert(json);
-                }
-            }).on('error', function (err) {
-                $btn.disabled = false;
-                alert(err);
-            });
+        $btn.disabled = true;
+        ajax({
+            url: url,
+            method: 'put',
+            data: this.$data
+        }).on('success', function (json) {
+            $btn.disabled = false;
+            if (json.code !== 200) {
+                return alert(json);
+            }
+        }).on('error', function (err) {
+            $btn.disabled = false;
+            alert(err);
         });
     };
 

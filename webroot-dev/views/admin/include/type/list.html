@@ -18,16 +18,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-repeat="type:types">
+        <tr v-repeat="item:list">
             <td>
                 <button class="btn btn-primary btn-xs types-up" v-on="click:onup(type, $index)"><i class="i i-long-arrow-up i-striped"></i></button>
                 <button class="btn btn-info btn-xs types-down" v-on="click:ondown(type, $index)"><i class="i i-long-arrow-down i-striped"></i></button>
             </td>
-            <td><input class="ipt" type="text" name="title" value="\{{type.title}}" v-model="type.title"/></td>
-            <td><label for="show-\{{$index}}"><input type="checkbox" name="show" id="show-\{{$index}}" v-model="type.isDisplay"/>显示</label></td>
-            <td><input class="ipt" type="text" name="uri" value="\{{type.uri}}" v-model="type.url"/></td>
-            <td><input class="ipt" type="text" name="role" value="\{{type.role}}" v-model="type.role"/></td>
-            <td><textarea name="desc" class="ipt" v-model="type.desc" rows="2">\{{type.desc}}</textarea></td>
+            <td><input class="ipt" type="text" name="title" value="\{{item.title}}" v-model="item.title"/></td>
+            <td><label for="show-\{{$index}}"><input type="checkbox" name="show" id="show-\{{$index}}" v-model="item.isDisplay"/>显示</label></td>
+            <td><input class="ipt" type="text" name="uri" value="\{{item.uri}}" v-model="item.url"/></td>
+            <td><input class="ipt" type="text" name="role" value="\{{item.role}}" v-model="item.role"/></td>
+            <td><textarea name="desc" class="ipt" v-model="item.desc" rows="2">\{{item.desc}}</textarea></td>
             <td>
                 <button class="btn btn-danger btn-xs" v-on="click:onremove($index)"><i class="i i-remove i-striped"></i></button>
             </td>

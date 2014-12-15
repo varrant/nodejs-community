@@ -25,7 +25,11 @@ module.exports = function(app, ctrlAdmin){
     // 权限
     app.get('/admin/role/', ctrlAdmin.role.list);
 
-    
+
+    // scope
+    app.get('/admin/scope/', ctrlAdmin.scope.list);
+
+
     // list
     uris.forEach(function (uri) {
         app.get('/admin/' + uri + '/list/', ctrlAdmin.object.list(uri));
