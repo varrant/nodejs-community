@@ -31,7 +31,7 @@ module.exports = function (app) {
      * @param res
      * @param next
      */
-    exports.save = function (req, res, next) {
+    exports.put = function (req, res, next) {
         var body = req.body;
 
         setting.set('types', body.types, function (err, doc) {
