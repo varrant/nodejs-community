@@ -59,7 +59,7 @@ define(function (require, exports, module) {
         var the = this;
 
         confirm('确认要删除该scope吗？<br>错误操作可能会导致路由出现404错误。', function () {
-            the.$data.roles.splice(index, 1);
+            the.$data.list.splice(index, 1);
         });
     };
 
@@ -68,7 +68,7 @@ define(function (require, exports, module) {
      * 新建一个
      */
     page.oncreate = function () {
-        this.$data.roles.push({
+        this.$data.list.push({
             name: '未定义',
             role: 20,
             desc: '未定义'

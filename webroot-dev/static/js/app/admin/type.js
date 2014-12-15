@@ -58,8 +58,8 @@ define(function (require) {
      * @param index
      */
     page.onup = function (item, index) {
-        this.$data.types.splice(index, 1);
-        this.$data.types.splice(index - 1, 0, item);
+        this.$data.list.splice(index, 1);
+        this.$data.list.splice(index - 1, 0, item);
     };
 
 
@@ -69,8 +69,8 @@ define(function (require) {
      * @param index
      */
     page.ondown = function (item, index) {
-        this.$data.types.splice(index, 1);
-        this.$data.types.splice(index + 1, 0, item);
+        this.$data.list.splice(index, 1);
+        this.$data.list.splice(index + 1, 0, item);
     };
 
 
@@ -82,7 +82,7 @@ define(function (require) {
         var the = this;
 
         confirm('确认要删除该板块吗？', function () {
-            the.$data.types.splice(index, 1);
+            the.$data.list.splice(index, 1);
         });
     };
 
@@ -91,7 +91,7 @@ define(function (require) {
      * 新建一个
      */
     page.oncreate = function () {
-        this.$data.types.push({
+        this.$data.list.push({
             title: '未定义',
             uri: 'undefined',
             isDisplay: false,
