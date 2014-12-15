@@ -11,7 +11,7 @@ var object = require('../../services/').object;
 
 module.exports = function (app) {
     var exports = {};
-    var locals = app.locals;
+    var typesMap = app.locals.$settings._typesMap;
 
     /**
      * 列出各个 type 下的 object
@@ -20,20 +20,10 @@ module.exports = function (app) {
      */
     exports.list = function (type) {
         return function (req, res, next) {
-            var conditions = {type: type};
-            var options = filter.skipLimit(req);
-
-            object.find(conditions, options, function (err, docs) {
-                if(err){
-                    return next(err);
-                }
-
-                docs = docs || [];
-                var data = {
-                    title: locals.$settings.types
-                };
-                res.render('admin/object-' + type + '.html', data);
-            });
+            var data = {
+                title: typesMap[type].title + '管理'
+            };
+            res.render('admin/object-' + type + '.html', data);
         };
     };
 
