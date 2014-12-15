@@ -30,5 +30,9 @@ module.exports = function (app) {
         });
     };
 
+    exports.setActived = function (req, res, next) {
+        ;
+    };
+
     return exports;
 };
