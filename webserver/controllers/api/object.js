@@ -12,7 +12,7 @@ var filter = require('../../utils/filter.js');
 
 module.exports = function (app) {
     var exports = {};
-
+    var uris = app.locals.$settings._displayTypeUris;
 
     /**
      * 列出符合条件的 object
@@ -23,6 +23,28 @@ module.exports = function (app) {
     exports.list = function (req, res, next) {
         var conditions = dato.pick(req.query, ['type', 'author']);
         var options = filter.skipLimit(req);
+        var type = conditions.type;
+
+        // 未指定 type 直接返回空
+        if(!type){
+            return res.json({
+                code: 200,
+                data: []
+            });
+        }
+
+        // 不显示的 type 直接输出空
+        if (type && uris.indexOf(type) === -1) {
+            return res.json({
+                code: 200,
+                data: []
+            });
+        }
+
+        var can = (res.locals.$user.role & app.locals.$settings._typesMap[type].role) > 0;
+        console.log(res.locals.$user.role);
+        console.log(app.locals.$settings._typesMap[type].role);
+        console.log(can);
 
         object.find(conditions, options, function (err, docs) {
             if (err) {

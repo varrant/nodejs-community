@@ -19,11 +19,12 @@ exports.$settings = function (app) {
     var map2 = {};
 
     types.forEach(function (type) {
-        if(type.isDisplay === true){
+        if (type.isDisplay === true) {
             list1.push(type.uri);
         }
 
         map1[type.uri] = type;
+        type.roleVal = Math.pow(2, type.role);
     });
     app.locals.$settings._typesMap = map1;
     app.locals.$settings._displayTypeUris = list1;
