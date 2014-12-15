@@ -25,7 +25,7 @@ module.exports = function (app) {
 
 
     /**
-     * 上传
+     * 上传图片到阿里云 OSS
      * @param req
      * @param res
      * @param next
@@ -41,7 +41,7 @@ module.exports = function (app) {
             res.json({
                 code: 200,
                 message: '上传成功',
-                result: ret
+                data: ret
             });
         });
     };

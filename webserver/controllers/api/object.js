@@ -15,17 +15,6 @@ module.exports = function (app) {
 
 
     /**
-     * 根据条件获取 object
-     * @param req
-     * @param res
-     * @param next
-     */
-    exports.get = function (req, res, next) {
-        //
-    };
-
-
-    /**
      * 列出符合条件的 object
      * @param req
      * @param res
@@ -35,7 +24,7 @@ module.exports = function (app) {
         var conditions = dato.pick(req.query, ['type', 'author']);
         var options = filter.skipLimit(req);
 
-        object.find(conditions, options, function(err, docs){
+        object.find(conditions, options, function (err, docs) {
             if (err) {
                 return next(err);
             }
@@ -47,7 +36,67 @@ module.exports = function (app) {
                 data: docs
             });
         });
-    }
+    };
+
+
+    /**
+     * 根据条件获取 object
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.get = function (req, res, next) {
+        object.findOne({_id: req.id}, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                code: 200,
+                data: doc
+            });
+        });
+    };
+
+
+    /**
+     * 创建一个新的 object
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.post = function (req, res, next) {
+        object.createOne(res.$user, req.body, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                code: 200,
+                data: doc
+            });
+        });
+    };
+
+
+    /**
+     * 更新一个已有的 object
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.put = function (req, res, next) {
+        object.updateOne(res.$user, {_id: req.body.id}, req.body, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                code: 200,
+                data: doc
+            });
+        });
+    };
 
     return exports;
 };
