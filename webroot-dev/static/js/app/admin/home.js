@@ -8,5 +8,5 @@
 define(function (require, exports, module) {
     'use strict';
 
-    require('../../libs/admin/welcome.js');
+    require('../../widget/admin/welcome.js');
 });

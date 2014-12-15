@@ -8,13 +8,13 @@
 define(function (require) {
     'use strict';
 
-    var ajax = require('../../libs/ajax.js');
-    var alert = require('../../libs/alert.js');
-    var confirm = require('../../libs/confirm.js');
+    var ajax = require('../../widget/common/ajax.js');
+    var alert = require('../../widget/common/alert.js');
+    var confirm = require('../../widget/common/confirm.js');
     var url = '/admin/api/type/';
     var page = {};
 
-    require('../../libs/admin/welcome.js');
+    require('../../widget/admin/welcome.js');
 
     /**
      * 请求展示列表

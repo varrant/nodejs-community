@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var xhr = require('../alien/core/communication/xhr.js');
+    var xhr = require('../../alien/core/communication/xhr.js');
     var json = 'application/json; charset=utf-8';
 
     module.exports = function (options) {
