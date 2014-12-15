@@ -28,6 +28,7 @@ module.exports = function(app, ctrlAdmin){
     
     // list
     uris.forEach(function (uri) {
-        app.get('/admin/' + uri + '/', ctrlAdmin.object.list(uri));
+        app.get('/admin/' + uri + '/list/', ctrlAdmin.object.list(uri));
+        app.get('/admin/' + uri + '/', ctrlAdmin.object.get(uri));
     });
 };

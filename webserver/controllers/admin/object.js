@@ -23,9 +23,25 @@ module.exports = function (app) {
             var data = {
                 title: typesMap[type].title + '管理'
             };
-            res.render('admin/object-' + type + '.html', data);
+            res.render('admin/object-list-' + type + '.html', data);
         };
     };
+
+
+    /**
+     * 展示某个 id 的 object
+     * @param type
+     * @returns {Function}
+     */
+    exports.get = function (type) {
+        return function (req, res, next) {
+            var data = {
+                title: typesMap[type].title + req.query.id ? '管理' : '创建'
+            };
+
+            res.render('admin/object-item-' + type + '.html', data);
+        }
+    }
 
     return exports;
 }
