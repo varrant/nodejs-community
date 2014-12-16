@@ -24,10 +24,24 @@
     </li>
 
     <li class="row">
-        <div class="col-xs-2">scope</div>
+        <div class="col-xs-2">content</div>
         <div class="col-xs-10">
-            <select name="scope" v-model="form.scope" options="form.scopes"></select>
-            <p class="form-desc">问题所在的域。</p>
+            <textarea name="content" cols="10" v-model="form.content">\{{form.content}}</textarea>
+            <p class="form-desc">使用 markdown 语法详细的问题描述。</p>
+        </div>
+    </li>
+
+    <li class="row">
+        <div class="col-xs-2">labels</div>
+        <div class="col-xs-10">
+            <p class="form-desc">添加合适、适当的 label。</p>
+        </div>
+    </li>
+
+    <li class="row">
+        <div class="col-xs-10 col-xs-pull-2">
+            <label for="draft"><input type="checkbox" name="draft" id="draft" v-model="!form.isDisplay"/>保存为草稿</label>
+            <button class="btn btn-primary">保存</button>
         </div>
     </li>
 </ul>
