@@ -18,13 +18,13 @@ module.exports = function (next, app) {
     email.init(smtp, app.locals.$owner);
 
     if('pro' === configs.app.env){
-
+        log.initEmail({
+            from: configs.smtp.from,
+            email: app.locals.$owner.email
+        });
+        log.initSmtp(options);
     }
 
-    log.initSmtp(options);
-    log.initEmail({
-        email: app.locals.$owner.email
-    });
     app.locals.$smtp = smtp;
     next(null, app);
 };
