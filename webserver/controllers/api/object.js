@@ -82,7 +82,7 @@ module.exports = function (app) {
             })
             // 查找 object
             .task(function (done) {
-                if(!req.query.id){
+                if (!req.query.id) {
                     return done();
                 }
 
@@ -111,7 +111,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.post = function (req, res, next) {
-        object.createOne(res.$user, req.body, function (err, doc) {
+        object.createOne(res.locals.$user, req.body, function (err, doc) {
             if (err) {
                 return next(err);
             }
@@ -131,7 +131,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        object.updateOne(res.$user, {_id: req.body.id}, req.body, function (err, doc) {
+        object.updateOne(res.locals.$user, {_id: req.body._id}, req.body, function (err, doc) {
             if (err) {
                 return next(err);
             }

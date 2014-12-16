@@ -38,7 +38,8 @@ define(function (require, exports, module) {
 
         var data = json.data;
         data.object = data.object || {
-            content: ''
+            content: '',
+            type: window['-type-']
         };
         data.scopes.forEach(function (item) {
             item.text = item.name;
