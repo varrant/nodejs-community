@@ -113,7 +113,7 @@ define(function (require, exports, module) {
         })
             .on('success', function (json) {
                 if (json.code === 200) {
-                    the.$data.list[index]._id = json.data;
+                    the.$data.list.$set(index, json.data);
                 } else {
                     alert(json);
                 }

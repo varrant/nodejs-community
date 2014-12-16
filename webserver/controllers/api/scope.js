@@ -69,7 +69,7 @@ module.exports = function (app) {
 
             res.json({
                 code: 200,
-                data: doc._id
+                data: doc
             });
         });
     };
