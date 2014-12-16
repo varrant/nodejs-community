@@ -34,19 +34,18 @@ define(function (require, exports, module) {
         'textTransform',
         'wordSpacing',
         'textIndent',
-        'whiteSpace'
+        'whiteSpace',
+        'lineHeight',
+        'padding'
     ];
     // 创建镜像 textarea
     var $mirror = modification.create('textarea', {
         tabindex: -1,
         style: {
             position: 'absolute',
-            //top: -9999,
-            //left: -9999,
-            right: 'auto',
-            bottom: 'auto',
+            top: -9999,
+            left: -9999,
             border: 0,
-            padding: 0,
             boxSizing: 'content-box',
             wordWrap: 'break-word',
             height: '0 !important',
@@ -60,13 +59,15 @@ define(function (require, exports, module) {
         var $ref = the._$ele;
         var value = $ref.value || attribute.attr($ref, 'placeholder') || '';
         var style = attribute.css($ref, typographyStyles);
+        var width = attribute.width($ref);
 
         attribute.css($mirror, style);
         $mirror.value = value;
+        attribute.width($mirror, width);
 
         var scrollHeight = $mirror.scrollHeight;
 
-        attribute.height($ref, scrollHeight > the._height ? scrollHeight : the._height);
+        attribute.innerHeight($ref, scrollHeight > the._innerHeight ? scrollHeight : the._innerHeight);
     };
     var Autoheight = generator({
         STATIC: {},
@@ -91,8 +92,16 @@ define(function (require, exports, module) {
          */
         _init: function () {
             var the = this;
+            var $ele = the._$ele;
+            var value = $ele.value;
 
-            the._height = attribute.height(the._$ele);
+            attribute.css($ele, {
+                overflow: 'hidden'
+            });
+            // 先插入字符，重新排版后还原
+            $ele.value = value + ' ';
+            $ele.value = value;
+            the._innerHeight = attribute.innerHeight(the._$ele);
             the._initEvent();
         },
 

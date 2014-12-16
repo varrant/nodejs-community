@@ -1,6 +1,5 @@
 .alien-ui-editor {
     position: relative;
-    background: #FFFBE8;
 }
 
 .alien-ui-editor-fullscreen {
@@ -15,6 +14,14 @@
 .alien-ui-editor-inner {
     position: relative;
     overflow: hidden;
+    padding: 10px;
+    box-shadow: 0px 3px 12px #CACACA;
+    border: 1px solid #ddd;
+}
+
+.alien-ui-editor-fullscreen .alien-ui-editor-inner{
+    box-shadow: none;
+    border: 0;
 }
 
 .alien-ui-editor-inner .alien-ui-editor-textarea {
@@ -22,7 +29,6 @@
     resize: none;
     outline: 0;
     box-shadow: none;
-    background: #FFFBE8;
 }
 
 .alien-ui-editor-inner .alien-ui-editor-textarea:hover,
