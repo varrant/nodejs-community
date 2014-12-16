@@ -8,7 +8,7 @@
 
 var notification = require('../models/').notification;
 var email = require('./email.js');
-var log = require('ydr-util').log;
+var log = require('ydr-log');
 
 /**
  * 创建一条通知
