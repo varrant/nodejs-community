@@ -1,4 +1,4 @@
-<ul class="m-form" id="form">
+<ul class="m-form f-none" id="form">
     <li class="row">
        <div class="col-xs-2">title</div>
        <div class="col-xs-10">
@@ -27,7 +27,7 @@
         <div class="col-xs-2">content</div>
         <div class="col-xs-10">
             <textarea name="content" cols="10" v-model="form.content" class="ipt">\{{form.content}}</textarea>
-            <p class="form-desc">使用 markdown 语法详细的问题描述。</p>
+            <p class="form-desc">使用<code>markdown</code>语法详细的问题描述。</p>
         </div>
     </li>
 
@@ -39,7 +39,7 @@
     </li>
 
     <li class="row">
-        <div class="col-xs-10 col-xs-pull-2">
+        <div class="col-xs-10 col-xs-push-2">
             <label for="draft"><input type="checkbox" name="draft" id="draft" v-model="!form.isDisplay"/>保存为草稿</label>
             <button class="btn btn-primary">保存</button>
         </div>

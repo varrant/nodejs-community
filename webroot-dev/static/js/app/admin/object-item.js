@@ -10,9 +10,9 @@ define(function (require, exports, module) {
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
-    var url = '/admin/api/object/?type=' + window['-type-'];
+    var objectId = window['-id-'];
+    var url = '/admin/api/object/?id=' + objectId;
     var page = {};
-    var reqPage = 1;
 
     require('../../widget/admin/welcome.js');
 
@@ -20,9 +20,18 @@ define(function (require, exports, module) {
      * 请求展示列表
      */
     page.item = function () {
-        ajax({
-            url: url + '&page=' + reqPage
-        }).on('success', page.onsuccess).on('error', alert);
+        if (objectId) {
+            ajax({
+                url: url
+            }).on('success', page.onsuccess).on('error', alert);
+        } else {
+            page.onsuccess({
+                code: 200,
+                data: {
+                    content: ''
+                }
+            });
+        }
     };
 
     /**
@@ -36,10 +45,9 @@ define(function (require, exports, module) {
         }
 
         var vue = new Vue({
-            el: '#list',
+            el: '#form',
             data: {
-                objects: json.data,
-                page: reqPage
+                form: json.data
             },
             methods: {}
         });

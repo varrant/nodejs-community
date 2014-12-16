@@ -37,7 +37,7 @@ module.exports = function (app) {
         return function (req, res, next) {
             var data = {
                 title: typesMap[type].title + (req.query.id ? '管理' : '创建'),
-                id: req.query.id
+                id: req.query.id || ''
             };
 
             res.render('admin/object-item-' + type + '.html', data);
