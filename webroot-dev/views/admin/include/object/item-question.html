@@ -2,7 +2,7 @@
     <li class="row">
        <div class="col-xs-2">title</div>
        <div class="col-xs-10">
-           <input class="ipt" type="text" name="title" v-model="form.title" value="\{{form.title}}"/>
+           <input class="ipt" type="text" name="title" v-model="object.title" value="\{{object.title}}"/>
            <p class="form-desc">问题的标题，5-100字符以内。</p>
        </div>
     </li>
@@ -10,7 +10,7 @@
     <li class="row">
        <div class="col-xs-2">URI</div>
        <div class="col-xs-10">
-           <input class="ipt" type="text" name="uri" v-model="form.uri" value="\{{form.uri}}"/>
+           <input class="ipt" type="text" name="uri" v-model="object.uri" value="\{{object.uri}}"/>
            <p class="form-desc">问题的URI展示，5-100字符以内。</p>
        </div>
     </li>
@@ -18,7 +18,7 @@
     <li class="row">
         <div class="col-xs-2">scope</div>
         <div class="col-xs-10">
-            <select name="scope" v-model="form.scope" options="form.scopes"></select>
+            <select name="scope" v-model="object.scope" options="scopes"></select>
             <p class="form-desc">问题所在的域。</p>
         </div>
     </li>
@@ -26,7 +26,7 @@
     <li class="row">
         <div class="col-xs-2">content</div>
         <div class="col-xs-10">
-            <textarea name="content" cols="10" v-model="form.content" class="ipt">\{{form.content}}</textarea>
+            <textarea name="content" cols="10" v-model="object.content" class="ipt">\{{object.content}}</textarea>
             <p class="form-desc">使用<code>markdown</code>语法详细的问题描述。</p>
         </div>
     </li>
@@ -40,8 +40,8 @@
 
     <li class="row">
         <div class="col-xs-10 col-xs-push-2">
-            <label for="draft"><input type="checkbox" name="draft" id="draft" v-model="!form.isDisplay"/>保存为草稿</label>
-            <button class="btn btn-primary">保存</button>
+            <label for="draft"><input type="checkbox" name="draft" id="draft" v-model="!object.isDisplay"/>保存为草稿</label>
+            <button class="btn btn-primary" v-on="click:onsave($event, object)"><i class="i i-save"></i>保存</button>
         </div>
     </li>
 </ul>

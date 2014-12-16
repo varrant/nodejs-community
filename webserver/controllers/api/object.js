@@ -7,8 +7,10 @@
 'use strict';
 
 var object = require('../../services/').object;
+var scope = require('../../services/').scope;
 var dato = require('ydr-util').dato;
 var filter = require('../../utils/filter.js');
+var howdo = require('howdo');
 
 module.exports = function (app) {
     var exports = {};
@@ -73,23 +75,32 @@ module.exports = function (app) {
      * @param next
      */
     exports.get = function (req, res, next) {
-        if (!req.query.id) {
-            return res.json({
-                code: 200,
-                data: null
-            });
-        }
+        howdo
+            // 查找 scope
+            .task(function (done) {
+                scope.find({}, done);
+            })
+            // 查找 object
+            .task(function (done) {
+                if(!req.query.id){
+                    return done();
+                }
 
-        object.findOne({_id: req.query.id}, function (err, doc) {
-            if (err) {
-                return next(err);
-            }
+                object.findOne({_id: req.query.id}, done);
+            })
+            .together(function (err, docs, doc) {
+                if (err) {
+                    return next(err);
+                }
 
-            res.json({
-                code: 200,
-                data: doc
+                res.json({
+                    code: 200,
+                    data: {
+                        scopes: docs,
+                        object: doc
+                    }
+                });
             });
-        });
     };
 
 

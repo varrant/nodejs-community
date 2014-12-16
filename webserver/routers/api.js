@@ -21,6 +21,8 @@ module.exports = function (app, ctrlApi) {
     // object
     app.get('/admin/api/object/list/', ctrlApi.object.list);
     app.get('/admin/api/object/', ctrlApi.object.get);
+    app.post('/admin/api/object/', ctrlApi.object.post);
+    app.put('/admin/api/object/', ctrlApi.object.put);
 
 
     // oss
