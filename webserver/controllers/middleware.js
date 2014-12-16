@@ -106,14 +106,14 @@ module.exports = function (app) {
         // 解析错误
         if (!userId) {
             req.session.$user = res.locals.$user = null;
-            cookie.logout();
+            cookie.logout(res);
             return next();
         }
 
         // 与 session 不匹配
         if (req.session.$user && req.session.$user._id !== userId) {
             req.session.$user = res.locals.$user = null;
-            cookie.logout();
+            cookie.logout(res);
             return next();
         }
 
@@ -126,7 +126,7 @@ module.exports = function (app) {
         user.findOne({_id: userId}, function (err, doc) {
             if (err) {
                 req.session.$user = res.locals.$user = null;
-                cookie.logout();
+                cookie.logout(res);
                 return next(err);
             }
 
@@ -135,7 +135,7 @@ module.exports = function (app) {
                 err = new Error('the user is not exist');
                 err.type = 'notFound';
                 err.redirect = '/';
-                cookie.logout();
+                cookie.logout(res);
                 return next(err);
             }
 
