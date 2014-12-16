@@ -28,12 +28,12 @@ module.exports = function (app, ctrlApi) {
 
 
     // type
-    app.get('/admin/api/type/', ctrlApi.type.list);
+    app.get('/admin/api/type/list/', ctrlApi.type.list);
     app.put('/admin/api/type/', ctrlApi.type.put);
 
 
     // role
-    app.get('/admin/api/role/', ctrlApi.role.list);
+    app.get('/admin/api/role/list/', ctrlApi.role.list);
     app.put('/admin/api/role/', ctrlApi.role.put);
 
 
