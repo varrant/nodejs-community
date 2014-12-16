@@ -31,6 +31,7 @@ var urls = {
  */
 exports.register = user.createOne;
 
+
 /**
  * 登录
  */
