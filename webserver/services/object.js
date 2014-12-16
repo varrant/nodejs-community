@@ -165,7 +165,7 @@ exports.updateOne = function (author, conditions, data, callback) {
         })
         // 3. 检查权限
         .task(function (next) {
-            setting.getType(conditions.type, function (err, type) {
+            setting.getType(data.type, function (err, type) {
                 if (err) {
                     return next(err);
                 }

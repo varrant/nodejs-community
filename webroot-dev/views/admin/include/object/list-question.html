@@ -12,7 +12,7 @@
         </tr>
         <tr v-repeat="object:objects">
             <td>\{{$index}}</td>
-            <td>《\{{object.title}}》</td>
+            <td><a href="/admin/object/question/?id=\{{object._id}}">《\{{object.title}}》</a></td>
         </tr>
         </tbody>
         <tfoot>

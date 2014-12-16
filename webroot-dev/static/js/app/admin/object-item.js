@@ -11,11 +11,13 @@ define(function (require, exports, module) {
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
     var selector = require('../../alien/core/dom/selector.js');
+    var Editor = require('../../alien/ui/Editor/index.js');
     var objectId = window['-id-'];
     var url = '/admin/api/object/?id=' + objectId;
     var page = {};
 
     require('../../widget/admin/welcome.js');
+    new Editor('#content');
 
     /**
      * 请求展示列表

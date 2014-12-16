@@ -2,7 +2,8 @@
     <li class="row">
        <div class="col-xs-2">title</div>
        <div class="col-xs-10">
-           <input class="ipt" type="text" name="title" v-model="object.title" value="\{{object.title}}"/>
+           <p class="form-ipt" v-if="object._id">\{{object.title}}</p>
+           <input v-if="!object._id" class="ipt" type="text" name="title" v-model="object.title" value="\{{object.title}}"/>
            <p class="form-desc">问题的标题，5-100字符以内。</p>
        </div>
     </li>
@@ -10,7 +11,8 @@
     <li class="row">
        <div class="col-xs-2">URI</div>
        <div class="col-xs-10">
-           <input class="ipt" type="text" name="uri" v-model="object.uri" value="\{{object.uri}}"/>
+           <p class="form-ipt" v-if="object._id">\{{object.uri}}</p>
+           <input v-if="!object._id" class="ipt" type="text" name="uri" v-model="object.uri" value="\{{object.uri}}"/>
            <p class="form-desc">问题的URI展示，5-100字符以内。</p>
        </div>
     </li>
@@ -26,7 +28,7 @@
     <li class="row">
         <div class="col-xs-2">content</div>
         <div class="col-xs-10">
-            <textarea name="content" cols="10" v-model="object.content" class="ipt">\{{object.content}}</textarea>
+            <textarea name="content" cols="10" v-model="object.content" class="ipt" id="content">\{{object.content}}</textarea>
             <p class="form-desc">使用<code>markdown</code>语法详细的问题描述。</p>
         </div>
     </li>
