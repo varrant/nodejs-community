@@ -15,6 +15,7 @@ module.exports = {
     notification: require('./notification.js'),
     object: require('./object.js'),
     scope: require('./scope.js'),
+    search: require('./search.js'),
     setting: require('./setting.js'),
     user: require('./user.js')
 };
