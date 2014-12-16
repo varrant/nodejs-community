@@ -41,15 +41,15 @@ module.exports = function (app) {
             });
         }
 
-        //var can = (res.locals.$user.role & app.locals.$settings._typesMap[type].roleVal) > 0;
-        //
-        //if(!can){
-        //    return res.json({
-        //        code: 403,
-        //        data: [],
-        //        message: '无权限'
-        //    });
-        //}
+        var can = (res.locals.$user.role & app.locals.$settings._typesMap[type].roleVal) > 0;
+
+        if (!can) {
+            return res.json({
+                code: 403,
+                data: [],
+                message: '无权限'
+            });
+        }
 
         object.find(conditions, options, function (err, docs) {
             if (err) {
@@ -73,7 +73,14 @@ module.exports = function (app) {
      * @param next
      */
     exports.get = function (req, res, next) {
-        object.findOne({_id: req.id}, function (err, doc) {
+        if (!req.query.id) {
+            return res.json({
+                code: 200,
+                data: null
+            });
+        }
+
+        object.findOne({_id: req.query.id}, function (err, doc) {
             if (err) {
                 return next(err);
             }

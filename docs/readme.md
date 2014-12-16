@@ -15,6 +15,7 @@
 - window['-csrf-'] 请求令牌
 - window['-refresh-'] 登录之后是否刷新【部分页面】
 - window['-type-'] 页面类型【部分页面】
+- window['-id-'] 详情页ID【部分页面】
 
 
 # 参考项目
