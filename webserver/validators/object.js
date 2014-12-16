@@ -56,7 +56,7 @@ validator.pushRule({
     type: 'string',
     alias: '内容',
     trim: true,
-    minLength: 100,
+    minLength: 10,
     maxLength: 50000,
     onafter: function (val) {
         return val && val.replace(REG_LINES, '\n\n');
