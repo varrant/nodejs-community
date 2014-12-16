@@ -18,6 +18,12 @@ module.exports = function(app) {
         },
 
         cookie: {
+            options: {
+                domain: '',
+                path: '/',
+                secure: false,
+                httpOnly: true
+            },
             // cookie加密密钥
             secret: app.env === 'pro' ? ydrUtil.random.string(5) : '123456',
 

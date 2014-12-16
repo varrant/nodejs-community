@@ -8,6 +8,8 @@
 
 var secret = require('../../configs/').secret;
 var crypto = require('ydr-util').crypto;
+var dato = require('ydr-util').dato;
+var defaults = secret.cookie.options;
 
 
 /**
@@ -17,15 +19,12 @@ var crypto = require('ydr-util').crypto;
  */
 exports.login = function (res, userId) {
     var cookie = crypto.encode(userId, secret.cookie.secret);
-
-    res.cookie(secret.cookie.userKey, cookie, {
-        domain: '',
-        path: '/',
-        secure: false,
-        httpOnly: true,
+    var options = dato.extend({}, defaults, {
         expires: new Date(Date.now() + secret.cookie.userAge),
         maxAge: secret.cookie.userAge
     });
+
+    res.cookie(secret.cookie.userKey, cookie, options);
 };
 
 
@@ -34,12 +33,10 @@ exports.login = function (res, userId) {
  * @param res {Object} 响应对象
  */
 exports.logout = function (res) {
-    res.cookie(secret.cookie.userKey, '', {
-        domain: '',
-        path: '/',
-        secure: false,
-        httpOnly: true,
+    var options = dato.extend({}, defaults, {
         expires: new Date(Date.now() - 1),
         maxAge: -1
     });
+
+    res.cookie(secret.cookie.userKey, '', options);
 };
