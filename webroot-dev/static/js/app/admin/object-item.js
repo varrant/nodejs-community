@@ -17,7 +17,6 @@ define(function (require, exports, module) {
     var page = {};
 
     require('../../widget/admin/welcome.js');
-    new Editor('#content');
 
     /**
      * 请求展示列表
@@ -61,6 +60,9 @@ define(function (require, exports, module) {
         });
 
         vue.$el.classList.remove('f-none');
+        new Editor('#content', {
+            id: objectId
+        });
     };
 
 
