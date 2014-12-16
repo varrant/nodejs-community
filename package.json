@@ -46,7 +46,7 @@
     "mongoose": "^3.8.19",
     "supervisor": "^0.6.0",
     "ydr-ali-oss": "^1.1.7",
-    "ydr-log": "^1.0.0",
+    "ydr-log": "^1.0.99",
     "ydr-template": "^1.1.3",
     "ydr-util": "^1.11.0",
     "ydr-validator": "^1.2.3"

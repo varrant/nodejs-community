@@ -8,7 +8,7 @@
 
 var controllers = require('../controllers/');
 var configs = require('../../configs/');
-var log = require('ydr-util').log;
+var log = require('ydr-log');
 var express = require('express');
 // 更为详尽配置的静态服务器
 var staticOptions = {
@@ -20,18 +20,8 @@ var staticOptions = {
     redirect: true
 };
 
-log.setOptions('env', configs.app.env);
-log.setOptions('path', configs.dir.log);
-
 module.exports = function (app) {
     var exports = controllers(app);
-
-    log.setOptions('email', {
-        from: configs.smtp.from,
-        to: app.locals.$owner.email,
-        subject: '服务器错误'
-    });
-    log.setOptions('smtp', 'pro' === configs.app.env ? app.locals.$smtp : null);
 
     // 中间件：路由验证、安全验证、访问验证等
     require('./middleware.js')(app, exports.middleware);
@@ -52,7 +42,14 @@ module.exports = function (app) {
     app.use('/', express.static(configs.dir.webroot, staticOptions));
 
     // notFound/serverError 日志
-    app.use(log());
+    app.use(log({
+        // 运行环境，默认为开发
+        env: configs.app.env,
+        // 存放路径
+        path: configs.dir.log,
+        // YYYY年MM月DD日 HH:mm:ss.SSS 星期e a
+        name: './YYYY/MM/YYYY-MM-DD'
+    }));
 
     // 终点路由
     require('./error.js')(app, exports.error);
