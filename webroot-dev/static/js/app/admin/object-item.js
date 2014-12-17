@@ -20,6 +20,10 @@ define(function (require, exports, module) {
 
     require('../../widget/admin/welcome.js');
 
+    /**
+     * 实时翻译
+     * @param vue
+     */
     page.translate = function (vue) {
         var xhr = null;
 
@@ -64,7 +68,8 @@ define(function (require, exports, module) {
             content: '',
             uri: '',
             labels: [],
-            type: window['-type-']
+            type: window['-type-'],
+            isDisplay: true
         };
         data.scopes.forEach(function (item) {
             item.text = item.name;
