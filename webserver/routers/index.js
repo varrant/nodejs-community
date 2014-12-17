@@ -23,10 +23,10 @@ var staticOptions = {
 module.exports = function (app) {
     var exports = controllers(app);
 
-    // 中间件：路由验证、安全验证、访问验证等
+    // 中间件：路由验证、安全验证、访问验证、读取当前用户等
     require('./middleware.js')(app, exports.middleware);
 
-    // 测试
+    // 测试优先
     require('./test.js')(app, exports.test);
 
     // 管理路由
