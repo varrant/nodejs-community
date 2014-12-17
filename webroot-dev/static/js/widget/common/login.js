@@ -16,7 +16,7 @@ define(function (require, exports, module) {
         var left = (screenW - winW) / 2;
         var top = (screenH - winH) / 3;
 
-        window.open('/user/oauth/authorize/', '授权 github 登录到前端开发者社区',
+        window.open('/engineer/oauth/authorize/', '授权 github 登录到前端开发者社区',
             'width=' + winW + ',height=' + winH + ',top=' + top + ',left=' + left + ',' +
             'scrollbars=no,resizable=no,menubar=no');
     };
