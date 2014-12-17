@@ -32,7 +32,8 @@ define(function (require, exports, module) {
     var event = require('../../core/event/touch.js');
     var normalClass = 'alien-ui-pagination-normal';
     var defaults = {
-        count: 1,
+        addClass: '',
+        max: 1,
         page: 1,
         size: 3
     };
@@ -41,7 +42,7 @@ define(function (require, exports, module) {
             /**
              * 默认配置
              * @name defaults
-             * @property [count=1] {Number} 分页总数
+             * @property [max=1] {Number} 分页总数
              * @property [page=1] {Number} 当前分数
              * @property [size=3] {Number} 分页可见范围
              */
@@ -49,11 +50,11 @@ define(function (require, exports, module) {
         },
 
 
-        constructor: function (ele, options) {
+        constructor: function ($parent, options) {
             var the = this;
 
 
-            the._$ele = selector.query(ele);
+            the._$ele = selector.query($parent);
 
             if (!the._$ele.length) {
                 throw new Error('instance element is empty');
@@ -72,42 +73,53 @@ define(function (require, exports, module) {
         _init: function () {
             var the = this;
 
-            the._on();
+            attribute.addClass(the._$ele, the._options.addClass);
+            the._initEvent();
             the.render();
 
             return the;
         },
 
 
-        _on: function () {
+        /**
+         * 初始化事件
+         * @private
+         */
+        _initEvent: function () {
             var the = this;
 
-            event.on(the._$ele, 'click tap', '.' + normalClass, the._onEle.bind(the));
+            event.on(the._$ele, 'click tap', '.' + normalClass, the._onpage.bind(the));
         },
 
-        _onEle: function (eve) {
+
+        /**
+         * 翻页回调
+         * @param eve
+         * @private
+         */
+        _onpage: function (eve) {
+            var the = this;
             var page = attribute.data(eve.target, 'page');
 
-            this.emit('change', page);
+            page = dato.parseInt(page, 1);
+            if (page !== the._options.page) {
+                the._options.page = page;
+                the.emit('change', page);
+            }
         },
 
-        _un: function () {
-            var the = this;
-
-            event.un(the._$ele, 'click tap', the._onEle);
-        },
 
         /**
          * 渲染
-         * @param {Object} [settings] 配置参数
-         * @param {Number} [settings.count] 重新配置总页数，默认为上一次配置的值
-         * @param {Number} [settings.page] 重新配置当前页数，默认为上一次配置的值
-         * @param {Number} [settings.size] 重新配置可视范围，默认为上一次配置的值
+         * @param {Object} [data] 分页数据
+         * @param {Number} [data.max] 重新配置总页数，默认为上一次配置的值
+         * @param {Number} [data.page] 重新配置当前页数，默认为上一次配置的值
+         * @param {Number} [data.size] 重新配置可视范围，默认为上一次配置的值
          * @returns {Pagination}
          */
-        render: function (settings) {
+        render: function (data) {
             var the = this;
-            var options = dato.extend(the._options, settings);
+            var options = dato.extend(the._options, data);
             var list = new libsPagination(options);
 
             the._$ele.innerHTML = tpl.render({
@@ -124,7 +136,7 @@ define(function (require, exports, module) {
         destroy: function () {
             var the = this;
 
-            the._un();
+            event.un(the._$ele, 'click tap', the._onpage);
             the._$ele.innerHTML = '';
         }
     });
@@ -136,7 +148,7 @@ define(function (require, exports, module) {
      * 实例化一个分页控制器
      * @param ele {Element} 元素，生成的分页将在此渲染
      * @param [options] {Object} 配置
-     * @param [options.count=1] {Number} 分页总数
+     * @param [options.max=1] {Number} 分页总数
      * @param [options.page=1] {Number} 当前分数
      * @param [options.size=3] {Number} 分页可见范围
      * @constructor
