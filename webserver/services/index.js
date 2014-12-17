@@ -10,12 +10,12 @@
 module.exports = {
     comment: require('./comment.js'),
     email: require('./email.js'),
+    engineer: require('./engineer.js'),
     interactive: require('./interactive.js'),
     label: require('./label.js'),
     notification: require('./notification.js'),
     object: require('./object.js'),
     scope: require('./scope.js'),
     search: require('./search.js'),
-    setting: require('./setting.js'),
-    user: require('./user.js')
+    setting: require('./setting.js')
 };
