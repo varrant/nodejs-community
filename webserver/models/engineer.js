@@ -136,7 +136,7 @@ var schema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('user', schema);
+module.exports = mongoose.model('engineer', schema);
 //
 //
 ///**
