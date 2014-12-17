@@ -6,7 +6,6 @@
 
 'use strict';
 
-var role = require('../../configs/').role;
 var engineer = require('../models/').engineer;
 var object = require('./object.js');
 var interactive = require('./interactive.js');
@@ -439,47 +438,4 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
 
             callback(null, ret);
         });
-};
-
-
-/**
- * 判断用户是否有权限做指定的事
- * @param conditionsOrRole {Object|Number} 查询条件或角色值
- * @param doWhat {String} 事
- * @param callback {Function} 回调
- * @returns {*}
- */
-exports.can = function (conditionsOrRole, doWhat, callback) {
-    // 没有限制的，表示可做
-    if (role[doWhat] === undefined) {
-        return callback(null, true);
-    }
-
-    var mustRole = Math.pow(2, role[doWhat]);
-    var userRole;
-    var canDo;
-
-    if (typeis(conditionsOrRole) === 'number') {
-        userRole = conditionsOrRole;
-        canDo = userRole & mustRole > 0;
-
-        return callback(null, canDo);
-    }
-
-    engineer.findOne(conditionsOrRole, function (err, doc) {
-        if (err) {
-            return callback(err);
-        }
-
-        if (!doc) {
-            err = new Error('engineer is not exist');
-            err.type = 'notFound';
-            return callback(err);
-        }
-
-        userRole = doc.role;
-        canDo = userRole & mustRole > 0;
-
-        callback(null, canDo);
-    });
 };
