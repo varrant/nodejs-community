@@ -97,7 +97,7 @@ module.exports = function (app) {
 
         // 不存在 cookie
         if (!userCookie) {
-            cookie.logout(res);
+            cookie.logout(req, res);
             return next();
         }
 
@@ -105,13 +105,13 @@ module.exports = function (app) {
 
         // 解析错误
         if (!userId) {
-            cookie.logout(res);
+            cookie.logout(req, res);
             return next();
         }
 
         // 与 session 不匹配
         if (req.session.$engineer && req.session.$engineer._id !== userId) {
-            cookie.logout(res);
+            cookie.logout(req, res);
             return next();
         }
 
@@ -123,7 +123,7 @@ module.exports = function (app) {
 
         engineer.findOne({_id: userId}, function (err, doc) {
             if (err) {
-                cookie.logout(res);
+                cookie.logout(req, res);
                 return next(err);
             }
 
