@@ -16,6 +16,8 @@
 - window['-refresh-'] 登录之后是否刷新【部分页面】
 - window['-type-'] 页面类型【部分页面】
 - window['-id-'] 详情页ID【部分页面】
+- window['-page-'] 列表页分页值【部分页面】
+- window['-limit-'] 列表页每页值【部分页面】
 
 
 # 参考项目
