@@ -36,5 +36,5 @@ module.exports = function (app, ctrlFront) {
 
 
     // engineer
-    app.get('/engineer/:engineer/', ctrlFront.user.getEngineer);
+    app.get('/engineer/:engineer/', ctrlFront.engineer.getEngineer);
 };

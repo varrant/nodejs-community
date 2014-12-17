@@ -9,7 +9,7 @@
 var URL = require('url');
 var ydrUtil = require('ydr-util');
 var configs = require('../../configs/');
-var user = require('../services/').user;
+var engineer = require('../services/').engineer;
 var cookie = require('../utils/').cookie;
 var REG_ENDXIE = /(\/|\.[^\.\/]+)$/;
 var REG_ACCEPT = /^application\/json;\s*charset=utf-8$/i;
@@ -111,19 +111,19 @@ module.exports = function (app) {
         }
 
         // 与 session 不匹配
-        if (req.session.$user && req.session.$user._id !== userId) {
+        if (req.session.$user && req.session.$engineer._id !== userId) {
             req.session.$user = res.locals.$user = null;
             cookie.logout(res);
             return next();
         }
 
         // 与 session 匹配
-        if (req.session.$user && req.session.$user._id === userId) {
+        if (req.session.$user && req.session.$engineer._id === userId) {
             res.locals.$user = req.session.$user;
             return next();
         }
 
-        user.findOne({_id: userId}, function (err, doc) {
+        engineer.findOne({_id: userId}, function (err, doc) {
             if (err) {
                 req.session.$user = res.locals.$user = null;
                 cookie.logout(res);

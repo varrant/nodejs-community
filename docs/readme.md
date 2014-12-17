@@ -3,11 +3,11 @@
 - app.locals.$options 社区配置
 - app.locals.$owner 社区主人
 - req.session.$csrf 请求令牌
-- req.session.$user 请求用户
+- req.session.$engineer 请求工程师
 - req.session.$github github授权
 - req.session.$state 授权状态值
 - res.locals.$csrf 响应令牌
-- res.locals.$user 响应用户
+- res.locals.$engineer 响应工程师
 - res.locals.$settings 响应社区设置
 
 
