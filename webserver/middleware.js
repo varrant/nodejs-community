@@ -7,7 +7,7 @@
 'use strict';
 
 var setting = require('./services/').setting;
-var user = require('./services/').user;
+var engineer = require('./services/').engineer;
 var howdo = require('howdo');
 var locals = require('./utils/').locals;
 
@@ -28,7 +28,7 @@ module.exports = function (next, app) {
         })
         // 初始化网站管理员
         .task(function (done) {
-            user.findOne({
+            engineer.findOne({
                 role: 2097151
             }, function (err, doc) {
                 if(err){
