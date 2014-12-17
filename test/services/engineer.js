@@ -7,86 +7,86 @@
 'use strict';
 
 var test = require('../test.js');
-var user = require('../../webserver/services/').user;
+var engineer = require('../../webserver/services/').engineer;
 var random = require('ydr-util').random;
 
 test
     .push('user.increaseScore', function (next) {
-        user.increaseScore({
+        engineer.increaseScore({
             github: 'cloudcome'
         }, 1, function () {
             console.log(arguments);
             next();
         });
     })
-    .push('user.increaseViewCount', function (next) {
-        user.increaseViewCount({
+    .push('engineer.increaseViewCount', function (next) {
+        engineer.increaseViewCount({
             github: 'cloudcome'
         }, 1, function () {
             console.log(arguments);
             next();
         });
     })
-    .push('user.increaseCommentCount', function (next) {
-        user.increaseCommentCount({
+    .push('engineer.increaseCommentCount', function (next) {
+        engineer.increaseCommentCount({
             github: 'cloudcome'
         }, 1, function () {
             console.log(arguments);
             next();
         });
     })
-    .push('user.increaseAgreedCount', function (next) {
-        user.increaseAgreedCount({
+    .push('engineer.increaseAgreedCount', function (next) {
+        engineer.increaseAgreedCount({
             github: 'cloudcome'
         }, 1, function () {
             console.log(arguments);
             next();
         });
     })
-    .push('user.increaseAcceptedCount', function (next) {
-        user.increaseAcceptedCount({
+    .push('engineer.increaseAcceptedCount', function (next) {
+        engineer.increaseAcceptedCount({
             github: 'cloudcome'
         }, 1, function () {
             console.log(arguments);
             next();
         });
     })
-    .push('user.follow', function (next) {
-        user.follow('5487fa5fc57b05a81f23037d', '5487fab2eb3108d014e6abad', function () {
+    .push('engineer.follow', function (next) {
+        engineer.follow('5487fa5fc57b05a81f23037d', '5487fab2eb3108d014e6abad', function () {
             console.log(arguments);
             next();
         });
     })
-    .push('user.unfollow', function (next) {
-        user.unfollow('5487fa5fc57b05a81f23037d', '5487fab2eb3108d014e6abad', function () {
+    .push('engineer.unfollow', function (next) {
+        engineer.unfollow('5487fa5fc57b05a81f23037d', '5487fab2eb3108d014e6abad', function () {
             console.log(arguments);
             next();
         });
     })
     .push('increaseObjectTypeCount', function (next) {
-        user.increaseObjectTypeCount({github: 'cloudcome'}, 'help', 1, function () {
+        engineer.increaseObjectTypeCount({github: 'cloudcome'}, 'help', 1, function () {
             console.log(arguments);
             next();
         });
     })
-    .push('user.setBlock', function (next) {
-        user.setBlock({
+    .push('engineer.setBlock', function (next) {
+        engineer.setBlock({
             github: 'cloudcome'
         }, function () {
             console.log(arguments);
             next();
         });
     })
-    .push('user.cancelBlock', function (next) {
-        user.cancelBlock({
+    .push('engineer.cancelBlock', function (next) {
+        engineer.cancelBlock({
             github: 'cloudcome'
         }, function () {
             console.log(arguments);
             next();
         });
     })
-    .push('user.joinOrganization', function (next) {
-        user.joinOrganization({
+    .push('engineer.joinOrganization', function (next) {
+        engineer.joinOrganization({
             github: 'cloudcome'
         }, random.string(24), function () {
             console.log(arguments);
