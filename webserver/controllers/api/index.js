@@ -16,6 +16,6 @@ module.exports = function (app) {
         scope: require('./scope.js')(app),
         translate: require('./translate.js')(app),
         type: require('./type.js')(app),
-        user: require('./user.js')(app)
+        engineer: require('./engineer.js')(app)
     };
 };
