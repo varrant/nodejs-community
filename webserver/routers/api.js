@@ -41,4 +41,8 @@ module.exports = function (app, ctrlApi) {
 
     // user
     app.post('/api/user/login/', ctrlApi.user.login);
+
+
+    // translate
+    app.get('/api/translate/', ctrlApi.translate.get);
 };
