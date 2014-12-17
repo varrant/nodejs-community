@@ -92,7 +92,9 @@ define(function (require, exports, module) {
 
         vue.$el.classList.remove('f-none');
         editor = new Editor('#content', {
-            id: objectId
+            id: objectId,
+            // 更新的时候自动聚焦
+            autoFocus: !!objectId
         }).on('change', function (val) {
                 vue.$data.object.content = val;
             });
