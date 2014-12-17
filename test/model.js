@@ -6,7 +6,7 @@
 
 
 var mongoose = require('../webserver/mongoose.js');
-var user = require('../webserver/models/').user;
+var engineer = require('../webserver/models/').engineer;
 var object = require('../webserver/models/').object;
 var scope = require('../webserver/models/').scope;
 var random = require('ydr-util').random;
@@ -14,7 +14,7 @@ var test = require('./test.js');
 
 test
     .push('createOne', function (next) {
-        user.createOne({
+        engineer.createOne({
             email: random.string(10) + '@domain.com',
             github: random.string(10),
             nickname: random.string(10)
@@ -24,7 +24,7 @@ test
         });
     })
     .push('existOne', function (next) {
-        user.existOne({
+        engineer.existOne({
             github: 'abcdefg'
         }, {
             email: 'abcdefg@domain.com',
@@ -35,7 +35,7 @@ test
         });
     })
     .push('findOneAndUpdate', function (next) {
-        user.findOneAndUpdate({
+        engineer.findOneAndUpdate({
             github: 'abcdefg'
         }, {
             email: 'abcdefghhhhhhhhhhhhhhhh@domain.com',
@@ -46,7 +46,7 @@ test
         });
     })
     .push('getMeta', function (next) {
-        user.getMeta({
+        engineer.getMeta({
             github: 'cloudcome'
         }, 'bio', function () {
             console.log(arguments);
@@ -54,7 +54,7 @@ test
         });
     })
     .push('setMeta', function (next) {
-        user.setMeta({
+        engineer.setMeta({
             github: 'cloudcome'
         }, 'bio', '呵呵', function () {
             console.log(arguments);
@@ -62,7 +62,7 @@ test
         });
     })
     .push('setMeta', function (next) {
-        user.setMeta({
+        engineer.setMeta({
             github: 'cloudcome'
         }, {
             bio: '呵呵呵呵'
@@ -72,7 +72,7 @@ test
         });
     })
     .push('increase', function (next) {
-        user.increase({
+        engineer.increase({
             github: 'cloudcome'
         }, 'followCount', 1, function () {
             console.log(arguments);
@@ -81,7 +81,7 @@ test
     })
     .push('push', function (next) {
         var id = random.string(24, 'a0');
-        user.push({
+        engineer.push({
             github: 'cloudcome'
         }, 'organizations', id, function () {
             console.log(arguments);
@@ -90,7 +90,7 @@ test
     })
     .push('pull', function (next) {
         var id = '001300000004ad0009000000';
-        user.pull({
+        engineer.pull({
             github: 'cloudcome'
         }, 'organizations', id, function () {
             console.log(arguments);
@@ -98,7 +98,7 @@ test
         });
     })
     .push('toggle', function (next) {
-        user.toggle({
+        engineer.toggle({
             github: 'cloudcome'
         }, 'isBlock', true, function () {
             console.log(arguments);
@@ -106,19 +106,19 @@ test
         });
     })
     .push('find', function (next) {
-        user.find({}, {limit: 2}, function () {
+        engineer.find({}, {limit: 2}, function () {
             console.log(arguments);
             next();
         });
     })
     .push('findOne', function (next) {
-        user.findOne({}, function () {
+        engineer.findOne({}, function () {
             console.log(arguments);
             next();
         });
     })
     .push('count', function (next) {
-        user.count({}, function () {
+        engineer.count({}, function () {
             console.log(arguments);
             next();
         });
