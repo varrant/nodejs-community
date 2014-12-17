@@ -32,11 +32,12 @@ exports.login = function (res, userId) {
  * 退出登录
  * @param res {Object} 响应对象
  */
-exports.logout = function (res) {
+exports.logout = function (req, res) {
     var options = dato.extend({}, defaults, {
         expires: new Date(Date.now() - 1),
         maxAge: -1
     });
 
+    req.session.$engineer = res.locals.$engineer = null;
     res.cookie(secret.cookie.userKey, '', options);
 };

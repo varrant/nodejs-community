@@ -97,7 +97,7 @@ module.exports = function (app) {
 
         // 不存在 cookie
         if (!userCookie) {
-            req.session.$user = res.locals.$user = null;
+            cookie.logout(res);
             return next();
         }
 
@@ -105,41 +105,37 @@ module.exports = function (app) {
 
         // 解析错误
         if (!userId) {
-            req.session.$user = res.locals.$user = null;
             cookie.logout(res);
             return next();
         }
 
         // 与 session 不匹配
-        if (req.session.$user && req.session.$engineer._id !== userId) {
-            req.session.$user = res.locals.$user = null;
+        if (req.session.$engineer && req.session.$engineer._id !== userId) {
             cookie.logout(res);
             return next();
         }
 
         // 与 session 匹配
-        if (req.session.$user && req.session.$engineer._id === userId) {
-            res.locals.$user = req.session.$user;
+        if (req.session.$engineer && req.session.$engineer._id === userId) {
+            res.locals.$engineer = req.session.$engineer;
             return next();
         }
 
         engineer.findOne({_id: userId}, function (err, doc) {
             if (err) {
-                req.session.$user = res.locals.$user = null;
                 cookie.logout(res);
                 return next(err);
             }
 
             if (!doc) {
-                req.session.$user = res.locals.$user = null;
                 err = new Error('the user is not exist');
                 err.type = 'notFound';
                 err.redirect = '/';
-                cookie.logout(res);
+                cookie.logout(req, res);
                 return next(err);
             }
 
-            req.session.$user = res.locals.$user = doc.toObject();
+            req.session.$engineer = res.locals.$engineer = doc.toObject();
             next();
         });
     };
