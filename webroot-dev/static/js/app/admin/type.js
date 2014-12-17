@@ -11,7 +11,8 @@ define(function (require) {
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
-    var url = '/admin/api/type/list/';
+    var itemURL = '/admin/api/type/';
+    var listURL = itemURL + 'list/';
     var page = {};
 
     require('../../widget/admin/welcome.js');
@@ -21,7 +22,7 @@ define(function (require) {
      */
     page.list = function () {
         ajax({
-            url: url
+            url: listURL
         }).on('success', page.onsuccess).on('error', alert);
     };
 
@@ -73,7 +74,6 @@ define(function (require) {
         this.$data.list.splice(index + 1, 0, item);
     };
 
-
     /**
      * 删除
      * @param index
@@ -85,7 +85,6 @@ define(function (require) {
             the.$data.list.splice(index, 1);
         });
     };
-
 
     /**
      * 新建一个
@@ -100,7 +99,6 @@ define(function (require) {
         });
     };
 
-
     /**
      * 保存
      * @param eve
@@ -112,7 +110,7 @@ define(function (require) {
         confirm('确认更新所有板块信息吗？', function () {
             $btn.disabled = true;
             ajax({
-                url: url,
+                url: itemURL,
                 method: 'put',
                 data: the.$data.list
             }).on('success', function (json) {
