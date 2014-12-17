@@ -17,7 +17,7 @@ define(function (require) {
         var $msg = document.getElementById('msg');
 
         ajax({
-            url: '/api/user/login/',
+            url: '/api/engineer/login/',
             method: 'post',
             data: locals
         }).on('success', function (json) {
