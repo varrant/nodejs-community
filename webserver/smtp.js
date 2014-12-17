@@ -8,12 +8,23 @@
 
 var emailjs = require('emailjs');
 var email = require('./services/email.js');
+var log = require('ydr-log');
+var configs = require('../configs/');
 
 module.exports = function (next, app) {
     var options = app.locals.$settings.smtp;
     var smtp = emailjs.server.connect(options);
 
     email.init(smtp, app.locals.$owner);
+
+    if('pro' === configs.app.env){
+        log.initEmail({
+            from: configs.smtp.from,
+            email: app.locals.$owner.email
+        });
+        log.initSmtp(options);
+    }
+
     app.locals.$smtp = smtp;
     next(null, app);
 };

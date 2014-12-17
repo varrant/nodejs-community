@@ -15,7 +15,7 @@ var dato = require('ydr-util').dato;
 var crypto = require('ydr-util').crypto;
 var request = require('ydr-util').request;
 var typeis = require('ydr-util').typeis;
-var log = require('ydr-util').log;
+var log = require('ydr-log');
 var configs = require('../../configs/');
 var qs = require('querystring');
 var howdo = require('howdo');
@@ -30,6 +30,7 @@ var urls = {
  * 注册
  */
 exports.register = user.createOne;
+
 
 /**
  * 登录

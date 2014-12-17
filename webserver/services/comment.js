@@ -17,7 +17,7 @@ var notification = require('./notification.js');
 var email = require('./email.js');
 var dato = require('ydr-util').dato;
 var howdo = require('howdo');
-var log = require('ydr-util').log;
+var log = require('ydr-log');
 
 
 /**

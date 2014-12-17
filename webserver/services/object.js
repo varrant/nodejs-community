@@ -14,7 +14,7 @@ var setting = require('./setting.js');
 var user = require('./user.js');
 var howdo = require('howdo');
 var dato = require('ydr-util').dato;
-var log = require('ydr-util').log;
+var log = require('ydr-log');
 
 
 /**

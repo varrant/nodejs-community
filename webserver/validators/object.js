@@ -9,6 +9,7 @@
 var Validator = require('ydr-validator');
 var validator = new Validator();
 var REG_LINES = /[\n\s]{2,}/g;
+var REG_LABEL = /^[\u4e00-\u9fa5a-z\d_-]{2,20}$/i;
 
 validator.pushRule({
     name: 'title',
@@ -56,10 +57,30 @@ validator.pushRule({
     type: 'string',
     alias: '内容',
     trim: true,
-    minLength: 100,
+    minLength: 10,
     maxLength: 50000,
     onafter: function (val) {
         return val && val.replace(REG_LINES, '\n\n');
+    }
+});
+
+validator.pushRule({
+    name: 'label',
+    type: 'array',
+    alias: '标注',
+    exist: true,
+    onafter: function (labels) {
+        var ret = [];
+
+        labels.forEach(function (item) {
+            item = String(item);
+
+            if (REG_LABEL.test(item)) {
+                ret.push(item);
+            }
+        });
+
+        return ret;
     }
 });
 
