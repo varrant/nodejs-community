@@ -11,7 +11,7 @@
             <td colspan="2" class="table-empty-td">暂无相关智问，<a class="btn btn-primary btn-sm" href="/admin/object/question/">点击新建智问</a></td>
         </tr>
         <tr v-repeat="object:objects">
-            <td>\{{$index}}</td>
+            <td>\{{($index - 1 + 2) * page}}</td>
             <td><a href="/admin/object/question/?id=\{{object._id}}">《\{{object.title}}》</a></td>
         </tr>
         </tbody>
@@ -19,8 +19,8 @@
         <tr>
             <td colspan="2">
                 <ul class="m-pager avg-xs-2 f-text-center">
-                    <li class="pager-prev" v-class="disabled: page == 1"><a href="#"><i class="i i-angle-double-left"></i>上一页</a></li>
-                    <li class="pager-next" v-class="disabled: objects.length == 0"><a href="#">下一页<i class="i i-angle-double-right"></i></a></li>
+                    <li class="pager-prev" v-class="disabled: page == 1"><a href="#!/?page=\{{page-1}}"><i class="i i-angle-double-left"></i>上一页</a></li>
+                    <li class="pager-next" v-class="disabled: objects.length == 0"><a href="#!/?page=\{{page-1+2}}">下一页<i class="i i-angle-double-right"></i></a></li>
                 </ul>
             </td>
         </tr>

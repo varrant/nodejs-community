@@ -16,8 +16,18 @@ define(function (require, exports, module) {
     var reqPage = hashbang.get('query', 'page') || 1;
     var url = '/admin/api/object/list/?type=' + window['-type-'];
     var page = {};
+    var vue;
 
     require('../../widget/admin/welcome.js');
+
+    hashbang.on('query', 'page', function (eve, neo) {
+        if (reqPage === neo.query.page) {
+            return;
+        }
+
+        reqPage = neo.query.page;
+        page.list();
+    });
 
     /**
      * 请求展示列表
@@ -38,16 +48,21 @@ define(function (require, exports, module) {
             return alert(json);
         }
 
-        var vue = new Vue({
-            el: '#list',
-            data: {
-                objects: json.data,
-                page: reqPage
-            },
-            methods: {}
-        });
+        if (vue) {
+            vue.$data.page = reqPage;
+            vue.$data.objects = json.data;
+        } else {
+            vue = new Vue({
+                el: '#list',
+                data: {
+                    objects: json.data,
+                    page: reqPage
+                },
+                methods: {}
+            });
 
-        vue.$el.classList.remove('f-none');
+            vue.$el.classList.remove('f-none');
+        }
     };
 
     page.list();
