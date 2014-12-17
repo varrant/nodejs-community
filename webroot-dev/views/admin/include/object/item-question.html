@@ -2,7 +2,7 @@
     <li class="row">
        <div class="col-xs-2">title</div>
        <div class="col-xs-10">
-           <p class="form-ipt" v-if="object._id">\{{object.title}}</p>
+           <p class="form-opt" v-if="object._id">\{{object.title}}</p>
            <input v-if="!object._id" class="ipt" type="text" name="title" v-model="object.title" value="\{{object.title}}" id="title"/>
            <p class="form-desc">问题的标题，5-100字符以内。</p>
        </div>
@@ -11,7 +11,7 @@
     <li class="row">
        <div class="col-xs-2">URI</div>
        <div class="col-xs-10">
-           <p class="form-ipt" v-if="object._id">\{{object.uri}}</p>
+           <p class="form-opt" v-if="object._id">\{{object.uri}}</p>
            <input v-if="!object._id" class="ipt" type="text" name="uri" v-model="object.uri" value="\{{object.uri}}" id="uri"/>
            <p class="form-desc">问题的URI展示，5-100字符以内。</p>
        </div>
@@ -41,12 +41,13 @@
                     <input class="ipt" type="text" name="label" placeholder="label" v-model="object.label" v-on="keyup:onpushlabel | key 13"/>
                 </div>
                 <div class="col-xs-10">
-                    <ul class="f-list-left">
-                        <li v-repeat="object.labels">\{{$value}}<a href="#" class="i i-times"></a></li>
+                    <ul class="f-list-left form-opt">
+                        <li v-repeat="object.labels">\{{$value}}
+                            <a href="javascript:;" class="i i-times s-danger" v-on="click:onremovelabel($index)"></a></li>
                     </ul>
                 </div>
             </div>
-            <p class="form-desc">输入 label 后回车。添加合适的 label 有助于更快的被检索到。最多可以添加5个 label。</p>
+            <p class="form-desc">输入 label 后回车。添加合适的 label 有助于更快的被检索到。最多可以添加<strong>5</strong>个 label。</p>
         </div>
     </li>
 

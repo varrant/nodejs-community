@@ -79,6 +79,7 @@ define(function (require, exports, module) {
             data: data,
             methods: {
                 onpushlabel: page.onpushlabel,
+                onremovelabel: page.onremovelabel,
                 onsave: page.onsave
             }
         });
@@ -99,10 +100,19 @@ define(function (require, exports, module) {
         var label = object.label.toLowerCase().trim();
 
         // 最多 5 个 labels
-        if (object.labels.indexOf(label) === -1 && object.labels.length < 6) {
+        if (object.labels.indexOf(label) === -1 && object.labels.length < 5) {
             object.labels.push(label);
             object.label = '';
         }
+    };
+
+
+    /**
+     * 移除 label
+     * @param index
+     */
+    page.onremovelabel = function (index) {
+        this.$data.object.labels.splice(index, 1);
     };
 
     /**
