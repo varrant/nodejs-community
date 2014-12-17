@@ -19,7 +19,7 @@ var models = {
     scope: require('./scope.js'),
     search: require('./search.js'),
     setting: require('./setting.js'),
-    user: require('./user.js')
+    engineer: require('./engineer.js')
 };
 var configs = require('../../configs/');
 var DBNAME = configs.app.mongodb.match(/\/([^/]*)$/)[1];
