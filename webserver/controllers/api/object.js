@@ -9,7 +9,7 @@
 var object = require('../../services/').object;
 var scope = require('../../services/').scope;
 var dato = require('ydr-util').dato;
-var filter = require('../../utils/filter.js');
+var filter = require('../../utils/').filter;
 var howdo = require('howdo');
 
 module.exports = function (app) {
