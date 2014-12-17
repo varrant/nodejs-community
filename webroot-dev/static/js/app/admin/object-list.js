@@ -13,19 +13,20 @@ define(function (require, exports, module) {
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
-    var reqPage = hashbang.get('query', 'page') || 1;
-    var url = '/admin/api/object/list/?type=' + window['-type-'];
+    var qs = require('../../alien/util/querystring.js');
+    var url = '/admin/api/object/list/?type=' + window['-type-'] + '&';
     var page = {};
+    var req = {
+        page: hashbang.get('query', 'page') || 1,
+        limit: 20
+    };
     var vue;
 
     require('../../widget/admin/welcome.js');
 
     hashbang.on('query', 'page', function (eve, neo) {
-        if (reqPage === neo.query.page) {
-            return;
-        }
-
-        reqPage = neo.query.page;
+        req.page = neo.query.page || 1;
+        req.limit = neo.query.limit || 20;
         page.list();
     });
 
@@ -34,7 +35,7 @@ define(function (require, exports, module) {
      */
     page.list = function () {
         ajax({
-            url: url + '&page=' + reqPage
+            url: url + qs.stringify(req)
         }).on('success', page.onsuccess).on('error', alert);
     };
 
@@ -49,14 +50,13 @@ define(function (require, exports, module) {
         }
 
         if (vue) {
-            vue.$data.page = reqPage;
             vue.$data.objects = json.data;
         } else {
             vue = new Vue({
                 el: '#list',
                 data: {
                     objects: json.data,
-                    page: reqPage
+                    req: req
                 },
                 methods: {}
             });
