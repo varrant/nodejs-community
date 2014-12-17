@@ -7,7 +7,7 @@
 'use strict';
 
 var role = require('../../configs/').role;
-var user = require('../models/').user;
+var engineer = require('../models/').engineer;
 var object = require('./object.js');
 var interactive = require('./interactive.js');
 var random = require('ydr-util').random;
@@ -29,43 +29,43 @@ var urls = {
 /**
  * 注册
  */
-exports.register = user.createOne;
+exports.register = engineer.createOne;
 
 
 /**
  * 登录
  */
-exports.login = user.existOne;
+exports.login = engineer.existOne;
 
 
 /**
  * 查找
  */
-exports.findOne = user.findOne;
+exports.findOne = engineer.findOne;
 
 
 /**
  * 查找更新
  */
-exports.findOneAndUpdate = user.findOneAndUpdate;
+exports.findOneAndUpdate = engineer.findOneAndUpdate;
 
 
 /**
  * 获取meta
  */
-exports.getMeta = user.getMeta;
+exports.getMeta = engineer.getMeta;
 
 
 /**
  * 设置meta
  */
-exports.setMeta = user.setMeta;
+exports.setMeta = engineer.setMeta;
 
 
 /**
  * count
  */
-exports.count = user.count;
+exports.count = engineer.count;
 
 
 /**
@@ -75,7 +75,7 @@ exports.count = user.count;
  * @param callback {Function} 回调
  */
 exports.increaseScore = function (conditions, count, callback) {
-    user.increase(conditions, 'score', count, callback);
+    engineer.increase(conditions, 'score', count, callback);
 };
 
 
@@ -86,7 +86,7 @@ exports.increaseScore = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseViewCount = function (conditions, count, callback) {
-    user.increase(conditions, 'viewCount', count, callback);
+    engineer.increase(conditions, 'viewCount', count, callback);
 };
 
 
@@ -97,7 +97,7 @@ exports.increaseViewCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseCommentCount = function (conditions, count, callback) {
-    user.increase(conditions, 'commentCount', count, callback);
+    engineer.increase(conditions, 'commentCount', count, callback);
 };
 
 
@@ -108,7 +108,7 @@ exports.increaseCommentCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseRepliedCount = function (conditions, count, callback) {
-    user.increase(conditions, 'repliedCount', count, callback);
+    engineer.increase(conditions, 'repliedCount', count, callback);
 };
 
 
@@ -119,7 +119,7 @@ exports.increaseRepliedCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseAgreedCount = function (conditions, count, callback) {
-    user.increase(conditions, 'agreedCount', count, callback);
+    engineer.increase(conditions, 'agreedCount', count, callback);
 };
 
 
@@ -130,7 +130,7 @@ exports.increaseAgreedCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseAcceptedCount = function (conditions, count, callback) {
-    user.increase(conditions, 'acceptedCount', count, callback);
+    engineer.increase(conditions, 'acceptedCount', count, callback);
 };
 
 
@@ -151,8 +151,8 @@ exports.follow = function (operatorId, userId, callback) {
         callback(err);
 
         if (isModified) {
-            user.increase({_id: operatorId}, 'followCount', 1, log.holdError);
-            user.increase({_id: userId}, 'followedCount', 1, log.holdError);
+            engineer.increase({_id: operatorId}, 'followCount', 1, log.holdError);
+            engineer.increase({_id: userId}, 'followedCount', 1, log.holdError);
         }
     });
 };
@@ -175,8 +175,8 @@ exports.unfollow = function (operatorId, userId, callback) {
         callback(err);
 
         if (isModified) {
-            user.increase({_id: operatorId}, 'followCount', -1, log.holdError);
-            user.increase({_id: userId}, 'followedCount', -1, log.holdError);
+            engineer.increase({_id: operatorId}, 'followCount', -1, log.holdError);
+            engineer.increase({_id: userId}, 'followedCount', -1, log.holdError);
         }
     });
 };
@@ -190,7 +190,7 @@ exports.unfollow = function (operatorId, userId, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseObjectTypeCount = function (conditions, type, count, callback) {
-    user.findOne(conditions, function (err, doc) {
+    engineer.findOne(conditions, function (err, doc) {
         if (err) {
             return callback(err);
         }
@@ -213,7 +213,7 @@ exports.increaseObjectTypeCount = function (conditions, type, count, callback) {
 
         var data2 = dato.extend(doc.objectStatistics, data);
 
-        user.findOneAndUpdate(conditions, {objectStatistics: data2}, callback);
+        engineer.findOneAndUpdate(conditions, {objectStatistics: data2}, callback);
     });
 };
 
@@ -224,7 +224,7 @@ exports.increaseObjectTypeCount = function (conditions, type, count, callback) {
  * @param callback {Function} 回调
  */
 exports.setBlock = function (conditions, callback) {
-    user.toggle(conditions, 'isBlock', true, callback);
+    engineer.toggle(conditions, 'isBlock', true, callback);
 };
 
 /**
@@ -233,7 +233,7 @@ exports.setBlock = function (conditions, callback) {
  * @param callback {Function} 回调
  */
 exports.cancelBlock = function (conditions, callback) {
-    user.toggle(conditions, 'isBlock', false, callback);
+    engineer.toggle(conditions, 'isBlock', false, callback);
 };
 
 
@@ -257,7 +257,7 @@ exports.joinOrganization = function (conditions, organizationId, callback) {
             return callback(err);
         }
 
-        user.push(conditions, 'organizations', organizationId, callback);
+        engineer.push(conditions, 'organizations', organizationId, callback);
     });
 };
 
@@ -466,7 +466,7 @@ exports.can = function (conditionsOrRole, doWhat, callback) {
         return callback(null, canDo);
     }
 
-    user.findOne(conditionsOrRole, function (err, doc) {
+    engineer.findOne(conditionsOrRole, function (err, doc) {
         if (err) {
             return callback(err);
         }
