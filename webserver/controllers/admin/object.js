@@ -20,11 +20,8 @@ module.exports = function (app) {
      */
     exports.list = function (type) {
         return function (req, res, next) {
-            var options = filter.skipLimit(req);
             var data = {
-                title: typesMap[type].title + '管理',
-                page: options.page,
-                limit: options.limit
+                title: typesMap[type].title + '管理'
             };
 
             res.render('admin/object-list-' + type + '.html', data);

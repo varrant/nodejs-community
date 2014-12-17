@@ -12,9 +12,10 @@ define(function (require, exports, module) {
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
+    var hashbang = require('../../alien/core/navigator/hashbang.js');
+    var reqPage = hashbang.get('query', 'page') || 1;
     var url = '/admin/api/object/list/?type=' + window['-type-'];
     var page = {};
-    var reqPage = 1;
 
     require('../../widget/admin/welcome.js');
 
