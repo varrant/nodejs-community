@@ -11,7 +11,7 @@ var object = require('../models').object;
 var scope = require('./scope.js');
 var label = require('./label.js');
 var setting = require('./setting.js');
-var user = require('./user.js');
+var engineer = require('./engineer.js');
 var howdo = require('howdo');
 var dato = require('ydr-util').dato;
 var log = require('ydr-log');
@@ -113,8 +113,8 @@ exports.createOne = function (author, data, callback) {
                     label.increaseObjectCount({name: name}, 1, log.holdError);
                 });
 
-                // 更新 user.objectStatistics
-                user.increaseObjectTypeCount({_id: author._id}, data.type, 1, log.holdError);
+                // 更新 engineer.objectStatistics
+                engineer.increaseObjectTypeCount({_id: author._id}, data.type, 1, log.holdError);
             }
         });
 };
@@ -229,10 +229,10 @@ exports.updateOne = function (author, conditions, data, callback) {
                     label.increaseObjectCount({name: name}, -1, log.holdError);
                 });
 
-                // 更新 user.objectStatistics
+                // 更新 engineer.objectStatistics
                 if (doc.type !== oldDoc.type) {
-                    user.increaseObjectTypeCount({_id: author._id}, doc.type, 1, log.holdError);
-                    user.increaseObjectTypeCount({_id: author._id}, oldDoc.type, -1, log.holdError);
+                    engineer.increaseObjectTypeCount({_id: author._id}, doc.type, 1, log.holdError);
+                    engineer.increaseObjectTypeCount({_id: author._id}, oldDoc.type, -1, log.holdError);
                 }
             }
         });
