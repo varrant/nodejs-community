@@ -23,7 +23,7 @@ exports.skipLimit = function (req, defaultPage, defaultLimit) {
     var limit = query.limit;
 
     defaultPage = defaultPage || 1;
-    defaultLimit = defaultLimit || 10;
+    defaultLimit = defaultLimit || 20;
 
     page = dato.parseInt(page, defaultPage);
     limit = dato.parseInt(limit, defaultLimit);
