@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * front exports
  * @author ydr.me
  * @create 2014-11-23 11:56
  */
@@ -8,7 +8,7 @@
 
 module.exports = function (app) {
     return {
-        main: require('./main.js')(app),
-        user: require('./user.js')(app)
+        engineer: require('./engineer.js')(app),
+        main: require('./main.js')(app)
     };
 };
