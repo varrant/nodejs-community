@@ -20,7 +20,7 @@
     <li class="row">
         <div class="col-xs-2">scope</div>
         <div class="col-xs-10">
-            <select name="scope" v-model="object.scope" options="scopes"></select>
+            <select name="scope" v-model="object.scope" options="scopes" class="ipt"></select>
             <p class="form-desc">问题所在的域。</p>
         </div>
     </li>
@@ -36,7 +36,13 @@
     <li class="row">
         <div class="col-xs-2">labels</div>
         <div class="col-xs-10">
-            <p class="form-desc">添加合适、适当的 label。</p>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input class="ipt" type="text" name="label" placeholder="label"/>
+                </div>
+                <div class="col-xs-10"></div>
+            </div>
+            <p class="form-desc">输入 label 后回车。添加合适的 label 有助于更快的被检索到。最多可以添加5个 label。</p>
         </div>
     </li>
 

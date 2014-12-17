@@ -134,3 +134,17 @@ nav li.active a {
   padding: 0;
   margin-bottom: 20px;
 }
+.m-form .form-ipt {
+  margin: 0;
+  padding: 5px 0;
+}
+.m-form .form-desc {
+  padding: 0;
+  margin: 10px 0 0;
+  color: #888;
+  font-size: 14px;
+}
+.m-form .form-desc code,
+.m-form .form-desc strong {
+  margin: 0 4px;
+}

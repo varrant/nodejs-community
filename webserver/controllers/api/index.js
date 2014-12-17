@@ -14,6 +14,7 @@ module.exports = function (app) {
         oss: require('./oss.js')(app),
         role: require('./role.js')(app),
         scope: require('./scope.js')(app),
+        translate: require('./translate.js')(app),
         type: require('./type.js')(app),
         user: require('./user.js')(app)
     };
