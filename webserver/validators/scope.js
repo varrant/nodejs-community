@@ -9,7 +9,7 @@
 
 var Validator = require('ydr-validator');
 var validator = new Validator();
-var REG_LINES = /[\n\s\t\v]/g;
+var REG_LINES = /[\n\t\v]/g;
 
 validator.pushRule({
     name: 'name',
