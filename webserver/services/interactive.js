@@ -37,7 +37,7 @@ exports.active = function (data, callback) {
         isApprove: data.isApprove
     };
 
-    if (data.model === 'user' || data.model === 'object') {
+    if (data.model === 'engineer' || data.model === 'object') {
         // 发送邮件给被动用户
     }
 

@@ -12,7 +12,7 @@ var notiComment = configs.notification.comment;
 var notiReply = configs.notification.reply;
 var comment = require('../models/').comment;
 var object = require('./object.js');
-var user = require('./user.js');
+var engineer = require('./engineer.js');
 var notification = require('./notification.js');
 var email = require('./email.js');
 var dato = require('ydr-util').dato;
@@ -95,8 +95,8 @@ exports.createOne = function (author, data, meta, callback) {
                 // object.commentCount
                 object.increaseCommentCount({_id: doc.object}, 1, log.holdError);
 
-                // user.commentCount
-                user.increaseCommentCount({_id: author._id}, 1, log.holdError);
+                // engineer.commentCount
+                engineer.increaseCommentCount({_id: author._id}, 1, log.holdError);
 
                 // 通知 object 作者
                 _noticeObjectAuthor(author._id, doc.object);
@@ -112,7 +112,7 @@ exports.createOne = function (author, data, meta, callback) {
                         // 忽略错误
                         if (doc) {
                             // user2.repliedCount
-                            user.increaseRepliedCount({_id: doc.author}, 1, log.holdError);
+                            engineer.increaseRepliedCount({_id: doc.author}, 1, log.holdError);
                         }
                     });
 
@@ -138,15 +138,15 @@ function _noticeObjectAuthor(activeUserId, objectId) {
         })
         // 2. 查找 object 作者
         .task(function (next, doc) {
-            user.findOne({_id: doc.author}, next);
+            engineer.findOne({_id: doc.author}, next);
         })
         // 顺序串行
-        .follow(function (err, user) {
+        .follow(function (err, doc) {
             if (err) {
                 return log.holdError(err);
             }
 
-            if (!user) {
+            if (!doc) {
                 err = new Error('_noticeObjectAuthor author is not exist');
                 err.type = 'notFound';
                 return log.holdError(err);
@@ -156,7 +156,7 @@ function _noticeObjectAuthor(activeUserId, objectId) {
             notification.createOne({
                 type: 'comment',
                 activeUser: activeUserId,
-                activedUser: user._id,
+                activedUser: doc._id,
                 object: objectId
             }, log.holdError);
 
@@ -164,7 +164,7 @@ function _noticeObjectAuthor(activeUserId, objectId) {
             var content = notiComment.template.render({});
 
             // 邮件 object 作者
-            email.send(user.nickname, user.email, subject, content);
+            email.send(doc.nickname, doc.email, subject, content);
         });
 }
 
@@ -178,15 +178,15 @@ function _noticeCommentAuthor(activeUserId, comment) {
     howdo
         // 1. 查找 comment 作者
         .task(function (next) {
-            user.findOne({_id: comment.author}, next);
+            engineer.findOne({_id: comment.author}, next);
         })
         // 顺序串行
-        .follow(function (err, user) {
+        .follow(function (err, doc) {
             if (err) {
                 return log.holdError(err);
             }
 
-            if (!user) {
+            if (!doc) {
                 err = new Error('_noticeCommentAuthor author is not exist');
                 err.type = 'notFound';
                 return log.holdError(err);
@@ -196,7 +196,7 @@ function _noticeCommentAuthor(activeUserId, comment) {
             notification.createOne({
                 type: 'comment',
                 activeUser: activeUserId,
-                activedUser: user._id,
+                activedUser: doc._id,
                 object: comment._id
             }, log.holdError);
 
@@ -204,7 +204,7 @@ function _noticeCommentAuthor(activeUserId, comment) {
             var content = notiReply.template.render({});
 
             // 邮件 object 作者
-            email.send(user.nickname, user.email, subject, content);
+            email.send(doc.nickname, doc.email, subject, content);
         });
 }
 

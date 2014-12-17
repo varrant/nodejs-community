@@ -472,7 +472,7 @@ exports.can = function (conditionsOrRole, doWhat, callback) {
         }
 
         if (!doc) {
-            err = new Error('user is not exist');
+            err = new Error('engineer is not exist');
             err.type = 'notFound';
             return callback(err);
         }
