@@ -43,7 +43,7 @@ module.exports = function (app) {
             });
         }
 
-        var can = (res.locals.$user.role & app.locals.$settings._typesMap[type].roleVal) > 0;
+        var can = (res.locals.$engineer.role & app.locals.$settings._typesMap[type].roleVal) > 0;
 
         if (!can) {
             return res.json({
@@ -111,7 +111,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.post = function (req, res, next) {
-        object.createOne(res.locals.$user, req.body, function (err, doc) {
+        object.createOne(res.locals.$engineer, req.body, function (err, doc) {
             if (err) {
                 return next(err);
             }
@@ -131,7 +131,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        object.updateOne(res.locals.$user, {_id: req.body._id}, req.body, function (err, doc) {
+        object.updateOne(res.locals.$engineer, {_id: req.body._id}, req.body, function (err, doc) {
             if (err) {
                 return next(err);
             }
