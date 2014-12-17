@@ -11,7 +11,7 @@ var dato = require('ydr-util').dato;
 var typeis = require('ydr-util').typeis;
 var howdo = require('howdo');
 var object = require('../../services/').object;
-var user = require('../../services/').user;
+var engineer = require('../../services/').engineer;
 var os = require('os');
 
 module.exports = function (app) {
@@ -46,7 +46,7 @@ module.exports = function (app) {
             })
             // 注册用户数
             .task(function (done) {
-                user.count({}, function (err, count) {
+                engineer.count({}, function (err, count) {
                     if(err){
                         return done(err);
                     }

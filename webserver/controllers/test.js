@@ -7,7 +7,6 @@
 'use strict';
 
 var configs = require('../../configs/');
-var user = require('../services/').user;
 var setting = require('../services/').setting;
 var random = require('ydr-util').random;
 

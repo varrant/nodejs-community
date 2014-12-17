@@ -7,7 +7,7 @@
 'use strict';
 
 
-var user = require('../../services/').user;
+var engineer = require('../../services/').engineer;
 var setting = require('../../services/').setting;
 var howdo = require('howdo');
 var configs = require('../../../configs/');
@@ -25,7 +25,7 @@ module.exports = function (app) {
      * @returns {*}
      */
     exports.oauthAuthorize = function (req, res, next) {
-        var oauth = user.createOauthURL(oauthSettings, configs.app.host + '/user/oauth/callback/');
+        var oauth = engineer.createOauthURL(oauthSettings, configs.app.host + '/engineer/oauth/callback/');
 
         req.session.$state = oauth.state;
         res.render('front/oauth-authorize.html', {
@@ -46,7 +46,7 @@ module.exports = function (app) {
         var query = req.query;
         var code = query.code;
         var state = query.state;
-        var isSafe = user.isSafeOauthState(state);
+        var isSafe = engineer.isSafeOauthState(state);
         var err;
 
         if (!isSafe) {
@@ -73,7 +73,7 @@ module.exports = function (app) {
         howdo
             // 1. 授权
             .task(function (next) {
-                user.oauthCallback(oauthSettings, code, next);
+                engineer.oauthCallback(oauthSettings, code, next);
             })
             // 2. 查找用户
             .task(function (next, json) {
@@ -81,7 +81,7 @@ module.exports = function (app) {
                     github: json.github
                 };
 
-                user.findOne(conditions, function (err, data) {
+                engineer.findOne(conditions, function (err, data) {
                     next(err, data, json);
                 });
             })

@@ -20,7 +20,7 @@ define(function (require, exports, module) {
         modification.insert($div, document.body, 'beforeend');
         this.dialog = new Dialog($div, {
             title: '登录',
-            remote: '/user/oauth/authorize/'
+            remote: '/engineer/oauth/authorize/'
         });
     };
 

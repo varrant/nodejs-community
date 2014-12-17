@@ -8,7 +8,7 @@
 
 
 var configs = require('../../../configs/');
-var user = require('../../services/').user;
+var engineer = require('../../services/').engineer;
 var setting = require('../../services/').setting;
 var cookie = require('../../utils/').cookie;
 
@@ -37,7 +37,7 @@ module.exports = function (app) {
         delete(githubOauth.github);
         githubOauth.loginAt = new Date();
 
-        user.login({
+        engineer.login({
             github: github
         }, githubOauth, function (err, doc) {
             req.session.$github = null;
