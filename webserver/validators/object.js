@@ -65,7 +65,7 @@ validator.pushRule({
 });
 
 validator.pushRule({
-    name: 'label',
+    name: 'labels',
     type: 'array',
     alias: '标注',
     exist: true,

@@ -87,7 +87,9 @@ define(function (require, exports, module) {
         vue.$el.classList.remove('f-none');
         new Editor('#content', {
             id: objectId
-        });
+        }).on('change', function (val) {
+                vue.$data.object.content = val;
+            });
 
         page.translate(vue);
     };
