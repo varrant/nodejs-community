@@ -16,6 +16,7 @@ define(function (require, exports, module) {
     var objectURL = '/admin/api/object/?id=' + objectId;
     var translateURL = '/api/translate/?word=';
     var page = {};
+    var editor = null;
 
     require('../../widget/admin/welcome.js');
 
@@ -85,7 +86,7 @@ define(function (require, exports, module) {
         });
 
         vue.$el.classList.remove('f-none');
-        new Editor('#content', {
+        editor = new Editor('#content', {
             id: objectId
         }).on('change', function (val) {
                 vue.$data.object.content = val;
@@ -136,7 +137,13 @@ define(function (require, exports, module) {
                 return alert(json);
             }
 
-            objectId = json.data._id;
+            // 属于创建，清除之前的缓存记录，换成新的
+            if (!objectId) {
+                editor.clearStore();
+                objectId = json.data._id;
+                editor.setOptions('id', objectId);
+            }
+
             the.$data.object = json.data;
         }).on('error', alert).on('finish', function () {
             $btn.disabled = false;

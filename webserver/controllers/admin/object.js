@@ -36,7 +36,7 @@ module.exports = function (app) {
     exports.get = function (type) {
         return function (req, res, next) {
             var data = {
-                title: typesMap[type].title + (req.query.id ? '管理' : '创建'),
+                title: typesMap[type].title + (req.query.id ? '更新' : '创建'),
                 id: req.query.id || ''
             };
 
