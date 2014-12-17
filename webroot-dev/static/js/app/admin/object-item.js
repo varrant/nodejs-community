@@ -13,17 +13,38 @@ define(function (require, exports, module) {
     var selector = require('../../alien/core/dom/selector.js');
     var Editor = require('../../alien/ui/Editor/index.js');
     var objectId = window['-id-'];
-    var url = '/admin/api/object/?id=' + objectId;
+    var objectURL = '/admin/api/object/?id=' + objectId;
+    var translateURL = '/api/translate/?word=';
     var page = {};
 
     require('../../widget/admin/welcome.js');
+
+    page.translate = function (vue) {
+        var xhr = null;
+
+        vue.$watch('object.title', function (word) {
+            if (xhr) {
+                xhr.abort();
+            }
+
+            xhr = ajax({
+                url: translateURL + encodeURIComponent(word)
+            }).on('success', function (json) {
+                if (json.code === 200) {
+                    vue.$data.object.uri = json.data;
+                }
+            }).on('complete', function () {
+                xhr = null;
+            });
+        });
+    };
 
     /**
      * 请求展示列表
      */
     page.item = function () {
         ajax({
-            url: url
+            url: objectURL
         }).on('success', page.onsuccess).on('error', alert);
     };
 
@@ -40,6 +61,8 @@ define(function (require, exports, module) {
         var data = json.data;
         data.object = data.object || {
             content: '',
+            uri: '',
+            labels: [],
             type: window['-type-']
         };
         data.scopes.forEach(function (item) {
@@ -55,6 +78,7 @@ define(function (require, exports, module) {
             el: '#form',
             data: data,
             methods: {
+                onpushlabel: page.onpushlabel,
                 onsave: page.onsave
             }
         });
@@ -63,8 +87,23 @@ define(function (require, exports, module) {
         new Editor('#content', {
             id: objectId
         });
+
+        page.translate(vue);
     };
 
+    /**
+     * 添加 label
+     */
+    page.onpushlabel = function () {
+        var object = this.$data.object;
+        var label = object.label.toLowerCase().trim();
+
+        // 最多 5 个 labels
+        if (object.labels.indexOf(label) === -1 && object.labels.length < 6) {
+            object.labels.push(label);
+            object.label = '';
+        }
+    };
 
     /**
      * 保存
@@ -77,7 +116,7 @@ define(function (require, exports, module) {
 
         $btn.disabled = true;
         ajax({
-            url: url,
+            url: objectURL,
             method: objectId ? 'put' : 'post',
             data: data
         }).on('success', function (json) {
