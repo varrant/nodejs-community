@@ -1,6 +1,6 @@
-# `user` 模型
+# `engineer` 模型
 
-适用于：用户。
+适用于：前端开发工程师。
 
 - `email` 邮箱
 - `github` github 帐号
