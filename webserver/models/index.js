@@ -12,14 +12,14 @@ var typeis = require('ydr-util').typeis;
 var validators = require('../validators/');
 var models = {
     comment: require('./comment.js'),
+    engineer: require('./engineer.js'),
     interactive: require('./interactive.js'),
     label: require('./label.js'),
     notification: require('./notification.js'),
     object: require('./object.js'),
     scope: require('./scope.js'),
     search: require('./search.js'),
-    setting: require('./setting.js'),
-    engineer: require('./engineer.js')
+    setting: require('./setting.js')
 };
 var configs = require('../../configs/');
 var DBNAME = configs.app.mongodb.match(/\/([^/]*)$/)[1];
