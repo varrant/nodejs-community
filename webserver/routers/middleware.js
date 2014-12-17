@@ -10,12 +10,12 @@ module.exports = function (app, ctrlMiddleware) {
     // 严格路由
     app.use(ctrlMiddleware.strictRouting);
 
-    // 读取用户
-    app.use(ctrlMiddleware.readUser);
-
     // POST|PUT|DELETE 安全性检测
     app.use(ctrlMiddleware.createCsrf);
     app.post('*', ctrlMiddleware.safeDetection);
     app.put('*', ctrlMiddleware.safeDetection);
     app.delete('*', ctrlMiddleware.safeDetection);
+
+    // 读取用户
+    app.use(ctrlMiddleware.readEngineer);
 };

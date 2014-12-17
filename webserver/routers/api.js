@@ -40,7 +40,7 @@ module.exports = function (app, ctrlApi) {
 
 
     // user
-    app.post('/api/user/login/', ctrlApi.user.login);
+    app.post('/api/engineer/login/', ctrlApi.engineer.login);
 
 
     // translate

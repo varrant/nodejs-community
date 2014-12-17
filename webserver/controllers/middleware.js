@@ -88,7 +88,7 @@ module.exports = function (app) {
      * @param res
      * @param next
      */
-    exports.readUser = function (req, res, next) {
+    exports.readEngineer = function (req, res, next) {
         if (!req.cookies) {
             return next();
         }
