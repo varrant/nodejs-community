@@ -211,7 +211,7 @@ exports.updateOne = function (author, conditions, data, callback) {
 
             if (!err && doc) {
                 // 更新 scope.objectCount
-                if (doc.scope !== oldDoc.scope) {
+                if (doc.scope.toString() !== oldDoc.scope.toString()) {
                     scope.increaseObjectCount({_id: doc.scope}, 1, log.holdError);
                     scope.increaseObjectCount({_id: oldDoc.scope}, -1, log.holdError);
                 }
