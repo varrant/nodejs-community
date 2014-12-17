@@ -12,8 +12,8 @@ module.exports = function (app, ctrlFront) {
 
 
     // user
-    app.get('/user/oauth/authorize/', ctrlFront.user.oauthAuthorize);
-    app.get('/user/oauth/callback/', ctrlFront.user.oauthCallback);
+    app.get('/engineer/oauth/authorize/', ctrlFront.engineer.oauthAuthorize);
+    app.get('/engineer/oauth/callback/', ctrlFront.engineer.oauthCallback);
 
 
     // home
