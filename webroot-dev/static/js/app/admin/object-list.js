@@ -16,18 +16,18 @@ define(function (require, exports, module) {
     var qs = require('../../alien/util/querystring.js');
     var Pager = require('../../alien/ui/Pager/index.js');
     var url = '/admin/api/object/list/?type=' + window['-type-'] + '&';
-    var page = {};
-    var req = {
-        page: hashbang.get('query', 'page') || 1,
-        limit: 20
+    var page = {
+        req: {
+            page: hashbang.get('query', 'page') || 1,
+            limit: 20
+        }
     };
-    var vue;
 
     require('../../widget/admin/welcome.js');
 
     hashbang.on('query', 'page', function (eve, neo) {
-        req.page = neo.query.page || 1;
-        req.limit = neo.query.limit || 20;
+        page.req.page = neo.query.page || 1;
+        page.req.limit = neo.query.limit || 20;
         page.list();
     });
 
@@ -36,7 +36,7 @@ define(function (require, exports, module) {
      */
     page.list = function () {
         ajax({
-            url: url + qs.stringify(req)
+            url: url + qs.stringify(page.req)
         }).on('success', page.onsuccess).on('error', alert);
     };
 
@@ -50,21 +50,26 @@ define(function (require, exports, module) {
             return alert(json);
         }
 
-        if (vue) {
-            vue.$data.objects = json.data;
+        if (page.vue) {
+            page.vue.$data.objects = json.data;
+            page.pager.render({
+                page: page.req.page,
+                max: Math.ceil(json.count / page.req.limit)
+            });
         } else {
-            vue = new Vue({
+            page.vue = new Vue({
                 el: '#list',
                 data: {
                     objects: json.data,
-                    req: req
+                    req: page.req
                 },
                 methods: {}
             });
 
-            vue.$el.classList.remove('f-none');
-            new Pager('#pager', {
-                page: req.page
+            page.vue.$el.classList.remove('f-none');
+            page.pager = new Pager('#pager', {
+                page: page.req.page,
+                max: Math.ceil(json.count / page.req.limit)
             });
         }
     };

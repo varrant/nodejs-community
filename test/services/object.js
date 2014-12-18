@@ -8,17 +8,30 @@
 
 var random = require('ydr-util').random;
 var test = require('../test.js');
+var engineer = require('../../webserver/services/').engineer;
+var scope = require('../../webserver/services/').scope;
 var object = require('../../webserver/services/').object;
-var author = {
-    _id: '5491715834cde400004bf3fc',
-    role: 2097151
-};
+var author = {};
 var scope1Id = '5491729fb70d9d0000f8d363';
 var content = '# 测试数据\n\n需要用什么系统，怎么安装呢需要用什么系统，怎么安装呢需要用什么系统，怎么安装呢需要用什么系统，怎么安装呢';
 var howdo = require('howdo');
 var arr = new Array(100);
 
 test
+    .push('get author', function (next) {
+        engineer.findOne({}, function (err, doc) {
+            author = doc;
+            next();
+        });
+    })
+    .push('get scope', function (next) {
+        scope.findOne({
+            uri: 'default'
+        }, function (err, doc) {
+            scope1Id = doc._id;
+            next();
+        });
+    })
     .push('object.createOne', function (next) {
         howdo
             .each(arr, function (index, val, done) {
