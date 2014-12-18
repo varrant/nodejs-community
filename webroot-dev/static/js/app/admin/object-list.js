@@ -14,7 +14,7 @@ define(function (require, exports, module) {
     var confirm = require('../../widget/common/confirm.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var qs = require('../../alien/util/querystring.js');
-    var Pager = require('../../alien/ui/Pager/index.js');
+    var Pagination = require('../../alien/ui/Pagination/index.js');
     var url = '/admin/api/object/list/?type=' + window['-type-'] + '&';
     var page = {
         req: {
@@ -52,7 +52,7 @@ define(function (require, exports, module) {
 
         if (page.vue) {
             page.vue.$data.objects = json.data;
-            page.pager.render({
+            page.pagination.render({
                 page: page.req.page,
                 max: Math.ceil(json.count / page.req.limit)
             });
@@ -67,7 +67,7 @@ define(function (require, exports, module) {
             });
 
             page.vue.$el.classList.remove('f-none');
-            page.pager = new Pager('#pager', {
+            page.pagination = new Pagination('#Pagination', {
                 page: page.req.page,
                 max: Math.ceil(json.count / page.req.limit)
             }).on('change', function (_page) {
