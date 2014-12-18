@@ -41,7 +41,7 @@
                     <input class="ipt" type="text" name="label" placeholder="label" v-model="object.label" v-on="keyup:onpushlabel | key 13"/>
                 </div>
                 <div class="col-xs-10">
-                    <ul class="f-list-left form-opt">
+                    <ul class="f-list-left form-opt m-labes">
                         <li v-repeat="object.labels">\{{$value}}
                             <a href="javascript:;" class="i i-times s-danger" v-on="click:onremovelabel($index)"></a></li>
                     </ul>

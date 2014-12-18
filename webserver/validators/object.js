@@ -10,11 +10,11 @@ var Validator = require('ydr-validator');
 var validator = new Validator();
 var REG_LINES = /[\n\s]{2,}/g;
 // 标题: 中英文、数字、空格、下划线、短横线、中英文逗号
-var REG_TITLE = /^[\u4e00-\u9fa5a-z\d _-，,]{5,255}$/i;
+var REG_TITLE = /^[\u4e00-\u9fa5a-z\d _\-，,]{5,255}$/i;
 var REG_URI = /^[a-z\d_-]{5,255}$/i;
-var REG_LABEL = /^[\u4e00-\u9fa5a-z\d _-]{2,20}$/i;
-var REG_INTRODUCTION = /^[\u4e00-\u9fa5a-z\d _-~`!@#$%^&*()+={[}]|\:;"'<,>.?\/·！￥（）-—【】：；“”‘’《，》。？、\n\r\t]{0,1000}$/;
-var REG_CONTENT = /^[\u4e00-\u9fa5a-z\d _-~`!@#$%^&*()+={[}]|\:;"'<,>.?\/·！￥（）-—【】：；“”‘’《，》。？、\n\r\t]{10,50000}$/;
+var REG_LABEL = /^[\u4e00-\u9fa5a-z\d _\-]{2,20}$/i;
+var REG_INTRODUCTION = /^[\u4e00-\u9fa5a-z\d _\-~`!@#$%^&*()+={[}]|\:;"'<,>.?\/·！￥（）-—【】：；“”‘’《，》。？、\n]{0,1000}$/;
+var REG_CONTENT = /^[\u4e00-\u9fa5a-z\d _\-~`!@#$%^&*()+={[}]|\:;"'<,>.?\/·！￥（）-—【】：；“”‘’《，》。？、\n]{10,50000}$/;
 
 validator.pushRule({
     name: 'title',
