@@ -15,6 +15,7 @@ define(function (require, exports, module) {
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var qs = require('../../alien/util/querystring.js');
     var Pagination = require('../../alien/ui/Pagination/index.js');
+    var attribute = require('../../alien/core/dom/attribute.js');
     var url = '/admin/api/object/list/?type=' + window['-type-'] + '&';
     var page = {
         req: {
@@ -75,6 +76,7 @@ define(function (require, exports, module) {
                         page: _page,
                         limit: page.req.limit
                     });
+                    attribute.scrollTop(window, 0);
                 });
         }
     };
