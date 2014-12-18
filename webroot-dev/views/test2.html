@@ -28,7 +28,22 @@
 <input type="file" name="file" id="file"/>
 <button type="button" id="btn">提交</button>
 
+
+<form action="/" id="form">
+    <input type="text" required name="name"/>
+    <button type="submit" id="submit">提交</button>
+    <button type="submit" id="submit2">提交2</button>
+</form>
+
 <script>
+
+//    document.getElementById('form').onsubmit = function (eve) {
+//        eve.preventDefault();
+//    };
+//
+    document.getElementById('submit').onclick = function (eve) {
+        eve.preventDefault();
+    };
 
     var $btn = document.getElementById('btn');
     var $file = document.getElementById('file');
@@ -51,25 +66,6 @@
             string: '123'
         }));
     };
-
-
-    var originDefaults = {
-        //插入信息深度
-        'messDepth': 'children',
-        //默认过滤信息
-        'defaultMess': {
-            hook: '该字段验证通过!',
-            itMaxlength: {
-                0: originDefaults.defaultMess.hook,
-                1: '超过字符最大长度!'
-            },
-            required: {
-                0: originDefaults.defaultMess.hook,
-                1: '该字段不能为空!'
-            }
-        }
-    };
-
 
 </script>
 
