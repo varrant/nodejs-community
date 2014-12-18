@@ -14,6 +14,7 @@ define(function (require, exports, module) {
     var confirm = require('../../widget/common/confirm.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var qs = require('../../alien/util/querystring.js');
+    var Pager = require('../../alien/ui/Pager/index.js');
     var url = '/admin/api/object/list/?type=' + window['-type-'] + '&';
     var page = {};
     var req = {
@@ -62,6 +63,9 @@ define(function (require, exports, module) {
             });
 
             vue.$el.classList.remove('f-none');
+            new Pager('#pager', {
+                page: req.page
+            });
         }
     };
 

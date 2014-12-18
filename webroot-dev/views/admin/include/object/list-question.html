@@ -17,11 +17,8 @@
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="2">
-                <ul class="m-pager avg-xs-2 f-text-center">
-                    <li class="pager-prev" v-class="disabled: req.page == 1"><a href="#!/?page=\{{req.page-1}}&limit=\{{req.limit}}"><i class="i i-angle-double-left"></i>上一页</a></li>
-                    <li class="pager-next" v-class="disabled: objects.length == 0"><a href="#!/?page=\{{req.page-1+2}}&limit=\{{req.limit}}">下一页<i class="i i-angle-double-right"></i></a></li>
-                </ul>
+            <td colspan="2" id="pager">
+
             </td>
         </tr>
         </tfoot>

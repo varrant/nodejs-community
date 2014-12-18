@@ -53,18 +53,29 @@ module.exports = function (app) {
             });
         }
 
-        object.find(conditions, options, function (err, docs) {
-            if (err) {
-                return next(err);
-            }
+        howdo
+            // 统计总数
+            .task(function (done) {
+                object.count(conditions, done);
+            })
+            // 分页查询
+            .task(function (done) {
+                object.find(conditions, options, done);
+            })
+            // 异步并行
+            .together(function (err, count, docs) {
+                if (err) {
+                    return next(err);
+                }
 
-            docs = docs || [];
+                docs = docs || [];
 
-            res.json({
-                code: 200,
-                data: docs
+                res.json({
+                    code: 200,
+                    count: count,
+                    data: docs
+                });
             });
-        });
     };
 
 
