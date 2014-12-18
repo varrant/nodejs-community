@@ -9,7 +9,12 @@
 var Validator = require('ydr-validator');
 var validator = new Validator();
 var REG_LINES = /[\n\s]{2,}/g;
-var REG_LABEL = /^[\u4e00-\u9fa5a-z\d_-]{2,20}$/i;
+// 标题: 中英文、数字、空格、下划线、短横线、中英文逗号
+var REG_TITLE = /^[\u4e00-\u9fa5a-z\d _-，,]{5,255}$/i;
+var REG_URI = /^[a-z\d_-]{5,255}$/i;
+var REG_LABEL = /^[\u4e00-\u9fa5a-z\d _-]{2,20}$/i;
+var REG_INTRODUCTION = /^[\u4e00-\u9fa5a-z\d _-~`!@#$%^&*()+={[}]|\:;"'<,>.?\/·！￥（）-—【】：；“”‘’《，》。？、\n\r\t]{0,1000}$/;
+var REG_CONTENT = /^[\u4e00-\u9fa5a-z\d _-~`!@#$%^&*()+={[}]|\:;"'<,>.?\/·！￥（）-—【】：；“”‘’《，》。？、\n\r\t]{10,50000}$/;
 
 validator.pushRule({
     name: 'title',
@@ -17,7 +22,11 @@ validator.pushRule({
     alias: '标题',
     trim: true,
     minLength: 5,
-    maxLength: 100
+    maxLength: 255,
+    regexp: REG_TITLE,
+    msg: {
+        regexp: '标题仅支持中英文、数字、“-”(短横线)、“_”（下划线）和中英文逗号'
+    }
 });
 
 validator.pushRule({
@@ -26,18 +35,11 @@ validator.pushRule({
     alias: 'URI',
     trim: true,
     minLength: 5,
-    maxLength: 100,
-    regexp: /^[a-z-_\d]{5,100}$/i
-});
-
-validator.pushRule({
-    name: 'type',
-    type: 'string',
-    alias: '类别',
-    trim: true,
-    minLength: 1,
-    maxLength: 20,
-    regexp: /^[a-z\d]{1,20}$/i
+    maxLength: 255,
+    regexp: REG_URI,
+    msg: {
+        regexp: '标题 URI 仅支持英文、数字以及“-”(短横线)和“_”（下划线）'
+    }
 });
 
 validator.pushRule({
@@ -46,9 +48,13 @@ validator.pushRule({
     alias: '简介',
     trim: true,
     exist: true,
-    maxLength: 500,
+    maxLength: 1000,
+    regexp: REG_INTRODUCTION,
     onafter: function (val) {
         return val && val.replace(REG_LINES, '\n\n');
+    },
+    msg: {
+        regexp: '简介仅支持中英文、数字，以及常用符号'
     }
 });
 
@@ -59,8 +65,12 @@ validator.pushRule({
     trim: true,
     minLength: 10,
     maxLength: 50000,
+    regexp: REG_CONTENT,
     onafter: function (val) {
         return val && val.replace(REG_LINES, '\n\n');
+    },
+    msg: {
+        regexp: '内容仅支持中英文、数字，以及常用符号'
     }
 });
 
@@ -73,7 +83,7 @@ validator.pushRule({
         var ret = [];
 
         labels.forEach(function (item) {
-            item = String(item);
+            item = String(item).trim();
 
             if (REG_LABEL.test(item)) {
                 ret.push(item);
