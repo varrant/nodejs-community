@@ -15,7 +15,7 @@ module.exports = function (app) {
     var exports = {};
 
     exports.test1 = function (req, res, next) {
-        res.aaaaa('test1.html');
+        res.render('test1.html');
     };
 
     exports.test2 = function (req, res, next) {
