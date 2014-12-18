@@ -70,7 +70,12 @@ define(function (require, exports, module) {
             page.pager = new Pager('#pager', {
                 page: page.req.page,
                 max: Math.ceil(json.count / page.req.limit)
-            });
+            }).on('change', function (_page) {
+                    hashbang.set('query', {
+                        page: _page,
+                        limit: page.req.limit
+                    });
+                });
         }
     };
 

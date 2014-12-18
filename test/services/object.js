@@ -15,7 +15,6 @@ var author = {};
 var scope1Id = '5491729fb70d9d0000f8d363';
 var content = '# 测试数据\n\n需要用什么系统，怎么安装呢需要用什么系统，怎么安装呢需要用什么系统，怎么安装呢需要用什么系统，怎么安装呢';
 var howdo = require('howdo');
-var arr = new Array(100);
 
 test
     .push('get author', function (next) {
@@ -33,6 +32,8 @@ test
         });
     })
     .push('object.createOne', function (next) {
+        var arr = new Array(random.number(2, 30));
+
         howdo
             .each(arr, function (index, val, done) {
                 object.createOne(author, {
