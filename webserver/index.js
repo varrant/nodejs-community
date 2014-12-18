@@ -23,7 +23,7 @@ howdo
     .task(http)
     .follow(function (err, app) {
         if (err) {
-            console.log(err);
+            console.error(err);
             return process.exit(-1);
         }
 
