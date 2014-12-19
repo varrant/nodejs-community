@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var List = require('../../widget/admin/List.js');
+    var List = require('../../ui/admin/List/');
 
     require('../../widget/admin/welcome.js');
     new List('#list', '#pagination', {
