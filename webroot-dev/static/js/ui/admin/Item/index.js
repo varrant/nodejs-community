@@ -39,7 +39,7 @@ define(function (require, exports, module) {
 
             ajax({
                 url: the._options.url
-            }).on('success', the._onsuccess).on('error', alert);
+            }).on('success', the._onsuccess.bind(the)).on('error', alert);
         },
 
         _onsuccess: function (json) {
