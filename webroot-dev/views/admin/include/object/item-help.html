@@ -6,7 +6,7 @@
             <input v-if="!object._id" class="ipt" type="text" name="title" v-model="object.title"
                    value="\{{object.title}}" id="title"/>
 
-            <p class="form-desc">问题的标题，5-100字符以内。</p>
+            <p class="form-desc">帮助的标题，5-100字符以内。</p>
         </div>
     </li>
 
@@ -17,7 +17,7 @@
             <input v-if="!object._id" class="ipt" type="text" name="uri" v-model="object.uri" value="\{{object.uri}}"
                    id="uri"/>
 
-            <p class="form-desc">问题的URI展示，5-200字符以内。</p>
+            <p class="form-desc">帮助的URI展示，5-200字符以内。</p>
         </div>
     </li>
 
@@ -26,7 +26,7 @@
         <div class="form-val">
             <select name="scope" v-model="object.scope" options="scopes" class="ipt"></select>
 
-            <p class="form-desc">问题所在的域。</p>
+            <p class="form-desc">帮助所在的域。</p>
         </div>
     </li>
 
@@ -36,7 +36,7 @@
             <textarea name="content" rows="5" v-model="object.content" class="ipt"
                       id="content">\{{object.content}}</textarea>
 
-            <p class="form-desc">使用<code>markdown</code>语法详细的问题描述，不能使用任何标签，详细阅读<a href="#">《前端开发者社区 markdown 语法约定》</a>。</p>
+            <p class="form-desc">使用<code>markdown</code>语法详细的帮助描述，不能使用任何标签，详细阅读<a href="#">《前端开发者社区 markdown 语法约定》</a>。</p>
         </div>
     </li>
 

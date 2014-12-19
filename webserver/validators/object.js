@@ -10,8 +10,8 @@ var Validator = require('ydr-validator');
 var validator = new Validator();
 var REG_LINES = /[\n\s]{2,}/g;
 // 标题: 中英文、数字、空格、下划线、短横线、中英文逗号
-var REG_TITLE = /^[\u4e00-\u9fa5a-z\d _\-，,]{5,255}$/i;
-var REG_URI = /^[a-z\d_-]{5,255}$/i;
+var REG_TITLE = /^[\u4e00-\u9fa5a-z\d _\-，,]{5,100}$/i;
+var REG_URI = /^[a-z\d_-]{5,200}$/i;
 var REG_LABEL = /^[\u4e00-\u9fa5a-z\d _\-]{2,20}$/i;
 var REG_INTRODUCTION = /^[\u4e00-\u9fa5a-z\d _\-~`!@#$%^&*()+={[}]|\:;"'<,>.?\/·！￥（）-—【】：；“”‘’《，》。？、\n]{0,1000}$/;
 var REG_CONTENT = /^[\u4e00-\u9fa5a-z\d _\-~`!@#$%^&*()+={[}]|\:;"'<,>.?\/·！￥（）-—【】：；“”‘’《，》。？、\n]{10,50000}$/;
@@ -22,7 +22,7 @@ validator.pushRule({
     alias: '标题',
     trim: true,
     minLength: 5,
-    maxLength: 255,
+    maxLength: 100,
     regexp: REG_TITLE,
     msg: {
         regexp: '标题仅支持中英文、数字、“-”(短横线)、“_”（下划线）和中英文逗号'
@@ -35,7 +35,7 @@ validator.pushRule({
     alias: 'URI',
     trim: true,
     minLength: 5,
-    maxLength: 255,
+    maxLength: 200,
     regexp: REG_URI,
     msg: {
         regexp: '标题 URI 仅支持英文、数字以及“-”(短横线)和“_”（下划线）'
