@@ -18,7 +18,8 @@ define(function (require, exports, module) {
     var Pagination = require('../../../alien/ui/Pagination/index.js');
     var attribute = require('../../../alien/core/dom/attribute.js');
     var defaults = {
-        url: '',
+        url: '/admin/api/object/list/',
+        type: '',
         limit: 20
     };
     var List = generator({
@@ -29,6 +30,7 @@ define(function (require, exports, module) {
             the._paginationSelector = paginationSelector;
             the._options = dato.extend({}, defaults, options);
             the._query = {
+                type: the._options.type,
                 page: dato.parseInt(hashbang.get('query', 'page'), 1),
                 limit: the._options.limit
             };
@@ -61,7 +63,7 @@ define(function (require, exports, module) {
             var options = the._options;
 
             ajax({
-                url: options.url + qs.stringify(the._query)
+                url: options.url + '?' + qs.stringify(the._query)
             }).on('success', the._onsuccess.bind(the)).on('error', alert);
         },
 

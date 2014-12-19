@@ -12,6 +12,6 @@ define(function (require, exports, module) {
 
     require('../../widget/admin/welcome.js');
     new List('#list', '#pagination', {
-        url: '/admin/api/object/list/?type=' + window['-type-'] + '&'
+        type:  window['-type-']
     });
 });
