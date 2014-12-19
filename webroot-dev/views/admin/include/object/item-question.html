@@ -1,46 +1,46 @@
 <ul class="m-form f-none" id="form">
-    <li class="row">
-       <div class="col-xs-2">title</div>
-       <div class="col-xs-10">
+    <li class="f-clearfix">
+       <div class="form-key">title</div>
+       <div class="form-val">
            <p class="form-opt" v-if="object._id">\{{object.title}}</p>
            <input v-if="!object._id" class="ipt" type="text" name="title" v-model="object.title" value="\{{object.title}}" id="title"/>
            <p class="form-desc">问题的标题，5-100字符以内。</p>
        </div>
     </li>
 
-    <li class="row">
-       <div class="col-xs-2">URI</div>
-       <div class="col-xs-10">
+    <li class="f-clearfix">
+       <div class="form-key">URI</div>
+       <div class="form-val">
            <p class="form-opt" v-if="object._id">\{{object.uri}}</p>
            <input v-if="!object._id" class="ipt" type="text" name="uri" v-model="object.uri" value="\{{object.uri}}" id="uri"/>
            <p class="form-desc">问题的URI展示，5-100字符以内。</p>
        </div>
     </li>
 
-    <li class="row">
-        <div class="col-xs-2">scope</div>
-        <div class="col-xs-10">
+    <li class="f-clearfix">
+        <div class="form-key">scope</div>
+        <div class="form-val">
             <select name="scope" v-model="object.scope" options="scopes" class="ipt"></select>
             <p class="form-desc">问题所在的域。</p>
         </div>
     </li>
 
-    <li class="row">
-        <div class="col-xs-2">content</div>
-        <div class="col-xs-10">
+    <li class="f-clearfix">
+        <div class="form-key">content</div>
+        <div class="form-val">
             <textarea name="content" rows="5" v-model="object.content" class="ipt" id="content">\{{object.content}}</textarea>
             <p class="form-desc">使用<code>markdown</code>语法详细的问题描述。</p>
         </div>
     </li>
 
-    <li class="row">
-        <div class="col-xs-2">labels</div>
-        <div class="col-xs-10">
+    <li class="f-clearfix">
+        <div class="form-key">labels</div>
+        <div class="form-val">
             <div class="row">
-                <div class="col-xs-2">
+                <div class="form-key">
                     <input class="ipt" type="text" name="label" placeholder="label" v-model="object.label" v-on="keyup:onpushlabel | key 13"/>
                 </div>
-                <div class="col-xs-10">
+                <div class="form-val">
                     <ul class="f-list-left form-opt m-labes">
                         <li v-repeat="object.labels">\{{$value}}
                             <a href="javascript:;" class="i i-times s-danger" v-on="click:onremovelabel($index)"></a></li>
@@ -51,7 +51,7 @@
         </div>
     </li>
 
-    <li class="row">
+    <li class="f-clearfix">
         <div class="col-xs-10 col-xs-push-2">
             <label for="draft"><input type="checkbox" name="draft" id="draft" v-model="object.isDisplay"/>对他人可见</label>
             <button class="btn btn-primary" v-on="click:onsave($event, object)"><i class="i i-save"></i>保存</button>
