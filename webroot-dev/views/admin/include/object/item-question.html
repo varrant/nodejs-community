@@ -1,5 +1,5 @@
 <ul class="m-form f-none" id="form">
-    <li class="f-clearfix">
+    <li>
        <div class="form-key">title</div>
        <div class="form-val">
            <p class="form-opt" v-if="object._id">\{{object.title}}</p>
@@ -8,7 +8,7 @@
        </div>
     </li>
 
-    <li class="f-clearfix">
+    <li>
        <div class="form-key">URI</div>
        <div class="form-val">
            <p class="form-opt" v-if="object._id">\{{object.uri}}</p>
@@ -17,7 +17,7 @@
        </div>
     </li>
 
-    <li class="f-clearfix">
+    <li>
         <div class="form-key">scope</div>
         <div class="form-val">
             <select name="scope" v-model="object.scope" options="scopes" class="ipt"></select>
@@ -25,7 +25,7 @@
         </div>
     </li>
 
-    <li class="f-clearfix">
+    <li>
         <div class="form-key">content</div>
         <div class="form-val">
             <textarea name="content" rows="5" v-model="object.content" class="ipt" id="content">\{{object.content}}</textarea>
@@ -33,7 +33,7 @@
         </div>
     </li>
 
-    <li class="f-clearfix">
+    <li>
         <div class="form-key">labels</div>
         <div class="form-val">
             <div class="row">
@@ -53,9 +53,10 @@
         </div>
     </li>
 
-    <li class="f-clearfix">
-        <div class="form-val">
+    <li>
+        <div class="form-action f-text-center">
             <label for="draft"><input type="checkbox" name="draft" id="draft" v-model="object.isDisplay"/>对他人可见</label>
+            <i class="f-space"></i>
             <button class="btn btn-primary" v-on="click:onsave($event, object)"><i class="i i-save"></i>保存</button>
         </div>
     </li>
