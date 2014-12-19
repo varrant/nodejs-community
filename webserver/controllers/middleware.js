@@ -70,7 +70,6 @@ module.exports = function (app) {
             req.session && req.session.$csrf &&
             headersCsrf === req.session.$csrf
         ) {
-
             return next();
         }
 
