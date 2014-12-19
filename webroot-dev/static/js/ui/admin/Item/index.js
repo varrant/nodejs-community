@@ -17,7 +17,8 @@ define(function (require, exports, module) {
     var dato = require('../../../alien/util/dato.js');
     var defaults = {
         url: '/admin/api/object/',
-        id: ''
+        id: '',
+        type: ''
     };
     var Item = generator({
         constructor: function (formSelector, contentSelector, options, methods) {
@@ -77,7 +78,7 @@ define(function (require, exports, module) {
                 content: '',
                 uri: '',
                 labels: [],
-                type: window['-type-'],
+                type: the._options.type,
                 isDisplay: true
             };
             data.scopes.forEach(function (item) {

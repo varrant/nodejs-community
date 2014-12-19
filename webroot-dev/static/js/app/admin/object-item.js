@@ -11,6 +11,7 @@ define(function (require, exports, module) {
     var Item = require('../../ui/admin/Item/');
 
     new Item('#form', '#content', {
+        type: window['-type-'],
         id: window['-id-']
     });
 });
