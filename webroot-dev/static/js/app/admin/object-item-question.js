@@ -10,6 +10,7 @@ define(function (require) {
     var selector = require('../../alien/core/dom/selector.js');
     var Editor = require('../../alien/ui/Editor/');
     var Item = require('../../ui/admin/Item/');
+    var ajax = require('../../widget/common/ajax.js');
     var id = window['-id-'];
     var editor;
     var methods = {};
@@ -77,6 +78,7 @@ define(function (require) {
     // 渲染之后
     item.on('afterrender', function (data) {
         var the = this;
+
         editor = new Editor('#content', {
             id: data._id,
             // 更新的时候自动聚焦
@@ -84,5 +86,24 @@ define(function (require) {
         }).on('change', function (val) {
                 the.vue.$data.object.content = val;
             });
+
+        var xhr = null;
+
+        // 实时翻译
+        the.vue.$watch('object.title', function (word) {
+            if (xhr) {
+                xhr.abort();
+            }
+
+            xhr = ajax({
+                url: '/api/translate/?word=' + encodeURIComponent(word)
+            }).on('success', function (json) {
+                if (json.code === 200) {
+                    the.vue.$data.object.uri = json.data;
+                }
+            }).on('complete', function () {
+                xhr = null;
+            });
+        });
     });
 });
