@@ -40,6 +40,8 @@ define(function (require, exports, module) {
 
             the._getData();
             the._initEvent();
+
+            return the;
         },
 
 

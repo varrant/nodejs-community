@@ -4,67 +4,18 @@
  * @create 2014-12-15 22:41
  */
 
-
-define(function (require, exports, module) {
+define(function (require) {
     'use strict';
-    var ajax = require('../../widget/common/ajax.js');
-    var alert = require('../../widget/common/alert.js');
-    var confirm = require('../../widget/common/confirm.js');
-    var selector = require('../../alien/core/dom/selector.js');
-    var Editor = require('../../alien/ui/Editor/index.js');
-    var objectId = window['-id-'];
-    var objectURL = '/admin/api/object/?id=' + objectId;
-    var translateURL = '/api/translate/?word=';
-    var page = {};
-    var editor = null;
 
-    require('../../widget/admin/welcome.js');
+    var Editor = require('../../alien/ui/Editor/');
+    var Item = require('../../ui/admin/Item/');
+    var item = new Item('#form', {
+        url: '/admin/api/object/' + (window['-id-'] ? '?id=' + window['-id-'] : '')
+    });
+    var editor;
 
-    /**
-     * 实时翻译
-     * @param vue
-     */
-    page.translate = function (vue) {
-        var xhr = null;
-
-        vue.$watch('object.title', function (word) {
-            if (xhr) {
-                xhr.abort();
-            }
-
-            xhr = ajax({
-                url: translateURL + encodeURIComponent(word)
-            }).on('success', function (json) {
-                if (json.code === 200) {
-                    vue.$data.object.uri = json.data;
-                }
-            }).on('complete', function () {
-                xhr = null;
-            });
-        });
-    };
-
-    /**
-     * 请求展示列表
-     */
-    page.item = function () {
-        ajax({
-            url: objectURL
-        }).on('success', page.onsuccess).on('error', alert);
-    };
-
-    /**
-     * 请求成功
-     * @param json
-     * @returns {*}
-     */
-    page.onsuccess = function (json) {
-        if (json.code !== 200) {
-            return alert(json);
-        }
-
-        var data = json.data;
-
+    // 渲染之前
+    item.on('renderbefore', function (data) {
         data.object = data.object || {
             content: '',
             uri: '',
@@ -80,84 +31,21 @@ define(function (require, exports, module) {
                 data.object.scope = item._id;
             }
         });
+    });
 
-        var vue = new Vue({
-            el: '#form',
-            data: data,
-            methods: {
-                onpushlabel: page.onpushlabel,
-                onremovelabel: page.onremovelabel,
-                onsave: page.onsave
-            }
-        });
-
-        vue.$el.classList.remove('f-none');
-        editor = new Editor('#content', {
-            id: objectId,
-            // 更新的时候自动聚焦
-            autoFocus: !!objectId
-        }).on('change', function (val) {
-                vue.$data.object.content = val;
-            });
-
-        page.translate(vue);
-    };
-
-    /**
-     * 添加 label
-     */
-    page.onpushlabel = function () {
-        var object = this.$data.object;
-        var label = object.label.toLowerCase().trim();
-
-        // 最多 5 个 labels
-        if (object.labels.indexOf(label) === -1 && object.labels.length < 5) {
-            object.labels.push(label);
-            object.label = '';
-        }
-    };
-
-
-    /**
-     * 移除 label
-     * @param index
-     */
-    page.onremovelabel = function (index) {
-        this.$data.object.labels.splice(index, 1);
-    };
-
-    /**
-     * 保存
-     * @param eve
-     * @param data
-     */
-    page.onsave = function (eve, data) {
+    // 渲染之后
+    item.on('renderafter', function (data) {
         var the = this;
-        var $btn = selector.closest(eve.target, '.btn');
+        editor = new Editor('#content', {
+            id: data._id,
+            // 更新的时候自动聚焦
+            autoFocus: !!data._id
+        }).on('change', function (val) {
+                the.vue.$data.object.content = val;
+            });
+    });
 
-        $btn.disabled = true;
-        ajax({
-            url: objectURL,
-            method: objectId ? 'put' : 'post',
-            data: data
-        }).on('success', function (json) {
-            if (json.code !== 200) {
-                return alert(json);
-            }
+    // 保存之前
 
-            // 属于创建，清除之前的缓存记录，换成新的
-            if (!objectId) {
-                editor.clearStore();
-                objectId = json.data._id;
-                editor.setOptions('id', objectId);
-            }
-
-            the.$data.object = json.data;
-            editor.resize();
-        }).on('error', alert).on('finish', function () {
-            $btn.disabled = false;
-        });
-    };
-
-    page.item();
+    // 保存之后
 });
