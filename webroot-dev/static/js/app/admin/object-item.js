@@ -64,6 +64,7 @@ define(function (require, exports, module) {
         }
 
         var data = json.data;
+
         data.object = data.object || {
             content: '',
             uri: '',
@@ -152,6 +153,7 @@ define(function (require, exports, module) {
             }
 
             the.$data.object = json.data;
+            editor.resize();
         }).on('error', alert).on('finish', function () {
             $btn.disabled = false;
         });

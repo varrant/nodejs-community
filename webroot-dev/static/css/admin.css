@@ -134,10 +134,25 @@ footer {
 .m-form {
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 .m-form > li {
-  padding: 0;
+  position: relative;
+  padding: 0 0 0 100px;
   margin-bottom: 20px;
+}
+.m-form .form-key {
+  position: absolute;
+  width: 100px;
+  left: 0;
+  top: 0;
+  text-align: right;
+  font-weight: 900;
+  color: #999;
+  line-height: 36px;
+}
+.m-form .form-val {
+  margin-left: 20px;
 }
 .m-form .form-opt {
   margin: 0;

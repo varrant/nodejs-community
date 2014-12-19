@@ -37,10 +37,12 @@
         <div class="form-key">labels</div>
         <div class="form-val">
             <div class="row">
-                <div class="form-key">
+                <div class="col-xs-4">
                     <input class="ipt" type="text" name="label" placeholder="label" v-model="object.label" v-on="keyup:onpushlabel | key 13"/>
                 </div>
-                <div class="form-val">
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
                     <ul class="f-list-left form-opt m-labes">
                         <li v-repeat="object.labels">\{{$value}}
                             <a href="javascript:;" class="i i-times s-danger" v-on="click:onremovelabel($index)"></a></li>
@@ -52,7 +54,7 @@
     </li>
 
     <li class="f-clearfix">
-        <div class="col-xs-10 col-xs-push-2">
+        <div class="form-val">
             <label for="draft"><input type="checkbox" name="draft" id="draft" v-model="object.isDisplay"/>对他人可见</label>
             <button class="btn btn-primary" v-on="click:onsave($event, object)"><i class="i i-save"></i>保存</button>
         </div>
