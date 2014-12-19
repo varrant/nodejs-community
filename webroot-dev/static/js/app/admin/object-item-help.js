@@ -8,4 +8,9 @@
 define(function (require, exports, module) {
     'use strict';
 
+    var Item = require('../../ui/admin/Item/');
+
+    new Item('#form', '#content', {
+        id: window['-id-']
+    });
 });
