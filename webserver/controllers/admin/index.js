@@ -12,8 +12,6 @@ module.exports = function (app) {
         main: require('./main.js')(app),
         middleware: require('./middleware.js')(app),
         object: require('./object.js')(app),
-        role: require('./role.js')(app),
-        scope: require('./scope.js')(app),
-        type: require('./type.js')(app)
+        setting: require('./setting.js')(app)
     };
 };
