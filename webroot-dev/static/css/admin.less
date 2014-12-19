@@ -7,11 +7,10 @@
 // 管理员
 html, body {
   height: 100%;
-  overflow: hidden;
 }
 
 .g-sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -21,11 +20,7 @@ html, body {
 }
 
 .g-main {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: @sidebar-width;
+  margin-left: @sidebar-width;
   overflow: auto;
 }
 

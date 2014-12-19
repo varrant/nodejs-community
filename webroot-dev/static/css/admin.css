@@ -1,10 +1,9 @@
 html,
 body {
   height: 100%;
-  overflow: hidden;
 }
 .g-sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -13,11 +12,7 @@ body {
   overflow: auto;
 }
 .g-main {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 120px;
+  margin-left: 120px;
   overflow: auto;
 }
 nav ul {
