@@ -1,0 +1,24 @@
+<div id="list" class="m-object-help f-none">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th width="8%">序号</th>
+            <th width="*">标题</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-if="objects.length == 0">
+            <td colspan="2" class="table-empty-td">暂无相关帮助文档，<a class="btn btn-primary btn-sm" href="/admin/object/question/">点击新建帮助文档</a></td>
+        </tr>
+        <tr v-repeat="object:objects">
+            <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>
+            <td><a href="/admin/object/question/?id=\{{object._id}}">《\{{object.title}}》</a></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="2" id="pagination"></td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

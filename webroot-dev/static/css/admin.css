@@ -171,6 +171,7 @@ footer {
   line-height: 20px;
 }
 .m-form .form-desc code,
-.m-form .form-desc strong {
-  margin: 0 4px;
+.m-form .form-desc strong,
+.m-form .form-desc a {
+  margin: 0 5px;
 }

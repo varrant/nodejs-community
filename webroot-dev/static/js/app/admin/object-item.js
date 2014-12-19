@@ -16,12 +16,19 @@ define(function (require) {
 
     // 添加 label
     methods.pushlabel = function () {
+        var object = this.$data.object;
+        var label = object.label.toLowerCase().trim();
 
+        // 最多 5 个 labels
+        if (object.labels.indexOf(label) === -1 && object.labels.length < 5) {
+            object.labels.push(label);
+            object.label = '';
+        }
     };
 
     // 移除 label
     methods.removelabel = function (index) {
-
+        this.$data.object.labels.splice(index, 1);
     };
 
     // 保存
