@@ -14,6 +14,4 @@ define(function (require, exports, module) {
     new List('#list', '#pagination', {
         url: '/admin/api/object/list/?type=question&'
     });
-
-
 });
