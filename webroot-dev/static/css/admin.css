@@ -143,17 +143,21 @@ footer {
   top: 0;
   text-align: right;
   font-weight: 900;
-  color: #999;
+  color: #555;
   line-height: 36px;
+}
+.m-form .form-required {
+  color: #ff0025;
+  margin-left: 5px;
 }
 .m-form .form-val {
   margin-left: 20px;
 }
 .m-form .form-action {
-  background: #FAFAFA;
   padding: 20px;
   margin-left: -100px;
-  border: 1px solid #ECECEC;
+  margin-top: 40px;
+  border-top: 1px solid #ECECEC;
 }
 .m-form .form-opt {
   margin: 0;
@@ -164,6 +168,7 @@ footer {
   margin: 10px 0 0;
   color: #888;
   font-size: 14px;
+  line-height: 20px;
 }
 .m-form .form-desc code,
 .m-form .form-desc strong {

@@ -18,10 +18,11 @@ define(function (require, exports, module) {
         url: ''
     };
     var Item = generator({
-        constructor: function (formSelector, options) {
+        constructor: function (formSelector, options, methods) {
             var the = this;
 
             the._formSelector = formSelector;
+            the._methods = methods;
             the._options = dato.extend({}, defaults, options);
             the._init();
         },
@@ -51,28 +52,23 @@ define(function (require, exports, module) {
 
             var data = json.data;
 
-            the.emit('renderbefore', data);
+            the.emit('beforerender', data);
             the.vue = new Vue({
                 el: the._formSelector,
                 data: data,
-                methods: {
-                    onsave: the._onsave
-                }
+                methods: the._methods
             });
             the.vue.$el.classList.remove('f-none');
-            the.emit('renderafter', data);
+            the.emit('afterrender', data);
         },
 
         /**
          * 保存
-         * @private
+         * @public
          */
-        _onsave: function (eve, data) {
+        save: function (data, callback) {
             var the = this;
-            var $btn = selector.closest(eve.target, '.btn');
 
-            $btn.disabled = true;
-            the.emit('savebefore', data);
             ajax({
                 url: the._options.url,
                 method: data._id ? 'put' : 'post',
@@ -81,11 +77,7 @@ define(function (require, exports, module) {
                 if (json.code !== 200) {
                     return alert(json);
                 }
-
-                the.emit('saveafter', json.data);
-            }).on('error', alert).on('finish', function () {
-                $btn.disabled = false;
-            });
+            }).on('error', alert).on('finish', callback);
         }
     });
 
