@@ -12,8 +12,7 @@ define(function (require, exports, module) {
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
     var selector = require('../../alien/core/dom/selector.js');
-    var itemURL = '/admin/api/scope/';
-    var listURL = itemURL + 'list/';
+    var url = '/admin/api/scope/';
     var page = {};
 
     require('../../widget/admin/welcome.js');
@@ -24,7 +23,7 @@ define(function (require, exports, module) {
      */
     page.list = function () {
         ajax({
-            url: listURL
+            url: url
         }).on('success', page.onsuccess).on('error', alert);
     };
 
@@ -66,7 +65,7 @@ define(function (require, exports, module) {
         confirm('确认要删除该scope吗？<br>错误操作可能会导致路由出现404错误。', function () {
             $btn.disabled = true;
             ajax({
-                url: itemURL,
+                url: url,
                 method: 'delete',
                 data: {id: the.$data.list[index]._id}
             })
@@ -108,7 +107,7 @@ define(function (require, exports, module) {
 
         $btn.disabled = true;
         ajax({
-            url: itemURL,
+            url: url,
             method: 'put',
             data: the.$data.list[index]
         })
