@@ -16,11 +16,13 @@ define(function (require, exports, module) {
     var pathname = location.pathname.replace(/^\/admin/, '');
     var actives = [
         /^\/$/,
-        /^\/setting\/type\/$/,
-        /^\/setting\/scope\/$/,
-        /^\/setting\/oss\/$/,
         /^\/setting\/oauth\/$/,
+        /^\/setting\/smtp\/$/,
+        /^\/setting\/types\/$/,
         /^\/setting\/website\/$/,
+        /^\/setting\/alioss\/$/,
+        /^\/setting\/roles\/$/,
+        /^\/scope\/$/,
         /^\/object\/help\/list\/$/,
         /^\/object\/question\/list\/$/
     ];

@@ -25,33 +25,45 @@ module.exports = function (app) {
         });
 
         list.push({
-            href: '/admin/setting/type/',
-            text: '板块类型',
-            icon: 'i i-suitcase'
-        });
-
-        list.push({
-            href: '/admin/setting/scope/',
-            text: '权限管理',
-            icon: 'i i-book'
-        });
-
-        list.push({
-            href: '/admin/setting/oss/',
-            text: '存储设置',
-            icon: 'i i-cloud'
-        });
-
-        list.push({
             href: '/admin/setting/oauth/',
             text: '授权设置',
             icon: 'i i-github'
         });
 
         list.push({
+            href: '/admin/setting/smtp/',
+            text: 'SMTP配置',
+            icon: 'i i-envelope'
+        });
+
+        list.push({
+            href: '/admin/setting/types/',
+            text: '板块类型',
+            icon: 'i i-suitcase'
+        });
+
+        list.push({
             href: '/admin/setting/website/',
             text: '社区设置',
             icon: 'i i-globe'
+        });
+
+        list.push({
+            href: '/admin/setting/alioss/',
+            text: '存储设置',
+            icon: 'i i-cloud'
+        });
+
+        list.push({
+            href: '/admin/setting/roles/',
+            text: '权限管理',
+            icon: 'i i-key'
+        });
+
+        list.push({
+            href: '/admin/scope/',
+            text: '领域配置',
+            icon: 'i i-book'
         });
 
         list.push({
@@ -63,7 +75,7 @@ module.exports = function (app) {
         list.push({
             href: '/admin/object/question/list/',
             text: '智问管理',
-            icon: 'i i-question-circle'
+            icon: 'i i-cube'
         });
 
         res.json({
