@@ -32,9 +32,12 @@ module.exports = function (app, ctrlApi) {
     app.put('/admin/api/oss/', ctrlApi.oss.put);
 
 
-    // type
-    app.get('/admin/api/type/list/', ctrlApi.type.list);
-    app.put('/admin/api/type/', ctrlApi.type.put);
+    // setting
+    ['oauth', 'smtp', 'types',
+        'website', 'alioss', 'roles'].forEach(function (key) {
+            app.get('/admin/api/setting/' + key + '/', ctrlApi.setting.get(key));
+            app.put('/admin/api/setting/' + key + '/', ctrlApi.setting.put(key));
+        });
 
 
     // role
