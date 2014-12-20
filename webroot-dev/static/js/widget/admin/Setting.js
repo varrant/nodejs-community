@@ -17,7 +17,8 @@ define(function (require, exports, module) {
         url: '',
         key: 'list',
         remove: '确认删除吗？',
-        save: '确认保存吗？'
+        save: '确认保存吗？',
+        methods: {}
     };
     var Setting = generator({
         constructor: function (selector, options) {
@@ -54,16 +55,19 @@ define(function (require, exports, module) {
 
             var the = this;
             var data = {};
+            var methods = the._options.methods;
+
+            methods = dato.extend({}, {
+                onremove: the._onremove.bind(the),
+                oncreate: the._oncreate.bind(the),
+                onsave: the._onsave.bind(the)
+            }, methods);
 
             data[the._options.key] = json.data;
             the.vue = new Vue({
                 el: the._selector,
                 data: data,
-                methods: {
-                    onremove: the._onremove.bind(the),
-                    oncreate: the._oncreate.bind(the),
-                    onsave: the._onsave.bind(the)
-                }
+                methods: methods
             });
 
             the.vue.$el.classList.remove('f-none');
