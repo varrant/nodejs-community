@@ -24,6 +24,11 @@ module.exports = function (app) {
     var oss = new Oss(settings);
 
 
+    exports.list = function () {
+
+    };
+
+
     /**
      * 上传图片到阿里云 OSS
      * @param req

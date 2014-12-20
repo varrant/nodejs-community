@@ -11,9 +11,19 @@ define(function (require, exports, module) {
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
     var Scrollbar = require('../../alien/ui/Scrollbar/');
+    var dato = require('../../alien/util/dato.js');
     var app = {};
-    var pathname = location.pathname;
-    var actives = [/, /];
+    var pathname = location.pathname.replace(/^\/admin/, '');
+    var actives = [
+        /^\/$/,
+        /^\/setting\/type\/$/,
+        /^\/setting\/scope\/$/,
+        /^\/setting\/oss\/$/,
+        /^\/setting\/oauth\/$/,
+        /^\/setting\/website\/$/,
+        /^\/object\/help\/list\/$/,
+        /^\/object\/question\/list\/$/
+    ];
 
     app.init = function () {
         ajax({
@@ -22,15 +32,21 @@ define(function (require, exports, module) {
     };
 
     app._onsuccess = function (json) {
-        if(json.code !== 200){
+        if (json.code !== 200) {
             return alert(json);
         }
 
         var list = json.data;
+        var find = 0;
 
-        list.forEach(function (item) {
-
+        dato.each(actives, function (index, active) {
+            if(active.test(pathname)){
+                find = index;
+                return false;
+            }
         });
+
+        list[++find].active = true;
 
         var vue = new Vue({
             el: '#nav',
