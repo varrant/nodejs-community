@@ -1,16 +1,7 @@
 <div class="g-sidebar">
     <nav>
-        <ul>
-            <li><a href="/"><i class="i i-home"></i><span>社区首页</span></a></li>
-            <li><a href="/admin/"><i class="i i-dashboard"></i><span>管理首页</span></a></li>
-            <li><a href="/admin/setting/type/"><i class="i i-suitcase"></i><span>板块类型</span></a></li>
-            <li><a href="/admin/setting/role/"><i class="i i-key"></i><span>权限管理</span></a></li>
-            <li><a href="/admin/setting/scope/"><i class="i i-book"></i><span>领域管理</span></a></li>
-            <li><a href="/admin/setting/oss/"><i class="i i-cloud"></i><span>存储设置</span></a></li>
-            <li><a href="/admin/setting/oauth/"><i class="i i-github"></i><span>授权设置</span></a></li>
-            <li><a href="/admin/setting/website/"><i class="i i-globe"></i><span>网站设置</span></a></li>
-            <li><a href="/admin/object/help/list/"><i class="i i-question-circle"></i><span>帮助管理</span></a></li>
-            <li><a href="/admin/object/question/list/"><i class="i i-cube"></i><span>智问管理</span></a></li>
+        <ul id="nav" class="f-none">
+            <li v-repeat="item:list"><a href="\{{item.href}}"><i class="\{{item.icon}}"></i><span>\{{item.text}}</span></a></li>
         </ul>
     </nav>
 </div>

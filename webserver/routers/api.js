@@ -11,6 +11,9 @@ module.exports = function (app, ctrlApi) {
     app.get('/admin/api/notification/count/', ctrlApi.notification.count);
 
 
+    // nav
+    app.get('/admin/api/nav/', ctrlApi.nav.list);
+
     // scope
     app.get('/admin/api/scope/list/', ctrlApi.scope.list);
     app.post('/admin/api/scope/', ctrlApi.scope.post);

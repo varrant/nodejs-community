@@ -9,4 +9,5 @@ define(function (require, exports, module) {
     'use strict';
 
     require('../../widget/admin/welcome.js');
+    require('../../widget/admin/nav.js');
 });

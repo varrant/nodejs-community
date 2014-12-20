@@ -9,11 +9,14 @@ body {
   bottom: 0;
   width: 120px;
   background: #333;
-  overflow: auto;
+  overflow: hidden;
 }
 .g-main {
   margin-left: 120px;
   overflow: auto;
+}
+nav {
+  height: 100%;
 }
 nav ul {
   list-style: none;
