@@ -25,6 +25,10 @@ module.exports = function(app, ctrlAdmin){
     });
 
 
+    // 主页
+    app.get('/admin/scope/', ctrlAdmin.scope.get);
+
+
     // list
     uris.forEach(function (uri) {
         app.get('/admin/object/' + uri + '/list/', ctrlAdmin.object.list(uri));

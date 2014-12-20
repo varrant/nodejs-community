@@ -12,6 +12,7 @@ module.exports = function (app) {
         main: require('./main.js')(app),
         middleware: require('./middleware.js')(app),
         object: require('./object.js')(app),
+        scope: require('./scope.js')(app),
         setting: require('./setting.js')(app)
     };
 };
