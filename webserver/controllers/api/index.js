@@ -14,6 +14,7 @@ module.exports = function (app) {
         notification: require('./notification.js')(app),
         object: require('./object.js')(app),
         oss: require('./oss.js')(app),
+        scope: require('./scope.js')(app),
         setting: require('./setting.js')(app),
         translate: require('./translate.js')(app)
     };

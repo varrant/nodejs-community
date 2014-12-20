@@ -11,8 +11,7 @@ define(function (require, exports, module) {
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
-    var itemURL = '/admin/api/role/';
-    var listURL = itemURL + 'list/';
+    var url = '/admin/api/setting/role/';
     var page = {};
 
     require('../../widget/admin/welcome.js');
@@ -23,7 +22,7 @@ define(function (require, exports, module) {
      */
     page.list = function () {
         ajax({
-            url: listURL
+            url: url
         }).on('success', page.onsuccess).on('error', alert);
     };
 
@@ -89,7 +88,7 @@ define(function (require, exports, module) {
         confirm('确认更新所有权限控制信息吗？<br>错误操作可能会导致程序出现错误。', function () {
             $btn.disabled = true;
             ajax({
-                url: itemURL,
+                url: url,
                 method: 'put',
                 data: the.$data.list
             }).on('success', function (json) {

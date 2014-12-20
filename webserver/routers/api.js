@@ -39,12 +39,6 @@ module.exports = function (app, ctrlApi) {
             app.put('/admin/api/setting/' + key + '/', ctrlApi.setting.put(key));
         });
 
-
-    // role
-    app.get('/admin/api/role/list/', ctrlApi.role.list);
-    app.put('/admin/api/role/', ctrlApi.role.put);
-
-
     // user
     app.post('/api/engineer/login/', ctrlApi.engineer.login);
 
