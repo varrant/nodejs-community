@@ -31,6 +31,7 @@ exports.set = function (key, val, callback) {
         });
     }
 
+    console.log(map);
     howdo.each(map, function (index, json, done) {
         setting.existOne({
             key: json.key

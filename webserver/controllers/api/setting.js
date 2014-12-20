@@ -42,7 +42,8 @@ module.exports = function (app) {
                 app.locals.$settings[key] = doc.toObject().val;
                 locals.$settings(app);
                 res.json({
-                    code: 200
+                    code: 200,
+                    data: app.locals.$settings[key]
                 });
             });
         };

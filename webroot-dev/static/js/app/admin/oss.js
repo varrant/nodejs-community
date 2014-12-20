@@ -6,11 +6,14 @@
 
 
 define(function (require, exports, module) {
-    /**
-     * @module parent/oss
-     */
     'use strict';
+
+    var Setting = require('../../widget/admin/Setting.js');
 
     require('../../widget/admin/welcome.js');
     require('../../widget/admin/nav.js');
+    new Setting('#list', {
+        url: '/admin/api/setting/alioss/',
+        key: 'alioss'
+    });
 });
