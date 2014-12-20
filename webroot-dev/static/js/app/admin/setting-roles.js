@@ -13,7 +13,7 @@ define(function (require, exports, module) {
     require('../../widget/admin/welcome.js');
     require('../../widget/admin/nav.js');
     new Setting('#list', {
-        url: '/admin/api/setting/role/',
-        key: 'smtp'
+        url: '/admin/api/setting/roles/',
+        key: 'list'
     });
 });
