@@ -6,6 +6,15 @@
 
 'use strict';
 
-var fs = require('fs');
 
-module.exports = {};
+module.exports = function (app) {
+    var exports = {};
+
+    exports.get = function (req, res, next) {
+        res.render('admin/scope.html', {
+            title: '领域设置'
+        });
+    }
+
+    return exports;
+};
