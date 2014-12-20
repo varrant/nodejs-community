@@ -24,7 +24,7 @@ module.exports = function (app) {
                 title: titles[key]
             };
 
-            res.render('admin/setting/' + key + '.html', data);
+            res.render('admin/setting-' + key + '.html', data);
         }
     };
 
