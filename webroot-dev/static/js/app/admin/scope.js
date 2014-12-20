@@ -17,6 +17,7 @@ define(function (require, exports, module) {
     var page = {};
 
     require('../../widget/admin/welcome.js');
+    require('../../widget/admin/nav.js');
 
     /**
      * 请求展示列表

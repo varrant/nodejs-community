@@ -11,6 +11,8 @@ define(function (require, exports, module) {
     var List = require('../../ui/admin/List/');
 
     require('../../widget/admin/welcome.js');
+    require('../../widget/admin/nav.js');
+
     new List('#list', '#pagination', {
         type:  window['-type-']
     });

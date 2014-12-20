@@ -12,6 +12,8 @@ define(function (require, exports, module) {
     var alert = require('../common/alert.js');
     var Scrollbar = require('../../alien/ui/Scrollbar/');
     var app = {};
+    var pathname = location.pathname;
+    var actives = [/, /];
 
     app.init = function () {
         ajax({
@@ -24,10 +26,16 @@ define(function (require, exports, module) {
             return alert(json);
         }
 
+        var list = json.data;
+
+        list.forEach(function (item) {
+
+        });
+
         var vue = new Vue({
             el: '#nav',
             data: {
-                list: json.data
+                list: list
             }
         });
 
