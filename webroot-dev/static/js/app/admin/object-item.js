@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var Item = require('../../ui/admin/Item/');
+    var Item = require('../../widget/admin/Item.js');
 
     require('../../widget/admin/welcome.js');
     require('../../widget/admin/nav.js');
