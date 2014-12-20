@@ -6,6 +6,7 @@
 
 'use strict';
 
+var settings = ['oauth', 'smtp', 'types', 'website', 'alioss', 'roles'];
 
 module.exports = function(app, ctrlAdmin){
     var uris = app.locals.$settings._displayTypeUris;
@@ -19,12 +20,9 @@ module.exports = function(app, ctrlAdmin){
 
 
     // 设置
-    app.get('/admin/setting/role/', ctrlAdmin.setting.listRole);
-    app.get('/admin/setting/scope/', ctrlAdmin.setting.listScope);
-    app.get('/admin/setting/type/', ctrlAdmin.setting.listType);
-    app.get('/admin/setting/oss/', ctrlAdmin.setting.listOss);
-    app.get('/admin/setting/oauth/', ctrlAdmin.setting.listOauth);
-    app.get('/admin/setting/website/', ctrlAdmin.setting.listWebsite);
+    settings.forEach(function (key) {
+        app.get('/admin/setting/'+key+'/', ctrlAdmin.setting.get(key));
+    });
 
 
     // list

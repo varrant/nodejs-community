@@ -1,0 +1,41 @@
+<div id="list" class="m-roles f-none">
+    <table class="table">
+        <thead>
+        <tr>
+            <th width="30%">键名</th>
+            <th width="*">键值</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input class="ipt" type="text" name="role" value="host"/></td>
+            <td><textarea class="ipt" rows="2" name="desc" v-model="smtp.host">\{{smtp.host}}</textarea></td>
+        </tr>
+        <tr>
+            <td><input class="ipt" type="text" name="role" value="port"/></td>
+            <td><textarea class="ipt" rows="2" name="desc" v-model="smtp.port">\{{smtp.port}}</textarea></td>
+        </tr>
+        <tr>
+            <td><input class="ipt" type="text" name="role" value="user"/></td>
+            <td><textarea class="ipt" rows="2" name="desc" v-model="smtp.user">\{{smtp.user}}</textarea></td>
+        </tr>
+        <tr>
+            <td><input class="ipt" type="text" name="role" value="password"/></td>
+            <td><textarea class="ipt" rows="2" name="desc" v-model="smtp.password">\{{smtp.password}}</textarea></td>
+        </tr>
+        <tr>
+            <td><input class="ipt" type="text" name="role" value="ssl"/></td>
+            <td>
+                <label for="ssl"><input type="checkbox" name="ssl" id="ssl" v-model="smtp.ssl"/>使用 ssl</label>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5" class="f-text-center">
+                <button class="btn btn-primary" v-on="click:onsave">保存修改</button>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

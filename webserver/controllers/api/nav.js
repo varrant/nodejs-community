@@ -32,7 +32,7 @@ module.exports = function (app) {
 
         list.push({
             href: '/admin/setting/smtp/',
-            text: 'SMTP配置',
+            text: '邮件配置',
             icon: 'i i-envelope'
         });
 

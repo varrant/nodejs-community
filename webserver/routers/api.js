@@ -6,6 +6,8 @@
 
 'use strict';
 
+var settings = ['oauth', 'smtp', 'types', 'website', 'alioss', 'roles'];
+
 module.exports = function (app, ctrlApi) {
     // notification
     app.get('/admin/api/notification/count/', ctrlApi.notification.count);
@@ -33,8 +35,7 @@ module.exports = function (app, ctrlApi) {
 
 
     // setting
-    ['oauth', 'smtp', 'types',
-        'website', 'alioss', 'roles'].forEach(function (key) {
+    settings.forEach(function (key) {
             app.get('/admin/api/setting/' + key + '/', ctrlApi.setting.get(key));
             app.put('/admin/api/setting/' + key + '/', ctrlApi.setting.put(key));
         });
