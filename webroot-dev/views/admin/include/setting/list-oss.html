@@ -2,9 +2,6 @@
     <div class="alert alert-warning alert-line">
         <p><i class="i i-info-circle"></i>阿里云 OSS 配置。</p>
     </div>
-    <div class="alert alert-danger alert-line">
-        <p><i class="i i-exclamation-triangle"></i>修改 OSS 配置需要重启之后生效。</p>
-    </div>
     <table class="table">
         <thead>
         <tr>
@@ -13,9 +10,25 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-repeat="val:alioss">
-            <td><input class="ipt" type="text" name="role" v-model="item.role" value="\{{$key}}"/></td>
-            <td><textarea class="ipt" rows="2" name="desc" v-model="item.desc">\{{val}}</textarea></td>
+        <tr>
+            <td><input class="ipt" type="text" name="role" value="domain"/></td>
+            <td><textarea class="ipt" rows="2" name="desc" v-model="alioss.domain">\{{alioss.domain}}</textarea></td>
+        </tr>
+        <tr>
+            <td><input class="ipt" type="text" name="role" value="bucket"/></td>
+            <td><textarea class="ipt" rows="2" name="desc" v-model="alioss.bucket">\{{alioss.bucket}}</textarea></td>
+        </tr>
+        <tr>
+            <td><input class="ipt" type="text" name="role" value="host"/></td>
+            <td><textarea class="ipt" rows="2" name="desc" v-model="alioss.host">\{{alioss.host}}</textarea></td>
+        </tr>
+        <tr>
+            <td><input class="ipt" type="text" name="role" value="accessKeyId"/></td>
+            <td><textarea class="ipt" rows="2" name="desc" v-model="alioss.accessKeyId">\{{alioss.accessKeyId}}</textarea></td>
+        </tr>
+        <tr>
+            <td><input class="ipt" type="text" name="role" value="accessKeySecret"/></td>
+            <td><textarea class="ipt" rows="2" name="desc" v-model="alioss.accessKeySecret">\{{alioss.accessKeySecret}}</textarea></td>
         </tr>
         </tbody>
         <tfoot>

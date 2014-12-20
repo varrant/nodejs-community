@@ -15,14 +15,15 @@
 <div class="g-main">
     {{include ../include/welcome.html}}
     <div class="m-main">
-        <h1 class="main-title"><i class="i i-key"></i>{{title}}</h1>
+        <h1 class="main-title"><i class="i i-github"></i>{{title}}</h1>
         <div class="main-body">
+            {{include ../include/setting/list-oauth.html}}
         </div>
     </div>
     {{include ../include/footer.html}}
 </div>
 
-<script src="/static/js/libs/coolie.min.js" data-main="./admin/oss.js"></script>
+<script src="/static/js/libs/coolie.min.js" data-main="./admin/setting-oauth.js"></script>
 <script src="/static/js/libs/coolie-config.js"></script>
 </body>
 </html>

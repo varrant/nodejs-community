@@ -1,0 +1,34 @@
+<div id="list" class="m-roles f-none">
+    <div class="alert alert-warning alert-line">
+        <p><i class="i i-info-circle"></i>登录 oauth 配置。</p>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th width="30%">键名</th>
+            <th width="*">键值</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input class="ipt" type="text" name="role" value="appName"/></td>
+            <td><textarea class="ipt" rows="2" name="desc" v-model="oauth.appName">\{{oauth.appName}}</textarea></td>
+        </tr>
+        <tr>
+            <td><input class="ipt" type="text" name="role" value="clientId"/></td>
+            <td><textarea class="ipt" rows="2" name="desc" v-model="oauth.clientId">\{{oauth.clientId}}</textarea></td>
+        </tr>
+        <tr>
+            <td><input class="ipt" type="text" name="role" value="clientSecret"/></td>
+            <td><textarea class="ipt" rows="2" name="desc" v-model="oauth.clientSecret">\{{oauth.clientSecret}}</textarea></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5" class="f-text-center">
+                <button class="btn btn-primary" v-on="click:onsave">保存修改</button>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
