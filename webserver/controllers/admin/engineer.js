@@ -10,12 +10,34 @@
 module.exports = function (app) {
     var exports = {};
 
+    /**
+     * 用户列表
+     * @param req
+     * @param res
+     * @param next
+     */
     exports.list = function (req, res, next) {
         var data = {
             title: '用户管理'
         };
 
         res.render('admin/engineer-list.html', data);
+    };
+
+
+    /**
+     * 我
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.me = function (req, res, next) {
+        var data = {
+            title: '我',
+            me: app.locals.$engineer
+        };
+
+        res.render('admin/engineer-me.html', data);
     };
 
     return exports;
