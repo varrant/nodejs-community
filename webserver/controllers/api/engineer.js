@@ -61,6 +61,20 @@ module.exports = function (app) {
 
 
     /**
+     * 退出
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.logout = function (req, res, next) {
+        cookie.logout(req, res)
+        res.json({
+            code: 200
+        });
+    };
+
+
+    /**
      * 所有/某个用户
      * @param req
      * @param res

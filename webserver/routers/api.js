@@ -46,6 +46,7 @@ module.exports = function (app, ctrlApi) {
 
     // engineer
     app.post('/api/engineer/login/', ctrlApi.engineer.login);
+    app.post('/api/engineer/logout/', ctrlApi.engineer.logout);
     app.get('/api/engineer/', ctrlApi.engineer.get);
     app.get('/admin/api/engineer/', ctrlApi.engineer.detail);
     app.post('/admin/api/engineer/', ctrlApi.engineer.role);
