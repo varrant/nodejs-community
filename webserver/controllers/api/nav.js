@@ -15,73 +15,92 @@ module.exports = function (app) {
         list.push({
             href: '/',
             text: '社区首页',
-            icon: 'i i-home'
+            icon: 'i i-home',
+            reg: '^\\/$'
         });
 
         list.push({
             href: '/admin/',
             text: '管理首页',
-            icon: 'i i-dashboard'
+            icon: 'i i-dashboard',
+            reg: '^$'
         });
 
         list.push({
             href: '/admin/setting/oauth/',
             text: '授权设置',
-            icon: 'i i-github'
+            icon: 'i i-github',
+            reg: '^setting\\/oauth\\/$'
         });
 
         list.push({
             href: '/admin/setting/smtp/',
             text: '邮件配置',
-            icon: 'i i-envelope'
+            icon: 'i i-envelope',
+            reg: '^setting\\/smtp\\/$'
         });
 
         list.push({
             href: '/admin/setting/types/',
             text: '板块类型',
-            icon: 'i i-suitcase'
+            icon: 'i i-suitcase',
+            reg: '^setting\\/types\\/$'
         });
 
         list.push({
             href: '/admin/setting/website/',
             text: '社区设置',
-            icon: 'i i-globe'
+            icon: 'i i-globe',
+            reg: '^setting\\/website\\/$'
         });
 
         list.push({
             href: '/admin/setting/alioss/',
             text: '存储设置',
-            icon: 'i i-cloud'
+            icon: 'i i-cloud',
+            reg: '^setting\\/alioss\\/'
         });
 
         list.push({
             href: '/admin/setting/roles/',
             text: '权限管理',
-            icon: 'i i-key'
+            icon: 'i i-key',
+            reg: '^setting\\/roles\\/$'
         });
 
         list.push({
             href: '/admin/scope/',
             text: '领域配置',
-            icon: 'i i-book'
+            icon: 'i i-book',
+            reg: '^scope\\/$'
+        });
+
+        list.push({
+            href: '/admin/engineer/',
+            text: '用户管理',
+            icon: 'i i-users',
+            reg: '^engineer\\/$'
         });
 
         list.push({
             href: '/admin/object/help/list/',
             text: '帮助管理',
-            icon: 'i i-question-circle'
+            icon: 'i i-question-circle',
+            reg: '^object\\/help\\/'
         });
 
         list.push({
             href: '/admin/object/question/list/',
             text: '智问管理',
-            icon: 'i i-cube'
+            icon: 'i i-cube',
+            reg: '^object\\/question\\/'
         });
 
         list.push({
             href: '/admin/engineer/profile/',
             text: '个人资料',
-            icon: 'i i-user'
+            icon: 'i i-user',
+            reg: '^engineer\\/profile\\/$'
         });
 
         res.json({
