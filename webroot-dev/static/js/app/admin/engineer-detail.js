@@ -12,6 +12,8 @@ define(function (require, exports, module) {
     require('../../widget/admin/nav.js');
     require('../../widget/common/vue-filter.js');
 
+    var selector = require('../../alien/core/dom/selector.js');
+    var dato = require('../../alien/util/dato.js');
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var url = '/admin/api/engineer/?id=' + window['-id-'];
@@ -30,10 +32,15 @@ define(function (require, exports, module) {
 
         var data1 = json.data;
         var data2 = [];
+        var role = data1.engineer.role;
 
         data2.push({
             name: '版块权限（0-10）',
             list: data1.types
+        });
+
+        data1.types.forEach(function (type) {
+            type.desc = type.title;
         });
 
         data2.push({
@@ -48,12 +55,28 @@ define(function (require, exports, module) {
         var vue2 = new Vue({
             el: '#role',
             data: {
+                engineer: data1.engineer,
                 kinds: data2
+            },
+            methods:{
+                onsave: app._onsave
             }
         });
 
         vue1.$el.classList.remove('f-none');
         vue2.$el.classList.remove('f-none');
+    };
+
+
+    app._onsave = function () {
+        var $checkboxs = selector.query('#role input[checked]');
+        var value = 0;
+
+        dato.each($checkboxs, function (index, $checkbox) {
+            value+=Math.pow(2, $checkbox.value * 1);
+        });
+
+        alert(value);
     };
 
     app.init();
