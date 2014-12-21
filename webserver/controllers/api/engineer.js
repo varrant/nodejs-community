@@ -116,7 +116,9 @@ module.exports = function (app) {
             res.json({
                 code: 200,
                 data: {
-                    engineer: doc
+                    engineer: doc,
+                    types: app.locals.$settings.types,
+                    roles: app.locals.$settings.roles
                 }
             });
         });

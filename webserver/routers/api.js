@@ -43,6 +43,7 @@ module.exports = function (app, ctrlApi) {
     // user
     app.post('/api/engineer/login/', ctrlApi.engineer.login);
     app.get('/api/engineer/', ctrlApi.engineer.get);
+    app.get('/admin/api/engineer/', ctrlApi.engineer.detail);
 
 
     // translate
