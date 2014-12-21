@@ -23,8 +23,8 @@ define(function (require, exports, module) {
         /^\/setting\/alioss\/$/,
         /^\/setting\/roles\/$/,
         /^\/scope\/$/,
-        /^\/object\/help\/list\/$/,
-        /^\/object\/question\/list\/$/
+        /^\/object\/help\//,
+        /^\/object\/question\//
     ];
 
     app.init = function () {

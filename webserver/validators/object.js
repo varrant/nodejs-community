@@ -8,7 +8,7 @@
 
 var Validator = require('ydr-validator');
 var validator = new Validator();
-var REG_LINES = /[\n\s]{2,}/g;
+var REG_3LINES = /[\n\s]{3,}/g;
 // 标题: 中英文、数字、空格、下划线、短横线、中英文逗号
 var REG_TITLE = /^[\u4e00-\u9fa5a-z\d _\-，,]{5,100}$/i;
 var REG_URI = /^[a-z\d_-]{5,200}$/i;
@@ -51,7 +51,7 @@ validator.pushRule({
     maxLength: 1000,
     regexp: REG_INTRODUCTION,
     onafter: function (val) {
-        return val && val.replace(REG_LINES, '\n\n');
+        return val && val.replace(REG_3LINES, '\n\n\n');
     },
     msg: {
         regexp: '简介仅支持中英文、数字，以及常用符号'
@@ -67,7 +67,7 @@ validator.pushRule({
     maxLength: 50000,
     regexp: REG_CONTENT,
     onafter: function (val) {
-        return val && val.replace(REG_LINES, '\n\n');
+        return val && val.replace(REG_3LINES, '\n\n\n');
     },
     msg: {
         regexp: '内容仅支持中英文、数字，以及常用符号'
