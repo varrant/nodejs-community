@@ -34,7 +34,8 @@
     "title": "前端开发者社区",
     "keywords": "前端开发者社区",
     "description": "前端开发者社区",
-    "meta": "<meta name=\"website\" content=\"f2ec.com\"/>"
+    "meta": "<meta name=\"website\" content=\"f2ec.com\"/>",
+    "statistics": ""
   },
   // 邮件服务器
   "smtp": {
@@ -70,14 +71,14 @@
       "role": 1,
       "title": "观点",
       "uri": "opinion",
-      "isDisplay": true,
+      "isDisplay": false,
       "desc": ""
     },
     {
       "role": 0,
       "title": "微博",
       "uri": "weibo",
-      "isDisplay": true,
+      "isDisplay": false,
       "desc": ""
     }
   ],
