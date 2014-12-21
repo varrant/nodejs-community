@@ -80,17 +80,17 @@ var schema = mongoose.Schema({
         default: 0
     },
     // 被回复次数
-    repliedCount: {
+    replyByCount: {
         type: Number,
         default: 0
     },
     // 回答被赞同次数
-    agreedCount: {
+    agreeByCount: {
         type: Number,
         default: 0
     },
     // 回答被接受次数
-    acceptedCount: {
+    acceptByCount: {
         type: Number,
         default: 0
     },
@@ -100,7 +100,7 @@ var schema = mongoose.Schema({
         default: 0
     },
     // 被关注人数
-    followedCount: {
+    followByCount: {
         type: Number,
         default: 0
     },
@@ -115,11 +115,9 @@ var schema = mongoose.Schema({
         default: false
     },
     // 加入的组织、团队
-    organizations: [{
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'organization'
-    }],
+    organizations: {
+        type: Array
+    },
     // 是否通过了个人认证
     isCertification: {
         type: Boolean,

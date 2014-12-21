@@ -78,6 +78,12 @@ module.exports = function (app) {
             icon: 'i i-cube'
         });
 
+        list.push({
+            href: '/admin/engineer/profile/',
+            text: '个人资料',
+            icon: 'i i-user'
+        });
+
         res.json({
             code: 200,
             data: list
