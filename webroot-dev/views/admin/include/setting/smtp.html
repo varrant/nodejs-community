@@ -2,31 +2,39 @@
     <table class="table">
         <thead>
         <tr>
-            <th width="30%">键名</th>
+            <th width="20%">键名</th>
             <th width="*">键值</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td><input class="ipt" type="text" name="role" value="host"/></td>
-            <td><textarea class="ipt" rows="2" name="desc" v-model="smtp.host">\{{smtp.host}}</textarea></td>
-        </tr>
-        <tr>
-            <td><input class="ipt" type="text" name="role" value="port"/></td>
-            <td><textarea class="ipt" rows="2" name="desc" v-model="smtp.port">\{{smtp.port}}</textarea></td>
-        </tr>
-        <tr>
-            <td><input class="ipt" type="text" name="role" value="user"/></td>
-            <td><textarea class="ipt" rows="2" name="desc" v-model="smtp.user">\{{smtp.user}}</textarea></td>
-        </tr>
-        <tr>
-            <td><input class="ipt" type="text" name="role" value="password"/></td>
-            <td><textarea class="ipt" rows="2" name="desc" v-model="smtp.password">\{{smtp.password}}</textarea></td>
-        </tr>
-        <tr>
-            <td><input class="ipt" type="text" name="role" value="ssl"/></td>
+            <td>host</td>
             <td>
-                <label for="ssl"><input type="checkbox" name="ssl" id="ssl" v-model="smtp.ssl"/>使用 ssl</label>
+                <input type="text" class="ipt" v-model="smtp.host"/>
+            </td>
+        </tr>
+        <tr>
+            <td>port</td>
+            <td>
+                <input type="text" class="ipt" v-model="smtp.port"/>
+            </td>
+        </tr>
+        <tr>
+            <td>user</td>
+            <td>
+                <input type="text" class="ipt" v-model="smtp.user"/>
+            </td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td>
+                <input type="text" class="ipt" v-model="smtp.password"/>
+            </td>
+        </tr>
+        <tr>
+            <td>ssl</td>
+            <td>
+                <label for="ssl"><input type="checkbox" id="ssl" v-model="smtp.ssl"/>使用 ssl</label>
             </td>
         </tr>
         </tbody>
