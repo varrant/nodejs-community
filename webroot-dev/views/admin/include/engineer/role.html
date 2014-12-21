@@ -4,7 +4,7 @@
             <div class="">\{{kind.name}}</div>
             <ul>
                 <li v-repeat="item:kind.list">
-                    <label><input type="checkbox" value="\{{engineer.role}}" v-attr="checked: engineer.role&item.role>0"/>\{{item.desc}}（\{{item.role}}）</label>
+                    <label><input type="checkbox" value="\{{item.role}}" v-model="item.checked"/>\{{item.desc}}（\{{item.role}}）</label>
                 </li>
             </ul>
         </li>

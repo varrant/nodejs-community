@@ -138,12 +138,6 @@ module.exports = function (app) {
         var id = body._id;
         var role = dato.parseInt(body.role, 1);
 
-        console.log('ownerId', ownerId);
-        console.log('id', id);
-        console.log('role', role);
-        console.log('role20', role20);
-        console.log(role & role20);
-
         if (id === ownerId) {
             return next(new Error('不能修改社区创建者权限'));
         }

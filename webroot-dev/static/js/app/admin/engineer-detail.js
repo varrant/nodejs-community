@@ -41,11 +41,16 @@ define(function (require, exports, module) {
 
         data1.types.forEach(function (type) {
             type.desc = type.title;
+            type.checked = (role & type.role) > 0;
         });
 
         data2.push({
             name: '操作权限（11-20）',
             list: data1.roles
+        });
+
+        data1.roles.forEach(function (role) {
+            role.checked = (role & role.role) > 0;
         });
 
         var vue1 = new Vue({
