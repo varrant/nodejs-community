@@ -38,9 +38,15 @@ exports.login = engineer.existOne;
 
 
 /**
- * 查找
+ * 查找一个
  */
 exports.findOne = engineer.findOne;
+
+
+/**
+ * 查找
+ */
+exports.find = engineer.find;
 
 
 /**
