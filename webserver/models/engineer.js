@@ -11,12 +11,16 @@ var schema = new mongoose.Schema({
     // 邮箱，由 github 过来
     email: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     // github 用户名，由 github 授权过来
     // 用户的识别符号
-    github: {
+    githubLogin: {
+        type: String,
+        required: true
+    },
+    // github ID 唯一识别号
+    githubId: {
         type: String,
         required: true,
         unique: true
@@ -25,14 +29,12 @@ var schema = new mongoose.Schema({
     // 用户的认证符号
     weibo: {
         type: String,
-        required: false,
-        unique: false
+        required: false
     },
     // 昵称
     nickname: {
         type: String,
-        required: true,
-        unique: false
+        required: true
     },
     // 角色标识，分成0-19的20阶，与运算计算是否有权限
     // 2^0
