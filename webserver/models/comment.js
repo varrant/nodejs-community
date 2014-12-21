@@ -65,7 +65,7 @@ var schema = new mongoose.Schema({
 schema.set('toJSON', { getters: true, virtuals: true });
 schema.set('toObject', { getters: true, virtuals: true });
 
-schema.virtual('publishAtTimestamp').get(function () {
+schema.virtual('publishAt2').get(function () {
     return this.publishAt.getTime();
 });
 

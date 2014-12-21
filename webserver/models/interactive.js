@@ -61,7 +61,7 @@ schema.set('toJSON', { getters: true, virtuals: true });
 schema.set('toObject', { getters: true, virtuals: true });
 
 
-schema.virtual('interactiveAtTimestamp').get(function () {
+schema.virtual('interactiveAt2').get(function () {
     return this.interactiveAt.getTime();
 });
 

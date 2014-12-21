@@ -2,6 +2,8 @@
 
 适用于：文字、问题、帮助等展示性资源。
 
+`*`表示虚拟字段
+
 - `author` 作者
 - `title` 标题
 - `uri` URI
@@ -11,7 +13,9 @@
 - `introduction` 简介
 - `content` 内容
 - `publishAt` 发布时间
+- * `publishAtTimestamp` 发布时间
 - `updateAt` 最近修改时间
+- * `updateAtTimestamp` 最近修改时间
 - `updateList` 修改历史
 - `isDisplay` 是否前台可见
 - `isSticky` 是否被置顶
