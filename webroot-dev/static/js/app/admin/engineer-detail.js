@@ -89,7 +89,7 @@ define(function (require, exports, module) {
                 url: url,
                 method: 'post',
                 data: {
-                    _id: id,
+                    id: id,
                     role: role
                 }
             }).on('success', function (json) {

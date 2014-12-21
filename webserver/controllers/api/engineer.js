@@ -133,9 +133,9 @@ module.exports = function (app) {
      * @param next
      */
     exports.role = function (req, res, next) {
-        var ownerId = app.locals.$owner._id;
+        var ownerId = app.locals.$owner.id;
         var body = req.body;
-        var id = body._id;
+        var id = body.id;
         var role = dato.parseInt(body.role, 1);
 
         if (id === ownerId) {
