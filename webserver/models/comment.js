@@ -65,8 +65,4 @@ var schema = new mongoose.Schema({
 schema.set('toJSON', { getters: true, virtuals: true });
 schema.set('toObject', { getters: true, virtuals: true });
 
-schema.virtual('publishTimestamp').get(function () {
-    return this.publishAt.getTime();
-});
-
 module.exports = mongoose.model('comment', schema);

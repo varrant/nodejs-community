@@ -38,8 +38,5 @@ var schema = new mongoose.Schema({
 schema.set('toJSON', { getters: true, virtuals: true });
 schema.set('toObject', { getters: true, virtuals: true });
 
-schema.virtual('latestTimestamp').get(function () {
-    return this.latestAt ? this.latestAt.getTime() : 0;
-});
 
 module.exports = mongoose.model('search', schema);

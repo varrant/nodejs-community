@@ -137,13 +137,6 @@ var schema = new mongoose.Schema({
 schema.set('toJSON', { getters: true, virtuals: true });
 schema.set('toObject', { getters: true, virtuals: true });
 
-schema.virtual('registerTimestamp').get(function () {
-    return this.registerAt.getTime();
-});
-
-schema.virtual('loginTimestamp').get(function () {
-    return this.loginAt ? this.loginAt.getTime() : 0;
-});
 
 module.exports = mongoose.model('engineer', schema);
 //

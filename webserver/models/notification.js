@@ -73,14 +73,4 @@ schema.set('toJSON', { getters: true, virtuals: true });
 schema.set('toObject', { getters: true, virtuals: true });
 
 
-schema.virtual('activeTimestamp').get(function () {
-    return this.activeAt.getTime();
-});
-
-
-schema.virtual('activeByTimestamp').get(function () {
-    return this.activeByAt ? this.activeByAt.getTime() : 0;
-});
-
-
 module.exports = mongoose.model('notification', schema);
