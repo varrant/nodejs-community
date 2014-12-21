@@ -10,7 +10,7 @@
 module.exports = function (app) {
     var exports = {};
 
-    exports.get = function (req, res, next) {
+    exports.list = function (req, res, next) {
         var data = {
             title: '用户管理'
         };

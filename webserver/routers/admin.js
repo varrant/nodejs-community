@@ -25,8 +25,12 @@ module.exports = function(app, ctrlAdmin){
     });
 
 
-    // 主页
+    // scope
     app.get('/admin/scope/', ctrlAdmin.scope.get);
+
+
+    // engineer
+    app.get('/admin/engineer/list/', ctrlAdmin.engineer.list);
 
 
     // list
