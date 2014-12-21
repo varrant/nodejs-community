@@ -6,18 +6,20 @@
         <thead>
         <tr>
             <th width="8%">序号</th>
-            <th width="*">工程师</th>
+            <th width="20%">邮箱</th>
+            <th width="*">昵称</th>
         </tr>
         </thead>
         <tbody>
         <tr v-repeat="engineer:list" v-class="danger:engineer.isBlock">
             <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>
+            <td>\{{engineer.email}}</td>
             <td><a href="/admin/engineer/?id=\{{engineer._id}}">\{{engineer.nickname}}</a></td>
         </tr>
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="2" id="pagination"></td>
+            <td colspan="3" id="pagination"></td>
         </tr>
         </tfoot>
     </table>
