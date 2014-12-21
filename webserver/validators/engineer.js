@@ -9,24 +9,21 @@
 
 var Validator = require('ydr-validator');
 var validator = new Validator();
+var REG_INTRODUCTION = /^[\u4e00-\u9fa5a-z\d _\-~`!@#$%^&*()+={[}]|\:;"'<,>.?\/·！￥（）-—【】：；“”‘’《，》。？、\n]{0,1000}$/;
 
 validator.pushRule({
-    name: 'email',
-    alias: '邮箱帐号',
-    type: 'email',
-    required: true,
-    maxLength: 256,
-    trim: true
-});
-
-validator.pushRule({
-    name: 'nickname',
-    alias: '昵称',
+    name: 'bio',
+    alias: '个人简介',
     type: 'string',
-    required: true,
+    required: false,
+    maxLength: 1000,
     trim: true,
-    minLength: 2,
-    maxLength: 12
+    exist: true,
+    regexp: REG_INTRODUCTION,
+    msg: {
+        regexp: '简介仅支持中英文、数字，以及常用符号'
+    }
 });
+
 
 module.exports = validator;
