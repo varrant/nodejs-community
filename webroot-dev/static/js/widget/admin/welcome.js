@@ -40,6 +40,7 @@ define(function (require) {
             eve.preventDefault();
 
             ajax({
+                method: 'post',
                 url: '/api/user/logout/'
             });
         });

@@ -28,6 +28,22 @@ module.exports = function (app) {
 
 
     /**
+     * 获取某个用户
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.get = function (req, res, next) {
+        var data = {
+            title: '用户详情',
+            id: req.query.id || ''
+        };
+
+        res.render('admin/engineer-detail.html', data);
+    };
+
+
+    /**
      * 我
      * @param req
      * @param res

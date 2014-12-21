@@ -15,20 +15,15 @@
 <div class="g-main">
     {{include ./include/welcome.html}}
     <div class="m-main">
-        <h1 class="main-title"><i class="i i-user"></i>{{title}} - {{me.nickname}}</h1>
+        <h1 class="main-title"><i class="i i-user"></i>{{title}}</h1>
         <div class="main-body">
-            <div class="m-me">
-                <div class="me-avatar me-avatar-abs">
-                    <img src="{{me.email|gravatar:100}}" alt="avatar"/>
-                </div>
-            </div>
-            {{include ./include/engineer/me.html}}
+
         </div>
     </div>
     {{include ./include/footer.html}}
 </div>
 
-<script src="/static/js/libs/coolie.min.js" data-main="./admin/engineer-me.js"></script>
+<script src="/static/js/libs/coolie.min.js" data-main="./admin/engineer-detail.js"></script>
 <script src="/static/js/libs/coolie-config.js"></script>
 
 </body>
