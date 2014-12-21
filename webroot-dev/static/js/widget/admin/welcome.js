@@ -10,6 +10,7 @@ define(function (require) {
 
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
+    var confirm = require('../common/confirm.js');
     var selector = require('../../alien/core/dom/selector.js');
     var event = require('../../alien/core/event/base.js');
     var page = {};
@@ -37,9 +38,7 @@ define(function (require) {
 
     // 退出
     page.logout = function () {
-        event.on(document, 'click', '.j-logout', function (eve) {
-            eve.preventDefault();
-
+        var logout = function () {
             ajax({
                 method: 'post',
                 url: '/api/engineer/logout/'
@@ -50,6 +49,11 @@ define(function (require) {
 
                 location.href = '/';
             }).on('error', alert);
+        };
+
+        event.on(document, 'click', '.j-logout', function (eve) {
+            eve.preventDefault();
+            confirm('确定要登出吗？', logout);
         });
     };
 
