@@ -109,13 +109,13 @@ module.exports = function (app) {
         }
 
         // 与 session 不匹配
-        if (req.session.$engineer && req.session.$engineer._id !== userId) {
+        if (req.session.$engineer && req.session.$engineer.id !== userId) {
             cookie.logout(req, res);
             return next();
         }
 
         // 与 session 匹配
-        if (req.session.$engineer && req.session.$engineer._id === userId) {
+        if (req.session.$engineer && req.session.$engineer.id === userId) {
             res.locals.$engineer = req.session.$engineer;
             return next();
         }

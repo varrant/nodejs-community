@@ -49,7 +49,7 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            cookie.login(res, doc._id);
+            cookie.login(res, doc.id);
             req.session.$engineer = res.locals.$engineer = doc;
             res.json({
                 code: 200,
