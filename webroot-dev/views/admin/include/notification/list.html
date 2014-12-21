@@ -17,7 +17,7 @@
         <tbody>
         <tr v-repeat="notification:list" v-class="danger:!notification.hasActiveBy">
             <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>
-            <td>\{{notification.activeUser}}</td>
+            <td>\{{notification.active}}</td>
         </tr>
         </tbody>
         <tfoot>
