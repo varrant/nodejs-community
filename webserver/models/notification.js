@@ -29,19 +29,21 @@ var schema = new mongoose.Schema({
         required: true
     },
     // 激活者
-    activeUser: {
+    active: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     // 被激活者
-    activeByUser: {
+    activeBy: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: 'engineer'
     },
     // 被操作对象
     object: {
         type: mongoose.Schema.Types.ObjectId,
-        required: false
+        required: false,
+        ref: 'engineer'
     },
     // 是否已被激活
     hasActiveBy: {

@@ -15,9 +15,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-repeat="notification:list" v-class="danger:notification.">
+        <tr v-repeat="notification:list" v-class="danger:!notification.hasActiveBy">
             <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>
-            <td>\{{engineer.email}}</td>
+            <td>\{{notification.activeUser}}</td>
         </tr>
         </tbody>
         <tfoot>
