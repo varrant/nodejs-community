@@ -78,7 +78,7 @@ module.exports = function (app) {
             // 2. 查找用户
             .task(function (next, json) {
                 var conditions = {
-                    github: json.github
+                    githubId: json.githubId
                 };
 
                 engineer.findOne(conditions, function (err, data) {

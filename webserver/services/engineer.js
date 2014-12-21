@@ -432,7 +432,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
             var ret = {
                 accessToken: json.accessToken,
                 githubLogin: json.login,
-                githubId: json.id,
+                githubId: String(json.id),
                 email: json.email,
                 nickname: json.name,
                 meta: {

@@ -41,7 +41,7 @@ module.exports = function (app) {
         githubOauth.loginAt = new Date();
 
         engineer.login({
-            github: githubId
+            githubId: githubId
         }, githubOauth, function (err, doc) {
             req.session.$github = null;
 
