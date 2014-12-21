@@ -62,7 +62,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        scope.existOne({_id: req.body._id}, req.body, function (err, doc) {
+        scope.existOne({_id: req.body.id}, req.body, function (err, doc) {
             if (err) {
                 return next(err);
             }
@@ -82,7 +82,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.delete = function (req, res, next) {
-        scope.findOneAndRemove({_id: req.body._id}, function (err) {
+        scope.findOneAndRemove({_id: req.body.id}, function (err) {
             if (err) {
                 return next(err);
             }

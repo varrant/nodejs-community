@@ -148,7 +148,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        object.updateOne(res.locals.$engineer, {_id: req.body._id}, req.body, function (err, doc) {
+        object.updateOne(res.locals.$engineer, {_id: req.body.id}, req.body, function (err, doc) {
             if (err) {
                 return next(err);
             }

@@ -20,7 +20,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.count = function (req, res, next) {
-        var userId = res.locals.$engineer._id;
+        var userId = res.locals.$engineer.id;
 
         notification.count({hasActived: false, activedUser: userId}, function (err, count) {
             if (err) {
@@ -42,7 +42,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.setActived = function (req, res, next) {
-        var userId = res.locals.$engineer._id;
+        var userId = res.locals.$engineer.id;
 
         notification.setActived({_id: req.body.id, activedUser: userId}, function (err) {
             if (err) {
@@ -64,7 +64,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.list = function (req, res, next) {
-        var userId = res.locals.$engineer._id;
+        var userId = res.locals.$engineer.id;
         var conditions = {activedUser: userId};
         var options = filter.skipLimit(req);
 
