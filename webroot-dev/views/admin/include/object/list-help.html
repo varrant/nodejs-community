@@ -12,7 +12,7 @@
         </tr>
         <tr v-repeat="object:objects">
             <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>
-            <td><a href="/admin/object/question/?id=\{{object._id}}">《\{{object.title}}》</a></td>
+            <td><a href="/admin/object/help/?id=\{{object._id}}">《\{{object.title}}》</a></td>
         </tr>
         </tbody>
         <tfoot>
