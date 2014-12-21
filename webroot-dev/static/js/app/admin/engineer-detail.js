@@ -10,4 +10,12 @@ define(function (require, exports, module) {
 
     require('../../widget/admin/welcome.js');
     require('../../widget/admin/nav.js');
+
+    var app = {};
+
+    app.init = function () {
+
+    };
+
+    app.init();
 });
