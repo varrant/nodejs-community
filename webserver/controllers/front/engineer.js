@@ -66,7 +66,7 @@ module.exports = function (app) {
         if(req.session.$github ){
             return res.render('front/oauth-callback.html', {
                 title: '确认登录',
-                user: req.session.$github
+                github: req.session.$github
             });
         }
 
@@ -95,7 +95,7 @@ module.exports = function (app) {
                 req.session.$github = json;
                 res.render('front/oauth-callback.html', {
                     title: '确认登录',
-                    user: json
+                    github: json
                 });
             });
     };

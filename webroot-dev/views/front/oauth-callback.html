@@ -10,12 +10,12 @@
     {{include ./include/meta.html}}
     <script>
         var locals = {
-            github: '{{user.github}}',
-            accessToken: '{{user.accessToken}}'
+            githubId: '{{github.githubId}}',
+            accessToken: '{{github.accessToken}}'
         };
     </script>
     <style>
-        body{
+        body {
             margin-top: 40px;
         }
     </style>
@@ -23,16 +23,16 @@
 <body ontouchstart="">
 
 <div class="m-oauth f-text-center">
-    <p><img src="{{user.email|gravatar:200}}" alt="avatar" width="100" height="100"/></p>
+    <p><img src="{{github.email|gravatar:200}}" alt="avatar" width="100" height="100"/></p>
 
-    <h1>hi, {{user.nickname}}</h1>
+    <h1>hi, {{github.nickname}}</h1>
 
-    <p class="s-muted" id="msg">{{user.hasRegister ? '正在登录……':'请确认登录信息'}}</p>
+    <p class="s-muted" id="msg">{{github.hasRegister ? '正在登录……':'请确认登录信息'}}</p>
 
-    {{if !user.hasRegister}}
+    {{if !github.hasRegister}}
     <ul class="f-text-left oauth-info f-large">
-        <li><strong>email:</strong>{{user.email}}</li>
-        <li><strong>github:</strong>{{user.github}}</li>
+        <li><strong>email:</strong>{{github.email}}</li>
+        <li><strong>github:</strong>{{github.github}}</li>
     </ul>
     <button class="btn btn-primary" id="btn">确定授权登录</button>
     {{/if}}
