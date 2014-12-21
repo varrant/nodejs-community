@@ -21,7 +21,7 @@ validator.pushRule({
     exist: true,
     regexp: REG_INTRODUCTION,
     msg: {
-        regexp: '简介仅支持中英文、数字，以及常用符号'
+        regexp: '个人简介仅支持中英文、数字，以及常用符号'
     }
 });
 
