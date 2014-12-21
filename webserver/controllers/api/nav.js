@@ -93,7 +93,7 @@ module.exports = function (app) {
             href: '/admin/engineer/list/',
             text: '用户管理',
             icon: 'i i-users',
-            reg: '^engineer\\/$'
+            reg: '^engineer\\/'
         });
 
         list.push({
