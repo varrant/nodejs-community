@@ -61,13 +61,18 @@ define(function (require, exports, module) {
     app.onremove = function (eve, index) {
         var $btn = selector.closest(eve.target, '.btn')[0];
         var the = this;
+        var id = the.$data.list[index]._id;
+
+        if(!id){
+            return the.$data.list.splice(index, 1);
+        }
 
         confirm('确认要删除该scope吗？<br>错误操作可能会导致路由出现404错误。', function () {
             $btn.disabled = true;
             ajax({
                 url: url,
                 method: 'delete',
-                data: {id: the.$data.list[index]._id}
+                data: {_id: id}
             })
                 .on('success', function (json) {
                     if (json.code === 200) {
@@ -89,10 +94,10 @@ define(function (require, exports, module) {
      */
     app.oncreate = function () {
         this.$data.list.push({
-            name: '',
-            uri: '',
-            cover: '',
-            introduction: ''
+            name: 'scopename',
+            uri: 'scope-name',
+            cover: 'alioss-cover',
+            introduction: 'scope introduction'
         });
     };
 

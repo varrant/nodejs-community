@@ -82,7 +82,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.delete = function (req, res, next) {
-        scope.findOneAndRemove({_id: req.body.id}, function (err) {
+        scope.findOneAndRemove({_id: req.body._id}, function (err) {
             if (err) {
                 return next(err);
             }
