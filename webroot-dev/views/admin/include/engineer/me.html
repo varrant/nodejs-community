@@ -1,13 +1,13 @@
 <ul class="m-form" id="form">
     <li class="form-striped">
-        <div class="form-key">email</div>
+        <div class="form-key"><i class="i i-github"></i>邮箱</div>
         <div class="form-val">
             <div class="form-opt">{{me.email}}</div>
         </div>
     </li>
 
     <li class="form-striped">
-        <div class="form-key">github</div>
+        <div class="form-key"><i class="i i-github"></i>账号</div>
         <div class="form-val">
             <div class="form-opt">{{me.github}}</div>
         </div>
@@ -81,5 +81,46 @@
                {{me.viewCount}}次
             </div>
         </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>位置</div>
+        <div class="form-val">
+            <div class="form-opt">
+                {{me.meta.location}}
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>博客</div>
+        <div class="form-val">
+            <div class="form-opt">
+                <a href="{{me.meta.blog}}?from=f2ec.org" target="_blank">{{me.meta.blog}}</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>公司</div>
+        <div class="form-val">
+            <div class="form-opt">
+                {{me.meta.company}}
+            </div>
+        </div>
+    </li>
+
+    <li class="">
+        <div class="form-key"><i class="i i-github"></i>简介</div>
+        <div class="form-val">
+            <div class="form-opt">
+                {{me.meta.bio ? me.meta.bio : '你还没来得及向大家介绍你自己呢。'}}
+            </div>
+        </div>
+    </li>
+
+    <li class="form-desc">
+        <i class="i i-info-circle"></i>注：标注为“<i class="i i-github i-small"></i>”的信息来源于
+        <a href="https://github.com/settings/profile" target="_blank"><i class="i i-github i-small"></i>github</a>。
     </li>
 </ul>

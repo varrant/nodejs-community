@@ -145,6 +145,11 @@ footer {
 .m-form > li.form-striped {
   margin-bottom: 0;
 }
+.m-form > li.form-desc {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
 .m-form .form-key {
   position: absolute;
   width: 140px;
