@@ -14,7 +14,9 @@
     <li>
         <div class="form-key">loginAt</div>
         <div class="form-val">
-            <div class="form-opt">{{me.loginAtTimestamp}}</div>
+            <div class="form-opt">{{new Date(me.loginAt).getTime()}}</div>
+            <div class="form-opt">{{me.loginAt}}</div>
+            <div class="form-opt">{{me.loginTimestamp}}</div>
         </div>
     </li>
 </ul>
