@@ -64,7 +64,9 @@ dato.each(models, function (key, model) {
             return callback(new Error('the id of conditions is invalid'));
         }
 
-        model.findOne(conditions, callback);
+        model.findOne(conditions, function (err, doc) {
+            callback(err, doc && doc.toJSON());
+        });
     };
 
 
@@ -92,7 +94,15 @@ dato.each(models, function (key, model) {
             }
         });
 
-        query.exec(callback);
+        query.exec(function (err, docs) {
+            docs = docs || [];
+
+            var docs2 = docs.map(function (doc) {
+                return doc.toJSON();
+            });
+
+            callback(err, docs2);
+        });
     };
 
 
@@ -136,7 +146,7 @@ dato.each(models, function (key, model) {
                     return callback(err);
                 }
 
-                callback(err, doc, null);
+                callback(err, doc.toJSON(), null);
             });
         });
     };
@@ -231,7 +241,7 @@ dato.each(models, function (key, model) {
                 }
 
                 model.findOneAndUpdate(conditions, newData, function (err, newDoc) {
-                    callback.call(this, err, newDoc, doc);
+                    callback.call(this, err, newDoc.toJSON(), doc.toJSON());
                 });
             });
         });
@@ -259,7 +269,7 @@ dato.each(models, function (key, model) {
                 return callback(err);
             }
 
-            callback(err, doc);
+            callback(err, doc.toJSON());
         });
     };
 
@@ -324,7 +334,7 @@ dato.each(models, function (key, model) {
 
             var meta = doc.meta;
 
-            callback(err, metaKey ? meta[metaKey] : meta, doc);
+            callback(err, metaKey ? meta[metaKey] : meta, doc.toJSON());
         });
     };
 
@@ -487,7 +497,9 @@ dato.each(models, function (key, model) {
 
             model.findOneAndUpdate(conditions, {
                 $push: push
-            }, options, callback);
+            }, options, function (err, doc) {
+                callback(err, doc && doc.toJSON());
+            });
         });
     };
 
@@ -523,7 +535,9 @@ dato.each(models, function (key, model) {
 
             model.findOneAndUpdate(conditions, {
                 $pull: pull
-            }, options, callback);
+            }, options, function (err, doc) {
+                callback(err, doc && doc.toJSON());
+            });
         });
     };
 
@@ -562,7 +576,9 @@ dato.each(models, function (key, model) {
                 doc[path] = !!boolean;
             }
 
-            doc.save(callback);
+            doc.save(function (err, doc) {
+                callback(err, doc && doc.toJSON());
+            });
         });
     };
 

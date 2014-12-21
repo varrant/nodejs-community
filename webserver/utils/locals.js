@@ -34,3 +34,5 @@ exports.$settings = function (app) {
     });
     app.locals.$settings._rolesMap = map2;
 };
+
+

@@ -134,7 +134,7 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            req.session.$engineer = res.locals.$engineer = doc.toObject();
+            req.session.$engineer = res.locals.$engineer = doc;
             next();
         });
     };

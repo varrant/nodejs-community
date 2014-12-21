@@ -6,6 +6,8 @@
 
 'use strict';
 
+var engineer = require('../../models/').engineer;
+var typeis = require('ydr-util').typeis;
 
 module.exports = function (app) {
     var exports = {};

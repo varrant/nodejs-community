@@ -44,7 +44,7 @@ module.exports = function (next, app) {
                     return process.exit();
                 }
 
-                app.locals.$owner = doc.toObject();
+                app.locals.$owner = doc;
                 done();
             });
         })

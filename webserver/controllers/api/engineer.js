@@ -47,7 +47,7 @@ module.exports = function (app) {
             }
 
             cookie.login(res, doc._id);
-            req.session.$engineer = res.locals.$engineer = doc.toObject();
+            req.session.$engineer = res.locals.$engineer = doc;
             res.json({
                 code: 200,
                 data: true,

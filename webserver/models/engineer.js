@@ -7,7 +7,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var schema = mongoose.Schema({
+var schema = new mongoose.Schema({
     // 邮箱，由 github 过来
     email: {
         type: String,
@@ -132,6 +132,17 @@ var schema = mongoose.Schema({
         type: Object,
         default: {}
     }
+});
+
+schema.set('toJSON', { getters: true, virtuals: true });
+schema.set('toObject', { getters: true, virtuals: true });
+
+schema.virtual('registerAtTimestamp').get(function () {
+    return this.registerAt.getTime();
+});
+
+schema.virtual('loginAtTimestamp').get(function () {
+    return this.loginAt.getTime();
 });
 
 module.exports = mongoose.model('engineer', schema);

@@ -39,7 +39,7 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                app.locals.$settings[key] = doc.toObject().val;
+                app.locals.$settings[key] = doc.val;
                 locals.$settings(app);
                 res.json({
                     code: 200,
