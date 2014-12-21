@@ -199,8 +199,7 @@ exports.updateOne = function (author, conditions, data, callback) {
             data3.$push = {
                 updateList: {
                     user: author._id,
-                    date: date,
-                    timestamp: date.getTime()
+                    date: date
                 }
             };
 
@@ -276,7 +275,6 @@ exports.increaseScore = function (operator, id, count, callback) {
 
         object.push(conditions, 'scoreList', {
             date: date,
-            timestamp: date.getTime(),
             score: count,
             user: operator._id
         }, done);
