@@ -160,7 +160,15 @@ var schema = new mongoose.Schema({
     }
 });
 
-schema.set('toJSON', { getters: true, virtuals: true });
-schema.set('toObject', { getters: true, virtuals: true });
+schema.set('toJSON', {getters: true, virtuals: true});
+schema.set('toObject', {getters: true, virtuals: true});
+
+schema.virtual('publishAtTimestamp').get(function () {
+    return this.publishAt.getTime();
+});
+
+schema.virtual('updateAtTimestamp').get(function () {
+    return this.updateAt ? this.updateAt.getTime() : 0;
+});
 
 module.exports = mongoose.model('object', schema);

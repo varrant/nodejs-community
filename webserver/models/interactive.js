@@ -35,7 +35,7 @@ var schema = new mongoose.Schema({
         default: 0
     },
     // 操作时间
-    at: {
+    interactiveAt: {
         type: Date,
         default: new Date()
     },
@@ -59,5 +59,10 @@ var schema = new mongoose.Schema({
 
 schema.set('toJSON', { getters: true, virtuals: true });
 schema.set('toObject', { getters: true, virtuals: true });
+
+
+schema.virtual('interactiveAtTimestamp').get(function () {
+    return this.interactiveAt.getTime();
+});
 
 module.exports = mongoose.model('interactive', schema);

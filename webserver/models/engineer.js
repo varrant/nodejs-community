@@ -142,7 +142,7 @@ schema.virtual('registerAtTimestamp').get(function () {
 });
 
 schema.virtual('loginAtTimestamp').get(function () {
-    return this.loginAt.getTime();
+    return this.loginAt ? this.loginAt.getTime() : 0;
 });
 
 module.exports = mongoose.model('engineer', schema);
