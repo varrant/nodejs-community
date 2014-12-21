@@ -63,13 +63,30 @@ module.exports = function (app) {
      * @param res
      * @param next
      */
-    exports.getAll = function (req, res, next) {
-        engineer.find({}, function (err, docs) {
-            res.json({
-                code: 200,
-                data: docs
+    exports.get = function (req, res, next) {
+        var id = req.query.id;
+
+        if (id) {
+            engineer.findOne({
+                _id: id
+            }, function (err, doc) {
+                if (err) {
+                    return next(err);
+                }
+
+                res.json({
+                    code: 200,
+                    data: doc
+                });
             });
-        });
+        } else {
+            engineer.find({}, function (err, docs) {
+                res.json({
+                    code: 200,
+                    data: docs
+                });
+            });
+        }
     };
 
     return exports;
