@@ -12,8 +12,6 @@ define(function (require, exports, module) {
     require('../../widget/admin/nav.js');
     require('../../widget/common/vue-filter.js');
 
-    var selector = require('../../alien/core/dom/selector.js');
-    var dato = require('../../alien/util/dato.js');
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var url = '/admin/api/engineer/?id=' + window['-id-'];
@@ -32,7 +30,7 @@ define(function (require, exports, module) {
 
         var data1 = json.data;
         var data2 = [];
-        var role = data1.engineer.role;
+        var engineerRole = data1.engineer.role;
 
         data2.push({
             name: '版块权限（0-10）',
@@ -41,7 +39,7 @@ define(function (require, exports, module) {
 
         data1.types.forEach(function (type) {
             type.desc = type.title;
-            type.checked = (role & type.role) > 0;
+            type.checked = (engineerRole & Math.pow(2, type.role)) > 0;
         });
 
         data2.push({
@@ -50,7 +48,7 @@ define(function (require, exports, module) {
         });
 
         data1.roles.forEach(function (role) {
-            role.checked = (role & role.role) > 0;
+            role.checked = (engineerRole & Math.pow(2, role.role)) > 0;
         });
 
         var vue1 = new Vue({
@@ -75,17 +73,16 @@ define(function (require, exports, module) {
 
     app._onsave = function (eve, id) {
         var $btn = eve.target;
-        var $checkboxs = selector.query('#role input');
         var role = 0;
+        var kinds = this.$data.kinds;
 
-        $checkboxs = selector.filter($checkboxs, function () {
-            return this.checked;
+        kinds.forEach(function (kind) {
+            kind.list.forEach(function (item) {
+                if (item.checked) {
+                    role += Math.pow(2, item.role);
+                }
+            });
         });
-
-        dato.each($checkboxs, function (index, $checkbox) {
-            role += Math.pow(2, $checkbox.value * 1);
-        });
-
         $btn.disabled = true;
         ajax({
             url: url,
