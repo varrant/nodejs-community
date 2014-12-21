@@ -10,7 +10,6 @@
     {{include ./include/meta.html}}
     <script>
         var locals = {
-            githubId: '{{github.githubId}}',
             accessToken: '{{github.accessToken}}'
         };
     </script>
@@ -32,7 +31,7 @@
     {{if !github.hasRegister}}
     <ul class="f-text-left oauth-info f-large">
         <li><strong>email:</strong>{{github.email}}</li>
-        <li><strong>github:</strong>{{github.github}}</li>
+        <li><strong>github:</strong>{{github.githubLogin}}</li>
     </ul>
     <button class="btn btn-primary" id="btn">确定授权登录</button>
     {{/if}}

@@ -35,13 +35,13 @@ module.exports = function (app) {
         }
 
         var githubOauth = req.session.$github;
-        var github = githubOauth.github;
+        var githubId = githubOauth.githubId;
 
-        delete(githubOauth.github);
+        delete(githubOauth.githubId);
         githubOauth.loginAt = new Date();
 
         engineer.login({
-            github: github
+            github: githubId
         }, githubOauth, function (err, doc) {
             req.session.$github = null;
 
