@@ -57,6 +57,14 @@ var schema = new mongoose.Schema({
         type: String,
         required: false
     },
+    // 用户类型：
+    // normal
+    // admin
+    type: {
+        type: String,
+        required: false,
+        default: 'normal'
+    },
     // 注册时间
     registerAt: {
         type: Date,
