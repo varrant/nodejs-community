@@ -137,11 +137,11 @@ var schema = new mongoose.Schema({
 schema.set('toJSON', { getters: true, virtuals: true });
 schema.set('toObject', { getters: true, virtuals: true });
 
-schema.virtual('registerAt2').get(function () {
+schema.virtual('registerTimestamp').get(function () {
     return this.registerAt.getTime();
 });
 
-schema.virtual('loginAt2').get(function () {
+schema.virtual('loginTimestamp').get(function () {
     return this.loginAt ? this.loginAt.getTime() : 0;
 });
 

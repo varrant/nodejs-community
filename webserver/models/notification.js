@@ -73,12 +73,12 @@ schema.set('toJSON', { getters: true, virtuals: true });
 schema.set('toObject', { getters: true, virtuals: true });
 
 
-schema.virtual('activeAt2').get(function () {
+schema.virtual('activeTimestamp').get(function () {
     return this.activeAt.getTime();
 });
 
 
-schema.virtual('activeByAt2').get(function () {
+schema.virtual('activeByTimestamp').get(function () {
     return this.activeByAt ? this.activeByAt.getTime() : 0;
 });
 
