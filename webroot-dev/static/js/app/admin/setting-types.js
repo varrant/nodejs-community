@@ -39,4 +39,15 @@ define(function (require) {
         this.$data.list.splice(index, 1);
         this.$data.list.splice(index + 1, 0, item);
     };
+
+
+    methods.oncreate = function () {
+        this.$data.list.push({
+            desc: '',
+            isDisplay:false,
+            uri: 'undefined',
+            title: '未定义',
+            role: 0
+        });
+    };
 });

@@ -25,9 +25,13 @@
             </td>
             <td><input class="ipt" type="text" name="title" value="\{{item.title}}" v-model="item.title"/></td>
             <td><label for="show-\{{$index}}"><input type="checkbox" name="show" id="show-\{{$index}}" v-model="item.isDisplay"/>显示</label></td>
-            <td><input class="ipt" type="text" name="uri" value="\{{item.uri}}" v-model="item.url"/></td>
-            <td><input class="ipt" type="text" name="role" value="\{{item.role}}" v-model="item.role"/></td>
-            <td><textarea name="desc" class="ipt" v-model="item.desc" rows="2">\{{item.desc}}</textarea></td>
+            <td><input class="ipt" type="text" name="uri" value="\{{item.uri}}" v-model="item.uri"/></td>
+            <td>
+                <input class="ipt" type="text" name="role" value="\{{item.role}}" v-model="item.role"/>
+                <input name="\{{item.roleVal}}" type="hidden" value="\{{Math.pow(2, item.role)}}" v-model="item.roleVal"/>
+            </td>
+            <td>
+                <textarea name="desc" class="ipt" v-model="item.desc" rows="2">\{{item.desc}}</textarea></td>
             <td>
                 <button class="btn btn-danger btn-xs" v-on="click:onremove($index)"><i class="i i-remove i-striped"></i></button>
             </td>
