@@ -10,10 +10,11 @@ define(function (require, exports, module) {
 
     require('../../widget/admin/welcome.js');
     require('../../widget/admin/nav.js');
+    require('../../widget/common/vue-filter.js');
 
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
-    var url = '/api/engineer/?id=' + window['-id-'];
+    var url = '/admin/api/engineer/?id=' + window['-id-'];
     var app = {};
 
     app.init = function () {
@@ -27,12 +28,14 @@ define(function (require, exports, module) {
             return alert(json);
         }
 
-        //new Vue({
-        //    el: '#form',
-        //    data: {
-        //        engineer: json.data
-        //    }
-        //});
+        var data = json.data;
+
+        var vue = new Vue({
+            el: '#form',
+            data: data
+        });
+
+        vue.$el.classList.remove('f-none');
     };
 
     app.init();
