@@ -40,4 +40,8 @@ module.exports = function(app, ctrlAdmin){
         app.get('/admin/object/' + uri + '/list/', ctrlAdmin.object.list(uri));
         app.get('/admin/object/' + uri + '/', ctrlAdmin.object.get(uri));
     });
+
+
+    // notification
+    app.get('/admin/notification/', ctrlAdmin.notification.get);
 };

@@ -12,6 +12,7 @@ module.exports = function (app) {
         engineer: require('./engineer.js')(app),
         main: require('./main.js')(app),
         middleware: require('./middleware.js')(app),
+        notification: require('./notification.js')(app),
         object: require('./object.js')(app),
         scope: require('./scope.js')(app),
         setting: require('./setting.js')(app)
