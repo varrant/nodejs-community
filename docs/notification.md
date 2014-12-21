@@ -10,9 +10,9 @@
 - `object` 影响者
 - `hasActived` 是否已经激活了
 - `activeAt` 激活时间
-- * `activeAtTimestamp` 激活时间
+- * `activeTimestamp` 激活时间
 - `activeByAt` 被激活时间
-- * `activeByAtTimestamp` 被激活时间
+- * `activeByTimestamp` 被激活时间
 - `meta` 元信息
 
 

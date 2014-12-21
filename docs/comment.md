@@ -7,7 +7,7 @@
 - `author` 评论作者
 - `content` 评论内容
 - `publishAt` 发布时间
-- * `publishAtTimestamp` 发布时间
+- * `publishTimestamp` 发布时间
 - `post` 评论文章
 - `parent` 评论父级
 - `agreeCount` 赞同数量

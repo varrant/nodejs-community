@@ -13,9 +13,9 @@
 - `introduction` 简介
 - `content` 内容
 - `publishAt` 发布时间
-- * `publishAtTimestamp` 发布时间
+- * `publishTimestamp` 发布时间
 - `updateAt` 最近修改时间
-- * `updateAtTimestamp` 最近修改时间
+- * `updateTimestamp` 最近修改时间
 - `updateList` 修改历史
 - `isDisplay` 是否前台可见
 - `isSticky` 是否被置顶
