@@ -30,10 +30,14 @@ define(function (require, exports, module) {
             the._paginationSelector = paginationSelector;
             the._options = dato.extend({}, defaults, options);
             the._query = {
-                type: the._options.type,
                 page: dato.parseInt(hashbang.get('query', 'page'), 1),
                 limit: the._options.limit
             };
+
+            if(the._options.type){
+                the._query.type = the._options.type;
+            }
+
             the._init();
         },
 
@@ -76,7 +80,7 @@ define(function (require, exports, module) {
             }
 
             if (the.vue) {
-                the.vue.$data.objects = json.data;
+                the.vue.$data.list = json.data;
                 the._pagination.render({
                     page: the._query.page,
                     max: Math.ceil(json.count / the._query.limit)
@@ -85,7 +89,7 @@ define(function (require, exports, module) {
                 the.vue = new Vue({
                     el: the._listSelector,
                     data: {
-                        objects: json.data,
+                        list: json.data,
                         req: the._query
                     },
                     methods: {}
