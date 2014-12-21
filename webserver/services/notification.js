@@ -33,8 +33,8 @@ exports.find = notification.find;
  * @param conditions {Object} 查询条件
  * @param callback {Function} 回调
  */
-exports.setActived = function (conditions, callback) {
-    notification.toggle(conditions, 'hasActived', true, callback);
+exports.setActive = function (conditions, callback) {
+    notification.toggle(conditions, 'hasActiveBy', true, callback);
 };
 
 /**
@@ -42,6 +42,6 @@ exports.setActived = function (conditions, callback) {
  * @param conditions {Object} 查询条件
  * @param callback {Function} 回调
  */
-exports.cancelActived = function (conditions, callback) {
-    notification.toggle(conditions, 'hasActived', false, callback);
+exports.cancelActive = function (conditions, callback) {
+    notification.toggle(conditions, 'hasActiveBy', false, callback);
 };

@@ -44,7 +44,7 @@ var schema = new mongoose.Schema({
         required: false
     },
     // 是否已被激活
-    hasActived: {
+    hasActiveBy: {
         type: Boolean,
         default: false
     },

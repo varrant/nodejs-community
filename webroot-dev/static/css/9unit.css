@@ -1,0 +1,11 @@
+/*u-labels*/
+.u-labels{
+}
+
+.u-labels label{
+    margin-right: 15px;
+}
+
+.u-labels label:last-child{
+    margin-right: 0;
+}
