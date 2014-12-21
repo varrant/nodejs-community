@@ -5,7 +5,7 @@
 `*`表示虚拟字段
 
 - `email` 邮箱
-- `githubLogin` github 帐号
+- `githubLogin` github 登录帐号
 - `githubId` github ID（唯一识别）
 - `weibo` 授权后的 weibo 帐号，用于个人/组织认证
 - `nickname` 昵称

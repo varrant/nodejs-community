@@ -3,7 +3,9 @@
   // 所有者，社区创建者
   "owner": {
     "email": "cloudcome@163.com",
-    "github": "cloudcome",
+    "githubLogin": "cloudcome",
+    // http://caius.github.io/github_id/
+    "githubId": "3362033",
     "weibo": "cloudcome",
     "nickname": "云淡然",
     "role": 2097151,
