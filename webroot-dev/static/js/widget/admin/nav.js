@@ -34,7 +34,7 @@ define(function (require, exports, module) {
         });
 
         dato.each(regs, function (index, reg) {
-            if(reg.test(pathname)){
+            if (reg.test(pathname)) {
                 find = index;
                 return false;
             }
@@ -50,7 +50,9 @@ define(function (require, exports, module) {
         });
 
         vue.$el.classList.remove('f-none');
-        new Scrollbar('#nav');
+        new Scrollbar('#nav', {
+            isStandAlone: true
+        });
     };
 
     app.init();
