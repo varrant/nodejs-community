@@ -22,7 +22,7 @@ module.exports = function (app) {
     exports.count = function (req, res, next) {
         var userId = res.locals.$engineer.id;
 
-        notification.count({hasActived: false, activedUser: userId}, function (err, count) {
+        notification.count({hasActive: false, source: userId}, function (err, count) {
             if (err) {
                 return next(err);
             }
@@ -41,10 +41,10 @@ module.exports = function (app) {
      * @param res
      * @param next
      */
-    exports.setActived = function (req, res, next) {
+    exports.setActive = function (req, res, next) {
         var userId = res.locals.$engineer.id;
 
-        notification.setActived({_id: req.body.id, activedUser: userId}, function (err) {
+        notification.setActive({_id: req.body.id, source: userId}, function (err) {
             if (err) {
                 return next(err);
             }
@@ -63,18 +63,18 @@ module.exports = function (app) {
      * @param res
      * @param next
      */
-    exports.list = function (req, res, next) {
+    exports.get = function (req, res, next) {
         var userId = res.locals.$engineer.id;
         var conditions = {activedUser: userId};
         var options = filter.skipLimit(req);
 
         switch (req.query.type) {
-            case 'actived':
-                conditions.hasActived = true;
+            case 'active':
+                conditions.hasActive = true;
                 break;
 
-            case 'unactived':
-                conditions.hasActived = false;
+            case 'unactive':
+                conditions.hasActive = false;
                 break;
         }
 

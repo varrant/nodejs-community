@@ -11,6 +11,8 @@ var settings = ['oauth', 'smtp', 'types', 'website', 'alioss', 'roles'];
 module.exports = function (app, ctrlApi) {
     // notification
     app.get('/admin/api/notification/count/', ctrlApi.notification.count);
+    app.get('/admin/api/notification/', ctrlApi.notification.get);
+    app.put('/admin/api/notification/', ctrlApi.notification.setActive);
 
 
     // nav
