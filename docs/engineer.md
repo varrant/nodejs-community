@@ -6,18 +6,18 @@
 - `github` github 帐号
 - `weibo` 授权后的 weibo 帐号，用于个人/组织认证
 - `nickname` 昵称
-- `role` 2^0 -> 2^20，默认2^=1，所有者最高为`2^0 + 2^1 + ... + 2^20 = 2097151`
+- `role` 2^0 -> 2^20，默认2^0=1，所有者最高为`2^0 + 2^1 + ... + 2^20 = 2097151`
 - `title` 头衔
 - `signUpAt` 注册时间
 - `signInAt` 登录时间
 - `score` 积分，默认1
 - `viewCount` 用户主页访问数量
 - `commentCount` 评论次数
-- `repliedCount` 被回复次数
-- `agreedCount` 被赞同次数
-- `acceptedCount` 被接受次数
+- `replyByCount` 被回复次数
+- `agreeByCount` 被赞同次数
+- `acceptByCount` 被接受次数
 - `followCount` 关注人数
-- `followedCount` 被关注人数
+- `followByCount` 被关注人数
 - `objectStatistics` object 统计
 - `isBlock` 是否被阻止登入
 - `organizations` 加入的组织、团队
