@@ -185,10 +185,11 @@ footer{
   padding: 0;
   margin: 0;
   list-style: none;
+  @width: 140px;
 
   >li{
     position: relative;
-    padding: 0 0 0 100px;
+    padding: 0 0 0 @width;
     margin-bottom: 20px;
   }
 
@@ -198,7 +199,7 @@ footer{
 
   .form-key{
     position: absolute;
-    width: 100px;
+    width: @width;
     left: 0;
     top: 0;
     text-align: right;
