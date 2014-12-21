@@ -72,7 +72,7 @@ define(function (require, exports, module) {
             ajax({
                 url: url,
                 method: 'delete',
-                data: {_id: id}
+                data: {id: id}
             })
                 .on('success', function (json) {
                     if (json.code === 200) {
