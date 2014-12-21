@@ -10,6 +10,7 @@ var express = require('express');
 var configs = require('../configs/');
 var path = require('path');
 var dato = require('ydr-util').dato;
+var date = require('ydr-util').date;
 
 // cookie 支持
 var cookieParser = require('cookie-parser');
@@ -39,6 +40,14 @@ ydrTemplate.addFilter('gravatar', function (val, size) {
 
 ydrTemplate.addFilter('humanize', function (val) {
     return dato.humanize(val);
+});
+
+ydrTemplate.addFilter('datefrom', function (val) {
+    return date.from(val);
+});
+
+ydrTemplate.addFilter('datetime', function (val) {
+    return date.format('YYYY年MM月DD日 HH:mm:ss.SSS 星期e a', val);
 });
 
 

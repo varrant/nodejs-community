@@ -17,6 +17,11 @@
     <div class="m-main">
         <h1 class="main-title"><i class="i i-user"></i>{{title}} - {{me.nickname}}</h1>
         <div class="main-body">
+            <div class="m-me">
+                <div class="me-avatar me-avatar-abs">
+                    <img src="{{me.email|gravatar:100}}" alt="avatar"/>
+                </div>
+            </div>
             {{include ./include/engineer/me.html}}
         </div>
     </div>
