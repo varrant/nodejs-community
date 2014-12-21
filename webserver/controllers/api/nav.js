@@ -63,7 +63,7 @@ module.exports = function (app) {
 
         list.push({
             href: '/admin/setting/roles/',
-            text: '权限管理',
+            text: '操作权限',
             icon: 'i i-key',
             reg: '^setting\\/roles\\/$'
         });
