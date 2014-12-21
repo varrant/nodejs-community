@@ -47,7 +47,7 @@ ydrTemplate.addFilter('datefrom', function (val) {
 });
 
 ydrTemplate.addFilter('datetime', function (val) {
-    return date.format('YYYY年MM月DD日 HH:mm:ss.SSS 星期e a', val);
+    return date.format('YYYY-MM-DD HH:mm:ss 星期e', val);
 });
 
 
