@@ -83,10 +83,10 @@ define(function (require, exports, module) {
             };
             data.scopes.forEach(function (item) {
                 item.text = item.name;
-                item.value = item._id;
+                item.value = item.id;
 
                 if (item.uri === 'default' && !data.object.scope) {
-                    data.object.scope = item._id;
+                    data.object.scope = item.id;
                 }
             });
             the.vue = new Vue({
@@ -100,9 +100,9 @@ define(function (require, exports, module) {
             });
             the.vue.$el.classList.remove('f-none');
             the.editor = new Editor(the._contentSelector, {
-                id: data._id,
+                id: data.id,
                 // 更新的时候自动聚焦
-                autoFocus: !!data._id
+                autoFocus: !!data.id
             }).on('change', function (val) {
                     the.vue.$data.object.content = val;
                 });
@@ -155,7 +155,7 @@ define(function (require, exports, module) {
 
             ajax({
                 url: the._options.url,
-                method: data._id ? 'put' : 'post',
+                method: data.id ? 'put' : 'post',
                 data: data
             }).on('success', function (json) {
                 if (json.code !== 200) {
@@ -165,7 +165,7 @@ define(function (require, exports, module) {
                 // 属于创建，清除之前的缓存记录，换成新的
                 if (!the._options.id) {
                     the.editor.clearStore();
-                    the._options.id = json.data._id;
+                    the._options.id = json.data.id;
                     the.editor.setOptions('id', the._options.id);
                 }
 

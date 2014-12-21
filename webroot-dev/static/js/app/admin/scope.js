@@ -61,7 +61,7 @@ define(function (require, exports, module) {
     app.onremove = function (eve, index) {
         var $btn = selector.closest(eve.target, '.btn')[0];
         var the = this;
-        var id = the.$data.list[index]._id;
+        var id = the.$data.list[index].id;
 
         if(!id){
             return the.$data.list.splice(index, 1);
