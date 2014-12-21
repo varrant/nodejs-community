@@ -2,14 +2,18 @@
 
 适用于：前端开发工程师。
 
+`*`表示虚拟字段
+
 - `email` 邮箱
 - `github` github 帐号
 - `weibo` 授权后的 weibo 帐号，用于个人/组织认证
 - `nickname` 昵称
 - `role` 2^0 -> 2^20，默认2^0=1，所有者最高为`2^0 + 2^1 + ... + 2^20 = 2097151`
 - `title` 头衔
-- `signUpAt` 注册时间
-- `signInAt` 登录时间
+- `registerAt` 注册时间
+- * `registerAtTimestamp` 注册时间
+- `loginAt` 登录时间
+- * `loginAtTimestamp` 登录时间
 - `score` 积分，默认1
 - `viewCount` 用户主页访问数量
 - `commentCount` 评论次数
