@@ -5,8 +5,8 @@
 `*`表示虚拟字段
 
 - `type` 通知类型，详见下表
-- `active` 激活者
-- `activeBy` 被激活者
+- `source` 来源
+- `target` 目标
 - `object` 影响者
 - `hasActived` 是否已经激活了
 - `activeAt` 激活时间

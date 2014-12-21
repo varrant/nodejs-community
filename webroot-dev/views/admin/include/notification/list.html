@@ -11,18 +11,18 @@
         <thead>
         <tr>
             <th width="8%">序号</th>
-            <th width="*">昵称</th>
+            <th width="*">来源</th>
         </tr>
         </thead>
         <tbody>
         <tr v-repeat="notification:list" v-class="danger:!notification.hasActiveBy">
             <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>
-            <td>\{{notification.active}}</td>
+            <td>\{{notification.source}}</td>
         </tr>
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="3" id="pagination"></td>
+            <td colspan="2" id="pagination"></td>
         </tr>
         </tfoot>
     </table>

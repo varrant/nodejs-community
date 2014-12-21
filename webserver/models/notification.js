@@ -28,13 +28,14 @@ var schema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // 激活者
-    active: {
+    // 来源
+    source: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: 'engineer'
     },
-    // 被激活者
-    activeBy: {
+    // 目标
+    target: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'engineer'
@@ -42,8 +43,7 @@ var schema = new mongoose.Schema({
     // 被操作对象
     object: {
         type: mongoose.Schema.Types.ObjectId,
-        required: false,
-        ref: 'engineer'
+        required: false
     },
     // 是否已被激活
     hasActiveBy: {
