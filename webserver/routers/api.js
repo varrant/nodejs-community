@@ -16,6 +16,7 @@ module.exports = function (app, ctrlApi) {
     // nav
     app.get('/admin/api/nav/', ctrlApi.nav.list);
 
+
     // scope
     app.get('/admin/api/scope/', ctrlApi.scope.list);
     app.post('/admin/api/scope/', ctrlApi.scope.post);
