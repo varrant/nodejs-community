@@ -10,5 +10,13 @@
 module.exports = function (app) {
     var exports = {};
 
+    exports.get = function (req, res, next) {
+        var data = {
+            title: '用户管理'
+        };
+
+        res.render('admin/engineer-list.html', data);
+    };
+
     return exports;
 };

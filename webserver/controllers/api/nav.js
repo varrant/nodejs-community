@@ -76,13 +76,6 @@ module.exports = function (app) {
         });
 
         list.push({
-            href: '/admin/engineer/',
-            text: '用户管理',
-            icon: 'i i-users',
-            reg: '^engineer\\/$'
-        });
-
-        list.push({
             href: '/admin/object/help/list/',
             text: '帮助管理',
             icon: 'i i-question-circle',
@@ -94,6 +87,13 @@ module.exports = function (app) {
             text: '智问管理',
             icon: 'i i-cube',
             reg: '^object\\/question\\/'
+        });
+
+        list.push({
+            href: '/admin/engineer/list/',
+            text: '用户管理',
+            icon: 'i i-users',
+            reg: '^engineer\\/$'
         });
 
         list.push({
