@@ -69,7 +69,8 @@ var schema = new mongoose.Schema({
     // 更新记录
     // [{
     //    user: userId,
-    //    date: date
+    //    date: date,
+    //    timestamp: timestamp
     // }]
     updateList: {
         type: Array,
@@ -112,6 +113,7 @@ var schema = new mongoose.Schema({
     // [{
     //    user: userId,
     //    date: date,
+    //    timestamp: timestamp,
     //    score: score
     // }]
     scoreList: {
