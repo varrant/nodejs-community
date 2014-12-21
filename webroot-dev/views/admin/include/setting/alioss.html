@@ -5,30 +5,40 @@
     <table class="table">
         <thead>
         <tr>
-            <th width="30%">键名</th>
+            <th width="20%">键名</th>
             <th width="*">键值</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td><input class="ipt" type="text" name="role" value="domain"/></td>
-            <td><textarea class="ipt" rows="2" name="desc" v-model="alioss.domain">\{{alioss.domain}}</textarea></td>
+            <td>domain</td>
+            <td>
+                <input type="text" class="ipt" name="domain" value="\{{alioss.domain}}" v-model="alioss.domain"/>
+            </td>
         </tr>
         <tr>
-            <td><input class="ipt" type="text" name="role" value="bucket"/></td>
-            <td><textarea class="ipt" rows="2" name="desc" v-model="alioss.bucket">\{{alioss.bucket}}</textarea></td>
+            <td>bucket</td>
+            <td>
+                <input type="text" class="ipt" name="bucket" value="\{{alioss.bucket}}" v-model="alioss.bucket"/>
+            </td>
         </tr>
         <tr>
-            <td><input class="ipt" type="text" name="role" value="host"/></td>
-            <td><textarea class="ipt" rows="2" name="desc" v-model="alioss.host">\{{alioss.host}}</textarea></td>
+            <td>host</td>
+            <td>
+                <input type="text" class="ipt" name="bucket" value="\{{alioss.host}}" v-model="alioss.host"/>
+            </td>
         </tr>
         <tr>
-            <td><input class="ipt" type="text" name="role" value="accessKeyId"/></td>
-            <td><textarea class="ipt" rows="2" name="desc" v-model="alioss.accessKeyId">\{{alioss.accessKeyId}}</textarea></td>
+            <td>accessKeyId</td>
+            <td>
+                <input type="text" class="ipt" name="bucket" value="\{{alioss.accessKeyId}}" v-model="alioss.accessKeyId"/>
+            </td>
         </tr>
         <tr>
-            <td><input class="ipt" type="text" name="role" value="accessKeySecret"/></td>
-            <td><textarea class="ipt" rows="2" name="desc" v-model="alioss.accessKeySecret">\{{alioss.accessKeySecret}}</textarea></td>
+            <td>accessKeySecret</td>
+            <td>
+                <input type="text" class="ipt" name="bucket" value="\{{alioss.accessKeySecret}}" v-model="alioss.accessKeySecret"/>
+            </td>
         </tr>
         </tbody>
         <tfoot>
