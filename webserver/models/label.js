@@ -7,7 +7,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var schema = mongoose.Schema({
+var schema = new mongoose.Schema({
     // 标注名称
     name: {
         type: String,
@@ -29,5 +29,8 @@ var schema = mongoose.Schema({
         default: {}
     }
 });
+
+schema.set('toJSON', { getters: true, virtuals: true });
+schema.set('toObject', { getters: true, virtuals: true });
 
 module.exports = mongoose.model('label', schema);

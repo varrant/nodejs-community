@@ -7,7 +7,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var schema = mongoose.Schema({
+var schema = new mongoose.Schema({
     // 用户ID
     author: {
         type: mongoose.Schema.Types.ObjectId,
@@ -61,5 +61,8 @@ var schema = mongoose.Schema({
         default: {}
     }
 });
+
+schema.set('toJSON', { getters: true, virtuals: true });
+schema.set('toObject', { getters: true, virtuals: true });
 
 module.exports = mongoose.model('comment', schema);

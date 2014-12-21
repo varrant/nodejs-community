@@ -7,7 +7,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var schema = mongoose.Schema({
+var schema = new mongoose.Schema({
     // 操作者
     operator: {
         type: mongoose.Schema.Types.ObjectId,
@@ -56,5 +56,8 @@ var schema = mongoose.Schema({
         default: {}
     }
 });
+
+schema.set('toJSON', { getters: true, virtuals: true });
+schema.set('toObject', { getters: true, virtuals: true });
 
 module.exports = mongoose.model('interactive', schema);
