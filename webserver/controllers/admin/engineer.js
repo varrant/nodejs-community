@@ -34,7 +34,7 @@ module.exports = function (app) {
     exports.me = function (req, res, next) {
         var data = {
             title: '我',
-            me: app.locals.$engineer
+            me: res.locals.$engineer
         };
 
         res.render('admin/engineer-me.html', data);
