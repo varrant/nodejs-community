@@ -4,11 +4,11 @@
 
 - `type` 通知类型，详见下表
 - `activeUser` 激活者
-- `activedUser` 被激活者
+- `activeByUser` 被激活者
 - `object` 影响者
 - `hasActived` 是否已经激活了
 - `activeAt` 激活时间
-- `activedAt` 被激活时间
+- `activeByAt` 被激活时间
 - `meta` 元信息
 
 
