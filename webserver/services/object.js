@@ -199,7 +199,8 @@ exports.updateOne = function (author, conditions, data, callback) {
             data3.$push = {
                 updateList: {
                     user: author._id,
-                    date: date
+                    date: date,
+                    timestamp: date.getTime()
                 }
             };
 
@@ -271,8 +272,11 @@ exports.increaseScore = function (operator, id, count, callback) {
     howdo.task(function (done) {
         object.increase(conditions, 'score', count, done);
     }).task(function (done) {
+        var date = new Date();
+
         object.push(conditions, 'scoreList', {
-            date: new Date(),
+            date: date,
+            timestamp: date.getTime(),
             score: count,
             user: operator._id
         }, done);
