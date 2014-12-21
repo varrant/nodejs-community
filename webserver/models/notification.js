@@ -34,7 +34,7 @@ var schema = mongoose.Schema({
         required: true
     },
     // 被激活者
-    activedUser: {
+    activeByUser: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
@@ -54,7 +54,7 @@ var schema = mongoose.Schema({
         default: new Date()
     },
     // 被激活时间
-    activedAt: {
+    activeByAt: {
         type: Date,
         default: null
     },
