@@ -1,0 +1,16 @@
+<div id="role" class="f-none">
+    <ul>
+        <li v-repeat="kind:kinds">
+            <div class="">\{{kind.name}}</div>
+            <ul>
+                <li v-repeat="item:kind.list">
+                    <label><input type="checkbox"/>\{{item.title||item.desc}}（\{{item.role}}）</label>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="f-text-center">
+        <button class="btn btn-danger btn-lg">保存权限设置</button>
+    </div>
+</div>

@@ -24,18 +24,36 @@ define(function (require, exports, module) {
     };
 
     app._onsuccess = function (json) {
-        if(json.code !== 200){
+        if (json.code !== 200) {
             return alert(json);
         }
 
-        var data = json.data;
+        var data1 = json.data;
+        var data2 = [];
 
-        var vue = new Vue({
-            el: '#form',
-            data: data
+        data2.push({
+            name: '版块权限',
+            list: data1.types
         });
 
-        vue.$el.classList.remove('f-none');
+        data2.push({
+            name: '操作权限',
+            list: data1.roles
+        });
+
+        var vue1 = new Vue({
+            el: '#form',
+            data: data1
+        });
+        var vue2 = new Vue({
+            el: '#role',
+            data: {
+                kinds: data2
+            }
+        });
+
+        vue1.$el.classList.remove('f-none');
+        vue2.$el.classList.remove('f-none');
     };
 
     app.init();
