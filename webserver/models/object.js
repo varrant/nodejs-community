@@ -83,12 +83,17 @@ var schema = mongoose.Schema({
         type: Boolean,
         default: true
     },
-    // 是否推荐，置顶
+    // 是否被置顶
+    isSticky: {
+        type: Boolean,
+        default: false
+    },
+    // 是否被推荐
     isRecommend: {
         type: Boolean,
         default: false
     },
-    // 是否精华
+    // 是否被精华
     isEssence: {
         type: Boolean,
         default: false
@@ -96,7 +101,7 @@ var schema = mongoose.Schema({
     // 加色
     color: {
         type: String,
-        default: 'normal'
+        default: ''
     },
     // 被加分
     score: {

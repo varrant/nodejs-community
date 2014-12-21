@@ -14,9 +14,10 @@
 - `updateAt` 最近修改时间
 - `updateList` 修改历史
 - `isDisplay` 是否前台可见
+- `isSticky` 是否被置顶
 - `isRecommend` 是否被推荐
 - `isEssence` 是否被精华
-- `color` 加色，默认`normal`
+- `color` 加色
 - `score` 被加分，默认系统添加1分
 - `scoreList` 被加分历史
 - `viewCount` 被阅读次数
