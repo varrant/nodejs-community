@@ -138,12 +138,18 @@ module.exports = function (app) {
         var id = body._id;
         var role = dato.parseInt(body.role, 1);
 
-        if (id === ownerId.id) {
-            return new Error('不能修改社区创建者的权限');
+        console.log('ownerId', ownerId);
+        console.log('id', id);
+        console.log('role', role);
+        console.log('role20', role20);
+        console.log(role & role20);
+
+        if (id === ownerId) {
+            return next(new Error('不能修改社区创建者权限'));
         }
 
-        if (role & role20 > 0) {
-            return new Error('不能赋予社区创建者权限');
+        if (role & role20) {
+            return next(new Error('不能赋予社区创建者权限'));
         }
 
         engineer.findOneAndUpdate({

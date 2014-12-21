@@ -58,7 +58,7 @@ define(function (require, exports, module) {
                 engineer: data1.engineer,
                 kinds: data2
             },
-            methods:{
+            methods: {
                 onsave: app._onsave
             }
         });
@@ -68,15 +68,34 @@ define(function (require, exports, module) {
     };
 
 
-    app._onsave = function () {
-        var $checkboxs = selector.query('#role input[checked]');
-        var value = 0;
+    app._onsave = function (eve, id) {
+        var $btn = eve.target;
+        var $checkboxs = selector.query('#role input');
+        var role = 0;
 
-        dato.each($checkboxs, function (index, $checkbox) {
-            value+=Math.pow(2, $checkbox.value * 1);
+        $checkboxs = selector.filter($checkboxs, function () {
+            return this.checked;
         });
 
-        alert(value);
+        dato.each($checkboxs, function (index, $checkbox) {
+            role += Math.pow(2, $checkbox.value * 1);
+        });
+
+        $btn.disabled = true;
+        ajax({
+            url: url,
+            method: 'post',
+            data: {
+                _id: id,
+                role: role
+            }
+        }).on('success', function (json) {
+            if (json.code !== 200) {
+                return alert(json);
+            }
+        }).on('error', alert).on('finish', function () {
+            $btn.disabled = false;
+        });
     };
 
     app.init();
