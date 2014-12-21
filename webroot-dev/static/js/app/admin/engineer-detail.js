@@ -32,12 +32,12 @@ define(function (require, exports, module) {
         var data2 = [];
 
         data2.push({
-            name: '版块权限',
+            name: '版块权限（0-10）',
             list: data1.types
         });
 
         data2.push({
-            name: '操作权限',
+            name: '操作权限（11-20）',
             list: data1.roles
         });
 
