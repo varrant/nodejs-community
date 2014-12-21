@@ -1,0 +1,85 @@
+<ul class="m-form" id="form">
+    <li class="form-striped">
+        <div class="form-key">email</div>
+        <div class="form-val">
+            <div class="form-opt">{{me.email}}</div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">github</div>
+        <div class="form-val">
+            <div class="form-opt">{{me.github}}</div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">注册时间</div>
+        <div class="form-val">
+            <div class="form-opt">{{me.registerAt|datefrom}}<span class="s-muted">（{{me.registerAt|datetime}}）</span></div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">登录时间</div>
+        <div class="form-val">
+            <div class="form-opt">{{me.loginAt|datefrom}}<span class="s-muted">（{{me.loginAt|datetime}}）</span></div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">关注/被关注</div>
+        <div class="form-val">
+            <div class="form-opt">
+                <a href="/engineer/{{me.github}}/follow/">已关注{{me.followCount}}</a>
+                /
+                <a href="/engineer/{{me.github}}/follow-by/">被关注{{me.followByCount}}</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">被采纳</div>
+        <div class="form-val">
+            <div class="form-opt">
+                <a href="/engineer/{{me.github}}/accept-by/">{{me.acceptByCount}}次</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">被赞同次数</div>
+        <div class="form-val">
+            <div class="form-opt">
+                <a href="/engineer/{{me.github}}/agree-by/">{{me.agreeByCount}}次</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">被回复</div>
+        <div class="form-val">
+            <div class="form-opt">
+                <a href="/engineer/{{me.github}}/reply-by/">{{me.replyByCount}}次</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">评论</div>
+        <div class="form-val">
+            <div class="form-opt">
+                <a href="/engineer/{{me.github}}/comment-count/">{{me.commentCount}}次</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">主页被访问</div>
+        <div class="form-val">
+            <div class="form-opt">
+               {{me.viewCount}}次
+            </div>
+        </div>
+    </li>
+</ul>
