@@ -13,7 +13,7 @@ define(function (require, exports, module) {
     var confirm = require('../../widget/common/confirm.js');
     var selector = require('../../alien/core/dom/selector.js');
     var url = '/admin/api/scope/';
-    var app = {};
+    var page = {};
 
     require('../../widget/admin/welcome.js');
     require('../../widget/admin/nav.js');
@@ -21,10 +21,10 @@ define(function (require, exports, module) {
     /**
      * 请求展示列表
      */
-    app.init = function () {
+    page.list = function () {
         ajax({
             url: url
-        }).on('success', app.onsuccess).on('error', alert);
+        }).on('success', page.onsuccess).on('error', alert);
     };
 
 
@@ -33,7 +33,7 @@ define(function (require, exports, module) {
      * @param json
      * @returns {*}
      */
-    app.onsuccess = function (json) {
+    page.onsuccess = function (json) {
         if (json.code !== 200) {
             return alert(json);
         }
@@ -44,9 +44,9 @@ define(function (require, exports, module) {
                 list: json.data
             },
             methods: {
-                onremove: app.onremove,
-                oncreate: app.oncreate,
-                onsave: app.onsave
+                onremove: page.onremove,
+                oncreate: page.oncreate,
+                onsave: page.onsave
             }
         });
 
@@ -58,7 +58,7 @@ define(function (require, exports, module) {
      * 删除
      * @param index
      */
-    app.onremove = function (eve, index) {
+    page.onremove = function (eve, index) {
         var $btn = selector.closest(eve.target, '.btn')[0];
         var the = this;
 
@@ -87,7 +87,7 @@ define(function (require, exports, module) {
     /**
      * 新建一个
      */
-    app.oncreate = function () {
+    page.oncreate = function () {
         this.$data.list.push({
             name: '',
             uri: '',
@@ -101,7 +101,7 @@ define(function (require, exports, module) {
      * 保存
      * @param eve
      */
-    app.onsave = function (eve, index) {
+    page.onsave = function (eve, index) {
         var $btn = selector.closest(eve.target, '.btn')[0];
         var the = this;
 
@@ -124,5 +124,5 @@ define(function (require, exports, module) {
             });
     };
 
-    app.init();
+    page.list();
 });

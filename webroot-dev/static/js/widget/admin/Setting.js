@@ -59,7 +59,6 @@ define(function (require, exports, module) {
 
             methods = dato.extend({}, {
                 onremove: the._onremove.bind(the),
-                oncreate: the._oncreate.bind(the),
                 onsave: the._onsave.bind(the)
             }, methods);
 
@@ -94,18 +93,6 @@ define(function (require, exports, module) {
             }
         },
 
-
-        /**
-         * 创建
-         * @private
-         */
-        _oncreate: function () {
-            this.vue.$data.list.push({
-                name: '未定义',
-                role: 20,
-                desc: '未定义'
-            });
-        },
 
 
         /**
