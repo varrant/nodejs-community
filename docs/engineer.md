@@ -5,7 +5,8 @@
 `*`表示虚拟字段
 
 - `email` 邮箱
-- `github` github 帐号
+- `githubLogin` github 帐号
+- `githubId` github ID（唯一识别）
 - `weibo` 授权后的 weibo 帐号，用于个人/组织认证
 - `nickname` 昵称
 - `role` 2^0 -> 2^20，默认2^0=1，所有者最高为`2^0 + 2^1 + ... + 2^20 = 2097151`
