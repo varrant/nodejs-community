@@ -43,7 +43,8 @@ var schema = new mongoose.Schema({
     // 被操作对象
     object: {
         type: mongoose.Schema.Types.ObjectId,
-        required: false
+        required: false,
+        ref: 'object'
     },
     // 是否已被激活
     hasActiveBy: {
@@ -71,8 +72,8 @@ var schema = new mongoose.Schema({
     }
 });
 
-schema.set('toJSON', { getters: true, virtuals: true });
-schema.set('toObject', { getters: true, virtuals: true });
+schema.set('toJSON', {getters: true, virtuals: true});
+schema.set('toObject', {getters: true, virtuals: true});
 
 
 module.exports = mongoose.model('notification', schema);
