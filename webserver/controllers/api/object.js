@@ -86,6 +86,8 @@ module.exports = function (app) {
      * @param next
      */
     exports.get = function (req, res, next) {
+        var id = req.query.id;
+
         howdo
             // 查找 scope
             .task(function (done) {
@@ -97,11 +99,15 @@ module.exports = function (app) {
                     return done();
                 }
 
-                object.findOne({_id: req.query.id}, done);
+                object.findOne({_id: id}, done);
             })
             .together(function (err, docs, doc) {
                 if (err) {
                     return next(err);
+                }
+
+                if (!doc) {
+                    return next();
                 }
 
                 res.json({

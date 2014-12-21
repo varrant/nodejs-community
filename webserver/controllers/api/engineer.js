@@ -11,6 +11,8 @@ var configs = require('../../../configs/');
 var engineer = require('../../services/').engineer;
 var setting = require('../../services/').setting;
 var cookie = require('../../utils/').cookie;
+var filter = require('../../utils/').filter;
+var howdo = require('howdo');
 
 
 module.exports = function (app) {
@@ -58,13 +60,14 @@ module.exports = function (app) {
 
 
     /**
-     * 所有用户
+     * 所有/某个用户
      * @param req
      * @param res
      * @param next
      */
     exports.get = function (req, res, next) {
         var id = req.query.id;
+        var options = filter.skipLimit(req);
 
         if (id) {
             engineer.findOne({
@@ -80,13 +83,43 @@ module.exports = function (app) {
                 });
             });
         } else {
-            engineer.find({}, function (err, docs) {
+            engineer.find({}, options, function (err, docs) {
                 res.json({
                     code: 200,
                     data: docs
                 });
             });
         }
+    };
+
+
+    /**
+     * 获取某个用户详情，包括：用户信息、版块权限信息、操作权限信息
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.detail = function (req, res, next) {
+        var id = req.query.id;
+
+        engineer.findOne({
+            _id: id
+        }, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            if (!doc) {
+                return next();
+            }
+
+            res.json({
+                code: 200,
+                data: {
+                    engineer: doc
+                }
+            });
+        });
     };
 
     return exports;
