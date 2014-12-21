@@ -96,4 +96,40 @@
             </div>
         </div>
     </li>
+
+    <li class="form-striped">
+        <div class="form-key">location</div>
+        <div class="form-val">
+            <div class="form-opt">
+               \{{engineer.meta.location}}
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">blog</div>
+        <div class="form-val">
+            <div class="form-opt">
+               <a href="\{{engineer.meta.blog}}?from=f2ec.org" target="_blank">\{{engineer.meta.blog}}</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">company</div>
+        <div class="form-val">
+            <div class="form-opt">
+                \{{engineer.meta.company}}
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">bio</div>
+        <div class="form-val">
+            <div class="form-opt">
+                \{{engineer.meta.bio || 'TA 还没来得及向大家介绍你自己呢。'}}
+            </div>
+        </div>
+    </li>
 </ul>
