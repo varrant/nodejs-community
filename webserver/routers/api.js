@@ -36,14 +36,16 @@ module.exports = function (app, ctrlApi) {
 
     // setting
     settings.forEach(function (key) {
-            app.get('/admin/api/setting/' + key + '/', ctrlApi.setting.get(key));
-            app.put('/admin/api/setting/' + key + '/', ctrlApi.setting.put(key));
-        });
+        app.get('/admin/api/setting/' + key + '/', ctrlApi.setting.get(key));
+        app.put('/admin/api/setting/' + key + '/', ctrlApi.setting.put(key));
+    });
 
-    // user
+
+    // engineer
     app.post('/api/engineer/login/', ctrlApi.engineer.login);
     app.get('/api/engineer/', ctrlApi.engineer.get);
     app.get('/admin/api/engineer/', ctrlApi.engineer.detail);
+    app.post('/admin/api/engineer/', ctrlApi.engineer.role);
 
 
     // translate

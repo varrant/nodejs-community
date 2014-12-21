@@ -13,7 +13,8 @@ var setting = require('../../services/').setting;
 var cookie = require('../../utils/').cookie;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
-
+var dato = require('ydr-util').dato;
+var role20 = Math.pow(2, 20);
 
 module.exports = function (app) {
     var exports = {};
@@ -120,6 +121,42 @@ module.exports = function (app) {
                     types: app.locals.$settings.types,
                     roles: app.locals.$settings.roles
                 }
+            });
+        });
+    };
+
+
+    /**
+     * 修改用户权限
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.role = function (req, res, next) {
+        var ownerId = app.locals.$owner._id;
+        var body = req.body;
+        var id = body._id;
+        var role = dato.parseInt(body.role, 1);
+
+        if (id === ownerId.id) {
+            return new Error('不能修改社区创建者的权限');
+        }
+
+        if (role & role20 > 0) {
+            return new Error('不能赋予社区创建者权限');
+        }
+
+        engineer.findOneAndUpdate({
+            _id: id
+        }, {
+            role: role
+        }, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                code: 200
             });
         });
     };
