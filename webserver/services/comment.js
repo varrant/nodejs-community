@@ -147,7 +147,7 @@ function _noticeObjectAuthor(activeUserId, objectId) {
             }
 
             if (!doc) {
-                err = new Error('_noticeObjectAuthor author is not exist');
+                err = new Error('the object author is not exist');
                 err.type = 'notFound';
                 return log.holdError(err);
             }
@@ -156,7 +156,7 @@ function _noticeObjectAuthor(activeUserId, objectId) {
             notification.createOne({
                 type: 'comment',
                 activeUser: activeUserId,
-                activedUser: doc._id,
+                activeByUser: doc._id,
                 object: objectId
             }, log.holdError);
 
@@ -187,7 +187,7 @@ function _noticeCommentAuthor(activeUserId, comment) {
             }
 
             if (!doc) {
-                err = new Error('_noticeCommentAuthor author is not exist');
+                err = new Error('the comment author is not exist');
                 err.type = 'notFound';
                 return log.holdError(err);
             }
@@ -196,7 +196,7 @@ function _noticeCommentAuthor(activeUserId, comment) {
             notification.createOne({
                 type: 'comment',
                 activeUser: activeUserId,
-                activedUser: doc._id,
+                activeByUser: doc._id,
                 object: comment._id
             }, log.holdError);
 
