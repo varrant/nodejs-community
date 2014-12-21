@@ -1,5 +1,7 @@
 <div id="role" class="f-none">
-    <p><strong>\{{engineer.nickname}}（\{{engineer.email}}）</strong></p>
+    <div class="alert alert-danger alert-line">
+        <p><i class="i i-exclamation-triangle"></i>对 <strong>\{{engineer.nickname}}</strong> 的权限控制。</p>
+    </div>
     <ul>
         <li v-repeat="kind:kinds">
             <div class="">\{{kind.name}}</div>

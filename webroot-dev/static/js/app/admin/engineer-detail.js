@@ -14,6 +14,7 @@ define(function (require, exports, module) {
 
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
+    var confirm = require('../../widget/common/confirm.js');
     var url = '/admin/api/engineer/?id=' + window['-id-'];
     var app = {};
 
@@ -75,29 +76,32 @@ define(function (require, exports, module) {
         var $btn = eve.target;
         var role = 0;
         var kinds = this.$data.kinds;
-
-        kinds.forEach(function (kind) {
-            kind.list.forEach(function (item) {
-                if (item.checked) {
-                    role += Math.pow(2, item.role);
-                }
+        var save = function () {
+            kinds.forEach(function (kind) {
+                kind.list.forEach(function (item) {
+                    if (item.checked) {
+                        role += Math.pow(2, item.role);
+                    }
+                });
             });
-        });
-        $btn.disabled = true;
-        ajax({
-            url: url,
-            method: 'post',
-            data: {
-                _id: id,
-                role: role
-            }
-        }).on('success', function (json) {
-            if (json.code !== 200) {
-                return alert(json);
-            }
-        }).on('error', alert).on('finish', function () {
-            $btn.disabled = false;
-        });
+            $btn.disabled = true;
+            ajax({
+                url: url,
+                method: 'post',
+                data: {
+                    _id: id,
+                    role: role
+                }
+            }).on('success', function (json) {
+                if (json.code !== 200) {
+                    return alert(json);
+                }
+            }).on('error', alert).on('finish', function () {
+                $btn.disabled = false;
+            });
+        };
+
+        confirm('确定要修改该用户的权限控制吗？', save);
     };
 
     app.init();
