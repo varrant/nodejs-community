@@ -23,11 +23,16 @@
                 <button class="btn btn-primary btn-xs types-up" v-on="click:onup(item, $index)"><i class="i i-long-arrow-up i-striped"></i></button>
                 <button class="btn btn-info btn-xs types-down" v-on="click:ondown(item, $index)"><i class="i i-long-arrow-down i-striped"></i></button>
             </td>
-            <td><input class="ipt" type="text" name="title" value="\{{item.title}}" v-model="item.title"/></td>
-            <td><label for="show-\{{$index}}"><input type="checkbox" name="show" id="show-\{{$index}}" v-model="item.isDisplay"/>显示</label></td>
-            <td><input class="ipt" type="text" name="uri" value="\{{item.uri}}" v-model="item.uri"/></td>
             <td>
-                <input class="ipt" type="text" name="role" value="\{{item.role}}" v-model="item.role"/>
+                <input class="ipt" type="text" v-model="item.title"/></td>
+            <td>
+                <label for="show-\{{$index}}"><input type="checkbox" id="show-\{{$index}}" v-model="item.isDisplay"/>显示</label>
+            </td>
+            <td>
+                <input class="ipt" type="text" v-model="item.uri"/>
+            </td>
+            <td>
+                <input class="ipt" type="text" v-model="item.role"/>
                 <input name="\{{item.roleVal}}" type="hidden" value="\{{Math.pow(2, item.role)}}" v-model="item.roleVal"/>
             </td>
             <td>
