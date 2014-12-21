@@ -106,8 +106,8 @@ exports.increaseCommentCount = function (conditions, count, callback) {
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
-exports.increaseRepliedCount = function (conditions, count, callback) {
-    engineer.increase(conditions, 'repliedCount', count, callback);
+exports.increaseReplyByCount = function (conditions, count, callback) {
+    engineer.increase(conditions, 'replyByCount', count, callback);
 };
 
 
@@ -117,8 +117,8 @@ exports.increaseRepliedCount = function (conditions, count, callback) {
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
-exports.increaseAgreedCount = function (conditions, count, callback) {
-    engineer.increase(conditions, 'agreedCount', count, callback);
+exports.increaseAgreeByCount = function (conditions, count, callback) {
+    engineer.increase(conditions, 'agreeByCount', count, callback);
 };
 
 
@@ -128,8 +128,8 @@ exports.increaseAgreedCount = function (conditions, count, callback) {
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
-exports.increaseAcceptedCount = function (conditions, count, callback) {
-    engineer.increase(conditions, 'acceptedCount', count, callback);
+exports.increaseAcceptByCount = function (conditions, count, callback) {
+    engineer.increase(conditions, 'acceptByCount', count, callback);
 };
 
 
@@ -143,7 +143,7 @@ exports.follow = function (operatorId, userId, callback) {
     interactive.active({
         operator: operatorId,
         model: 'user',
-        path: 'followedCount',
+        path: 'followByCount',
         object: userId,
         value: 1
     }, function (err, isModified) {
@@ -151,7 +151,7 @@ exports.follow = function (operatorId, userId, callback) {
 
         if (isModified) {
             engineer.increase({_id: operatorId}, 'followCount', 1, log.holdError);
-            engineer.increase({_id: userId}, 'followedCount', 1, log.holdError);
+            engineer.increase({_id: userId}, 'followByCount', 1, log.holdError);
         }
     });
 };
@@ -167,7 +167,7 @@ exports.unfollow = function (operatorId, userId, callback) {
     interactive.active({
         operator: operatorId,
         model: 'user',
-        path: 'followedCount',
+        path: 'followByCount',
         object: userId,
         value: 0
     }, function (err, isModified) {
@@ -175,7 +175,7 @@ exports.unfollow = function (operatorId, userId, callback) {
 
         if (isModified) {
             engineer.increase({_id: operatorId}, 'followCount', -1, log.holdError);
-            engineer.increase({_id: userId}, 'followedCount', -1, log.holdError);
+            engineer.increase({_id: userId}, 'followByCount', -1, log.holdError);
         }
     });
 };
