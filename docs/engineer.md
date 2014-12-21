@@ -11,6 +11,7 @@
 - `nickname` 昵称
 - `role` 2^0 -> 2^20，默认2^0=1，所有者最高为`2^0 + 2^1 + ... + 2^20 = 2097151`
 - `title` 头衔
+- `type` 类型：normal、admin
 - `registerAt` 注册时间
 - `loginAt` 登录时间
 - `score` 积分，默认1

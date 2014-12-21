@@ -12,7 +12,7 @@ var file = process.argv[2];
 var json = fs.readFileSync(file, 'utf8');
 var mongoose = require('../webserver/mongoose.js');
 var setting = require('../webserver/services/').setting;
-var engineer = require('../webserver/services/').engineer;
+var engineer = require('../webserver/models/').engineer;
 var howdo = require('howdo');
 
 json = dato.removeComments(json);
@@ -58,7 +58,7 @@ mongoose(function (err) {
             });
         })
         .task(function (next) {
-            engineer.register(userData, next);
+            engineer.createOne(userData, next);
         })
         .task(function (next) {
             setting.set(settings, next);
