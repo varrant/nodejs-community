@@ -93,14 +93,14 @@ module.exports = function (app) {
             href: '/admin/engineer/list/',
             text: '用户管理',
             icon: 'i i-users',
-            reg: '^engineer\\/list\\/$'
+            reg: '^engineer\\/$'
         });
 
         list.push({
-            href: '/admin/engineer/profile/',
+            href: '/admin/me/',
             text: '个人资料',
             icon: 'i i-user',
-            reg: '^engineer\\/profile\\/$'
+            reg: '^me\\/$'
         });
 
         res.json({
