@@ -12,7 +12,7 @@ var schema = new mongoose.Schema({
     operator: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'user'
+        ref: 'engineer'
     },
     // 模型，支持 object、user、comment 等
     model: {

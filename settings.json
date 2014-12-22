@@ -42,43 +42,6 @@
     "ssl": true,
     "port": "smtp_port"
   },
-  // 板块类型
-  "types": [
-    {
-      // 角色发布权限，如：1表示2^1，注册用户默认权限为2^0
-      // 发布权限值范围为0-10，即2^0 - 2^10
-      "role": 10,
-      // 显示名称
-      "title": "帮助",
-      // URI 名称
-      "uri": "help",
-      // 是否显示
-      "isDisplay": true,
-      // 描述
-      "desc": ""
-    },
-    {
-      "role": 0,
-      "title": "智问",
-      "uri": "question",
-      "isDisplay": true,
-      "desc": ""
-    },
-    {
-      "role": 1,
-      "title": "观点",
-      "uri": "opinion",
-      "isDisplay": false,
-      "desc": ""
-    },
-    {
-      "role": 0,
-      "title": "微博",
-      "uri": "weibo",
-      "isDisplay": false,
-      "desc": ""
-    }
-  ],
   // 权限
   "roles": [
     {

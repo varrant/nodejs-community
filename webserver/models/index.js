@@ -11,14 +11,25 @@ var dato = require('ydr-util').dato;
 var typeis = require('ydr-util').typeis;
 var validators = require('../validators/');
 var models = {
+    // 分类
+    category: require('./category.js'),
+    // 评论
     comment: require('./comment.js'),
+    // 工程师
     engineer: require('./engineer.js'),
+    // 交互
     interactive: require('./interactive.js'),
+    // 标注
     label: require('./label.js'),
+    // 提醒
     notification: require('./notification.js'),
+    // 对象
     object: require('./object.js'),
-    scope: require('./scope.js'),
+    // 搜索
     search: require('./search.js'),
+    // 版块
+    section: require('./section.js'),
+    // 配置
     setting: require('./setting.js')
 };
 var configs = require('../../configs/');

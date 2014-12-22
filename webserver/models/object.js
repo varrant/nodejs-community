@@ -14,7 +14,7 @@ var schema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         unique: false,
-        ref: 'user'
+        ref: 'engineer'
     },
     // 标题
     title: {
@@ -28,13 +28,20 @@ var schema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    // 文章类型
-    type: {
-        type: String,
-        required: true
+    // 版块
+    section:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'scope'
     },
-    // 范围
-    scope: {
+    // 分类
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+        ref: 'scope'
+    },
+    // 专栏
+    column: {
         type: mongoose.Schema.Types.ObjectId,
         required: false,
         ref: 'scope'

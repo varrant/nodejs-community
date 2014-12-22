@@ -30,7 +30,7 @@ module.exports = function (app) {
                 uptime: Date.now() - app.locals.$startTime
             }
         };
-        var list = ['opinion', 'question', 'weibo', 'help'];
+        var list = app.locals.$settings._displayTypeUris;
 
         howdo
             // 统计个数

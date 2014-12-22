@@ -1,5 +1,5 @@
 /*!
- * 域模型
+ * 分类模型
  * @author ydr.me
  * @create 2014-12-02 21:07
  */
@@ -8,25 +8,6 @@
 
 var mongoose = require('mongoose');
 var schema = new mongoose.Schema({
-    // 类型
-    // category 分类
-    // section 版块
-    // column 专栏
-    type: {
-        type: String,
-        required: true
-    },
-    owner:{
-        type: mongoose.Schema.Types.ObjectId,
-        required: false,
-        unique: false,
-        ref: 'engineer'
-    },
-    // 权限 0 - 10
-    role: {
-        type: Number,
-        default: 0
-    },
     // 名称
     name: {
         type: String,
@@ -54,11 +35,6 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    // 是否在前端显示
-    isDisplay: {
-        type: Boolean,
-        default: false
-    },
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证
     // 因此必须再写入的时候自行验证
@@ -73,4 +49,4 @@ var schema = new mongoose.Schema({
 schema.set('toJSON', {getters: true, virtuals: true});
 schema.set('toObject', {getters: true, virtuals: true});
 
-module.exports = mongoose.model('scope', schema);
+module.exports = mongoose.model('category', schema);
