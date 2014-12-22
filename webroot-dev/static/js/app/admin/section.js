@@ -31,6 +31,7 @@ define(function (require, exports, module) {
 
                 var section = {};
 
+                debugger;
                 if (id) {
                     dato.each(json.data, function (i, sec) {
                         if (sec.id === id) {
@@ -47,7 +48,8 @@ define(function (require, exports, module) {
                         section: section
                     },
                     methods: {
-                        onsave: app._onsave
+                        onsave: app._onsave,
+                        onchoose: app._onchoose
                     }
                 });
 
@@ -57,6 +59,10 @@ define(function (require, exports, module) {
     };
 
 
+    /**
+     * 新增/保存
+     * @private
+     */
     app._onsave = function () {
         var the = this;
         var data = the.$data.section;
@@ -79,6 +85,16 @@ define(function (require, exports, module) {
                 the.$data.section = json.data;
             })
             .on('error', alert);
+    };
+
+
+    /**
+     * 选择
+     * @param index
+     * @private
+     */
+    app._onchoose = function (index) {
+        this.$data.section = this.$data.sections[index];
     };
 
     app.init();
