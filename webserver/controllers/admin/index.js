@@ -9,6 +9,7 @@
 
 module.exports = function (app) {
     return {
+        category: require('./category.js')(app),
         engineer: require('./engineer.js')(app),
         main: require('./main.js')(app),
         middleware: require('./middleware.js')(app),
