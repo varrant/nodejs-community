@@ -30,8 +30,8 @@ module.exports = function (app) {
         var pathname = urlParser.pathname;
         var search = urlParser.search;
 
-        res.set('X-Frame-Options', 'sameorigin');
-        res.set('X-Website-Author', 'ydr.me');
+        res.set('x-frame-options', 'sameorigin');
+        res.set('x-website-author', 'ydr.me');
 
         if (!REG_ENDXIE.test(pathname)) {
             return res.redirect(pathname + '/' + (search ? search : ''));
@@ -126,12 +126,13 @@ module.exports = function (app) {
                 return next(err);
             }
 
+            // 静默失败
             if (!doc) {
-                err = new Error('the user is not exist');
-                err.type = 'notFound';
-                err.redirect = '/';
+                //err = new Error('the user is not exist');
+                //err.type = 'notFound';
+                //err.redirect = '/';
                 cookie.logout(req, res);
-                return next(err);
+                return next();
             }
 
             req.session.$engineer = res.locals.$engineer = doc;
