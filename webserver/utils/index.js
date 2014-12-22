@@ -8,7 +8,6 @@
 
 module.exports = {
     cookie: require('./cookie.js'),
-    filter: require('./filter.js'),
-    locals: require('./locals.js')
+    filter: require('./filter.js')
 };
 
