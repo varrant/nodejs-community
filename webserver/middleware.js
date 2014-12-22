@@ -20,7 +20,6 @@ module.exports = function (next, app) {
                 }
 
                 app.locals.$settings = settings;
-
                 done();
             });
         })
