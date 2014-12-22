@@ -57,6 +57,7 @@ module.exports = function (app, ctrlApi) {
     // column
     app.get('/admin/api/column/', ctrlApi.column.get);
     app.put('/admin/api/column/', ctrlApi.column.put);
+    app.delete('/admin/api/column/', ctrlApi.column.delete);
 
 
     // engineer

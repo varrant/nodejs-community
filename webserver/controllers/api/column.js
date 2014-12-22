@@ -70,5 +70,26 @@ module.exports = function (app) {
         });
     };
 
+
+    /**
+     * 删除专栏
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.delete = function (req, res, next) {
+        var id = req.body.id;
+
+        column.findOneAndRemove(res.locals.$engineer, {_id: id}, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                code: 200
+            });
+        });
+    };
+
     return exports;
 }
