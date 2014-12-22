@@ -117,8 +117,18 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    // object 统计
-    objectStatistics: {
+    // section 统计
+    sectionStatistics: {
+        type: Object,
+        default: {}
+    },
+    // category 统计
+    categoryStatistics: {
+        type: Object,
+        default: {}
+    },
+    // column 统计
+    columnStatistics: {
         type: Object,
         default: {}
     },
@@ -147,8 +157,8 @@ var schema = new mongoose.Schema({
     }
 });
 
-schema.set('toJSON', { getters: true, virtuals: true });
-schema.set('toObject', { getters: true, virtuals: true });
+schema.set('toJSON', {getters: true, virtuals: true});
+schema.set('toObject', {getters: true, virtuals: true});
 
 
 module.exports = mongoose.model('engineer', schema);

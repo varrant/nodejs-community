@@ -8,7 +8,9 @@
 'use strict';
 
 var object = require('../models').object;
+var section = require('./section.js');
 var category = require('./category.js');
+var column = require('./column.js');
 var label = require('./label.js');
 var setting = require('./setting.js');
 var engineer = require('./engineer.js');
@@ -44,21 +46,21 @@ exports.find = object.find;
  */
 exports.createOne = function (author, data, callback) {
     howdo
-        // 1. 检查 section 是否存在以及发布权限
+        // 1. 检查 section 是否存在，以及发布权限
         .task(function (next) {
-            category.findOne({_id: data.category}, function (err, doc) {
+            section.findOne({_id: data.section}, function (err, doc) {
                 if (err) {
                     return next(err);
                 }
 
                 if (!doc) {
-                    err = new Error('the section is not exist');
+                    err = new Error('该板块不存在');
                     err.status = 404;
                     return next(err);
                 }
 
                 if (author.role & Math.pow(2, doc.role) === 0) {
-                    err = new Error('insufficient permissions');
+                    err = new Error('在该板块暂无发布权限');
                     err.status = 403;
                     return next(err);
                 }
@@ -74,7 +76,7 @@ exports.createOne = function (author, data, callback) {
                 }
 
                 if (!doc) {
-                    err = new Error('the category is not exist');
+                    err = new Error('该分类不存在');
                     err.status = 404;
                     return next(err);
                 }
@@ -82,7 +84,33 @@ exports.createOne = function (author, data, callback) {
                 next();
             });
         })
-        // 3. 新建数据
+        // 3. 检查 column 是否存在，以及发布权限
+        .task(function (next) {
+            if(!data.column){
+                return next();
+            }
+
+            column.findOne({_id: data.column}, function (err, doc) {
+                if (err) {
+                    return next(err);
+                }
+
+                if (!doc) {
+                    err = new Error('该专栏不存在');
+                    err.status = 404;
+                    return next(err);
+                }
+
+                if(doc.id !== data.column){
+                    err = new Error('不允许发布到他人专栏内');
+                    err.status = 403;
+                    return next(err);
+                }
+
+                next();
+            });
+        })
+        // 4. 新建数据
         .task(function (next) {
             var date = new Date();
             var data2 = dato.pick(data, ['title', 'uri', 'type', 'category', 'labels',
@@ -105,8 +133,15 @@ exports.createOne = function (author, data, callback) {
             callback(err, doc);
 
             if (!err && doc) {
+                // 更新 section.objectCount
+                section.increaseObjectCount({_id: data.section}, 1, log.holdError);
                 // 更新 category.objectCount
                 category.increaseObjectCount({_id: data.category}, 1, log.holdError);
+
+                // 更新 column.objectCount
+                if(data.column){
+                    column.increaseObjectCount({_id: data.column}, 1, log.holdError);
+                }
 
                 // 更新 label.objectCount
                 doc.labels.forEach(function (name) {

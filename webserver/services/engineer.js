@@ -188,37 +188,111 @@ exports.unfollow = function (operatorId, userId, callback) {
 
 
 /**
- * 增加 object 类别的数量
+ * 增加 section 中的 object 统计
  * @param conditions {Object} 查询条件
- * @param type {string} 类别名称
+ * @param sectionId {string} section Id
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
-exports.increaseObjectTypeCount = function (conditions, type, count, callback) {
+exports.increaseSectionStatistics = function (conditions, sectionId, count, callback) {
     engineer.findOne(conditions, function (err, doc) {
         if (err) {
             return callback(err);
         }
 
         if (!doc) {
-            err = new Error('the user is not exist');
-            err.type = 'notFound';
+            err = new Error('该用户不存在');
+            err.status = 404;
             return callback(err);
         }
 
-        if (!doc.objectStatistics) {
-            doc.objectStatistics = {};
+        if (!doc.sectionStatistics) {
+            doc.sectionStatistics = {};
         }
-        var one = dato.parseInt(doc.objectStatistics[type], 0) + count;
-        var all = dato.parseInt(doc.objectStatistics._all, 0) + count;
+
+        var one = dato.parseInt(doc.sectionStatistics[sectionId], 0) + count;
+        var all = dato.parseInt(doc.sectionStatistics['0'], 0) + count;
         var data = {};
 
-        data[type] = one;
-        data._all = all;
+        data[sectionId] = one;
+        data['0'] = all;
 
-        var data2 = dato.extend(doc.objectStatistics, data);
+        var data2 = dato.extend(doc.sectionStatistics, data);
 
-        engineer.findOneAndUpdate(conditions, {objectStatistics: data2}, callback);
+        engineer.findOneAndUpdate(conditions, {sectionStatistics: data2}, callback);
+    });
+};
+
+
+/**
+ * 增加 category 中的 object 统计
+ * @param conditions {Object} 查询条件
+ * @param categoryId {string} category Id
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseCategoryStatistics = function (conditions, categoryId, count, callback) {
+    engineer.findOne(conditions, function (err, doc) {
+        if (err) {
+            return callback(err);
+        }
+
+        if (!doc) {
+            err = new Error('该用户不存在');
+            err.status = 404;
+            return callback(err);
+        }
+
+        if (!doc.categoryStatistics) {
+            doc.categoryStatistics = {};
+        }
+
+        var one = dato.parseInt(doc.categoryStatistics[categoryId], 0) + count;
+        var all = dato.parseInt(doc.categoryStatistics['0'], 0) + count;
+        var data = {};
+
+        data[categoryId] = one;
+        data['0'] = all;
+
+        var data2 = dato.extend(doc.categoryStatistics, data);
+
+        engineer.findOneAndUpdate(conditions, {categoryStatistics: data2}, callback);
+    });
+};
+
+/**
+ * 增加 column 中的 object 统计
+ * @param conditions {Object} 查询条件
+ * @param columnId {string} column Id
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseCategoryStatistics = function (conditions, columnId, count, callback) {
+    engineer.findOne(conditions, function (err, doc) {
+        if (err) {
+            return callback(err);
+        }
+
+        if (!doc) {
+            err = new Error('该用户不存在');
+            err.status = 404;
+            return callback(err);
+        }
+
+        if (!doc.columnStatistics) {
+            doc.columnStatistics = {};
+        }
+
+        var one = dato.parseInt(doc.columnStatistics[columnId], 0) + count;
+        var all = dato.parseInt(doc.columnStatistics['0'], 0) + count;
+        var data = {};
+
+        data[columnId] = one;
+        data['0'] = all;
+
+        var data2 = dato.extend(doc.columnStatistics, data);
+
+        engineer.findOneAndUpdate(conditions, {columnStatistics: data2}, callback);
     });
 };
 
