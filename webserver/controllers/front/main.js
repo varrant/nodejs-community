@@ -30,7 +30,9 @@ module.exports = function (app) {
                 uptime: Date.now() - app.locals.$startTime
             }
         };
-        var list = app.locals.$settings._displayTypeUris;
+        var list = app.locals.$section.map(function (item) {
+            return item.uri;
+        });
 
         howdo
             // 统计个数
