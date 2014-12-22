@@ -71,14 +71,28 @@ dato.each(models, function (key, model) {
     /**
      * 查找一个
      * @param conditions {Object} 查询条件
+     * @param [options] {Object} 约束条件
      * @param callback {Function} 回调
      */
-    exports[key].findOne = function (conditions, callback) {
+    exports[key].findOne = function (conditions, options, callback) {
         if (conditions._id && !typeis.mongoId(conditions._id)) {
             return callback(new Error('the id of conditions is invalid'));
         }
 
-        model.findOne(conditions, function (err, doc) {
+        if (arguments.length === 2) {
+            callback = arguments[1];
+            options = {};
+        }
+
+        var query = model.findOne(conditions);
+
+        dato.each(options, function (key, val) {
+            if (query[key] && typeis(query[key]) === 'function') {
+                query = query[key](val);
+            }
+        });
+
+        query.exec(function (err, doc) {
             callback(err, doc && doc.toJSON());
         });
     };
