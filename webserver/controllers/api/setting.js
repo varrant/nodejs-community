@@ -18,13 +18,11 @@ module.exports = function (app) {
      * @param res
      * @param next
      */
-    exports.get = function (key) {
-        return function (req, res, next) {
-            res.json({
-                code: 200,
-                data: app.locals.$settings[key]
-            });
-        };
+    exports.get = function (req, res, next) {
+        res.json({
+            code: 200,
+            data: app.locals.$settings
+        });
     };
 
 

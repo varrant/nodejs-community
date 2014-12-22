@@ -18,14 +18,18 @@ var titles = {
 module.exports = function (app) {
     var exports = {};
 
-    exports.get = function (key) {
-        return function (req, res, next) {
-            var data = {
-                title: titles[key]
-            };
+    /**
+     * 设置主页
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.get = function (req, res, next) {
+        var data = {
+            title: 'web 配置'
+        };
 
-            res.render('admin/setting-' + key + '.html', data);
-        }
+        res.render('admin/setting.html', data);
     };
 
     return exports;

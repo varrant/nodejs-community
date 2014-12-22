@@ -22,9 +22,7 @@ module.exports = function (app, ctrlAdmin) {
 
 
     // 设置
-    settings.forEach(function (key) {
-        app.get('/admin/setting/' + key + '/', ctrlAdmin.setting.get(key));
-    });
+    app.get('/admin/setting/', ctrlAdmin.setting.get);
 
 
     // scope
