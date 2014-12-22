@@ -8,7 +8,11 @@
 
 var settings = ['oauth', 'smtp', 'types', 'website', 'alioss', 'roles'];
 
-module.exports = function(app, ctrlAdmin){
+module.exports = function (app, ctrlAdmin) {
+    var section = app.locals.$section.map(function (item) {
+        return item.uri;
+    });
+
     // 中间件
     app.use(/^\/admin\/.*$/i, ctrlAdmin.middleware.login);
 
@@ -19,7 +23,7 @@ module.exports = function(app, ctrlAdmin){
 
     // 设置
     settings.forEach(function (key) {
-        app.get('/admin/setting/'+key+'/', ctrlAdmin.setting.get(key));
+        app.get('/admin/setting/' + key + '/', ctrlAdmin.setting.get(key));
     });
 
 
@@ -34,7 +38,7 @@ module.exports = function(app, ctrlAdmin){
 
 
     // list
-    uris.forEach(function (uri) {
+    section.forEach(function (uri) {
         app.get('/admin/object/' + uri + '/list/', ctrlAdmin.object.list(uri));
         app.get('/admin/object/' + uri + '/', ctrlAdmin.object.get(uri));
     });

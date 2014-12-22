@@ -32,7 +32,7 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                app.locals.$section = docs;
+                app.locals.$section = docs || [];
                 done();
             });
         })
@@ -43,7 +43,7 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                app.locals.$category = docs;
+                app.locals.$category = docs || [];
                 done();
             });
         })
@@ -53,11 +53,11 @@ module.exports = function (next, app) {
             engineer.findOne({
                 role: 2097151
             }, function (err, doc) {
-                if(err){
+                if (err) {
                     return done(err);
                 }
 
-                if(!doc){
+                if (!doc) {
                     console.log('');
                     console.log('#########################################################');
                     console.log('miss an owner, please read readme.md and use `npm install`');

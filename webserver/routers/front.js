@@ -8,8 +8,9 @@
 
 
 module.exports = function (app, ctrlFront) {
-    var uris = app.locals.$settings._displayTypeUris;
-
+    var section = app.locals.$section.map(function (item) {
+        return item.uri;
+    });
 
     // user
     app.get('/engineer/oauth/authorize/', ctrlFront.engineer.oauthAuthorize);
@@ -21,7 +22,7 @@ module.exports = function (app, ctrlFront) {
 
 
     // list + detail
-    uris.forEach(function (uri) {
+    section.forEach(function (uri) {
         app.get('/' + uri + '/', ctrlFront.main.getList(uri));
         app.get('/' + uri + '/' + 'page/:page/', ctrlFront.main.getList(uri));
         app.get('/' + uri + '/' + 'in/:scope/', ctrlFront.main.getList(uri));
