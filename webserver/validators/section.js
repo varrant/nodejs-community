@@ -10,6 +10,7 @@
 var Validator = require('ydr-validator');
 var validator = new Validator();
 var REG_LINES = /[\n\t\v]/g;
+var dato = require('ydr-util').dato;
 
 validator.pushRule({
     name: 'name',
@@ -17,6 +18,17 @@ validator.pushRule({
     type: 'string',
     minLength: 1,
     maxLength: 50
+});
+
+validator.pushRule({
+    name: 'role',
+    alias: '权限值',
+    onbefore: function (val) {
+        return dato.parseInt(val, 0);
+    },
+    type: 'number',
+    min: 0,
+    max: 10
 });
 
 validator.pushRule({

@@ -18,10 +18,11 @@ define(function (require, exports, module) {
     var dato = require('../../alien/util/dato.js');
     var app = {};
     var id = hashbang.get('query', 'id');
+    var url = '/admin/api/section/';
 
     app.init = function () {
         ajax({
-            url: '/admin/api/section/'
+            url: url
         })
             .on('success', function (json) {
                 if (json.code !== 200) {
@@ -57,7 +58,27 @@ define(function (require, exports, module) {
 
 
     app._onsave = function () {
+        var the = this;
+        var data = the.$data.section;
+        var hasId = !!data.id;
 
+        ajax({
+            method: 'put',
+            url: url,
+            data: the.$data.section
+        })
+            .on('success', function (json) {
+                if (json.code !== 200) {
+                    return alert(json);
+                }
+
+                if(!hasId){
+                    the.$data.sections.push(json.data);
+                }
+
+                the.$data.section = json.data;
+            })
+            .on('error', alert);
     };
 
     app.init();

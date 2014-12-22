@@ -27,6 +27,12 @@
         </div>
     </li>
     <li>
+        <div class="form-key">introduction</div>
+        <div class="form-val">
+            <textarea class="ipt" rows="3" v-model="section.introduction"></textarea>
+        </div>
+    </li>
+    <li>
         <div class="form-action f-text-center">
             <button class="btn btn-primary" v-on="click: onsave">\{{section.id ? '保存版块' : '新建版块'}}</button>
         </div>
