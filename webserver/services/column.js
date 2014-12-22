@@ -73,8 +73,6 @@ exports.createOne = function (author, data, callback) {
  * @param callback {Function} 回调
  */
 exports.updateOne = function (author, conditions, data, callback) {
-    var data2 = dato.pick(data, ['name', 'cover', 'introduction']);
-
     howdo
         // 1. 检查是否为作者的专栏
         .task(function (next) {
@@ -95,6 +93,7 @@ exports.updateOne = function (author, conditions, data, callback) {
         })
         // 2. 更新
         .task(function (next) {
+            var data2 = dato.pick(data, ['name', 'cover', 'introduction']);
             column.findOneAndUpdate(conditions, data2, next);
         })
         // 异步串行
