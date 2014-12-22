@@ -13,6 +13,8 @@ var validators = require('../validators/');
 var models = {
     // 分类
     category: require('./category.js'),
+    // 专栏
+    column: require('./column.js'),
     // 评论
     comment: require('./comment.js'),
     // 工程师
