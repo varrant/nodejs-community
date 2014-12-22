@@ -14,7 +14,7 @@ module.exports = function (app) {
         middleware: require('./middleware.js')(app),
         notification: require('./notification.js')(app),
         object: require('./object.js')(app),
-        scope: require('./scope.js')(app),
+        section: require('./section.js')(app),
         setting: require('./setting.js')(app)
     };
 };
