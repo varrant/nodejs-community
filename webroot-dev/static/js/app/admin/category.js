@@ -29,7 +29,7 @@ define(function (require, exports, module) {
                     return alert(json);
                 }
 
-                var section = {
+                var category = {
                     name: '',
                     uri: ''
                 };
@@ -37,17 +37,17 @@ define(function (require, exports, module) {
                 if (id) {
                     dato.each(json.data, function (i, sec) {
                         if (sec.id === id) {
-                            section = sec;
+                            category = sec;
                             return false;
                         }
                     });
                 }
 
                 app.vue = new Vue({
-                    el: '#section',
+                    el: '#category',
                     data: {
-                        sections: json.data,
-                        section: section
+                        categories: json.data,
+                        category: category
                     },
                     methods: {
                         onsave: app._onsave,
@@ -68,13 +68,13 @@ define(function (require, exports, module) {
      */
     app._onsave = function () {
         var the = this;
-        var data = the.$data.section;
+        var data = the.$data.category;
         var hasId = !!data.id;
 
         ajax({
             method: 'put',
             url: url,
-            data: the.$data.section
+            data: the.$data.category
         })
             .on('success', function (json) {
                 if (json.code !== 200) {
@@ -82,10 +82,10 @@ define(function (require, exports, module) {
                 }
 
                 if (!hasId) {
-                    the.$data.sections.push(json.data);
+                    the.$data.categories.push(json.data);
                 }
 
-                the.$data.section = json.data;
+                the.$data.category = json.data;
             })
             .on('error', alert);
     };
@@ -97,7 +97,7 @@ define(function (require, exports, module) {
      * @private
      */
     app._onchoose = function (index) {
-        this.$data.section = this.$data.sections[index];
+        this.$data.category = this.$data.categories[index];
     };
 
 
@@ -109,7 +109,7 @@ define(function (require, exports, module) {
         var xhr = null;
 
         // 实时翻译
-        app.vue.$watch('section.name', function (word) {
+        app.vue.$watch('category.name', function (word) {
             if (xhr) {
                 xhr.abort();
             }
@@ -119,7 +119,7 @@ define(function (require, exports, module) {
             })
                 .on('success', function (json) {
                     if (json.code === 200) {
-                        app.vue.$data.section.uri = json.data;
+                        app.vue.$data.category.uri = json.data;
                     }
                 })
                 .on('complete', function () {
