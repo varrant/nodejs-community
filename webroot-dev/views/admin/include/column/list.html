@@ -7,22 +7,22 @@
     </tr>
     </thead>
     <tbody>
-    <tr v-if="!categories.length">
+    <tr v-if="!columns.length">
         <td colspan="3" class="table-empty-td">
-            暂无分类信息。
+            暂无专栏信息。
         </td>
     </tr>
-    <tr v-repeat="category:categories">
+    <tr v-repeat="column:columns">
         <td>\{{$index + 1}}</td>
         <td>
-            <img v-attr="src: category.cover" alt="cover" width="100" height="100"/>
+            <img v-attr="src: column.cover" alt="cover" width="100" height="100"/>
         </td>
         <td>
-            <div><a href="#!/?id=\{{category.id}}" v-on="click: onchoose($index)"><strong>\{{category.name}}</strong>（\{{category.uri}}）</a></div>
+            <div><a href="#!/?id=\{{column.id}}" v-on="click: onchoose($index)"><strong>\{{column.name}}</strong>（\{{column.uri}}）</a></div>
             <div class="s-muted">
-                <i class="i i-file"></i>\{{category.objectCount}}
+                <i class="i i-file"></i>\{{column.objectCount}}
             </div>
-            <div class="s-light">\{{category.introduction}}</div>
+            <div class="s-light">\{{column.introduction}}</div>
         </td>
     </tr>
     </tbody>
