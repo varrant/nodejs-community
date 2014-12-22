@@ -7,8 +7,9 @@
 - `author` 作者
 - `title` 标题
 - `uri` URI
-- `type` 类型
-- `scope` 范围，即分类
+- `section` 板块
+- `category` 分类
+- `column` 专栏
 - `labels` 标签
 - `introduction` 简介
 - `content` 内容
