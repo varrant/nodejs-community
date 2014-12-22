@@ -1,49 +1,38 @@
-<div class="m-smtp">
-    <table class="table">
-        <thead>
-        <tr>
-            <th width="20%">键名</th>
-            <th width="*">键值</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>host</td>
-            <td>
-                <input type="text" class="ipt" v-model="smtp.host"/>
-            </td>
-        </tr>
-        <tr>
-            <td>port</td>
-            <td>
-                <input type="text" class="ipt" v-model="smtp.port"/>
-            </td>
-        </tr>
-        <tr>
-            <td>user</td>
-            <td>
-                <input type="text" class="ipt" v-model="smtp.user"/>
-            </td>
-        </tr>
-        <tr>
-            <td>password</td>
-            <td>
-                <input type="text" class="ipt" v-model="smtp.password"/>
-            </td>
-        </tr>
-        <tr>
-            <td>ssl</td>
-            <td>
-                <label for="ssl"><input type="checkbox" id="ssl" v-model="smtp.ssl"/>使用 ssl</label>
-            </td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-            <td colspan="5" class="f-text-center">
-                <button class="btn btn-primary" v-on="click:onsave">保存修改</button>
-            </td>
-        </tr>
-        </tfoot>
-    </table>
-</div>
+<h2 class="main-subtitle"><i class="i i-envelope"></i>SMTP 配置</h2>
+<ul class="m-form">
+    <li>
+        <div class="form-key">host</div>
+        <div class="form-val">
+            <input type="text" class="ipt" v-model="smtp.host"/>
+        </div>
+    </li>
+    <li>
+        <div class="form-key">port</div>
+        <div class="form-val">
+            <input type="text" class="ipt" v-model="smtp.port"/>
+        </div>
+    </li>
+    <li>
+        <div class="form-key">user</div>
+        <div class="form-val">
+            <input type="text" class="ipt" v-model="smtp.user"/>
+        </div>
+    </li>
+    <li>
+        <div class="form-key">password</div>
+        <div class="form-val">
+            <input type="text" class="ipt" v-model="smtp.password"/>
+        </div>
+    </li>
+    <li>
+        <div class="form-key">ssl</div>
+        <div class="form-val">
+            <label for="ssl" class="form-opt"><input type="checkbox" id="ssl" v-model="smtp.ssl"/>使用 ssl</label>
+        </div>
+    </li>
+    <li>
+        <div class="form-action f-text-center">
+            <button class="btn btn-primary" v-on="click:onsave">保存修改</button>
+        </div>
+    </li>
+</ul>

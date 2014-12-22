@@ -1,52 +1,38 @@
-<div class="m-roles">
-    <div class="alert alert-warning alert-line">
-        <p><i class="i i-info-circle"></i>阿里云 OSS 配置。</p>
-    </div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th width="20%">键名</th>
-            <th width="*">键值</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>domain</td>
-            <td>
-                <input type="text" class="ipt" v-model="alioss.domain"/>
-            </td>
-        </tr>
-        <tr>
-            <td>bucket</td>
-            <td>
-                <input type="text" class="ipt" v-model="alioss.bucket"/>
-            </td>
-        </tr>
-        <tr>
-            <td>host</td>
-            <td>
-                <input type="text" class="ipt" v-model="alioss.host"/>
-            </td>
-        </tr>
-        <tr>
-            <td>accessKeyId</td>
-            <td>
-                <input type="text" class="ipt" v-model="alioss.accessKeyId"/>
-            </td>
-        </tr>
-        <tr>
-            <td>accessKeySecret</td>
-            <td>
-                <input type="text" class="ipt" v-model="alioss.accessKeySecret"/>
-            </td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-            <td colspan="5" class="f-text-center">
-                <button class="btn btn-primary" v-on="click:onsave">保存修改</button>
-            </td>
-        </tr>
-        </tfoot>
-    </table>
-</div>
+<h2 class="main-subtitle"><i class="i i-cloud"></i>阿里 OSS 配置</h2>
+<ul class="m-form">
+    <li>
+        <div class="form-key">domain</div>
+        <div class="form-val">
+            <input type="text" class="ipt" v-model="alioss.domain"/>
+        </div>
+    </li>
+    <li>
+        <div class="form-key">bucket</div>
+        <div class="form-val">
+            <input type="text" class="ipt" v-model="alioss.bucket"/>
+        </div>
+    </li>
+    <li>
+        <div class="form-key">host</div>
+        <div class="form-val">
+            <input type="text" class="ipt" v-model="alioss.host"/>
+        </div>
+    </li>
+    <li>
+        <div class="form-key">accessKeyId</div>
+        <div class="form-val">
+            <input type="text" class="ipt" v-model="alioss.accessKeyId"/>
+        </div>
+    </li>
+    <li>
+        <div class="form-key">accessKeySecret</div>
+        <div class="form-val">
+            <input type="text" class="ipt" v-model="alioss.accessKeySecret"/>
+        </div>
+    </li>
+    <li>
+        <div class="form-action f-text-center">
+            <button class="btn btn-primary" v-on="click:onsave">保存修改</button>
+        </div>
+    </li>
+</ul>
