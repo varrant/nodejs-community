@@ -8,7 +8,6 @@
 
 var column = require('../models/').column;
 var dato = require('ydr-util').dato;
-var keys = ['name', 'uri', 'cover', 'introduction'];
 var howdo = require('howdo');
 
 
@@ -32,45 +31,74 @@ exports.findOneAndRemove = column.findOneAndRemove;
 
 /**
  * 创建一个 column
+ * @param author {Object} 作者
  * @param data {Object} 数据
  * @param callback {Function} 回调
  */
-exports.createOne = function (owner, data, callback) {
-    var data2 = dato.pick(data, keys);
+exports.createOne = function (author, data, callback) {
+    var data2 = dato.pick(data, ['name', 'uri', 'cover', 'introduction']);
 
     howdo
-        // 检查是否有重复
+        // 1、检查是否有重复
         .task(function (next) {
+            column.findOne({
+                uri: data.uri
+            }, function (err, doc) {
+                if (err) {
+                    return next(err);
+                }
 
+                if (doc) {
+                    err = new Error('专栏 URI 重复');
+                    return next(err);
+                }
+
+                next();
+            });
         })
-
-    column.createOne(data2, callback);
+        // 2、插入数据
+        .task(function (next) {
+            column.createOne(data2, next);
+        })
+        // 异步串行
+        .follow(callback);
 };
 
 
 /**
  * 更新一个 column
+ * @param author {Object} 作者
  * @param conditions {Object} 查询条件
  * @param data {Object} 数据
  * @param callback {Function} 回调
  */
-exports.updateOne = function (conditions, data, callback) {
-    var data2 = dato.pick(data, keys);
+exports.updateOne = function (author, conditions, data, callback) {
+    var data2 = dato.pick(data, ['name', 'cover', 'introduction']);
 
-    column.findOneAndUpdate(conditions, data2, callback);
-};
+    howdo
+        // 1. 检查是否为作者的专栏
+        .task(function (next) {
+            var _condtions = dato.extend({author: author.id}, conditions);
+            column.findOne(_condtions, function (err, doc) {
+                if (err) {
+                    return next(err);
+                }
 
+                if (!doc) {
+                    err = new Error('该专栏不存在');
+                    err.status = 404;
+                    return next(err);
+                }
 
-/**
- * 确保由一个 column
- * @param conditions {Object} 查询条件
- * @param data {Object} 数据
- * @param callback {Function} 回调
- */
-exports.existOne = function (conditions, data, callback) {
-    var data2 = dato.pick(data, keys);
-
-    column.existOne(conditions, data2, callback);
+                next();
+            });
+        })
+        // 2. 更新
+        .task(function (next) {
+            column.findOneAndUpdate(conditions, data2, next);
+        })
+        // 异步串行
+        .follow(callback);
 };
 
 
