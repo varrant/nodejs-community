@@ -188,6 +188,17 @@ footer {
 .m-form .form-val {
   margin-left: 20px;
 }
+.m-form-vertical > li {
+  padding: 0;
+}
+.m-form-vertical .form-key,
+.m-form-vertical .form-val {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
 .m-form .form-action {
   padding: 20px;
   margin-left: -100px;

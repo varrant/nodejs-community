@@ -25,8 +25,8 @@ module.exports = function (app, ctrlAdmin) {
     app.get('/admin/setting/', ctrlAdmin.setting.get);
 
 
-    // scope
-    app.get('/admin/scope/', ctrlAdmin.scope.get);
+    // section
+    app.get('/admin/section/', ctrlAdmin.section.get);
 
 
     // engineer
