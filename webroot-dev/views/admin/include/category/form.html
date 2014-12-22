@@ -1,0 +1,40 @@
+<ul class="m-form m-form-vertical">
+    <li>
+        <div class="form-key">name</div>
+        <div class="form-val">
+            <input class="ipt" type="text" v-model="section.name"/>
+        </div>
+    </li>
+    <li>
+        <div class="form-key">uri</div>
+        <div class="form-val">
+            <input class="ipt" type="text" v-model="section.uri"/>
+        </div>
+    </li>
+    <li>
+        <div class="form-key">cover</div>
+        <div class="form-val">
+            <input class="ipt" type="text" v-model="section.cover"/>
+        </div>
+    </li>
+    <li>
+        <div class="form-key">role</div>
+        <div class="form-val">
+            <input class="ipt" type="text" v-model="section.role"/>
+            <p class="form-desc">
+                权限值请控制在 <strong>[0-10]</strong> 内。
+            </p>
+        </div>
+    </li>
+    <li>
+        <div class="form-key">introduction</div>
+        <div class="form-val">
+            <textarea class="ipt" rows="3" v-model="section.introduction"></textarea>
+        </div>
+    </li>
+    <li>
+        <div class="form-action f-text-center">
+            <button class="btn btn-primary" v-on="click: onsave">\{{section.id ? '保存版块' : '新建版块'}}</button>
+        </div>
+    </li>
+</ul>
