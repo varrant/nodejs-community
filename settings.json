@@ -1,6 +1,7 @@
 // 配置文件，允许注释
 {
   // 所有者，社区创建者
+  // **最重要，否则无法正常授权登陆**
   "owner": {
     "email": "cloudcome@163.com",
     "githubLogin": "cloudcome",
@@ -21,6 +22,7 @@
     "domain": "static_your_domain_com"
   },
   // github 授权登录
+  // **最重要，否则无法正常授权登陆**
   "oauth": {
     "appName": "github_oauth_app_name",
     "clientId": "github_oauth_client_id",
