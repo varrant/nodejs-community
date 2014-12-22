@@ -103,6 +103,12 @@ define(function (require, exports, module) {
     };
 
 
+    /**
+     * 删除某个专栏
+     * @param index
+     * @returns {*}
+     * @private
+     */
     app._onremove = function (index) {
         var col = this.$data.columns[index];
         var id = col.id;
