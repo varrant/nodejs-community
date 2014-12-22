@@ -29,22 +29,22 @@ var schema = new mongoose.Schema({
         unique: true
     },
     // 版块
-    section:{
+    section: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'scope'
+        ref: 'section'
     },
     // 分类
     category: {
         type: mongoose.Schema.Types.ObjectId,
         required: false,
-        ref: 'scope'
+        ref: 'category'
     },
     // 专栏
     column: {
         type: mongoose.Schema.Types.ObjectId,
         required: false,
-        ref: 'scope'
+        ref: 'column'
     },
     // 标签
     labels: {
@@ -171,7 +171,6 @@ var schema = new mongoose.Schema({
 
 schema.set('toJSON', {getters: true, virtuals: true});
 schema.set('toObject', {getters: true, virtuals: true});
-
 
 
 module.exports = mongoose.model('object', schema);
