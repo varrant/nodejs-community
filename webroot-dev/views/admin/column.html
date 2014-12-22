@@ -15,14 +15,14 @@
 {{include ./include/header.html}}
 <div class="g-main">
     <div class="m-main">
-        <h1 class="main-title"><i class="i i-archive"></i>{{title}}</h1>
+        <h1 class="main-title"><i class="i i-book"></i>{{title}}</h1>
         <div class="main-body">
             <div id="category" class="row f-none">
                 <div class="col-md-4">
-                    {{include ./include/category/form.html}}
+                    {{include ./include/column/form.html}}
                 </div>
                 <div class="col-md-8">
-                    {{include ./include/category/list.html}}
+                    {{include ./include/column/list.html}}
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
     {{include ./include/footer.html}}
 </div>
 
-<script src="/static/js/libs/coolie.min.js" data-main="./admin/category.js"></script>
+<script src="/static/js/libs/coolie.min.js" data-main="./admin/column.js"></script>
 <script src="/static/js/libs/coolie-config.js"></script>
 </body>
 </html>
