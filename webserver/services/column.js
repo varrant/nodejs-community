@@ -72,7 +72,7 @@ exports.createOne = function (author, data, callback) {
  * @param data {Object} 数据
  * @param callback {Function} 回调
  */
-exports.updateOne = function (author, conditions, data, callback) {
+exports.findOneAndUpdate = function (author, conditions, data, callback) {
     howdo
         // 1. 检查是否为作者的专栏
         .task(function (next) {

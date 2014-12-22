@@ -54,6 +54,11 @@ module.exports = function (app, ctrlApi) {
     app.put('/admin/api/category/', ctrlApi.category.put);
 
 
+    // column
+    app.get('/admin/api/column/', ctrlApi.column.get);
+    app.put('/admin/api/column/', ctrlApi.column.put);
+
+
     // engineer
     app.post('/api/engineer/login/', ctrlApi.engineer.login);
     app.post('/api/engineer/logout/', ctrlApi.engineer.logout);

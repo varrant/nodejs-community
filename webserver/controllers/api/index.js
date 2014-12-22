@@ -10,6 +10,7 @@
 module.exports = function (app) {
     return {
         category: require('./category.js')(app),
+        column: require('./column.js')(app),
         engineer: require('./engineer.js')(app),
         nav: require('./nav.js')(app),
         notification: require('./notification.js')(app),
