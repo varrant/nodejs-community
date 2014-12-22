@@ -13,6 +13,24 @@ var keys = ['name', 'uri', 'cover', 'introduction'];
 
 
 /**
+ * 查找
+ */
+exports.findOne = category.findOne;
+
+
+/**
+ * 查找
+ */
+exports.find = category.find;
+
+
+/**
+ * 删除
+ */
+exports.findOneAndRemove = category.findOneAndRemove;
+
+
+/**
  * 创建一个 category
  * @param data {Object} 数据
  * @param callback {Function} 回调
@@ -37,7 +55,6 @@ exports.updateOne = function (conditions, data, callback) {
 };
 
 
-
 /**
  * 确保由一个 category
  * @param conditions {Object} 查询条件
@@ -49,24 +66,6 @@ exports.existOne = function (conditions, data, callback) {
 
     category.existOne(conditions, data2, callback);
 };
-
-
-/**
- * 查找
- */
-exports.findOne = category.findOne;
-
-
-/**
- * 查找
- */
-exports.find = category.find;
-
-
-/**
- * 删除
- */
-exports.findOneAndRemove = category.findOneAndRemove;
 
 
 /**
