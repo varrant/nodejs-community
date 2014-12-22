@@ -7,7 +7,6 @@
 'use strict';
 
 var setting = require('../../services/').setting;
-var locals = require('../../utils/').locals;
 
 module.exports = function (app) {
     var exports = {};
@@ -38,7 +37,6 @@ module.exports = function (app) {
                 }
 
                 app.locals.$setting[key] = doc.val;
-                locals.$setting(app);
                 res.json({
                     code: 200,
                     data: app.locals.$setting[key]

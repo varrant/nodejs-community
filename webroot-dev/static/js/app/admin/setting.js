@@ -38,7 +38,8 @@ define(function (require, exports, module) {
     };
 
     app._onsave = function (key) {
-        var data = this.$data[key];
+        var the = this;
+        var data = the.$data[key];
 
         ajax({
             url: '/admin/api/setting/' + key + '/',
@@ -49,6 +50,8 @@ define(function (require, exports, module) {
                 if (json.code !== 200) {
                     return alert(json);
                 }
+
+                the.$data[key] = json.data;
             })
             .on('error', alert);
     };
