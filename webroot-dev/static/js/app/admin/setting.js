@@ -26,7 +26,10 @@ define(function (require, exports, module) {
 
                 app.vue = new Vue({
                     el: '#setting',
-                    data: json.data
+                    data: json.data,
+                    methods: {
+
+                    }
                 });
 
                 app.vue.$el.classList.remove('f-none');
