@@ -1,0 +1,35 @@
+<ul class="m-form m-form-vertical">
+    <li>
+        <div class="form-key">name<strong class="form-required">*</strong></div>
+        <div class="form-val">
+            <input class="ipt" type="text" v-model="column.name"/>
+        </div>
+    </li>
+
+    <li>
+        <div class="form-key">uri<strong class="form-required">*</strong></div>
+        <div class="form-val">
+            <input class="ipt" type="text" v-model="column.uri"/>
+        </div>
+    </li>
+
+    <li>
+        <div class="form-key">cover（200*200px）<strong class="form-required">*</strong></div>
+        <div class="form-val">
+            <input class="ipt" type="text" v-model="column.cover"/>
+        </div>
+    </li>
+
+    <li>
+        <div class="form-key">introduction<strong class="form-required">*</strong></div>
+        <div class="form-val">
+            <textarea class="ipt" rows="3" v-model="column.introduction"></textarea>
+        </div>
+    </li>
+
+    <li>
+        <div class="form-action f-text-center">
+            <button class="btn btn-primary" v-on="click: onsave">\{{column.id ? '保存专栏' : '新建专栏'}}</button>
+        </div>
+    </li>
+</ul>
