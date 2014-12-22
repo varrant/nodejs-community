@@ -47,7 +47,7 @@ exports.createOne = function (data, callback) {
  * @param data {Object} 数据
  * @param callback {Function} 回调
  */
-exports.updateOne = function (conditions, data, callback) {
+exports.findOneAndUpdate = function (conditions, data, callback) {
     var data2 = dato.pick(data, keys);
 
     category.findOneAndUpdate(conditions, data2, callback);
