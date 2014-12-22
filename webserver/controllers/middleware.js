@@ -151,7 +151,7 @@ module.exports = function (app) {
  * @private
  */
 function _generatorCsrf() {
-    var timeString = dato.parseInt(Date.now() / configs.secret.session.$csrfAge, 0) + '';
+    var timeString = dato.parseInt(Date.now() / configs.secret.session.csrfAge, 0) + '';
     var csrf = crypto.encode(timeString, configs.secret.session.secret);
 
     return csrf;
