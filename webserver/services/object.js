@@ -253,18 +253,13 @@ exports.updateOne = function (author, conditions, data, callback) {
                 next();
             });
         })
-        // 5. 数据预验证
-        .task(function (next) {
-            var data2 = dato.pick(data, ['category', 'column', 'labels', 'introduction', 'content', 'isDisplay']);
-
-            object.findOneAndValidate(conditions, data2, next);
-        })
-        // 6. 更新
+        // 5. 更新
         .task(function (next, data3) {
             var date = new Date();
+            var data2 = dato.pick(data, ['category', 'column', 'labels', 'introduction', 'content', 'isDisplay']);
 
-            data3.updateAt = date;
-            data3.$push = {
+            data2.updateAt = date;
+            data2.$push = {
                 updateList: {
                     user: author.id,
                     date: date

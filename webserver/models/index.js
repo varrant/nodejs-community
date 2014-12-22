@@ -47,7 +47,6 @@ var REG_DUPLICATE = new RegExp(DBNAME + '\\..*\\.\\$(.*)_1');
  * @function .find
  * @function .count
  * @function .createOne
- * @function .findOneAndValidate
  * @function .findOneAndUpdate
  * @function .findOneAndRemove
  * @function .existOne
@@ -167,49 +166,49 @@ dato.each(models, function (key, model) {
     };
 
 
-    /**
-     * 查找一个并进行更新前数据验证
-     * @param conditions {Object} 查询条件
-     * @param data {Object} 更新数据
-     * @param callback {Function} 回调
-     */
-    exports[key].findOneAndValidate = function (conditions, data, callback) {
-        if (conditions._id && !typeis.mongoId(conditions._id)) {
-            return callback(new Error('the id of conditions is invalid'));
-        }
-
-        data = _toPureData(data, ['_id']);
-
-        model.findOne(conditions, function (err, doc) {
-            if (err) {
-                return callback(err);
-            }
-
-            if (!doc) {
-                err = new Error('the document is not exist');
-                err.type = 'notFound';
-                return callback(err);
-            }
-
-            var data2 = {};
-
-            howdo.each(data, function (key, val, next) {
-                var validateData = {};
-
-                validateData[key] = val;
-                validator.validateOne(validateData, function (err, data) {
-                    if (err) {
-                        return next(err);
-                    }
-
-                    dato.extend(true, data2, data);
-                    next(err, data2);
-                });
-            }).follow(function (err, data2) {
-                callback(err, data2);
-            });
-        });
-    };
+    ///**
+    // * 查找一个并进行更新前数据验证
+    // * @param conditions {Object} 查询条件
+    // * @param data {Object} 更新数据
+    // * @param callback {Function} 回调
+    // */
+    //exports[key].findOneAndValidate = function (conditions, data, callback) {
+    //    if (conditions._id && !typeis.mongoId(conditions._id)) {
+    //        return callback(new Error('the id of conditions is invalid'));
+    //    }
+    //
+    //    data = _toPureData(data, ['_id']);
+    //
+    //    model.findOne(conditions, function (err, doc) {
+    //        if (err) {
+    //            return callback(err);
+    //        }
+    //
+    //        if (!doc) {
+    //            err = new Error('the document is not exist');
+    //            err.type = 'notFound';
+    //            return callback(err);
+    //        }
+    //
+    //        var data2 = {};
+    //
+    //        howdo.each(data, function (key, val, next) {
+    //            var validateData = {};
+    //
+    //            validateData[key] = val;
+    //            validator.validateOne(validateData, function (err, data) {
+    //                if (err) {
+    //                    return next(err);
+    //                }
+    //
+    //                dato.extend(true, data2, data);
+    //                next(err, data2);
+    //            });
+    //        }).follow(function (err, data2) {
+    //            callback(err, data2);
+    //        });
+    //    });
+    //};
 
 
     /**
