@@ -18,7 +18,20 @@ define(function (require, exports, module) {
     app.init = function () {
         ajax({
             url: '/admin/api/setting/'
-        });
+        })
+            .on('success', function (json) {
+                if(json.code !== 200){
+                    return alert(json);
+                }
+
+                app.vue = new Vue({
+                    el: '#setting',
+                    data: json.data
+                });
+
+                app.vue.$el.classList.remove('f-none');
+            })
+            .on('error', alert);
     };
 
     app.init();
