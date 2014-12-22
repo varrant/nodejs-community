@@ -71,7 +71,7 @@ dato.each(models, function (key, model) {
     /**
      * 查找一个
      * @param conditions {Object} 查询条件
-     * @param [options] {Object} 约束条件
+     * @param [options] {Object|Function} 约束条件
      * @param callback {Function} 回调
      */
     exports[key].findOne = function (conditions, options, callback) {
@@ -101,7 +101,7 @@ dato.each(models, function (key, model) {
     /**
      * 多条件查询
      * @param conditions {Object} 查询条件
-     * @param [options] {Object} 约束条件
+     * @param [options] {Object|Function} 约束条件
      * @param callback {Function} 回调
      */
     exports[key].find = function (conditions, options, callback) {
