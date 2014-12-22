@@ -6,7 +6,7 @@
 
 'use strict';
 
-var fs = require('fs');
+var section = require('../../services/').section;
 
 module.exports = function (app) {
     var exports = {};
@@ -21,6 +21,43 @@ module.exports = function (app) {
         res.json({
             code: 200,
             data: app.locals.$section
+        });
+    };
+
+
+    /**
+     * 新建/保存版块
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.put = function (req, res, next) {
+        var id = req.body.id;
+
+        if(id){
+            return section.findOneAndUpdate({
+                _id: id
+            }, req.body, function (err, doc) {
+                if(err){
+                    return next(err);
+                }
+
+                res.json({
+                    code: 200,
+                    data: doc
+                });
+            });
+        }
+
+        section.createOne(req.body, function (err, doc) {
+            if(err){
+                return next(err);
+            }
+
+            res.json({
+                code: 200,
+                data: doc
+            });
         });
     };
 

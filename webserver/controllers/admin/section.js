@@ -23,5 +23,7 @@ module.exports = function (app) {
         res.render('admin/section.html', data);
     };
 
+
+
     return exports;
 }

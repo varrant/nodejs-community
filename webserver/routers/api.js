@@ -45,7 +45,8 @@ module.exports = function (app, ctrlApi) {
 
 
     // section
-    app.get('/api/section/', ctrlApi.section.get);
+    app.get('/admin/api/section/', ctrlApi.section.get);
+    app.put('/admin/api/section/', ctrlApi.section.put);
 
 
     // engineer
