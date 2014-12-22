@@ -86,7 +86,7 @@ exports.createOne = function (author, data, callback) {
         })
         // 3. 检查 column 是否存在，以及发布权限
         .task(function (next) {
-            if(!data.column){
+            if (!data.column) {
                 return next();
             }
 
@@ -101,7 +101,7 @@ exports.createOne = function (author, data, callback) {
                     return next(err);
                 }
 
-                if(doc.id !== data.column){
+                if (doc.id !== data.column) {
                     err = new Error('不允许发布到他人专栏内');
                     err.status = 403;
                     return next(err);
@@ -139,7 +139,7 @@ exports.createOne = function (author, data, callback) {
                 category.increaseObjectCount({_id: data.category}, 1, log.holdError);
 
                 // 更新 column.objectCount
-                if(data.column){
+                if (data.column) {
                     column.increaseObjectCount({_id: data.column}, 1, log.holdError);
                 }
 
@@ -148,8 +148,15 @@ exports.createOne = function (author, data, callback) {
                     label.increaseObjectCount({name: name}, 1, log.holdError);
                 });
 
-                // 更新 engineer.objectStatistics
-                engineer.increaseObjectTypeCount({_id: author.id}, data.type, 1, log.holdError);
+                // 更新 engineer.sectionStatistics
+                engineer.increaseSectionStatistics({_id: author.id}, data.section, 1, log.holdError);
+                // 更新 engineer.categoryStatistics
+                engineer.increaseCategoryStatistics({_id: author.id}, data.category, 1, log.holdError);
+
+                // 更新 engineer.columnStatistics
+                if (data.column) {
+                    engineer.increaseColumnStatistics({_id: author.id}, data.column, 1, log.holdError);
+                }
             }
         });
 };
@@ -174,7 +181,7 @@ exports.updateOne = function (author, conditions, data, callback) {
                 }
 
                 if (!doc) {
-                    err = new Error('the object is not exist');
+                    err = new Error('该对象不存在');
                     err.status = 404;
                     return next(err);
                 }
@@ -182,7 +189,29 @@ exports.updateOne = function (author, conditions, data, callback) {
                 next();
             });
         })
-        // 2. 检查 category 是否存在
+        // 2. 检查 section 是否存在，以及发布权限
+        .task(function (next) {
+            section.findOne({_id: data.section}, function (err, doc) {
+                if (err) {
+                    return next(err);
+                }
+
+                if (!doc) {
+                    err = new Error('该板块不存在');
+                    err.status = 404;
+                    return next(err);
+                }
+
+                if (author.role & Math.pow(2, doc.role) === 0) {
+                    err = new Error('在该板块暂无发布权限');
+                    err.status = 403;
+                    return next(err);
+                }
+
+                next();
+            });
+        })
+        // 3. 检查 category 是否存在
         .task(function (next) {
             category.findOne({_id: data.category}, function (err, doc) {
                 if (err) {
@@ -190,7 +219,7 @@ exports.updateOne = function (author, conditions, data, callback) {
                 }
 
                 if (!doc) {
-                    err = new Error('the category is not exist');
+                    err = new Error('该分类不存在');
                     err.status = 404;
                     return next(err);
                 }
@@ -198,35 +227,39 @@ exports.updateOne = function (author, conditions, data, callback) {
                 next();
             });
         })
-        // 3. 检查权限
+        // 4. 检查 column 是否存在，以及发布权限
         .task(function (next) {
-            setting.getType(data.type, function (err, type) {
+            if (!data.column) {
+                return next();
+            }
+
+            column.findOne({_id: data.column}, function (err, doc) {
                 if (err) {
                     return next(err);
                 }
 
-                if (!type) {
-                    err = new Error('the type is not exist');
+                if (!doc) {
+                    err = new Error('该专栏不存在');
                     err.status = 404;
                     return next(err);
                 }
 
-                if (author.role & Math.pow(2, type.role) <= 0) {
-                    err = new Error('insufficient permissions');
-                    err.type = 'permissions';
+                if (doc.id !== data.column) {
+                    err = new Error('不允许发布到他人专栏内');
+                    err.status = 403;
                     return next(err);
                 }
 
                 next();
             });
         })
-        // 4. 数据预验证
+        // 5. 数据预验证
         .task(function (next) {
-            var data2 = dato.pick(data, ['category', 'labels', 'introduction', 'content', 'isDisplay']);
+            var data2 = dato.pick(data, ['category', 'column', 'labels', 'introduction', 'content', 'isDisplay']);
 
             object.findOneAndValidate(conditions, data2, next);
         })
-        // 5. 更新
+        // 6. 更新
         .task(function (next, data3) {
             var date = new Date();
 

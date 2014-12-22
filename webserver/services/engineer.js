@@ -267,7 +267,7 @@ exports.increaseCategoryStatistics = function (conditions, categoryId, count, ca
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
-exports.increaseCategoryStatistics = function (conditions, columnId, count, callback) {
+exports.increaseColumnStatistics = function (conditions, columnId, count, callback) {
     engineer.findOne(conditions, function (err, doc) {
         if (err) {
             return callback(err);
