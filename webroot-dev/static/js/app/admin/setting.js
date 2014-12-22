@@ -8,8 +8,8 @@
 define(function (require, exports, module) {
     'use strict';
 
-    require('../../widget/admin/welcome.js');
-    require('../../widget/admin/nav.js');
+    require('../../widget/admin/header.js');
+    require('../../widget/admin/sidebar.js');
 
     var alert = require('../../widget/common/alert.js');
     var ajax = require('../../widget/common/ajax.js');
