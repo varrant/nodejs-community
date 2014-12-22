@@ -9,6 +9,12 @@
 var mongoose = require('mongoose');
 var schema = new mongoose.Schema({
     // 名称
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'engineer'
+    },
+    // 名称
     name: {
         type: String,
         required: true,

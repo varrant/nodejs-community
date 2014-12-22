@@ -14,6 +14,13 @@ var schema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    // 权限 0 - 10
+    // 默认为 0，表示 2^0 = 1
+    // 注册用户的权限为 2^0 = 1
+    role: {
+        type: Number,
+        default: 0
+    },
     // URI
     uri: {
         type: String,
@@ -49,4 +56,4 @@ var schema = new mongoose.Schema({
 schema.set('toJSON', {getters: true, virtuals: true});
 schema.set('toObject', {getters: true, virtuals: true});
 
-module.exports = mongoose.model('scope', schema);
+module.exports = mongoose.model('section', schema);
