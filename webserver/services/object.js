@@ -8,7 +8,7 @@
 'use strict';
 
 var object = require('../models').object;
-var scope = require('./scope.js');
+var category = require('./category.js');
 var label = require('./label.js');
 var setting = require('./setting.js');
 var engineer = require('./engineer.js');
@@ -46,7 +46,7 @@ exports.createOne = function (author, data, callback) {
     howdo
         // 1. 检查 scope 是否存在
         .task(function (next) {
-            scope.findOne({_id: data.scope}, function (err, doc) {
+            category.findOne({_id: data.scope}, function (err, doc) {
                 if (err) {
                     return next(err);
                 }
@@ -105,8 +105,8 @@ exports.createOne = function (author, data, callback) {
             callback(err, doc);
 
             if (!err && doc) {
-                // 更新 scope.objectCount
-                scope.increaseObjectCount({_id: data.scope}, 1, log.holdError);
+                // 更新 category.objectCount
+                category.increaseObjectCount({_id: data.scope}, 1, log.holdError);
 
                 // 更新 label.objectCount
                 doc.labels.forEach(function (name) {
@@ -149,7 +149,7 @@ exports.updateOne = function (author, conditions, data, callback) {
         })
         // 2. 检查 scope 是否存在
         .task(function (next) {
-            scope.findOne({_id: data.scope}, function (err, doc) {
+            category.findOne({_id: data.scope}, function (err, doc) {
                 if (err) {
                     return next(err);
                 }
@@ -210,10 +210,10 @@ exports.updateOne = function (author, conditions, data, callback) {
             callback(err, doc);
 
             if (!err && doc) {
-                // 更新 scope.objectCount
-                if (doc.scope.toString() !== oldDoc.scope.toString()) {
-                    scope.increaseObjectCount({_id: doc.scope}, 1, log.holdError);
-                    scope.increaseObjectCount({_id: oldDoc.scope}, -1, log.holdError);
+                // 更新 category.objectCount
+                if (doc.category.toString() !== oldDoc.category.toString()) {
+                    category.increaseObjectCount({_id: doc.scope}, 1, log.holdError);
+                    category.increaseObjectCount({_id: oldDoc.scope}, -1, log.holdError);
                 }
 
                 // 更新 label.objectCount
