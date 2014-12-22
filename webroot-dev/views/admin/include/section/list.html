@@ -9,13 +9,16 @@
     <tbody>
     <tr v-repeat="section:sections">
         <td>\{{$index + 1}}</td>
-        <td>\{{section.cover}}</td>
         <td>
-            <p><a href="#!/?id=\{{section.id}}" v-on="click: onchoose($index)"><strong>\{{section.name}}</strong>（\{{section.uri}}）</a></p>
-            <p class="s-muted">
+            <img v-attr="src: section.cover" alt="cover" width="100" height="100"/>
+        </td>
+        <td>
+            <div><a href="#!/?id=\{{section.id}}" v-on="click: onchoose($index)"><strong>\{{section.name}}</strong>（\{{section.uri}}）</a></div>
+            <div class="s-muted">
                 <i class="i i-key"></i>\{{section.role}}
                 <i class="i i-file"></i>\{{section.objectCount}}
-            </p>
+            </div>
+            <div class="s-light">\{{section.introduction}}</div>
         </td>
     </tr>
     </tbody>

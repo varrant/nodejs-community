@@ -29,9 +29,11 @@ define(function (require, exports, module) {
                     return alert(json);
                 }
 
-                var section = {};
+                var section = {
+                    name: '',
+                    uri: ''
+                };
 
-                debugger;
                 if (id) {
                     dato.each(json.data, function (i, sec) {
                         if (sec.id === id) {
@@ -54,6 +56,7 @@ define(function (require, exports, module) {
                 });
 
                 app.vue.$el.classList.remove('f-none');
+                app._translate();
             })
             .on('error', alert);
     };
@@ -78,7 +81,7 @@ define(function (require, exports, module) {
                     return alert(json);
                 }
 
-                if(!hasId){
+                if (!hasId) {
                     the.$data.sections.push(json.data);
                 }
 
@@ -95,6 +98,34 @@ define(function (require, exports, module) {
      */
     app._onchoose = function (index) {
         this.$data.section = this.$data.sections[index];
+    };
+
+
+    /**
+     * 实时翻译
+     * @private
+     */
+    app._translate = function () {
+        var xhr = null;
+
+        // 实时翻译
+        app.vue.$watch('section.name', function (word) {
+            if (xhr) {
+                xhr.abort();
+            }
+
+            xhr = ajax({
+                url: '/api/translate/?word=' + encodeURIComponent(word)
+            })
+                .on('success', function (json) {
+                    if (json.code === 200) {
+                        app.vue.$data.section.uri = json.data;
+                    }
+                })
+                .on('complete', function () {
+                    xhr = null;
+                });
+        });
     };
 
     app.init();

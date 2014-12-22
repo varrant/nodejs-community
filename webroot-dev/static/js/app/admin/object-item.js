@@ -10,8 +10,8 @@ define(function (require, exports, module) {
 
     var Item = require('../../widget/admin/Item.js');
 
-    require('../../widget/admin/welcome.js');
-    require('../../widget/admin/nav.js');
+    require('../../widget/admin/header.js');
+    require('../../widget/admin/sidebar.js');
 
     new Item('#form', '#content', {
         type: window['-type-'],

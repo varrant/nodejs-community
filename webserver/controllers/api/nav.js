@@ -36,14 +36,14 @@ module.exports = function (app) {
         list.push({
             href: '/admin/section/',
             text: '版块设置',
-            icon: 'i i-folder',
-            reg: '^scope\\/$'
+            icon: 'i i-archive',
+            reg: '^section\\/$'
         });
 
         list.push({
             href: '/admin/category/',
             text: '分类设置',
-            icon: 'i i-archive',
+            icon: 'i i-folder',
             reg: '^category\\/$'
         });
 

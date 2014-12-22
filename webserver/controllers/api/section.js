@@ -7,6 +7,7 @@
 'use strict';
 
 var section = require('../../services/').section;
+var dato = require('ydr-util').dato;
 
 module.exports = function (app) {
     var exports = {};
@@ -34,13 +35,20 @@ module.exports = function (app) {
     exports.put = function (req, res, next) {
         var id = req.body.id;
 
-        if(id){
+        if (id) {
             return section.findOneAndUpdate({
                 _id: id
             }, req.body, function (err, doc) {
-                if(err){
+                if (err) {
                     return next(err);
                 }
+
+                dato.each(app.locals.$section, function (index, section) {
+                    if (section.id.toString() === doc.id.toString()) {
+                        app.locals.$section[index] = section;
+                        return false;
+                    }
+                });
 
                 res.json({
                     code: 200,
@@ -50,10 +58,11 @@ module.exports = function (app) {
         }
 
         section.createOne(req.body, function (err, doc) {
-            if(err){
+            if (err) {
                 return next(err);
             }
 
+            app.locals.$section.push(doc);
             res.json({
                 code: 200,
                 data: doc
