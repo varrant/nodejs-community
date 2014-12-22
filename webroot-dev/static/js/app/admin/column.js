@@ -13,6 +13,7 @@ define(function (require, exports, module) {
     require('../../widget/admin/sidebar.js');
 
     var alert = require('../../widget/common/alert.js');
+    var confirm = require('../../widget/common/confirm.js');
     var ajax = require('../../widget/common/ajax.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var dato = require('../../alien/util/dato.js');
@@ -51,7 +52,8 @@ define(function (require, exports, module) {
                     },
                     methods: {
                         onsave: app._onsave,
-                        onchoose: app._onchoose
+                        onchoose: app._onchoose,
+                        onremove: app._onremove
                     }
                 });
 
@@ -98,6 +100,36 @@ define(function (require, exports, module) {
      */
     app._onchoose = function (index) {
         this.$data.column = this.$data.columns[index];
+    };
+
+
+    app._onremove = function (index) {
+        var col = this.$data.columns[index];
+        var id = col.id;
+
+        if (col.objectCount > 0) {
+            return alert('该专栏下还有' + col.objectCount + '个项目，无法删除');
+        }
+
+        var remove = function () {
+            ajax({
+                url: url,
+                method: 'delete',
+                data: {
+                    id: id
+                }
+            })
+                .on('success', function (json) {
+                    if (json.code !== 200) {
+                        return alert(json);
+                    }
+
+                    app.vue.$data.columns.splice(index, 1);
+                })
+                .on('error', alert);
+        };
+
+        confirm('确认要删除该专栏吗？', remove);
     };
 
 
