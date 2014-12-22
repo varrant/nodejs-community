@@ -7,7 +7,8 @@
 'use strict';
 
 var URL = require('url');
-var ydrUtil = require('ydr-util');
+var crypto = require('ydr-util').crypto;
+var dato = require('ydr-util').dato;
 var configs = require('../../configs/');
 var engineer = require('../services/').engineer;
 var cookie = require('../utils/').cookie;
@@ -100,7 +101,7 @@ module.exports = function (app) {
             return next();
         }
 
-        var userId = ydrUtil.crypto.decode(userCookie, configs.secret.cookie.secret);
+        var userId = crypto.decode(userCookie, configs.secret.cookie.secret);
 
         // 解析错误
         if (!userId) {
@@ -150,8 +151,8 @@ module.exports = function (app) {
  * @private
  */
 function _generatorCsrf() {
-    var timeString = ydrUtil.dato.parseInt(Date.now() / configs.secret.session.$csrfAge, 0) + '';
-    var csrf = ydrUtil.crypto.encode(timeString, configs.secret.session.secret);
+    var timeString = dato.parseInt(Date.now() / configs.secret.session.$csrfAge, 0) + '';
+    var csrf = crypto.encode(timeString, configs.secret.session.secret);
 
     return csrf;
 }
