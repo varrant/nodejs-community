@@ -15,7 +15,7 @@ var configs = require('../../../configs/');
 
 module.exports = function (app) {
     var exports = {};
-    var oauthSettings = app.locals.$settings.oauth;
+    var oauthSettings = app.locals.$setting.oauth;
 
     /**
      * 跳转至授权地址

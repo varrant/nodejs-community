@@ -21,7 +21,7 @@ module.exports = function (app) {
     exports.get = function (req, res, next) {
         res.json({
             code: 200,
-            data: app.locals.$settings
+            data: app.locals.$setting
         });
     };
 
@@ -37,11 +37,11 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                app.locals.$settings[key] = doc.val;
-                locals.$settings(app);
+                app.locals.$setting[key] = doc.val;
+                locals.$setting(app);
                 res.json({
                     code: 200,
-                    data: app.locals.$settings[key]
+                    data: app.locals.$setting[key]
                 });
             });
         };

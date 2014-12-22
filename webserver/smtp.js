@@ -12,7 +12,7 @@ var log = require('ydr-log');
 var configs = require('../configs/');
 
 module.exports = function (next, app) {
-    var options = app.locals.$settings.smtp;
+    var options = app.locals.$setting.smtp;
     var smtp = emailjs.server.connect(options);
 
     email.init(smtp, app.locals.$owner);

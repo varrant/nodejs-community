@@ -21,7 +21,7 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                app.locals.$settings = docs;
+                app.locals.$setting = docs;
                 done();
             });
         })

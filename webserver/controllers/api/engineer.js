@@ -132,8 +132,8 @@ module.exports = function (app) {
                 code: 200,
                 data: {
                     engineer: doc,
-                    types: app.locals.$settings.types,
-                    roles: app.locals.$settings.roles
+                    types: app.locals.$setting.types,
+                    roles: app.locals.$setting.roles
                 }
             });
         });

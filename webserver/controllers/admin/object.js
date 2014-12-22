@@ -11,7 +11,7 @@ var object = require('../../services/').object;
 
 module.exports = function (app) {
     var exports = {};
-    var typesMap = app.locals.$settings._typesMap;
+    var typesMap = app.locals.$setting._typesMap;
 
     /**
      * 列出各个 type 下的 object

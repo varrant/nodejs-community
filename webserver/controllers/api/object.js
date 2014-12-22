@@ -14,7 +14,7 @@ var howdo = require('howdo');
 
 module.exports = function (app) {
     var exports = {};
-    var uris = app.locals.$settings._displayTypeUris;
+    var uris = app.locals.$setting._displayTypeUris;
 
     /**
      * 列出符合条件的 object
@@ -43,7 +43,7 @@ module.exports = function (app) {
             });
         }
 
-        var can = (res.locals.$engineer.role & app.locals.$settings._typesMap[type].roleVal) > 0;
+        var can = (res.locals.$engineer.role & app.locals.$setting._typesMap[type].roleVal) > 0;
 
         if (!can) {
             return res.json({

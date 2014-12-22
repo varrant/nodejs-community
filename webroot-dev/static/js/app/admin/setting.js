@@ -20,7 +20,7 @@ define(function (require, exports, module) {
             url: '/admin/api/setting/'
         })
             .on('success', function (json) {
-                if(json.code !== 200){
+                if (json.code !== 200) {
                     return alert(json);
                 }
 
@@ -28,11 +28,27 @@ define(function (require, exports, module) {
                     el: '#setting',
                     data: json.data,
                     methods: {
-
+                        onsave: app._onsave
                     }
                 });
 
                 app.vue.$el.classList.remove('f-none');
+            })
+            .on('error', alert);
+    };
+
+    app._onsave = function (key) {
+        var data = this.$data[key];
+
+        ajax({
+            url: '/admin/api/setting/' + key + '/',
+            method: 'put',
+            data: data
+        })
+            .on('success', function (json) {
+                if (json.code !== 200) {
+                    return alert(json);
+                }
             })
             .on('error', alert);
     };
