@@ -12,11 +12,30 @@ define(function (require) {
     var alert = require('../common/alert.js');
     var confirm = require('../common/confirm.js');
     var selector = require('../../alien/core/dom/selector.js');
+    var animation = require('../../alien/core/dom/animation.js');
     var event = require('../../alien/core/event/base.js');
-    var page = {};
+    var app = {};
+
+    app.scrollTop = function () {
+        var $header = selector.query('header')[0];
+
+        event.on($header, 'selectstart', function (eve) {
+            eve.preventDefault();
+        });
+
+        event.on($header, 'dblclick', function (eve) {
+            animation.scrollTo(window, {
+                y: 0
+            }, {
+                duration: 234
+            });
+
+            eve.preventDefault();
+        });
+    };
 
     // 通知
-    page.notification = function () {
+    app.notification = function () {
         var $span = selector.query('#notification')[0];
         var html_1 = '<i class="i i-exclamation-triangle s-danger"></i>';
 
@@ -37,7 +56,7 @@ define(function (require) {
 
 
     // 退出
-    page.logout = function () {
+    app.logout = function () {
         var logout = function () {
             ajax({
                 method: 'post',
@@ -57,6 +76,7 @@ define(function (require) {
         });
     };
 
-    page.notification();
-    page.logout();
+    app.scrollTop();
+    app.notification();
+    app.logout();
 });
