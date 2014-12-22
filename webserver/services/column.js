@@ -24,9 +24,43 @@ exports.find = column.find;
 
 
 /**
- * 删除
+ * 删除某个专栏
+ * @param author
+ * @param conditions
+ * @param callback
  */
-exports.findOneAndRemove = column.findOneAndRemove;
+exports.findOneAndRemove = function (author, conditions, callback) {
+    howdo
+        // 1. 检查是否为作者的专栏
+        .task(function (next) {
+            column.findOne({
+                author: author.id,
+                _id: conditions._id
+            }, function (err, doc) {
+                if (err) {
+                    return next(err);
+                }
+
+                if (!doc) {
+                    err = new Error('该专栏不存在');
+                    err.status = 404;
+                    return next(err);
+                }
+
+                if (doc.objectCount > 0) {
+                    err = new Error('该专栏下还有' + doc.objectCount + '个项目，无法删除');
+                    return next(err);
+                }
+
+                next();
+            });
+        })
+        // 2. 删除
+        .task(function (next) {
+            column.findOneAndRemove(conditions, next);
+        })
+        .follow(callback);
+};
 
 
 /**
@@ -78,9 +112,10 @@ exports.findOneAndUpdate = function (author, conditions, data, callback) {
     howdo
         // 1. 检查是否为作者的专栏
         .task(function (next) {
-            var _condtions = dato.extend({author: author.id}, conditions);
-
-            column.findOne(_condtions, function (err, doc) {
+            column.findOne({
+                author: author.id,
+                _id: conditions._id
+            }, function (err, doc) {
                 if (err) {
                     return next(err);
                 }
@@ -96,9 +131,26 @@ exports.findOneAndUpdate = function (author, conditions, data, callback) {
         })
         // 2. 检查 uri 是否重复
         .task(function (next) {
-            var _condtions = dato.extend({author: author.id, uri: data.uri}, conditions);
+            var _condtions = {
+                author: author.id,
+                uri: data.uri
+            };
 
-            column.findOne(_condtions);
+            column.findOne(_condtions, {
+                nor: {_id: conditions._id}
+            }, function (err, doc) {
+                if (err) {
+                    return next(err);
+                }
+
+                if (doc) {
+                    console.log(doc);
+                    err = new Error('专栏 URI 重复');
+                    return next(err);
+                }
+
+                next();
+            });
         })
         // 2. 更新
         .task(function (next) {
