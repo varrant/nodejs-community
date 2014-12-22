@@ -25,6 +25,5 @@ module.exports = function (next, app) {
         log.initSmtp(options);
     }
 
-    app.locals.$smtp = smtp;
     next(null, app);
 };
