@@ -9,8 +9,6 @@
 var settings = ['oauth', 'smtp', 'types', 'website', 'alioss', 'roles'];
 
 module.exports = function(app, ctrlAdmin){
-    var uris = app.locals.$settings._displayTypeUris;
-
     // 中间件
     app.use(/^\/admin\/.*$/i, ctrlAdmin.middleware.login);
 

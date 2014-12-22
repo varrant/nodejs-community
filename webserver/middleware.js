@@ -7,22 +7,47 @@
 'use strict';
 
 var setting = require('./services/').setting;
+var section = require('./services/').section;
+var category = require('./services/').category;
 var engineer = require('./services/').engineer;
 var howdo = require('howdo');
 
 module.exports = function (next, app) {
     howdo
-        // 初始化网站设置
+        // 初始化 web 设置
         .task(function (done) {
-            setting.get(function (err, settings) {
+            setting.get(function (err, docs) {
                 if (err) {
                     return done(err);
                 }
 
-                app.locals.$settings = settings;
+                app.locals.$settings = docs;
                 done();
             });
         })
+        // 初始化社区版块
+        .task(function (done) {
+            section.find({}, function (err, docs) {
+                if (err) {
+                    return done(err);
+                }
+
+                app.locals.$section = docs;
+                done();
+            });
+        })
+        // 初始化社区版块
+        .task(function (done) {
+            category.find({}, function (err, docs) {
+                if (err) {
+                    return done(err);
+                }
+
+                app.locals.$category = docs;
+                done();
+            });
+        })
+        // 初始化社区分类
         // 初始化网站管理员
         .task(function (done) {
             engineer.findOne({
