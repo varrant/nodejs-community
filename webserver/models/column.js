@@ -8,8 +8,8 @@
 
 var mongoose = require('mongoose');
 var schema = new mongoose.Schema({
-    // 名称
-    owner: {
+    // 作者
+    author: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'engineer'
@@ -17,14 +17,12 @@ var schema = new mongoose.Schema({
     // 名称
     name: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
-    // URI
+    // URI，同一个 owner 不能有重复的 uri
     uri: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     // 封面
     cover: {

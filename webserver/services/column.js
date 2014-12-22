@@ -9,6 +9,7 @@
 var column = require('../models/').column;
 var dato = require('ydr-util').dato;
 var keys = ['name', 'uri', 'cover', 'introduction'];
+var howdo = require('howdo');
 
 
 /**
@@ -34,8 +35,14 @@ exports.findOneAndRemove = column.findOneAndRemove;
  * @param data {Object} 数据
  * @param callback {Function} 回调
  */
-exports.createOne = function (data, callback) {
+exports.createOne = function (owner, data, callback) {
     var data2 = dato.pick(data, keys);
+
+    howdo
+        // 检查是否有重复
+        .task(function (next) {
+
+        })
 
     column.createOne(data2, callback);
 };
