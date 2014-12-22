@@ -59,13 +59,16 @@ var schema = new mongoose.Schema({
     },
     // 用户类型：
     // normal
+    // vip
     // admin
+    // partner
+    // owner
+    // 注册时间
     type: {
         type: String,
         required: false,
         default: 'normal'
     },
-    // 注册时间
     registerAt: {
         type: Date,
         default: new Date()
