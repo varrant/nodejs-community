@@ -41,12 +41,21 @@ nav li.active a {
 footer {
   padding: 10px 0;
 }
-.m-main .main-title {
-  font-size: 20px;
+.m-main .main-title,
+.m-main .main-subtitle {
   font-weight: normal;
-  color: #444;
   padding: 20px;
   margin: 0;
+}
+.m-main .main-title .i,
+.m-main .main-subtitle .i {
+  margin-left: 0;
+}
+.m-main .main-title {
+  color: #000;
+}
+.m-main .main-subtitle {
+  color: #555;
 }
 .m-main .main-body {
   padding: 20px;
