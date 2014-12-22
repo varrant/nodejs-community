@@ -49,7 +49,7 @@ mongoose(function (err) {
                 if (count) {
                     console.log('#########################################################');
                     console.log('已经配置初始化过了，略过……');
-                    console.log('后续配置修改可以访问`/admin/settings/`继续操作。');
+                    console.log('后续配置修改可以访问`/admin/setting/`继续操作。');
                     console.log('#########################################################');
                     return process.exit();
                 }
