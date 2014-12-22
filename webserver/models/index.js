@@ -27,6 +27,8 @@ var models = {
     notification: require('./notification.js'),
     // 对象
     object: require('./object.js'),
+    //// 领域
+    //scope: require('./scope.js'),
     // 搜索
     search: require('./search.js'),
     // 版块
