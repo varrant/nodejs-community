@@ -29,6 +29,10 @@ module.exports = function (app, ctrlAdmin) {
     app.get('/admin/section/', ctrlAdmin.section.get);
 
 
+    // category
+    app.get('/admin/category/', ctrlAdmin.category.get);
+
+
     // engineer
     app.get('/admin/engineer/list/', ctrlAdmin.engineer.list);
     app.get('/admin/engineer/', ctrlAdmin.engineer.get);
