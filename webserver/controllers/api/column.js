@@ -44,7 +44,7 @@ module.exports = function (app) {
         var id = req.body.id;
 
         if (id) {
-            return column.findOneAndUpdate({
+            return column.findOneAndUpdate(res.locals.$engineer, {
                 _id: id
             }, req.body, function (err, doc) {
                 if (err) {
@@ -58,7 +58,7 @@ module.exports = function (app) {
             });
         }
 
-        column.createOne(req.body, function (err, doc) {
+        column.createOne(res.locals.$engineer, req.body, function (err, doc) {
             if (err) {
                 return next(err);
             }

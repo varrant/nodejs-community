@@ -36,12 +36,11 @@ exports.findOneAndRemove = column.findOneAndRemove;
  * @param callback {Function} 回调
  */
 exports.createOne = function (author, data, callback) {
-    var data2 = dato.pick(data, ['name', 'uri', 'cover', 'introduction']);
-
     howdo
         // 1、检查是否有重复
         .task(function (next) {
             column.findOne({
+                author: author.id,
                 uri: data.uri
             }, function (err, doc) {
                 if (err) {
@@ -58,6 +57,9 @@ exports.createOne = function (author, data, callback) {
         })
         // 2、插入数据
         .task(function (next) {
+            var data2 = dato.pick(data, ['name', 'uri', 'cover', 'introduction']);
+
+            data2.author = author.id;
             column.createOne(data2, next);
         })
         // 异步串行
@@ -77,6 +79,7 @@ exports.findOneAndUpdate = function (author, conditions, data, callback) {
         // 1. 检查是否为作者的专栏
         .task(function (next) {
             var _condtions = dato.extend({author: author.id}, conditions);
+
             column.findOne(_condtions, function (err, doc) {
                 if (err) {
                     return next(err);
@@ -91,9 +94,15 @@ exports.findOneAndUpdate = function (author, conditions, data, callback) {
                 next();
             });
         })
+        // 2. 检查 uri 是否重复
+        .task(function (next) {
+            var _condtions = dato.extend({author: author.id, uri: data.uri}, conditions);
+
+            column.findOne(_condtions);
+        })
         // 2. 更新
         .task(function (next) {
-            var data2 = dato.pick(data, ['name', 'cover', 'introduction']);
+            var data2 = dato.pick(data, ['name', 'uri', 'cover', 'introduction']);
             column.findOneAndUpdate(conditions, data2, next);
         })
         // 异步串行
