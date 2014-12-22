@@ -53,14 +53,12 @@ exports.createOne = function (author, data, callback) {
 
                 if (!doc) {
                     err = new Error('the section is not exist');
-                    err.type = 'notFound';
                     err.status = 404;
                     return next(err);
                 }
 
                 if (author.role & Math.pow(2, doc.role) === 0) {
                     err = new Error('insufficient permissions');
-                    err.type = 'permissions';
                     err.status = 403;
                     return next(err);
                 }
@@ -77,7 +75,7 @@ exports.createOne = function (author, data, callback) {
 
                 if (!doc) {
                     err = new Error('the category is not exist');
-                    err.type = 'notFound';
+                    err.status = 404;
                     return next(err);
                 }
 
@@ -142,7 +140,7 @@ exports.updateOne = function (author, conditions, data, callback) {
 
                 if (!doc) {
                     err = new Error('the object is not exist');
-                    err.type = 'notFound';
+                    err.status = 404;
                     return next(err);
                 }
 
@@ -158,7 +156,7 @@ exports.updateOne = function (author, conditions, data, callback) {
 
                 if (!doc) {
                     err = new Error('the category is not exist');
-                    err.type = 'notFound';
+                    err.status = 404;
                     return next(err);
                 }
 
@@ -174,7 +172,7 @@ exports.updateOne = function (author, conditions, data, callback) {
 
                 if (!type) {
                     err = new Error('the type is not exist');
-                    err.type = 'notFound';
+                    err.status = 404;
                     return next(err);
                 }
 
