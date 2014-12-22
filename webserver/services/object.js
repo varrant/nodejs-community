@@ -44,38 +44,40 @@ exports.find = object.find;
  */
 exports.createOne = function (author, data, callback) {
     howdo
-        // 1. 检查 scope 是否存在
+        // 1. 检查 section 是否存在以及发布权限
         .task(function (next) {
-            category.findOne({_id: data.scope}, function (err, doc) {
+            category.findOne({_id: data.category}, function (err, doc) {
                 if (err) {
                     return next(err);
                 }
 
                 if (!doc) {
-                    err = new Error('the scope is not exist');
+                    err = new Error('the section is not exist');
                     err.type = 'notFound';
+                    err.status = 404;
+                    return next(err);
+                }
+
+                if (author.role & Math.pow(2, doc.role) === 0) {
+                    err = new Error('insufficient permissions');
+                    err.type = 'permissions';
+                    err.status = 403;
                     return next(err);
                 }
 
                 next();
             });
         })
-        // 2. 检查 type 是否存在 && 检查权限
+        // 2. 检查 category 是否存在
         .task(function (next) {
-            setting.getType(data.type, function (err, type) {
+            category.findOne({_id: data.category}, function (err, doc) {
                 if (err) {
                     return next(err);
                 }
 
-                if (!type) {
-                    err = new Error('the type is not exist');
+                if (!doc) {
+                    err = new Error('the category is not exist');
                     err.type = 'notFound';
-                    return next(err);
-                }
-
-                if (author.role & Math.pow(2, type.role) <= 0) {
-                    err = new Error('insufficient permissions');
-                    err.type = 'permissions';
                     return next(err);
                 }
 
@@ -85,7 +87,7 @@ exports.createOne = function (author, data, callback) {
         // 3. 新建数据
         .task(function (next) {
             var date = new Date();
-            var data2 = dato.pick(data, ['title', 'uri', 'type', 'scope', 'labels',
+            var data2 = dato.pick(data, ['title', 'uri', 'type', 'category', 'labels',
                 'introduction', 'content', 'isDisplay']);
             var data3 = {
                 author: author.id,
@@ -106,7 +108,7 @@ exports.createOne = function (author, data, callback) {
 
             if (!err && doc) {
                 // 更新 category.objectCount
-                category.increaseObjectCount({_id: data.scope}, 1, log.holdError);
+                category.increaseObjectCount({_id: data.category}, 1, log.holdError);
 
                 // 更新 label.objectCount
                 doc.labels.forEach(function (name) {
@@ -147,15 +149,15 @@ exports.updateOne = function (author, conditions, data, callback) {
                 next();
             });
         })
-        // 2. 检查 scope 是否存在
+        // 2. 检查 category 是否存在
         .task(function (next) {
-            category.findOne({_id: data.scope}, function (err, doc) {
+            category.findOne({_id: data.category}, function (err, doc) {
                 if (err) {
                     return next(err);
                 }
 
                 if (!doc) {
-                    err = new Error('the scope is not exist');
+                    err = new Error('the category is not exist');
                     err.type = 'notFound';
                     return next(err);
                 }
@@ -187,7 +189,7 @@ exports.updateOne = function (author, conditions, data, callback) {
         })
         // 4. 数据预验证
         .task(function (next) {
-            var data2 = dato.pick(data, ['scope', 'labels', 'introduction', 'content', 'isDisplay']);
+            var data2 = dato.pick(data, ['category', 'labels', 'introduction', 'content', 'isDisplay']);
 
             object.findOneAndValidate(conditions, data2, next);
         })
@@ -212,8 +214,8 @@ exports.updateOne = function (author, conditions, data, callback) {
             if (!err && doc) {
                 // 更新 category.objectCount
                 if (doc.category.toString() !== oldDoc.category.toString()) {
-                    category.increaseObjectCount({_id: doc.scope}, 1, log.holdError);
-                    category.increaseObjectCount({_id: oldDoc.scope}, -1, log.holdError);
+                    category.increaseObjectCount({_id: doc.category}, 1, log.holdError);
+                    category.increaseObjectCount({_id: oldDoc.category}, -1, log.holdError);
                 }
 
                 // 更新 label.objectCount
@@ -237,7 +239,6 @@ exports.updateOne = function (author, conditions, data, callback) {
             }
         });
 };
-
 
 
 /**
