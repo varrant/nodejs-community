@@ -9,6 +9,7 @@
 
 module.exports = function (app) {
     return {
+        category: require('./category.js')(app),
         engineer: require('./engineer.js')(app),
         nav: require('./nav.js')(app),
         notification: require('./notification.js')(app),
