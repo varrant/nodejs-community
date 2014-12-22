@@ -44,6 +44,10 @@ module.exports = function (app, ctrlApi) {
     });
 
 
+    // section
+    app.get('/api/section/', ctrlApi.section.get);
+
+
     // engineer
     app.post('/api/engineer/login/', ctrlApi.engineer.login);
     app.post('/api/engineer/logout/', ctrlApi.engineer.logout);

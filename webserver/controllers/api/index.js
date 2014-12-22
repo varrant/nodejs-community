@@ -15,6 +15,7 @@ module.exports = function (app) {
         object: require('./object.js')(app),
         oss: require('./oss.js')(app),
         scope: require('./scope.js')(app),
+        section: require('./section.js')(app),
         setting: require('./setting.js')(app),
         translate: require('./translate.js')(app)
     };
