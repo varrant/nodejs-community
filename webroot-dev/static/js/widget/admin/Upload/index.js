@@ -153,8 +153,8 @@ define(function (require, exports, module) {
             canvas.imgToBlob(the._$img, {
                 srcX: selection.left,
                 srcY: selection.top,
-                srcWidth: selection.width,
-                srcHeight: selection.height,
+                srcWidth: selection.srcWidth,
+                srcHeight: selection.srcHeight,
                 drawWidth: 200,
                 drawHeight: 200
             }, callback);
