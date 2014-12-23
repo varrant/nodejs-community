@@ -189,7 +189,7 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
-                    the.emit('success', json);
+                    the.emit('success', json.data);
                 })
                 .on('error', alert)
                 .on('finish', function () {

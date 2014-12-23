@@ -18,6 +18,9 @@
         <div class="form-val">
             <button class="btn btn-default btn-file" v-on="click: onupload">选择图片文件并裁剪上传</button>
             <input class="ipt" type="hidden" v-model="column.cover"/>
+            <div class="form-opt" v-class="f-none: !column.cover">
+                <img v-attr="src: column.cover" alt="cover" width="100" height="100"/>
+            </div>
         </div>
     </li>
 

@@ -34,7 +34,9 @@ define(function (require, exports, module) {
 
                 var column = {
                     name: '',
-                    uri: ''
+                    uri: '',
+                    cover: '',
+                    introduction: ''
                 };
 
                 if (id) {
@@ -72,8 +74,9 @@ define(function (require, exports, module) {
      * @private
      */
     app._onupload = function () {
-        upload.open().on('success', function (json) {
-
+        upload.open().on('success', function (data) {
+            app.vue.$data.column.cover = data.surl;
+            this.close();
         });
     };
 
