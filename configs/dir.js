@@ -15,6 +15,6 @@ module.exports = function (app) {
         // 资源
         log: path.join(__dirname, '../logs'),
         // oss 上传目录
-        upload: '/f2ec.org/img/'
+        upload: '/f/i/'
     };
 };
