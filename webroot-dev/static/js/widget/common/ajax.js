@@ -12,9 +12,6 @@ define(function (require, exports, module) {
     var login = require('./login.js');
     var confirm = require('./confirm.js');
     var json = 'application/json; charset=utf-8';
-    var refresh = function () {
-        window.location.reload();
-    };
 
     module.exports = function (options) {
         options.headers = options.headers || {};
