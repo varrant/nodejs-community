@@ -14,12 +14,8 @@ define(function (require, exports, module) {
     module.exports = function (content) {
         return new Msg({
             content: content && content.message ? content.message : String(content),
-            buttons: ['确定'],
+            buttons: ['好'],
             addClass: 'm-dialog-alert'
-        }).on('close', function () {
-                if (content && content.code === 401) {
-                    login();
-                }
-            });
+        });
     };
 });

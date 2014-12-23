@@ -76,13 +76,15 @@ module.exports = function (app) {
         }
 
         if (req.session.$csrf && req.session.$csrf !== headersCsrf) {
-            err = new Error('当前会话的认证信息已过期');
+            err = new Error('当前会话信息不正确，请稍后再试');
             err.status = 406;
+            err.data = req.session.$csrf;
             return next(err);
         }
 
-        err = new Error('当前会话的认证信息不合法');
+        err = new Error('当前会话信息不合法，请稍后再试');
         err.status = 400;
+        err.data = req.session.$csrf;
         next(err);
     };
 

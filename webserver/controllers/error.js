@@ -25,7 +25,8 @@ module.exports = function (app) {
         if (REG_ACCEPT_JSON.test(req.headers.accept)) {
             res.json({
                 code: err.status || 500,
-                message: err.message
+                message: err.message,
+                data: err.data || null
             });
         } else {
             res.status(500).render('server-error.html', {
@@ -49,7 +50,7 @@ module.exports = function (app) {
                 code: 404,
                 message: httpStatus.get(404)
             });
-        }else{
+        } else {
             res.status(404).render('client-error.html', {
                 title: '404'
             });
