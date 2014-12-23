@@ -53,6 +53,7 @@ define(function (require, exports, module) {
                         column: column
                     },
                     methods: {
+                        onupload: app._onupload,
                         onsave: app._onsave,
                         onchoose: app._onchoose,
                         onremove: app._onremove
@@ -61,9 +62,17 @@ define(function (require, exports, module) {
 
                 app.vue.$el.classList.remove('f-none');
                 app._translate();
-                app._upload();
             })
             .on('error', alert);
+    };
+
+
+    /**
+     * 上传并裁剪图片
+     * @private
+     */
+    app._onupload = function () {
+        upload.open();
     };
 
 
@@ -170,9 +179,7 @@ define(function (require, exports, module) {
     };
 
 
-    app._upload = function () {
 
-    };
 
     app.init();
 });

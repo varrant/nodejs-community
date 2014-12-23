@@ -11,6 +11,7 @@ define(function (require, exports, module) {
     var generator = require('../../../alien/ui/generator.js');
     var selector = require('../../../alien/core/dom/selector.js');
     var modification = require('../../../alien/core/dom/modification.js');
+    var event = require('../../../alien/core/event/base.js');
     var dato = require('../../../alien/util/dato.js');
     var ajax = require('../../common/ajax.js');
     var Dialog = require('../../../alien/ui/Dialog/');
@@ -33,6 +34,7 @@ define(function (require, exports, module) {
             the._init();
         },
 
+
         /**
          * 初始化
          * @private
@@ -41,6 +43,7 @@ define(function (require, exports, module) {
             var the = this;
 
             the._initNode();
+            the._initEvent();
         },
 
 
@@ -58,6 +61,34 @@ define(function (require, exports, module) {
             the._dialog = new Dialog(the._$dialog, {
                 title: '裁剪并上传图片'
             });
+
+            var nodes = selector.query('.j-flag', $dialog);
+
+            the._$file = nodes[0];
+            the._$container = nodes[1];
+            the._$sure = nodes[2];
+        },
+
+
+        _initEvent: function () {
+            var the = this;
+
+            event.on(the._$file, 'change', function (eve) {
+                debugger;
+                if(this.file){
+
+                }
+            });
+        },
+
+
+        _renderImg: function (file) {
+
+        },
+
+
+        open: function () {
+            this._dialog.open();
         }
     });
 
