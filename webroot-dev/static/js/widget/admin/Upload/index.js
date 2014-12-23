@@ -103,6 +103,7 @@ define(function (require, exports, module) {
              * 上传
              */
             event.on(the._$sure, 'click', function () {
+                the._$sure.disabled = true;
                 the._toBlob(function (blob) {
                     the._toUpload(blob);
                 });
@@ -166,7 +167,9 @@ define(function (require, exports, module) {
          * @private
          */
         _toUpload: function (blob) {
+            var the = this;
             var fd = new FormData();
+            var text = the._$sure.innerHTML;
 
             // key, val, name
             fd.append('img', blob, 'img.png');
@@ -175,7 +178,24 @@ define(function (require, exports, module) {
                 url: '/admin/api/oss/',
                 method: 'put',
                 data: fd
-            });
+            })
+                .on('progress', function (eve) {
+                    var percent = eve.alienDetail.percent;
+
+                    the._$sure.innerHTML = '上传中 ' + percent;
+                })
+                .on('success', function (json) {
+                    if (json.code !== 200) {
+                        return alert(json);
+                    }
+
+                    the.emit('success', json);
+                })
+                .on('error', alert)
+                .on('finish', function () {
+                    the._$sure.disabled = false;
+                    the._$sure.innerHTML = text;
+                });
         },
 
 
