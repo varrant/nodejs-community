@@ -18,6 +18,7 @@ define(function (require, exports, module) {
     var alert = require('../../common/alert.js');
     var confirm = require('../../common/confirm.js');
     var Dialog = require('../../../alien/ui/Dialog/');
+    var Imgclip = require('../../../alien/ui/Imgclip/');
     var Template = require('../../../alien/libs/Template.js');
     var template = require('html!./template.html');
     var style = require('css!./style.css');
@@ -102,6 +103,7 @@ define(function (require, exports, module) {
 
             the._$container.innerHTML = '';
             modification.insert($img, the._$container, 'beforeend');
+            the._imgclip = new Imgclip($img, the._options);
         },
 
 
