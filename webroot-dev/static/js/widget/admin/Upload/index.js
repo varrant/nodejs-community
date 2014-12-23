@@ -9,6 +9,7 @@ define(function (require, exports, module) {
     'use strict';
 
     var generator = require('../../../alien/ui/generator.js');
+    var compatible = require('../../../alien/core/navigator/compatible.js');
     var selector = require('../../../alien/core/dom/selector.js');
     var modification = require('../../../alien/core/dom/modification.js');
     var event = require('../../../alien/core/event/base.js');
@@ -21,6 +22,7 @@ define(function (require, exports, module) {
     var template = require('html!./template.html');
     var style = require('css!./style.css');
     var tpl = new Template(template);
+    var URL = window[compatible.html5('URL', window)];
     var defaults = {
         minWidth: 100,
         minHeight: 100,
@@ -68,8 +70,8 @@ define(function (require, exports, module) {
             var nodes = selector.query('.j-flag', $dialog);
 
             the._$file = nodes[0];
-            the._$container = nodes[1];
-            the._$sure = nodes[2];
+            the._$sure = nodes[1];
+            the._$container = nodes[2];
         },
 
 
@@ -92,7 +94,14 @@ define(function (require, exports, module) {
 
 
         _renderImg: function (file) {
+            var the = this;
+            var src = URL.createObjectURL(file);
+            var $img = modification.create('img', {
+                src: src
+            });
 
+            the._$container.innerHTML = '';
+            modification.insert($img, the._$container, 'beforeend');
         },
 
 
