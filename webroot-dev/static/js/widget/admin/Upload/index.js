@@ -14,6 +14,7 @@ define(function (require, exports, module) {
     var modification = require('../../../alien/core/dom/modification.js');
     var event = require('../../../alien/core/event/base.js');
     var dato = require('../../../alien/util/dato.js');
+    var canvas = require('../../../alien/util/canvas.js');
     var ajax = require('../../common/ajax.js');
     var alert = require('../../common/alert.js');
     var confirm = require('../../common/confirm.js');
@@ -25,10 +26,8 @@ define(function (require, exports, module) {
     var tpl = new Template(template);
     var URL = window[compatible.html5('URL', window)];
     var defaults = {
-        minWidth: 100,
-        minHeight: 100,
-        maxWidth: 100,
-        maxHeight: 100,
+        minWidth: 200,
+        minHeight: 200,
         ratio: 1
     };
     var Upload = generator({
@@ -76,34 +75,128 @@ define(function (require, exports, module) {
         },
 
 
+        /**
+         * 初始化事件
+         * @private
+         */
         _initEvent: function () {
             var the = this;
 
+            /**
+             * 选择图片
+             */
             event.on(the._$file, 'change', function (eve) {
                 var file;
 
-                if(this.files){
+                if (this.files) {
                     file = this.files[0];
-                    if(this.accept.indexOf(file.type) > -1){
+
+                    if (this.accept.indexOf(file.type) > -1) {
                         the._renderImg(file);
-                    }else{
+                    } else {
                         alert('只能选择图片文件！');
                     }
                 }
             });
+
+            /**
+             * 上传
+             */
+            event.on(the._$sure, 'click', function () {
+                the._toBlob(function (blob) {
+                    console.log(blob);
+                });
+            });
         },
 
 
+        /**
+         * 检查图片尺寸
+         * @param callback
+         * @private
+         */
+        _checkWidthHeight: function (file, callback) {
+            var the = this;
+            var options = the._options;
+
+            the._src = URL.createObjectURL(file);
+
+            var img = new Image();
+
+            img.src = the._src;
+            img.onload = function () {
+                if(this.width > options.minWidth && this.height > options.height){
+
+                }
+            };
+        },
+
+
+
+        /**
+         * 渲染裁剪
+         * @param file
+         * @private
+         */
         _renderImg: function (file) {
             var the = this;
-            var src = URL.createObjectURL(file);
             var $img = modification.create('img', {
-                src: src
+                src: the._src
             });
 
             the._$container.innerHTML = '';
             modification.insert($img, the._$container, 'beforeend');
-            the._imgclip = new Imgclip($img, the._options);
+
+            if (the._imgclip) {
+                the._imgclip.destroy();
+                the._$sure.disabled = true;
+            }
+
+            the._$img = $img;
+            the._imgclip = new Imgclip($img, the._options)
+                .on('clipend', function (seletion) {
+                    the._selection = seletion;
+                    the._$sure.disabled = false;
+                });
+        },
+
+
+        /**
+         * 转换为二进制
+         * @param callback
+         * @private
+         */
+        _toBlob: function (callback) {
+            var the = this;
+            var selection = the._selection;
+
+            canvas.imgToBlob(the._$img, {
+                srcX: selection.left,
+                srcY: selection.top,
+                srcWidth: selection.width,
+                srcHeight: selection.height,
+                drawWidth: 200,
+                drawHeight: 200
+            }, callback);
+        },
+
+
+        /**
+         * 上传
+         * @param blob
+         * @private
+         */
+        _toUpload: function (blob) {
+            var fd = new FormData();
+
+            // key, val, name
+            fd.append('img', blob, 'img.png');
+
+            ajax({
+                url: '/admin/oss/',
+                method: 'put',
+                data: fd
+            });
         },
 
 
