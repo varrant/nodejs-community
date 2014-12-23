@@ -580,3 +580,17 @@ input[type="reset"].btn-block,
 input[type="button"].btn-block {
     width: 100%;
 }
+
+.btn-file{
+    position: relative;
+    cursor: pointer;
+}
+
+.btn-file > input[type="file"]{
+    position: absolute;
+    font-size: 100em;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    opacity: 0;
+}

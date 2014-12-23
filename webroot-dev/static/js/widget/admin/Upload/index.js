@@ -14,6 +14,8 @@ define(function (require, exports, module) {
     var event = require('../../../alien/core/event/base.js');
     var dato = require('../../../alien/util/dato.js');
     var ajax = require('../../common/ajax.js');
+    var alert = require('../../common/alert.js');
+    var confirm = require('../../common/confirm.js');
     var Dialog = require('../../../alien/ui/Dialog/');
     var Template = require('../../../alien/libs/Template.js');
     var template = require('html!./template.html');
@@ -59,7 +61,8 @@ define(function (require, exports, module) {
             modification.insert($dialog, document.body, 'beforeend');
             the._$dialog = $dialog;
             the._dialog = new Dialog(the._$dialog, {
-                title: '裁剪并上传图片'
+                title: '裁剪并上传图片',
+                width: 'auto'
             });
 
             var nodes = selector.query('.j-flag', $dialog);
@@ -74,9 +77,15 @@ define(function (require, exports, module) {
             var the = this;
 
             event.on(the._$file, 'change', function (eve) {
-                debugger;
-                if(this.file){
+                var file;
 
+                if(this.files){
+                    file = this.files[0];
+                    if(this.accept.indexOf(file.type) > -1){
+                        the._renderImg(file);
+                    }else{
+                        alert('只能选择图片文件！');
+                    }
                 }
             });
         },
