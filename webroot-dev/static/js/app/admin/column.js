@@ -17,6 +17,7 @@ define(function (require, exports, module) {
     var ajax = require('../../widget/common/ajax.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var dato = require('../../alien/util/dato.js');
+    var Upload = require('../../widget/admin/Upload/');
     var app = {};
     var id = hashbang.get('query', 'id');
     var url = '/admin/api/column/';
@@ -59,6 +60,7 @@ define(function (require, exports, module) {
 
                 app.vue.$el.classList.remove('f-none');
                 app._translate();
+                app._upload();
             })
             .on('error', alert);
     };
@@ -164,6 +166,11 @@ define(function (require, exports, module) {
                     xhr = null;
                 });
         });
+    };
+
+
+    app._upload = function () {
+        new Upload();
     };
 
     app.init();
