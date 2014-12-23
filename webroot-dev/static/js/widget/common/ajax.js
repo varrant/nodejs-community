@@ -25,21 +25,17 @@ define(function (require, exports, module) {
 
         return xhr.ajax(options)
             .on('success', function (json) {
-                // 登陆
-                if(json.code === 401){
-                    login();
-                }
-
-                switch (json.code){
+                switch (json.code) {
+                    // 认证不合法
                     case 400:
-                        break;
-
-                    case 401:
-                        confirm('是否要立即登陆继续操作？', login);
-                        break;
-
+                    // 认证不正确
                     case 406:
-                        confirm('是否要刷新当前页面以更新会话的认证信息？', refresh);
+                        window['-csrf-'] = json.data || '';
+                        break;
+
+                    // 未登陆
+                    case 401:
+                        login();
                         break;
                 }
             });
