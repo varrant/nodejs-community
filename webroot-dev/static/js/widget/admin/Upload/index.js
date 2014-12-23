@@ -151,8 +151,8 @@ define(function (require, exports, module) {
             var selection = the._selection;
 
             canvas.imgToBlob(the._$img, {
-                srcX: selection.left,
-                srcY: selection.top,
+                srcX: selection.srcLeft,
+                srcY: selection.srcTop,
                 srcWidth: selection.srcWidth,
                 srcHeight: selection.srcHeight,
                 drawWidth: 200,
