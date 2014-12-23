@@ -72,7 +72,9 @@ define(function (require, exports, module) {
      * @private
      */
     app._onupload = function () {
-        upload.open();
+        upload.open().on('success', function (json) {
+
+        });
     };
 
 

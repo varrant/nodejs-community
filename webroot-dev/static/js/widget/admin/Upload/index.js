@@ -199,8 +199,21 @@ define(function (require, exports, module) {
         },
 
 
+        /**
+         * 打开上传对话框
+         */
         open: function () {
             this._dialog.open();
+            return this;
+        },
+
+
+        /**
+         * 关闭上传的对话框
+         */
+        close: function () {
+            this._dialog.close();
+            return this;
         }
     });
 
