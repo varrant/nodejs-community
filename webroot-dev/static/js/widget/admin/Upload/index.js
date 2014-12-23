@@ -111,29 +111,6 @@ define(function (require, exports, module) {
 
 
         /**
-         * 检查图片尺寸
-         * @param callback
-         * @private
-         */
-        _checkWidthHeight: function (file, callback) {
-            var the = this;
-            var options = the._options;
-
-            the._src = URL.createObjectURL(file);
-
-            var img = new Image();
-
-            img.src = the._src;
-            img.onload = function () {
-                if(this.width > options.minWidth && this.height > options.height){
-
-                }
-            };
-        },
-
-
-
-        /**
          * 渲染裁剪
          * @param file
          * @private
@@ -157,7 +134,8 @@ define(function (require, exports, module) {
                 .on('clipend', function (seletion) {
                     the._selection = seletion;
                     the._$sure.disabled = false;
-                });
+                })
+                .on('error', alert);
         },
 
 
