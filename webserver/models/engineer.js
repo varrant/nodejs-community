@@ -57,14 +57,14 @@ var schema = new mongoose.Schema({
         type: String,
         required: false
     },
-    // 用户类型：
+    // 用户组：
     // normal
     // vip
     // admin
     // partner
     // owner
     // 注册时间
-    type: {
+    group: {
         type: String,
         required: false,
         default: 'normal'

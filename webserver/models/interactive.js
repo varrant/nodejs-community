@@ -27,7 +27,8 @@ var schema = new mongoose.Schema({
     // 被操作对象，即ID
     object: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: 'object'
     },
     // 影响值，默认0
     value: {
@@ -42,7 +43,7 @@ var schema = new mongoose.Schema({
     // 是否被允许，默认 true
     // 是否被读取了
     // 通常为新消息、新申请时，设置为 false
-    isApprove: {
+    hasApprove: {
         type: Boolean,
         default: true
     },

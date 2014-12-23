@@ -108,8 +108,7 @@ var schema = new mongoose.Schema({
     },
     // 加色
     color: {
-        type: String,
-        default: ''
+        type: String
     },
     // 被加分
     score: {
@@ -149,12 +148,12 @@ var schema = new mongoose.Schema({
     },
     // 是否被接受了
     // 通常指问题类的 object
-    hasAccepted: {
+    hasAccept: {
         type: Boolean,
         default: false
     },
     // 是否通过了组织、团体认证
-    isCertificated: {
+    hasCertificate: {
         type: Boolean,
         default: false
     },
