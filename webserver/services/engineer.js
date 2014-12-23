@@ -432,7 +432,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                 next(err, json);
             });
         })
-        // 获得 userInfo
+        // 2. 获得 userInfo
         .task(function (next, json) {
             var params = {
                 access_token: json.access_token
