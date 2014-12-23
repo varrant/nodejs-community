@@ -174,10 +174,7 @@ define(function (require, exports, module) {
             ajax({
                 url: '/admin/api/oss/',
                 method: 'put',
-                data: fd,
-                headers: {
-                    'content-type': 'image/png'
-                }
+                data: fd
             });
         },
 

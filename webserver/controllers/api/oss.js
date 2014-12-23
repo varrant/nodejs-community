@@ -14,15 +14,14 @@ var configs = require('../../../configs/');
 module.exports = function (app) {
     var exports = {};
     var settings = app.locals.$setting.alioss;
-    settings.onbeforeput = function(fileStream, next){
-        if(!REG_IMAGE.test(fileStream.contentType)){
+    settings.onbeforeput = function (fileStream, next) {
+        if (!REG_IMAGE.test(fileStream.contentType)) {
             return next(new Error('只能上传图片文件'));
         }
 
         next();
     };
     var oss = new Oss(settings);
-
 
 
     /**
