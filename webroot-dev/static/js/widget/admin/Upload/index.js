@@ -104,7 +104,7 @@ define(function (require, exports, module) {
              */
             event.on(the._$sure, 'click', function () {
                 the._toBlob(function (blob) {
-                    console.log(blob);
+                    the._toUpload(blob);
                 });
             });
         },
@@ -117,8 +117,9 @@ define(function (require, exports, module) {
          */
         _renderImg: function (file) {
             var the = this;
+            var src = URL.createObjectURL(file);
             var $img = modification.create('img', {
-                src: the._src
+                src: src
             });
 
             the._$container.innerHTML = '';
@@ -171,7 +172,7 @@ define(function (require, exports, module) {
             fd.append('img', blob, 'img.png');
 
             ajax({
-                url: '/admin/oss/',
+                url: '/admin/api/oss/',
                 method: 'put',
                 data: fd
             });

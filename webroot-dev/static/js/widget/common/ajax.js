@@ -15,7 +15,7 @@ define(function (require, exports, module) {
 
     module.exports = function (options) {
         options.headers = options.headers || {};
-        options.headers['content-type'] = json;
+        options.headers['content-type'] = options.headers['content-type'] || json;
         options.headers['accept'] = json;
         options.headers['x-request-csrf'] = window['-csrf-'];
         options.data = JSON.stringify(options.data);
