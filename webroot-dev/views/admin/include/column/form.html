@@ -16,7 +16,8 @@
     <li>
         <div class="form-key">cover（200*200px）<strong class="form-required">*</strong></div>
         <div class="form-val">
-            <input class="ipt" type="text" v-model="column.cover"/>
+            <button class="btn btn-default btn-file" v-on="click: onupload">选择图片文件并裁剪上传</button>
+            <input class="ipt" type="hidden" v-model="column.cover"/>
         </div>
     </li>
 

@@ -21,6 +21,7 @@ define(function (require, exports, module) {
     var app = {};
     var id = hashbang.get('query', 'id');
     var url = '/admin/api/column/';
+    var upload = new Upload();
 
     app.init = function () {
         ajax({
@@ -170,7 +171,7 @@ define(function (require, exports, module) {
 
 
     app._upload = function () {
-        new Upload();
+
     };
 
     app.init();
