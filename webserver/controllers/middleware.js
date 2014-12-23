@@ -65,6 +65,7 @@ module.exports = function (app) {
     exports.safeDetection = function (req, res, next) {
         var headers = req.headers;
         var headersCsrf = headers['x-request-csrf'];
+        var err;
 
         if (REG_ACCEPT.test(headers.accept) &&
             headers['x-request-with'] === 'XMLHttpRequest' &&
@@ -75,10 +76,14 @@ module.exports = function (app) {
         }
 
         if (req.session.$csrf && req.session.$csrf !== headersCsrf) {
-            return next(new Error('请求认证已过期'));
+            err = new Error('当前会话的认证信息已过期');
+            err.status = 406;
+            return next(err);
         }
 
-        next(new Error('非法请求'));
+        err = new Error('当前会话的认证信息不合法');
+        err.status = 400;
+        next(err);
     };
 
 
