@@ -15,6 +15,7 @@ define(function (require, exports, module) {
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
+    var dato = require('../../alien/util/dato.js');
     var url = '/admin/api/engineer/?id=' + window['-id-'];
     var app = {};
 
@@ -30,17 +31,46 @@ define(function (require, exports, module) {
         }
 
         var data1 = json.data;
-        var data2 = [];
-        var engineerRole = data1.engineer.role;
 
-        data1.section.forEach(function (item) {
+        var engineer = data1.engineer;
+        var section = data1.section;
+        var category = data1.category;
+        var group = data1.group;
+        var engineerRole = data1.engineer.role;
+        var sectionMap = {};
+        var categoryMap = {};
+
+        section.map(function (item) {
+            sectionMap[item.id] = item;
+        });
+
+        category.map(function (item) {
+            categoryMap[item.id] = item;
+        });
+
+        debugger;
+        engineer.sectionStatistics2 = {};
+        dato.each(engineer.sectionStatistics || {}, function (key, count) {
+            engineer.sectionStatistics2[key === '0' ? '总和': sectionMap[key].name] = count;
+        });
+
+        engineer.categoryStatistics2 = {};
+        dato.each(engineer.categoryStatistics || {}, function (key, count) {
+            engineer.categoryStatistics2[key === '0' ? '总和': categoryMap[key].name] = count;
+        });
+
+        section.forEach(function (item) {
             item.roleVal = Math.pow(2, item.role);
             item.checked = ( engineerRole & item.roleVal ) > 0;
         });
-        data1.group.forEach(function (item) {
+        group.forEach(function (item) {
             item.roleVal = Math.pow(2, item.role);
             item.checked = ( engineerRole & item.roleVal ) > 0;
         });
+
+        var data2 = [];
+
+
         data2.push({
             name: '发布权限',
             list: data1.section
@@ -53,13 +83,13 @@ define(function (require, exports, module) {
         var vue1 = new Vue({
             el: '#form',
             data: {
-                engineer: data1.engineer
+                engineer: engineer
             }
         });
         var vue2 = new Vue({
             el: '#role',
             data: {
-                engineer: data1.engineer,
+                engineer: engineer,
                 kinds: data2
             },
             methods: {
@@ -73,9 +103,10 @@ define(function (require, exports, module) {
 
 
     app._onsave = function (eve, id) {
+        var the = this;
         var $btn = eve.target;
         var role = 0;
-        var kinds = this.$data.kinds;
+        var kinds = the.$data.kinds;
         var save = function () {
             kinds.forEach(function (kind) {
                 kind.list.forEach(function (item) {

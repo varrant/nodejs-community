@@ -134,6 +134,7 @@ module.exports = function (app) {
                 data: {
                     engineer: doc,
                     section: app.locals.$section,
+                    category: app.locals.$category,
                     group: configs.group
                 }
             });
@@ -179,7 +180,8 @@ module.exports = function (app) {
             }
 
             res.json({
-                code: 200
+                code: 200,
+                doc: doc
             });
         });
     };

@@ -66,8 +66,7 @@ var schema = new mongoose.Schema({
     // 注册时间
     group: {
         type: String,
-        required: false,
-        default: 'normal'
+        required: false
     },
     registerAt: {
         type: Date,
