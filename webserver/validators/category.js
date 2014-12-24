@@ -16,35 +16,39 @@ var REG_INTRODUCTION = /^[\u4e00-\u9fa5a-z\d _\-~`!@#$%^&*()+={[}]|\:;"'<,>.?\/�
 
 validator.pushRule({
     name: 'name',
-    alias: '名称',
+    alias: '分类名称',
     type: 'string',
     required: true,
-    maxLength: 50
+    maxLength: 50,
+    regexp: REG_NAME
 });
 
 validator.pushRule({
     name: 'uri',
-    alias: 'URI',
+    alias: '分类 uri',
     type: 'string',
     required: true,
-    maxLength: 20,
-    regexp: /^[a-z-_\d]{1,20}$/i
+    maxLength: 50,
+    regexp: REG_URI
 });
 
 validator.pushRule({
     name: 'cover',
-    alias: '封面',
-    type: 'string',
+    alias: '分类封面',
+    type: 'url',
+    required: true,
     minLength: 10,
     maxLength: 255
 });
 
 validator.pushRule({
     name: 'introduction',
-    alias: '介绍',
+    alias: '分类简介',
     type: 'string',
     required: true,
+    minLength: 10,
     maxLength: 1000,
+    regexp: REG_INTRODUCTION,
     onafter: function (val) {
         return val.replace(REG_LINES, '');
     }
