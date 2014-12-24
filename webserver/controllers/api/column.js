@@ -91,13 +91,13 @@ module.exports = function (app) {
      * @param next
      */
     exports.delete = function (req, res, next) {
-        var id = req.body.id;
-
         if(!permission.can(res.locals.$engineer, 'column')){
             var err = new Error('权限不足');
             err.status = 403;
             return next(err);
         }
+
+        var id = req.body.id;
 
         column.findOneAndRemove(res.locals.$engineer, {_id: id}, function (err, doc) {
             if (err) {
