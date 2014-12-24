@@ -2,6 +2,7 @@
     box-shadow: 0 0 20px #666;
     border-radius: 6px;
     overflow: hidden;
+    background: #fff;
 }
 
 .alien-ui-msg-header {
