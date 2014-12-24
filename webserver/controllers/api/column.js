@@ -48,13 +48,13 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        var id = req.body.id;
-
         if(!permission.can(res.locals.$engineer, 'column')){
             var err = new Error('权限不足');
             err.status = 403;
             return next(err);
         }
+
+        var id = req.body.id;
 
         if (id) {
             return column.findOneAndUpdate(res.locals.$engineer, {

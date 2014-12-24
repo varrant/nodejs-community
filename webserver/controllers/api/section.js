@@ -40,13 +40,13 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        var id = req.body.id;
-
         if(!permission.can(res.locals.$engineer, 'section')){
             var err = new Error('权限不足');
             err.status = 403;
             return next(err);
         }
+
+        var id = req.body.id;
 
         if (id) {
             return section.findOneAndUpdate({
@@ -91,13 +91,13 @@ module.exports = function (app) {
      * @param next
      */
     exports.delete = function (req, res, next) {
-        var id = req.body.id;
-
         if(!permission.can(res.locals.$engineer, 'section')){
             var err = new Error('权限不足');
             err.status = 403;
             return next(err);
         }
+
+        var id = req.body.id;
 
         section.findOneAndRemove({_id: id}, function (err, doc) {
             if (err) {
