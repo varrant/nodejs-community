@@ -33,7 +33,9 @@ define(function (require, exports, module) {
 
                 var section = {
                     name: '',
-                    uri: ''
+                    uri: '',
+                    cover: '',
+                    introduction: ''
                 };
 
                 if (id) {
@@ -72,7 +74,7 @@ define(function (require, exports, module) {
      */
     app._onupload = function () {
         upload.open().on('success', function (data) {
-            app.vue.$data.column.cover = data.surl;
+            app.vue.$data.section.cover = data.surl;
             this.close();
         });
     };
@@ -124,7 +126,7 @@ define(function (require, exports, module) {
      * @private
      */
     app._onremove = function (index) {
-        var col = this.$data.columns[index];
+        var col = this.$data.sections[index];
         var id = col.id;
 
         if (col.objectCount > 0) {
@@ -144,7 +146,7 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
-                    app.vue.$data.columns.splice(index, 1);
+                    app.vue.$data.sections.splice(index, 1);
                 })
                 .on('error', alert);
         };

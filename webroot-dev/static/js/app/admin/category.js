@@ -126,7 +126,7 @@ define(function (require, exports, module) {
      * @private
      */
     app._onremove = function (index) {
-        var col = this.$data.columns[index];
+        var col = this.$data.categories[index];
         var id = col.id;
 
         if (col.objectCount > 0) {
@@ -146,7 +146,7 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
-                    app.vue.$data.columns.splice(index, 1);
+                    app.vue.$data.categories.splice(index, 1);
                 })
                 .on('error', alert);
         };
