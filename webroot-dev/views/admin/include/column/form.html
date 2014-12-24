@@ -1,20 +1,22 @@
 <ul class="m-form m-form-vertical">
     <li>
-        <div class="form-key">name<strong class="form-required">*</strong></div>
+        <div class="form-key">专栏名称<strong class="form-required">*</strong></div>
         <div class="form-val">
             <input class="ipt" type="text" v-model="column.name"/>
+            <p class="form-desc">中英文及逗号，50长度以内。</p>
         </div>
     </li>
 
     <li>
-        <div class="form-key">uri<strong class="form-required">*</strong></div>
+        <div class="form-key">专栏 uri<strong class="form-required">*</strong></div>
         <div class="form-val">
             <input class="ipt" type="text" v-model="column.uri"/>
+            <p class="form-desc">英文数字、下划线、短横线，50长度以内。</p>
         </div>
     </li>
 
     <li>
-        <div class="form-key">cover（200*200px）<strong class="form-required">*</strong></div>
+        <div class="form-key">专栏封面（200*200px）<strong class="form-required">*</strong></div>
         <div class="form-val">
             <button class="btn btn-default btn-file" v-on="click: onupload">选择图片文件并裁剪上传</button>
             <input class="ipt" type="hidden" v-model="column.cover"/>
@@ -25,9 +27,10 @@
     </li>
 
     <li>
-        <div class="form-key">introduction<strong class="form-required">*</strong></div>
+        <div class="form-key">专栏简介<strong class="form-required">*</strong></div>
         <div class="form-val">
             <textarea class="ipt" rows="3" v-model="column.introduction"></textarea>
+            <p class="form-desc">10-1000长度以内。</p>
         </div>
     </li>
 
