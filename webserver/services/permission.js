@@ -6,13 +6,7 @@
 
 'use strict';
 
-var map = {
-    setting: ['owner'],
-    section: ['owner'],
-    category: ['owner', 'admin'],
-    column: ['owner', 'admin', 'vip']
-};
-var permission = require('../../configs/').per;
+var permission = require('../../configs/').permission;
 var dato = require('ydr-util').dato;
 
 
@@ -23,7 +17,7 @@ var dato = require('ydr-util').dato;
  * @returns {boolean}
  */
 exports.can = function (operator, what) {
-    var per = map[what];
+    var per = permission[what];
 
     if (!per) {
         return true;
