@@ -1,4 +1,5 @@
 # 功能
+- app.locals.$config 社区配置
 - app.locals.$setting web 配置
 - app.locals.$section 社区版块
 - app.locals.$category 社区分类

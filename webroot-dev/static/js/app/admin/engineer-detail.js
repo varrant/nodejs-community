@@ -29,9 +29,19 @@ define(function (require, exports, module) {
             return alert(json);
         }
 
-
         var data1 = json.data;
         var data2 = [];
+        var engineerRole = data1.engineer.role;
+
+        data1.section.forEach(function (section) {
+            section.roleVal = Math.pow(2, section.role);
+            section.checked = ( engineerRole & section.roleVal ) > 0;
+        });
+        data2.push({
+            name: '发布权限',
+            list: data1.section
+        });
+
         var vue1 = new Vue({
             el: '#form',
             data: {
