@@ -88,7 +88,7 @@ define(function (require, exports, module) {
             event.on(the._$file, 'change', function (eve) {
                 var file;
 
-                if (this.files) {
+                if (this.files && this.files.length) {
                     file = this.files[0];
 
                     if (this.accept.indexOf(file.type) > -1) {

@@ -584,6 +584,7 @@ input[type="button"].btn-block {
 .btn-file{
     position: relative;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .btn-file > input[type="file"]{
