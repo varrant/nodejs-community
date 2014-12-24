@@ -10,6 +10,9 @@
 var Validator = require('ydr-validator');
 var validator = new Validator();
 var REG_LINES = /[\n\t\v]/g;
+var REG_NAME = /^[\u4e00-\u9fa5a-z\d _\-，,]{1,50}$/i;
+var REG_URI = /^[a-z\d_-]{1,50}$/i;
+var REG_INTRODUCTION = /^[\u4e00-\u9fa5a-z\d _\-~`!@#$%^&*()+={[}]|\:;"'<,>.?\/·！￥（）-—【】：；“”‘’《，》。？、\n]{10,1000}$/;
 var dato = require('ydr-util').dato;
 
 validator.pushRule({
