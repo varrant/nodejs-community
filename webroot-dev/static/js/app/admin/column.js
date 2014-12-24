@@ -18,10 +18,10 @@ define(function (require, exports, module) {
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var dato = require('../../alien/util/dato.js');
     var Upload = require('../../widget/admin/Upload/');
+    var upload = new Upload();
     var app = {};
     var id = hashbang.get('query', 'id');
     var url = '/admin/api/column/';
-    var upload = new Upload();
 
     app.init = function () {
         ajax({

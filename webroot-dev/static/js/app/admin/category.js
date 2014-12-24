@@ -16,6 +16,8 @@ define(function (require, exports, module) {
     var ajax = require('../../widget/common/ajax.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var dato = require('../../alien/util/dato.js');
+    var Upload = require('../../widget/admin/Upload/');
+    var upload = new Upload();
     var app = {};
     var id = hashbang.get('query', 'id');
     var url = '/admin/api/category/';
@@ -50,6 +52,7 @@ define(function (require, exports, module) {
                         category: category
                     },
                     methods: {
+                        onupload: app._onupload,
                         onsave: app._onsave,
                         onchoose: app._onchoose
                     }
