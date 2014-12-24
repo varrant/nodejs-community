@@ -8,6 +8,7 @@
 
 module.exports = {
     cookie: require('./cookie.js'),
-    filter: require('./filter.js')
+    filter: require('./filter.js'),
+    regexp: require('./regexp.js')
 };
 
