@@ -30,25 +30,27 @@ define(function (require, exports, module) {
         }
 
 
+        var data1 = json.data;
+        var data2 = [];
         var vue1 = new Vue({
             el: '#form',
             data: {
-                engineer: json.data.engineer
+                engineer: data1.engineer
             }
         });
-        //var vue2 = new Vue({
-        //    el: '#role',
-        //    data: {
-        //        engineer: data1.engineer,
-        //        kinds: data2
-        //    },
-        //    methods: {
-        //        onsave: app._onsave
-        //    }
-        //});
+        var vue2 = new Vue({
+            el: '#role',
+            data: {
+                engineer: data1.engineer,
+                kinds: data2
+            },
+            methods: {
+                onsave: app._onsave
+            }
+        });
 
         vue1.$el.classList.remove('f-none');
-        //vue2.$el.classList.remove('f-none');
+        vue2.$el.classList.remove('f-none');
     };
 
 
