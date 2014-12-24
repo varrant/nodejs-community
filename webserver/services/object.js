@@ -113,7 +113,7 @@ exports.createOne = function (author, data, callback) {
         // 4. 新建数据
         .task(function (next) {
             var date = new Date();
-            var data2 = dato.pick(data, ['title', 'uri', 'type', 'category', 'labels',
+            var data2 = dato.pick(data, ['section', 'title', 'uri', 'type', 'category', 'labels',
                 'introduction', 'content', 'isDisplay']);
             var data3 = {
                 author: author.id,
