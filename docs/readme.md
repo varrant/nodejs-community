@@ -30,6 +30,13 @@
 - 500 服务错误
 
 
+# 用户组
+- owner 创始人
+- admin 管理员
+- vip VIP
+- normal 普通
+
+
 # 参考项目
 - <https://cnodejs.org/>
 - <http://www.html-js.com/>

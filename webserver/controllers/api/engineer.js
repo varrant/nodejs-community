@@ -132,7 +132,7 @@ module.exports = function (app) {
                 code: 200,
                 data: {
                     engineer: doc,
-                    types: app.locals.$setting.types,
+                    section: app.locals.$section,
                     roles: app.locals.$setting.roles
                 }
             });
