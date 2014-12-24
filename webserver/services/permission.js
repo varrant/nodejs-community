@@ -7,10 +7,12 @@
 'use strict';
 
 var map = {
+    setting: ['owner'],
     section: ['owner'],
     category: ['owner', 'admin'],
     column: ['owner', 'admin', 'vip']
 };
+var permission = require('../../configs/').per;
 var dato = require('ydr-util').dato;
 
 

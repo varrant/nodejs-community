@@ -6,10 +6,17 @@
 
 'use strict';
 
+var permission = require('../../services/').permission;
+
 module.exports = function (app) {
     var exports = {};
 
     exports.list = function (req, res, next) {
+        var canSetting = permission.can(res.locals.$engineer, 'setting');
+        var canSection = permission.can(res.locals.$engineer, 'section');
+        var canCategory = permission.can(res.locals.$engineer, 'category');
+        var canColumn = permission.can(res.locals.$engineer, 'cloumn');
+
         var list = [];
 
         list.push({

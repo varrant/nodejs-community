@@ -13,6 +13,7 @@ module.exports = {
     app: app,
     dir: require('./dir.js')(app),
     notification: require('./notification.js')(app),
+    permission: require('./permission.js')(app),
     secret: require('./secret.js')(app),
     smtp: require('./smtp.js')(app)
 };
