@@ -41,7 +41,7 @@ module.exports = function (app) {
     exports.get = function (type) {
         return function (req, res, next) {
             var data = {
-                title: sectionMap[type].title + (req.query.id ? '更新' : '创建'),
+                title: sectionMap[type].name + (req.query.id ? '更新' : '创建'),
                 id: req.query.id || ''
             };
 

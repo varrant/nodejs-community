@@ -7,6 +7,7 @@
 'use strict';
 
 var object = require('../../services/').object;
+var scope = require('../../services/').scope;
 var dato = require('ydr-util').dato;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
@@ -53,9 +54,11 @@ module.exports = function (app) {
         var can = (res.locals.$engineer.role & Math.pow(2, sectionMap[type].role)) > 0;
 
         if (!can) {
-            var err = new Error('权限不足');
-            err.status = 403;
-            return next(err);
+            return res.json({
+                code: 403,
+                data: [],
+                message: '无权限'
+            });
         }
 
         howdo
@@ -93,25 +96,32 @@ module.exports = function (app) {
     exports.get = function (req, res, next) {
         var id = req.query.id;
 
-        if (!req.query.id) {
-            var err = new Error('不存在');
-            err.status = 404;
-            return next(err);
-        }
-
-        object.findOne({_id: id}, function (err, doc) {
-            if (err) {
-                return next(err);
-            }
-
-            res.json({
-                code: 200,
-                data: {
-                    category: app.locals.$category,
-                    object: doc
+        howdo
+            // 查找 category
+            .task(function (done) {
+                done(null, app.locals.$category);
+            })
+            // 查找 object
+            .task(function (done) {
+                if (!req.query.id) {
+                    return done();
                 }
+
+                object.findOne({_id: id}, done);
+            })
+            .together(function (err, docs, doc) {
+                if (err) {
+                    return next(err);
+                }
+
+                res.json({
+                    code: 200,
+                    data: {
+                        categories: docs,
+                        object: doc
+                    }
+                });
             });
-        });
     };
 
 

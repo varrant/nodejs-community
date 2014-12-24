@@ -81,12 +81,12 @@ define(function (require, exports, module) {
                 type: the._options.type,
                 isDisplay: true
             };
-            data.scopes.forEach(function (item) {
+            data.categories.forEach(function (item) {
                 item.text = item.name;
                 item.value = item.id;
 
-                if (item.uri === 'default' && !data.object.scope) {
-                    data.object.scope = item.id;
+                if (item.uri === 'default' && !data.object.category) {
+                    data.object.category = item.id;
                 }
             });
             the.vue = new Vue({
