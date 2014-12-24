@@ -34,11 +34,11 @@ define(function (require, exports, module) {
         var engineerRole = data1.engineer.role;
 
         data1.section.forEach(function (item) {
-            item.role = Math.pow(2, item.role);
-            item.checked = ( engineerRole & item.role ) > 0;
+            item.roleVal = Math.pow(2, item.role);
+            item.checked = ( engineerRole & item.roleVal ) > 0;
         });
         data1.group.forEach(function (item) {
-            item.checked = ( engineerRole & item.role ) > 0;
+            item.checked = ( engineerRole & item.roleVal ) > 0;
         });
         data2.push({
             name: '发布权限',
