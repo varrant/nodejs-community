@@ -15,7 +15,6 @@
 # 全局变量
 - window['-csrf-'] 请求令牌
 - window['-refresh-'] 登录之后是否刷新【部分页面】
-- window['-section-'] 页面所在版块【部分页面】
 - window['-id-'] 详情页ID【部分页面】
 
 
