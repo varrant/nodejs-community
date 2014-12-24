@@ -7,14 +7,15 @@
 'use strict';
 
 var Validator = require('ydr-validator');
+var regexp = require('../utils/').regexp;
 var validator = new Validator();
 var REG_3LINES = /[\n\s]{3,}/g;
 // 标题: 中英文、数字、空格、下划线、短横线、中英文逗号
-var REG_TITLE = /^[\u4e00-\u9fa5a-z\d _\-，,]{5,100}$/i;
-var REG_URI = /^[a-z\d_-]{5,200}$/i;
+var REG_TITLE = regexp.title(5, 100);
+var REG_URI = regexp.uri(5, 200);
 var REG_LABEL = /^[\u4e00-\u9fa5a-z\d _\-]{2,20}$/i;
-var REG_INTRODUCTION = /^[\u4e00-\u9fa5a-z\d _\-~`!@#$%^&*()+={[}]|\:;"'<,>.?\/·！￥（）—【】：；“”‘’《，》。？、\n]{0,1000}$/;
-var REG_CONTENT = /^[\u4e00-\u9fa5a-z\d _\-~`!@#$%^&*()+={[}\]|\\:;"'<,>.?\/·！￥（）—【】：；“”‘’《，》。？、\n]{10,50000}$/;
+var REG_INTRODUCTION = regexp.content(0, 200);
+var REG_CONTENT = regexp.content(10, 50000);
 
 validator.pushRule({
     name: 'title',
