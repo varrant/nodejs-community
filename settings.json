@@ -10,7 +10,7 @@
     "weibo": "cloudcome",
     "nickname": "云淡然",
     "role": 2097151,
-    "type": "owner",
+    "group": "owner",
     "title": "创始人"
   },
   // 阿里云 OSS
@@ -19,7 +19,7 @@
     "accessKeySecret": "aceess_key_Secret",
     "host": "oss-cn-hangzhou.aliyuncs.com",
     "bucket": "your_oss_bucket",
-    "domain": "static_your_domain_com"
+    "domain": "your_static_domain_com"
   },
   // github 授权登录
   // **最重要，否则无法正常授权登陆**
