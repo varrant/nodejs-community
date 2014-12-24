@@ -31,12 +31,11 @@ module.exports = function (app) {
      * @param next
      */
     exports.list = function (req, res, next) {
-        var conditions = dato.pick(req.query, ['section', 'author']);
+        var conditions = dato.pick(req.query, ['section']);
         var options = filter.skipLimit(req);
         var section = conditions.section;
-        var author = conditions.author;
 
-        if (!section || !author) {
+        if (!section) {
             return next();
         }
 
@@ -61,6 +60,7 @@ module.exports = function (app) {
             return next(err);
         }
 
+        conditions.author = res.locals.$engineer.id;
         howdo
             // 统计总数
             .task(function (done) {

@@ -14,6 +14,6 @@ define(function (require, exports, module) {
     require('../../widget/admin/sidebar.js');
 
     new List('#list', '#pagination', {
-        type:  window['-type-']
+        section:  window['-section-']
     });
 });

@@ -19,7 +19,7 @@ define(function (require, exports, module) {
     var attribute = require('../../alien/core/dom/attribute.js');
     var defaults = {
         url: '/admin/api/object/list/',
-        type: '',
+        section: '',
         limit: 20
     };
     var List = generator({
@@ -30,6 +30,7 @@ define(function (require, exports, module) {
             the._paginationSelector = paginationSelector;
             the._options = dato.extend({}, defaults, options);
             the._query = {
+                section: the._options.section,
                 page: dato.parseInt(hashbang.get('query', 'page'), 1),
                 limit: the._options.limit
             };
