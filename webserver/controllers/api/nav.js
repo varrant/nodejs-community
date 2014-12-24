@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * 导航
  * @author ydr.me
  * @create 2014-12-20 16:08
  */
@@ -33,33 +33,41 @@ module.exports = function (app) {
             reg: '^$'
         });
 
-        list.push({
-            href: '/admin/setting/',
-            text: 'web 配置',
-            icon: 'i i-cogs',
-            reg: '^setting\\/$'
-        });
+        if (canSetting) {
+            list.push({
+                href: '/admin/setting/',
+                text: 'web 配置',
+                icon: 'i i-cogs',
+                reg: '^setting\\/$'
+            });
+        }
 
-        list.push({
-            href: '/admin/section/',
-            text: '版块设置',
-            icon: 'i i-archive',
-            reg: '^section\\/$'
-        });
+        if (canSection) {
+            list.push({
+                href: '/admin/section/',
+                text: '版块设置',
+                icon: 'i i-archive',
+                reg: '^section\\/$'
+            });
+        }
 
-        list.push({
-            href: '/admin/category/',
-            text: '分类设置',
-            icon: 'i i-folder',
-            reg: '^category\\/$'
-        });
+        if (canCategory) {
+            list.push({
+                href: '/admin/category/',
+                text: '分类设置',
+                icon: 'i i-folder',
+                reg: '^category\\/$'
+            });
+        }
 
-        list.push({
-            href: '/admin/column/',
-            text: '专栏设置',
-            icon: 'i i-book',
-            reg: '^column\\/$'
-        });
+        if (canColumn) {
+            list.push({
+                href: '/admin/column/',
+                text: '专栏设置',
+                icon: 'i i-book',
+                reg: '^column\\/$'
+            });
+        }
 
         list.push({
             href: '/admin/object/help/list/',
