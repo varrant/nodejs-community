@@ -7,18 +7,10 @@
 
 'use strict';
 
+var configs = require('../../configs/');
 var Validator = require('ydr-validator');
 var validator = new Validator();
-var groups = [
-    // 普通
-    'normal',
-    // VIP
-    'vip',
-    // 管理员
-    'admin',
-    // 所有者
-    'owner'
-];
+var groups = Object.keys(configs.group);
 
 validator.pushRule({
     name: 'group',
