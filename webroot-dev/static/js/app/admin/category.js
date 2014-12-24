@@ -54,7 +54,8 @@ define(function (require, exports, module) {
                     methods: {
                         onupload: app._onupload,
                         onsave: app._onsave,
-                        onchoose: app._onchoose
+                        onchoose: app._onchoose,
+                        onremove: app._onremove
                     }
                 });
 
@@ -62,6 +63,18 @@ define(function (require, exports, module) {
                 app._translate();
             })
             .on('error', alert);
+    };
+
+
+    /**
+     * 上传并裁剪图片
+     * @private
+     */
+    app._onupload = function () {
+        upload.open().on('success', function (data) {
+            app.vue.$data.column.cover = data.surl;
+            this.close();
+        });
     };
 
 
@@ -102,6 +115,43 @@ define(function (require, exports, module) {
     app._onchoose = function (index) {
         this.$data.category = this.$data.categories[index];
     };
+
+
+    /**
+     * 删除
+     * @param index
+     * @returns {*}
+     * @private
+     */
+    app._onremove = function (index) {
+        var col = this.$data.columns[index];
+        var id = col.id;
+
+        if (col.objectCount > 0) {
+            return alert('该分类下还有' + col.objectCount + '个项目，无法删除');
+        }
+
+        var remove = function () {
+            ajax({
+                url: url,
+                method: 'delete',
+                data: {
+                    id: id
+                }
+            })
+                .on('success', function (json) {
+                    if (json.code !== 200) {
+                        return alert(json);
+                    }
+
+                    app.vue.$data.columns.splice(index, 1);
+                })
+                .on('error', alert);
+        };
+
+        confirm('确认要删除该分类吗？', remove);
+    };
+
 
 
     /**

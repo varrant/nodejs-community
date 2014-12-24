@@ -121,7 +121,7 @@ define(function (require, exports, module) {
 
 
     /**
-     * 删除某个专栏
+     * 删除
      * @param index
      * @returns {*}
      * @private

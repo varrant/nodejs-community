@@ -50,8 +50,10 @@ define(function (require, exports, module) {
                         section: section
                     },
                     methods: {
+                        onupload: app._onupload,
                         onsave: app._onsave,
-                        onchoose: app._onchoose
+                        onchoose: app._onchoose,
+                        onremove: app._onremove
                     }
                 });
 
