@@ -70,5 +70,33 @@ module.exports = function (app) {
         });
     };
 
+
+    /**
+     * 删除版块
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.delete = function (req, res, next) {
+        var err;
+        var id = req.body.id;
+        var user = res.locals.$engineer;
+
+        if(user.group !== 'owner'){
+            err = new Error('权限不足');
+            return next(err);
+        }
+
+        section.findOneAndRemove({_id: id}, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                code: 200
+            });
+        });
+    };
+
     return exports;
 }

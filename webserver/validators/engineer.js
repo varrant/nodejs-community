@@ -9,21 +9,23 @@
 
 var Validator = require('ydr-validator');
 var validator = new Validator();
-var REG_INTRODUCTION = /^[\u4e00-\u9fa5a-z\d _\-~`!@#$%^&*()+={[}]|\:;"'<,>.?\/·！￥（）-—【】：；“”‘’《，》。？、\n]{0,1000}$/;
+var groups = [
+    // 普通
+    'normal',
+    // VIP
+    'vip',
+    // 管理员
+    'admin',
+    // 所有者
+    'owner'
+];
 
 validator.pushRule({
-    name: 'bio',
-    alias: '个人简介',
+    name: 'group',
     type: 'string',
-    required: false,
-    maxLength: 1000,
-    trim: true,
-    exist: true,
-    regexp: REG_INTRODUCTION,
-    msg: {
-        regexp: '个人简介仅支持中英文、数字，以及常用符号'
-    }
+    alias: '用户组',
+    required: true,
+    inArray: groups
 });
-
 
 module.exports = validator;
