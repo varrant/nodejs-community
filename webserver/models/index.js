@@ -97,7 +97,6 @@ dato.each(models, function (key, model) {
         });
     };
 
-
     /**
      * 多条件查询
      * @param conditions {Object} 查询条件
@@ -664,27 +663,33 @@ function _toPureData(data, removeKeys) {
 function _parseError(rules, err) {
     // insertDocument :: caused by :: 11000 E11000 duplicate
     // key error index: f2ec.users.$email_1  dup key: { : "cloudcome@163.com" }
+    var key0;
     var msg = err.message;
-    var code = err.code;
     var path = '';
     var mongoose = {};
 
-    // mongodb error
-    if (err.name === 'MongoError') {
-        switch (code) {
-            case 11000:
-                path = (msg.match(REG_DUPLICATE) || ['', ''])[1];
-                msg = (rules[path] ? rules[path].alias || rules[path].name : path) + ' duplicate';
-                mongoose = {
-                    type: 'duplicate',
-                    path: path
-                };
-                break;
-        }
+    switch (err.name) {
+        case 'MongoError':
+            switch (err.code) {
+                case 11000:
+                    path = (msg.match(REG_DUPLICATE) || ['', ''])[1];
+                    msg = (rules[path] ? rules[path].alias || rules[path].name : path) + ' duplicate';
+                    mongoose = {
+                        type: 'duplicate',
+                        path: path
+                    };
+                    err = new Error(msg);
+                    err.code = 11000;
+                    err.mongoose = mongoose;
+                    break;
+            }
+            break;
 
-        err = new Error(msg);
-        err.code = 11000;
-        err.mongoose = mongoose;
+        case 'ValidationError':
+            key0 = Object.keys(err.errors)[0];
+            msg = err.errors[key0].message;
+            err = new Error(msg);
+            break;
     }
 
     return err;
