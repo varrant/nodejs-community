@@ -8,7 +8,7 @@
         </thead>
         <tbody>
         <tr v-if="list.length == 0">
-            <td colspan="2" class="table-empty-td">暂无相关帮助文档，<a class="btn btn-success btn-sm" href="/admin/object/help/"><i class="i i-plus"></i>点击新建帮助文档</a></td>
+            <td colspan="2" class="table-empty-td">暂无相关帮助文档。</td>
         </tr>
         <tr v-repeat="object:list">
             <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>

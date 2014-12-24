@@ -14,7 +14,15 @@ var howdo = require('howdo');
 
 module.exports = function (app) {
     var exports = {};
-    var uris = app.locals.$setting._displayTypeUris;
+    var uris = app.locals.$section.map(function (section) {
+        return section.uri;
+    });
+    var sectionMap = {};
+
+    app.locals.$section.forEach(function (section) {
+        sectionMap[section.uri] = section;
+    });
+
 
     /**
      * 列出符合条件的 object
@@ -43,7 +51,7 @@ module.exports = function (app) {
             });
         }
 
-        var can = (res.locals.$engineer.role & app.locals.$setting._typesMap[type].roleVal) > 0;
+        var can = (res.locals.$engineer.role & Math.pow(2, sectionMap[type].role)) > 0;
 
         if (!can) {
             return res.json({

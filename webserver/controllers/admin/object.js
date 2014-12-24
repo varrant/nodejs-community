@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * object
  * @author ydr.me
  * @create 2014-12-15 21:04
  */
@@ -11,7 +11,11 @@ var object = require('../../services/').object;
 
 module.exports = function (app) {
     var exports = {};
-    var typesMap = app.locals.$section
+    var sectionMap = {};
+
+    app.locals.$section.forEach(function (section) {
+        sectionMap[section.uri] = section;
+    });
 
     /**
      * 列出各个 type 下的 object
@@ -21,7 +25,7 @@ module.exports = function (app) {
     exports.list = function (type) {
         return function (req, res, next) {
             var data = {
-                title: typesMap[type].title + '管理'
+                title: sectionMap[type].name + '管理'
             };
 
             res.render('admin/object-list-' + type + '.html', data);
@@ -37,7 +41,7 @@ module.exports = function (app) {
     exports.get = function (type) {
         return function (req, res, next) {
             var data = {
-                title: typesMap[type].title + (req.query.id ? '更新' : '创建'),
+                title: sectionMap[type].title + (req.query.id ? '更新' : '创建'),
                 id: req.query.id || ''
             };
 
