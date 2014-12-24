@@ -83,5 +83,33 @@ module.exports = function (app) {
         });
     };
 
+
+    exports.delete = function (req, res, next) {
+        if(!permission.can(res.locals.$engineer, 'category')){
+            var err = new Error('权限不足');
+            err.status = 403;
+            return next(err);
+        }
+
+        var id = req.body.id;
+
+        category.findOneAndRemove({_id: id}, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            dato.each(app.locals.$category, function (index, section) {
+                if (section.id.toString() === doc.id.toString()) {
+                    app.locals.$category.splice(index, 1);
+                    return false;
+                }
+            });
+
+            res.json({
+                code: 200
+            });
+        });
+    };
+
     return exports;
 }

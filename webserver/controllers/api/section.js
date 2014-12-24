@@ -104,6 +104,13 @@ module.exports = function (app) {
                 return next(err);
             }
 
+            dato.each(app.locals.$section, function (index, section) {
+                if (section.id.toString() === doc.id.toString()) {
+                    app.locals.$section.splice(index, 1);
+                    return false;
+                }
+            });
+
             res.json({
                 code: 200
             });

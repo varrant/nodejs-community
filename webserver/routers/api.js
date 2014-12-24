@@ -47,11 +47,13 @@ module.exports = function (app, ctrlApi) {
     // section
     app.get('/admin/api/section/', ctrlApi.section.get);
     app.put('/admin/api/section/', ctrlApi.section.put);
+    app.delete('/admin/api/section/', ctrlApi.section.delete);
 
 
     // category
     app.get('/admin/api/category/', ctrlApi.category.get);
     app.put('/admin/api/category/', ctrlApi.category.put);
+    app.delete('/admin/api/category/', ctrlApi.category.delete);
 
 
     // column
