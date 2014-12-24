@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * 设置版块、分类、栏目
  * @author ydr.me
  * @create 2014-12-20 20:55
  */
@@ -12,122 +12,214 @@ define(function (require, exports, module) {
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
     var confirm = require('../common/confirm.js');
+    var hashbang = require('../../alien/core/navigator/hashbang.js');
+    var id = hashbang.get('query', 'id');
     var dato = require('../../alien/util/dato.js');
+    var Upload = require('./Upload/');
     var defaults = {
+        emptyData: {
+            name: '',
+            uri: '',
+            cover: '',
+            introduction: ''
+        },
         url: '',
-        key: 'list',
-        remove: '确认删除吗？',
-        save: '确认保存吗？',
-        methods: {}
+        itemKey: '',
+        listKey: '',
+        type: ''
     };
     var Setting = generator({
         constructor: function (selector, options) {
             var the = this;
 
             the._selector = selector;
-            the._options = dato.extend({}, defaults, options);
+            the._options = dato.extend(true, {}, defaults, options);
             the._init();
         },
-
-
-        /**
-         * 初始化
-         * @private
-         */
         _init: function () {
             var the = this;
 
+            the._initData();
+            the._upload = new Upload();
+        },
+        _initData: function () {
+            var the = this;
+            var options = the._options;
+            var itemKey = options.itemKey;
+            var listKey = options.listKey;
+
             ajax({
-                url: the._options.url
-            }).on('success', the._onsuccess.bind(the)).on('error', alert);
+                url: options.url
+            })
+                .on('success', function (json) {
+                    if (json.code !== 200) {
+                        return alert(json);
+                    }
+
+                    var data = options.emptyData;
+
+                    if (id) {
+                        dato.each(json.data, function (i, item) {
+                            if (item.id === id) {
+                                data = item;
+                                return false;
+                            }
+                        });
+                    }
+
+                    var vueData = {};
+
+                    vueData[listKey] = json.data;
+                    vueData[itemKey] = data;
+
+                    the.vue = new Vue({
+                        el: the._selector,
+                        data: vueData,
+                        methods: {
+                            onupload: the._onupload.bind(the),
+                            onsave: the._onsave.bind(the),
+                            onchoose: the._onchoose.bind(the),
+                            onremove: the._onremove.bind(the)
+                        }
+                    });
+
+                    the.vue.$el.classList.remove('f-none');
+                    the._translate();
+                })
+                .on('error', alert);
         },
 
+
         /**
-         * 请求成功
-         * @param json
-         * @returns {*}
+         * 上传并裁剪图片
          * @private
          */
-        _onsuccess: function (json) {
-            if (json.code !== 200) {
-                return alert(json);
-            }
-
+        _onupload: function () {
             var the = this;
-            var data = {};
-            var methods = the._options.methods;
+            var itemKey = the._options.itemKey;
 
-            methods = dato.extend({}, {
-                onremove: the._onremove.bind(the),
-                onsave: the._onsave.bind(the)
-            }, methods);
-
-            data[the._options.key] = json.data;
-            the.vue = new Vue({
-                el: the._selector,
-                data: data,
-                methods: methods
+            the._upload.open().on('success', function (data) {
+                the.vue.$data[itemKey].cover = data.surl;
+                this.close();
             });
+        },
 
-            the.vue.$el.classList.remove('f-none');
+
+        /**
+         * 新增/保存
+         * @private
+         */
+        _onsave: function () {
+            var the = this;
+            var options = the._options;
+            var vue = this.vue;
+            var itemKey = options.itemKey;
+            var listKey = options.listKey;
+            var data = vue.$data[itemKey];
+            var hasId = !!data.id;
+
+            ajax({
+                method: 'put',
+                url: options.url,
+                data: vue.$data[itemKey]
+            })
+                .on('success', function (json) {
+                    if (json.code !== 200) {
+                        return alert(json);
+                    }
+
+                    if (!hasId) {
+                        vue.$data[listKey].push(json.data);
+                    }
+
+                    vue.$data[itemKey] = json.data;
+                })
+                .on('error', alert);
+        },
+
+
+        /**
+         * 选择
+         * @param index
+         * @private
+         */
+        _onchoose: function (index) {
+            var vue = this.vue;
+            var itemKey = this._options.itemKey;
+            var listKey = this._options.listKey;
+
+            vue.$data[itemKey] = vue.$data[listKey][index];
         },
 
 
         /**
          * 删除
          * @param index
+         * @returns {*}
          * @private
          */
         _onremove: function (index) {
             var the = this;
+            var options = the._options;
+            var listKey = options.listKey;
+            var type = options.type;
+            var vue = the.vue;
+            var col = vue.$data[listKey][index];
+            var id = col.id;
+
+            if (col.objectCount > 0) {
+                return alert('该' + type + '下还有' + col.objectCount + '个项目，无法删除');
+            }
+
             var remove = function () {
-                the.vue.$data.list.splice(index, 1);
+                ajax({
+                    url: options.url,
+                    method: 'delete',
+                    data: {
+                        id: id
+                    }
+                })
+                    .on('success', function (json) {
+                        if (json.code !== 200) {
+                            return alert(json);
+                        }
+
+                        vue.$data[listKey].splice(index, 1);
+                    })
+                    .on('error', alert);
             };
 
-            if (the._options.remove) {
-                confirm(the._options.remove, function () {
-                    the.vue.$data.list.splice(index, 1);
-                });
-            } else {
-                remove();
-            }
+            confirm('确认要删除该' + type + '吗？', remove);
         },
 
 
-
         /**
-         * 保存
-         * @param eve
+         * 实时翻译
          * @private
          */
-        _onsave: function (eve) {
-            var $btn = eve.target;
-            var the = this;
-            var options = the._options;
-            var _save = function () {
-                $btn.disabled = true;
-                ajax({
-                    url: options.url,
-                    method: 'put',
-                    data: the.vue.$data[options.key]
-                }).on('success', function (json) {
-                    $btn.disabled = false;
+        _translate: function () {
+            var xhr = null;
+            var itemKey = this._options.itemKey;
+            var vue = this.vue;
 
-                    the.vue.$data[options.key] = json.data;
-                    if (json.code !== 200) {
-                        return alert(json);
-                    }
-                }).on('error', function (err) {
-                    $btn.disabled = false;
-                    alert(err);
-                });
-            };
+            // 实时翻译
+            vue.$watch(itemKey + '.name', function (word) {
+                if (xhr) {
+                    xhr.abort();
+                }
 
-            if (options.save) {
-                confirm(options.save, _save);
-            } else {
-                _save();
-            }
+                xhr = ajax({
+                    url: '/api/translate/?word=' + encodeURIComponent(word)
+                })
+                    .on('success', function (json) {
+                        if (json.code === 200) {
+                            vue.$data[itemKey].uri = json.data;
+                        }
+                    })
+                    .on('complete', function () {
+                        xhr = null;
+                    });
+            });
         }
     });
 
