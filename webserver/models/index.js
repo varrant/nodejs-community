@@ -75,13 +75,13 @@ dato.each(models, function (key, model) {
      * @param callback {Function} 回调
      */
     exports[key].findOne = function (conditions, options, callback) {
-        if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
-            return callback(new Error('the id of conditions is invalid'));
-        }
-
         if (arguments.length === 2) {
             callback = arguments[1];
             options = {};
+        }
+
+        if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
+            return callback(new Error('the id of conditions is invalid'));
         }
 
         var query = model.findOne(conditions);
@@ -105,13 +105,13 @@ dato.each(models, function (key, model) {
      * @param callback {Function} 回调
      */
     exports[key].find = function (conditions, options, callback) {
-        if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
-            return callback(new Error('the id of conditions is invalid'));
-        }
-
         if (arguments.length === 2) {
             callback = arguments[1];
             options = {};
+        }
+
+        if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
+            return callback(new Error('the id of conditions is invalid'));
         }
 
         var query = model.find(conditions);
@@ -340,13 +340,13 @@ dato.each(models, function (key, model) {
      * @param callback {Function} 回调
      */
     exports[key].getMeta = function (conditions, metaKey, callback) {
-        if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
-            return callback(new Error('the id of conditions is invalid'));
-        }
-
         if (typeis(metaKey) === 'function') {
             callback = metaKey;
             metaKey = null;
+        }
+
+        if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
+            return callback(new Error('the id of conditions is invalid'));
         }
 
         model.findOne(conditions, function (err, doc) {
@@ -375,10 +375,6 @@ dato.each(models, function (key, model) {
      * @param callback {Function} 回调
      */
     exports[key].setMeta = function (conditions, metaKey, metaVal, callback) {
-        if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
-            return callback(new Error('the id of conditions is invalid'));
-        }
-
         var metaMap = {};
 
         if (typeis(metaVal) === 'function') {
@@ -387,6 +383,10 @@ dato.each(models, function (key, model) {
             metaVal = null;
         } else {
             metaMap[metaKey] = metaVal;
+        }
+
+        if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
+            return callback(new Error('the id of conditions is invalid'));
         }
 
         model.findOne(conditions, function (err, doc) {
@@ -578,13 +578,13 @@ dato.each(models, function (key, model) {
      * @param callback {Function} 回调
      */
     exports[key].toggle = function (conditions, path, boolean, callback) {
-        if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
-            return callback(new Error('the id of conditions is invalid'));
-        }
-
         if (arguments.length === 3) {
             callback = arguments[2];
             boolean = null;
+        }
+
+        if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
+            return callback(new Error('the id of conditions is invalid'));
         }
 
         model.findOne(conditions, function (err, doc) {
