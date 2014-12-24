@@ -14,7 +14,7 @@ define(function (require, exports, module) {
     require('../../widget/admin/sidebar.js');
 
     new Item('#form', '#content', {
-        type: window['-type-'],
+        section: window['-section-'],
         id: window['-id-']
     });
 });

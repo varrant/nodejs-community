@@ -18,7 +18,7 @@ define(function (require, exports, module) {
     var defaults = {
         url: '/admin/api/object/',
         id: '',
-        type: ''
+        section: ''
     };
     var Item = generator({
         constructor: function (formSelector, contentSelector, options, methods) {
@@ -78,7 +78,7 @@ define(function (require, exports, module) {
                 content: '',
                 uri: '',
                 labels: [],
-                type: the._options.type,
+                section: the._options.section,
                 isDisplay: true
             };
             data.categories.forEach(function (item) {
