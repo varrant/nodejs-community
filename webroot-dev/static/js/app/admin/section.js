@@ -15,6 +15,8 @@ define(function (require, exports, module) {
     var alert = require('../../widget/common/alert.js');
     var ajax = require('../../widget/common/ajax.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
+    var Upload = require('../../widget/admin/Upload/');
+    var upload = new Upload();
     var dato = require('../../alien/util/dato.js');
     var app = {};
     var id = hashbang.get('query', 'id');
@@ -65,6 +67,18 @@ define(function (require, exports, module) {
 
 
     /**
+     * 上传并裁剪图片
+     * @private
+     */
+    app._onupload = function () {
+        upload.open().on('success', function (data) {
+            app.vue.$data.column.cover = data.surl;
+            this.close();
+        });
+    };
+
+
+    /**
      * 新增/保存
      * @private
      */
@@ -100,6 +114,42 @@ define(function (require, exports, module) {
      */
     app._onchoose = function (index) {
         this.$data.section = this.$data.sections[index];
+    };
+
+
+    /**
+     * 删除
+     * @param index
+     * @returns {*}
+     * @private
+     */
+    app._onremove = function (index) {
+        var col = this.$data.columns[index];
+        var id = col.id;
+
+        if (col.objectCount > 0) {
+            return alert('该分类下还有' + col.objectCount + '个项目，无法删除');
+        }
+
+        var remove = function () {
+            ajax({
+                url: url,
+                method: 'delete',
+                data: {
+                    id: id
+                }
+            })
+                .on('success', function (json) {
+                    if (json.code !== 200) {
+                        return alert(json);
+                    }
+
+                    app.vue.$data.columns.splice(index, 1);
+                })
+                .on('error', alert);
+        };
+
+        confirm('确认要删除该分类吗？', remove);
     };
 
 
