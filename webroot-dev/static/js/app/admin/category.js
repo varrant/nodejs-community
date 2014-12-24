@@ -33,7 +33,9 @@ define(function (require, exports, module) {
 
                 var category = {
                     name: '',
-                    uri: ''
+                    uri: '',
+                    cover: '',
+                    introduction: ''
                 };
 
                 if (id) {
