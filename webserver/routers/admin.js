@@ -6,13 +6,7 @@
 
 'use strict';
 
-var settings = ['oauth', 'smtp', 'types', 'website', 'alioss', 'roles'];
-
 module.exports = function (app, ctrlAdmin) {
-    var section = app.locals.$section.map(function (item) {
-        return item.uri;
-    });
-
     // 中间件
     app.use(/^\/admin\/.*$/i, ctrlAdmin.middleware.login);
 
@@ -44,9 +38,9 @@ module.exports = function (app, ctrlAdmin) {
 
 
     // list
-    section.forEach(function (uri) {
-        app.get('/admin/object/' + uri + '/list/', ctrlAdmin.object.list(uri));
-        app.get('/admin/object/' + uri + '/', ctrlAdmin.object.get(uri));
+    app.locals.$section.forEach(function (section) {
+        app.get('/admin/object/' + section.uri + '/list/', ctrlAdmin.object.list(section));
+        app.get('/admin/object/' + section.uri + '/', ctrlAdmin.object.get(section));
     });
 
 

@@ -8,27 +8,24 @@
 
 var filter = require('../../utils/').filter;
 var object = require('../../services/').object;
+var dato = require('ydr-util').dato;
 
 module.exports = function (app) {
     var exports = {};
-    var sectionMap = {};
 
-    app.locals.$section.forEach(function (section) {
-        sectionMap[section.uri] = section;
-    });
 
     /**
      * 列出各个 type 下的 object
      * @param type {String} object type
      * @returns {Function}
      */
-    exports.list = function (type) {
+    exports.list = function (section) {
         return function (req, res, next) {
             var data = {
-                title: sectionMap[type].name + '管理'
+                title: section.name + '管理'
             };
 
-            res.render('admin/object-list-' + type + '.html', data);
+            res.render('admin/object-list-' + section.uri + '.html', data);
         };
     };
 
@@ -38,14 +35,15 @@ module.exports = function (app) {
      * @param type
      * @returns {Function}
      */
-    exports.get = function (type) {
+    exports.get = function (section) {
         return function (req, res, next) {
             var data = {
-                title: sectionMap[type].name + (req.query.id ? '更新' : '创建'),
-                id: req.query.id || ''
+                title: section.name + (req.query.id ? '更新' : '创建'),
+                id: req.query.id || '',
+                section: section.id
             };
 
-            res.render('admin/object-item-' + type + '.html', data);
+            res.render('admin/object-item-' + section.uri + '.html', data);
         }
     }
 
