@@ -15,7 +15,7 @@ validator.pushRule({
     name: 'name',
     alias: '名称',
     type: 'string',
-    minLength: 1,
+    required: true,
     maxLength: 50
 });
 
@@ -23,7 +23,7 @@ validator.pushRule({
     name: 'uri',
     alias: 'URI',
     type: 'string',
-    minLength: 1,
+    required: true,
     maxLength: 20,
     regexp: /^[a-z-_\d]{1,20}$/i
 });
@@ -40,6 +40,7 @@ validator.pushRule({
     name: 'introduction',
     alias: '介绍',
     type: 'string',
+    required: true,
     maxLength: 1000,
     onafter: function (val) {
         return val.replace(REG_LINES, '');

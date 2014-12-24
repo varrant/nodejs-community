@@ -23,7 +23,6 @@ module.exports = function (app) {
     };
     var oss = new Oss(settings);
 
-
     /**
      * 上传图片到阿里云 OSS
      * @param req
