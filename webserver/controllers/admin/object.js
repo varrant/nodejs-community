@@ -22,7 +22,8 @@ module.exports = function (app) {
     exports.list = function (section) {
         return function (req, res, next) {
             var data = {
-                title: section.name + '管理'
+                title: section.name + '管理',
+                section: section.id
             };
 
             res.render('admin/object-list-' + section.uri + '.html', data);

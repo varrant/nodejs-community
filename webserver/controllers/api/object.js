@@ -31,34 +31,34 @@ module.exports = function (app) {
      * @param next
      */
     exports.list = function (req, res, next) {
-        var conditions = dato.pick(req.query, ['type', 'author']);
+        var conditions = dato.pick(req.query, ['section', 'author']);
         var options = filter.skipLimit(req);
-        var type = conditions.type;
+        var section = conditions.section;
+        var author = conditions.author;
 
-        // 未指定 type 直接返回空
-        if (!type) {
-            return res.json({
-                code: 200,
-                data: []
-            });
+        if (!section || !author) {
+            return next();
         }
 
-        // 不显示的 type 直接输出空
-        if (type && uris.indexOf(type) === -1) {
-            return res.json({
-                code: 200,
-                data: []
-            });
+        var findSection = null;
+
+        dato.each(app.locals.$section, function (index, _section) {
+            if (_section.id.toString() === section) {
+                findSection = _section;
+                return false;
+            }
+        });
+
+        if (!findSection) {
+            return next();
         }
 
-        var can = (res.locals.$engineer.role & Math.pow(2, sectionMap[type].role)) > 0;
+        var can = (res.locals.$engineer.role & Math.pow(2, findSection.role)) > 0;
 
         if (!can) {
-            return res.json({
-                code: 403,
-                data: [],
-                message: '无权限'
-            });
+            var err = new Error('权限不足');
+            err.status = 403;
+            return next(err);
         }
 
         howdo
