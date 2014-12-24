@@ -72,7 +72,7 @@ define(function (require, exports, module) {
      */
     app._onupload = function () {
         upload.open().on('success', function (data) {
-            app.vue.$data.column.cover = data.surl;
+            app.vue.$data.category.cover = data.surl;
             this.close();
         });
     };
