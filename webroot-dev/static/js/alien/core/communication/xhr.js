@@ -51,7 +51,6 @@ define(function (require, exports, module) {
         // 覆盖 MIME
         mimeType: null
     };
-    var index = 0;
     var regProtocol = /^([\w-]+:)\/\//;
     var XHR = klass.create({
         STATIC: {},
@@ -153,6 +152,11 @@ define(function (require, exports, module) {
                 xhr.overrideMimeType(options.mimeType);
             }
 
+            // 当 data 为 formdata 时，删除 content-type header
+            if(options.data && options.data.constructor === FormData){
+                delete options.headers['content-type'];
+            }
+
             dato.each(options.headers, function (key, val) {
                 xhr.setRequestHeader(key, val);
             });
@@ -225,7 +229,7 @@ define(function (require, exports, module) {
         var url = options.url;
         var query = options.query;
         var querystring = typeis.string(query) === 'string' ? query : qs.stringify(query);
-        var cache = options.isCache ? '' : '_=' + (++index);
+        var cache = options.isCache ? '' : '_=' + Date.now();
 
         // 删除原有的缓存字符串
         url = options.isCache ? url : url.replace(regCache, '').replace(regEnd, '');
