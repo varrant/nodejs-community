@@ -6,5 +6,36 @@
 
 'use strict';
 
+var map = {
+    section: ['owner'],
+    category: ['owner', 'admin'],
+    column: ['owner', 'admin', 'vip']
+};
+var dato = require('ydr-util').dato;
 
-module.exports = {};
+
+/**
+ * 判断用户组是否有该权限
+ * @param operator
+ * @param what
+ * @returns {boolean}
+ */
+exports.can = function (operator, what) {
+    var per = map[what];
+
+    if (!per) {
+        return true;
+    }
+
+    var group = operator.group;
+    var can = false;
+
+    dato.each(per, function (index, _group) {
+        if (_group === group) {
+            can = true;
+            return false;
+        }
+    });
+
+    return can;
+};

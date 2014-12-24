@@ -17,6 +17,7 @@ module.exports = {
     label: require('./label.js'),
     notification: require('./notification.js'),
     object: require('./object.js'),
+    permission: require('./permission.js'),
     //scope: require('./scope.js'),
     search: require('./search.js'),
     section: require('./section.js'),

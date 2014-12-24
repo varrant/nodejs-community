@@ -7,6 +7,7 @@
 'use strict';
 
 var section = require('../../services/').section;
+var permission = require('../../services/').permission;
 var dato = require('ydr-util').dato;
 
 module.exports = function (app) {
@@ -19,6 +20,10 @@ module.exports = function (app) {
      * @param next
      */
     exports.get = function (req, res, next) {
+        if(!permission.can(res.locals.$engineer, 'section')){
+            return next();
+        }
+
         res.json({
             code: 200,
             data: app.locals.$section
