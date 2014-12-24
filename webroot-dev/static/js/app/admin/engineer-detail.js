@@ -29,46 +29,26 @@ define(function (require, exports, module) {
             return alert(json);
         }
 
-        var data1 = json.data;
-        var data2 = [];
-        var engineerRole = data1.engineer.role;
-
-        data2.push({
-            name: '版块权限（0-10）',
-            list: data1.types
-        });
-
-        data1.types.forEach(function (type) {
-            type.desc = type.title;
-            type.checked = (engineerRole & Math.pow(2, type.role)) > 0;
-        });
-
-        data2.push({
-            name: '操作权限（11-20）',
-            list: data1.roles
-        });
-
-        data1.roles.forEach(function (role) {
-            role.checked = (engineerRole & Math.pow(2, role.role)) > 0;
-        });
 
         var vue1 = new Vue({
             el: '#form',
-            data: data1
-        });
-        var vue2 = new Vue({
-            el: '#role',
             data: {
-                engineer: data1.engineer,
-                kinds: data2
-            },
-            methods: {
-                onsave: app._onsave
+                engineer: json.data.engineer
             }
         });
+        //var vue2 = new Vue({
+        //    el: '#role',
+        //    data: {
+        //        engineer: data1.engineer,
+        //        kinds: data2
+        //    },
+        //    methods: {
+        //        onsave: app._onsave
+        //    }
+        //});
 
         vue1.$el.classList.remove('f-none');
-        vue2.$el.classList.remove('f-none');
+        //vue2.$el.classList.remove('f-none');
     };
 
 
