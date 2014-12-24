@@ -7,14 +7,22 @@
 'use strict';
 
 module.exports = function (app) {
+    // 11 - 20
     return [
-        // 创始人
-        'founder',
-        // 管理员
-        'admin',
-        // 会员
-        'vip',
-        // 用户
-        'normal'
+        {
+            name: 'founder',
+            role: 20,
+            introduction: '创始人'
+        },
+        {
+            name: 'admin',
+            role: 19,
+            introduction: '管理员'
+        },
+        {
+            name: 'vip',
+            role: 18,
+            introduction: '会员'
+        },
     ];
 }

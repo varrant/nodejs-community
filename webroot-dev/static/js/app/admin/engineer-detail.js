@@ -41,6 +41,10 @@ define(function (require, exports, module) {
             name: '发布权限',
             list: data1.section
         });
+        data2.push({
+            name: '用户组',
+            list: data1.group
+        });
 
         var vue1 = new Vue({
             el: '#form',
