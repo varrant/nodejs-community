@@ -7,10 +7,14 @@
 'use strict';
 
 module.exports = function (app) {
-    return {
-        founder: '创始人',
-        admin: '管理员',
-        vip: '会员',
-        normal: '普通'
-    };
+    return [
+        // 创始人
+        'founder',
+        // 管理员
+        'admin',
+        // 会员
+        'vip',
+        // 用户
+        'normal'
+    ];
 }

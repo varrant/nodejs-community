@@ -10,14 +10,13 @@
 var configs = require('../../configs/');
 var Validator = require('ydr-validator');
 var validator = new Validator();
-var groups = Object.keys(configs.group);
 
 validator.pushRule({
     name: 'group',
     type: 'string',
     alias: '用户组',
     required: true,
-    inArray: groups
+    inArray: configs.group
 });
 
 module.exports = validator;
