@@ -18,7 +18,7 @@ var dato = require('ydr-util').dato;
 
 validator.pushRule({
     name: 'name',
-    alias: '专栏名称',
+    alias: '版块名称',
     type: 'string',
     required: true,
     maxLength: 50,
@@ -27,7 +27,7 @@ validator.pushRule({
 
 validator.pushRule({
     name: 'uri',
-    alias: '专栏 uri',
+    alias: '版块 uri',
     type: 'string',
     required: true,
     maxLength: 50,
@@ -36,7 +36,7 @@ validator.pushRule({
 
 validator.pushRule({
     name: 'cover',
-    alias: '专栏封面',
+    alias: '版块封面',
     type: 'url',
     required: true,
     minLength: 10,
@@ -56,7 +56,7 @@ validator.pushRule({
 
 validator.pushRule({
     name: 'introduction',
-    alias: '专栏简介',
+    alias: '版块简介',
     type: 'string',
     required: true,
     minLength: 10,
