@@ -30,6 +30,11 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
+        oss.setOptions('accessKeyId', app.locals.$setting.alioss.accessKeyId);
+        oss.setOptions('accessKeySecret', app.locals.$setting.alioss.accessKeySecret);
+        oss.setOptions('domain', app.locals.$setting.alioss.domain);
+        oss.setOptions('bucket', app.locals.$setting.alioss.bucket);
+        oss.setOptions('host', app.locals.$setting.alioss.host);
         oss.put(req, {
             object: configs.dir.upload + random.guid()
         }, function (err, ret) {

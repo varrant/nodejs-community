@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * main
  * @author ydr.me
  * @create 2014-12-13 23:10
  */
@@ -22,9 +22,6 @@ module.exports = function (app) {
 
         res.render('admin/home.html', data);
     };
-
-
-
 
     return exports;
 };
