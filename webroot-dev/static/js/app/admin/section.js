@@ -13,6 +13,7 @@ define(function (require, exports, module) {
     require('../../widget/admin/sidebar.js');
 
     var alert = require('../../widget/common/alert.js');
+    var confirm = require('../../widget/common/confirm.js');
     var ajax = require('../../widget/common/ajax.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var Upload = require('../../widget/admin/Upload/');
