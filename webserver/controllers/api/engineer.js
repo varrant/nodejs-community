@@ -148,12 +148,20 @@ module.exports = function (app) {
      * @param next
      */
     exports.role = function (req, res, next) {
-        var ownerId = app.locals.$founder.id;
+        var founderId = app.locals.$founder.id;
+        var engineerRole = res.locals.$engineer.role;
         var body = req.body;
         var id = body.id;
         var role = dato.parseInt(body.role, 1);
 
-        if (id === ownerId) {
+        // 只能创始人才有资格修改权限
+        if ((engineerRole & role20) === 0) {
+            var err = new Error('权限不足');
+            err.status = 403;
+            return next(err);
+        }
+
+        if (id === founderId.toString()) {
             return next(new Error('不能修改社区创始人权限'));
         }
 

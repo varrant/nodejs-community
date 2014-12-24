@@ -162,6 +162,7 @@ footer {
   position: relative;
   padding: 0 0 0 140px;
   margin-bottom: 20px;
+  min-height: 36px;
 }
 .m-form > li.form-striped {
   margin-bottom: 0;

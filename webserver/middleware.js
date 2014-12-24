@@ -60,7 +60,7 @@ module.exports = function (next, app) {
                 if (!doc) {
                     console.log('');
                     console.log('#########################################################');
-                    console.log('miss an owner, please read readme.md and use `npm install`');
+                    console.log('miss a founder, read readme.md and use `npm install` first');
                     console.log('#########################################################');
                     console.log('');
                     return process.exit();
