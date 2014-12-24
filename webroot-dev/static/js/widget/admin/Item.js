@@ -167,6 +167,7 @@ define(function (require, exports, module) {
                     the.editor.clearStore();
                     the._options.id = json.data.id;
                     the.editor.setOptions('id', the._options.id);
+                    history.pushState('', null, location.pathname + '?id=' + json.data.id);
                 }
 
                 vue.$data.object = json.data;
