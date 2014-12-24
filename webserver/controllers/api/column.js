@@ -7,6 +7,7 @@
 'use strict';
 
 var column = require('../../services/').column;
+var permission = require('../../services/').permission;
 var dato = require('ydr-util').dato;
 
 module.exports = function (app) {
@@ -19,6 +20,12 @@ module.exports = function (app) {
      * @param next
      */
     exports.get = function (req, res, next) {
+        if(!permission.can(res.locals.$engineer, 'column')){
+            var err = new Error('权限不足');
+            err.status = 403;
+            return next(err);
+        }
+
         column.find({
             author: res.locals.$engineer.id
         }, function (err, docs) {
@@ -42,6 +49,12 @@ module.exports = function (app) {
      */
     exports.put = function (req, res, next) {
         var id = req.body.id;
+
+        if(!permission.can(res.locals.$engineer, 'column')){
+            var err = new Error('权限不足');
+            err.status = 403;
+            return next(err);
+        }
 
         if (id) {
             return column.findOneAndUpdate(res.locals.$engineer, {
@@ -79,6 +92,12 @@ module.exports = function (app) {
      */
     exports.delete = function (req, res, next) {
         var id = req.body.id;
+
+        if(!permission.can(res.locals.$engineer, 'column')){
+            var err = new Error('权限不足');
+            err.status = 403;
+            return next(err);
+        }
 
         column.findOneAndRemove(res.locals.$engineer, {_id: id}, function (err, doc) {
             if (err) {

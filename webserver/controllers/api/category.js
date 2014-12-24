@@ -7,6 +7,7 @@
 'use strict';
 
 var category = require('../../services/').category;
+var permission = require('../../services/').permission;
 var dato = require('ydr-util').dato;
 
 module.exports = function (app) {
@@ -19,6 +20,12 @@ module.exports = function (app) {
      * @param next
      */
     exports.get = function (req, res, next) {
+        if(!permission.can(res.locals.$engineer, 'category')){
+            var err = new Error('权限不足');
+            err.status = 403;
+            return next(err);
+        }
+
         res.json({
             code: 200,
             data: app.locals.$category
@@ -34,6 +41,12 @@ module.exports = function (app) {
      */
     exports.put = function (req, res, next) {
         var id = req.body.id;
+
+        if(!permission.can(res.locals.$engineer, 'category')){
+            var err = new Error('权限不足');
+            err.status = 403;
+            return next(err);
+        }
 
         if (id) {
             return category.findOneAndUpdate({
