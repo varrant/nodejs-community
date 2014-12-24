@@ -7,6 +7,7 @@
 'use strict';
 
 var setting = require('../../services/').setting;
+var permission = require('../../services/').permission;
 
 module.exports = function (app) {
     var exports = {};
@@ -18,6 +19,11 @@ module.exports = function (app) {
      * @param next
      */
     exports.get = function (req, res, next) {
+        if (!permission.can(res.locals.$engineer, 'setting')) {
+            var err = new Error('权限不足');
+            err.status = 403;
+            return next(err);
+        }
         res.json({
             code: 200,
             data: app.locals.$setting
@@ -31,6 +37,12 @@ module.exports = function (app) {
      */
     exports.put = function (key) {
         return function (req, res, next) {
+            if (!permission.can(res.locals.$engineer, 'setting')) {
+                var err = new Error('权限不足');
+                err.status = 403;
+                return next(err);
+            }
+
             setting.set(key, req.body, function (err, doc) {
                 if (err) {
                     return next(err);
