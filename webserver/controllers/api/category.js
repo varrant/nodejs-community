@@ -45,7 +45,7 @@ module.exports = function (app) {
 
                 dato.each(app.locals.$category, function (index, category) {
                     if (category.id.toString() === doc.id.toString()) {
-                        app.locals.$category[index] = category;
+                        app.locals.$category[index] = doc;
                         return false;
                     }
                 });
