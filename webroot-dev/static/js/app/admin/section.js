@@ -131,7 +131,7 @@ define(function (require, exports, module) {
         var id = col.id;
 
         if (col.objectCount > 0) {
-            return alert('该分类下还有' + col.objectCount + '个项目，无法删除');
+            return alert('该版块下还有' + col.objectCount + '个项目，无法删除');
         }
 
         var remove = function () {
@@ -152,7 +152,7 @@ define(function (require, exports, module) {
                 .on('error', alert);
         };
 
-        confirm('确认要删除该分类吗？', remove);
+        confirm('不当的操作将会影响前端路由展现。确认要删除该版块吗？', remove);
     };
 
 
