@@ -12,6 +12,7 @@ var app = require('./app.js');
 module.exports = {
     app: app,
     dir: require('./dir.js')(app),
+    group: require('./group.js')(app),
     notification: require('./notification.js')(app),
     permission: require('./permission.js')(app),
     secret: require('./secret.js')(app),

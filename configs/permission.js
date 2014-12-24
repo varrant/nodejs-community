@@ -8,9 +8,9 @@
 
 module.exports = function (app) {
     return {
-        setting: ['owner'],
-        section: ['owner'],
-        category: ['owner', 'admin'],
-        column: ['owner']
+        setting: ['founder'],
+        section: ['founder'],
+        category: ['founder', 'admin'],
+        column: ['founder']
     };
 };

@@ -9,7 +9,7 @@
 module.exports = function (app) {
     return {
         founder: '创始人',
-        administrator: '管理员',
+        admin: '管理员',
         vip: 'VIP',
         normal: '普通'
     };
