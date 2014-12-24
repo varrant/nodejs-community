@@ -148,17 +148,17 @@ module.exports = function (app) {
      * @param next
      */
     exports.role = function (req, res, next) {
-        var ownerId = app.locals.$owner.id;
+        var ownerId = app.locals.$founder.id;
         var body = req.body;
         var id = body.id;
         var role = dato.parseInt(body.role, 1);
 
         if (id === ownerId) {
-            return next(new Error('不能修改社区创建者权限'));
+            return next(new Error('不能修改社区创始人权限'));
         }
 
         if (role & role20) {
-            return next(new Error('不能赋予社区创建者权限'));
+            return next(new Error('不能赋予社区创始人权限'));
         }
 
         engineer.findOneAndUpdate({

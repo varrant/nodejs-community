@@ -66,7 +66,7 @@ module.exports = function (next, app) {
                     return process.exit();
                 }
 
-                app.locals.$owner = doc;
+                app.locals.$founder = doc;
                 done();
             });
         })

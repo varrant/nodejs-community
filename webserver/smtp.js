@@ -15,12 +15,12 @@ module.exports = function (next, app) {
     var options = app.locals.$setting.smtp;
     var smtp = emailjs.server.connect(options);
 
-    email.init(smtp, app.locals.$owner);
+    email.init(smtp, app.locals.$founder);
 
     if('pro' === configs.app.env){
         log.initEmail({
             from: configs.smtp.from,
-            email: app.locals.$owner.email
+            email: app.locals.$founder.email
         });
         log.initSmtp(options);
     }

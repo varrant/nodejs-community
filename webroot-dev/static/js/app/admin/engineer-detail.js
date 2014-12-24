@@ -38,6 +38,7 @@ define(function (require, exports, module) {
             item.checked = ( engineerRole & item.roleVal ) > 0;
         });
         data1.group.forEach(function (item) {
+            item.roleVal = Math.pow(2, item.role);
             item.checked = ( engineerRole & item.roleVal ) > 0;
         });
         data2.push({
