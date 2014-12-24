@@ -8,7 +8,7 @@
     </thead>
     <tbody>
     <tr v-if="!categories.length">
-        <td colspan="3" class="table-empty-td">
+        <td colspan="4" class="table-empty-td">
             暂无分类信息。
         </td>
     </tr>
@@ -23,6 +23,9 @@
                 <i class="i i-file"></i>\{{category.objectCount}}
             </div>
             <div class="s-light">\{{category.introduction}}</div>
+        </td>
+        <td>
+            <button class="btn btn-danger" v-on="click: onremove($index)">删除</button>
         </td>
     </tr>
     </tbody>

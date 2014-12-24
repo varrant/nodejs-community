@@ -8,7 +8,7 @@
     </thead>
     <tbody>
     <tr v-if="!sections.length">
-        <td colspan="3" class="table-empty-td">
+        <td colspan="4" class="table-empty-td">
             暂无版块信息。
         </td>
     </tr>
@@ -24,6 +24,9 @@
                 <i class="i i-file"></i>\{{section.objectCount}}
             </div>
             <div class="s-light">\{{section.introduction}}</div>
+        </td>
+        <td>
+            <button class="btn btn-danger" v-on="click: onremove($index)">删除</button>
         </td>
     </tr>
     </tbody>
