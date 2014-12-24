@@ -10,6 +10,9 @@
 var Validator = require('ydr-validator');
 var validator = new Validator();
 var REG_LINES = /[\n\s]{2,}/g;
+var regexp = require('../utils/').regexp;
+var REG_CONTENT = regexp.content(5, 1000);
+
 
 validator.pushRule({
     name: 'content',
@@ -17,9 +20,13 @@ validator.pushRule({
     alias: '评论内容',
     trim: true,
     minLength: 5,
-    maxLength: 10000,
+    maxLength: 1000,
+    regexp: REG_CONTENT,
     onafter: function (val) {
         return val.replace(REG_LINES, '\n\n');
+    },
+    msg: {
+        regexp: '内容仅支持中英文、数字，以及常用符号'
     }
 });
 
