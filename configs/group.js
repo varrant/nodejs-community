@@ -11,17 +11,20 @@ module.exports = function (app) {
     return [
         {
             name: 'founder',
-            role: 20,
+            // 2^10 + 2^11 + ... + 2^20
+            role: 2096128,
             introduction: '创始人'
         },
         {
             name: 'admin',
-            role: 19,
+            // 2^10 + 2^11 + ... + 2^17
+            role: 1047552,
             introduction: '管理员'
         },
         {
             name: 'vip',
-            role: 18,
+            // 2^10 + 2^11 + ... + 2^18
+            role: 523264,
             introduction: '会员'
         },
     ];

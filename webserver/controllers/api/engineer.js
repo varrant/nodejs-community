@@ -133,7 +133,7 @@ module.exports = function (app) {
                 data: {
                     engineer: doc,
                     section: app.locals.$section,
-                    groups: configs.group
+                    group: configs.group
                 }
             });
         });

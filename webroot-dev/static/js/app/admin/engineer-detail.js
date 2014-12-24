@@ -33,16 +33,19 @@ define(function (require, exports, module) {
         var data2 = [];
         var engineerRole = data1.engineer.role;
 
-        data1.section.forEach(function (section) {
-            section.roleVal = Math.pow(2, section.role);
-            section.checked = ( engineerRole & section.roleVal ) > 0;
+        data1.section.forEach(function (item) {
+            item.role = Math.pow(2, item.role);
+            item.checked = ( engineerRole & item.role ) > 0;
+        });
+        data1.group.forEach(function (item) {
+            item.checked = ( engineerRole & item.role ) > 0;
         });
         data2.push({
             name: '发布权限',
             list: data1.section
         });
         data2.push({
-            name: '用户组',
+            name: '用户权限',
             list: data1.group
         });
 
@@ -101,4 +104,13 @@ define(function (require, exports, module) {
     };
 
     app.init();
+
+
+    window.ppp = function (num) {
+        var ret = 0;
+        while(num >=10){
+            ret+= Math.pow(2, num--);
+        }
+        return ret;
+    }
 });
