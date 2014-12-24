@@ -16,7 +16,6 @@ module.exports = function (app) {
         var canSection = permission.can(res.locals.$engineer, 'section');
         var canCategory = permission.can(res.locals.$engineer, 'category');
         var canColumn = permission.can(res.locals.$engineer, 'cloumn');
-
         var list = [];
 
         list.push({
