@@ -42,37 +42,13 @@
                         </div>
                         <div class="col-sm-4">
                             <ul class="summarylist-contributors f-list-right">
-                                {{list object.}}
+                                {{list object.contributors as contributor}}
                                 <li>
-                                    <a href="#">
-                                        <img src="http://wenda.bootcss.com/uploads/avatar/000/00/00/27_avatar_mid.jpg"
-                                             width="20" height="20" alt="avatar"/>
+                                    <a href="/engineer/{{contributor.githubLogin}}/">
+                                        <img src="{{contributor.email|gravatar:40}}" width="20" height="20" alt="avatar"/>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="http://wenda.bootcss.com/uploads/avatar/000/00/00/23_avatar_mid.jpg"
-                                             width="20" height="20" alt="avatar"/>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="http://wenda.bootcss.com/uploads/avatar/000/00/00/25_avatar_mid.jpg"
-                                             width="20" height="20" alt="avatar"/>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="http://wenda.bootcss.com/uploads/avatar/000/00/00/02_avatar_mid.jpg"
-                                             width="20" height="20" alt="avatar"/>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="http://wenda.bootcss.com/uploads/avatar/000/00/00/06_avatar_mid.jpg"
-                                             width="20" height="20" alt="avatar"/>
-                                    </a>
-                                </li>
+                                {{/list}}
                             </ul>
                         </div>
                     </div>
