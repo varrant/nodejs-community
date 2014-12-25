@@ -146,26 +146,13 @@ module.exports = function (app) {
             var uri = req.params.uri;
             var data = {};
 
-            howdo
-                // 1. 文章
-                // 2. 作者
-
             object.findOne({
                 uri: uri,
                 isDisplay: true
-            }, done);
-
-            res.render('front/post-' + section.uri + '.html', {
-                title: section.name,
-                list: [{
-                    content: '清除浏览器缓存的文件试试看！不知道有没有童鞋遇到过这样的？我用QQ,搜狗，猎豹，chrome，UC都没问题！！手机wifi调试页面，浏览器是小米3内置浏览器童鞋遇到过这样的？我用QQ,搜狗，猎豹，chrome，UC都没问题！！手机wifi调试'
-                }, {
-                    content: '我本地wamp环境，手机wifi调试页面，浏览器是小米3内置浏览器；'
-                }, {
-                    content: '那么问题是：css文件修改后，浏览器不管怎么刷新，（手机，浏览器）重启都不能呈现更新后的样式。'
-                }, {
-                    content: '不知道有没有童鞋遇到过这样的？我用QQ,搜狗，猎豹，chrome，UC都没问题！！小米浏览器是我见过的手机浏览器最垃圾的 号召大家都不要睬他'
-                }]
+            }, {populate: ['author']}, function (err, doc) {
+                data.title = doc.title;
+                data.object = doc;
+                res.render('front/object-' + section.uri + '.html', data);
             });
         }
     };
