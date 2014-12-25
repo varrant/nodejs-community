@@ -1,6 +1,6 @@
 {
   "js": {
-    "main": "./static/js/app/",
+    "main": "./static/js/app/**/*.js",
     "host": "/"
   },
   "css": {
@@ -11,7 +11,8 @@
     "./views/**/*.html"
   ],
   "dest": "../webroot-pro/",
-  "coolie-config.js": "./static/js/coolie-config.js",
+  "coolie.js": "./static/js/libs/coolie.min.js",
+  "coolie-config.js": "./static/js/libs/coolie-config.js",
   "copy": [
     "./**/*.*"
   ]
