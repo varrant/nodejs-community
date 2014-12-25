@@ -107,6 +107,9 @@ exports.createOne = function (author, data, meta, callback) {
                 // 通知 object 作者
                 _noticeObjectAuthor(author.id, doc.object);
 
+                // 推入 object 的 contributors
+                object.pushContributor({_id: doc.object}, author, log.holdError);
+
                 // 评论父级
                 if (parent) {
                     // commnet2.replyCount

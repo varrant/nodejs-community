@@ -428,7 +428,7 @@ exports.increaseApplyByCount = function (conditions, count, callback) {
  * @param contributor
  * @param callback
  */
-exports.pushContributors = function (conditions, contributor, callback) {
+exports.pushContributor = function (conditions, contributor, callback) {
     object.push(conditions, 'contributors', contributor.id, 5, callback);
 };
 
