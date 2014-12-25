@@ -149,7 +149,7 @@ module.exports = function (app) {
             object.findOne({
                 uri: uri,
                 isDisplay: true
-            }, {populate: ['author']}, function (err, doc) {
+            }, {populate: ['author', 'category']}, function (err, doc) {
                 data.title = doc.title;
                 data.object = doc;
                 res.render('front/object-' + section.uri + '.html', data);

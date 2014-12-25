@@ -1,0 +1,29 @@
+<!--内容-->
+<div class="m-card">
+    <h2 class="card-title">
+        <i class="i i-cube"></i>{{object.title}}
+    </h2>
+
+    <div class="card-body m-postmain">
+        <div class="postmain-content">{{object.content}}</div>
+        <ul class="postmain-meta s-light">
+            <li>
+                <i class="i i-folder"></i>
+                <a href="/question/in/{{object.category.uri}}/" class="label label-default">{{object.category.name}}</a>
+            </li>
+            {{if object.labels.length }}
+            <li>
+                <i class="i i-tags"></i>
+                {{list object.labels as label}}
+                <a class="label label-light" href="/question/on/{{label}}/">{{label}}</a>
+                {{/list}}
+            </li>
+            {{/if}}
+            <li>
+                <i class="i i-clock-o"></i>
+                2014-12-21 12:21:19 &times; 21
+            </li>
+        </ul>
+    </div>
+</div>
+<!--/内容-->
