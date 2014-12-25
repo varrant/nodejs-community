@@ -352,7 +352,7 @@ exports.increaseScore = function (operator, id, count, callback) {
         object.push(conditions, 'scoreList', {
             date: date,
             score: count,
-            user: operator.id
+            engineer: operator.id
         }, done);
     }).together(callback);
 };
@@ -364,8 +364,8 @@ exports.increaseScore = function (operator, id, count, callback) {
  * @param count
  * @param callback
  */
-exports.increaseViewCount = function (conditions, count, callback) {
-    object.increase(conditions, 'viewCount', count, callback);
+exports.increaseViewByCount = function (conditions, count, callback) {
+    object.increase(conditions, 'viewByCount', count, callback);
 };
 
 /**
@@ -374,8 +374,8 @@ exports.increaseViewCount = function (conditions, count, callback) {
  * @param count
  * @param callback
  */
-exports.increaseCommentCount = function (conditions, count, callback) {
-    object.increase(conditions, 'commentCount', count, callback);
+exports.increaseCommentByCount = function (conditions, count, callback) {
+    object.increase(conditions, 'commentByCount', count, callback);
 };
 
 /**
@@ -384,8 +384,8 @@ exports.increaseCommentCount = function (conditions, count, callback) {
  * @param count
  * @param callback
  */
-exports.increaseFavoriteCount = function (conditions, count, callback) {
-    object.increase(conditions, 'favoriteCount', count, callback);
+exports.increaseFavoriteByCount = function (conditions, count, callback) {
+    object.increase(conditions, 'favoriteByCount', count, callback);
 };
 
 /**
@@ -394,8 +394,8 @@ exports.increaseFavoriteCount = function (conditions, count, callback) {
  * @param count
  * @param callback
  */
-exports.increaseApplyCount = function (conditions, count, callback) {
-    object.increase(conditions, 'applyCount', count, callback);
+exports.increaseApplyByCount = function (conditions, count, callback) {
+    object.increase(conditions, 'applyByCount', count, callback);
 };
 
 
