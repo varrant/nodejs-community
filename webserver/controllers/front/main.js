@@ -107,14 +107,28 @@ module.exports = function (app) {
                 conditions.labels = label;
             }
 
-            object.find(conditions, options, function (err, docs) {
-                if (err) {
-                    return next(err);
-                }
+            howdo
+                // 统计数量
+                .task(function (done) {
+                    object.count({
+                        section: section.id,
+                        isDisplay: true
+                    }, done);
+                })
+                // 列表
+                .task(function (done) {
+                    object.find(conditions, options, done);
+                })
+                // 异步并行
+                .together(function (err, count, docs) {
+                    if (err) {
+                        return next(err);
+                    }
 
-                data.objects = docs;
-                res.render('front/list-' + section.uri + '.html', data);
-            });
+                    data.count = count;
+                    data.objects = docs;
+                    res.render('front/list-' + section.uri + '.html', data);
+                });
         };
     };
 
