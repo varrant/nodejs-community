@@ -385,6 +385,18 @@ exports.increaseCommentByCount = function (conditions, count, callback) {
     object.increase(conditions, 'commentByCount', count, callback);
 };
 
+
+/**
+ * 增加 object 回复数量
+ * @param conditions
+ * @param count
+ * @param callback
+ */
+exports.increaseReplyByCount = function (conditions, count, callback) {
+    object.increase(conditions, 'replyByCount', count, callback);
+};
+
+
 /**
  * 增加 object 点赞收藏数量
  * @param conditions
@@ -394,6 +406,7 @@ exports.increaseCommentByCount = function (conditions, count, callback) {
 exports.increaseFavoriteByCount = function (conditions, count, callback) {
     object.increase(conditions, 'favoriteByCount', count, callback);
 };
+
 
 /**
  * 增加组织申请数量
