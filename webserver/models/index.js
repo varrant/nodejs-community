@@ -15,8 +15,6 @@ var models = {
     category: require('./category.js'),
     // 专栏
     column: require('./column.js'),
-    // 评论
-    comment: require('./comment.js'),
     // 工程师
     engineer: require('./engineer.js'),
     // 交互
@@ -27,8 +25,8 @@ var models = {
     notification: require('./notification.js'),
     // 对象
     object: require('./object.js'),
-    //// 领域
-    //scope: require('./scope.js'),
+    // 响应
+    response: require('./response.js'),
     // 搜索
     search: require('./search.js'),
     // 版块

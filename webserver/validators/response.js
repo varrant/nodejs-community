@@ -1,5 +1,5 @@
 /*!
- * comment 验证规则
+ * response 验证规则
  * @author ydr.me
  * @create 2014-12-02 22:28
  */

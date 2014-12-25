@@ -1,5 +1,5 @@
 /*!
- * 评论模型
+ * response schema
  * @author ydr.me
  * @create 2014-12-02 22:04
  */
@@ -15,22 +15,22 @@ var schema = new mongoose.Schema({
         unique: false,
         ref: 'engineer'
     },
-    // 评论类型：primary/secondary
+    // 响应类型：primary/secondary
     type: {
         type: String,
         required: true
     },
-    // 评论内容
+    // 响应内容
     content: {
         type: String,
         required: true
     },
-    // 评论时间
+    // 响应时间
     publishAt: {
         type: Date,
         default: new Date()
     },
-    // 评论对象
+    // 响应对象
     object: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
@@ -38,7 +38,7 @@ var schema = new mongoose.Schema({
         ref: 'object',
         default: null
     },
-    // 评论父级
+    // 响应父级
     parent: {
         type: mongoose.Schema.Types.ObjectId,
         required: false,
@@ -70,4 +70,4 @@ var schema = new mongoose.Schema({
 schema.set('toJSON', { getters: true, virtuals: true });
 schema.set('toObject', { getters: true, virtuals: true });
 
-module.exports = mongoose.model('comment', schema);
+module.exports = mongoose.model('response', schema);

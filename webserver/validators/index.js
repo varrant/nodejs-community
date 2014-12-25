@@ -10,13 +10,13 @@
 module.exports = {
     category: require('./category.js'),
     column: require('./column.js'),
-    comment: require('./comment.js'),
     engineer: require('./engineer.js'),
     interactive: require('./interactive.js'),
     label: require('./label.js'),
     notification: require('./notification.js'),
     object: require('./object.js'),
     //scope: require('./scope.js'),
+    response: require('./response.js'),
     search: require('./search.js'),
     section: require('./section.js'),
     setting: require('./setting.js')

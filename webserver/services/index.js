@@ -10,7 +10,6 @@
 module.exports = {
     category: require('./category.js'),
     column: require('./column.js'),
-    comment: require('./comment.js'),
     email: require('./email.js'),
     engineer: require('./engineer.js'),
     interactive: require('./interactive.js'),
@@ -19,6 +18,7 @@ module.exports = {
     object: require('./object.js'),
     permission: require('./permission.js'),
     //scope: require('./scope.js'),
+    response: require('./response.js'),
     search: require('./search.js'),
     section: require('./section.js'),
     setting: require('./setting.js')
