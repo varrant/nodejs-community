@@ -5,6 +5,7 @@
 `*`表示虚拟字段
 
 - `author` 评论作者
+- `type` 评论类型：primary/secondary
 - `content` 评论内容
 - `publishAt` 发布时间
 - `object` 评论文章
