@@ -34,7 +34,7 @@ exports.active = function (data, callback) {
     var data2 = {
         at: new Date(),
         value: data.value,
-        isApprove: data.isApprove
+        hasApproved: data.hasApproved
     };
 
     if (data.model === 'engineer' || data.model === 'object') {
