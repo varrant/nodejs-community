@@ -85,7 +85,7 @@ module.exports = function (app) {
             };
             var category = req.params.category;
             var label = req.params.label;
-            var info = filter.skipLimit(req.params);
+            var options = filter.skipLimit(req.params);
             var conditions = {
                 section: section.id,
                 isDisplay: true
@@ -107,7 +107,7 @@ module.exports = function (app) {
                 conditions.labels = label;
             }
 
-            object.find(conditions, info, function (err, docs) {
+            object.find(conditions, options, function (err, docs) {
                 if (err) {
                     return next(err);
                 }

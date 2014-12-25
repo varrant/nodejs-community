@@ -37,26 +37,24 @@ exports.findOne = object.findOne;
 exports.find = object.find;
 
 
-exports.list = function (conditios, options, callback) {
-    howdo
-        // 1. 查找所有 object
-        .task(function (next) {
-            object.find(conditios, options, next);
-        })
-        // 2. 查找 5 个最新的 contributors
-        .task(function (next, docs) {
-            howdo.each(docs, function (index, doc, done) {
-                comment.find({
-                    object: doc.id
-                }, {
-                    limit: 5
-                }, function (err, docs) {
-                    doc.contributors = docs;
-                });
-            }).together(next);
-        })
-        .follow(callback);
-};
+//exports.list = function (conditios, options, callback) {
+//    howdo
+//        // 1. 查找所有 object
+//        .task(function (next) {
+//            object.find(conditios, options, next);
+//        })
+//        // 2. 查找 5 个最新的 contributors
+//        .task(function (next, docs) {
+//            howdo.each(docs, function (i, doc, done) {
+//                howdo.each(doc.contributors, function (j, contributorId, done) {
+//                    engineer.findOne({_id: contributorId}, function () {
+//
+//                    });
+//                }).together(done);
+//            }).together(next);
+//        })
+//        .follow(callback);
+//};
 
 
 /**
