@@ -39,6 +39,13 @@ define(function (require, exports, module) {
             }
         });
         var vue2 = new Vue({
+            el: '#statistics',
+            data: data2,
+            methods: {
+                onsave: app._onsave
+            }
+        });
+        var vue3 = new Vue({
             el: '#role',
             data: dato.extend({
                 engineer: data1.engineer
@@ -50,8 +57,10 @@ define(function (require, exports, module) {
 
         app.vue1 = vue1;
         app.vue2 = vue2;
+        app.vue3 = vue3;
         vue1.$el.classList.remove('f-none');
         vue2.$el.classList.remove('f-none');
+        vue3.$el.classList.remove('f-none');
     };
 
 
@@ -63,38 +72,23 @@ define(function (require, exports, module) {
      */
     app._calData = function (data) {
         var engineer = data.engineer;
+        var sectionStatistics = engineer.sectionStatistics || {};
+        var categoryStatistics = engineer.categoryStatistics || {};
         var section = data.section;
         var category = data.category;
         var group = data.group;
         var engineerRole = data.engineer.role;
-        var sectionMap = {};
-        var categoryMap = {};
-
-        section.map(function (item) {
-            sectionMap[item.id] = item;
-        });
-
-        category.map(function (item) {
-            categoryMap[item.id] = item;
-        });
-
-        engineer.sectionStatistics2 = {};
-        dato.each(engineer.sectionStatistics || {}, function (key, count) {
-            engineer.sectionStatistics2[key === '0' ? '总和' : sectionMap[key].name] = count;
-        });
-
-        engineer.categoryStatistics2 = {};
-        dato.each(engineer.categoryStatistics || {}, function (key, count) {
-            engineer.categoryStatistics2[key === '0' ? '总和' : categoryMap[key].name] = count;
-        });
 
         section.forEach(function (item) {
             item.roleVal = 1 << item.role;
             item.checked = ( engineerRole & item.roleVal ) > 0;
+            item.objectCount = sectionStatistics[item.id] || 0;
         });
+
         group.forEach(function (item) {
             item.roleVal = 1 << item.role;
             item.checked = ( engineerRole & item.roleVal ) > 0;
+            item.objectCount = categoryStatistics[item.id] || 0;
         });
 
         var data2 = [];
@@ -112,7 +106,9 @@ define(function (require, exports, module) {
             kinds: data2,
             group: group,
             section: section,
-            category: category
+            category: category,
+            sectionObjectCount: sectionStatistics['0'] || 0,
+            categoryObjectCount: categoryStatistics['0'] || 0
         };
     };
 
