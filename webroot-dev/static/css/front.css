@@ -194,8 +194,13 @@ nav .nav-right li:last-child {
 }
 .m-card .card-title {
   padding: 20px;
-  line-height: 30px;
   font-size: 20px;
+}
+.m-card .card-title.s-bg-success {
+  border-color: #C3E0B7;
+}
+.m-card .card-title.s-bg-danger {
+  border-color: #E7B7B7;
 }
 .m-card .card-subtitle {
   display: inline;
@@ -334,10 +339,13 @@ nav .nav-right li:last-child {
 .m-postmain {
   position: relative;
 }
+.m-postmain .postmain-content {
+  white-space: pre-wrap;
+}
 .m-postmain .postmain-meta {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 30px 0 0;
 }
 .m-postmain .postmain-meta li {
   line-height: 2;

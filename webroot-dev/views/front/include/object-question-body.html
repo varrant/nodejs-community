@@ -1,13 +1,15 @@
 <!--内容-->
 <div class="m-card">
-    <h2 class="card-title">
+    <h2 class="card-title {{if object.hasAccepted}}s-bg-success{{else}}s-bg-danger{{/if}}">
         <i class="i i-cube"></i>
-        {{if object.hasAccepted}}
-        <span class="f-small s-success"><i class="i i-check i-striped"></i>已解决</span>
-        {{else}}
-        <span class="f-small s-danger"><i class="i i-exclamation-circle i-striped"></i>待解决</span>
-        {{/if}}
         {{object.title}}
+        <div class="card-endtitle">
+            {{if object.hasAccepted}}
+            <span class="f-small s-success"><i class="i i-check i-striped"></i>已解决</span>
+            {{else}}
+            <span class="f-small s-danger"><i class="i i-exclamation-circle i-striped"></i>待解决</span>
+            {{/if}}
+        </div>
     </h2>
 
     <div class="card-body m-postmain">
@@ -27,7 +29,7 @@
             {{/if}}
             <li>
                 <i class="i i-clock-o"></i>
-                {{object.updataAt|datefrom}} &times; {{object.updateList.length}}
+                <span class="f-small">{{object.updataAt|datefrom}} &times; {{object.updateList.length}}</span>
             </li>
         </ul>
     </div>
