@@ -202,7 +202,7 @@ exports.updateOne = function (author, conditions, data, callback) {
                     return next(err);
                 }
 
-                if (author.role & Math.pow(2, doc.role) === 0) {
+                if (author.role & (1 << doc.role) === 0) {
                     err = new Error('在该板块暂无发布权限');
                     err.status = 403;
                     return next(err);

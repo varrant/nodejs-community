@@ -7,7 +7,7 @@
 'use strict';
 
 var dato = require('ydr-util').dato;
-var maxValue = Math.pow(2, 53);
+var maxValue = 1 << 53;
 
 
 /**
