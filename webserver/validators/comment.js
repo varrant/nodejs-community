@@ -13,6 +13,13 @@ var REG_LINES = /[\n\s]{2,}/g;
 var regexp = require('../utils/').regexp;
 var REG_CONTENT = regexp.content(5, 1000);
 
+validator.pushRule({
+    name: 'type',
+    type: 'string',
+    alias: '评论类型',
+    required: true,
+    inArray: ['primary', 'secondary']
+});
 
 validator.pushRule({
     name: 'content',
