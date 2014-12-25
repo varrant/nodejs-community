@@ -23,6 +23,7 @@ var urls = {
     accessToken: 'https://github.com/login/oauth/access_token',
     user: 'https://api.github.com/user'
 };
+var role20 = Math.pow(2, 20);
 
 
 /**
@@ -71,6 +72,59 @@ exports.setMeta = engineer.setMeta;
  * count
  */
 exports.count = engineer.count;
+
+
+/**
+ * 修改他人 权限
+ * @param operator
+ * @param engineer
+ * @param role
+ * @param callback
+ * @returns {*}
+ */
+exports.modifyRole = function (operator, engineer, role, callback) {
+    if (
+        // 只有 founder 才有权限修改他人权限
+    (operator.role & role20) !== 0 &&
+        // 不允许修改自己的权限
+    operator.id.toString() !== engineer.id.toString() &&
+        // 不允许修改为 founder 的权限
+    (role & role20) === 0
+    ) {
+        var group = '';
+        dato.each(function (index, gp) {
+            if (gp.role !== 20) {
+                if ((role & gp.role) !== 0) {
+                    group = gp.group;
+                    return false;
+                }
+            }
+        });
+
+        var data = {
+            role: role,
+            group: group
+        };
+
+        engineer.findOneAndUpdate({_id: engineer.id}, data, callback);
+    }
+    // founder 才有权限修改他人权限
+    else if ((operator.role & role20) === 0) {
+        var err = new Error('权限不足');
+        err.status = 403;
+        return callback(err);
+    }
+    // 不允许修改自己的权限
+    else if (operator.id.toString() === engineer.id.toString()) {
+        var err = new Error('founder 的权限已经最大，无须修改');
+        return callback(err);
+    }
+    // 不允许修改为 founder 的权限
+    else if ((role & role20) !== 0) {
+        var err = new Error('不允许修改为 founder 的权限');
+        return callback(err);
+    }
+};
 
 
 /**
