@@ -93,7 +93,7 @@ exports.createOne = function (author, data, meta, callback) {
 
             if (!err && doc) {
                 // object.commentCount
-                object.increaseCommentCount({_id: doc.object}, 1, log.holdError);
+                object.increaseCommentByCount({_id: doc.object}, 1, log.holdError);
 
                 // engineer.commentCount
                 engineer.increaseCommentCount({_id: author.id}, 1, log.holdError);
@@ -112,7 +112,7 @@ exports.createOne = function (author, data, meta, callback) {
                         // 忽略错误
                         if (doc) {
                             // user2.repliedCount
-                            engineer.increaseRepliedCount({_id: doc.author}, 1, log.holdError);
+                            engineer.increaseReplyByCount({_id: doc.author}, 1, log.holdError);
                         }
                     });
 
@@ -130,7 +130,7 @@ exports.createOne = function (author, data, meta, callback) {
  * @param objectId
  * @private
  */
-function _noticeObjectAuthor(activeUserId, objectId) {
+function _noticeObjectAuthor(source, objectId) {
     howdo
         // 1. 查找 object
         .task(function (next) {
@@ -155,8 +155,8 @@ function _noticeObjectAuthor(activeUserId, objectId) {
             // 通知 object 作者
             notification.createOne({
                 type: 'comment',
-                activeUser: activeUserId,
-                activeByUser: doc.id,
+                source: source,
+                target: doc.id,
                 object: objectId
             }, log.holdError);
 
@@ -174,7 +174,7 @@ function _noticeObjectAuthor(activeUserId, objectId) {
  * @param commentId
  * @private
  */
-function _noticeCommentAuthor(activeUserId, comment) {
+function _noticeCommentAuthor(source, comment) {
     howdo
         // 1. 查找 comment 作者
         .task(function (next) {
@@ -195,8 +195,8 @@ function _noticeCommentAuthor(activeUserId, comment) {
             // 通知 object 作者
             notification.createOne({
                 type: 'comment',
-                activeUser: activeUserId,
-                activeByUser: doc.id,
+                source: source,
+                target: doc.id,
                 object: comment.id
             }, log.holdError);
 
