@@ -85,10 +85,13 @@ define(function (require, exports, module) {
             item.objectCount = sectionStatistics[item.id] || 0;
         });
 
+        category.forEach(function (item) {
+            item.objectCount = categoryStatistics[item.id] || 0;
+        });
+
         group.forEach(function (item) {
             item.roleVal = 1 << item.role;
             item.checked = ( engineerRole & item.roleVal ) > 0;
-            item.objectCount = categoryStatistics[item.id] || 0;
         });
 
         var data2 = [];
