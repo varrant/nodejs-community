@@ -498,11 +498,17 @@ dato.each(models, function (key, model) {
      * @param conditions {Object} 查询条件
      * @param path {String} 查询字段
      * @param item {*} 项目
+     * @param [maxLength] {Number|Function} 最大长度
      * @param callback {Function} 回调
      */
-    exports[key].push = function (conditions, path, item, callback) {
+    exports[key].push = function (conditions, path, item, maxLength, callback) {
         if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
             return callback(new Error('the id of conditions is invalid'));
+        }
+
+        if (arguments.length === 4) {
+            callback = arguments[3];
+            maxLength = null;
         }
 
         model.findOne(conditions, function (err, doc) {
@@ -516,17 +522,30 @@ dato.each(models, function (key, model) {
                 return callback(err);
             }
 
-            var push = {};
-            push[path] = item;
-            var options = {
-                upsert: true
-            };
+            if (maxLength) {
+                var array = doc[path] || [];
 
-            model.findOneAndUpdate(conditions, {
-                $push: push
-            }, options, function (err, doc) {
-                callback(err, doc && doc.toJSON());
-            });
+                if (array.length === maxLength) {
+                    array.shift();
+                }
+
+                array.push(item);
+                var data = {};
+                data[path] = array;
+
+                model.findOneAndUpdate(conditions, data, function (err, doc) {
+                    callback(err, doc && doc.toJSON());
+                });
+            } else {
+                var push = {};
+                push[path] = item;
+
+                model.findOneAndUpdate(conditions, {
+                    $push: push
+                }, {upsert: true}, function (err, doc) {
+                    callback(err, doc && doc.toJSON());
+                });
+            }
         });
     };
 
