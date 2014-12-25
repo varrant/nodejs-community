@@ -345,17 +345,23 @@ exports.increaseScore = function (operator, id, count, callback) {
         _id: id
     };
 
-    howdo.task(function (done) {
-        object.increase(conditions, 'score', count, done);
-    }).task(function (done) {
-        var date = new Date();
+    howdo
+        // 加分
+        .task(function (done) {
+            object.increase(conditions, 'score', count, done);
+        })
+        // 历史
+        .task(function (done) {
+            var date = new Date();
 
-        object.push(conditions, 'scoreList', {
-            date: date,
-            score: count,
-            engineer: operator.id
-        }, done);
-    }).together(callback);
+            object.push(conditions, 'scoreList', {
+                date: date,
+                score: count,
+                engineer: operator.id
+            }, done);
+        })
+        // 异步并行
+        .together(callback);
 };
 
 
