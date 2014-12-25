@@ -149,41 +149,30 @@ module.exports = function (app) {
      * @param next
      */
     exports.role = function (req, res, next) {
-        var founderId = app.locals.$founder.id;
-        var engineerRole = res.locals.$engineer.role;
         var body = req.body;
         var id = body.id;
         var role = dato.parseInt(body.role, 1);
 
-        // 只能创始人才有资格修改权限
-        if ((engineerRole & role20) === 0) {
-            var err = new Error('权限不足');
-            err.status = 403;
-            return next(err);
-        }
+        howdo
+            // 查找用户
+            .task(function (next) {
+                engineer.findOne({_id: id}, next);
+            })
+            // 修改权限
+            .task(function (next, doc) {
+                engineer.modifyRole(res.locals.$engineer, doc, role, next);
+            })
+            // 异步串行
+            .follow(function (err, doc) {
+                if (err) {
+                    return next(err);
+                }
 
-        if (id === founderId.toString()) {
-            return next(new Error('不能修改社区创始人权限'));
-        }
-
-        if (role & role20) {
-            return next(new Error('不能赋予社区创始人权限'));
-        }
-
-        engineer.findOneAndUpdate({
-            _id: id
-        }, {
-            role: role
-        }, function (err, doc) {
-            if (err) {
-                return next(err);
-            }
-
-            res.json({
-                code: 200,
-                doc: doc
+                res.json({
+                    code: 200,
+                    doc: doc
+                });
             });
-        });
     };
 
     return exports;

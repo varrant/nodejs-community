@@ -77,22 +77,22 @@ exports.count = engineer.count;
 /**
  * 修改他人 权限
  * @param operator
- * @param engineer
+ * @param engineerBy
  * @param role
  * @param callback
  * @returns {*}
  */
-exports.modifyRole = function (operator, engineer, role, callback) {
+exports.modifyRole = function (operator, engineerBy, role, callback) {
     if (
         // 只有 founder 才有权限修改他人权限
     (operator.role & role20) !== 0 &&
         // 不允许修改自己的权限
-    operator.id.toString() !== engineer.id.toString() &&
+    operator.id.toString() !== engineerBy.id.toString() &&
         // 不允许修改为 founder 的权限
     (role & role20) === 0
     ) {
         var group = '';
-        dato.each(function (index, gp) {
+        dato.each(configs.group, function (index, gp) {
             if (gp.role !== 20) {
                 if ((role & gp.role) !== 0) {
                     group = gp.group;
@@ -106,7 +106,7 @@ exports.modifyRole = function (operator, engineer, role, callback) {
             group: group
         };
 
-        engineer.findOneAndUpdate({_id: engineer.id}, data, callback);
+        engineer.findOneAndUpdate({_id: engineerBy.id}, data, callback);
     }
     // founder 才有权限修改他人权限
     else if ((operator.role & role20) === 0) {
@@ -115,7 +115,7 @@ exports.modifyRole = function (operator, engineer, role, callback) {
         return callback(err);
     }
     // 不允许修改自己的权限
-    else if (operator.id.toString() === engineer.id.toString()) {
+    else if (operator.id.toString() === engineerBy.id.toString()) {
         var err = new Error('founder 的权限已经最大，无须修改');
         return callback(err);
     }
