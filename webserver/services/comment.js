@@ -68,9 +68,11 @@ exports.createOne = function (author, data, meta, callback) {
         // 2. 检查父级分类是否存在
         .task(function (next) {
             if (!data2.parent) {
+                data2.type = 'primary';
                 return next();
             }
 
+            data2.type = 'secondary';
             comment.findOne({
                 _id: data2.parent
             }, function (err, doc) {
@@ -79,13 +81,14 @@ exports.createOne = function (author, data, meta, callback) {
                 }
 
                 if (!doc) {
-                    err = new Error('the parent is not exist');
+                    err = new Error('父级评论不存在');
                     err.type = 'notFound';
                     return next(err);
                 }
 
-                if(doc){
-
+                if (doc.type === 'secondary') {
+                    err = new Error('不能补充他人的回复');
+                    return next(err);
                 }
 
                 next(err, doc);
