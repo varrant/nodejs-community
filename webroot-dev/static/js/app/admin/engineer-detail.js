@@ -31,12 +31,40 @@ define(function (require, exports, module) {
         }
 
         var data1 = json.data;
+        var data2 = app._calData(data1);
+        var vue1 = new Vue({
+            el: '#form',
+            data: {
+                engineer: data1.engineer
+            }
+        });
+        var vue2 = new Vue({
+            el: '#role',
+            data: dato.extend({
+                engineer: data1.engineer
+            }, data2),
+            methods: {
+                onsave: app._onsave
+            }
+        });
 
-        var engineer = data1.engineer;
-        var section = data1.section;
-        var category = data1.category;
-        var group = data1.group;
-        var engineerRole = data1.engineer.role;
+        vue1.$el.classList.remove('f-none');
+        vue2.$el.classList.remove('f-none');
+    };
+
+
+    /**
+     * 计算权限
+     * @param data
+     * @returns {Object}
+     * @private
+     */
+    app._calData = function (data) {
+        var engineer = data.engineer;
+        var section = data.section;
+        var category = data.category;
+        var group = data.group;
+        var engineerRole = data.engineer.role;
         var sectionMap = {};
         var categoryMap = {};
 
@@ -48,15 +76,14 @@ define(function (require, exports, module) {
             categoryMap[item.id] = item;
         });
 
-        debugger;
         engineer.sectionStatistics2 = {};
         dato.each(engineer.sectionStatistics || {}, function (key, count) {
-            engineer.sectionStatistics2[key === '0' ? '总和': sectionMap[key].name] = count;
+            engineer.sectionStatistics2[key === '0' ? '总和' : sectionMap[key].name] = count;
         });
 
         engineer.categoryStatistics2 = {};
         dato.each(engineer.categoryStatistics || {}, function (key, count) {
-            engineer.categoryStatistics2[key === '0' ? '总和': categoryMap[key].name] = count;
+            engineer.categoryStatistics2[key === '0' ? '总和' : categoryMap[key].name] = count;
         });
 
         section.forEach(function (item) {
@@ -70,38 +97,30 @@ define(function (require, exports, module) {
 
         var data2 = [];
 
-
         data2.push({
             name: '发布权限',
-            list: data1.section
+            list: section
         });
         data2.push({
             name: '用户权限',
-            list: data1.group
+            list: group
         });
 
-        var vue1 = new Vue({
-            el: '#form',
-            data: {
-                engineer: engineer
-            }
-        });
-        var vue2 = new Vue({
-            el: '#role',
-            data: {
-                engineer: engineer,
-                kinds: data2
-            },
-            methods: {
-                onsave: app._onsave
-            }
-        });
-
-        vue1.$el.classList.remove('f-none');
-        vue2.$el.classList.remove('f-none');
+        return {
+            kinds: data2,
+            group: group,
+            section: section,
+            category: category
+        };
     };
 
 
+    /**
+     * 保存
+     * @param eve
+     * @param id
+     * @private
+     */
     app._onsave = function (eve, id) {
         var the = this;
         var $btn = eve.target;
@@ -127,6 +146,10 @@ define(function (require, exports, module) {
                 if (json.code !== 200) {
                     return alert(json);
                 }
+
+                var engineer = json.data;
+                the.$data.engineer = engineer;
+                app._calData(the.$data);
             }).on('error', alert).on('finish', function () {
                 $btn.disabled = false;
             });
@@ -136,13 +159,4 @@ define(function (require, exports, module) {
     };
 
     app.init();
-
-
-    window.ppp = function (num) {
-        var ret = 0;
-        while(num >=10){
-            ret+= Math.pow(2, num--);
-        }
-        return ret;
-    }
 });

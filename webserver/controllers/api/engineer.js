@@ -170,7 +170,7 @@ module.exports = function (app) {
 
                 res.json({
                     code: 200,
-                    doc: doc
+                    data: doc
                 });
             });
     };
