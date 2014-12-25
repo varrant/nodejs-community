@@ -12,15 +12,16 @@ var maxValue = 1 << 53;
 
 /**
  * 翻页查询过滤
- * @param req {Object} 请求对象
+ * @param parent {Object} 上级
  * @param [defaultPage=1] {Number} 默认页码
  * @param [defaultLimit=10] {Number} 默认每页数量
  * @returns {{page: Number, skip: Number, limit: Number}}
  */
-exports.skipLimit = function (req, defaultPage, defaultLimit) {
-    var query = req.query || {};
-    var page = query.page;
-    var limit = query.limit;
+exports.skipLimit = function (parent, defaultPage, defaultLimit) {
+    parent = parent || {};
+
+    var page = parent.page;
+    var limit = parent.limit;
 
     defaultPage = defaultPage || 1;
     defaultLimit = defaultLimit || 20;

@@ -11,7 +11,6 @@
 - req.session.$state 授权状态值
 - res.locals.$csrf 响应令牌
 - res.locals.$engineer 响应工程师
-- res.locals.$setting 响应社区设置
 
 
 # 全局变量

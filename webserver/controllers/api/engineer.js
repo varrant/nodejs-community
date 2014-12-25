@@ -84,7 +84,7 @@ module.exports = function (app) {
      */
     exports.get = function (req, res, next) {
         var id = req.query.id;
-        var options = filter.skipLimit(req);
+        var options = filter.skipLimit(req.query);
 
         if (id) {
             engineer.findOne({

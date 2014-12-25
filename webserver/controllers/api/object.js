@@ -32,7 +32,7 @@ module.exports = function (app) {
      */
     exports.list = function (req, res, next) {
         var conditions = dato.pick(req.query, ['section']);
-        var options = filter.skipLimit(req);
+        var options = filter.skipLimit(req.query);
         var section = conditions.section;
 
         if (!section) {

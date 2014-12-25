@@ -66,7 +66,7 @@ module.exports = function (app) {
     exports.get = function (req, res, next) {
         var userId = res.locals.$engineer.id;
         var conditions = {activedUser: userId};
-        var options = filter.skipLimit(req);
+        var options = filter.skipLimit(req.query);
 
         switch (req.query.type) {
             case 'active':
