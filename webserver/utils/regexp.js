@@ -33,7 +33,7 @@ exports.title = function (minLength, maxLength) {
 exports.uri = function (minLength, maxLength) {
     var uri = '[\\w-]';
 
-    return new RegExp('^[' + uri + ']{' + minLength + ',' + maxLength + '}$');
+    return new RegExp('^' + uri + '{' + minLength + ',' + maxLength + '}$');
 };
 
 
