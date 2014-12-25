@@ -18,7 +18,8 @@ validator.pushRule({
     name: 'group',
     type: 'string',
     alias: '用户组',
-    required: true,
+    required: false,
+    exist: true,
     inArray: groups
 });
 
