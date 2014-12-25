@@ -37,7 +37,13 @@
                                 <li><i class="i i-user"></i><a href="#">{{object.author.nickname}}</a></li>
                                 <li><i class="i i-eye"></i>{{object.viewByCount}}</li>
                                 <li><i class="i i-comments"></i>{{object.commentByCount}}</li>
-                                <li><i class="i i-star"></i>{{object.favoriteByCount}}</li>
+                                <li>
+                                    {{if object.hasAccepted}}
+                                    <i class="i i-check i-small"></i>已解决
+                                    {{else}}
+                                    <span class="s-danger"><i class="i i-exclamation-circle i-small"></i>待解决</span>
+                                    {{/if}}
+                                </li>
                             </ul>
                         </div>
                         <div class="col-sm-4">
