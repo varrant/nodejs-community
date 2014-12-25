@@ -161,8 +161,8 @@ exports.increaseScore = function (conditions, count, callback) {
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
-exports.increaseViewCount = function (conditions, count, callback) {
-    engineer.increase(conditions, 'viewCount', count, callback);
+exports.increaseViewByCount = function (conditions, count, callback) {
+    engineer.increase(conditions, 'viewByCount', count, callback);
 };
 
 
