@@ -12,6 +12,7 @@ var typeis = require('ydr-util').typeis;
 var howdo = require('howdo');
 var object = require('../../services/').object;
 var engineer = require('../../services/').engineer;
+var filter = require('../../utils/').filter;
 var os = require('os');
 
 module.exports = function (app) {
@@ -80,17 +81,12 @@ module.exports = function (app) {
         return function (req, res, next) {
             var category = req.params.category;
             var label = req.params.label;
-            var page = req.params.page;
-
-            page = Math.abs(dato.parseInt(page, 1));
+            var info = filter.skipLimit(req.params);
 
             object.find({
                 section: section,
                 isDisplay: true
-            }, {
-                limit: 20,
-                skip: (page - 1) * 20
-            });
+            }, info);
 
             res.render('front/list-' + section + '.html', {
                 title: section,
