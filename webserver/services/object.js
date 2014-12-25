@@ -37,26 +37,6 @@ exports.findOne = object.findOne;
 exports.find = object.find;
 
 
-//exports.list = function (conditios, options, callback) {
-//    howdo
-//        // 1. 查找所有 object
-//        .task(function (next) {
-//            object.find(conditios, options, next);
-//        })
-//        // 2. 查找 5 个最新的 contributors
-//        .task(function (next, docs) {
-//            howdo.each(docs, function (i, doc, done) {
-//                howdo.each(doc.contributors, function (j, contributorId, done) {
-//                    engineer.findOne({_id: contributorId}, function () {
-//
-//                    });
-//                }).together(done);
-//            }).together(next);
-//        })
-//        .follow(callback);
-//};
-
-
 /**
  * 新建一个 object
  * @param author {Object} 作者信息对象
@@ -141,7 +121,7 @@ exports.createOne = function (author, data, callback) {
                 publishAt: date,
                 updateAt: date,
                 updateList: [{
-                    user: author.id,
+                    engineer: author.id,
                     date: date
                 }]
             };
@@ -282,7 +262,7 @@ exports.updateOne = function (author, conditions, data, callback) {
             data2.updateAt = date;
             data2.$push = {
                 updateList: {
-                    user: author.id,
+                    engineer: author.id,
                     date: date
                 }
             };
