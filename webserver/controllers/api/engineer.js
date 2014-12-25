@@ -14,6 +14,7 @@ var cookie = require('../../utils/').cookie;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
 var dato = require('ydr-util').dato;
+var typeis = require('ydr-util').typeis;
 var role20 = Math.pow(2, 20);
 
 
@@ -151,7 +152,22 @@ module.exports = function (app) {
     exports.role = function (req, res, next) {
         var body = req.body;
         var id = body.id;
-        var role = dato.parseInt(body.role, 1);
+        var roleArray = dato.parseInt(body.roleArray, 0);
+
+        if(typeis(roleArray) !== 'array'){
+            var err = new Error('请求参数不合法');
+            return next(err);
+        }
+
+        var roleCount = 0;
+        var roleArray2 = roleArray.map(function (role) {
+            role = dato.parseInt(role, 0);
+
+            if(roleArray2.indexOf(role) === -1 && role !== 20){
+                roleArray2.push(role);
+                roleCount+= Math.pow(2, role);
+            }
+        });
 
         howdo
             // 查找用户
@@ -160,7 +176,7 @@ module.exports = function (app) {
             })
             // 修改权限
             .task(function (next, doc) {
-                engineer.modifyRole(res.locals.$engineer, doc, role, next);
+                engineer.modifyRole(res.locals.$engineer, doc, roleCount, next);
             })
             // 异步串行
             .follow(function (err, doc) {

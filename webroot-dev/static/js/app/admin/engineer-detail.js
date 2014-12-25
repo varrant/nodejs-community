@@ -124,13 +124,13 @@ define(function (require, exports, module) {
     app._onsave = function (eve, id) {
         var the = this;
         var $btn = eve.target;
-        var role = 0;
+        var roleArray = [0];
         var kinds = the.$data.kinds;
         var save = function () {
             kinds.forEach(function (kind) {
                 kind.list.forEach(function (item) {
                     if (item.checked) {
-                        role += Math.pow(2, item.role);
+                        roleArray.push(item.role);
                     }
                 });
             });
@@ -140,7 +140,7 @@ define(function (require, exports, module) {
                 method: 'post',
                 data: {
                     id: id,
-                    role: role
+                    roleArray: roleArray
                 }
             }).on('success', function (json) {
                 if (json.code !== 200) {

@@ -95,7 +95,7 @@ exports.modifyRole = function (operator, engineerBy, role, callback) {
         dato.each(configs.group, function (index, gp) {
             if (gp.role !== 20) {
                 if ((role & gp.role) !== 0) {
-                    group = gp.group;
+                    group = gp.name;
                     return false;
                 }
             }
