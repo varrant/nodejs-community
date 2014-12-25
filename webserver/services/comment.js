@@ -27,6 +27,12 @@ exports.findOne = comment.findOne;
 
 
 /**
+ * 查找
+ */
+exports.find = comment.find;
+
+
+/**
  * 创建一条评论
  * @param author {Object} 评论者
  * @param author.id {String} 评论者 ID

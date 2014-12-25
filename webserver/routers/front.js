@@ -8,10 +8,6 @@
 
 
 module.exports = function (app, ctrlFront) {
-    var section = app.locals.$section.map(function (item) {
-        return item.uri;
-    });
-
     // user
     app.get('/engineer/oauth/authorize/', ctrlFront.engineer.oauthAuthorize);
     app.get('/engineer/oauth/callback/', ctrlFront.engineer.oauthCallback);
@@ -23,72 +19,74 @@ module.exports = function (app, ctrlFront) {
 
     // list + detail
     // in category at column on label
-    section.forEach(function (uri) {
+    app.locals.$section.forEach(function (section) {
+        var uri = section.uri;
+        
         // ''
-        app.get('/' + uri + '/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'page/:page/', ctrlFront.main.getList(section));
 
         // category
-        app.get('/' + uri + '/' + 'in/:category/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'in/:category/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'in/:category/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'in/:category/page/:page/', ctrlFront.main.getList(section));
 
         // column
-        app.get('/' + uri + '/' + 'at/:column/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'at/:column/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'at/:column/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'at/:column/page/:page/', ctrlFront.main.getList(section));
 
         // label
-        app.get('/' + uri + '/' + 'on/:label/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'on/:label/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'on/:label/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'on/:label/page/:page/', ctrlFront.main.getList(section));
 
         // category + column
-        app.get('/' + uri + '/' + 'in/:category/at/:column/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'in/:category/at/:column/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'in/:category/at/:column/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'in/:category/at/:column/page/:page/', ctrlFront.main.getList(section));
 
         // category + label
-        app.get('/' + uri + '/' + 'in/:category/on/:label/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'in/:category/on/:label/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'in/:category/on/:label/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'in/:category/on/:label/page/:page/', ctrlFront.main.getList(section));
 
         // column + category
-        app.get('/' + uri + '/' + 'at/:column/in/:category/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'at/:column/in/:category/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'at/:column/in/:category/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'at/:column/in/:category/page/:page/', ctrlFront.main.getList(section));
 
         // column + label
-        app.get('/' + uri + '/' + 'at/:column/on/:label/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'at/:column/on/:label/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'at/:column/on/:label/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'at/:column/on/:label/page/:page/', ctrlFront.main.getList(section));
 
         // label + column
-        app.get('/' + uri + '/' + 'on/:label/at/:column/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'on/:label/at/:column/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'on/:label/at/:column/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'on/:label/at/:column/page/:page/', ctrlFront.main.getList(section));
 
         // label + category
-        app.get('/' + uri + '/' + 'on/:label/in/:category/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'on/:label/in/:category/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'on/:label/in/:category/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'on/:label/in/:category/page/:page/', ctrlFront.main.getList(section));
 
         // category + column + label
-        app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/page/:page/', ctrlFront.main.getList(section));
 
         // category + label + column
-        app.get('/' + uri + '/' + 'in/:category/on/:label/at/:column/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'in/:category/on/:label/at/:column/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'in/:category/on/:label/at/:column/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'in/:category/on/:label/at/:column/page/:page/', ctrlFront.main.getList(section));
 
         // column + category + label
-        app.get('/' + uri + '/' + 'at/:column/in/:category/on/:label/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'at/:column/in/:category/on/:label/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'at/:column/in/:category/on/:label/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'at/:column/in/:category/on/:label/page/:page/', ctrlFront.main.getList(section));
 
         // column + label + category
-        app.get('/' + uri + '/' + 'at/:column/on/:label/in/:category/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'at/:column/on/:label/in/:category/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'at/:column/on/:label/in/:category/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'at/:column/on/:label/in/:category/page/:page/', ctrlFront.main.getList(section));
 
         // label + category + column
-        app.get('/' + uri + '/' + 'on/:label/in/:category/at/:column/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'on/:label/in/:category/at/:column/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'on/:label/in/:category/at/:column/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'on/:label/in/:category/at/:column/page/:page/', ctrlFront.main.getList(section));
 
         // label + column + category
-        app.get('/' + uri + '/' + 'on/:label/at/:column/in/:category/', ctrlFront.main.getList(uri));
-        app.get('/' + uri + '/' + 'on/:label/at/:column/in/:category/page/:page/', ctrlFront.main.getList(uri));
+        app.get('/' + uri + '/' + 'on/:label/at/:column/in/:category/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'on/:label/at/:column/in/:category/page/:page/', ctrlFront.main.getList(section));
 
-        app.get('/' + uri + '/' + ':uri.html', ctrlFront.main.getPost(uri));
+        app.get('/' + uri + '/' + ':uri.html', ctrlFront.main.getPost(section));
     });
 
 

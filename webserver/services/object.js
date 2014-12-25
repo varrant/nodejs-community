@@ -14,6 +14,7 @@ var column = require('./column.js');
 var label = require('./label.js');
 var setting = require('./setting.js');
 var engineer = require('./engineer.js');
+var comment = require('./comment.js');
 var howdo = require('howdo');
 var dato = require('ydr-util').dato;
 var log = require('ydr-log');
@@ -34,6 +35,28 @@ exports.findOne = object.findOne;
  * find
  */
 exports.find = object.find;
+
+
+exports.list = function (conditios, options, callback) {
+    howdo
+        // 1. 查找所有 object
+        .task(function (next) {
+            object.find(conditios, options, next);
+        })
+        // 2. 查找 5 个最新的 contributors
+        .task(function (next, docs) {
+            howdo.each(docs, function (index, doc, done) {
+                comment.find({
+                    object: doc.id
+                }, {
+                    limit: 5
+                }, function (err, docs) {
+                    doc.contributors = docs;
+                });
+            }).together(next);
+        })
+        .follow(callback);
+};
 
 
 /**
@@ -304,11 +327,11 @@ exports.updateOne = function (author, conditions, data, callback) {
                     engineer.increaseCategoryStatistics({_id: author.id}, oldDoc.section, -1, log.holdError);
                 }
 
-                if(oldDoc.column){
+                if (oldDoc.column) {
                     engineer.increaseCategoryStatistics({_id: author.id}, oldDoc.column, -1, log.holdError);
                 }
 
-                if(doc.column){
+                if (doc.column) {
                     engineer.increaseCategoryStatistics({_id: author.id}, doc.column, 1, log.holdError);
                 }
             }

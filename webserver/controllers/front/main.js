@@ -42,7 +42,7 @@ module.exports = function (app) {
             // 统计个数
             .each(app.locals.$section, function (index, section, done) {
                 object.count({section: section.id}, function (err, count) {
-                    if(err){
+                    if (err) {
                         return done(err);
                     }
 
@@ -53,7 +53,7 @@ module.exports = function (app) {
             // 注册用户数
             .task(function (done) {
                 engineer.count({}, function (err, count) {
-                    if(err){
+                    if (err) {
                         return done(err);
                     }
 
@@ -62,7 +62,7 @@ module.exports = function (app) {
                 });
             })
             .together(function (err) {
-                if(err){
+                if (err) {
                     return next(err);
                 }
 
@@ -79,19 +79,41 @@ module.exports = function (app) {
      */
     exports.getList = function (section) {
         return function (req, res, next) {
+            var data = {
+                title: section.name,
+                categories: app.locals.$category
+            };
             var category = req.params.category;
             var label = req.params.label;
             var info = filter.skipLimit(req.params);
-
-            object.find({
-                section: section,
+            var conditions = {
+                section: section.id,
                 isDisplay: true
-            }, info);
+            };
 
-            res.render('front/list-' + section + '.html', {
-                title: section,
-                categories: app.locals.$category,
-                objects: []
+            var categoryId = 0;
+            dato.each(app.locals.$category, function (index, _category) {
+                if (_category.uri === category) {
+                    categoryId = _category.id;
+                    return false;
+                }
+            });
+
+            if (categoryId) {
+                conditions[category] = categoryId;
+            }
+
+            if (label) {
+                conditions.labels = label;
+            }
+
+            object.find(conditions, info, function (err, docs) {
+                if (err) {
+                    return next(err);
+                }
+
+                data.objects = docs;
+                res.render('front/list-' + section.uri + '.html', data);
             });
         };
     };
@@ -102,12 +124,12 @@ module.exports = function (app) {
      * @param type
      * @returns {Function}(req, res, next)
      */
-    exports.getPost = function (type) {
+    exports.getPost = function (section) {
         return function (req, res, next) {
             var uri = req.params.uri;
 
-            res.render('front/post-' + type + '.html', {
-                title: type,
+            res.render('front/post-' + section.uri + '.html', {
+                title: section.name,
                 list: [{
                     content: '清除浏览器缓存的文件试试看！不知道有没有童鞋遇到过这样的？我用QQ,搜狗，猎豹，chrome，UC都没问题！！手机wifi调试页面，浏览器是小米3内置浏览器童鞋遇到过这样的？我用QQ,搜狗，猎豹，chrome，UC都没问题！！手机wifi调试'
                 }, {
