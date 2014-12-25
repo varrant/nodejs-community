@@ -159,7 +159,6 @@ module.exports = function (app) {
             return next(err);
         }
 
-        var roleCount = 0;
         var roleArray2 = [];
 
         roleArray.forEach(function (role) {
@@ -167,7 +166,6 @@ module.exports = function (app) {
 
             if (roleArray2.indexOf(role) === -1 && role !== 20) {
                 roleArray2.push(role);
-                roleCount += 1 << role;
             }
         });
 
@@ -178,7 +176,7 @@ module.exports = function (app) {
             })
             // 修改权限
             .task(function (next, doc) {
-                engineer.modifyRole(res.locals.$engineer, doc, roleCount, next);
+                engineer.modifyRole(res.locals.$engineer, doc, roleArray2, next);
             })
             // 异步串行
             .follow(function (err, doc) {

@@ -78,31 +78,45 @@ exports.count = engineer.count;
  * 修改他人 权限
  * @param operator
  * @param engineerBy
- * @param role
+ * @param roleArray
  * @param callback
  * @returns {*}
  */
-exports.modifyRole = function (operator, engineerBy, role, callback) {
+exports.modifyRole = function (operator, engineerBy, roleArray, callback) {
     if (
         // 只有 founder 才有权限修改他人权限
     (operator.role & role20) !== 0 &&
         // 不允许修改自己的权限
     operator.id.toString() !== engineerBy.id.toString() &&
         // 不允许修改为 founder 的权限
-    (role & role20) === 0
+    roleArray.indexOf(20) === -1
     ) {
         var group = '';
+        var maxRole = 0;
+        var roleCount = 0;
+
         dato.each(configs.group, function (index, gp) {
             if (gp.role !== 20) {
-                if ((role & (1 << gp.role)) !== 0) {
+                if (roleArray.indexOf(gp.role) > -1) {
                     group = gp.name;
+                    maxRole = gp.role;
                     return false;
                 }
             }
         });
 
+        // 取发布权限
+        roleArray.forEach(function (role) {
+            if (role < 11) {
+                roleCount += 1 << role;
+            }
+        });
+
+        // 继承操作权限
+        roleCount += _pow(11, maxRole);
+
         var data = {
-            role: role,
+            role: roleCount,
             group: group
         };
 
@@ -120,7 +134,7 @@ exports.modifyRole = function (operator, engineerBy, role, callback) {
         return callback(err);
     }
     // 不允许修改为 founder 的权限
-    else if ((role & role20) !== 0) {
+    else if (roleArray.indexOf(20) !== -1) {
         var err = new Error('不允许修改为 founder 的权限');
         return callback(err);
     }
@@ -574,3 +588,19 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
             callback(null, ret);
         });
 };
+
+
+/**
+ * 段阶乘
+ * @param min
+ * @param max
+ * @returns {number}
+ * @private
+ */
+function _pow(min, max) {
+    var ret = 0;
+    for (; min <= max; min++) {
+        ret += 1 << min;
+    }
+    return ret;
+}
