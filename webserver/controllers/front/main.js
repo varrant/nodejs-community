@@ -144,6 +144,16 @@ module.exports = function (app) {
     exports.getPost = function (section) {
         return function (req, res, next) {
             var uri = req.params.uri;
+            var data = {};
+
+            howdo
+                // 1. 文章
+                // 2. 作者
+
+            object.findOne({
+                uri: uri,
+                isDisplay: true
+            }, done);
 
             res.render('front/post-' + section.uri + '.html', {
                 title: section.name,

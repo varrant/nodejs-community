@@ -15,6 +15,11 @@ var schema = new mongoose.Schema({
         unique: false,
         ref: 'engineer'
     },
+    // 评论类型：primary/secondary
+    type: {
+        type: String,
+        required: true
+    },
     // 评论内容
     content: {
         type: String,

@@ -84,6 +84,10 @@ exports.createOne = function (author, data, meta, callback) {
                     return next(err);
                 }
 
+                if(doc){
+
+                }
+
                 next(err, doc);
             });
         })
