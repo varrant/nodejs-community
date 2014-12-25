@@ -146,6 +146,11 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    // 评回复数
+    replyByCount: {
+        type: Number,
+        default: 0
+    },
     // 被收藏次数
     favoriteByCount: {
         type: Number,

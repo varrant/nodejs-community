@@ -25,6 +25,7 @@
 - `scoreList` 被加分历史
 - `viewByCount` 被阅读次数
 - `commentByCount` 被评论次数
+- `replyByCount` 被回复次数
 - `favoriteByCount` 被收藏次数
 - `applyByCount` 被申请次数
 - `hasAccepted` 是否被接受了

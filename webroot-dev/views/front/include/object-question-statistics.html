@@ -1,0 +1,18 @@
+<!--统计-->
+<div class="m-card">
+    <div class="card-title"><i class="i i-bar-chart"></i>统计</div>
+    <div class="card-body">
+        <ul class="m-simplelist s-muted">
+            <li><i class="i i-clock-o"></i>{{object.updateAt|datefrom}}</li>
+            <li><i class="i i-eye"></i>{{object.viewByCount|humanize}}</li>
+            <li><i class="i i-comment"></i>{{object.commentByCount|humanize}}</li>
+            <li><i class="i i-plus-square"></i>{{object.replyByCount|humanize}}</li>
+            <li><i class="i i-bookmark"></i>{{object.favoriteByCount|humanize}}</li>
+            <li class="f-text-center">
+                <button class="btn btn-success"><i class="i i-comment"></i>回答</button>
+                <button class="btn btn-primary"><i class="i i-star"></i>关注</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--/统计-->
