@@ -273,12 +273,6 @@ exports.updateOne = function (author, conditions, data, callback) {
             callback(err, doc);
 
             if (!err && doc) {
-                // 更新 category.objectCount
-                if (doc.category.toString() !== oldDoc.category.toString()) {
-                    category.increaseObjectCount({_id: doc.category}, 1, log.holdError);
-                    category.increaseObjectCount({_id: oldDoc.category}, -1, log.holdError);
-                }
-
                 // 更新 label.objectCount
                 var diff = _diff(doc.labels, oldDoc.labels);
                 var only1 = diff[0];
@@ -292,10 +286,30 @@ exports.updateOne = function (author, conditions, data, callback) {
                     label.increaseObjectCount({name: name}, -1, log.holdError);
                 });
 
-                // 更新 engineer.objectStatistics
-                if (doc.type !== oldDoc.type) {
-                    engineer.increaseObjectTypeCount({_id: author.id}, doc.type, 1, log.holdError);
-                    engineer.increaseObjectTypeCount({_id: author.id}, oldDoc.type, -1, log.holdError);
+                //// 更新 engineer.increaseSectionStatistics
+                //if (doc.section.toString() !== oldDoc.section.toString()) {
+                //    engineer.increaseSectionStatistics({_id: author.id}, doc.section, 1, log.holdError);
+                //    engineer.increaseSectionStatistics({_id: author.id}, oldDoc.section, -1, log.holdError);
+                //}
+
+                // 更新 engineer.increaseSectionStatistics
+                if (doc.category.toString() !== oldDoc.category.toString()) {
+                    engineer.increaseCategoryStatistics({_id: author.id}, doc.section, 1, log.holdError);
+                    engineer.increaseCategoryStatistics({_id: author.id}, oldDoc.section, -1, log.holdError);
+                }
+
+                // 更新 engineer.increaseSectionStatistics
+                if (doc.category.toString() !== oldDoc.category.toString()) {
+                    engineer.increaseCategoryStatistics({_id: author.id}, doc.section, 1, log.holdError);
+                    engineer.increaseCategoryStatistics({_id: author.id}, oldDoc.section, -1, log.holdError);
+                }
+
+                if(oldDoc.column){
+                    engineer.increaseCategoryStatistics({_id: author.id}, oldDoc.column, -1, log.holdError);
+                }
+
+                if(doc.column){
+                    engineer.increaseCategoryStatistics({_id: author.id}, doc.column, 1, log.holdError);
                 }
             }
         });
