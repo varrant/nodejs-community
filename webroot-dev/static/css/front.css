@@ -426,32 +426,6 @@ nav .nav-right li:last-child {
   border-bottom-color: #fff;
   top: -19px;
 }
-.m-pager {
-  margin: 50px 0 20px;
-}
-.m-pager a {
-  display: block;
-  color: #888;
-  background: #fff;
-  padding: 4px 0;
-}
-.m-pager a:hover {
-  color: #333;
-  background: #f9f9f9;
-}
-.m-pager li {
-  border: 1px solid #e6e6e6;
-}
-.m-pager li:last-child {
-  border-left: 0;
-}
-.m-pager li.disabled a,
-.m-pager li.disabled a:hover {
-  color: #ccc;
-  cursor: not-allowed;
-  background: transparent;
-  pointer-events: none;
-}
 .m-usercard .usercard-main {
   margin-bottom: 20px;
 }
