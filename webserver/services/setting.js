@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * 设置服务
  * @author ydr.me
  * @create 2014-11-22 20:07
  */
@@ -80,35 +80,5 @@ exports.get = function (key, callback) {
             callback(err, doc.val);
         });
     }
-};
-
-
-/**
- * 查找某一个可见的 type
- * @param typeURI {String} type URI
- * @param callback {Function} 回调
- */
-exports.getType = function (typeURI, callback) {
-    exports.get('types', function (err, doc) {
-        if (err) {
-            return callback(err);
-        }
-
-        if (!doc) {
-            return callback();
-        }
-
-        var find = null;
-
-        dato.each(doc, function (index, type) {
-            if (type && type.uri === typeURI && type.isDisplay === true) {
-                find = type;
-                find.id = index;
-                return false;
-            }
-        });
-
-        callback(null, find);
-    });
 };
 
