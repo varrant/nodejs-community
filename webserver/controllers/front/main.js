@@ -126,8 +126,6 @@ module.exports = function (app) {
                         return next(err);
                     }
 
-                    console.log(docs[0].author.nickname);
-
                     data.count = count;
                     data.objects = docs;
                     res.render('front/list-' + section.uri + '.html', data);
