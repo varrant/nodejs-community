@@ -10,7 +10,7 @@
 var configs = require('../../configs/');
 var notiComment = configs.notification.comment;
 var notiReply = configs.notification.reply;
-var comment = require('../models/').comment;
+var response = require('../models/').response;
 var object = require('./object.js');
 var engineer = require('./engineer.js');
 var notification = require('./notification.js');
@@ -23,13 +23,13 @@ var log = require('ydr-log');
 /**
  * 查找
  */
-exports.findOne = comment.findOne;
+exports.findOne = response.findOne;
 
 
 /**
  * 查找
  */
-exports.find = comment.find;
+exports.find = response.find;
 
 
 /**
@@ -73,7 +73,7 @@ exports.createOne = function (author, data, meta, callback) {
             }
 
             data2.type = 'secondary';
-            comment.findOne({
+            response.findOne({
                 _id: data2.parent
             }, function (err, doc) {
                 if (err) {
@@ -96,7 +96,7 @@ exports.createOne = function (author, data, meta, callback) {
         })
         // 3. 写入
         .task(function (next, parent) {
-            comment.createOne(data2, function (err, doc) {
+            response.createOne(data2, function (err, doc) {
                 next(err, doc, parent);
             });
         })
@@ -134,7 +134,7 @@ exports.createOne = function (author, data, meta, callback) {
                 // 评论父级
                 if (parent) {
                     // commnet2.replyCount
-                    comment.increase({_id: parent.id}, 'replyCount', 1, function (err, doc) {
+                    response.increase({_id: parent.id}, 'replyCount', 1, function (err, doc) {
                         if (err) {
                             return log.holdError(err);
                         }
@@ -208,7 +208,7 @@ function _noticeCommentAuthor(source, comment) {
     howdo
         // 1. 查找 comment 作者
         .task(function (next) {
-            engineer.findOne({_id: comment.author}, next);
+            engineer.findOne({_id: response.author}, next);
         })
         // 顺序串行
         .follow(function (err, doc) {
@@ -217,7 +217,7 @@ function _noticeCommentAuthor(source, comment) {
             }
 
             if (!doc) {
-                err = new Error('the comment author is not exist');
+                err = new Error('该评论作者不存在');
                 err.type = 'notFound';
                 return log.holdError(err);
             }
@@ -227,7 +227,7 @@ function _noticeCommentAuthor(source, comment) {
                 type: 'comment',
                 source: source,
                 target: doc.id,
-                object: comment.id
+                object: response.id
             }, log.holdError);
 
             var subject = notiReply.subject;

@@ -14,7 +14,6 @@ var column = require('./column.js');
 var label = require('./label.js');
 var setting = require('./setting.js');
 var engineer = require('./engineer.js');
-var comment = require('./comment.js');
 var howdo = require('howdo');
 var dato = require('ydr-util').dato;
 var log = require('ydr-log');

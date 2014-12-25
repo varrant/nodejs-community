@@ -43,7 +43,7 @@ var schema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: false,
         unique: false,
-        ref: 'comment',
+        ref: 'response',
         default: null
     },
     // 赞同数量
