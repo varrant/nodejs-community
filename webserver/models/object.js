@@ -76,14 +76,17 @@ var schema = new mongoose.Schema({
     // 更新记录
     // [{
     //    user: userId,
-    //    date: date,
-    //    timestamp: timestamp
+    //    date: date
     // }]
-    updateList: {
-        type: Array,
-        required: false,
-        default: []
-    },
+    updateList: [{
+        engineer: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'engineer'
+        },
+        date: {
+            type: Date
+        }
+    }],
     // 是否显示
     // true: 发布，前台可见状态
     // false: 草稿，前台隐藏状态
@@ -119,13 +122,20 @@ var schema = new mongoose.Schema({
     // [{
     //    user: userId,
     //    date: date,
-    //    timestamp: timestamp,
     //    score: score
     // }]
-    scoreList: {
-        type: Array,
-        default: []
-    },
+    scoreList: [{
+        engineer: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'engineer'
+        },
+        date: {
+            type: Date
+        },
+        score: {
+            type: Number
+        }
+    }],
     // 被阅读数
     viewByCount: {
         type: Number,
