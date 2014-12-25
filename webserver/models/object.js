@@ -127,33 +127,33 @@ var schema = new mongoose.Schema({
         default: []
     },
     // 被阅读数
-    viewCount: {
+    viewByCount: {
         type: Number,
         default: 1
     },
     // 评论次数
-    commentCount: {
+    commentByCount: {
         type: Number,
         default: 0
     },
     // 被收藏次数
-    favoriteCount: {
+    favoriteByCount: {
         type: Number,
         default: 0
     },
     // 被申请次数
-    applyCount: {
+    applyByCount: {
         type: Number,
         default: 0
     },
     // 是否被接受了
     // 通常指问题类的 object
-    hasAccept: {
+    hasAccepted: {
         type: Boolean,
         default: false
     },
     // 是否通过了组织、团体认证
-    hasCertificate: {
+    hasCertificated: {
         type: Boolean,
         default: false
     },

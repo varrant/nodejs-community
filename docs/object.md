@@ -23,12 +23,12 @@
 - `color` 加色
 - `score` 被加分，默认系统添加1分
 - `scoreList` 被加分历史
-- `viewCount` 被阅读次数
-- `commentCount` 被评论次数
-- `favoriteCount` 被收藏次数
-- `applyCount` 被申请次数
+- `viewByCount` 被阅读次数
+- `commentByCount` 被评论次数
+- `favoriteByCount` 被收藏次数
+- `applyByCount` 被申请次数
 - `hasAccepted` 是否被接受了
-- `isCertification` 是否被认证了
+- `hasCertificated` 是否被认证了
 - `meta` 元信息
 	- `url` 组织链接，通常为官网
 	- `company` 组织所在企业

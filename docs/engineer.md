@@ -11,21 +11,23 @@
 - `nickname` 昵称
 - `role` 2^0 -> 2^20，默认2^0=1，所有者最高为`2^0 + 2^1 + ... + 2^20 = 2097151`
 - `title` 头衔
-- `type` 类型：normal、admin
+- `group` 用户组
 - `registerAt` 注册时间
 - `loginAt` 登录时间
 - `score` 积分，默认1
-- `viewCount` 用户主页访问数量
+- `viewByCount` 用户主页访问数量
 - `commentCount` 评论次数
 - `replyByCount` 被回复次数
 - `agreeByCount` 被赞同次数
 - `acceptByCount` 被接受次数
 - `followCount` 关注人数
 - `followByCount` 被关注人数
-- `objectStatistics` object 统计
+- `sectionStatistics` section 统计
+- `categoryStatistics` category 统计
+- `columnStatistics` column 统计
 - `isBlock` 是否被阻止登入
 - `organizations` 加入的组织、团队
-- `isCertification` 是否被认证了
+- `hasCertificated` 是否通过了个人认证
 - `meta` 元信息
 	- `location` 位置
 	- `position` 职位
@@ -38,4 +40,4 @@
 - 各个权限值没有大小之分
 - 各个权限值没有层级之分
 - 2^0 - 2^10：分配给发布权限
-- 2^11- 2^20：分配给操作权限
+- 2^11- 2^20：分配给用户组权限

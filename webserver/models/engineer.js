@@ -58,16 +58,11 @@ var schema = new mongoose.Schema({
         required: false
     },
     // 用户组：
-    // normal
-    // vip
-    // admin
-    // partner
-    // owner
-    // 注册时间
     group: {
         type: String,
         required: false
     },
+    // 注册时间
     registerAt: {
         type: Date,
         default: new Date()
@@ -82,7 +77,7 @@ var schema = new mongoose.Schema({
         default: 1
     },
     // 用户主页访问数量
-    viewCount: {
+    viewByCount: {
         type: Number,
         default: 1
     },
@@ -141,7 +136,7 @@ var schema = new mongoose.Schema({
         type: Array
     },
     // 是否通过了个人认证
-    isCertification: {
+    hasCertificated: {
         type: Boolean,
         default: false
     },

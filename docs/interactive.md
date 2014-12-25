@@ -4,9 +4,9 @@
 
 `*`表示虚拟字段
 
+- `operator` 操作者
 - `model` 模型
 - `path` 字段
-- `operator` 操作者
 - `object` 被操作者
 - `value` 影响值，默认1
 - `interactiveAt` 操作时间
