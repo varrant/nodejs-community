@@ -105,11 +105,25 @@ exports.createOne = function (author, data, meta, callback) {
             callback(err, doc);
 
             if (!err && doc) {
-                // object.commentCount
-                object.increaseCommentByCount({_id: doc.object}, 1, log.holdError);
+                // object.commentByCount
+                if(doc.type === 'primary'){
+                    object.increaseCommentByCount({_id: doc.object}, 1, log.holdError);
+                }
+                // object.replyByCount
+                else{
+                    object.increaseReplyByCount({_id: author.id}, 1, log.holdError);
+                }
+
 
                 // engineer.commentCount
-                engineer.increaseCommentCount({_id: author.id}, 1, log.holdError);
+                if(doc.type === 'primary'){
+                    engineer.increaseCommentCount({_id: author.id}, 1, log.holdError);
+                }
+                // engineer.replyCount
+                else{
+                    engineer.increaseReplyByCount({_id: author.id}, 1, log.holdError);
+                }
+
 
                 // 通知 object 作者
                 _noticeObjectAuthor(author.id, doc.object);

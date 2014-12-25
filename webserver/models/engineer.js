@@ -86,6 +86,11 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    // 回复次数
+    replyCount: {
+        type: Number,
+        default: 0
+    },
     // 被回复次数
     replyByCount: {
         type: Number,
