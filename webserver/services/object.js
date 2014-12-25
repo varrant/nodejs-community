@@ -422,8 +422,14 @@ exports.increaseApplyByCount = function (conditions, count, callback) {
 };
 
 
+/**
+ * 最多推入 5 个最新的贡献者
+ * @param conditions
+ * @param contributor
+ * @param callback
+ */
 exports.pushContributors = function (conditions, contributor, callback) {
-
+    object.push(conditions, 'contributors', contributor.id, 5, callback);
 };
 
 /**
