@@ -18,34 +18,38 @@
         <!--主-->
         <div class="col-md-9 g-main">
             <ul class="avg-xs-1 avg-sm-2 f-text-center m-home">
-                <li class="home-opinion">
-                    <a href="/opinion/">
-                        <div class="home-icon"><i class="i i-gavel"></i></div>
-                        <div class="home-name">观点</div>
-                        <div class="home-desc">智慧提问，智慧回答。</div>
-                    </a>
-                </li>
+                <!--<li class="home-opinion">-->
+                    <!--<a href="/opinion/">-->
+                        <!--<div class="home-icon"><i class="i i-gavel"></i></div>-->
+                        <!--<div class="home-name">观点</div>-->
+                        <!--<div class="home-desc">智慧提问，智慧回答。</div>-->
+                    <!--</a>-->
+                <!--</li>-->
+                {{if section.question}}
                 <li class="home-question">
                     <a href="/question/">
                         <div class="home-icon"><i class="i i-cube"></i></div>
-                        <div class="home-name">智问</div>
-                        <div class="home-desc">智慧提问，智慧回答。</div>
+                        <div class="home-name">{{section.question.name}}</div>
+                        <div class="home-desc">{{section.question.introduction}}</div>
                     </a>
                 </li>
-                <li class="home-weibo">
-                    <a href="/weibo/">
-                        <div class="home-icon"><i class="i i-twitter"></i></div>
-                        <div class="home-name">微博</div>
-                        <div class="home-desc">闲言碎语。</div>
-                    </a>
-                </li>
+                {{/if}}
+                <!--<li class="home-weibo">-->
+                    <!--<a href="/weibo/">-->
+                        <!--<div class="home-icon"><i class="i i-twitter"></i></div>-->
+                        <!--<div class="home-name">微博</div>-->
+                        <!--<div class="home-desc">闲言碎语。</div>-->
+                    <!--</a>-->
+                <!--</li>-->
+                {{if section.help}}
                 <li class="home-help">
                     <a href="/help/">
                         <div class="home-icon"><i class="i i-question-circle"></i></div>
-                        <div class="home-name">帮助</div>
-                        <div class="home-desc">官方援助，助力融入前端开发者社区。</div>
+                        <div class="home-name">{{section.help.name}}</div>
+                        <div class="home-desc">{{section.help.introduction}}</div>
                     </a>
                 </li>
+                {{/if}}
             </ul>
         </div>
         <!--/主-->
@@ -57,13 +61,13 @@
                 <div class="card-title"><i class="i i-bar-chart"></i>统计</div>
                 <div class="card-body">
                     <ul class="m-simplelist s-muted">
-                        <li><i class="i i-gavel"></i>{{statistics.opinion|humanize}}</li>
+                        <!--<li><i class="i i-gavel"></i>{{statistics.opinion|humanize}}</li>-->
                         <li><i class="i i-cube"></i>{{statistics.question|humanize}}</li>
-                        <li><i class="i i-twitter"></i>{{statistics.weibo|humanize}}</li>
+                        <!--<li><i class="i i-twitter"></i>{{statistics.weibo|humanize}}</li>-->
                         <li><i class="i i-question-circle"></i>{{statistics.help|humanize}}</li>
-                        <li><i class="i i-user"></i>{{statistics.user|humanize}}</li>
-                        <li><i class="i i-cloud"></i>{{statistics.uptime|humanize}}</li>
-                        <li><i class="i i-shield"></i>ABBDHDLWDIQTDIQW</li>
+                        <li><i class="i i-user"></i>{{statistics.engineers|humanize}}</li>
+                        <li><i class="i i-cloud"></i>{{(Date.now() - $system.startTime)|humanize}}</li>
+                        <li><i class="i i-shield"></i>{{$system.hash}}</li>
                     </ul>
                 </div>
             </div>

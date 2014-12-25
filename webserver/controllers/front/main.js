@@ -24,25 +24,28 @@ module.exports = function (app) {
      * @param next
      */
     exports.getHome = function (req, res, next) {
+        var section = {};
+        var statistics = {};
         var data = {
             title: '主页',
-            statistics: {
-                uptime: Date.now() - app.locals.$startTime
-            }
+            statistics: statistics,
+            section: section
         };
-        var list = app.locals.$section.map(function (item) {
-            return item.uri;
+
+        app.locals.$section.forEach(function (sec) {
+            section[sec.uri] = sec;
         });
+
 
         howdo
             // 统计个数
-            .each(list, function (index, uri, done) {
-                object.count({type: uri}, function (err, count) {
+            .each(app.locals.$section, function (index, section, done) {
+                object.count({section: section.id}, function (err, count) {
                     if(err){
                         return done(err);
                     }
 
-                    data.statistics[uri] = count;
+                    statistics[section.uri] = count;
                     done();
                 });
             })
@@ -53,7 +56,7 @@ module.exports = function (app) {
                         return done(err);
                     }
 
-                    data.statistics.user = count;
+                    statistics.engineers = count;
                     done();
                 });
             })

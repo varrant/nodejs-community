@@ -14,6 +14,7 @@ var middleware = require('./middleware.js');
 var smtp = require('./smtp.js');
 var http = require('./http.js');
 var services = require('./services/');
+var random = require('ydr-util').random;
 
 howdo
     .task(mongoose)
@@ -27,7 +28,11 @@ howdo
             return process.exit(-1);
         }
 
-        app.locals.$startTime = Date.now();
+        app.locals.$system = {
+            startTime: Date.now(),
+            hash: random.string(20, 'Aa')
+        };
+
         console.log('');
         console.log('#########################################################');
         console.log(configs.app.host + ' is running');
