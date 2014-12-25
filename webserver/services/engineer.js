@@ -134,8 +134,11 @@ exports.modifyRole = function (operator, engineerBy, roleArray, callback) {
         return callback(err);
     }
     // 不允许修改为 founder 的权限
-    else if (roleArray.indexOf(20) !== -1) {
+    else if (roleArray.indexOf(20) > -1) {
         var err = new Error('不允许修改为 founder 的权限');
+        return callback(err);
+    }else{
+        var err = new Error('未知错误');
         return callback(err);
     }
 };

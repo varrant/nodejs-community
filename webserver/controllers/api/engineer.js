@@ -164,7 +164,7 @@ module.exports = function (app) {
         roleArray.forEach(function (role) {
             role = dato.parseInt(role, 0);
 
-            if (roleArray2.indexOf(role) === -1 && role !== 20) {
+            if (roleArray2.indexOf(role) === -1) {
                 roleArray2.push(role);
             }
         });

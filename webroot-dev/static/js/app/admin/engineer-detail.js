@@ -48,6 +48,8 @@ define(function (require, exports, module) {
             }
         });
 
+        app.vue1 = vue1;
+        app.vue2 = vue2;
         vue1.$el.classList.remove('f-none');
         vue2.$el.classList.remove('f-none');
     };
@@ -148,6 +150,7 @@ define(function (require, exports, module) {
                 }
 
                 var engineer = json.data;
+                app.vue1.$data.engineer = engineer;
                 the.$data.engineer = engineer;
                 app._calData(the.$data);
             }).on('error', alert).on('finish', function () {
