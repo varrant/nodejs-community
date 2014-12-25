@@ -17,6 +17,7 @@
 - `score` 积分，默认1
 - `viewByCount` 用户主页访问数量
 - `commentCount` 评论次数
+- `replyCount` 回复次数
 - `replyByCount` 被回复次数
 - `agreeByCount` 被赞同次数
 - `acceptByCount` 被接受次数
