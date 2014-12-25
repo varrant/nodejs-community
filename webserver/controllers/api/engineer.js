@@ -15,7 +15,7 @@ var filter = require('../../utils/').filter;
 var howdo = require('howdo');
 var dato = require('ydr-util').dato;
 var typeis = require('ydr-util').typeis;
-var role20 = Math.pow(2, 20);
+var role20 = 1 << 20;
 
 
 module.exports = function (app) {
@@ -152,20 +152,22 @@ module.exports = function (app) {
     exports.role = function (req, res, next) {
         var body = req.body;
         var id = body.id;
-        var roleArray = dato.parseInt(body.roleArray, 0);
+        var roleArray = body.roleArray;
 
-        if(typeis(roleArray) !== 'array'){
+        if (typeis(roleArray) !== 'array') {
             var err = new Error('请求参数不合法');
             return next(err);
         }
 
         var roleCount = 0;
-        var roleArray2 = roleArray.map(function (role) {
+        var roleArray2 = [];
+
+        roleArray.forEach(function (role) {
             role = dato.parseInt(role, 0);
 
-            if(roleArray2.indexOf(role) === -1 && role !== 20){
+            if (roleArray2.indexOf(role) === -1 && role !== 20) {
                 roleArray2.push(role);
-                roleCount+= Math.pow(2, role);
+                roleCount += 1 << role;
             }
         });
 

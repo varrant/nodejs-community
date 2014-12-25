@@ -87,11 +87,11 @@ define(function (require, exports, module) {
         });
 
         section.forEach(function (item) {
-            item.roleVal = Math.pow(2, item.role);
+            item.roleVal = 1 << item.role;
             item.checked = ( engineerRole & item.roleVal ) > 0;
         });
         group.forEach(function (item) {
-            item.roleVal = Math.pow(2, item.role);
+            item.roleVal = 1 << item.role;
             item.checked = ( engineerRole & item.roleVal ) > 0;
         });
 

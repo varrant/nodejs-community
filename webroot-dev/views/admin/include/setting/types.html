@@ -33,7 +33,7 @@
             </td>
             <td>
                 <input class="ipt" type="text" v-model="item.role"/>
-                <input name="\{{item.roleVal}}" type="hidden" value="\{{Math.pow(2, item.role)}}" v-model="item.roleVal"/>
+                <input name="\{{item.roleVal}}" type="hidden" value="\{{1<<item.role}}" v-model="item.roleVal"/>
             </td>
             <td>
                 <textarea name="desc" class="ipt" v-model="item.desc" rows="2">\{{item.desc}}</textarea></td>

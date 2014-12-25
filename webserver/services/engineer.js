@@ -23,7 +23,7 @@ var urls = {
     accessToken: 'https://github.com/login/oauth/access_token',
     user: 'https://api.github.com/user'
 };
-var role20 = Math.pow(2, 20);
+var role20 = 1 << 20;
 
 
 /**
@@ -94,7 +94,7 @@ exports.modifyRole = function (operator, engineerBy, role, callback) {
         var group = '';
         dato.each(configs.group, function (index, gp) {
             if (gp.role !== 20) {
-                if ((role & gp.role) !== 0) {
+                if ((role & (1 << gp.role)) !== 0) {
                     group = gp.name;
                     return false;
                 }

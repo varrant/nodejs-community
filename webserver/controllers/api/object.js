@@ -52,7 +52,7 @@ module.exports = function (app) {
             return next();
         }
 
-        var can = (res.locals.$engineer.role & Math.pow(2, findSection.role)) > 0;
+        var can = (res.locals.$engineer.role & (1<<findSection.role)) !== 0;
 
         if (!can) {
             var err = new Error('权限不足');
