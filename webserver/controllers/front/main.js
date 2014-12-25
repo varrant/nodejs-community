@@ -117,6 +117,7 @@ module.exports = function (app) {
                 })
                 // 列表
                 .task(function (done) {
+                    options.populate = ['author'];
                     object.find(conditions, options, done);
                 })
                 // 异步并行
@@ -124,6 +125,8 @@ module.exports = function (app) {
                     if (err) {
                         return next(err);
                     }
+
+                    console.log(docs[0].author.nickname);
 
                     data.count = count;
                     data.objects = docs;

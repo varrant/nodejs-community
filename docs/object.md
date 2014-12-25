@@ -29,6 +29,7 @@
 - `applyByCount` 被申请次数
 - `hasAccepted` 是否被接受了
 - `hasCertificated` 是否被认证了
+- `contributors` 最新的 5 位贡献者
 - `meta` 元信息
 	- `url` 组织链接，通常为官网
 	- `company` 组织所在企业
