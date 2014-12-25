@@ -255,7 +255,7 @@ exports.updateOne = function (author, conditions, data, callback) {
             });
         })
         // 5. 更新
-        .task(function (next, data3) {
+        .task(function (next) {
             var date = new Date();
             var data2 = dato.pick(data, ['category', 'column', 'labels', 'introduction', 'content', 'isDisplay']);
 
@@ -267,7 +267,7 @@ exports.updateOne = function (author, conditions, data, callback) {
                 }
             };
 
-            object.findOneAndUpdate(conditions, data3, next);
+            object.findOneAndUpdate(conditions, data2, next);
         })
         // 顺序串行
         .follow(function (err, doc, oldDoc) {
