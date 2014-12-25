@@ -13,7 +13,7 @@ var howdo = require('howdo');
 var object = require('../../services/').object;
 var engineer = require('../../services/').engineer;
 var filter = require('../../utils/').filter;
-var os = require('os');
+var log = require('ydr-log');
 
 module.exports = function (app) {
     var exports = {};
@@ -100,7 +100,7 @@ module.exports = function (app) {
             });
 
             if (categoryId) {
-                conditions[category] = categoryId;
+                conditions.category = categoryId;
             }
 
             if (label) {
@@ -148,6 +148,15 @@ module.exports = function (app) {
                 uri: uri,
                 isDisplay: true
             }, {populate: ['author', 'category']}, function (err, doc) {
+                if (err) {
+                    return next(err);
+                }
+
+                if (!doc) {
+                    return next();
+                }
+
+                object.increaseViewByCount({_id: doc.id}, 1, log.holdError);
                 data.title = doc.title;
                 data.object = doc;
                 res.render('front/object-' + section.uri + '.html', data);

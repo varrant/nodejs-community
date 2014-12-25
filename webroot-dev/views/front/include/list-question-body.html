@@ -13,8 +13,12 @@
         <div class="m-scopes">
             <div class="scopes-title s-muted"><i class="i i-folder"></i>所有分类</div>
             <ul class="scopes-list f-list-left">
+                <li>
+                    <a href="/question/" class="label label-default">所有</a>
+                </li>
                 {{list categories as index,category}}
-                <li><a href="/question/in/{{category.uri}}/" class="label label-default">{{category.name}}</a>
+                <li>
+                    <a href="/question/in/{{category.uri}}/" class="label label-default">{{category.name}}</a>
                 </li>
                 {{/list}}
             </ul>
