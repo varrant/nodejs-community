@@ -43,7 +43,7 @@ var schema = new mongoose.Schema({
     // 是否被允许，默认 true
     // 是否被读取了
     // 通常为新消息、新申请时，设置为 false
-    hasApprove: {
+    hasApproved: {
         type: Boolean,
         default: true
     },
