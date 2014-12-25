@@ -121,7 +121,7 @@ exports.createOne = function (author, data, meta, callback) {
                 }
                 // engineer.replyCount
                 else{
-                    engineer.increaseReplyByCount({_id: author.id}, 1, log.holdError);
+                    engineer.increaseReplyCount({_id: author.id}, 1, log.holdError);
                 }
 
 

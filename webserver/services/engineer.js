@@ -183,6 +183,17 @@ exports.increaseCommentCount = function (conditions, count, callback) {
  * @param count {Number} 更新值
  * @param callback {Function} 回调
  */
+exports.increaseReplyCount = function (conditions, count, callback) {
+    engineer.increase(conditions, 'replyCount', count, callback);
+};
+
+
+/**
+ * 增加回复数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
 exports.increaseReplyByCount = function (conditions, count, callback) {
     engineer.increase(conditions, 'replyByCount', count, callback);
 };
