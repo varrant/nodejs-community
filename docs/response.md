@@ -5,7 +5,6 @@
 `*`表示虚拟字段
 
 - `author` 响应作者
-- `type` 响应类型：primary/secondary
 - `content` 响应内容
 - `publishAt` 发布时间
 - `object` 响应文章
