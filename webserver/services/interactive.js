@@ -28,8 +28,7 @@ exports.active = function (data, callback) {
     var conditions = {
         operator: data.operator,
         model: data.model,
-        path: data.path,
-        object: data.object
+        path: data.path
     };
     var data2 = {
         at: new Date(),
@@ -37,8 +36,19 @@ exports.active = function (data, callback) {
         hasApproved: data.hasApproved
     };
 
+    if (!data.object && !data.response) {
+        var err = new Error('至少需要一个 object 或 response');
+        return callback(err);
+    }
+
     if (data.model === 'engineer' || data.model === 'object') {
         // 发送邮件给被动用户
+    }
+
+    if (data.object) {
+        conditions.object = data.object;
+    } else {
+        conditions.response = data.response;
     }
 
     interactive.existOne(conditions, data2, function (err, newDoc, oldDoc) {
