@@ -13,6 +13,40 @@ module.exports = function (app) {
     var exports = {};
 
     /**
+     * 计数
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.count = function (req, res, next) {
+        var objectId = req.query.object;
+        var parentId = req.query.parent;
+
+        if (!objectId) {
+            return next();
+        }
+
+        var conditions = {
+            object: objectId
+        };
+
+        if (parentId) {
+            conditions.parent = parentId;
+        }
+
+        response.count(conditions, function (err, count) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                code: 200,
+                data: count
+            });
+        });
+    };
+
+    /**
      * get 评论/回复列表
      * @param req
      * @param res

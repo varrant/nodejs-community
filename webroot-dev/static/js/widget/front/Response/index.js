@@ -58,8 +58,11 @@ define(function (require, exports, module) {
         _initNode: function () {
             var the = this;
             var $parent = the._$parent;
+            var wrapHTML = tplWrap.render({
+                language: the._options.language
+            });
 
-
+            $parent.innerHTML = '加载中……';
         }
     });
 
