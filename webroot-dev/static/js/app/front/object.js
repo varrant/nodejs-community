@@ -10,8 +10,10 @@ define(function (require, exports, module) {
 
     var Response = require('../../widget/front/Response/');
     var res = new Response('#response', {
+        id: window['-object-'],
         query:{
             page: window['-page-'],
+            limit: 3,
             object: window['-object-']
         }
     });

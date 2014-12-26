@@ -40,7 +40,7 @@ define(function (require, exports, module) {
         },
         query: {
             object: '',
-            limit: 2,
+            limit: 10,
             page: 1
         },
         respond: {
@@ -168,6 +168,7 @@ define(function (require, exports, module) {
                 the._pagination = new Pagination(the._$paginationParent, the._paginationOptions);
                 the._pagination.on('change', function (page) {
                     the._options.query.page = page;
+                    the._getComment();
                 });
             }
 
@@ -199,10 +200,10 @@ define(function (require, exports, module) {
                     // 渲染分页
                     if (the._pagination) {
                         the._pagination.render({
-                            page: options.query.page
+                            page: options.query.page,
+                            max: Math.ceil(the._count.comment / options.query.limit)
                         });
                     }
-
                 })
                 .on('error', alert);
         },

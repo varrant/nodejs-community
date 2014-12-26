@@ -49,6 +49,7 @@ define(function (require, exports, module) {
             var the = this;
 
             the._initNode();
+            the._initEvent();
         },
 
 

@@ -48,7 +48,7 @@ exports.content = function (minLength, maxLength) {
     var content = '[\\u4e00-\\u9fa5a-z\\d _\\-' +
         '~`!@#$%^&*()+={[}\\]|\\\\' +
         ':;"\'<,>.?\/·！￥（）—【】' +
-        '：；“”‘’《，》。？、\\n]';
+        '：；“”‘’《，》。？、…\\n]';
 
     return new RegExp('^' + content + '{' + minLength + ',' + maxLength + '}$');
 };
