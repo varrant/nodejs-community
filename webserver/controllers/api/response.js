@@ -30,20 +30,37 @@ module.exports = function (app) {
             object: objectId
         };
 
-        if (parentId) {
-            conditions.parent = parentId;
-        }
 
-        response.count(conditions, function (err, count) {
-            if (err) {
-                return next(err);
-            }
+        howdo
+            // 评论数量
+            .task(function (done) {
+                response.count(conditions, done);
+            })
+            // 回复数量
+            .task(function (done) {
+                if (!parentId) {
+                    return done(null, 0);
+                }
 
-            res.json({
-                code: 200,
-                data: count
+                if (parentId) {
+                    conditions.parent = parentId;
+                }
+
+                response.count(conditions, done);
+            })
+            .together(function (err, commentCount, replyCount) {
+                if (err) {
+                    return next(err);
+                }
+
+                res.json({
+                    code: 200,
+                    data: {
+                        comment: commentCount,
+                        reply: replyCount
+                    }
+                });
             });
-        });
     };
 
     /**
