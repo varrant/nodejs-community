@@ -14,10 +14,25 @@ define(function (require, exports, module) {
     var event = require('../../../alien/core/event/base.js');
     var dato = require('../../../alien/util/dato.js');
     var Template = require('../../../alien/libs/Template.js');
-    var template = require('html!./template.html');
+    var templateWrap = require('html!./wrap.html');
+    var templateList = require('html!./list.html');
+    var templateRespond = require('html!./respond.html');
     var style = require('css!./style.css');
-    var tpl = new Template(template);
-    var defaults = {};
+    var tplWrap = new Template(templateWrap);
+    var tplList = new Template(templateList);
+    var tplRespond = new Template(templateRespond);
+    var defaults = {
+        // get/post
+        url: '/api/respond/',
+        language: {
+            comment: '评论',
+            reply: '回复'
+        },
+        query: {
+            limit: 10,
+            page: 1
+        }
+    };
     var Response = generator({
         constructor: function ($parent, options) {
             var the = this;
