@@ -696,7 +696,6 @@ function _parseError(rules, err) {
                         path: path
                     };
                     err = new Error(msg);
-                    err.code = 11000;
                     err.mongoose = mongoose;
                     break;
             }
