@@ -107,7 +107,12 @@ module.exports = function (app) {
      * @param next
      */
     exports.post = function (req, res, next) {
-        response.createOne(res.locals.$engineer, req.body, function (err, doc) {
+        var meta = {
+            ua: req.headers['user-agent'],
+            ip: req.ip
+        };
+        
+        response.createOne(res.locals.$engineer, req.body, meta, function (err, doc) {
             if (err) {
                 return next(err);
             }

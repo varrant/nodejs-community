@@ -15,11 +15,6 @@ var schema = new mongoose.Schema({
         unique: false,
         ref: 'engineer'
     },
-    // 响应类型：primary/secondary
-    type: {
-        type: String,
-        required: true
-    },
     // 响应内容
     content: {
         type: String,
