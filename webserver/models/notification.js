@@ -40,11 +40,17 @@ var schema = new mongoose.Schema({
         required: true,
         ref: 'engineer'
     },
-    // 被操作对象
+    // 被操作 object
     object: {
         type: mongoose.Schema.Types.ObjectId,
         required: false,
         ref: 'object'
+    },
+    // 被操作 response
+    response: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+        ref: 'response'
     },
     // 是否已被激活
     hasActived: {
@@ -58,8 +64,7 @@ var schema = new mongoose.Schema({
     },
     // 被激活时间
     activeByAt: {
-        type: Date,
-        default: null
+        type: Date
     },
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证
