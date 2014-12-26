@@ -130,7 +130,7 @@ exports.createOne = function (author, data, meta, callback) {
                 }
 
                 // 通知 object 作者
-                _noticeObjectAuthor(author.id, responseObject);
+                _noticeObjectAuthor(author, responseObject);
 
                 // 推入 object 的 contributors
                 object.pushContributor({_id: response.object}, author, log.holdError);
@@ -144,7 +144,7 @@ exports.createOne = function (author, data, meta, callback) {
                     engineer.increaseReplyByCount({_id: parentResponse.author}, 1, log.holdError);
 
                     // 通知被 reply 作者
-                    _noticeCommentAuthor(author.id, parentResponse);
+                    _noticeCommentAuthor(author, parentResponse);
                 }
             }
         });
@@ -153,11 +153,11 @@ exports.createOne = function (author, data, meta, callback) {
 
 /**
  * 通知 object 作者
- * @param source {String} 评论人 ID
+ * @param repondAuthor {Object} 评论人
  * @param responseObject {Object} 被评论 object
  * @private
  */
-function _noticeObjectAuthor(source, responseObject) {
+function _noticeObjectAuthor(repondAuthor, responseObject) {
     howdo
         // 1. 查找 object 作者
         .task(function (next) {
@@ -177,18 +177,18 @@ function _noticeObjectAuthor(source, responseObject) {
             }
 
             // 评论通知
-            notice.comment(source, doc, responseObject);
+            notice.comment(repondAuthor, doc, responseObject);
         });
 }
 
 
 /**
  * 通知 comment 作者
- * @param source {String} 回复人 ID
+ * @param replyAuthor {Object} 回复人
  * @param parentResponse {Object} 被回复 response
  * @private
  */
-function _noticeCommentAuthor(source, parentResponse) {
+function _noticeCommentAuthor(replyAuthor, parentResponse) {
     howdo
         // 1. 查找 parentResponse 作者
         .task(function (next) {
@@ -208,7 +208,7 @@ function _noticeCommentAuthor(source, parentResponse) {
             }
 
             // 回复通知
-            notice.reply(source, doc, parentResponse);
+            notice.reply(replyAuthor, doc, parentResponse);
         });
 }
 
