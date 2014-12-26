@@ -220,7 +220,7 @@ function _noticeCommentAuthor(source, parentResponse) {
                 type: 'comment',
                 source: source,
                 target: doc.id,
-                object: response.id
+                object: parentResponse.id
             }, log.holdError);
 
             var subject = notiReply.subject;
