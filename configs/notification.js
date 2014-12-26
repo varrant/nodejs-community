@@ -56,9 +56,9 @@ module.exports = function(app){
             subject: '更新提醒',
             template:_template('update.html')
         },
-        accepted: {
-            subject: '采纳提醒',
-            template:_template('accepted.html')
+        acceptBy: {
+            subject: '被采纳提醒',
+            template:_template('acceptBy.html')
         },
         certificated: {
             subject: '认证提醒',
