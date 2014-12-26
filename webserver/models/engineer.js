@@ -76,6 +76,11 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 1
     },
+    // object 数量
+    objectCount: {
+        type: Number,
+        default: 0
+    },
     // 用户主页访问数量
     viewByCount: {
         type: Number,
@@ -130,6 +135,11 @@ var schema = new mongoose.Schema({
     columnStatistics: {
         type: Object,
         default: {}
+    },
+    // column 数量
+    columnCount: {
+        type: Number,
+        default: 0
     },
     // 是否被阻止登入
     isBlock: {

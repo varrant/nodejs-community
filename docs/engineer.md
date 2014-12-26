@@ -15,6 +15,7 @@
 - `registerAt` 注册时间
 - `loginAt` 登录时间
 - `score` 积分，默认1
+- `objectCount` object 数量
 - `viewByCount` 用户主页访问数量
 - `commentCount` 评论次数
 - `replyCount` 回复次数
@@ -26,6 +27,7 @@
 - `sectionStatistics` section 统计
 - `categoryStatistics` category 统计
 - `columnStatistics` column 统计
+- `columnCount` column 数量
 - `isBlock` 是否被阻止登入
 - `organizations` 加入的组织、团队
 - `hasCertificated` 是否通过了个人认证
