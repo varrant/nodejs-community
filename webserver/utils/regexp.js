@@ -17,7 +17,7 @@ var dato = require('ydr-util').dato;
  * @returns {RegExp}
  */
 exports.title = function (minLength, maxLength) {
-    var title = '[\\u4e00-\\u9fa5a-z\\d _\\-，,]';
+    var title = '[\\u4e00-\\u9fa5\\w\\d \\-，,.]';
 
     return new RegExp('^' + title + '{' + minLength + ',' + maxLength + '}$');
 };
@@ -45,10 +45,10 @@ exports.uri = function (minLength, maxLength) {
  * @returns {RegExp}
  */
 exports.content = function (minLength, maxLength) {
-    var content = '[\\u4e00-\\u9fa5a-z\\d _\\-' +
-        '~`!@#$%^&*()+={[}\\]|\\\\' +
-        ':;"\'<,>.?\/·！￥（）—【】' +
-        '：；“”‘’《，》。？、…\\n]';
+    var content = '[\\u4e00-\\u9fa5\\w\\d \\-' +
+        '~`!@#$%^&*()+={\\[}\\]|\\\\' +
+        ':;"\'<,>.。?\/·！￥（）—【】' +
+        '：；“”‘’《，》。？、…\\n\\t]';
 
     return new RegExp('^' + content + '{' + minLength + ',' + maxLength + '}$');
 };

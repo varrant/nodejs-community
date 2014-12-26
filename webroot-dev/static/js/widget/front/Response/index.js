@@ -311,6 +311,7 @@ define(function (require, exports, module) {
         }
     });
 
+    require('../../common/Template-filter.js');
     modification.importStyle(style);
     module.exports = Response;
 });

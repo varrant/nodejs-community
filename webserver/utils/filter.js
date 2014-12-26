@@ -48,3 +48,26 @@ exports.skipLimit = function (parent, defaultPage, defaultLimit) {
     };
 };
 
+
+var REG_SPACE = /[\x00-\x20\x7F-\xA0\u1680\u180E\u2000-\u200B\u2028\u2029\u202F\u205F\u3000\uFEFF\t\v]{1,}/g;
+var REG_LINES = /[\n\r]{3,}/g;
+var REG_LINE = /[\n\r]/g;
+
+/**
+ * 清洁输入
+ * @param content
+ * @param [isOneLine]
+ * @returns {string}
+ */
+exports.cleanInput = function (content, isOneLine) {
+    // 去除空白
+    content = content.replace(REG_SPACE, ' ');
+    // 去除多余空行
+    content = content.replace(REG_LINES, '\n\n\n');
+
+    if (isOneLine) {
+        content = content.replace(REG_LINE, ' ');
+    }
+
+    return content;
+};

@@ -1,20 +1,19 @@
 /*!
  * 文件描述
  * @author ydr.me
- * @create 2014-12-21 20:07
+ * @create 2014-12-26 18:52
  */
 
 
 define(function (require, exports, module) {
-    'use strict';
-
     var date = require('../../alien/util/date.js');
+    var Template = require('../../alien/libs/Template.js');
 
-    Vue.filter('datefrom', function (val) {
+    Template.addFilter('datefrom', function (val) {
         return date.from(val);
     });
 
-    Vue.filter('datetime', function (val) {
+    Template.addFilter('datetime', function (val) {
         return date.format('YYYY-MM-DD HH:mm:ss 星期e', val);
     });
 });
