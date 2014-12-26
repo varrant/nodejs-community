@@ -57,19 +57,20 @@ exports.createOne = function (author, data, meta, callback) {
                 }
 
                 if (!doc) {
-                    err = new Error('the object is not exist');
+                    err = new Error('评论目标不存在');
                     err.type = 'notFound';
-                    return next(err);
+                    err.code = 404;
+                    return next();
                 }
 
-                next();
+                next(err, doc);
             });
         })
-        // 2. 检查父级分类是否存在
-        .task(function (next) {
+        // 2. 检查父级评论是否存在
+        .task(function (next, responseObject) {
             if (!data2.parent) {
                 data2.type = 'primary';
-                return next();
+                return next(null, responseObject);
             }
 
             data2.type = 'secondary';
@@ -83,6 +84,7 @@ exports.createOne = function (author, data, meta, callback) {
                 if (!doc) {
                     err = new Error('父级评论不存在');
                     err.type = 'notFound';
+                    err.code = 404;
                     return next(err);
                 }
 
@@ -91,32 +93,32 @@ exports.createOne = function (author, data, meta, callback) {
                     return next(err);
                 }
 
-                next(err, doc);
+                next(err, responseObject, doc);
             });
         })
         // 3. 写入
-        .task(function (next, parent) {
+        .task(function (next, responseObject, parentResponse) {
             response.createOne(data2, function (err, doc) {
-                next(err, doc, parent);
+                next(err, responseObject, parentResponse, doc);
             });
         })
         // 顺序串行
-        .follow(function (err, doc, parent) {
-            callback(err, doc);
+        .follow(function (err, responseObject, parentResponse, response) {
+            callback(err, response);
 
-            if (!err && doc) {
+            if (!err && response) {
                 // object.commentByCount
-                if(doc.type === 'primary'){
-                    object.increaseCommentByCount({_id: doc.object}, 1, log.holdError);
+                if(response.type === 'primary'){
+                    object.increaseCommentByCount({_id: response.object}, 1, log.holdError);
                 }
                 // object.replyByCount
                 else{
-                    object.increaseReplyByCount({_id: author.id}, 1, log.holdError);
+                    object.increaseReplyByCount({_id: response.object}, 1, log.holdError);
                 }
 
 
                 // engineer.commentCount
-                if(doc.type === 'primary'){
+                if(response.type === 'primary'){
                     engineer.increaseCommentCount({_id: author.id}, 1, log.holdError);
                 }
                 // engineer.replyCount
@@ -124,30 +126,22 @@ exports.createOne = function (author, data, meta, callback) {
                     engineer.increaseReplyCount({_id: author.id}, 1, log.holdError);
                 }
 
-
                 // 通知 object 作者
-                _noticeObjectAuthor(author.id, doc.object);
+                _noticeObjectAuthor(author.id, responseObject);
 
                 // 推入 object 的 contributors
-                object.pushContributor({_id: doc.object}, author, log.holdError);
+                object.pushContributor({_id: response.object}, author, log.holdError);
 
                 // 评论父级
-                if (parent) {
-                    // commnet2.replyCount
-                    response.increase({_id: parent.id}, 'replyCount', 1, function (err, doc) {
-                        if (err) {
-                            return log.holdError(err);
-                        }
+                if (parentResponse) {
+                    // parentResponse response.replyCount
+                    response.increase({_id: parentResponse.id}, 'replyCount', 1, log.holdError);
 
-                        // 忽略错误
-                        if (doc) {
-                            // user2.repliedCount
-                            engineer.increaseReplyByCount({_id: doc.author}, 1, log.holdError);
-                        }
-                    });
+                    // parentResponse engineer.replyByCount
+                    engineer.increaseReplyByCount({_id: parentResponse.author}, 1, log.holdError);
 
-                    // 通知被 comment 作者
-                    _noticeCommentAuthor(author.id, parent);
+                    // 通知被 reply 作者
+                    _noticeCommentAuthor(author.id, parentResponse);
                 }
             }
         });
@@ -156,19 +150,15 @@ exports.createOne = function (author, data, meta, callback) {
 
 /**
  * 通知 object 作者
- * @param activeUserId
- * @param objectId
+ * @param source {String} 评论人 ID
+ * @param responseObject {Object} 被评论 object
  * @private
  */
-function _noticeObjectAuthor(source, objectId) {
+function _noticeObjectAuthor(source, responseObject) {
     howdo
-        // 1. 查找 object
+        // 1. 查找 object 作者
         .task(function (next) {
-            object.findOne({_id: objectId}, next);
-        })
-        // 2. 查找 object 作者
-        .task(function (next, doc) {
-            engineer.findOne({_id: doc.author}, next);
+            engineer.findOne({_id: responseObject.author}, next);
         })
         // 顺序串行
         .follow(function (err, doc) {
@@ -177,8 +167,9 @@ function _noticeObjectAuthor(source, objectId) {
             }
 
             if (!doc) {
-                err = new Error('the object author is not exist');
+                err = new Error('该作者不存在');
                 err.type = 'notFound';
+                err.code = 404;
                 return log.holdError(err);
             }
 
@@ -187,7 +178,7 @@ function _noticeObjectAuthor(source, objectId) {
                 type: 'comment',
                 source: source,
                 target: doc.id,
-                object: objectId
+                object: responseObject.id
             }, log.holdError);
 
             var subject = notiComment.subject;
@@ -201,14 +192,15 @@ function _noticeObjectAuthor(source, objectId) {
 
 /**
  * 通知 comment 作者
- * @param commentId
+ * @param source {String} 回复人 ID
+ * @param parentResponse {Object} 被回复 response
  * @private
  */
-function _noticeCommentAuthor(source, comment) {
+function _noticeCommentAuthor(source, parentResponse) {
     howdo
-        // 1. 查找 comment 作者
+        // 1. 查找 parentResponse 作者
         .task(function (next) {
-            engineer.findOne({_id: response.author}, next);
+            engineer.findOne({_id: parentResponse.author}, next);
         })
         // 顺序串行
         .follow(function (err, doc) {
@@ -219,6 +211,7 @@ function _noticeCommentAuthor(source, comment) {
             if (!doc) {
                 err = new Error('该评论作者不存在');
                 err.type = 'notFound';
+                err.code = 404;
                 return log.holdError(err);
             }
 

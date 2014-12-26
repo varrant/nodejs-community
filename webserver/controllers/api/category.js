@@ -22,7 +22,7 @@ module.exports = function (app) {
     exports.get = function (req, res, next) {
         if(!permission.can(res.locals.$engineer, 'category')){
             var err = new Error('权限不足');
-            err.status = 403;
+            err.code = 403;
             return next(err);
         }
 
@@ -44,7 +44,7 @@ module.exports = function (app) {
 
         if(!permission.can(res.locals.$engineer, 'category')){
             var err = new Error('权限不足');
-            err.status = 403;
+            err.code = 403;
             return next(err);
         }
 
@@ -87,7 +87,7 @@ module.exports = function (app) {
     exports.delete = function (req, res, next) {
         if(!permission.can(res.locals.$engineer, 'category')){
             var err = new Error('权限不足');
-            err.status = 403;
+            err.code = 403;
             return next(err);
         }
 

@@ -43,7 +43,7 @@ exports.findOneAndRemove = function (author, conditions, callback) {
 
                 if (!doc) {
                     err = new Error('该专栏不存在');
-                    err.status = 404;
+                    err.code = 404;
                     return next(err);
                 }
 
@@ -122,7 +122,7 @@ exports.findOneAndUpdate = function (author, conditions, data, callback) {
 
                 if (!doc) {
                     err = new Error('该专栏不存在');
-                    err.status = 404;
+                    err.code = 404;
                     return next(err);
                 }
 

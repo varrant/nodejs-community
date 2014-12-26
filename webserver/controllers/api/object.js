@@ -56,7 +56,7 @@ module.exports = function (app) {
 
         if (!can) {
             var err = new Error('权限不足');
-            err.status = 403;
+            err.code = 403;
             return next(err);
         }
 

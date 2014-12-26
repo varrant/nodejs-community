@@ -24,7 +24,7 @@ module.exports = function (app) {
     exports.serverError = function (err, req, res, next) {
         if (REG_ACCEPT_JSON.test(req.headers.accept)) {
             res.json({
-                code: err.status || 500,
+                code: err.code || 500,
                 message: err.message,
                 data: err.data || null
             });

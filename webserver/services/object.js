@@ -55,13 +55,13 @@ exports.createOne = function (author, data, callback) {
 
                 if (!doc) {
                     err = new Error('该板块不存在');
-                    err.status = 404;
+                    err.code = 404;
                     return next(err);
                 }
 
                 if (author.role & (1 << doc.role) === 0) {
                     err = new Error('在该板块暂无发布权限');
-                    err.status = 403;
+                    err.code = 403;
                     return next(err);
                 }
 
@@ -77,7 +77,7 @@ exports.createOne = function (author, data, callback) {
 
                 if (!doc) {
                     err = new Error('该分类不存在');
-                    err.status = 404;
+                    err.code = 404;
                     return next(err);
                 }
 
@@ -97,13 +97,13 @@ exports.createOne = function (author, data, callback) {
 
                 if (!doc) {
                     err = new Error('该专栏不存在');
-                    err.status = 404;
+                    err.code = 404;
                     return next(err);
                 }
 
                 if (doc.id !== data.column) {
                     err = new Error('不允许发布到他人专栏内');
-                    err.status = 403;
+                    err.code = 403;
                     return next(err);
                 }
 
@@ -182,7 +182,7 @@ exports.updateOne = function (author, conditions, data, callback) {
 
                 if (!doc) {
                     err = new Error('该对象不存在');
-                    err.status = 404;
+                    err.code = 404;
                     return next(err);
                 }
 
@@ -198,13 +198,13 @@ exports.updateOne = function (author, conditions, data, callback) {
 
                 if (!doc) {
                     err = new Error('该板块不存在');
-                    err.status = 404;
+                    err.code = 404;
                     return next(err);
                 }
 
                 if (author.role & (1 << doc.role) === 0) {
                     err = new Error('在该板块暂无发布权限');
-                    err.status = 403;
+                    err.code = 403;
                     return next(err);
                 }
 
@@ -220,7 +220,7 @@ exports.updateOne = function (author, conditions, data, callback) {
 
                 if (!doc) {
                     err = new Error('该分类不存在');
-                    err.status = 404;
+                    err.code = 404;
                     return next(err);
                 }
 
@@ -240,13 +240,13 @@ exports.updateOne = function (author, conditions, data, callback) {
 
                 if (!doc) {
                     err = new Error('该专栏不存在');
-                    err.status = 404;
+                    err.code = 404;
                     return next(err);
                 }
 
                 if (doc.id !== data.column) {
                     err = new Error('不允许发布到他人专栏内');
-                    err.status = 403;
+                    err.code = 403;
                     return next(err);
                 }
 

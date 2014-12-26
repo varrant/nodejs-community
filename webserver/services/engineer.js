@@ -125,7 +125,7 @@ exports.modifyRole = function (operator, engineerBy, roleArray, callback) {
     // founder 才有权限修改他人权限
     else if ((operator.role & role20) === 0) {
         var err = new Error('权限不足');
-        err.status = 403;
+        err.code = 403;
         return callback(err);
     }
     // 不允许修改自己的权限
@@ -284,7 +284,7 @@ exports.increaseSectionStatistics = function (conditions, sectionId, count, call
 
         if (!doc) {
             err = new Error('该用户不存在');
-            err.status = 404;
+            err.code = 404;
             return callback(err);
         }
 
@@ -321,7 +321,7 @@ exports.increaseCategoryStatistics = function (conditions, categoryId, count, ca
 
         if (!doc) {
             err = new Error('该用户不存在');
-            err.status = 404;
+            err.code = 404;
             return callback(err);
         }
 
@@ -357,7 +357,7 @@ exports.increaseColumnStatistics = function (conditions, columnId, count, callba
 
         if (!doc) {
             err = new Error('该用户不存在');
-            err.status = 404;
+            err.code = 404;
             return callback(err);
         }
 
