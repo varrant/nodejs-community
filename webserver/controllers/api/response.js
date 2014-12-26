@@ -13,54 +13,30 @@ module.exports = function (app) {
     var exports = {};
 
     /**
-     * get 评论列表
+     * get 评论/回复列表
      * @param req
      * @param res
      * @param next
      * @returns {*}
      */
-    exports.getPrimary = function (req, res, next) {
+    exports.get = function (req, res, next) {
         var options = filter.skipLimit(req.query);
         var objectId = req.query.object;
+        var parentId = req.query.parent;
 
         if (!objectId) {
             return next();
         }
 
-        response.find({
-            type: 'primary',
+        var conditions = {
             object: objectId
-        }, options, function (err, docs) {
-            if (err) {
-                return next(err);
-            }
+        };
 
-            res.json({
-                code: 200,
-                data: docs
-            });
-        });
-    };
-
-    /**
-     * get 评论列表
-     * @param req
-     * @param res
-     * @param next
-     * @returns {*}
-     */
-    exports.getSecondary = function (req, res, next) {
-        var options = filter.skipLimit(req.query);
-        var parentId = req.query.parent;
-
-        if (!parentId) {
-            return next();
+        if (parentId) {
+            conditions.parent = parentId;
         }
 
-        response.find({
-            type: 'secondary',
-            parent: parentId
-        }, options, function (err, docs) {
+        response.find(conditions, options, function (err, docs) {
             if (err) {
                 return next(err);
             }
@@ -72,24 +48,24 @@ module.exports = function (app) {
         });
     };
 
+
     /**
-     * 写入评论
+     * 写入评论/回复
      * @param req
      * @param res
      * @param next
      */
-    exports.postPrimary = function (req, res, next) {
+    exports.post = function (req, res, next) {
+        response.createOne(res.locals.$engineer, req.body, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
 
-    };
-
-    /**
-     * 写入评论
-     * @param req
-     * @param res
-     * @param next
-     */
-    exports.postSecondary = function (req, res, next) {
-
+            res.json({
+                code: 200,
+                data: doc
+            });
+        });
     };
 
     return exports;
