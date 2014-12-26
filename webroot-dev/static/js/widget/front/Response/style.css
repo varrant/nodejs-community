@@ -23,6 +23,19 @@
     margin-top: 15px;
 }
 
+.alien-ui-response-respond .btn{
+    display: none;
+}
+
+.alien-ui-response-iscomment .alien-ui-response-respond-comment{
+    display: inline-block;
+}
+
+.alien-ui-response-isreply .alien-ui-response-respond-reply,
+.alien-ui-response-isreply .alien-ui-response-respond-cancel{
+    display: inline-block;
+}
+
 .alien-ui-response-list {
     list-style: none;
     padding: 0;
