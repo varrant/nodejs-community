@@ -22,25 +22,27 @@ var smtp = null;
  */
 exports.init = function (_smtp, admin) {
     smtp = _smtp;
+
     var time = date.format('YYYY年MM月DD日 HH:mm:ss.SSS 星期e a');
 
     if (configs.app.env === 'pro' && admin) {
-        exports.send(admin.nickname, admin.email, '服务器启动', time);
+        exports.send(admin, '服务器启动', time);
     }
 };
 
 
 /**
  * 发送邮件
- * @param username {String} 收件人姓名
- * @param useremail {String} 收件人邮箱
+ * @param receiver {Object} 接收人
+ * @param receiver.nickname {String} 接收人昵称
+ * @param receiver.email {String} 接收人邮件地址
  * @param subject {String} 主题
  * @param content {String} 内容
  */
-exports.send = function (username, useremail, subject, content) {
+exports.send = function (receiver, subject, content) {
     var data = {
         from: configs.smtp.from,
-        to: username + ' <' + useremail + '>',
+        to: receiver.nickname + ' <' + receiver.email + '>',
         subject: subject,
         attachment: [{
             data: content,
