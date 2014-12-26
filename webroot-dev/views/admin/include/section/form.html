@@ -44,6 +44,7 @@
 
     <li>
         <div class="form-action f-text-center">
+            <button class="btn btn-danger" v-on="click: onreset" v-attr="disabled: !section.id">重置</button>
             <button class="btn btn-primary" v-on="click: onsave">\{{section.id ? '保存版块' : '新建版块'}}</button>
         </div>
     </li>

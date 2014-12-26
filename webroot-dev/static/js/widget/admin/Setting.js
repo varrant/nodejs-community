@@ -56,7 +56,7 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
-                    var data = options.emptyData;
+                    var data = dato.extend({}, options.emptyData);
 
                     if (id) {
                         dato.each(json.data, function (i, item) {
@@ -77,6 +77,7 @@ define(function (require, exports, module) {
                         data: vueData,
                         methods: {
                             onupload: the._onupload.bind(the),
+                            onreset: the._onreset.bind(the),
                             onsave: the._onsave.bind(the),
                             onchoose: the._onchoose.bind(the),
                             onremove: the._onremove.bind(the)
@@ -102,6 +103,19 @@ define(function (require, exports, module) {
                 the.vue.$data[itemKey].cover = data.surl;
                 this.close();
             });
+        },
+
+
+        /**
+         * 表单重置
+         * @private
+         */
+        _onreset: function () {
+            var the = this;
+            var options = the._options;
+            var itemKey = options.itemKey;
+
+            the.vue.$data[itemKey] = dato.extend({}, options.emptyData);
         },
 
 
