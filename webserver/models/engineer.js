@@ -121,6 +121,11 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    // column 数量
+    columnCount: {
+        type: Number,
+        default: 0
+    },
     // section 统计
     sectionStatistics: {
         type: Object,
@@ -135,11 +140,6 @@ var schema = new mongoose.Schema({
     columnStatistics: {
         type: Object,
         default: {}
-    },
-    // column 数量
-    columnCount: {
-        type: Number,
-        default: 0
     },
     // 是否被阻止登入
     isBlock: {

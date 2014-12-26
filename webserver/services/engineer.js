@@ -156,6 +156,17 @@ exports.increaseScore = function (conditions, count, callback) {
 
 
 /**
+ * 增加 object 数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseObjectCount = function (conditions, count, callback) {
+    engineer.increase(conditions, 'objectCount', count, callback);
+};
+
+
+/**
  * 增加阅读数量（主页访问数量）
  * @param conditions {Object} 查询条件
  * @param count {Number} 更新值
@@ -218,6 +229,18 @@ exports.increaseAgreeByCount = function (conditions, count, callback) {
  */
 exports.increaseAcceptByCount = function (conditions, count, callback) {
     engineer.increase(conditions, 'acceptByCount', count, callback);
+};
+
+
+
+/**
+ * 增加专栏数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseColumnCount = function (conditions, count, callback) {
+    engineer.increase(conditions, 'columnCount', count, callback);
 };
 
 

@@ -24,10 +24,10 @@
 - `acceptByCount` 被接受次数
 - `followCount` 关注人数
 - `followByCount` 被关注人数
+- `columnCount` column 数量
 - `sectionStatistics` section 统计
 - `categoryStatistics` category 统计
 - `columnStatistics` column 统计
-- `columnCount` column 数量
 - `isBlock` 是否被阻止登入
 - `organizations` 加入的组织、团队
 - `hasCertificated` 是否通过了个人认证
