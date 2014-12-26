@@ -68,11 +68,9 @@ exports.createOne = function (author, data, meta, callback) {
         // 2. 检查父级评论是否存在
         .task(function (next, responseObject) {
             if (!data2.parent) {
-                data2.type = 'primary';
                 return next(null, responseObject);
             }
 
-            data2.type = 'secondary';
             response.findOne({
                 _id: data2.parent
             }, function (err, doc) {
@@ -87,7 +85,7 @@ exports.createOne = function (author, data, meta, callback) {
                     return next(err);
                 }
 
-                if (doc.type === 'secondary') {
+                if (doc.parent) {
                     err = new Error('不能补充他人的回复');
                     return next(err);
                 }
@@ -107,7 +105,7 @@ exports.createOne = function (author, data, meta, callback) {
 
             if (!err && response) {
                 // object.commentByCount
-                if(response.type === 'primary'){
+                if(!response.parent){
                     object.increaseCommentByCount({_id: response.object}, 1, log.holdError);
                 }
                 // object.replyByCount
@@ -117,7 +115,7 @@ exports.createOne = function (author, data, meta, callback) {
 
 
                 // engineer.commentCount
-                if(response.type === 'primary'){
+                if(!response.parent){
                     engineer.increaseCommentCount({_id: author.id}, 1, log.holdError);
                 }
                 // engineer.replyCount
