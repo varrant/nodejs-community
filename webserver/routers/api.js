@@ -26,6 +26,10 @@ module.exports = function (app, ctrlApi) {
     app.put('/admin/api/object/', ctrlApi.object.put);
 
 
+    // response
+    app.get('/api/response/', ctrlApi.response.get);
+
+
     // oss
     app.put('/admin/api/oss/', ctrlApi.oss.put);
 

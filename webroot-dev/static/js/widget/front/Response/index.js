@@ -13,6 +13,7 @@ define(function (require, exports, module) {
     var modification = require('../../../alien/core/dom/modification.js');
     var event = require('../../../alien/core/event/base.js');
     var dato = require('../../../alien/util/dato.js');
+    var qs = require('../../../alien/util/querystring.js');
     var Template = require('../../../alien/libs/Template.js');
     var templateWrap = require('html!./wrap.html');
     var templateList = require('html!./list.html');
@@ -29,6 +30,7 @@ define(function (require, exports, module) {
             reply: '回复'
         },
         query: {
+            object: '',
             limit: 10,
             page: 1
         }
