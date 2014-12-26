@@ -16,6 +16,7 @@ define(function (require, exports, module) {
     var qs = require('../../../alien/util/querystring.js');
     var ajax = require('../../../widget/common/ajax.js');
     var alert = require('../../../widget/common/alert.js');
+    var loading = require('../../../widget/common/loading.js');
     var Pagination = require('../../../alien/ui/Pagination/');
     var Template = require('../../../alien/libs/Template.js');
     var templateWrap = require('html!./wrap.html');
@@ -63,32 +64,6 @@ define(function (require, exports, module) {
          */
         _init: function () {
             var the = this;
-
-            the._initEvent();
-            the._initWrap();
-        },
-
-
-        /**
-         * 初始化事件
-         * @private
-         */
-        _initEvent: function () {
-            var the = this;
-            var $parent = the._$parent;
-
-            event.on($parent, 'click', '.j-reload-container', function () {
-                the._initContainer();
-            });
-        },
-
-
-        /**
-         * 初始化框架
-         * @private
-         */
-        _initWrap: function () {
-            var the = this;
             var $parent = the._$parent;
             var html = tplWrap.render({
                 language: the._options.language
@@ -96,7 +71,7 @@ define(function (require, exports, module) {
 
             $parent.innerHTML = html;
             the._$wrap = selector.children($parent)[0];
-            the._initContainer();
+            the._ajaxContainer();
         },
 
 
@@ -104,10 +79,11 @@ define(function (require, exports, module) {
          * 初始化容器
          * @private
          */
-        _initContainer: function () {
+        _ajaxContainer: function () {
             var the = this;
             var options = the._options;
             var url = options.url.count + '?' + qs.stringify(options.query);
+            var ld = loading('正在加载中……');
 
             ajax({
                 url: url
@@ -130,12 +106,15 @@ define(function (require, exports, module) {
 
                     var nodes = selector.query('.j-flag', the._$wrap);
 
-                    the._$respondParent = nodes[0];
-                    the._$listParent = nodes[1];
-                    the._$paginationParent = nodes[2];
+                    the._$commentCount = nodes[0];
+                    the._$replyCount = nodes[1];
+                    the._$respondParent = nodes[2];
+                    the._$listParent = nodes[3];
+                    the._$paginationParent = nodes[4];
                     the._getComment();
                 })
-                .on('error', alert);
+                .on('error', alert)
+                .on('finish', ld.destroy.bind(ld));
         },
 
 
@@ -195,7 +174,7 @@ define(function (require, exports, module) {
                 });
             }
 
-            the._initComment();
+            the._ajaxComment();
         },
 
 
@@ -203,7 +182,7 @@ define(function (require, exports, module) {
          * 初始化主评论
          * @private
          */
-        _initComment: function () {
+        _ajaxComment: function () {
             var the = this;
             var options = the._options;
             var url = options.url.get + '?' + qs.stringify(options.query);
@@ -281,6 +260,14 @@ define(function (require, exports, module) {
                     the._$respondContent.value = '';
                     the._$respondContent.focus();
                     the._appendComment(json.data);
+
+                    if (json.data.parent) {
+                        the._count.reply++;
+                    } else {
+                        the._count.comment++;
+                    }
+
+                    the._increaseCount();
                 })
                 .on('error', alert)
                 .on('finish', function () {
@@ -291,8 +278,16 @@ define(function (require, exports, module) {
         },
 
 
-        _increaseCount: function (type) {
+        /**
+         * 改变评论数量显示
+         * @private
+         */
+        _increaseCount: function () {
+            var the = this;
+            var count = the._count;
 
+            the._$commentCount.innerHTML = count.comment;
+            the._$replyCount.innerHTML = count.reply;
         },
 
 
