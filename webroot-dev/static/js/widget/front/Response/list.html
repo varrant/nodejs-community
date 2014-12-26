@@ -1,35 +1,36 @@
 {{list list as item}}
-<li class="alien-ui-response-list-item">
-    <div class="f-clearfix alien-ui-response-list-main">
-        <div class="alien-ui-response-list-avatar f-left">
+<li class="alien-ui-response-item">
+    <div class="f-clearfix alien-ui-response-main">
+        <div class="alien-ui-response-avatar f-left">
             <a href="#"><img src="/static/img/avatar.png" alt="avatar" width="50" height="50"/></a>
         </div>
-        <div class="alien-ui-response-list-body">
-            <ul class="alien-ui-response-list-meta s-light f-list-left">
+        <div class="alien-ui-response-body">
+            <ul class="alien-ui-response-meta s-light f-list-left">
                 <li><a href="#"><i class="i i-user"></i>云淡然</a></li>
                 <li><i class="i i-clock-o"></i>{{item.publishAt|datefrom}}</li>
             </ul>
 
-            <div class="alien-ui-response-list-content">{{item.content}}</div>
+            <div class="alien-ui-response-content">{{item.content}}</div>
 
-            <ul class="alien-ui-response-list-meta alien-ui-response-list-action s-light f-list-left">
+            <ul class="alien-ui-response-meta alien-ui-response-action s-light f-list-left">
                 <li>
-                    <button class="btn btn-success btn-xs"><i class="i i-plus"></i>补充<span
-                            class="alien-ui-response-list-number">{{item.replyCount}}</span></button>
+                    <button class="btn btn-success btn-xs alien-ui-response-reply"><i class="i i-plus"></i>补充<span
+                            class="alien-ui-response-number">{{item.replyCount}}</span></button>
                 </li>
                 <li>
-                    <button class="btn btn-primary btn-xs"><i class="i i-thumbs-up"></i>赞同<span
-                            class="alien-ui-response-list-number">{{item.agreeCount}}</span></button>
+                    <button class="btn btn-primary btn-xs alien-ui-response-agree"><i class="i i-thumbs-up"></i>赞同<span
+                            class="alien-ui-response-number">{{item.agreeCount}}</span></button>
                 </li>
                 <li>
-                    <button class="btn btn-warning btn-xs active" readonly><i
+                    <button class="btn btn-warning btn-xs active alien-ui-response-accept" readonly><i
                             class="i i-check"></i>采纳回答</button>
                 </li>
             </ul>
         </div>
     </div>
-    {{if item.type === "primary"}}
-    <div class="alien-ui-response-list-children"></div>
+
+    {{if !item.parent}}
+    <div class="alien-ui-response-children"></div>
     {{/if}}
 </li>
 {{/list}}

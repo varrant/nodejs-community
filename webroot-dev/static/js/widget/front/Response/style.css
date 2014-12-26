@@ -1,86 +1,85 @@
 @charset "utf-8";
-.alien-ui-response {
-
-}
 .alien-ui-response-list {
     list-style: none;
     padding: 0;
+    margin: 30px 0;
 }
 
-.alien-ui-response-list .alien-ui-response-list-item {
+.alien-ui-response-item {
     border-bottom: 1px solid #f0f0f0;
     padding-bottom: 20px;
     margin-bottom: 20px;
 }
 
-.alien-ui-response-list .alien-ui-response-list-item:last-child {
+.alien-ui-response-item:last-child {
     border-bottom: 0;
     padding-bottom: 0;
     margin-bottom: 0;
 }
 
-.alien-ui-response-list .alien-ui-response-list-body {
+.alien-ui-response-body {
     margin-left: 60px;
     overflow: hidden;
 }
 
-.alien-ui-response-list .alien-ui-response-list-meta {
+.alien-ui-response-meta {
     padding: 0;
     margin: 0;
 }
 
-.alien-ui-response-list .alien-ui-response-list-meta li {
+.alien-ui-response-meta li {
     margin-right: 10px;
 }
 
-.alien-ui-response-list .alien-ui-response-list-action {
+.alien-ui-response-action {
     margin-top: 20px;
 }
 
-.alien-ui-response-list .alien-ui-response-list-number {
+.alien-ui-response-number {
     margin-left: 10px;
     font-weight: 900;
 }
 
-.alien-ui-response-list .alien-ui-response-list-children {
+.alien-ui-response-children {
     position: relative;
     margin: 20px 60px;
     padding: 20px;
     border-radius: 4px;
     border: 1px solid #F0F0F0;
+    display: none;
 }
 
-.alien-ui-response-list .alien-ui-response-list-children .alien-ui-response-list-body {
+.alien-ui-response-children .alien-ui-response-body {
     margin-left: 40px;
     font-size: 14px;
 }
 
-.alien-ui-response-list .alien-ui-response-list-children .alien-ui-response-list-body .i {
+.alien-ui-response-body .i {
     margin: 0 2px;
     min-width: 10px;
 }
 
-.alien-ui-response-list .alien-ui-response-list-children .alien-ui-response-respond {
+.alien-ui-response-respond {
     margin: 20px -20px -20px;
     border-bottom: 0;
     border-top: 1px solid #eee;
     border-radius: 0 0 4px 4px;
 }
 
-.alien-ui-response-list .alien-ui-response-list-children::before,
-.alien-ui-response-list .alien-ui-response-list-children::after {
+.alien-ui-response-children::before,
+.alien-ui-response-children::after {
     content: ' ';
     position: absolute;
     border: 10px solid transparent;
     left: 20px;
 }
 
-.alien-ui-response-list .alien-ui-response-list-children::before {
+.alien-ui-response-children::before {
     border-bottom-color: #ddd;
     top: -20px;
 }
 
-.alien-ui-response-list .alien-ui-response-list-children::after {
+.alien-ui-response-children::after {
     border-bottom-color: #fff;
     top: -19px;
 }
