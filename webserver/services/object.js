@@ -291,22 +291,16 @@ exports.updateOne = function (author, conditions, data, callback) {
                     label.increaseObjectCount({name: name}, -1, log.holdError);
                 });
 
-                //// 更新 engineer.increaseSectionStatistics
-                //if (doc.section.toString() !== oldDoc.section.toString()) {
-                //    engineer.increaseSectionStatistics({_id: author.id}, doc.section, 1, log.holdError);
-                //    engineer.increaseSectionStatistics({_id: author.id}, oldDoc.section, -1, log.holdError);
-                //}
-
                 // 更新 engineer.increaseSectionStatistics
-                if (doc.category.toString() !== oldDoc.category.toString()) {
-                    engineer.increaseCategoryStatistics({_id: author.id}, doc.section, 1, log.holdError);
-                    engineer.increaseCategoryStatistics({_id: author.id}, oldDoc.section, -1, log.holdError);
+                if (doc.section.toString() !== oldDoc.section.toString()) {
+                    engineer.increaseSectionStatistics({_id: author.id}, doc.section, 1, log.holdError);
+                    engineer.increaseSectionStatistics({_id: author.id}, oldDoc.section, -1, log.holdError);
                 }
 
-                // 更新 engineer.increaseSectionStatistics
+                // 更新 engineer.increaseCategoryStatistics
                 if (doc.category.toString() !== oldDoc.category.toString()) {
-                    engineer.increaseCategoryStatistics({_id: author.id}, doc.section, 1, log.holdError);
-                    engineer.increaseCategoryStatistics({_id: author.id}, oldDoc.section, -1, log.holdError);
+                    engineer.increaseCategoryStatistics({_id: author.id}, doc.category, 1, log.holdError);
+                    engineer.increaseCategoryStatistics({_id: author.id}, oldDoc.category, -1, log.holdError);
                 }
 
                 if (oldDoc.column) {
@@ -318,22 +312,6 @@ exports.updateOne = function (author, conditions, data, callback) {
                 }
             }
         });
-};
-
-
-/**
- * 根据 object 类型和 uir 获取 object 信息
- * @param type {String}  object 类型，如 opinion
- * @param uri {String}  object URI
- * @param callback {Function}
- */
-exports.get = function (type, uri, callback) {
-    var conditions = {
-        type: type,
-        uri: uri
-    };
-
-    object.findOne(conditions, callback);
 };
 
 
@@ -402,7 +380,7 @@ exports.increaseReplyByCount = function (conditions, count, callback) {
 
 
 /**
- * 增加 object 点赞收藏数量
+ * 增加 object 收藏数量
  * @param conditions
  * @param count
  * @param callback
