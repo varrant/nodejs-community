@@ -24,11 +24,17 @@ var schema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // 被操作对象，即ID
+    // 被操作 object
     object: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'object'
+    },
+    // 被操作 response
+    response: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'response'
     },
     // 影响值，默认0
     value: {
