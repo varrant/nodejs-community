@@ -16,8 +16,7 @@ var schema = new mongoose.Schema({
     },
     // 搜索次数
     times: {
-        type: Number,
-        default: 1
+        type: Number
     },
     // 最近搜索时间
     latestAt: {

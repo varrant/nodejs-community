@@ -13,6 +13,12 @@ var keys = ['name'];
 
 
 /**
+ * 查找
+ */
+exports.findOne = label.findOne;
+
+
+/**
  * 创建一个 label
  * @param data {Object} 数据
  * @param callback {Function} 回调
@@ -35,12 +41,6 @@ exports.updateOne = function (conditions, data, callback) {
 
     label.findOneAndUpdate(conditions, data2, callback);
 };
-
-
-/**
- * 查找
- */
-exports.findOne = label.findOne;
 
 
 /**
