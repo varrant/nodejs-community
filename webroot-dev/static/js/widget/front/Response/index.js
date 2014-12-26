@@ -24,7 +24,7 @@ define(function (require, exports, module) {
     var tplRespond = new Template(templateRespond);
     var defaults = {
         // get/post
-        url: '/api/respond/',
+        url: '/api/response/',
         language: {
             comment: '评论',
             reply: '回复'
@@ -49,6 +49,16 @@ define(function (require, exports, module) {
          * @private
          */
         _init: function () {
+            var the = this;
+
+            the._initNode();
+        },
+
+
+        _initNode: function () {
+            var the = this;
+            var $parent = the._$parent;
+
 
         }
     });

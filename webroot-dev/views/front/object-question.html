@@ -8,6 +8,8 @@
 <head lang="zh-cn">
     {{include ../include/meta.html}}
     {{include ./include/meta.html}}
+    <script>window['-page-']='{{page}}';</script>
+    <script>window['-object-']='{{object.id}}';</script>
 </head>
 <body ontouchstart="" class="p-post p-post-opinion">
 {{include ./include/nav.html}}
@@ -17,6 +19,8 @@
     <!--主-->
     <div class="col-md-9 g-main">
         {{include ./include/object/question-body.html}}
+
+        <div id="response"></div>
     </div>
     <!--/主-->
     <!--副-->
@@ -29,5 +33,9 @@
 </div>
 
 {{include ./include/footer.html}}
+
+<script src="/static/js/libs/coolie.min.js" data-main="./front/object.js"></script>
+<script src="/static/js/libs/coolie-config.js"></script>
+
 </body>
 </html>

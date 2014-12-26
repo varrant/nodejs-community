@@ -18,6 +18,7 @@
 - window['-refresh-'] 登录之后是否刷新【部分页面】
 - window['-section-'] 页面所在版块ID【部分页面】
 - window['-id-'] 详情页ID【部分页面】
+- window['-page-'] 分页值【部分页面】
 
 
 # HTTP 状态值
