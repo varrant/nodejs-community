@@ -118,8 +118,6 @@ define(function (require, exports, module) {
                     }
 
                     var data = {
-                        loading: false,
-                        error: null,
                         count: json.data,
                         language: options.language
                     };
@@ -128,6 +126,7 @@ define(function (require, exports, module) {
                         page: options.query.page,
                         max: Math.ceil(json.data.comment / options.query.limit)
                     };
+                    the._count = json.data;
 
                     var nodes = selector.query('.j-flag', the._$wrap);
 
@@ -218,8 +217,6 @@ define(function (require, exports, module) {
                     }
 
                     the._renderList({
-                        loading: false,
-                        error: null,
                         list: json.data
                     });
 
@@ -269,6 +266,8 @@ define(function (require, exports, module) {
             }
 
             the._posting = true;
+            the._$respondComment.disabled = true;
+            the._$respondReply.disabled = true;
             ajax({
                 url: options.url.post,
                 method: 'post',
@@ -278,11 +277,22 @@ define(function (require, exports, module) {
                     if (json.code !== 200) {
                         return alert(json);
                     }
+
+                    the._$respondContent.value = '';
+                    the._$respondContent.focus();
+                    the._appendComment(json.data);
                 })
                 .on('error', alert)
                 .on('finish', function () {
                     the._posting = false;
+                    the._$respondComment.disabled = false;
+                    the._$respondReply.disabled = false;
                 });
+        },
+
+
+        _increaseCount: function (type) {
+
         },
 
 
@@ -296,6 +306,21 @@ define(function (require, exports, module) {
             var node = modification.parse(html)[0];
 
             modification.insert(node, the._$listParent, 'beforeend');
+        },
+
+
+        /**
+         * 追加回复
+         * @param $parent
+         * @param data
+         * @private
+         */
+        _appendReply: function ($parent, data) {
+            var the = this;
+            var html = tplList.render(data);
+            var node = modification.parse(html)[0];
+
+            modification.insert(node, $parent, 'beforeend');
         }
     });
 

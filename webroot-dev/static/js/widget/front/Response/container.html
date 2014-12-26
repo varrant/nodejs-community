@@ -1,11 +1,3 @@
-{{if loading}}
-    <div class="alien-ui-response-loading">加载中……</div>
-{{else if error}}
-    <div class="alien-ui-response-error">
-        <p>{{=error}}</p>
-        <div class="f-text-center"><button class="btn btn-danger j-reload-container">重新加载</button></div>
-    </div>
-{{else}}
 <div class="alien-ui-response-title card-title"><i class="i i-comments"></i>{{language.comment}}与{{language.reply}}
     <small class="card-subtitle s-muted">{{count.comment}}个{{language.comment}}，{{count.reply}}个{{language.reply}}</small>
 </div>
@@ -17,4 +9,3 @@
 
     <div class="j-flag"></div>
 </div>
-{{/if}}

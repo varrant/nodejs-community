@@ -1,41 +1,35 @@
-{{if loading}}
-<li class="alien-ui-response-list-item">加载中……</li>
-{{else if error}}
-<li class="alien-ui-response-list-item">{{=error}}</li>
-{{else if list}}
-    {{list list as item}}
-    <li class="alien-ui-response-list-item">
-        <div class="f-clearfix alien-ui-response-list-main">
-            <div class="alien-ui-response-list-avatar f-left">
-                <a href="#"><img src="/static/img/avatar.png" alt="avatar" width="50" height="50"/></a>
-            </div>
-            <div class="alien-ui-response-list-body">
-                <ul class="alien-ui-response-list-meta s-light f-list-left">
-                    <li><a href="#"><i class="i i-user"></i>云淡然</a></li>
-                    <li><i class="i i-clock-o"></i> 2014-12-12 21:21:11</li>
-                </ul>
-
-                <div class="alien-ui-response-list-content">{{item.content}}</div>
-
-                <ul class="alien-ui-response-list-meta alien-ui-response-list-action s-light f-list-left">
-                    <li>
-                        <button class="btn btn-success btn-xs"><i class="i i-plus"></i>补充<span
-                                class="alien-ui-response-list-number">99,123</span></button>
-                    </li>
-                    <li>
-                        <button class="btn btn-primary btn-xs"><i class="i i-thumbs-up"></i>赞同<span
-                                class="alien-ui-response-list-number">99,123</span></button>
-                    </li>
-                    <li>
-                        <button class="btn btn-warning btn-xs active" readonly><i
-                                class="i i-check"></i>采纳回答</button>
-                    </li>
-                </ul>
-            </div>
+{{list list as item}}
+<li class="alien-ui-response-list-item">
+    <div class="f-clearfix alien-ui-response-list-main">
+        <div class="alien-ui-response-list-avatar f-left">
+            <a href="#"><img src="/static/img/avatar.png" alt="avatar" width="50" height="50"/></a>
         </div>
-        {{if item.type === "primary"}}
-        <div class="alien-ui-response-list-children"></div>
-        {{/if}}
-    </li>
-    {{/list}}
-{{/if}}
+        <div class="alien-ui-response-list-body">
+            <ul class="alien-ui-response-list-meta s-light f-list-left">
+                <li><a href="#"><i class="i i-user"></i>云淡然</a></li>
+                <li><i class="i i-clock-o"></i> 2014-12-12 21:21:11</li>
+            </ul>
+
+            <div class="alien-ui-response-list-content">{{item.content}}</div>
+
+            <ul class="alien-ui-response-list-meta alien-ui-response-list-action s-light f-list-left">
+                <li>
+                    <button class="btn btn-success btn-xs"><i class="i i-plus"></i>补充<span
+                            class="alien-ui-response-list-number">99,123</span></button>
+                </li>
+                <li>
+                    <button class="btn btn-primary btn-xs"><i class="i i-thumbs-up"></i>赞同<span
+                            class="alien-ui-response-list-number">99,123</span></button>
+                </li>
+                <li>
+                    <button class="btn btn-warning btn-xs active" readonly><i
+                            class="i i-check"></i>采纳回答</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {{if item.type === "primary"}}
+    <div class="alien-ui-response-list-children"></div>
+    {{/if}}
+</li>
+{{/list}}
