@@ -33,12 +33,12 @@ exports.comment = function (sourceEngineer, objectAuthor, object) {
     var notiComment = configs.notification.comment;
     var subject = notiComment.subject;
     var content = notiComment.template.render({});
-    email.send(objectAuthor.nickname, objectAuthor.email, subject, content);
+    email.send(objectAuthor, subject, content);
 };
 
 
 /**
- * 评论通知
+ * 回复通知
  * @param sourceEngineer {Object} 评论人
  * @param targetEngineer {Object} object 作者
  * @param object {Object} object
@@ -56,6 +56,6 @@ exports.reply = function (sourceEngineer, commentAuthor, comment) {
     var notiReply = configs.notification.reply;
     var subject = notiReply.subject;
     var content = notiReply.template.render({});
-    email.send(commentAuthor.nickname, commentAuthor.email, subject, content);
+    email.send(commentAuthor, subject, content);
 };
 

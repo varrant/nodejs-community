@@ -29,11 +29,11 @@ module.exports = function(app){
             template:_template('apply.html')
         },
         follow: {
-            subject: '新评论',
+            subject: '关注了你',
             template:_template('follow.html')
         },
         at: {
-            subject: '提到你了',
+            subject: '提到了你',
             template:_template('at.html')
         },
         score: {
