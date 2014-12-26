@@ -20,7 +20,7 @@ define(function (require, exports, module) {
     var tpl = new Template(template);
     var defaults = {
         id: '',
-        avatar: '',
+        avatar: '/static/img/avatar.png',
         link: '#',
         text: 'markdown 编辑器使用帮助',
         placeholder: '说点什么吧',

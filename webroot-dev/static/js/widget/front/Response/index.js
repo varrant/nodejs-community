@@ -46,8 +46,8 @@ define(function (require, exports, module) {
         respond: {
             placeholder: '期待你的回答',
             link: '#',
-            text: '',
-            avatar: ''
+            text: 'markdown 编辑器使用帮助',
+            avatar: '/static/img/avatar.png'
         }
     };
     var Response = generator({
