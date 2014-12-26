@@ -8,6 +8,7 @@
 
 var response = require('../../services/').response;
 var filter = require('../../utils/').filter;
+var howdo = require('howdo');
 
 module.exports = function (app) {
     var exports = {};
@@ -29,7 +30,6 @@ module.exports = function (app) {
         var conditions = {
             object: objectId
         };
-
 
         howdo
             // 评论数量
