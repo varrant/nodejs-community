@@ -7,8 +7,10 @@
 'use strict';
 
 var column = require('../models/').column;
+var engineer = require('./engineer.js');
 var dato = require('ydr-util').dato;
 var howdo = require('howdo');
+var log = require('ydr-log');
 
 
 /**
@@ -97,7 +99,14 @@ exports.createOne = function (author, data, callback) {
             column.createOne(data2, next);
         })
         // 异步串行
-        .follow(callback);
+        .follow(function (err, doc) {
+            callback(err, doc);
+
+            if (!err && doc) {
+                // 更新 engineer.columnCount
+                engineer.increaseColumnCount({_id: author.id}, 1, log.holdError);
+            }
+        });
 };
 
 
@@ -144,7 +153,6 @@ exports.findOneAndUpdate = function (author, conditions, data, callback) {
                 }
 
                 if (doc) {
-                    console.log(doc);
                     err = new Error('专栏 URI 重复');
                     return next(err);
                 }
