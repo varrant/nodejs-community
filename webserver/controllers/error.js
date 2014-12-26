@@ -29,7 +29,7 @@ module.exports = function (app) {
                 data: err.data || null
             });
         } else {
-            res.status(500).render('server-error.html', {
+            res.status(err.code || 500).render('server-error.html', {
                 title: '500',
                 redirect: err.redirect,
                 error: err.message
