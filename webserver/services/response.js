@@ -8,13 +8,12 @@
 
 
 var configs = require('../../configs/');
-var notiComment = configs.notification.comment;
-var notiReply = configs.notification.reply;
 var response = require('../models/').response;
 var object = require('./object.js');
 var engineer = require('./engineer.js');
 var notification = require('./notification.js');
 var email = require('./email.js');
+var notice = require('./notice.js');
 var dato = require('ydr-util').dato;
 var howdo = require('howdo');
 var log = require('ydr-log');
@@ -173,19 +172,8 @@ function _noticeObjectAuthor(source, responseObject) {
                 return log.holdError(err);
             }
 
-            // 通知 object 作者
-            notification.createOne({
-                type: 'comment',
-                source: source,
-                target: doc.id,
-                object: responseObject.id
-            }, log.holdError);
-
-            var subject = notiComment.subject;
-            var content = notiComment.template.render({});
-
-            // 邮件 object 作者
-            email.send(doc.nickname, doc.email, subject, content);
+            // 评论通知
+            notice.comment(source, doc, responseObject);
         });
 }
 
@@ -215,19 +203,8 @@ function _noticeCommentAuthor(source, parentResponse) {
                 return log.holdError(err);
             }
 
-            // 通知 object 作者
-            notification.createOne({
-                type: 'comment',
-                source: source,
-                target: doc.id,
-                object: parentResponse.id
-            }, log.holdError);
-
-            var subject = notiReply.subject;
-            var content = notiReply.template.render({});
-
-            // 邮件 object 作者
-            email.send(doc.nickname, doc.email, subject, content);
+            // 回复通知
+            notice.reply(source, doc, parentResponse);
         });
 }
 

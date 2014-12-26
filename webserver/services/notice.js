@@ -14,12 +14,18 @@ var log = require('ydr-log');
 var email = require('./email.js');
 
 
-exports.responsePrimary = function (sourceEngineer, targetEngineer, object) {
+/**
+ * 评论通知
+ * @param sourceEngineer {Object} 评论人
+ * @param targetEngineer {Object} object 作者
+ * @param object {Object} object
+ */
+exports.comment = function (sourceEngineer, objectAuthor, object) {
     // 1. 站内通知
     notification.createOne({
         type: 'comment',
         source: sourceEngineer.id,
-        target: targetEngineer.id,
+        target: objectAuthor.id,
         object: object.id
     }, log.holdError);
 
@@ -27,12 +33,29 @@ exports.responsePrimary = function (sourceEngineer, targetEngineer, object) {
     var notiComment = configs.notification.comment;
     var subject = notiComment.subject;
     var content = notiComment.template.render({});
-    email.send(targetEngineer.nickname, targetEngineer.email, subject, content);
+    email.send(objectAuthor.nickname, objectAuthor.email, subject, content);
 };
 
 
+/**
+ * 评论通知
+ * @param sourceEngineer {Object} 评论人
+ * @param targetEngineer {Object} object 作者
+ * @param object {Object} object
+ */
+exports.reply = function (sourceEngineer, commentAuthor, comment) {
+    // 1. 站内通知
+    notification.createOne({
+        type: 'reply',
+        source: sourceEngineer.id,
+        target: commentAuthor.id,
+        response: comment.id
+    }, log.holdError);
 
-exports.responseSecondary = function () {
+    // 2. 邮件通知
     var notiReply = configs.notification.reply;
+    var subject = notiReply.subject;
+    var content = notiReply.template.render({});
+    email.send(commentAuthor.nickname, commentAuthor.email, subject, content);
 };
 
