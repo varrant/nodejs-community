@@ -27,7 +27,10 @@ module.exports = function (app, ctrlApi) {
 
 
     // response
-    app.get('/api/response/', ctrlApi.response.get);
+    app.get('/api/response/comment/', ctrlApi.response.getPrimary);
+    app.get('/api/response/reply/', ctrlApi.response.getSecondary);
+    app.post('/api/response/comment/', ctrlApi.response.postPrimary);
+    app.post('/api/response/reply/', ctrlApi.response.postSecondary);
 
 
     // oss

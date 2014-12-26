@@ -18,7 +18,7 @@ validator.pushRule({
     type: 'string',
     alias: '评论类型',
     required: true,
-    inArray: ['primary', 'secondary']
+    inArray: ['comment', 'reply']
 });
 
 validator.pushRule({
