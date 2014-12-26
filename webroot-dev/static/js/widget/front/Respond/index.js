@@ -84,6 +84,38 @@ define(function (require, exports, module) {
                     the.emit('submit', the._$content.value.trim());
                 }
             });
+        },
+
+
+        /**
+         * 设置不可用
+         */
+        disable: function () {
+            var the = this;
+
+            the._$content.disabled = true;
+            the._$submit.disabled = true;
+        },
+
+
+        /**
+         * 设置可用
+         */
+        enable: function () {
+            var the = this;
+
+            the._$content.disabled = false;
+            the._$submit.disabled = false;
+        },
+
+
+        /**
+         * 重置
+         */
+        reset: function () {
+            var the = this;
+
+            the._editor.setContent('');
         }
     });
 

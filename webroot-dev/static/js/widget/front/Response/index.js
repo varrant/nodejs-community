@@ -18,16 +18,15 @@ define(function (require, exports, module) {
     var alert = require('../../../widget/common/alert.js');
     var loading = require('../../../widget/common/loading.js');
     var Pagination = require('../../../alien/ui/Pagination/');
+    var Respond = require('../Respond/');
     var Template = require('../../../alien/libs/Template.js');
     var templateWrap = require('html!./wrap.html');
     var templateContainer = require('html!./container.html');
     var templateList = require('html!./list.html');
-    var templateRespond = require('html!./respond.html');
     var style = require('css!./style.css');
     var tplWrap = new Template(templateWrap);
     var tplContainer = new Template(templateContainer);
     var tplList = new Template(templateList);
-    var tplRespond = new Template(templateRespond);
     var defaults = {
         url: {
             // get/post
@@ -46,7 +45,8 @@ define(function (require, exports, module) {
         },
         respond: {
             placeholder: '期待你的回答',
-            markdown: '#'
+            link: '#',
+            text: ''
         }
     };
     var Response = generator({
@@ -137,24 +137,11 @@ define(function (require, exports, module) {
          */
         _initRespond: function () {
             var the = this;
-            var html = tplRespond.render(dato.extend({}, the._options.respond, the._options.language));
-            var node = modification.parse(html)[0];
+            var options = the._options;
+            var data = dato.extend({}, options.respond, options.language);
 
-            the._$respond = node;
-            modification.insert(the._$respond, the._$respondParent, 'beforeend');
-
-            var nodes = selector.query('.j-flag', the._$respond);
-
-            the._$respondContent = nodes[0];
-            the._$respondCancel = nodes[1];
-            the._$respondComment = nodes[2];
-            the._$respondReply = nodes[3];
-            event.on(the._$respondComment, 'click', function () {
-                the._post();
-            });
-            event.on(the._$respondReply, 'click', function () {
-                the._post(the._respondParent);
-            });
+            the._respondCOmment = new Respond(the._$respondParent, data);
+            the._respondCOmment.on('submit', the._post.bind(the));
         },
 
 
@@ -227,7 +214,7 @@ define(function (require, exports, module) {
          * 提交评论/回复
          * @private
          */
-        _post: function (parent) {
+        _post: function (content) {
             var the = this;
 
             if (the._posting) {
@@ -236,11 +223,11 @@ define(function (require, exports, module) {
 
             var options = the._options;
             var data = {
-                content: the._$respondContent.value,
+                content: content,
                 object: options.query.object
             };
 
-            if (parent) {
+            if (the._replyParent) {
                 data.parent = parent;
             }
 
