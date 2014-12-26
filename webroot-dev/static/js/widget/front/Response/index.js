@@ -40,13 +40,14 @@ define(function (require, exports, module) {
         },
         query: {
             object: '',
-            limit: 10,
+            limit: 2,
             page: 1
         },
         respond: {
             placeholder: '期待你的回答',
             link: '#',
-            text: ''
+            text: '',
+            avatar: ''
         }
     };
     var Response = generator({
@@ -140,8 +141,17 @@ define(function (require, exports, module) {
             var options = the._options;
             var data = dato.extend({}, options.respond, options.language);
 
-            the._respondCOmment = new Respond(the._$respondParent, data);
-            the._respondCOmment.on('submit', the._post.bind(the));
+            the._respondComment = new Respond(the._$respondParent, data);
+            the._respondComment.on('submit', function (content) {
+                the._respondComment.disable();
+                the._post(content, function (err) {
+                    the._respondComment.enable();
+
+                    if (!err) {
+                        the._respondComment.reset();
+                    }
+                });
+            });
         },
 
 
@@ -212,15 +222,12 @@ define(function (require, exports, module) {
 
         /**
          * 提交评论/回复
+         * @param content
+         * @param callback
          * @private
          */
-        _post: function (content) {
+        _post: function (content, callback) {
             var the = this;
-
-            if (the._posting) {
-                return;
-            }
-
             var options = the._options;
             var data = {
                 content: content,
@@ -228,12 +235,9 @@ define(function (require, exports, module) {
             };
 
             if (the._replyParent) {
-                data.parent = parent;
+                data.parent = the._replyParent;
             }
 
-            the._posting = true;
-            the._$respondComment.disabled = true;
-            the._$respondReply.disabled = true;
             ajax({
                 url: options.url.post,
                 method: 'post',
@@ -241,11 +245,10 @@ define(function (require, exports, module) {
             })
                 .on('success', function (json) {
                     if (json.code !== 200) {
+                        callback(new Error(json.message));
                         return alert(json);
                     }
 
-                    the._$respondContent.value = '';
-                    the._$respondContent.focus();
                     the._appendComment(json.data);
 
                     if (json.data.parent) {
@@ -255,12 +258,11 @@ define(function (require, exports, module) {
                     }
 
                     the._increaseCount();
+                    callback();
                 })
-                .on('error', alert)
-                .on('finish', function () {
-                    the._posting = false;
-                    the._$respondComment.disabled = false;
-                    the._$respondReply.disabled = false;
+                .on('error', function (err) {
+                    callback(err);
+                    alert(err);
                 });
         },
 
