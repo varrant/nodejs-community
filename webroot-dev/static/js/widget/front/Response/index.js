@@ -297,7 +297,9 @@ define(function (require, exports, module) {
          */
         _appendComment: function (data) {
             var the = this;
-            var html = tplList.render(data);
+            var html = tplList.render({
+                list: [data]
+            });
             var node = modification.parse(html)[0];
 
             modification.insert(node, the._$listParent, 'beforeend');
