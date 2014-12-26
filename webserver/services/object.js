@@ -135,11 +135,12 @@ exports.createOne = function (author, data, callback) {
             if (!err && doc) {
                 // 更新 section.objectCount
                 section.increaseObjectCount({_id: data.section}, 1, log.holdError);
+
                 // 更新 category.objectCount
                 category.increaseObjectCount({_id: data.category}, 1, log.holdError);
 
-                // 更新 column.objectCount
                 if (data.column) {
+                    // 更新 column.objectCount
                     column.increaseObjectCount({_id: data.column}, 1, log.holdError);
                 }
 
@@ -150,6 +151,7 @@ exports.createOne = function (author, data, callback) {
 
                 // 更新 engineer.sectionStatistics
                 engineer.increaseSectionStatistics({_id: author.id}, data.section, 1, log.holdError);
+
                 // 更新 engineer.categoryStatistics
                 engineer.increaseCategoryStatistics({_id: author.id}, data.category, 1, log.holdError);
 
@@ -157,6 +159,9 @@ exports.createOne = function (author, data, callback) {
                 if (data.column) {
                     engineer.increaseColumnStatistics({_id: author.id}, data.column, 1, log.holdError);
                 }
+
+                // 更新 engineer.objectCount
+                engineer.increaseObjectCount({_id: doc.author}, 1, log.holdError);
             }
         });
 };
