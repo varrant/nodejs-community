@@ -14,6 +14,7 @@ module.exports = {
     engineer: require('./engineer.js'),
     interactive: require('./interactive.js'),
     label: require('./label.js'),
+    notice: require('./notice.js'),
     notification: require('./notification.js'),
     object: require('./object.js'),
     permission: require('./permission.js'),

@@ -10,19 +10,24 @@
 
 var configs = require('../../configs/');
 var notification = require('./notification.js');
-
+var log = require('ydr-log');
+var email = require('./email.js');
 
 
 exports.responsePrimary = function (sourceEngineer, targetEngineer, object) {
-    var notiComment = configs.notification.comment;
-
-    // 1. 创建通知
+    // 1. 站内通知
     notification.createOne({
+        type: 'comment',
         source: sourceEngineer.id,
         target: targetEngineer.id,
-        object: 
-    });
+        object: object.id
+    }, log.holdError);
 
+    // 2. 邮件通知
+    var notiComment = configs.notification.comment;
+    var subject = notiComment.subject;
+    var content = notiComment.template.render({});
+    email.send(targetEngineer.nickname, targetEngineer.email, subject, content);
 };
 
 
