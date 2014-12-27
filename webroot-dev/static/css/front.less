@@ -264,12 +264,27 @@ nav {
     font-size: 20px;
   }
 
-  .card-title.s-bg-success{
-    border-color: #C3E0B7;
+  .card-has-accepted,
+  .card-un-accepted{
+    display: none;
   }
 
-  .card-title.s-bg-danger{
+  .card-title.has-accepted{
+    background: #E4F4DE;
+    border-color: #C3E0B7;
+
+    .card-has-accepted{
+      display: inline-block;
+    }
+  }
+
+  .card-title.un-accepted{
+    background: #FDE2E2;
     border-color: #E7B7B7;
+
+    .card-un-accepted{
+      display: inline-block;
+    }
   }
 
   .card-subtitle {

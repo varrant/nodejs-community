@@ -179,6 +179,10 @@ module.exports = function (app) {
                 return next(err);
             }
 
+            var changeId = oldDoc && oldDoc.acceptResponse !== newDoc.acceptResponse
+                ? oldDoc.acceptResponse
+                : 0;
+
             res.json({
                 code: 200,
                 data: oldDoc.acceptResponse

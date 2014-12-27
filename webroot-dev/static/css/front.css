@@ -196,11 +196,23 @@ nav .nav-right li:last-child {
   padding: 20px;
   font-size: 20px;
 }
-.m-card .card-title.s-bg-success {
+.m-card .card-has-accepted,
+.m-card .card-un-accepted {
+  display: none;
+}
+.m-card .card-title.has-accepted {
+  background: #E4F4DE;
   border-color: #C3E0B7;
 }
-.m-card .card-title.s-bg-danger {
+.m-card .card-title.has-accepted .card-has-accepted {
+  display: inline-block;
+}
+.m-card .card-title.un-accepted {
+  background: #FDE2E2;
   border-color: #E7B7B7;
+}
+.m-card .card-title.un-accepted .card-un-accepted {
+  display: inline-block;
 }
 .m-card .card-subtitle {
   display: inline;

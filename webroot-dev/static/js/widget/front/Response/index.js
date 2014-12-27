@@ -445,12 +445,14 @@ define(function (require, exports, module) {
                     if (method === 'delete') {
                         the._acceptItem(options.acceptResponse, false);
                         options.acceptResponse = '';
+                        the.emit('accept', false);
                     }
                     // 设置最佳
                     else {
                         options.acceptResponse = id;
                         the._acceptItem(id, true);
                         the._acceptItem(json.data, false);
+                        the.emit('accept', true);
                     }
                 })
                 .on('error', alert)
