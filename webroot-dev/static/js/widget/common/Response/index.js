@@ -15,11 +15,11 @@ define(function (require, exports, module) {
     var event = require('../../../alien/core/event/base.js');
     var dato = require('../../../alien/util/dato.js');
     var qs = require('../../../alien/util/querystring.js');
-    var ajax = require('../../../widget/common/ajax.js');
-    var alert = require('../../../widget/common/alert.js');
-    var loading = require('../../../widget/common/loading.js');
-    var Pagination = require('../../../alien/ui/Pagination/');
-    var Respond = require('../Respond/');
+    var ajax = require('../ajax.js');
+    var alert = require('../alert.js');
+    var loading = require('../loading.js');
+    var Pagination = require('../../../alien/ui/Pagination/index');
+    var Respond = require('../Respond/index');
     var Template = require('../../../alien/libs/Template.js');
     var templateWrap = require('html!./wrap.html');
     var templateContainer = require('html!./container.html');
@@ -507,7 +507,7 @@ define(function (require, exports, module) {
         }
     });
 
-    require('../../common/Template-filter.js');
+    require('../Template-filter.js');
     modification.importStyle(style);
     module.exports = Response;
 });
