@@ -6,9 +6,9 @@
 
 'use strict';
 
+var xss = require('ydr-util').xss;
 var Validator = require('ydr-validator');
 var regexp = require('../utils/').regexp;
-var filter = require('../utils/').filter;
 var validator = new Validator();
 // 标题: 中英文、数字、空格、下划线、短横线、中英文逗号
 var REG_TITLE = regexp.title(5, 100);
@@ -39,7 +39,7 @@ validator.pushRule({
     maxLength: 200,
     regexp: REG_URI,
     onafter: function (val) {
-        return filter.cleanInput(val, true);
+        return xss.mdSafe(val).replace(/\n/g, '');
     },
     msg: {
         regexp: '标题 URI 仅支持英文、数字以及“-”(短横线)和“_”（下划线）'
@@ -54,8 +54,10 @@ validator.pushRule({
     exist: true,
     maxLength: 1000,
     regexp: REG_INTRODUCTION,
-    onafter: function (val) {
-        return filter.cleanInput(val);
+    onafter: function (val, data) {
+        val = xss.mdSafe(val);
+        data.introductionHTML = xss.mdRender(val);
+        return val;
     },
     msg: {
         regexp: '简介仅支持中英文、数字，以及常用符号'
@@ -70,8 +72,10 @@ validator.pushRule({
     minLength: 10,
     maxLength: 50000,
     regexp: REG_CONTENT,
-    onafter: function (val) {
-        return filter.cleanInput(val);
+    onafter: function (val, data) {
+        val = xss.mdSafe(val);
+        data.contentHTML = xss.mdRender(val);
+        return val;
     },
     msg: {
         regexp: '内容仅支持中英文、数字，以及常用符号'

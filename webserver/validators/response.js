@@ -7,6 +7,7 @@
 'use strict';
 
 
+var xss = require('ydr-util').xss;
 var Validator = require('ydr-validator');
 var validator = new Validator();
 var regexp = require('../utils/').regexp;
@@ -21,8 +22,10 @@ validator.pushRule({
     minLength: 5,
     maxLength: 1000,
     regexp: REG_CONTENT,
-    onafter: function (val) {
-        return filter.cleanInput(val);
+    onafter: function (val, data) {
+        val = xss.mdSafe(val);
+        data.contentHTML = xss.mdRender(val);
+        return val;
     },
     msg: {
         regexp: '内容仅支持中英文、数字，以及常用符号'
