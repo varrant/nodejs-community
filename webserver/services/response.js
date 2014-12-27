@@ -139,7 +139,7 @@ exports.createOne = function (author, data, meta, callback) {
                 // 评论父级
                 if (parentResponse) {
                     // parentResponse response.replyCount
-                    response.increase({_id: parentResponse.id}, 'replyCount', 1, log.holdError);
+                    response.increase({_id: parentResponse.id}, 'replyByCount', 1, log.holdError);
 
                     // parentResponse engineer.replyByCount
                     engineer.increaseReplyByCount({_id: parentResponse.author}, 1, log.holdError);
@@ -184,7 +184,7 @@ exports.agree = function (operator, conditions, callback) {
         // 顺序串行
         .follow(function (err, value) {
             // 写入赞同信息
-            response.increase(conditions, 'agreeCount', value, log.holdError);
+            response.increase(conditions, 'agreeByCount', value, log.holdError);
             callback(err, value);
         });
 };

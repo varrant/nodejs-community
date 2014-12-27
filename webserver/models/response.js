@@ -47,12 +47,12 @@ var schema = new mongoose.Schema({
         default: null
     },
     // 赞同数量
-    agreeCount: {
+    agreeByCount: {
         type: Number,
         default: 0
     },
     // 回复数量
-    replyCount: {
+    replyByCount: {
         type: Number,
         default: 0
     },

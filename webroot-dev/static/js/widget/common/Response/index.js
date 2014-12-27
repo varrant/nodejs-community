@@ -99,7 +99,9 @@ define(function (require, exports, module) {
 
             the._renderContainer();
             ajax({
-                url: options.url.count
+                url: options.url.count + '?' + qs.stringify({
+                    object: options.query.object
+                })
             })
                 .on('success', function (json) {
                     if (json.code !== 200) {
@@ -406,7 +408,6 @@ define(function (require, exports, module) {
 
             modification.insert(node, the._$listParent, 'beforeend');
         },
-
 
 
         /**
