@@ -708,5 +708,6 @@ function _parseError(rules, err) {
             break;
     }
 
+    err.code = 500;
     return err;
 }

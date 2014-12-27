@@ -411,6 +411,36 @@ exports.pushContributor = function (conditions, contributor, callback) {
     object.push(conditions, 'contributors', contributor.id, 5, callback);
 };
 
+
+/**
+ * 采纳/取消采纳 response
+ * @param operator {Object} 文章作者、管理员（19+）都可以
+ * @param conditions
+ * @param responseId
+ * @param boolean
+ * @param callback
+ */
+exports.acceptResponse = function (operator, conditions, responseId, boolean, callback) {
+    howdo
+    // 1. 查找 object
+        .task(function (next) {
+            object.findOne(conditions, next);
+        })
+        // 2. 检查权限
+        .task(function (next, acceptObject) {
+            if(!acceptObject){
+                var err = new Error('该 object 不存在');
+                err.code = 404;
+                return next(err);
+            }
+
+            
+        })
+    // 3. 查找 response
+    // 4. 更新
+    // 异步顺序串行
+
+
 /**
  * 取出两个数组中独有的部分
  * @param arr1
