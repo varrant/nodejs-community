@@ -44,9 +44,6 @@ exports.toggle = function (conditions, boolean, callback) {
 
         var value = 0;
 
-        console.log(newDoc);
-        console.log(oldDoc);
-
         // 当前为 true，以前为否或不存在
         if (newDoc.hasApproved === true && (!oldDoc || oldDoc.hasApproved === false)) {
             value = 1;
