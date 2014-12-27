@@ -27,7 +27,7 @@ module.exports = function (app) {
                 code: err.code || 500,
                 message: err.message,
                 data: err.data || null,
-                redirect: err.redirect
+                redirect: err.redirect || null
             });
         } else {
             res.status(err.code || 500).render('server-error.html', {

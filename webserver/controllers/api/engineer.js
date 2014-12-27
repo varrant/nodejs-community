@@ -33,7 +33,9 @@ module.exports = function (app) {
 
         if (!(req.session && req.session.$github &&
             req.session.$github.accessToken === accessToken)) {
-            return next(new Error('请重新授权操作'));
+            var err = new Error('请重新授权操作');
+            err.redirect = '/engineer/oauth/authorize/';
+            return next(err);
         }
 
         var githubOauth = req.session.$github;

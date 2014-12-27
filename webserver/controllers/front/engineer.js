@@ -57,7 +57,7 @@ module.exports = function (app) {
         }
 
         if (!req.session.$state) {
-            err = new Error('请重新进行授权操作');
+            err = new Error('请重新授权操作');
             err.redirect = '/engineer/oauth/authorize/';
 
             return next(err);
