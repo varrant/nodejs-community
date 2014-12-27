@@ -13,7 +13,9 @@
         nickname: '{{object.author.nickname}}',
         githubLogin: '{{object.author.githubLogin}}'
     };</script>
-    <script>window['-object-']='{{object.id}}';</script>
+    <script>window['-object-']={
+        'id': ''
+    };</script>
 </head>
 <body ontouchstart="" class="p-post p-post-opinion">
 {{include ./include/nav.html}}

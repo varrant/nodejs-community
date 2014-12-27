@@ -139,7 +139,7 @@ module.exports = function (app) {
      * @param type
      * @returns {Function}(req, res, next)
      */
-    exports.getPost = function (section) {
+    exports.getObject = function (section) {
         return function (req, res, next) {
             var uri = req.params.uri;
             var data = {};

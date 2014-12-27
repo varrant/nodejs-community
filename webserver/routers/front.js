@@ -86,7 +86,7 @@ module.exports = function (app, ctrlFront) {
         app.get('/' + uri + '/' + 'on/:label/at/:column/in/:category/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'on/:label/at/:column/in/:category/page/:page/', ctrlFront.main.getList(section));
 
-        app.get('/' + uri + '/' + ':uri.html', ctrlFront.main.getPost(section));
+        app.get('/' + uri + '/' + ':uri.html', ctrlFront.main.getObject(section));
     });
 
 
