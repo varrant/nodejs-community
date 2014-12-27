@@ -19,7 +19,7 @@ module.exports = function (app) {
     exports.login = function (req, res, next) {
         var err;
 
-        if (!req.session.$engineer) {
+        if (!req.session.$engineer || !req.session.$engineer.id) {
             err = new Error('您尚未登录，或登录信息已过期。');
             err.redirect = '/';
             err.code = 401;
