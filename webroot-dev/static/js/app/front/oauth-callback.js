@@ -9,6 +9,7 @@ define(function (require) {
     'use strict';
 
     var ajax = require('../../widget/common/ajax.js');
+    var alert = require('../../widget/common/alert.js');
     var selector = require('../../alien/core/dom/selector.js');
     var page = {};
     var locals = window.locals || {};
@@ -21,6 +22,10 @@ define(function (require) {
             method: 'post',
             data: locals
         }).on('success', function (json) {
+            if(json.code !== 200){
+                return $msg.innerHTML = json.message;
+            }
+
             if (json.data) {
                 if (window.opener && !window.opener['-norefresh-']) {
                     window.opener.location.reload();
@@ -28,6 +33,7 @@ define(function (require) {
 
                 window.close();
             }
+
             $msg.innerHTML = json.message;
         }).on('error', function (err) {
             $msg.innerHTML = err.message;
