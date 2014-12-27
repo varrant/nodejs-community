@@ -153,7 +153,47 @@ exports.createOne = function (author, data, meta, callback) {
 
 
 /**
- * 赞同某条评论
+ * 赞同/取消赞同某条评论
+ * @param operator
+ * @param conditions
+ * @param boolean
+ * @param callback
+ */
+exports.agree = function (operator, conditions, boolean, callback) {
+    howdo
+        // 1. 检测该评论是否存在
+        .task(function (next) {
+            response.findOne(conditions, next);
+        })
+        // 2. 判断用户是否赞同过
+        .task(function (next, doc) {
+            if (!doc) {
+                var err = new Error('该 response 不存在');
+                err.code = 404;
+                return callback(err);
+            }
+
+            interactive.active({
+                operator: operator.id,
+                model: 'response',
+                path: 'agreeCount',
+                response: doc.id,
+                hasApproved: boolean
+            }, next);
+        })
+        // 3. 写入赞同信息
+        .task(function (next, value) {
+            response.increase(conditions, 'agreeCount', value, next);
+        })
+        // 顺序串行
+        .follow(callback);
+};
+
+
+
+
+/**
+ * 采纳/取消采纳某条评论
  * @param operator
  * @param conditions
  * @param boolean

@@ -1,4 +1,4 @@
-# 功能
+# 本地变量
 - app.locals.$config 社区配置
 - app.locals.$setting web 配置
 - app.locals.$section 社区版块

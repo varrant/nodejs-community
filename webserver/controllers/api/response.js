@@ -143,9 +143,45 @@ module.exports = function (app) {
     };
 
     /**
-     * 赞同某条 comment
+     * 取消赞同某条 comment
      */
     exports.agreeCancel = function (req, res, next) {
+        var id = req.body.id;
+
+        response.agree(res.locals.$engineer, {_id: id}, false, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            return res.json({
+                code: 200
+            });
+        });
+    };
+
+
+    /**
+     * 采纳某条 comment
+     */
+    exports.accept = function (req, res, next) {
+        var id = req.body.id;
+
+        response.agree(res.locals.$engineer, {_id: id}, true, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            return res.json({
+                code: 200
+            });
+        });
+    };
+
+
+    /**
+     * 取消某条 comment
+     */
+    exports.acceptCancel = function (req, res, next) {
         var id = req.body.id;
 
         response.agree(res.locals.$engineer, {_id: id}, false, function (err, doc) {
