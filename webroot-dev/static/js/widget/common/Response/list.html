@@ -31,17 +31,19 @@
                     <button class="btn btn-default btn-xs alien-ui-response-agree"><i class="i i-thumbs-up"></i>赞同<span
                             class="alien-ui-response-number">{{item.agreeByCount}}</span></button>
                 </li>
-                {{if engineer.id === author.id && object.acceptByResponse === item.id}}
-                <li class="alien-ui-response-accept-li">
-                    <button class="btn btn-success btn-xs alien-ui-response-accept"
-                            title="点击取消为最佳答案"><i
-                            class="i i-check"></i>取消最佳回答</button>
-                </li>
-                {{else if engineer.id === author.id && item.author.id !== engineer.id}}
-                <li class="alien-ui-response-accept-li">
-                    <button class="btn btn-warning btn-xs alien-ui-response-accept"><i
-                            class="i i-check"></i>采纳回答</button>
-                </li>
+                {{if !item.parent}}
+                    {{if engineer.id === author.id && object.acceptByResponse === item.id}}
+                    <li class="alien-ui-response-accept-li">
+                        <button class="btn btn-success btn-xs alien-ui-response-accept"
+                                title="点击取消为最佳答案"><i
+                                class="i i-check"></i>取消最佳回答</button>
+                    </li>
+                    {{else if engineer.id === author.id && item.author.id !== engineer.id}}
+                    <li class="alien-ui-response-accept-li">
+                        <button class="btn btn-warning btn-xs alien-ui-response-accept"><i
+                                class="i i-check"></i>采纳回答</button>
+                    </li>
+                    {{/if}}
                 {{/if}}
             </ul>
         </div>
