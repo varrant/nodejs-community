@@ -197,6 +197,11 @@ define(function (require, exports, module) {
         },
 
 
+        /**
+         * 定点滚动
+         * @param $target
+         * @private
+         */
         _scrollTo: function ($target) {
             var top = attribute.top($target);
 
@@ -391,6 +396,7 @@ define(function (require, exports, module) {
             var node = modification.parse(html)[0];
 
             modification.insert(node, $parent, 'beforeend');
+            the._scrollTo(node);
         },
 
 

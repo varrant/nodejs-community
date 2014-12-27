@@ -117,7 +117,7 @@ module.exports = function (app) {
                 })
                 // 列表
                 .task(function (done) {
-                    options.populate = ['author'];
+                    options.populate = ['author', 'contributors'];
                     object.find(conditions, options, done);
                 })
                 // 异步并行
