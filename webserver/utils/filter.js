@@ -7,6 +7,7 @@
 'use strict';
 
 var dato = require('ydr-util').dato;
+var typeis = require('ydr-util').typeis;
 var maxValue = 1 << 53;
 
 
@@ -60,6 +61,10 @@ var REG_LINE = /[\n\r]/g;
  * @returns {string}
  */
 exports.cleanInput = function (content, isOneLine) {
+    if (typeis(content) === 'undefined') {
+        return '';
+    }
+
     // 去除空白
     content = content.replace(REG_SPACE, ' ');
     // 去除多余空行
