@@ -31,7 +31,7 @@ define(function (require, exports, module) {
     var tplList = new Template(templateList);
     var alienClass = 'alien-ui-response';
     var defaults = {
-        loading: '<div class="alert f-text-center"><div class="f-loading">加载中……</div></div>',
+        loading: '<div class="alien-ui-response-loading"><div class="f-loading">加载中……</div></div>',
         url: {
             list: '/api/response/list/',
             post: '/admin/api/response/',
@@ -130,7 +130,7 @@ define(function (require, exports, module) {
                     the._$paginationParent = nodes[2];
                     the._$commentByCount = selector.query('.' + commentByCountClass);
                     the._$replyByCount = selector.query('.' + replyByCountClass);
-                    the._getComment();
+                    the._ajaxComment();
                     the._initEvent();
                     the._increaseCount();
                 })
@@ -205,28 +205,6 @@ define(function (require, exports, module) {
         },
 
 
-        /**
-         * 获取评论
-         * @private
-         */
-        _getComment: function () {
-            var the = this;
-
-            if (!the._readyComment) {
-                the._readyComment = true;
-                the._initRespond(the._$respondParent);
-                the._pagination = new Pagination(the._$paginationParent, the._paginationOptions);
-                the._pagination.on('change', function (page) {
-                    the._scrollTo(the._$listParent);
-                    the._options.query.page = page;
-                    the._getComment();
-                });
-            }
-
-            the._ajaxComment();
-        },
-
-
         _scrollTo: function ($target) {
             var top = attribute.top($target);
 
@@ -262,7 +240,9 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
-                    the._count.comment = json.count;
+                    var data = json.data;
+
+                    the._count.comment = data.count;
 
                     // 渲染分页
                     if (the._pagination) {
@@ -274,10 +254,21 @@ define(function (require, exports, module) {
                     }
 
                     the._renderComment(dato.extend({
-                        list: json.data.list
+                        list: data.list
                     }, options.list, {
                         type: 'comment'
                     }));
+
+                    if (!the._readyComment) {
+                        the._readyComment = true;
+                        the._initRespond(the._$respondParent);
+                        the._pagination = new Pagination(the._$paginationParent, the._paginationOptions);
+                        the._pagination.on('change', function (page) {
+                            the._scrollTo(the._$listParent);
+                            the._options.query.page = page;
+                            the._ajaxComment();
+                        });
+                    }
                 })
                 .on('error', alert)
                 .on('finish', the._ajaxFinish.bind(the));
@@ -358,12 +349,12 @@ define(function (require, exports, module) {
                     }
 
                     json.data.author = options.list.engineer;
-                    the._appendComment(json.data);
 
                     if (json.data.parent) {
                         the._count.reply++;
                     } else {
                         the._count.comment++;
+                        the._appendComment(json.data);
                     }
 
                     the._increaseCount();
@@ -510,8 +501,6 @@ define(function (require, exports, module) {
                 $listParent = the._replyMap[id].$listParent = nodes[0];
                 $pagerParent = nodes[1];
                 $contentParent = nodes[2];
-                the._replyMap[id].pager = the._initRespond($contentParent);
-                the._replyMap[id].respond = the._initRespond($contentParent);
             }
 
             the._renderReply($listParent);
@@ -528,11 +517,21 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
+                    var data = json.data;
+
                     the._renderReply($listParent, dato.extend({
-                        list: json.data
+                        list: data.list
                     }, options.list, {
                         type: 'reply'
                     }));
+
+                    if (!the._replyMap[id].pager) {
+                        the._replyMap[id].pager = new Pager($pagerParent, {
+                            page: 1,
+                            max: Math.ceil(data.count / options.query.limit)
+                        });
+                        the._replyMap[id].respond = the._initRespond($contentParent);
+                    }
                 })
                 .on('error', alert)
                 .on('finish', the._ajaxFinish.bind(the));

@@ -1,4 +1,8 @@
 @charset "utf-8";
+.alien-ui-response-loading{
+    padding: 20px;
+    text-align: center;
+}
 .alien-ui-response-title {
     position: relative;
     padding: 20px;
@@ -127,5 +131,6 @@
 }
 
 .alien-ui-response-children .alien-ui-respond {
+    margin-top: 20px;
     margin-bottom: -21px;
 }

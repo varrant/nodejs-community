@@ -107,22 +107,22 @@ exports.createOne = function (author, data, meta, callback) {
             });
         })
         // 顺序串行
-        .follow(function (err, responseObject, parentResponse, response) {
-            callback(err, response);
+        .follow(function (err, responseObject, parentResponse, doc) {
+            callback(err, doc);
 
-            if (!err && response) {
+            if (!err && doc) {
                 // object.commentByCount
-                if (!response.parent) {
-                    object.increaseCommentByCount({_id: response.object}, 1, log.holdError);
+                if (!doc.parent) {
+                    object.increaseCommentByCount({_id: doc.object}, 1, log.holdError);
                 }
                 // object.replyByCount
                 else {
-                    object.increaseReplyByCount({_id: response.object}, 1, log.holdError);
+                    object.increaseReplyByCount({_id: doc.object}, 1, log.holdError);
                 }
 
 
                 // engineer.commentCount
-                if (!response.parent) {
+                if (!doc.parent) {
                     engineer.increaseCommentCount({_id: author.id}, 1, log.holdError);
                 }
                 // engineer.replyCount
@@ -134,7 +134,7 @@ exports.createOne = function (author, data, meta, callback) {
                 _noticeObjectAuthor(author, responseObject);
 
                 // 推入 object 的 contributors
-                object.pushContributor({_id: response.object}, author, log.holdError);
+                object.pushContributor({_id: doc.object}, author, log.holdError);
 
                 // 评论父级
                 if (parentResponse) {

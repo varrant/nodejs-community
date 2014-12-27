@@ -21,11 +21,11 @@
             <ul class="alien-ui-response-meta alien-ui-response-action s-light f-list-left">
                 <li>
                     <button class="btn btn-primary btn-xs alien-ui-response-reply"><i class="i i-reply"></i>回复<span
-                            class="alien-ui-response-number">{{item.replyCount}}</span></button>
+                            class="alien-ui-response-number">{{item.replyByCount}}</span></button>
                 </li>
                 <li>
                     <button class="btn btn-default btn-xs alien-ui-response-agree"><i class="i i-thumbs-up"></i>赞同<span
-                            class="alien-ui-response-number">{{item.agreeCount}}</span></button>
+                            class="alien-ui-response-number">{{item.agreeByCount}}</span></button>
                 </li>
                 {{if engineer.id === author.id && object.acceptResponse === item.id}}
                 <li class="alien-ui-response-accept-li">
