@@ -622,7 +622,7 @@ define(function (require, exports, module) {
             var options = the._options;
             var $ele = eve.target;
             var id = the._getResponseId($ele);
-            var method = options.acceptResponse === id ? 'delete' : 'post';
+            var method = options.acceptByResponse === id ? 'delete' : 'post';
 
             if (the._isAjaxing) {
                 return alert('正忙，请稍后再试');

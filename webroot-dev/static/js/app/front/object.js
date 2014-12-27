@@ -31,7 +31,7 @@ define(function (require, exports, module) {
                 id: window['-object-'].id,
                 avatar: window['-engineer-'].avatar
             },
-            acceptResponse: window['-object-'].acceptResponse
+            acceptByResponse: window['-object-'].acceptByResponse
         });
 
         res.on('accept', function (boolean) {

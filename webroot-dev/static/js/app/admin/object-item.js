@@ -61,7 +61,7 @@ define(function (require, exports, module) {
                 object: object
             },
             respond: null,
-            acceptResponse: object.acceptResponse
+            acceptByResponse: object.acceptByResponse
         });
     };
 

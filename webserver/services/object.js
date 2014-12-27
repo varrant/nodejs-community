@@ -483,12 +483,15 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
         })
         // 4. 更新
         .task(function (next, acceptObject, acceptResponse) {
+            if (acceptObject.acceptResponse &&
+                acceptObject.acceptResponse.toString() === acceptResponse.id.toString()) {
+                return next();
+            }
+
             object.findOneAndUpdate(conditions, {
                 acceptByAuthor: boolean ? acceptResponse.author.toString() : null,
                 acceptByResponse: boolean ? acceptResponse.id.toString() : null
-            }, function (err, newDoc, oldDoc) {
-                next(err, newDoc, oldDoc);
-            });
+            }, next);
         })
         // 异步顺序串行
         .follow(function (err, newDoc, oldDoc) {
@@ -510,11 +513,9 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
                 }
             }
             // 取消采纳
-            else if (newDoc) {
-                if (newDoc.acceptByAuthor.toString() !== oldDoc.acceptByAuthor.toString()) {
-                    // 当前被取消采纳的人减分
-                    engineer.increaseScore({_id: newDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
-                }
+            else if (!boolean && oldDoc) {
+                // 当前被取消采纳的人减分
+                engineer.increaseScore({_id: oldDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
             }
         });
 };
