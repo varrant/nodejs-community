@@ -173,9 +173,10 @@ var schema = new mongoose.Schema({
     },
     // 是否被接受了
     // 通常指问题类的 object
-    hasAccepted: {
-        type: Boolean,
-        default: false
+    acceptResponse: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'response',
+        default: null
     },
     // 是否通过了组织、团体认证
     hasCertificated: {

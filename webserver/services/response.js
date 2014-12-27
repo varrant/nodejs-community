@@ -170,7 +170,7 @@ exports.agree = function (operator, conditions, boolean, callback) {
             if (!doc) {
                 var err = new Error('该 response 不存在');
                 err.code = 404;
-                return callback(err);
+                return next(err);
             }
 
             interactive.active({
@@ -199,18 +199,49 @@ exports.agree = function (operator, conditions, boolean, callback) {
  * @param boolean
  * @param callback
  */
-exports.agree = function (operator, conditions, boolean, callback) {
+exports.accept = function (operator, responseConditions, objectConditions, sections, boolean, callback) {
     howdo
-        // 1. 检测该评论是否存在
+        // 1. 检测该 response 是否存在
         .task(function (next) {
-            response.findOne(conditions, next);
+            response.findOne(responseConditions, next);
         })
-        // 2. 判断用户是否赞同过
-        .task(function (next, doc) {
-            if (!doc) {
+        // 2. 检测该 object 是否存在
+        .task(function (next, acceptResponse) {
+            if (!acceptResponse) {
                 var err = new Error('该 response 不存在');
                 err.code = 404;
-                return callback(err);
+                return next(err);
+            }
+
+            object.findOne(objectConditions, function (err, acceptObject) {
+                next(err, acceptResponse, acceptObject);
+            });
+        })
+        // 2. 判断用户是否赞同过
+        .task(function (next, acceptResponse, acceptObject) {
+            if (!acceptObject) {
+                var err = new Error('该 object 不存在');
+                err.code = 404;
+                return next(err);
+            }
+
+            var sectionMap = {};
+
+            sections.forEach(function (section) {
+                sectionMap[section.id] = section;
+            });
+
+            var findSection = sectionMap[acceptObject.section];
+
+            if(!findSection){
+                var err = new Error('不存在该版块');
+                err.code = 404;
+                return next(err);
+            }
+
+            if(findSection.uri !== 'question'){
+                var err = new Error('response 所在的版块无法设置采纳答案');
+                return next(err);
             }
 
             interactive.active({
