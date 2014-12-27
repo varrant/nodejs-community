@@ -60,6 +60,10 @@ define(function (require, exports, module) {
                 author: author,
                 object: object
             },
+            count: {
+                comment: object.commentByCount,
+                reply: object.replyByCount
+            },
             respond: null,
             acceptByResponse: object.acceptByResponse
         });
