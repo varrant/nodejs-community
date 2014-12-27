@@ -126,6 +126,7 @@ define(function (require, exports, module) {
                     the._$listParent = nodes[3];
                     the._$paginationParent = nodes[4];
                     the._getComment();
+                    the._initEvent();
                 })
                 .on('error', alert)
                 .on('finish', ld.destroy.bind(ld));

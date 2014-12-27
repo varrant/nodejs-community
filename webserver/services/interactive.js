@@ -67,6 +67,17 @@ exports.active = function (data, callback) {
             return callback(err, true);
         }
 
-        callback(err, newDoc.value !== oldDoc.value, newDoc, oldDoc);
+        var value = 0;
+
+        // 当前为 true，以前为否或不存在
+        if(newDoc.hasApproved === true && !oldDoc.hasApproved){
+            value = 1;
+        }
+        // 当前为 false，以前为 true
+        else if(newDoc.hasApproved === false && oldDoc.hasAccepted === true){
+            value = -1;
+        }
+
+        callback(err, value, newDoc, oldDoc);
     });
 };

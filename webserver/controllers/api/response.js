@@ -111,7 +111,7 @@ module.exports = function (app) {
             ua: req.headers['user-agent'],
             ip: req.ip
         };
-        
+
         response.createOne(res.locals.$engineer, req.body, meta, function (err, doc) {
             if (err) {
                 return next(err);
@@ -131,7 +131,15 @@ module.exports = function (app) {
     exports.agree = function (req, res, next) {
         var id = req.body.id;
 
+        response.agree(res.locals.$engineer, {_id: id}, true, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
 
+            return res.json({
+                code: 200
+            });
+        });
     };
 
     /**
@@ -140,7 +148,15 @@ module.exports = function (app) {
     exports.agreeCancel = function (req, res, next) {
         var id = req.body.id;
 
+        response.agree(res.locals.$engineer, {_id: id}, false, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
 
+            return res.json({
+                code: 200
+            });
+        });
     };
 
     return exports;

@@ -27,13 +27,13 @@ var schema = new mongoose.Schema({
     // 被操作 object
     object: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        required: false,
         ref: 'object'
     },
     // 被操作 response
     response: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        required: false,
         ref: 'response'
     },
     // 操作时间

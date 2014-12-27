@@ -112,21 +112,21 @@ exports.createOne = function (author, data, meta, callback) {
 
             if (!err && response) {
                 // object.commentByCount
-                if(!response.parent){
+                if (!response.parent) {
                     object.increaseCommentByCount({_id: response.object}, 1, log.holdError);
                 }
                 // object.replyByCount
-                else{
+                else {
                     object.increaseReplyByCount({_id: response.object}, 1, log.holdError);
                 }
 
 
                 // engineer.commentCount
-                if(!response.parent){
+                if (!response.parent) {
                     engineer.increaseCommentCount({_id: author.id}, 1, log.holdError);
                 }
                 // engineer.replyCount
-                else{
+                else {
                     engineer.increaseReplyCount({_id: author.id}, 1, log.holdError);
                 }
 
@@ -167,7 +167,7 @@ exports.agree = function (operator, conditions, boolean, callback) {
         })
         // 2. 判断用户是否赞同过
         .task(function (next, doc) {
-            if(!doc){
+            if (!doc) {
                 var err = new Error('该 response 不存在');
                 err.code = 404;
                 return callback(err);
@@ -179,19 +179,14 @@ exports.agree = function (operator, conditions, boolean, callback) {
                 path: 'agreeCount',
                 response: doc.id,
                 hasApproved: boolean
-            }, function (err, isSuccess, newDoc, oldDoc) {
-                if(err){
-                    return next(err);
-                }
-
-
-            });
+            }, next);
         })
         // 3. 写入赞同信息
-        .task(function (next, doc) {
-            response.increase(conditions, 'agreeCount', 1, next);
+        .task(function (next, value) {
+            response.increase(conditions, 'agreeCount', value, next);
         })
-
+        // 顺序串行
+        .follow(callback);
 };
 
 
