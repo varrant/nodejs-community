@@ -15,6 +15,7 @@ module.exports = {
     group: require('./group.js')(app),
     notification: require('./notification.js')(app),
     permission: require('./permission.js')(app),
+    score: require('./score.js')(app),
     secret: require('./secret.js')(app),
     smtp: require('./smtp.js')(app)
 };

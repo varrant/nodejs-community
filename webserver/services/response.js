@@ -136,6 +136,9 @@ exports.createOne = function (author, data, meta, callback) {
                 // 推入 object 的 contributors
                 object.pushContributor({_id: doc.object}, author, log.holdError);
 
+                // 增加用户积分 2
+                engineer.increaseScore({_id: author.id}, 2, log.holdError);
+
                 // 评论父级
                 if (parentResponse) {
                     // parentResponse response.replyCount
