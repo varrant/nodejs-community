@@ -484,9 +484,11 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
         // 4. 更新
         .task(function (next, oldDoc, acceptResponse) {
             object.findOneAndUpdate(conditions, {
-                acceptByResponse: boolean ? acceptResponse.id : null,
-                acceptByAuthor: boolean ? acceptResponse.author : null
-            }, next);
+                acceptByAuthor: boolean ? acceptResponse.author : null,
+                acceptByResponse: boolean ? acceptResponse.id : null
+            }, function (err, newDoc, oldDoc) {
+                next(err, newDoc, oldDoc);
+            });
         })
         // 异步顺序串行
         .follow(function (err, newDoc, oldDoc) {

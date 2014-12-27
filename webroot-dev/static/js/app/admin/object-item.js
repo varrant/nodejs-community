@@ -42,6 +42,11 @@ define(function (require, exports, module) {
 
     app.response = function (data) {
         var object = data.object;
+
+        if (!object) {
+            return;
+        }
+
         var author = object.author;
         new Response('#tab-response', {
             id: object.id,
