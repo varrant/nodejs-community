@@ -426,8 +426,6 @@ define(function (require, exports, module) {
                 return alert('正忙，请稍后再试');
             }
 
-            the._accepting = true;
-            the._acceptMap[id] = !the._acceptMap[id];
             ajax({
                 url: the._options.url.accept,
                 method: hasAccept ? 'delete' : 'post',
@@ -441,6 +439,7 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
+                    the._acceptMap[id] = !the._acceptMap[id];
                     the._acceptItem(id, true);
                     the._acceptItem(json.data, false);
                 })

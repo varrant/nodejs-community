@@ -14,22 +14,22 @@
 
             <ul class="alien-ui-response-meta alien-ui-response-action s-light f-list-left">
                 <li>
-                    <button class="btn btn-success btn-xs alien-ui-response-reply"><i class="i i-plus"></i>补充<span
+                    <button class="btn btn-primary btn-xs alien-ui-response-reply"><i class="i i-plus"></i>回复<span
                             class="alien-ui-response-number">{{item.replyCount}}</span></button>
                 </li>
                 <li>
-                    <button class="btn btn-primary btn-xs alien-ui-response-agree"><i class="i i-thumbs-up"></i>赞同<span
+                    <button class="btn btn-default btn-xs alien-ui-response-agree"><i class="i i-thumbs-up"></i>赞同<span
                             class="alien-ui-response-number">{{item.agreeCount}}</span></button>
                 </li>
                 {{if engineer.id === author.id && object.acceptResponse === item.id}}
                 <li>
                     <button class="btn btn-danger btn-xs alien-ui-response-accept"
                             title="点击取消为最佳答案"><i
-                            class="i i-check"></i>最佳答案</button>
+                            class="i i-check"></i>最佳回答</button>
                 </li>
                 {{else if engineer.id === author.id && !item.hasAccepted}}
                 <li>
-                    <button class="btn btn-warning btn-xs active alien-ui-response-accept"><i
+                    <button class="btn btn-danger btn-xs active alien-ui-response-accept"><i
                             class="i i-check"></i>采纳回答</button>
                 </li>
                 {{/if}}
