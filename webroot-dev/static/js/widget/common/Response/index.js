@@ -99,45 +99,32 @@ define(function (require, exports, module) {
         _ajaxContainer: function () {
             var the = this;
             var options = the._options;
+            var commentByCountClass = options.sync.commentByCountClass;
+            var replyByCountClass = options.sync.replyByCountClass;
+            var data = {
+                count: options.count,
+                language: options.language,
+                commentByCountClass: commentByCountClass,
+                replyByCountClass: replyByCountClass
+            };
+            the._renderContainer(data);
+            the._paginationOptions = {
+                page: options.query.page,
+                max: Math.ceil(options.count.comment / options.query.limit)
+            };
+            the._count = options.count;
 
-            the._renderContainer();
-            ajax({
-                url: options.url.count + '?' + qs.stringify({
-                    object: options.query.object
-                })
-            })
-                .on('success', function (json) {
-                    if (json.code !== 200) {
-                        return alert(json);
-                    }
+            var nodes = selector.query('.j-flag', the._$wrap);
 
-                    var commentByCountClass = options.sync.commentByCountClass;
-                    var replyByCountClass = options.sync.replyByCountClass;
-                    var data = {
-                        count: json.data,
-                        language: options.language,
-                        commentByCountClass: commentByCountClass,
-                        replyByCountClass: replyByCountClass
-                    };
-                    the._renderContainer(data);
-                    the._paginationOptions = {
-                        page: options.query.page,
-                        max: Math.ceil(json.data.comment / options.query.limit)
-                    };
-                    the._count = json.data;
+            the._$respondParent = nodes[0];
+            the._$listParent = nodes[1];
+            the._$paginationParent = nodes[2];
+            the._$commentByCount = selector.query('.' + commentByCountClass);
+            the._$replyByCount = selector.query('.' + replyByCountClass);
+            the._ajaxComment();
+            the._initEvent();
+            the._increaseCount();
 
-                    var nodes = selector.query('.j-flag', the._$wrap);
-
-                    the._$respondParent = nodes[0];
-                    the._$listParent = nodes[1];
-                    the._$paginationParent = nodes[2];
-                    the._$commentByCount = selector.query('.' + commentByCountClass);
-                    the._$replyByCount = selector.query('.' + replyByCountClass);
-                    the._ajaxComment();
-                    the._initEvent();
-                    the._increaseCount();
-                })
-                .on('error', alert);
         },
 
 
