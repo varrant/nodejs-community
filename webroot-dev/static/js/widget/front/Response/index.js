@@ -369,10 +369,11 @@ define(function (require, exports, module) {
          * @private
          */
         _increaseHTML: function ($node, count) {
-            var old = dato.parseInt($node.innerHTML, 0);
+            var $number = selector.query('.' + alienClass + '-number', $node)[0];
+            var old = dato.parseInt($number.innerHTML, 0);
 
             old += count;
-            $node.innerHTML = old;
+            $number.innerHTML = old;
         },
 
 
