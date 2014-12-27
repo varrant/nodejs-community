@@ -8,6 +8,7 @@
 
 var engineer = require('../../models/').engineer;
 var typeis = require('ydr-util').typeis;
+var role20 = 1 << 20;
 
 module.exports = function (app) {
     var exports = {};
@@ -22,6 +23,12 @@ module.exports = function (app) {
         var data = {
             title: '用户管理'
         };
+
+        var engineerRole = res.locals.$engineer.role;
+
+        if ((engineerRole & role20) === 0) {
+            return next();
+        }
 
         res.render('admin/engineer-list.html', data);
     };
@@ -38,6 +45,12 @@ module.exports = function (app) {
             title: '用户详情',
             id: req.query.id || ''
         };
+
+        var engineerRole = res.locals.$engineer.role;
+
+        if ((engineerRole & role20) === 0) {
+            return next();
+        }
 
         res.render('admin/engineer-detail.html', data);
     };

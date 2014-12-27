@@ -23,6 +23,7 @@ define(function (require, exports, module) {
         },
         respond: {
             id: window['-object-'].id
-        }
+        },
+        acceptResponse: window['-object-'].acceptResponse
     });
 });

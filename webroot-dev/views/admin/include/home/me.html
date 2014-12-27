@@ -4,16 +4,16 @@
             <a href="/admin/engineer/profile/"><img src="{{$engineer.email|gravatar:200}}" alt="avatar" width="100" height="100"/></a>
         </div>
         <ul class="me-profile">
-            <li><i class="i i-user"></i><strong>{{$engineer.nickname}}</strong>（{{$engineer.group}}）</li>
+            <li><i class="i i-user"></i><strong>{{$engineer.nickname}}</strong>{{$engineer.group ? '（' + $engineer.group + '）' : ''}}</li>
             <li><i class="i i-location-arrow"></i>{{$engineer.meta.location}}</li>
             <li><i class="i i-link"></i>{{$engineer.meta.blog}}</li>
         </ul>
     </div>
 
-    <blockquote class="me-bio">{{$engineer.meta.bio?$engineer.meta.bio:'你还没来得及向大家介绍你自己呢。'}}</blockquote>
+    <blockquote class="me-bio">{{$engineer.meta.bio}}</blockquote>
 
     <ul class="me-get f-small f-list-left s-muted">
-        <li><i class="i i-eye"></i><strong>{{$engineer.viewCount|humanize}}</strong>次访问</li>
+        <li><i class="i i-eye"></i><strong>{{$engineer.viewByCount|humanize}}</strong>次访问</li>
         <li><i class="i i-comment"></i><a href="/engineer/{{$engineer.github}}/comment/"><strong>{{$engineer.commentCount|humanize}}</strong>次评论</a></li>
         <li><i class="i i-reply"></i><a href="/engineer/{{$engineer.github}}/replied/"><strong>{{$engineer.replyByCount|humanize}}</strong>次被回复</a></li>
         <li><i class="i i-thumbs-up"></i><a href="/engineer/{{$engineer.github}}/agreed/"><strong>{{$engineer.agreeByCount|humanize}}</strong>次被赞同</a></li>

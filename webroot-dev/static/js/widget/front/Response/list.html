@@ -1,5 +1,9 @@
 {{list list as item}}
-<li class="alien-ui-response-item" id="response-{{item.id}}" data-id="{{item.id}}" data-parent="{{item.parent}}">
+<li class="alien-ui-response-item
+{{if object.acceptResponse === item.id}}alien-ui-response-item-accepted{{/if}}"
+    id="response-{{item.id}}"
+    data-id="{{item.id}}"
+    data-parent="{{item.parent}}">
     <div class="f-clearfix alien-ui-response-main">
         <div class="alien-ui-response-avatar f-left">
             <a href="#"><img src="/static/img/avatar.png" alt="avatar" width="50" height="50"/></a>
@@ -22,14 +26,14 @@
                             class="alien-ui-response-number">{{item.agreeCount}}</span></button>
                 </li>
                 {{if engineer.id === author.id && object.acceptResponse === item.id}}
-                <li>
-                    <button class="btn btn-danger btn-xs alien-ui-response-accept"
+                <li class="alien-ui-response-accept-li">
+                    <button class="btn btn-success btn-xs alien-ui-response-accept"
                             title="点击取消为最佳答案"><i
-                            class="i i-check"></i>最佳回答</button>
+                            class="i i-check"></i>取消最佳回答</button>
                 </li>
                 {{else if engineer.id === author.id && !item.hasAccepted}}
-                <li>
-                    <button class="btn btn-danger btn-xs active alien-ui-response-accept"><i
+                <li class="alien-ui-response-accept-li">
+                    <button class="btn btn-warning btn-xs alien-ui-response-accept"><i
                             class="i i-check"></i>采纳回答</button>
                 </li>
                 {{/if}}
@@ -40,5 +44,7 @@
     {{if !item.parent}}
     <div class="alien-ui-response-children"></div>
     {{/if}}
+
+    <i class="i i-flag"></i>
 </li>
 {{/list}}

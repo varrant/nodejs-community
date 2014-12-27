@@ -55,7 +55,7 @@ validator.pushRule({
     maxLength: 1000,
     regexp: REG_INTRODUCTION,
     onafter: function (val, data) {
-        val = xss.mdSafe(val);
+        val = xss.mdSafe(val || '');
         data.introductionHTML = xss.mdRender(val);
         return val;
     },

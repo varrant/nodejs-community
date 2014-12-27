@@ -6,6 +6,7 @@
 }
 
 .alien-ui-response-item {
+    position: relative;
     border-bottom: 1px solid #f0f0f0;
     padding-bottom: 20px;
     margin-bottom: 20px;
@@ -82,4 +83,17 @@
 .alien-ui-response-children::after {
     border-bottom-color: #fff;
     top: -19px;
+}
+
+.alien-ui-response-item .i-flag{
+    display: none;
+}
+
+.alien-ui-response-item-accepted .i-flag{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #007E00;
+    font-size: 30px;
 }

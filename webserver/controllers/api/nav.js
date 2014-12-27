@@ -7,16 +7,28 @@
 'use strict';
 
 var permission = require('../../services/').permission;
+var role20 = 1 << 20;
 
 module.exports = function (app) {
     var exports = {};
 
     exports.list = function (req, res, next) {
-        var canSetting = permission.can(res.locals.$engineer, 'setting');
-        var canSection = permission.can(res.locals.$engineer, 'section');
-        var canCategory = permission.can(res.locals.$engineer, 'category');
-        var canColumn = permission.can(res.locals.$engineer, 'cloumn');
+        var $engineer = res.locals.$engineer;
+        var canSetting = permission.can($engineer, 'setting');
+        var canSection = permission.can($engineer, 'section');
+        var canCategory = permission.can($engineer, 'category');
+        var canColumn = permission.can($engineer, 'column');
         var list = [];
+        var engineerRole = $engineer.role;
+        var $section = app.locals.$section;
+        var sectionMap = {};
+
+        $section.forEach(function (section) {
+            sectionMap[section.uri] = section;
+        });
+        var helpRole = sectionMap['help'] ? sectionMap['help'].role : 20;
+        var questionRole = sectionMap['question'] ? sectionMap['question'].role : 20;
+
 
         list.push({
             href: '/',
@@ -68,26 +80,33 @@ module.exports = function (app) {
             });
         }
 
-        list.push({
-            href: '/admin/object/help/list/',
-            text: '帮助管理',
-            icon: 'i i-question-circle',
-            reg: '^object\\/help\\/'
-        });
+        if ((engineerRole & 1 << helpRole) !== 0) {
+            list.push({
+                href: '/admin/object/help/list/',
+                text: '帮助管理',
+                icon: 'i i-question-circle',
+                reg: '^object\\/help\\/'
+            });
+        }
 
-        list.push({
-            href: '/admin/object/question/list/',
-            text: '智问管理',
-            icon: 'i i-cube',
-            reg: '^object\\/question\\/'
-        });
 
-        list.push({
-            href: '/admin/engineer/list/',
-            text: '用户管理',
-            icon: 'i i-users',
-            reg: '^engineer\\/'
-        });
+        if ((engineerRole & 1 << questionRole) !== 0) {
+            list.push({
+                href: '/admin/object/question/list/',
+                text: '智问管理',
+                icon: 'i i-cube',
+                reg: '^object\\/question\\/'
+            });
+        }
+
+        if ((engineerRole & role20) !== 0) {
+            list.push({
+                href: '/admin/engineer/list/',
+                text: '用户管理',
+                icon: 'i i-users',
+                reg: '^engineer\\/'
+            });
+        }
 
         list.push({
             href: '/admin/me/',

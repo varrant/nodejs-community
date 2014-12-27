@@ -56,6 +56,7 @@ define(function (require, exports, module) {
             comment: '.j-commentByCount',
             reply: '.j-replyByCount'
         },
+        acceptResponse: '',
         list: {}
     };
     var Response = generator({
@@ -339,9 +340,9 @@ define(function (require, exports, module) {
          */
         _appendComment: function (data) {
             var the = this;
-            var html = tplList.render({
+            var html = tplList.render(dato.extend({
                 list: [data]
-            });
+            }, the._options.list));
             var node = modification.parse(html)[0];
 
             modification.insert(node, the._$listParent, 'beforeend');
@@ -418,20 +419,21 @@ define(function (require, exports, module) {
          */
         _accept: function (eve) {
             var the = this;
+            var options = the._options;
             var $ele = eve.target;
             var id = the._getResponseId($ele);
-            var hasAccept = the._acceptMap[id] === true;
+            var method = options.acceptResponse === id ? 'delete' : 'post';
 
             if (the._accepting) {
                 return alert('正忙，请稍后再试');
             }
 
             ajax({
-                url: the._options.url.accept,
-                method: hasAccept ? 'delete' : 'post',
+                url: options.url.accept,
+                method: method,
                 data: {
                     response: id,
-                    object: the._options.query.object
+                    object: options.query.object
                 }
             })
                 .on('success', function (json) {
@@ -439,9 +441,17 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
-                    the._acceptMap[id] = !the._acceptMap[id];
-                    the._acceptItem(id, true);
-                    the._acceptItem(json.data, false);
+                    // 取消最佳
+                    if (method === 'delete') {
+                        the._acceptItem(options.acceptResponse, false);
+                        options.acceptResponse = '';
+                    }
+                    // 设置最佳
+                    else {
+                        options.acceptResponse = id;
+                        the._acceptItem(id, true);
+                        the._acceptItem(json.data, false);
+                    }
                 })
                 .on('error', alert)
                 .on('finish', function () {
@@ -457,7 +467,37 @@ define(function (require, exports, module) {
          * @private
          */
         _acceptItem: function (itemId, boolean) {
+            var $item = selector.query('#response-' + itemId)[0];
 
+            if (!$item) {
+                return;
+            }
+
+            var className = alienClass + '-item-accepted';
+
+            if (boolean) {
+                attribute.addClass($item, className);
+            } else {
+                attribute.removeClass($item, className);
+            }
+
+            var $li = selector.query('.' + alienClass + '-accept-li', $item)[0];
+
+            if (!$li) {
+                return;
+            }
+
+            var $btn = selector.children($li)[0];
+
+            if (boolean) {
+                attribute.removeClass($btn, 'btn-warning');
+                attribute.addClass($btn, 'btn-success');
+                $btn.innerHTML = '<i class="i i-check"></i>取消最佳回答';
+            } else {
+                attribute.removeClass($btn, 'btn-success');
+                attribute.addClass($btn, 'btn-warning');
+                $btn.innerHTML = '<i class="i i-check"></i>采纳回答';
+            }
         }
     });
 
