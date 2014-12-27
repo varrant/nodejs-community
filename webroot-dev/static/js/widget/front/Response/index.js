@@ -399,6 +399,7 @@ define(function (require, exports, module) {
             var id = the._getResponseId($ele);
             var hasAgree = the._agreeMap[id] === true;
 
+            the._agreeMap[id] = !the._agreeMap[id];
             the._increaseHTML($ele, hasAgree ? -1 : 1);
             ajax({
                 url: the._options.url.agree,

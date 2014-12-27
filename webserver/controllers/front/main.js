@@ -141,11 +141,8 @@ module.exports = function (app) {
      */
     exports.getPost = function (section) {
         return function (req, res, next) {
-            var info = filter.skipLimit(req.params);
             var uri = req.params.uri;
-            var data = {
-                page: info.page
-            };
+            var data = {};
 
             object.findOne({
                 uri: uri,
