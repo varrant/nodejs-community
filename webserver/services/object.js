@@ -14,6 +14,7 @@ var column = require('./column.js');
 var label = require('./label.js');
 var setting = require('./setting.js');
 var engineer = require('./engineer.js');
+var response = require('./response.js');
 var howdo = require('howdo');
 var dato = require('ydr-util').dato;
 var log = require('ydr-log');
@@ -422,24 +423,61 @@ exports.pushContributor = function (conditions, contributor, callback) {
  */
 exports.acceptResponse = function (operator, conditions, responseId, boolean, callback) {
     howdo
-    // 1. 查找 object
+        // 1. 查找 object
         .task(function (next) {
-            object.findOne(conditions, next);
+            object.findOne(conditions, {
+                populate: ['section']
+            }, next);
         })
         // 2. 检查权限
         .task(function (next, acceptObject) {
-            if(!acceptObject){
+            if (!acceptObject) {
                 var err = new Error('该 object 不存在');
                 err.code = 404;
                 return next(err);
             }
 
-            
-        })
-    // 3. 查找 response
-    // 4. 更新
-    // 异步顺序串行
+            if (acceptObject.section.uri !== 'question') {
+                var err = new Error('该 object 不允许设置最佳答案');
+                return next(err);
+            }
 
+            if ((operator.role & 1 << 19) !== 0 ||
+                operator.id.toString() === acceptObject.author.toString()) {
+                return next(null, acceptObject);
+            }
+
+            var err = new Error('权限不足');
+            err.code = 403;
+            next(err);
+        })
+        // 3. 查找 response
+        .task(function (next, acceptObject) {
+            response.findOne({
+                _id: responseId
+            }, function (err, acceptResponse) {
+                if (err) {
+                    return next(err);
+                }
+
+                if (!acceptResponse) {
+                    err = new Error('该 response 不存在');
+                    err.code = 404;
+                    return next(err);
+                }
+
+                next(err, acceptObject, acceptResponse);
+            });
+        })
+        // 4. 更新
+        .task(function (next, oldDoc, acceptResponse) {
+            object.findOneAndUpdate(conditions, {
+                acceptResponse: acceptResponse.id
+            }, next);
+        })
+        // 异步顺序串行
+        .follow(callback);
+};
 
 /**
  * 取出两个数组中独有的部分

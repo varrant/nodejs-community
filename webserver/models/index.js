@@ -266,7 +266,7 @@ dato.each(models, function (key, model) {
                 }
 
                 model.findOneAndUpdate(conditions, newData, function (err, newDoc) {
-                    callback.call(this, err, newDoc.toJSON(), doc.toJSON());
+                    callback(err, newDoc.toJSON(), doc.toJSON());
                 });
             });
         });
