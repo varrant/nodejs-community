@@ -482,10 +482,10 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
             });
         })
         // 4. 更新
-        .task(function (next, oldDoc, acceptResponse) {
+        .task(function (next, acceptObject, acceptResponse) {
             object.findOneAndUpdate(conditions, {
-                acceptByAuthor: boolean ? acceptResponse.author : null,
-                acceptByResponse: boolean ? acceptResponse.id : null
+                acceptByAuthor: boolean ? acceptResponse.author.toString() : null,
+                acceptByResponse: boolean ? acceptResponse.id.toString() : null
             }, function (err, newDoc, oldDoc) {
                 next(err, newDoc, oldDoc);
             });
@@ -496,16 +496,21 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
 
             // 设置为采纳
             if (boolean && newDoc) {
-                if (newDoc.acceptByAuthor.toString() !== oldDoc.acceptByAuthor.toString()) {
+                // 换人了
+                if (oldDoc.acceptByAuthor) {
                     // 当前被采纳的人加分
                     engineer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
-
                     // 当前被取消采纳的人减分
                     engineer.increaseScore({_id: oldDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
                 }
+                // 首次设置为采纳
+                else {
+                    // 当前被采纳的人加分
+                    engineer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
+                }
             }
             // 取消采纳
-            else if(newDoc) {
+            else if (newDoc) {
                 if (newDoc.acceptByAuthor.toString() !== oldDoc.acceptByAuthor.toString()) {
                     // 当前被取消采纳的人减分
                     engineer.increaseScore({_id: newDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
