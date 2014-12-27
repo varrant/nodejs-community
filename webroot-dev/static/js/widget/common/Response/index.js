@@ -43,6 +43,10 @@ define(function (require, exports, module) {
             comment: '评论',
             reply: '回复'
         },
+        count: {
+            comment: 0,
+            reply: 0
+        },
         query: {
             object: '',
             limit: 10,

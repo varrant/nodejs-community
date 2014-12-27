@@ -15,23 +15,28 @@ define(function (require, exports, module) {
 
     app.response = function () {
         var $title = selector.query('#object-title')[0];
+        var object = window['-object-'];
         var res = new Response('#response', {
-            id: window['-object-'].id,
+            id: object.id,
             query: {
                 page: window['-page-'],
                 limit: 3,
-                object: window['-object-'].id
+                object: object.id
             },
             list: {
                 engineer: window['-engineer-'],
                 author: window['-author-'],
-                object: window['-object-']
+                object: object
+            },
+            count: {
+                comment: object.commentByCount,
+                reply: object.replyByCount
             },
             respond: {
-                id: window['-object-'].id,
+                id: object.id,
                 avatar: window['-engineer-'].avatar
             },
-            acceptByResponse: window['-object-'].acceptByResponse
+            acceptByResponse: object.acceptByResponse
         });
 
         res.on('accept', function (boolean) {
