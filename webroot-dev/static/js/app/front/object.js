@@ -14,7 +14,7 @@ define(function (require, exports, module) {
         query: {
             page: window['-page-'],
             limit: 3,
-            object: window['-object-']
+            object: window['-object-'].id
         },
         data: {
             engineer: window['-engineer-'],
