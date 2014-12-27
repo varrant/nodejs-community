@@ -69,6 +69,30 @@ footer {
 .m-main .main-subtitle {
   color: #555;
 }
+.m-main .main-tab {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.m-main .main-tab li {
+  float: left;
+}
+.m-main .main-tab a {
+  display: block;
+  padding: 5px 30px;
+  color: #888;
+  cursor: default;
+  pointer-events: none;
+  background: #F9F9F9;
+  border: 1px solid #ddd;
+  margin-right: -1px;
+}
+.m-main .main-tab li.active a {
+  color: #0e90d2;
+  pointer-events: auto;
+  cursor: pointer;
+  background: #fff;
+}
 .m-main .main-body {
   padding: 20px;
 }

@@ -9,6 +9,7 @@ define(function (require, exports, module) {
     'use strict';
 
     var Item = require('../../widget/admin/Item.js');
+    var Tab = require('../../alien/ui/Tab/');
 
     require('../../widget/admin/header.js');
     require('../../widget/admin/sidebar.js');
@@ -17,4 +18,6 @@ define(function (require, exports, module) {
         section: window['-section-'],
         id: window['-id-']
     });
+
+    var tab = new Tab();
 });

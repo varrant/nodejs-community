@@ -16,9 +16,19 @@
 {{include ./include/header.html}}
 <div class="g-main">
     <div class="m-main">
-        <h1 class="main-title"><i class="i i-cube"></i>{{title}}</h1>
+        <h1 class="main-title">
+            <ul class="main-tab f-list-left">
+                <li class="active"><a href="#tab-form"><i class="i i-cube"></i>{{title}}</a></li>
+                <li><a href="#tab-accept"><i class="i i-check"></i>最佳回答</a></li>
+            </ul>
+        </h1>
         <div class="main-body">
-            {{include ./include/object/item-question.html}}
+            <div id="tab-form">
+                {{include ./include/object/item-question.html}}
+            </div>
+            <div id="tab-accept" class="f-none">
+                {{include ./include/object/item-accept.html}}
+            </div>
         </div>
     </div>
     {{include ./include/footer.html}}
