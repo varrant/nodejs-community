@@ -1,4 +1,24 @@
 @charset "utf-8";
+.alien-ui-response-title{
+    position: relative;
+    padding: 20px;
+    font-size: 20px;
+    border-bottom: 2px solid #e6e6e6;
+    margin: 0;
+    font-weight: normal;
+}
+
+.alien-ui-response-subtitle{
+    display: inline;
+    font-size: 40%;
+    margin-left: 10px;
+    line-height: 1;
+}
+
+.alien-ui-response-main{
+    padding: 20px;
+}
+
 .alien-ui-response-list {
     list-style: none;
     padding: 0;

@@ -74,6 +74,8 @@ define(function (require, exports, module) {
 
             var data = json.data;
 
+            the.emit('success', data);
+
             data.object = data.object || {
                 content: '',
                 uri: '',

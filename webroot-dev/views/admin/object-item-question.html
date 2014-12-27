@@ -19,16 +19,14 @@
         <h1 class="main-title">
             <ul class="main-tab f-list-left" id="object-tab">
                 <li class="active"><a href="#tab-form"><i class="i i-cube"></i>{{title}}</a></li>
-                <li><a href="#tab-accept"><i class="i i-comments"></i>0评论，0回复</a></li>
+                <li><a href="#tab-response"><i class="i i-comments"></i>0评论，0回复</a></li>
             </ul>
         </h1>
         <div class="main-body">
             <div id="tab-form">
                 {{include ./include/object/item-question.html}}
             </div>
-            <div id="tab-accept" class="f-none">
-                {{include ./include/object/item-accept.html}}
-            </div>
+            <div id="tab-response" class="f-none"></div>
         </div>
     </div>
     {{include ./include/footer.html}}

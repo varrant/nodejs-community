@@ -36,30 +36,30 @@ define(function (require, exports, module) {
             id: window['-id-']
         });
 
-        item.on('success', function (object, author) {
-            debugger;
-        });
+        item.on('success', app.response);
     };
 
 
-    app.response = function () {
-         new Response('#response', {
-            id: window['-object-'],
+    app.response = function (data) {
+        var object = data.object;
+        var author = object.author;
+        new Response('#tab-response', {
+            id: object.id,
             query: {
                 page: 1,
                 limit: 3,
-                object: window['-id-']
+                object: object.id
             },
             list: {
                 engineer: window['-engineer-'],
-                author: window['-author-'],
-                object: window['-object-']
+                author: author,
+                object: object
             },
             respond: {
-                id: window['-object-'].id,
+                id: object.id,
                 avatar: window['-engineer-'].avatar
             },
-            acceptResponse: window['-object-'].acceptResponse
+            acceptResponse: object.acceptResponse
         });
     };
 

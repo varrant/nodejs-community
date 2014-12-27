@@ -16,7 +16,7 @@ define(function (require, exports, module) {
     app.response = function () {
         var $title = selector.query('#object-title')[0];
         var res = new Response('#response', {
-            id: window['-object-'],
+            id: window['-object-'].id,
             query: {
                 page: window['-page-'],
                 limit: 3,
