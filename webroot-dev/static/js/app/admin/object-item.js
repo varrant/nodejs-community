@@ -10,6 +10,8 @@ define(function (require, exports, module) {
 
     var Item = require('../../widget/admin/Item.js');
     var Tab = require('../../alien/ui/Tab/');
+    var selector = require('../../alien/core/dom/selector.js');
+    var attribute = require('../../alien/core/dom/attribute.js');
 
     require('../../widget/admin/header.js');
     require('../../widget/admin/sidebar.js');
@@ -19,5 +21,15 @@ define(function (require, exports, module) {
         id: window['-id-']
     });
 
-    var tab = new Tab();
+    var tab = new Tab('#object-tab');
+
+    tab.on('change', function (index, $activeTab, $activeContent) {
+        attribute.removeClass($activeContent, 'f-none');
+
+        var $siblings = selector.siblings($activeContent);
+
+        $siblings.forEach(function ($sibling) {
+            attribute.addClass($sibling, 'f-none');
+        });
+    });
 });
