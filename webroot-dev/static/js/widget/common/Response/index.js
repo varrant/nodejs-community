@@ -131,6 +131,7 @@ define(function (require, exports, module) {
                     the._$replyByCount = selector.query('.' + replyByCountClass);
                     the._getComment();
                     the._initEvent();
+                    the._increaseCount();
                 })
                 .on('error', alert)
                 .on('finish', ld.destroy.bind(ld));
@@ -328,11 +329,11 @@ define(function (require, exports, module) {
             var the = this;
             var count = the._count;
 
-            dato.each(the._$commentByCount, function (i, $node) {
+            the._$commentByCount.forEach(function ($node) {
                 $node.innerHTML = count.comment;
             });
 
-            dato.each(the._$replyByCount, function (i, $node) {
+            the._$replyByCount.forEach(function ($node) {
                 $node.innerHTML = count.reply;
             });
         },
