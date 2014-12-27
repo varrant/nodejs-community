@@ -93,7 +93,6 @@ module.exports = function (app) {
 
                 json.hasRegister = !!data;
                 req.session.$github = json;
-                console.log(json);
                 res.render('front/oauth-callback.html', {
                     title: '确认登录',
                     github: json

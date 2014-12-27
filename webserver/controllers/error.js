@@ -26,7 +26,8 @@ module.exports = function (app) {
             res.json({
                 code: err.code || 500,
                 message: err.message,
-                data: err.data || null
+                data: err.data || null,
+                redirect: err.redirect
             });
         } else {
             res.status(err.code || 500).render('server-error.html', {
