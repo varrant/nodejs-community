@@ -103,7 +103,7 @@ module.exports = function (app) {
                     return done();
                 }
 
-                object.findOne({_id: id}, done);
+                object.findOne({_id: id}, {populate: ['author']}, done);
             })
             .together(function (err, docs, doc) {
                 if (err) {
