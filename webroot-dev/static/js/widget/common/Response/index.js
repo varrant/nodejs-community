@@ -82,7 +82,6 @@ define(function (require, exports, module) {
             });
 
             the._replyMap = {};
-            the._replyParentId = null;
             $parent.innerHTML = html;
             the._$wrap = selector.children($parent)[0];
             the._ajaxContainer();
@@ -159,10 +158,11 @@ define(function (require, exports, module) {
 
         /**
          * 初始化响应框
-         * @params $parent
+         * @params $respondParent
+         * @params $listParent
          * @private
          */
-        _initRespond: function ($parent) {
+        _initRespond: function ($respondParent, $listParent) {
             var the = this;
             var options = the._options;
             var respond;
@@ -170,15 +170,16 @@ define(function (require, exports, module) {
             if (options.respond) {
                 var data = dato.extend({}, options.respond, options.language);
 
-                respond = new Respond($parent, data);
+                respond = new Respond($respondParent, data);
                 respond.on('submit', function (content) {
                     respond.disable();
 
-                    the._post(content, function (err) {
+                    the._post(content, this._replyParentId, function (err, data) {
                         respond.enable();
 
                         if (!err) {
                             respond.reset();
+                            the._appendItem($listParent, data);
                         }
                     });
                 });
@@ -261,7 +262,7 @@ define(function (require, exports, module) {
 
                     if (!the._readyComment) {
                         the._readyComment = true;
-                        the._initRespond(the._$respondParent);
+                        the._initRespond(the._$respondParent, the._$listParent);
                         the._pagination = new Pagination(the._$paginationParent, the._paginationOptions);
                         the._pagination.on('change', function (page) {
                             the._scrollTo(the._$listParent);
@@ -319,7 +320,7 @@ define(function (require, exports, module) {
          * @param callback
          * @private
          */
-        _post: function (content, callback) {
+        _post: function (content, parentId, callback) {
             var the = this;
             var options = the._options;
             var data = {
@@ -333,8 +334,8 @@ define(function (require, exports, module) {
 
             the._isAjaxing = true;
 
-            if (the._replyParentId) {
-                data.parent = the._replyParentId;
+            if (parentId) {
+                data.parent = parentId;
             }
 
             ajax({
@@ -348,17 +349,18 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
-                    json.data.author = options.list.engineer;
+                    var data = json.data;
+
+                    data.author = options.list.engineer;
 
                     if (json.data.parent) {
                         the._count.reply++;
                     } else {
                         the._count.comment++;
-                        the._appendComment(json.data);
                     }
 
                     the._increaseCount();
-                    callback();
+                    callback(null, data);
                 })
                 .on('error', function (err) {
                     callback(err);
@@ -387,17 +389,17 @@ define(function (require, exports, module) {
 
 
         /**
-         * 动态追加评论
+         * 动态追加项目
          * @api
          */
-        _appendComment: function (data) {
+        _appendItem: function ($parent, data) {
             var the = this;
             var html = tplList.render(dato.extend({
                 list: [data]
             }, the._options.list));
             var node = modification.parse(html)[0];
 
-            modification.insert(node, the._$listParent, 'beforeend');
+            modification.insert(node, $parent, 'beforeend');
         },
 
 
@@ -421,7 +423,14 @@ define(function (require, exports, module) {
          * @private
          */
         _destroyReply: function () {
+            var the = this;
 
+            dato.each(the._replyMap, function (id, item) {
+                item.respond.destory();
+                item.pager.destory();
+            });
+
+            the._replyMap = {};
         },
 
 
@@ -432,18 +441,15 @@ define(function (require, exports, module) {
         _reply: function (eve) {
             var the = this;
             var id = the._getResponseId(eve.target);
-            var $ele = selector.closest(eve.target, 'button')[0];
 
-            // 之前有打开的评论列表
-            if (the._replyParentId) {
-                the._toggleReply(the._replyParentId, false);
-            }
+            the._replyMap[id] = the._replyMap[id] || {};
 
-            if (the._replyParentId !== id) {
-                the._toggleReply(id, true);
-                the._replyParentId = id;
+            if (the._replyMap[id].isOpen) {
+                the._replyMap[id].isOpen = false;
+                the._toggleReply(id, false);
             } else {
-                the._replyParentId = null;
+                the._replyMap[id].isOpen = true;
+                the._toggleReply(id, true);
             }
         },
 
@@ -465,7 +471,7 @@ define(function (require, exports, module) {
             if (boolean) {
                 attribute.addClass($li, alienClass + '-active');
 
-                if(!the._replyMap || !the._replyMap[id] || !the._replyMap[id].respond){
+                if (!the._replyMap || !the._replyMap[id] || !the._replyMap[id].respond) {
                     the._ajaxReply($li, id);
                 }
             } else {
@@ -496,21 +502,25 @@ define(function (require, exports, module) {
             // 第 2+ 次加载
             if (the._replyMap[id]) {
                 $listParent = the._replyMap[id].$listParent;
+                $pagerParent = the._replyMap[id].$pagerParent;
+                $contentParent = the._replyMap[id].$contentParent;
             }
             // 首次加载
             else {
                 var nodes = selector.query('.j-flag', $children);
-                the._replyMap[id] = {};
+                the._replyMap[id].query = {
+                    page: 1
+                };
                 $listParent = the._replyMap[id].$listParent = nodes[0];
-                $pagerParent = nodes[1];
-                $contentParent = nodes[2];
+                $pagerParent = the._replyMap[id].$pagerParent = nodes[1];
+                $contentParent = the._replyMap[id].$contentParent = nodes[2];
             }
 
             the._renderReply($listParent);
 
             var query = dato.extend({
                 parent: id
-            }, options.query);
+            }, options.query, the._replyMap[id].query);
 
             ajax({
                 url: options.url.list + '?' + qs.stringify(query)
@@ -532,8 +542,17 @@ define(function (require, exports, module) {
                         the._replyMap[id].pager = new Pager($pagerParent, {
                             page: 1,
                             max: Math.ceil(data.count / options.query.limit)
-                        });
-                        the._replyMap[id].respond = the._initRespond($contentParent);
+                        }).on('change', function (page) {
+                                the._scrollTo($listParent);
+                                the._replyMap[id].query.page = page;
+                                the._ajaxReply($li, id);
+                                this.render({
+                                    page: page,
+                                    max: Math.ceil(data.count / options.query.limit)
+                                });
+                            });
+                        the._replyMap[id].respond = the._initRespond($contentParent, $listParent);
+                        the._replyMap[id].respond._replyParentId = id;
                     }
                 })
                 .on('error', alert)

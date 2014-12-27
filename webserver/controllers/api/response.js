@@ -132,7 +132,7 @@ module.exports = function (app) {
                 list.forEach(function (item) {
                     var author = item.author;
 
-                    item.author = dato.pick(author, ['id', 'nickname', 'githubLogin', 'githubId']);
+                    item.author = dato.pick(author, ['id', 'nickname', 'githubLogin', 'githubId', 'score']);
                     item.author.avatar = dato.gravatar(author.email, {
                         size: 100
                     });

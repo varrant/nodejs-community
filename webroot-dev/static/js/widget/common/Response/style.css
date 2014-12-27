@@ -135,6 +135,11 @@
     top: -19px;
 }
 
+.alien-ui-response-children .alien-ui-response-item{
+    padding: 0;
+    margin: 0;
+}
+
 .alien-ui-response-children .alien-ui-response-avatar {
     width: 30px;
     height: 30px;

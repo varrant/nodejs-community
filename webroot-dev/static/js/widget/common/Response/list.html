@@ -11,9 +11,11 @@
             <a href="#"><img src="{{item.author.avatar}}" alt="avatar" width="50" height="50"/></a>
         </div>
         <div class="alien-ui-response-body">
-            <ul class="alien-ui-response-meta s-light f-list-left">
-                <li><a href="#"><i class="i i-user"></i>云淡然</a></li>
-                <li><i class="i i-clock-o"></i>{{item.publishAt|datefrom}}</li>
+            <ul class="alien-ui-response-meta f-list-left">
+                <li><a href="#"><i
+                        class="i i-user"></i>{{item.author.nickname}}</a><i
+                        class="f-space"></i><strong>{{item.author.score}}</strong></li>
+                <li class="s-light"><i class="i i-clock-o"></i>{{item.publishAt|datefrom}}</li>
             </ul>
 
             <div class="alien-ui-response-content">{{=item.contentHTML}}</div>
@@ -59,7 +61,7 @@
 
 {{else}}
 
-    <li class="f-text-center s-light alert">
+    <li class="alien-ui-response-loading s-light">
         <i class="i i-info-circle"></i>暂无任何{{type === "comment" ? '评论':'回复'}}
     </li>
 
