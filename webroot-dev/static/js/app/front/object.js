@@ -20,6 +20,9 @@ define(function (require, exports, module) {
             engineer: window['-engineer-'],
             author: window['-author-'],
             object: window['-object-']
+        },
+        respond: {
+            id: window['-object-'].id
         }
     });
 });
