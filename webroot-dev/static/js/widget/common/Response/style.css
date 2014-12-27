@@ -1,5 +1,5 @@
 @charset "utf-8";
-.alien-ui-response-title{
+.alien-ui-response-title {
     position: relative;
     padding: 20px;
     font-size: 20px;
@@ -8,21 +8,21 @@
     font-weight: normal;
 }
 
-.alien-ui-response-subtitle{
+.alien-ui-response-subtitle {
     display: inline;
     font-size: 40%;
     margin-left: 10px;
     line-height: 1;
 }
 
-.alien-ui-response-main{
+.alien-ui-response-main {
     padding: 20px;
 }
 
 .alien-ui-response-list {
     list-style: none;
     padding: 0;
-    margin: 30px 0;
+    margin: 0;
 }
 
 .alien-ui-response-item {
@@ -45,7 +45,7 @@
 
 .alien-ui-response-meta {
     padding: 0;
-    margin: 0;
+    margin: 0 0 5px 0;
 }
 
 .alien-ui-response-meta li {
@@ -105,15 +105,19 @@
     top: -19px;
 }
 
-.alien-ui-response-item .i-flag{
+.alien-ui-response-item .i-flag {
     display: none;
 }
 
-.alien-ui-response-item-accepted .i-flag{
+.alien-ui-response-item-accepted .i-flag {
     display: block;
     position: absolute;
     top: 0;
     right: 0;
     color: #007E00;
     font-size: 30px;
+}
+
+.alien-ui-response-main .alien-ui-pagination {
+    margin-top: 30px;
 }

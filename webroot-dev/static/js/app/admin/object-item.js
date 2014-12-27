@@ -55,10 +55,7 @@ define(function (require, exports, module) {
                 author: author,
                 object: object
             },
-            respond: {
-                id: object.id,
-                avatar: window['-engineer-'].avatar
-            },
+            respond: null,
             acceptResponse: object.acceptResponse
         });
     };
