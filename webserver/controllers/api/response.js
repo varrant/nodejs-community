@@ -134,5 +134,14 @@ module.exports = function (app) {
 
     };
 
+    /**
+     * 赞同某条 comment
+     */
+    exports.agreeCancel = function (req, res, next) {
+        var id = req.body.id;
+
+
+    };
+
     return exports;
 };

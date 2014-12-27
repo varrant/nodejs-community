@@ -22,7 +22,8 @@ exports.findOne = interactive.findOne;
  * @param data.operator {String} 操作者 ID
  * @param data.model {String} 模型名称
  * @param data.path {String} 模型字段
- * @param data.object {String} 被操作者 ID
+ * @param data.object {String} object ID
+ * @param data.response {String} response ID
  * @param [data.value=0] {Number} 影响值
  * @param [data.isApprove=true] {Number} 是否通过了
  * @param [data.at] {Date} 操作时间
@@ -66,6 +67,6 @@ exports.active = function (data, callback) {
             return callback(err, true);
         }
 
-        callback(err, newDoc.value !== oldDoc.value);
+        callback(err, newDoc.value !== oldDoc.value, newDoc, oldDoc);
     });
 };

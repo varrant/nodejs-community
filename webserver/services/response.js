@@ -14,6 +14,7 @@ var engineer = require('./engineer.js');
 var notification = require('./notification.js');
 var email = require('./email.js');
 var notice = require('./notice.js');
+var interactive = require('./interactive.js');
 var dato = require('ydr-util').dato;
 var howdo = require('howdo');
 var log = require('ydr-log');
@@ -164,10 +165,6 @@ exports.agree = function (operator, conditions, callback) {
             response.findOne(conditions, next);
         })
         // 2. 判断用户是否赞同过
-        .task(function (next) {
-
-        })
-        // 3. 写入赞同信息
         .task(function (next, doc) {
             if(!doc){
                 var err = new Error('该 response 不存在');
@@ -175,6 +172,21 @@ exports.agree = function (operator, conditions, callback) {
                 return callback(err);
             }
 
+            interactive.active({
+                operator: operator.id,
+                model: 'response',
+                path: 'agreeCount',
+                response: doc.id
+            }, function (err, isSuccess, newDoc, oldDoc) {
+                if(err){
+                    return next(err);
+                }
+
+
+            });
+        })
+        // 3. 写入赞同信息
+        .task(function (next, doc) {
             response.increase(conditions, 'agreeCount', 1, next);
         })
 

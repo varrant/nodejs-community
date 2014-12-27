@@ -395,11 +395,12 @@ define(function (require, exports, module) {
             var the = this;
             var $ele = eve.target;
             var id = the._getResponseId($ele);
+            var hasAgree = the._agreeMap[id] === true;
 
-            the._increaseHTML($ele, the._agreeMap[id] ? -1 : 1);
+            the._increaseHTML($ele, hasAgree ? -1 : 1);
             ajax({
                 url: the._options.url.agree,
-                method: 'post',
+                method: hasAgree ? 'delete' : 'post',
                 data: {
                     id: id
                 }
