@@ -53,8 +53,8 @@ define(function (require, exports, module) {
             avatar: '/static/img/avatar.png'
         },
         sync: {
-            comment: '.j-commentByCount',
-            reply: '.j-replyByCount'
+            commentByCountClass: 'j-comment-by-count',
+            replyByCountClass: 'j-reply-by-count'
         },
         acceptResponse: '',
         list: {}
@@ -83,8 +83,6 @@ define(function (require, exports, module) {
             the._replyMap = {};
             the._agreeMap = {};
             the._acceptMap = {};
-            the._$commentByCount = selector.query(options.sync.comment);
-            the._$replyByCount = selector.query(options.sync.reply);
             $parent.innerHTML = html;
             the._$wrap = selector.children($parent)[0];
             the._ajaxContainer();
@@ -109,9 +107,13 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
+                    var commentByCountClass = options.sync.commentByCountClass;
+                    var replyByCountClass = options.sync.replyByCountClass;
                     var data = {
                         count: json.data,
-                        language: options.language
+                        language: options.language,
+                        commentByCountClass: commentByCountClass,
+                        replyByCountClass: replyByCountClass
                     };
                     the._renderContainer(data);
                     the._paginationOptions = {
@@ -122,11 +124,11 @@ define(function (require, exports, module) {
 
                     var nodes = selector.query('.j-flag', the._$wrap);
 
-                    the._$commentCount = nodes[0];
-                    the._$replyCount = nodes[1];
-                    the._$respondParent = nodes[2];
-                    the._$listParent = nodes[3];
-                    the._$paginationParent = nodes[4];
+                    the._$respondParent = nodes[0];
+                    the._$listParent = nodes[1];
+                    the._$paginationParent = nodes[2];
+                    the._$commentByCount = selector.query('.' + commentByCountClass);
+                    the._$replyByCount = selector.query('.' + replyByCountClass);
                     the._getComment();
                     the._initEvent();
                 })
@@ -155,19 +157,22 @@ define(function (require, exports, module) {
         _initRespond: function () {
             var the = this;
             var options = the._options;
-            var data = dato.extend({}, options.respond, options.language);
 
-            the._respondComment = new Respond(the._$respondParent, data);
-            the._respondComment.on('submit', function (content) {
-                the._respondComment.disable();
-                the._post(content, function (err) {
-                    the._respondComment.enable();
+            if (options.respond) {
+                var data = dato.extend({}, options.respond, options.language);
 
-                    if (!err) {
-                        the._respondComment.reset();
-                    }
+                the._respondComment = new Respond(the._$respondParent, data);
+                the._respondComment.on('submit', function (content) {
+                    the._respondComment.disable();
+                    the._post(content, function (err) {
+                        the._respondComment.enable();
+
+                        if (!err) {
+                            the._respondComment.reset();
+                        }
+                    });
                 });
-            });
+            }
         },
 
 
@@ -323,11 +328,10 @@ define(function (require, exports, module) {
             var the = this;
             var count = the._count;
 
-            the._$commentCount.innerHTML = count.comment;
-            the._$replyCount.innerHTML = count.reply;
             dato.each(the._$commentByCount, function (i, $node) {
                 $node.innerHTML = count.comment;
             });
+
             dato.each(the._$replyByCount, function (i, $node) {
                 $node.innerHTML = count.reply;
             });
