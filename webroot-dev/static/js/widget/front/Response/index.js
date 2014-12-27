@@ -48,6 +48,10 @@ define(function (require, exports, module) {
             link: '#',
             text: 'markdown 编辑器使用帮助',
             avatar: '/static/img/avatar.png'
+        },
+        sync: {
+            comment: '.j-commentByCount',
+            reply: '.j-replyByCount'
         }
     };
     var Response = generator({

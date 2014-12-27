@@ -12,7 +12,7 @@ var Validator = require('ydr-validator');
 var validator = new Validator();
 var regexp = require('../utils/').regexp;
 var filter = require('../utils/').filter;
-var REG_CONTENT = regexp.content(5, 1000);
+var REG_CONTENT = regexp.content(5, 5000);
 
 validator.pushRule({
     name: 'content',
@@ -20,7 +20,7 @@ validator.pushRule({
     alias: '评论内容',
     trim: true,
     minLength: 5,
-    maxLength: 1000,
+    maxLength: 5000,
     regexp: REG_CONTENT,
     onafter: function (val, data) {
         val = xss.mdSafe(val);
