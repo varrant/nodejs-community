@@ -66,6 +66,28 @@ module.exports = function (app) {
 
 
     /**
+     * 获取某条评论
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.get = function (req, res, next) {
+        var id = req.query.id;
+
+        response.findOne({_id: id}, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                code: 200,
+                data: doc
+            });
+        });
+    };
+
+
+    /**
      * list 评论/回复列表
      * @param req
      * @param res
