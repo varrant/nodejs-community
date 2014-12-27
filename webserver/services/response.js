@@ -148,6 +148,7 @@ exports.createOne = function (author, data, meta, callback) {
                     // 通知被 reply 作者
                     _noticeCommentAuthor(author, parentResponse);
 
+                    // 为他人点赞才加分
                     if(author.id.toString() !== responseObject.author.toString()){
                         // 增加主动用户回复积分
                         engineer.increaseScore({_id: author.id}, scoreMap.reply, log.holdError);
@@ -156,6 +157,7 @@ exports.createOne = function (author, data, meta, callback) {
                         engineer.increaseScore({_id: responseObject.author}, scoreMap.replyBy, log.holdError);
                     }
                 }else{
+                    // 为他人点赞才加分
                     if(author.id.toString() !== responseObject.author.toString()){
                         // 增加主动用户评论积分
                         engineer.increaseScore({_id: author.id}, scoreMap.comment, log.holdError);

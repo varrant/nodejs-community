@@ -11,9 +11,15 @@ var section = require('./services/').section;
 var category = require('./services/').category;
 var engineer = require('./services/').engineer;
 var howdo = require('howdo');
+var configs = require('../configs/');
 
 module.exports = function (next, app) {
     howdo
+        // 初始化启动配置
+        .task(function (done) {
+            app.locals.$config = configs;
+            done();
+        })
         // 初始化 web 设置
         .task(function (done) {
             setting.get(function (err, docs) {

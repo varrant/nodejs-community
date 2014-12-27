@@ -500,7 +500,7 @@ define(function (require, exports, module) {
             var $pagerParent;
 
             // 第 2+ 次加载
-            if (the._replyMap[id]) {
+            if (the._replyMap[id].$listParent) {
                 $listParent = the._replyMap[id].$listParent;
                 $pagerParent = the._replyMap[id].$pagerParent;
                 $contentParent = the._replyMap[id].$contentParent;
