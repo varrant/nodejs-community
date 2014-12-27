@@ -14,9 +14,6 @@ var howdo = require('howdo');
 
 module.exports = function (app) {
     var exports = {};
-    var uris = app.locals.$section.map(function (section) {
-        return section.uri;
-    });
     var sectionMap = {};
 
     app.locals.$section.forEach(function (section) {
@@ -52,7 +49,7 @@ module.exports = function (app) {
             return next();
         }
 
-        var can = (res.locals.$engineer.role & (1<<findSection.role)) !== 0;
+        var can = (res.locals.$engineer.role & (1 << findSection.role)) !== 0;
 
         if (!can) {
             var err = new Error('权限不足');
@@ -163,6 +160,55 @@ module.exports = function (app) {
             });
         });
     };
+
+
+    /**
+     * 采纳
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.accept = function (req, res, next) {
+        var objectId = req.body.object;
+        var responseId = req.body.response;
+
+        object.acceptResponse(res.locals.$engineer, {
+            _id: objectId
+        }, responseId, true, function (err, newDoc, oldDoc) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                code: 200,
+                data: oldDoc.acceptResponse
+            });
+        });
+    };
+
+    /**
+     * 采纳
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.acceptCancel = function (req, res, next) {
+        var objectId = req.body.object;
+        var responseId = req.body.response;
+
+        object.acceptResponse(res.locals.$engineer, {
+            _id: objectId
+        }, responseId, false, function (err, newDoc, oldDoc) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                code: 200
+            });
+        });
+    };
+    
 
     return exports;
 };
