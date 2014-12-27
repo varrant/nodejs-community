@@ -64,14 +64,15 @@ module.exports = function (app) {
             });
     };
 
+
     /**
-     * get 评论/回复列表
+     * list 评论/回复列表
      * @param req
      * @param res
      * @param next
      * @returns {*}
      */
-    exports.get = function (req, res, next) {
+    exports.list = function (req, res, next) {
         var options = filter.skipLimit(req.query);
         var objectId = req.query.object;
         var parentId = req.query.parent;

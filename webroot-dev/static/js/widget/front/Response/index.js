@@ -31,7 +31,7 @@ define(function (require, exports, module) {
     var alienClass = 'alien-ui-response';
     var defaults = {
         url: {
-            get: '/api/response/',
+            list: '/api/response/list/',
             post: '/admin/api/response/',
             count: '/api/response/count/',
             agree: '/admin/api/response/agree/',
@@ -216,7 +216,7 @@ define(function (require, exports, module) {
         _ajaxComment: function () {
             var the = this;
             var options = the._options;
-            var url = options.url.get + '?' + qs.stringify(options.query);
+            var url = options.url.list + '?' + qs.stringify(options.query);
 
             ajax({
                 url: url
