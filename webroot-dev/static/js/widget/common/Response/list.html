@@ -2,7 +2,7 @@
 
 {{list list as item}}
 <li class="alien-ui-response-item
-{{if object.acceptResponse === item.id}}alien-ui-response-item-accepted{{/if}}"
+{{if object.acceptByResponse === item.id}}alien-ui-response-item-accepted{{/if}}"
     id="response-{{item.id}}"
     data-id="{{item.id}}"
     data-parent="{{item.parent}}">
@@ -31,7 +31,7 @@
                     <button class="btn btn-default btn-xs alien-ui-response-agree"><i class="i i-thumbs-up"></i>赞同<span
                             class="alien-ui-response-number">{{item.agreeByCount}}</span></button>
                 </li>
-                {{if engineer.id === author.id && object.acceptResponse === item.id}}
+                {{if engineer.id === author.id && object.acceptByResponse === item.id}}
                 <li class="alien-ui-response-accept-li">
                     <button class="btn btn-success btn-xs alien-ui-response-accept"
                             title="点击取消为最佳答案"><i

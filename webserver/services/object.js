@@ -493,7 +493,7 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
             callback(err, newDoc, oldDoc);
 
             // 设置为采纳
-            if (boolean) {
+            if (boolean && newDoc) {
                 if (newDoc.acceptByAuthor.toString() !== oldDoc.acceptByAuthor.toString()) {
                     // 当前被采纳的人加分
                     engineer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
@@ -503,7 +503,7 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
                 }
             }
             // 取消采纳
-            else {
+            else if(newDoc) {
                 if (newDoc.acceptByAuthor.toString() !== oldDoc.acceptByAuthor.toString()) {
                     // 当前被取消采纳的人减分
                     engineer.increaseScore({_id: newDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
