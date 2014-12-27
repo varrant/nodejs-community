@@ -8,6 +8,7 @@
 
 
 var configs = require('../../configs/');
+var scoreMap = configs.score;
 var response = require('../models/').response;
 var object = require('./object.js');
 var engineer = require('./engineer.js');
@@ -136,9 +137,6 @@ exports.createOne = function (author, data, meta, callback) {
                 // 推入 object 的 contributors
                 object.pushContributor({_id: doc.object}, author, log.holdError);
 
-                // 增加用户积分 2
-                engineer.increaseScore({_id: author.id}, 2, log.holdError);
-
                 // 评论父级
                 if (parentResponse) {
                     // parentResponse response.replyCount
@@ -149,6 +147,22 @@ exports.createOne = function (author, data, meta, callback) {
 
                     // 通知被 reply 作者
                     _noticeCommentAuthor(author, parentResponse);
+
+                    if(author.id.toString() !== responseObject.author.toString()){
+                        // 增加主动用户回复积分
+                        engineer.increaseScore({_id: author.id}, scoreMap.reply, log.holdError);
+
+                        // 增加被动用户回复积分
+                        engineer.increaseScore({_id: responseObject.author}, scoreMap.replyBy, log.holdError);
+                    }
+                }else{
+                    if(author.id.toString() !== responseObject.author.toString()){
+                        // 增加主动用户评论积分
+                        engineer.increaseScore({_id: author.id}, scoreMap.comment, log.holdError);
+
+                        // 增加被动用户评论积分
+                        engineer.increaseScore({_id: responseObject.author}, scoreMap.commentBy, log.holdError);
+                    }
                 }
             }
         });

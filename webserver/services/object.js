@@ -7,6 +7,8 @@
 
 'use strict';
 
+var configs = require('../../configs/');
+var scoreMap = configs.score;
 var object = require('../models').object;
 var section = require('./section.js');
 var category = require('./category.js');
@@ -438,7 +440,7 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
             }
 
             if (acceptObject.section.uri !== 'question') {
-                var err = new Error('该 object 不允许设置最佳答案');
+                var err = new Error('该 object 不允许采纳他人评论');
                 return next(err);
             }
 
@@ -482,11 +484,31 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
         // 4. 更新
         .task(function (next, oldDoc, acceptResponse) {
             object.findOneAndUpdate(conditions, {
-                acceptResponse: acceptResponse.id
+                acceptResponse: boolean ? acceptResponse.id : null
             }, next);
         })
         // 异步顺序串行
-        .follow(callback);
+        .follow(function (err, newDoc, oldDoc) {
+            callback(err, newDoc, oldDoc);
+
+            // 设置为采纳
+            if (boolean) {
+                if (newDoc.acceptAuthor.toString() !== oldDoc.acceptAuthor.toString()) {
+                    // 当前被采纳的人加分
+                    engineer.increaseScore({_id: newDoc.acceptAuthor}, scoreMap.acceptBy, log.holdError);
+
+                    // 当前被取消采纳的人减分
+                    engineer.increaseScore({_id: oldDoc.acceptAuthor}, -scoreMap.acceptBy, log.holdError);
+                }
+            }
+            // 取消采纳
+            else {
+                if (newDoc.acceptAuthor.toString() !== oldDoc.acceptAuthor.toString()) {
+                    // 当前被取消采纳的人减分
+                    engineer.increaseScore({_id: newDoc.acceptAuthor}, -scoreMap.acceptBy, log.holdError);
+                }
+            }
+        });
 };
 
 /**

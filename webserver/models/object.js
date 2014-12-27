@@ -171,8 +171,13 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    // 是否被接受了
-    // 通常指问题类的 object
+    // 被采纳的 response author
+    acceptAuthor: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'engineer',
+        default: null
+    },
+    // 被采纳的 response
     acceptResponse: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'response',

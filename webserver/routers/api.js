@@ -10,7 +10,7 @@ var settings = ['oauth', 'alioss', 'smtp', 'website'];
 var configs = require('../../configs/');
 
 module.exports = function (app, ctrlApi) {
-    var timeout = 'dev' === configs.app.env ? 3000 : 0;
+    var timeout = 'dev' === configs.app.env ? 500 : 0;
     app.all(/^\/api\/.*$/, ctrlApi.middleware.delay(timeout));
     app.all(/^\/admin\/api\/.*$/, ctrlApi.middleware.delay(timeout));
 
