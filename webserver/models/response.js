@@ -15,10 +15,15 @@ var schema = new mongoose.Schema({
         unique: false,
         ref: 'engineer'
     },
-    // 响应内容
+    // markdown 响应内容
     content: {
         type: String,
         required: true
+    },
+    // html 响应内容
+    contentHTML: {
+        type: String,
+        required: false
     },
     // 响应时间
     publishAt: {
