@@ -422,6 +422,11 @@ define(function (require, exports, module) {
             var id = the._getResponseId($ele);
             var hasAccept = the._acceptMap[id] === true;
 
+            if (the._accepting) {
+                return alert('正忙，请稍后再试');
+            }
+
+            the._accepting = true;
             the._acceptMap[id] = !the._acceptMap[id];
             ajax({
                 url: the._options.url.accept,
@@ -430,7 +435,30 @@ define(function (require, exports, module) {
                     response: id,
                     object: the._options.query.object
                 }
-            });
+            })
+                .on('success', function (json) {
+                    if (json.code !== 200) {
+                        return alert(json);
+                    }
+
+                    the._acceptItem(id, true);
+                    the._acceptItem(json.data, false);
+                })
+                .on('error', alert)
+                .on('finish', function () {
+                    the._accepting = false;
+                });
+        },
+
+
+        /**
+         * 设置/取消 item 为最佳
+         * @param itemId
+         * @param boolean
+         * @private
+         */
+        _acceptItem: function (itemId, boolean) {
+
         }
     });
 

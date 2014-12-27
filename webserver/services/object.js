@@ -471,6 +471,11 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
                     return next(err);
                 }
 
+                if (acceptResponse.parent) {
+                    err = new Error('不能采纳他人的回复');
+                    return next(err);
+                }
+
                 next(err, acceptObject, acceptResponse);
             });
         })
