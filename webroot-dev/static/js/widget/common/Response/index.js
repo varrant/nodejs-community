@@ -220,7 +220,7 @@ define(function (require, exports, module) {
         },
 
 
-        _scrollTo: function($target){
+        _scrollTo: function ($target) {
             var top = attribute.top($target);
 
             animation.scrollTo(window, {
@@ -240,7 +240,13 @@ define(function (require, exports, module) {
             var options = the._options;
             var url = options.url.list + '?' + qs.stringify(options.query);
 
-            the._renderList();
+            if (the._isAjaxing) {
+                return alert('正忙，请稍后再试');
+            }
+
+            the._isAjaxing = true;
+
+            the._renderComment();
             ajax({
                 url: url
             })
@@ -249,7 +255,7 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
-                    the._renderList(dato.extend({
+                    the._renderComment(dato.extend({
                         list: json.data
                     }, options.list));
 
@@ -262,22 +268,29 @@ define(function (require, exports, module) {
                         the._replyMap = {};
                     }
                 })
-                .on('error', alert);
+                .on('error', alert)
+                .on('finish', the._ajaxFinish.bind(the));
         },
+
+
+        _ajaxFinish: function () {
+            this._isAjaxing = false;
+        },
+
 
         /**
          * 渲染评论、回复列表
          * @param [data]
          * @private
          */
-        _renderList: function (data) {
+        _renderComment: function (data) {
             var the = this;
             var html;
 
             if (data) {
                 html = tplList.render(data);
             } else {
-                html = '<li>' + the._options.loading + '</li>';
+                html = '<li class="f-text-center">' + the._options.loading + '</li>';
             }
 
             the._$listParent.innerHTML = html;
@@ -349,9 +362,7 @@ define(function (require, exports, module) {
                     callback(err);
                     alert(err);
                 })
-                .on('finish', function () {
-                    the._isAjaxing = false;
-                });
+                .on('finish', the._ajaxFinish.bind(the));
         },
 
 
@@ -456,11 +467,7 @@ define(function (require, exports, module) {
 
             if (boolean) {
                 attribute.addClass($li, alienClass + '-active');
-
-                if (!the._replyMap[id]) {
-                    var $children = selector.query('.' + alienClass + '-children', $li)[0];
-                    $children.innerHTML = '<li>加载中……</li>';
-                }
+                the._ajaxReply($li, id);
             } else {
                 attribute.removeClass($li, alienClass + '-active');
             }
@@ -469,10 +476,42 @@ define(function (require, exports, module) {
 
         /**
          * 加载回复
+         * @param $li
+         * @param id
          * @private
          */
-        _ajaxReply: function () {
+        _ajaxReply: function ($li, id) {
+            var the = this;
+            var $children = selector.query('.' + alienClass + '-children', $li)[0];
 
+            // 第 2+ 次加载
+            if (the._replyMap[id]) {
+
+            }
+            // 首次加载
+            else {
+                the._renderReply($children);
+            }
+        },
+
+
+        /**
+         * 渲染回复
+         * @param $children
+         * @param [data]
+         * @private
+         */
+        _renderReply: function ($children, data) {
+            var the = this;
+            var html;
+
+            if (data) {
+                html = tplList.render(data);
+            } else {
+                html = '<div class="f-text-center">' + the._options.loading + '</div>';
+            }
+
+            $children.innerHTML = html;
         },
 
 
@@ -505,9 +544,7 @@ define(function (require, exports, module) {
                     the._increaseHTML($ele, json.data);
                 })
                 .on('error', alert)
-                .on('finish', function () {
-                    the._isAjaxing = false;
-                });
+                .on('finish', the._ajaxFinish.bind(the));
         },
 
 
@@ -558,9 +595,7 @@ define(function (require, exports, module) {
                     }
                 })
                 .on('error', alert)
-                .on('finish', function () {
-                    the._isAjaxing = false;
-                });
+                .on('finish', the._ajaxFinish.bind(the));
         },
 
 

@@ -12,6 +12,7 @@ module.exports = function (app) {
         category: require('./category.js')(app),
         column: require('./column.js')(app),
         engineer: require('./engineer.js')(app),
+        middleware: require('./middleware.js')(app),
         nav: require('./nav.js')(app),
         notification: require('./notification.js')(app),
         object: require('./object.js')(app),

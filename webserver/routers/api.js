@@ -9,6 +9,10 @@
 var settings = ['oauth', 'alioss', 'smtp', 'website'];
 
 module.exports = function (app, ctrlApi) {
+    app.all(/^\/api\/.*$/, ctrlApi.middleware.delay(3000));
+    app.all(/^\/admin\/api\/.*$/, ctrlApi.middleware.delay(3000));
+
+
     // notification
     app.get('/admin/api/notification/count/', ctrlApi.notification.count);
     app.get('/admin/api/notification/', ctrlApi.notification.get);
