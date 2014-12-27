@@ -172,13 +172,13 @@ var schema = new mongoose.Schema({
         default: 0
     },
     // 被采纳的 response author
-    acceptAuthor: {
+    acceptByAuthor: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'engineer',
         default: null
     },
     // 被采纳的 response
-    acceptResponse: {
+    acceptByResponse: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'response',
         default: null

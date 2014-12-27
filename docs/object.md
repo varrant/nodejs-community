@@ -30,7 +30,8 @@
 - `replyByCount` 被回复次数
 - `favoriteByCount` 被收藏次数
 - `applyByCount` 被申请次数
-- `AcceptByResponse` 是否被接受了
+- `acceptByAuthor` 被采纳的 author
+- `AcceptByResponse` 被采纳的 response
 - `hasCertificated` 是否被认证了
 - `contributors` 最新的 5 位贡献者
 - `meta` 元信息

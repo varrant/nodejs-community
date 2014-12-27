@@ -484,7 +484,8 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
         // 4. 更新
         .task(function (next, oldDoc, acceptResponse) {
             object.findOneAndUpdate(conditions, {
-                acceptResponse: boolean ? acceptResponse.id : null
+                acceptByResponse: boolean ? acceptResponse.id : null,
+                acceptByAuthor: boolean ? acceptResponse.author : null
             }, next);
         })
         // 异步顺序串行
@@ -493,19 +494,19 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
 
             // 设置为采纳
             if (boolean) {
-                if (newDoc.acceptAuthor.toString() !== oldDoc.acceptAuthor.toString()) {
+                if (newDoc.acceptByAuthor.toString() !== oldDoc.acceptByAuthor.toString()) {
                     // 当前被采纳的人加分
-                    engineer.increaseScore({_id: newDoc.acceptAuthor}, scoreMap.acceptBy, log.holdError);
+                    engineer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
 
                     // 当前被取消采纳的人减分
-                    engineer.increaseScore({_id: oldDoc.acceptAuthor}, -scoreMap.acceptBy, log.holdError);
+                    engineer.increaseScore({_id: oldDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
                 }
             }
             // 取消采纳
             else {
-                if (newDoc.acceptAuthor.toString() !== oldDoc.acceptAuthor.toString()) {
+                if (newDoc.acceptByAuthor.toString() !== oldDoc.acceptByAuthor.toString()) {
                     // 当前被取消采纳的人减分
-                    engineer.increaseScore({_id: newDoc.acceptAuthor}, -scoreMap.acceptBy, log.holdError);
+                    engineer.increaseScore({_id: newDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
                 }
             }
         });
