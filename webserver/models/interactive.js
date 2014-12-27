@@ -36,11 +36,6 @@ var schema = new mongoose.Schema({
         required: true,
         ref: 'response'
     },
-    // 影响值，默认0
-    value: {
-        type: Number,
-        default: 0
-    },
     // 操作时间
     interactiveAt: {
         type: Date,

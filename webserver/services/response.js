@@ -156,9 +156,10 @@ exports.createOne = function (author, data, meta, callback) {
  * 赞同某条评论
  * @param operator
  * @param conditions
+ * @param boolean
  * @param callback
  */
-exports.agree = function (operator, conditions, callback) {
+exports.agree = function (operator, conditions, boolean, callback) {
     howdo
         // 1. 检测该评论是否存在
         .task(function (next) {
@@ -176,7 +177,8 @@ exports.agree = function (operator, conditions, callback) {
                 operator: operator.id,
                 model: 'response',
                 path: 'agreeCount',
-                response: doc.id
+                response: doc.id,
+                hasApproved: boolean
             }, function (err, isSuccess, newDoc, oldDoc) {
                 if(err){
                     return next(err);

@@ -25,7 +25,7 @@ exports.findOne = interactive.findOne;
  * @param data.object {String} object ID
  * @param data.response {String} response ID
  * @param [data.value=0] {Number} 影响值
- * @param [data.isApprove=true] {Number} 是否通过了
+ * @param data.hasApproved {Number} 是否通过了
  * @param [data.at] {Date} 操作时间
  * @param callback {Function} 回调
  */
