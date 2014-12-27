@@ -451,7 +451,11 @@ define(function (require, exports, module) {
                     else {
                         options.acceptResponse = id;
                         the._acceptItem(id, true);
-                        the._acceptItem(json.data, false);
+
+                        if (id !== json.data) {
+                            the._acceptItem(json.data, false);
+                        }
+
                         the.emit('accept', true);
                     }
                 })
