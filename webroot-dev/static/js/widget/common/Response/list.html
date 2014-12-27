@@ -19,10 +19,12 @@
             <div class="alien-ui-response-content">{{=item.contentHTML}}</div>
 
             <ul class="alien-ui-response-meta alien-ui-response-action s-light f-list-left">
+                {{if !item.parent}}
                 <li>
                     <button class="btn btn-primary btn-xs alien-ui-response-reply"><i class="i i-reply"></i>回复<span
                             class="alien-ui-response-number">{{item.replyByCount}}</span></button>
                 </li>
+                {{/if}}
                 <li>
                     <button class="btn btn-default btn-xs alien-ui-response-agree"><i class="i i-thumbs-up"></i>赞同<span
                             class="alien-ui-response-number">{{item.agreeByCount}}</span></button>

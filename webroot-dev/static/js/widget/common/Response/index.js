@@ -464,7 +464,10 @@ define(function (require, exports, module) {
 
             if (boolean) {
                 attribute.addClass($li, alienClass + '-active');
-                the._ajaxReply($li, id);
+
+                if(!the._replyMap || !the._replyMap[id] || !the._replyMap[id].respond){
+                    the._ajaxReply($li, id);
+                }
             } else {
                 attribute.removeClass($li, alienClass + '-active');
             }

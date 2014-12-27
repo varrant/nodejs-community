@@ -1,8 +1,9 @@
 @charset "utf-8";
-.alien-ui-response-loading{
+.alien-ui-response-loading {
     padding: 20px;
     text-align: center;
 }
+
 .alien-ui-response-title {
     position: relative;
     padding: 20px;
@@ -40,6 +41,11 @@
     border-bottom: 0;
     padding-bottom: 0;
     margin-bottom: 0;
+}
+
+.alien-ui-response-avatar {
+    width: 50px;
+    height: 50px;
 }
 
 .alien-ui-response-body {
@@ -82,20 +88,6 @@
     margin-top: 30px;
 }
 
-.alien-ui-response-children {
-    position: relative;
-    margin: -10px 0 0 60px;
-    padding: 20px;
-    border-radius: 4px;
-    border: 1px solid #F0F0F0;
-    display: none;
-}
-
-.alien-ui-response-children .alien-ui-response-body {
-    margin-left: 40px;
-    font-size: 14px;
-}
-
 .alien-ui-response-active .alien-ui-response-children {
     display: block;
 }
@@ -110,6 +102,19 @@
     border-bottom: 0;
     border-top: 1px solid #eee;
     border-radius: 0 0 4px 4px;
+}
+
+.alien-ui-response-children {
+    position: relative;
+    margin: -10px 0 0 60px;
+    border-radius: 4px;
+    border: 1px solid #F0F0F0;
+    display: none;
+}
+
+.alien-ui-response-children .alien-ui-response-body {
+    margin-left: 40px;
+    font-size: 14px;
 }
 
 .alien-ui-response-children::before,
@@ -130,7 +135,11 @@
     top: -19px;
 }
 
+.alien-ui-response-children .alien-ui-response-avatar {
+    width: 30px;
+    height: 30px;
+}
+
 .alien-ui-response-children .alien-ui-respond {
-    margin-top: 20px;
-    margin-bottom: -21px;
+    margin: 20px 0 -1px;
 }
