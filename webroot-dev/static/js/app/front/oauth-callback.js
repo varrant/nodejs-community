@@ -11,19 +11,24 @@ define(function (require) {
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var selector = require('../../alien/core/dom/selector.js');
-    var page = {};
+    var app = {};
     var locals = window.locals || {};
 
-    page._login = function () {
+    app._login = function () {
         var $msg = document.getElementById('msg');
+
+        if (app.redirect) {
+            return window.location.href = app.redirect;
+        }
 
         ajax({
             url: '/api/engineer/login/',
             method: 'post',
             data: locals
         }).on('success', function (json) {
-            if(json.code !== 200){
-                return $msg.innerHTML = json.message;
+            if (json.code !== 200) {
+                app.redirect = json.redirect;
+                return app._message('danger', json.message);
             }
 
             if (json.data) {
@@ -34,13 +39,28 @@ define(function (require) {
                 window.close();
             }
 
-            $msg.innerHTML = json.message;
+            app._message('success', json.message);
         }).on('error', function (err) {
-            $msg.innerHTML = err.message;
+            app._message('danger', err.message);
         });
     };
 
-    page.init = function () {
+
+    /**
+     * 输出消息
+     * @param type
+     * @param message
+     * @private
+     */
+    app._message = function (type, message) {
+        var $msg = document.getElementById('msg');
+
+        $msg.className = 's-' + type;
+        $msg.innerHTML = message;
+    };
+
+
+    app.init = function () {
         var the = this;
         var $btn = document.getElementById('btn');
 
@@ -51,5 +71,5 @@ define(function (require) {
         $btn.onclick = the._login;
     };
 
-    page.init();
+    app.init();
 });
