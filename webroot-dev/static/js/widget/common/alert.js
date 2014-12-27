@@ -16,6 +16,10 @@ define(function (require, exports, module) {
             content: content && content.message ? content.message : String(content),
             buttons: ['好'],
             addClass: 'm-dialog-alert'
-        });
+        }).on('close', function (index) {
+                if(index === 0 && content && content.code === 401){
+                    login();
+                }
+            });
     };
 });

@@ -9,8 +9,6 @@ define(function (require, exports, module) {
     'use strict';
 
     var xhr = require('../../alien/core/communication/xhr.js');
-    var login = require('./login.js');
-    var confirm = require('./confirm.js');
     var json = 'application/json; charset=utf-8';
 
     module.exports = function (options) {
@@ -42,7 +40,6 @@ define(function (require, exports, module) {
 
                     // 未登陆
                     case 401:
-                        login();
                         break;
                 }
             });
