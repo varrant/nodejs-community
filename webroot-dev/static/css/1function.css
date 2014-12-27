@@ -13,7 +13,7 @@
 .row:after,
 [class*=avg-]:after,
 .f-list-left:after,
-.f-list-right:after{
+.f-list-right:after {
     display: table;
     content: " ";
 }
@@ -50,7 +50,7 @@
 }
 
 .f-list-left,
-.f-list-right{
+.f-list-right {
     list-style: none;
 }
 
@@ -85,10 +85,17 @@
     margin: 0 5px;
 }
 
-.f-transition{
+.f-transition {
     -webkit-transition: background .5s;
     -moz-transition: background .5s;
     -ms-transition: background .5s;
     -o-transition: background .5s;
     transition: background .5s;
+}
+
+.f-loading {
+    background: url(/static/img/loading.gif) no-repeat 0 4px/16px;
+    display: inline-block;
+    padding-left: 20px;
+    color: #888;
 }

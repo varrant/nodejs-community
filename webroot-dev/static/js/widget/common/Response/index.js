@@ -12,12 +12,12 @@ define(function (require, exports, module) {
     var selector = require('../../../alien/core/dom/selector.js');
     var modification = require('../../../alien/core/dom/modification.js');
     var attribute = require('../../../alien/core/dom/attribute.js');
+    var animation = require('../../../alien/core/dom/animation.js');
     var event = require('../../../alien/core/event/base.js');
     var dato = require('../../../alien/util/dato.js');
     var qs = require('../../../alien/util/querystring.js');
     var ajax = require('../ajax.js');
     var alert = require('../alert.js');
-    var loading = require('../loading.js');
     var Pagination = require('../../../alien/ui/Pagination/index');
     var Respond = require('../Respond/index');
     var Template = require('../../../alien/libs/Template.js');
@@ -30,6 +30,7 @@ define(function (require, exports, module) {
     var tplList = new Template(templateList);
     var alienClass = 'alien-ui-response';
     var defaults = {
+        loading: '<div class="f-loading">加载中……</div>',
         url: {
             list: '/api/response/list/',
             post: '/admin/api/response/',
@@ -95,8 +96,8 @@ define(function (require, exports, module) {
             var the = this;
             var options = the._options;
             var url = options.url.count + '?' + qs.stringify(options.query);
-            var ld = loading('正在加载中……');
 
+            the._renderContainer();
             ajax({
                 url: url
             })
@@ -131,19 +132,24 @@ define(function (require, exports, module) {
                     the._initEvent();
                     the._increaseCount();
                 })
-                .on('error', alert)
-                .on('finish', ld.destroy.bind(ld));
+                .on('error', alert);
         },
 
 
         /**
          * 渲染容器
-         * @param data
+         * @param [data]
          * @private
          */
         _renderContainer: function (data) {
             var the = this;
-            var html = tplContainer.render(data);
+            var html;
+
+            if (data) {
+                html = tplContainer.render(data);
+            } else {
+                html = '<div class="f-text-center">' + the._options.loading + '</div>';
+            }
 
             the._$wrap.innerHTML = html;
         },
@@ -204,12 +210,24 @@ define(function (require, exports, module) {
                 the._initRespond();
                 the._pagination = new Pagination(the._$paginationParent, the._paginationOptions);
                 the._pagination.on('change', function (page) {
+                    the._scrollTo(the._$listParent);
                     the._options.query.page = page;
                     the._getComment();
                 });
             }
 
             the._ajaxComment();
+        },
+
+
+        _scrollTo: function($target){
+            var top = attribute.top($target);
+
+            animation.scrollTo(window, {
+                y: top - 70
+            }, {
+                duration: 123
+            });
         },
 
 
@@ -222,6 +240,7 @@ define(function (require, exports, module) {
             var options = the._options;
             var url = options.url.list + '?' + qs.stringify(options.query);
 
+            the._renderList();
             ajax({
                 url: url
             })
@@ -240,6 +259,7 @@ define(function (require, exports, module) {
                             page: options.query.page,
                             max: Math.ceil(the._count.comment / options.query.limit)
                         });
+                        the._replyMap = {};
                     }
                 })
                 .on('error', alert);
@@ -247,12 +267,18 @@ define(function (require, exports, module) {
 
         /**
          * 渲染评论、回复列表
-         * @param data
+         * @param [data]
          * @private
          */
         _renderList: function (data) {
             var the = this;
-            var html = tplList.render(data);
+            var html;
+
+            if (data) {
+                html = tplList.render(data);
+            } else {
+                html = '<li>' + the._options.loading + '</li>';
+            }
 
             the._$listParent.innerHTML = html;
         },
@@ -399,7 +425,53 @@ define(function (require, exports, module) {
             var the = this;
             var id = the._getResponseId(eve.target);
 
-            console.log(id);
+            // 之前有打开的评论列表
+            if (the._replyParentId) {
+                the._toggleReply(the._replyParentId, false);
+            }
+
+            if (the._replyParentId !== id) {
+                the._toggleReply(id, true);
+                the._replyParentId = id;
+            } else {
+                the._replyParentId = 0;
+            }
+        },
+
+
+        /**
+         * 切换评论的收起与展开
+         * @param id
+         * @param boolean {Boolean} 是否展开
+         * @private
+         */
+        _toggleReply: function (id, boolean) {
+            var the = this;
+            var $li = selector.query('#response-' + id)[0];
+
+            if (!$li) {
+                return;
+            }
+
+            if (boolean) {
+                attribute.addClass($li, alienClass + '-active');
+
+                if (!the._replyMap[id]) {
+                    var $children = selector.query('.' + alienClass + '-children', $li)[0];
+                    $children.innerHTML = '<li>加载中……</li>';
+                }
+            } else {
+                attribute.removeClass($li, alienClass + '-active');
+            }
+        },
+
+
+        /**
+         * 加载回复
+         * @private
+         */
+        _ajaxReply: function () {
+
         },
 
 
@@ -425,7 +497,7 @@ define(function (require, exports, module) {
                 }
             })
                 .on('success', function (json) {
-                    if(json.code !== 200){
+                    if (json.code !== 200) {
                         return alert(json);
                     }
 
