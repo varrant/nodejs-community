@@ -21,6 +21,7 @@
                     <button class="btn btn-primary btn-xs alien-ui-response-agree"><i class="i i-thumbs-up"></i>赞同<span
                             class="alien-ui-response-number">{{item.agreeCount}}</span></button>
                 </li>
+                {{if engineer.id === author}}
                 <li>
                     <button class="btn btn-warning btn-xs active alien-ui-response-accept" readonly><i
                             class="i i-check"></i>采纳回答</button>

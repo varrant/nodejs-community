@@ -8,7 +8,11 @@
 <head lang="zh-cn">
     {{include ../include/meta.html}}
     {{include ./include/meta.html}}
-    <script>window['-author-']='{{object.author.id}}';</script>
+    <script>window['-author-']={
+        id: '{{object.author.id}}',
+        nickname: '{{object.author.nickname}}',
+        githubLogin: '{{object.author.githubLogin}}'
+    };</script>
     <script>window['-object-']='{{object.id}}';</script>
 </head>
 <body ontouchstart="" class="p-post p-post-opinion">
