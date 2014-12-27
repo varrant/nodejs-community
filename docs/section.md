@@ -6,6 +6,7 @@
 - `role` 板块发布权限
 - `uri` 板块地址
 - `cover` 板块封面
-- `introduction` 板块简介
+- `introduction` markdown 板块简介
+- `introductionHTML` html 板块简介
 - `obejctCount` object数量
 - `meta` 元信息

@@ -11,8 +11,10 @@
 - `category` 分类
 - `column` 专栏
 - `labels` 标签
-- `introduction` 简介
-- `content` 内容
+- `introduction` markdown 简介
+- `introductionHTML` html 简介
+- `content` markdown 内容
+- `contentHTML` html 内容
 - `publishAt` 发布时间
 - `updateAt` 最近修改时间
 - `updateList` 修改历史

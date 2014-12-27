@@ -5,7 +5,8 @@
 `*`表示虚拟字段
 
 - `author` 响应作者
-- `content` 响应内容
+- `content` markdown 内容
+- `contentHTML` html 内容
 - `publishAt` 发布时间
 - `object` 响应文章
 - `parent` 响应父级
