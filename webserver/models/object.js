@@ -173,7 +173,7 @@ var schema = new mongoose.Schema({
     },
     // 是否被接受了
     // 通常指问题类的 object
-    acceptResponse: {
+    AcceptByResponse: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'response',
         default: null
