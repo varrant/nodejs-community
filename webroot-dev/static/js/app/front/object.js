@@ -10,7 +10,7 @@ define(function (require, exports, module) {
 
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
-    var Response = require('../../widget/front/Response/');
+    var Response = require('../../widget/common/Response/');
     var app = {};
 
     app.response = function () {
