@@ -8,6 +8,9 @@
 'use strict';
 
 var interactive = require('../models/').interactive;
+var howdo = require('howdo');
+var object = require('./object.js');
+var response = require('./response.js');
 
 
 /**
@@ -16,8 +19,46 @@ var interactive = require('../models/').interactive;
 exports.findOne = interactive.findOne;
 
 
-exports.toggle = function () {
-    interactive.toggle();
+/**
+ * 切换
+ * @param data
+ * @param boolean
+ * @param callback
+ */
+exports.toggle = function (conditions, boolean, callback) {
+    if (!conditions.object && !conditions.response) {
+        var err = new Error('至少需要一个 object 或 response');
+        return callback(err);
+    }
+
+    if (conditions.object && conditions.response) {
+        var err = new Error('object 和 response 不能同时存在');
+        return callback(err);
+    }
+
+
+    interactive.mustToggle(conditions, 'hasApproved', boolean, function (err, newDoc, oldDoc) {
+        if (err) {
+            return callback(err);
+        }
+
+        var value = 0;
+
+        console.log(newDoc);
+        console.log(oldDoc);
+
+        // 当前为 true，以前为否或不存在
+        if (newDoc.hasApproved === true && (!oldDoc || oldDoc.hasApproved === false)) {
+            value = 1;
+        }
+        // 当前为 false，以前为 true
+        else if (newDoc.hasApproved === false && oldDoc && oldDoc.hasApproved === true) {
+            value = -1;
+        }
+
+        callback(err, value, newDoc, oldDoc);
+    });
+
 };
 
 
@@ -71,11 +112,11 @@ exports.active = function (data, callback) {
         var value = 0;
 
         // 当前为 true，以前为否或不存在
-        if (newDoc.hasApproved === true && (!oldDoc || oldDoc.hasAccepted === false)) {
+        if (newDoc.hasApproved === true && (!oldDoc || oldDoc.hasApproved === false)) {
             value = 1;
         }
         // 当前为 false，以前为 true
-        else if (newDoc.hasApproved === false && oldDoc.hasAccepted === true) {
+        else if (newDoc.hasApproved === false && oldDoc.hasApproved === true) {
             value = -1;
         }
 

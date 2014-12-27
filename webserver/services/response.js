@@ -173,17 +173,19 @@ exports.agree = function (operator, conditions, callback) {
                 return next(err);
             }
 
-            interactive.active({
+            // 默认点赞
+            interactive.toggle({
                 operator: operator.id,
                 model: 'response',
                 path: 'agreeCount',
                 response: doc.id
-            }, next);
+            }, true, next);
         })
         // 顺序串行
         .follow(function (err, value) {
             // 写入赞同信息
-            response.increase(conditions, 'agreeCount', value, next);
+            response.increase(conditions, 'agreeCount', value, log.holdError);
+            callback(err, value);
         });
 };
 

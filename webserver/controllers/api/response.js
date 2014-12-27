@@ -166,13 +166,14 @@ module.exports = function (app) {
     exports.agree = function (req, res, next) {
         var id = req.body.id;
 
-        response.agree(res.locals.$engineer, {_id: id}, function (err, doc) {
+        response.agree(res.locals.$engineer, {_id: id}, function (err, value) {
             if (err) {
                 return next(err);
             }
 
             return res.json({
-                code: 200
+                code: 200,
+                data: value
             });
         });
     };

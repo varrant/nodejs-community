@@ -651,11 +651,11 @@ dato.each(models, function (key, model) {
             data[path] = boolean;
 
             if (!doc) {
-                return model.existOne(conditions, data, callback);
+                return exports[key].createOne(dato.extend(conditions, data), callback);
             }
 
             data[path] = !doc[path];
-            model.findOneAndUpdate(conditions, data, callback);
+            exports[key].findOneAndUpdate(conditions, data, callback);
         });
     };
 
