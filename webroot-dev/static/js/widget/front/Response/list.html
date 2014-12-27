@@ -21,11 +21,17 @@
                     <button class="btn btn-primary btn-xs alien-ui-response-agree"><i class="i i-thumbs-up"></i>赞同<span
                             class="alien-ui-response-number">{{item.agreeCount}}</span></button>
                 </li>
-                {{if engineer.id === author}}
+                {{if engineer.id === author.id && item.hasAccepted}}
                 <li>
-                    <button class="btn btn-warning btn-xs active alien-ui-response-accept" readonly><i
+                    <button class="btn btn-success btn-xs active alien-ui-response-accept"><i
+                            class="i i-check"></i>取消最佳答案</button>
+                </li>
+                {{else if engineer.id === author.id && !item.hasAccepted}}
+                <li>
+                    <button class="btn btn-warning btn-xs active alien-ui-response-accept"><i
                             class="i i-check"></i>采纳回答</button>
                 </li>
+                {{/if}}
             </ul>
         </div>
     </div>

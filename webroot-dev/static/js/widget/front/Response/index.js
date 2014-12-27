@@ -55,6 +55,10 @@ define(function (require, exports, module) {
         sync: {
             comment: '.j-commentByCount',
             reply: '.j-replyByCount'
+        },
+        list: {
+            engineer: null,
+            author: null
         }
     };
     var Response = generator({
@@ -224,9 +228,9 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
-                    the._renderList({
+                    the._renderList(dato.extend({
                         list: json.data
-                    });
+                    }, options.data));
 
                     // 渲染分页
                     if (the._pagination) {
