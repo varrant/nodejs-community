@@ -55,6 +55,7 @@ var REG_DUPLICATE = new RegExp(DBNAME + '\\..*\\.\\$(.*)_1');
  * @function .push
  * @function .pull
  * @function .toggle
+ * @function .mustToggle
  * @function .rawModel
  */
 dato.each(models, function (key, model) {
@@ -611,21 +612,52 @@ dato.each(models, function (key, model) {
             if (!doc) {
                 err = new Error('the document is not exist');
                 err.type = 'notFound';
+                err.code = 404;
                 return callback(err);
             }
 
+            var data = {};
+
             if (boolean === null) {
-                doc[path] = !doc[path];
+                data[path] = !doc[path];
             } else {
-                doc[path] = !!boolean;
+                data[path] = !!boolean;
             }
 
-            doc.save(function (err, doc) {
-                callback(err, doc && doc.toJSON());
-            });
+            model.findOneAndUpdate(conditions, data, callback);
         });
     };
 
+
+    /**
+     * 必须切换 boolean 值
+     * @param conditions {Object} 查询条件
+     * @param path {String} 查询字段
+     * @param boolean {Boolean} 默认布尔值，如果不存在，设置为默认值，否则设置为原来的反值
+     * @param callback {Function} 回调
+     */
+    exports[key].mustToggle = function (conditions, path, boolean, callback) {
+        if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
+            return callback(new Error('the id of conditions is invalid'));
+        }
+
+        model.findOne(conditions, function (err, doc) {
+            if (err) {
+                return callback(err);
+            }
+
+            var data = {};
+
+            data[path] = boolean;
+
+            if (!doc) {
+                return model.existOne(conditions, data, callback);
+            }
+
+            data[path] = !doc[path];
+            model.findOneAndUpdate(conditions, data, callback);
+        });
+    };
 
     /**
      * 原始 model

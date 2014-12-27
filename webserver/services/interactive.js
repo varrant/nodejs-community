@@ -16,6 +16,11 @@ var interactive = require('../models/').interactive;
 exports.findOne = interactive.findOne;
 
 
+exports.toggle = function () {
+    interactive.toggle();
+};
+
+
 /**
  * 写入交互记录
  * @param data {Object} 写入数据

@@ -34,7 +34,6 @@ module.exports = function (app, ctrlApi) {
     app.get('/api/response/count/', ctrlApi.response.count);
     app.post('/admin/api/response/', ctrlApi.response.post);
     app.post('/admin/api/response/agree/', ctrlApi.response.agree);
-    app.delete('/admin/api/response/agree/', ctrlApi.response.agreeCancel);
 
 
     // oss

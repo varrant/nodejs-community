@@ -159,7 +159,7 @@ exports.createOne = function (author, data, meta, callback) {
  * @param boolean
  * @param callback
  */
-exports.agree = function (operator, conditions, boolean, callback) {
+exports.agree = function (operator, conditions, callback) {
     howdo
         // 1. 检测该评论是否存在
         .task(function (next) {
@@ -177,16 +177,14 @@ exports.agree = function (operator, conditions, boolean, callback) {
                 operator: operator.id,
                 model: 'response',
                 path: 'agreeCount',
-                response: doc.id,
-                hasApproved: boolean
+                response: doc.id
             }, next);
         })
-        // 3. 写入赞同信息
-        .task(function (next, value) {
-            response.increase(conditions, 'agreeCount', value, next);
-        })
         // 顺序串行
-        .follow(callback);
+        .follow(function (err, value) {
+            // 写入赞同信息
+            response.increase(conditions, 'agreeCount', value, next);
+        });
 };
 
 

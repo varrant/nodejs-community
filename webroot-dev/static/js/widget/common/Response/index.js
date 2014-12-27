@@ -74,15 +74,13 @@ define(function (require, exports, module) {
          */
         _init: function () {
             var the = this;
-            var options = the._options;
             var $parent = the._$parent;
             var html = tplWrap.render({
                 language: the._options.language
             });
 
             the._replyMap = {};
-            the._agreeMap = {};
-            the._acceptMap = {};
+            the._replyParentId = 0;
             $parent.innerHTML = html;
             the._$wrap = selector.children($parent)[0];
             the._ajaxContainer();
@@ -288,6 +286,12 @@ define(function (require, exports, module) {
                 object: options.query.object
             };
 
+            if (the._isAjaxing) {
+                return alert('正忙，请稍后再试');
+            }
+
+            the._isAjaxing = true;
+
             if (the._replyParentId) {
                 data.parent = the._replyParentId;
             }
@@ -317,6 +321,9 @@ define(function (require, exports, module) {
                 .on('error', function (err) {
                     callback(err);
                     alert(err);
+                })
+                .on('finish', function () {
+                    the._isAjaxing = false;
                 });
         },
 
@@ -404,17 +411,30 @@ define(function (require, exports, module) {
             var the = this;
             var $ele = eve.target;
             var id = the._getResponseId($ele);
-            var hasAgree = the._agreeMap[id] === true;
 
-            the._agreeMap[id] = !the._agreeMap[id];
-            the._increaseHTML($ele, hasAgree ? -1 : 1);
+            if (the._isAjaxing) {
+                return alert('正忙，请稍后再试');
+            }
+
+            the._isAjaxing = true;
             ajax({
                 url: the._options.url.agree,
-                method: hasAgree ? 'delete' : 'post',
+                method: 'post',
                 data: {
                     id: id
                 }
-            });
+            })
+                .on('success', function (json) {
+                    if(json.code !== 200){
+                        return alert(json);
+                    }
+
+                    the._increaseHTML($ele, json.data);
+                })
+                .on('error', alert)
+                .on('finish', function () {
+                    the._isAjaxing = false;
+                });
         },
 
 
@@ -429,7 +449,7 @@ define(function (require, exports, module) {
             var id = the._getResponseId($ele);
             var method = options.acceptResponse === id ? 'delete' : 'post';
 
-            if (the._accepting) {
+            if (the._isAjaxing) {
                 return alert('正忙，请稍后再试');
             }
 
@@ -466,7 +486,7 @@ define(function (require, exports, module) {
                 })
                 .on('error', alert)
                 .on('finish', function () {
-                    the._accepting = false;
+                    the._isAjaxing = false;
                 });
         },
 
