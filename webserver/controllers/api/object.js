@@ -187,7 +187,7 @@ module.exports = function (app) {
     };
 
     /**
-     * 采纳
+     * 取消采纳
      * @param req
      * @param res
      * @param next
@@ -208,7 +208,7 @@ module.exports = function (app) {
             });
         });
     };
-    
+
 
     return exports;
 };
