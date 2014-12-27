@@ -1,3 +1,5 @@
+{{if list.length}}
+
 {{list list as item}}
 <li class="alien-ui-response-item
 {{if object.acceptResponse === item.id}}alien-ui-response-item-accepted{{/if}}"
@@ -42,9 +44,21 @@
     </div>
 
     {{if !item.parent}}
-    <div class="alien-ui-response-children"></div>
+    <div class="alien-ui-response-children">
+        <ul class="alien-ui-response-list j-flag"></ul>
+        <div class="j-flag f-text-center"></div>
+        <div class="j-flag f-text-center"></div>
+    </div>
     {{/if}}
 
     <i class="i i-flag"></i>
 </li>
 {{/list}}
+
+{{else}}
+
+    <li class="f-text-center s-light alert">
+        <i class="i i-info-circle"></i>暂无任何{{type === "comment" ? '评论':'回复'}}
+    </li>
+
+{{/if}}

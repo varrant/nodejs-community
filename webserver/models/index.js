@@ -137,12 +137,25 @@ dato.each(models, function (key, model) {
      * @param conditions {Object} 查询条件
      * @param callback {Function} 回调
      */
-    exports[key].count = function (conditions, callback) {
+    exports[key].count = function (conditions, options, callback) {
+        if (arguments.length === 2) {
+            callback = arguments[1];
+            options = {};
+        }
+
         if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
             return callback(new Error('the id of conditions is invalid'));
         }
 
-        model.count(conditions, callback);
+        var query = model.count(conditions);
+
+        dato.each(options, function (key, val) {
+            if (query[key] && typeis(query[key]) === 'function') {
+                query = query[key](val);
+            }
+        });
+
+        query.exec(callback);
     };
 
 

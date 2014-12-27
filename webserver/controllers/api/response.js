@@ -22,32 +22,31 @@ module.exports = function (app) {
      */
     exports.count = function (req, res, next) {
         var objectId = req.query.object;
-        var parentId = req.query.parent;
 
         if (!objectId) {
             return next();
         }
 
-        var conditions = {
-            object: objectId
-        };
-
         howdo
             // 评论数量
             .task(function (done) {
+                var conditions = {
+                    object: objectId,
+                    parent: null
+                };
+
                 response.count(conditions, done);
             })
             // 回复数量
             .task(function (done) {
-                if (!parentId) {
-                    return done(null, 0);
-                }
-
-                if (parentId) {
-                    conditions.parent = parentId;
-                }
-
-                response.count(conditions, done);
+                var conditions = {
+                    object: objectId
+                };
+                response.count(conditions, {
+                    nor: {
+                        parent: null
+                    }
+                }, done);
             })
             .together(function (err, commentCount, replyCount) {
                 if (err) {
@@ -113,25 +112,38 @@ module.exports = function (app) {
 
         options.populate = ['author'];
 
-        response.find(conditions, options, function (err, docs) {
-            if (err) {
-                return next(err);
-            }
+        howdo
+            //1. count
+            .task(function (done) {
+                response.count(conditions, done);
+            })
+            //2. list
+            .task(function (done) {
+                response.find(conditions, options, done);
+            })
+            // 异步并行
+            .together(function (err, count, list) {
+                if (err) {
+                    return next(err);
+                }
 
-            docs.forEach(function (item) {
-                var author = item.author;
+                list.forEach(function (item) {
+                    var author = item.author;
 
-                item.author = dato.pick(author, ['id', 'nickname', 'githubLogin', 'githubId']);
-                item.author.avatar = dato.gravatar(author.email, {
-                    size: 100
+                    item.author = dato.pick(author, ['id', 'nickname', 'githubLogin', 'githubId']);
+                    item.author.avatar = dato.gravatar(author.email, {
+                        size: 100
+                    });
+                });
+
+                res.json({
+                    code: 200,
+                    data: {
+                        count: count,
+                        list: list
+                    }
                 });
             });
-
-            res.json({
-                code: 200,
-                data: docs
-            });
-        });
     };
 
 

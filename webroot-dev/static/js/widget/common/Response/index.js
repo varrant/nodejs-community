@@ -19,6 +19,7 @@ define(function (require, exports, module) {
     var ajax = require('../ajax.js');
     var alert = require('../alert.js');
     var Pagination = require('../../../alien/ui/Pagination/index');
+    var Pager = require('../../../alien/ui/Pager/');
     var Respond = require('../Respond/index');
     var Template = require('../../../alien/libs/Template.js');
     var templateWrap = require('html!./wrap.html');
@@ -30,7 +31,7 @@ define(function (require, exports, module) {
     var tplList = new Template(templateList);
     var alienClass = 'alien-ui-response';
     var defaults = {
-        loading: '<div class="f-loading">加载中……</div>',
+        loading: '<div class="alert f-text-center"><div class="f-loading">加载中……</div></div>',
         url: {
             list: '/api/response/list/',
             post: '/admin/api/response/',
@@ -81,7 +82,7 @@ define(function (require, exports, module) {
             });
 
             the._replyMap = {};
-            the._replyParentId = 0;
+            the._replyParentId = null;
             $parent.innerHTML = html;
             the._$wrap = selector.children($parent)[0];
             the._ajaxContainer();
@@ -95,11 +96,10 @@ define(function (require, exports, module) {
         _ajaxContainer: function () {
             var the = this;
             var options = the._options;
-            var url = options.url.count + '?' + qs.stringify(options.query);
 
             the._renderContainer();
             ajax({
-                url: url
+                url: options.url.count
             })
                 .on('success', function (json) {
                     if (json.code !== 200) {
@@ -148,7 +148,7 @@ define(function (require, exports, module) {
             if (data) {
                 html = tplContainer.render(data);
             } else {
-                html = '<div class="f-text-center">' + the._options.loading + '</div>';
+                html = the._options.loading;
             }
 
             the._$wrap.innerHTML = html;
@@ -157,27 +157,32 @@ define(function (require, exports, module) {
 
         /**
          * 初始化响应框
+         * @params $parent
          * @private
          */
-        _initRespond: function () {
+        _initRespond: function ($parent) {
             var the = this;
             var options = the._options;
+            var respond;
 
             if (options.respond) {
                 var data = dato.extend({}, options.respond, options.language);
 
-                the._respondComment = new Respond(the._$respondParent, data);
-                the._respondComment.on('submit', function (content) {
-                    the._respondComment.disable();
+                respond = new Respond($parent, data);
+                respond.on('submit', function (content) {
+                    respond.disable();
+
                     the._post(content, function (err) {
-                        the._respondComment.enable();
+                        respond.enable();
 
                         if (!err) {
-                            the._respondComment.reset();
+                            respond.reset();
                         }
                     });
                 });
             }
+
+            return respond;
         },
 
 
@@ -207,7 +212,7 @@ define(function (require, exports, module) {
 
             if (!the._readyComment) {
                 the._readyComment = true;
-                the._initRespond();
+                the._initRespond(the._$respondParent);
                 the._pagination = new Pagination(the._$paginationParent, the._paginationOptions);
                 the._pagination.on('change', function (page) {
                     the._scrollTo(the._$listParent);
@@ -255,9 +260,7 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
-                    the._renderComment(dato.extend({
-                        list: json.data
-                    }, options.list));
+                    the._count.comment = json.count;
 
                     // 渲染分页
                     if (the._pagination) {
@@ -265,8 +268,14 @@ define(function (require, exports, module) {
                             page: options.query.page,
                             max: Math.ceil(the._count.comment / options.query.limit)
                         });
-                        the._replyMap = {};
+                        the._destroyReply();
                     }
+
+                    the._renderComment(dato.extend({
+                        list: json.data.list
+                    }, options.list, {
+                        type: 'comment'
+                    }));
                 })
                 .on('error', alert)
                 .on('finish', the._ajaxFinish.bind(the));
@@ -290,7 +299,7 @@ define(function (require, exports, module) {
             if (data) {
                 html = tplList.render(data);
             } else {
-                html = '<li class="f-text-center">' + the._options.loading + '</li>';
+                html = '<li>' + the._options.loading + '</li>';
             }
 
             the._$listParent.innerHTML = html;
@@ -399,20 +408,6 @@ define(function (require, exports, module) {
         },
 
 
-        /**
-         * 追加回复
-         * @param $parent
-         * @param data
-         * @private
-         */
-        _appendReply: function ($parent, data) {
-            var the = this;
-            var html = tplList.render(data);
-            var node = modification.parse(html)[0];
-
-            modification.insert(node, $parent, 'beforeend');
-        },
-
 
         /**
          * 增加数字
@@ -430,12 +425,22 @@ define(function (require, exports, module) {
 
 
         /**
+         * 翻页之后销毁回复实例
+         * @private
+         */
+        _destroyReply: function () {
+
+        },
+
+
+        /**
          * 回复
          * @private
          */
         _reply: function (eve) {
             var the = this;
             var id = the._getResponseId(eve.target);
+            var $ele = selector.closest(eve.target, 'button')[0];
 
             // 之前有打开的评论列表
             if (the._replyParentId) {
@@ -446,7 +451,7 @@ define(function (require, exports, module) {
                 the._toggleReply(id, true);
                 the._replyParentId = id;
             } else {
-                the._replyParentId = 0;
+                the._replyParentId = null;
             }
         },
 
@@ -482,16 +487,54 @@ define(function (require, exports, module) {
          */
         _ajaxReply: function ($li, id) {
             var the = this;
+            var options = the._options;
             var $children = selector.query('.' + alienClass + '-children', $li)[0];
+
+            if (the._isAjaxing) {
+                return alert('正忙，请稍后再试');
+            }
+
+            var $listParent;
+            var $contentParent;
+            var $pagerParent;
 
             // 第 2+ 次加载
             if (the._replyMap[id]) {
-
+                $listParent = the._replyMap[id].$listParent;
             }
             // 首次加载
             else {
-                the._renderReply($children);
+                var nodes = selector.query('.j-flag', $children);
+                the._replyMap[id] = {};
+                $listParent = the._replyMap[id].$listParent = nodes[0];
+                $pagerParent = nodes[1];
+                $contentParent = nodes[2];
+                the._replyMap[id].pager = the._initRespond($contentParent);
+                the._replyMap[id].respond = the._initRespond($contentParent);
             }
+
+            the._renderReply($listParent);
+
+            var query = dato.extend({
+                parent: id
+            }, options.query);
+
+            ajax({
+                url: options.url.list + '?' + qs.stringify(query)
+            })
+                .on('success', function (json) {
+                    if (json.code !== 200) {
+                        return alert(json);
+                    }
+
+                    the._renderReply($listParent, dato.extend({
+                        list: json.data
+                    }, options.list, {
+                        type: 'reply'
+                    }));
+                })
+                .on('error', alert)
+                .on('finish', the._ajaxFinish.bind(the));
         },
 
 
@@ -508,7 +551,7 @@ define(function (require, exports, module) {
             if (data) {
                 html = tplList.render(data);
             } else {
-                html = '<div class="f-text-center">' + the._options.loading + '</div>';
+                html = the._options.loading;
             }
 
             $children.innerHTML = html;
@@ -521,7 +564,7 @@ define(function (require, exports, module) {
          */
         _agree: function (eve) {
             var the = this;
-            var $ele = eve.target;
+            var $ele = selector.closest(eve.target, 'button')[0];
             var id = the._getResponseId($ele);
 
             if (the._isAjaxing) {

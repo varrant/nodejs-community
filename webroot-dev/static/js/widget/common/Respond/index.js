@@ -119,6 +119,17 @@ define(function (require, exports, module) {
 
             the._editor.setContent('');
             return the;
+        },
+
+
+        /**
+         * 实例销毁
+         */
+        destroy: function () {
+            var the =  this;
+
+            event.un(the._$submit, 'click');
+            the._editor.destroy();
         }
     });
 

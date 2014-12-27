@@ -61,6 +61,23 @@
     font-weight: 900;
 }
 
+.alien-ui-response-item .i-flag {
+    display: none;
+}
+
+.alien-ui-response-item-accepted .i-flag {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #007E00;
+    font-size: 30px;
+}
+
+.alien-ui-response-main .alien-ui-pagination {
+    margin-top: 30px;
+}
+
 .alien-ui-response-children {
     position: relative;
     margin: -10px 0 0 60px;
@@ -75,7 +92,7 @@
     font-size: 14px;
 }
 
-.alien-ui-response-active .alien-ui-response-children{
+.alien-ui-response-active .alien-ui-response-children {
     display: block;
 }
 
@@ -109,19 +126,6 @@
     top: -19px;
 }
 
-.alien-ui-response-item .i-flag {
-    display: none;
-}
-
-.alien-ui-response-item-accepted .i-flag {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: #007E00;
-    font-size: 30px;
-}
-
-.alien-ui-response-main .alien-ui-pagination {
-    margin-top: 30px;
+.alien-ui-response-children .alien-ui-respond {
+    margin-bottom: -21px;
 }
