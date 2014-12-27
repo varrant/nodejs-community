@@ -9,6 +9,7 @@
 var response = require('../../services/').response;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
+var dato = require('ydr-util').dato;
 
 module.exports = function (app) {
     var exports = {};
@@ -87,10 +88,21 @@ module.exports = function (app) {
             conditions.parent = parentId;
         }
 
+        options.populate = ['author'];
+
         response.find(conditions, options, function (err, docs) {
             if (err) {
                 return next(err);
             }
+
+            docs.forEach(function (item) {
+                var author = item.author;
+
+                item.author = dato.pick(author, ['id', 'nickname', 'githubLogin', 'githubId']);
+                item.author.avatar = dato.gravatar(author.email, {
+                    size: 100
+                });
+            });
 
             res.json({
                 code: 200,
