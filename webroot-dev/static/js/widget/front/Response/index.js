@@ -31,11 +31,11 @@ define(function (require, exports, module) {
     var alienClass = 'alien-ui-response';
     var defaults = {
         url: {
-            // get/post
             get: '/api/response/',
             post: '/admin/api/response/',
             count: '/api/response/count/',
-            agree: '/admin/api/response/agree/'
+            agree: '/admin/api/response/agree/',
+            accept: '/admin/api/object/accept/'
         },
         language: {
             comment: '评论',
@@ -421,9 +421,19 @@ define(function (require, exports, module) {
          */
         _accept: function (eve) {
             var the = this;
-            var id = the._getResponseId(eve.target);
+            var $ele = eve.target;
+            var id = the._getResponseId($ele);
+            var hasAccept = the._acceptMap[id] === true;
 
-            console.log(id);
+            the._acceptMap[id] = !the._acceptMap[id];
+            ajax({
+                url: the._options.url.accept,
+                method: hasAccept ? 'delete' : 'post',
+                data: {
+                    response: id,
+                    object: the._options.query.object
+                }
+            });
         }
     });
 

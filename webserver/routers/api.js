@@ -25,7 +25,7 @@ module.exports = function (app, ctrlApi) {
     app.post('/admin/api/object/', ctrlApi.object.post);
     app.put('/admin/api/object/', ctrlApi.object.put);
     app.post('/admin/api/object/accept/', ctrlApi.object.accept);
-    app.delete('/admin/api/object/accept/', ctrlApi.response.acceptCancel);
+    app.delete('/admin/api/object/accept/', ctrlApi.object.acceptCancel);
 
 
     // response
