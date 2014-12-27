@@ -16,9 +16,10 @@ define(function (require, exports, module) {
             limit: 3,
             object: window['-object-'].id
         },
-        data: {
+        list: {
             engineer: window['-engineer-'],
-            author: window['-author-']
+            author: window['-author-'],
+            object: window['-object-']
         }
     });
 });

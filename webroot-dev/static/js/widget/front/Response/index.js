@@ -56,10 +56,7 @@ define(function (require, exports, module) {
             comment: '.j-commentByCount',
             reply: '.j-replyByCount'
         },
-        list: {
-            engineer: null,
-            author: null
-        }
+        list: {}
     };
     var Response = generator({
         constructor: function ($parent, options) {
@@ -230,7 +227,7 @@ define(function (require, exports, module) {
 
                     the._renderList(dato.extend({
                         list: json.data
-                    }, options.data));
+                    }, options.list));
 
                     // 渲染分页
                     if (the._pagination) {

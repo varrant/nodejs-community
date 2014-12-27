@@ -466,6 +466,11 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
                     return next(err);
                 }
 
+                if (acceptResponse.author.toString() === operator.id.toString()) {
+                    err = new Error('不能采纳自己的回答');
+                    return next(err);
+                }
+
                 next(err, acceptObject, acceptResponse);
             });
         })
