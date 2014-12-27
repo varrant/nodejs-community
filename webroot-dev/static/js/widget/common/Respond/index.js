@@ -95,8 +95,8 @@ define(function (require, exports, module) {
         disable: function () {
             var the = this;
 
-            the._$content.disabled = true;
             the._$submit.disabled = true;
+            return the;
         },
 
 
@@ -106,8 +106,8 @@ define(function (require, exports, module) {
         enable: function () {
             var the = this;
 
-            the._$content.disabled = false;
             the._$submit.disabled = false;
+            return the;
         },
 
 
@@ -118,6 +118,7 @@ define(function (require, exports, module) {
             var the = this;
 
             the._editor.setContent('');
+            return the;
         }
     });
 
