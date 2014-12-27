@@ -6,7 +6,7 @@
     data-parent="{{item.parent}}">
     <div class="f-clearfix alien-ui-response-main">
         <div class="alien-ui-response-avatar f-left">
-            <a href="#"><img src="/static/img/avatar.png" alt="avatar" width="50" height="50"/></a>
+            <a href="#"><img src="{{item.author.avatar}}" alt="avatar" width="50" height="50"/></a>
         </div>
         <div class="alien-ui-response-body">
             <ul class="alien-ui-response-meta s-light f-list-left">
@@ -31,7 +31,7 @@
                             title="点击取消为最佳答案"><i
                             class="i i-check"></i>取消最佳回答</button>
                 </li>
-                {{else if engineer.id === author.id && !item.hasAccepted}}
+                {{else if engineer.id === author.id && item.author.id !== engineer.id}}
                 <li class="alien-ui-response-accept-li">
                     <button class="btn btn-warning btn-xs alien-ui-response-accept"><i
                             class="i i-check"></i>采纳回答</button>
