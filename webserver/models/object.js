@@ -75,13 +75,13 @@ var schema = new mongoose.Schema({
     publishAt: {
         type: Date,
         required: false,
-        default: new Date()
+        default: Date.now
     },
     // 最近更新时间
     updateAt: {
         type: Date,
         required: false,
-        default: new Date()
+        default: Date.now
     },
     // 更新记录
     // [{

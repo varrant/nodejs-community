@@ -66,7 +66,7 @@ var schema = new mongoose.Schema({
     // 注册时间
     registerAt: {
         type: Date,
-        default: new Date()
+        default: Date.now
     },
     // 登录时间
     loginAt: {

@@ -28,7 +28,7 @@ var schema = new mongoose.Schema({
     // 响应时间
     publishAt: {
         type: Date,
-        default: new Date()
+        default: Date.now
     },
     // 响应对象
     object: {

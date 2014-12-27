@@ -21,7 +21,7 @@ var schema = new mongoose.Schema({
     // 最近搜索时间
     latestAt: {
         type: Date,
-        default: new Date()
+        default: Date.now
     },
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证

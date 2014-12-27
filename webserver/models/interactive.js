@@ -39,7 +39,7 @@ var schema = new mongoose.Schema({
     // 操作时间
     interactiveAt: {
         type: Date,
-        default: new Date()
+        default: Date.now
     },
     // 是否被允许，默认 true
     // 是否被读取了

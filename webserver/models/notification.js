@@ -60,7 +60,7 @@ var schema = new mongoose.Schema({
     // 激活时间
     activeAt: {
         type: Date,
-        default: new Date()
+        default: Date.now
     },
     // 被激活时间
     activeByAt: {

@@ -333,6 +333,7 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
+                    json.data.author = options.list.engineer;
                     the._appendComment(json.data);
 
                     if (json.data.parent) {
