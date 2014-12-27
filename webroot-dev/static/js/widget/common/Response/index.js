@@ -58,7 +58,7 @@ define(function (require, exports, module) {
             commentByCountClass: 'j-comment-by-count',
             replyByCountClass: 'j-reply-by-count'
         },
-        acceptResponse: '',
+        acceptByResponse: '',
         list: {}
     };
     var Response = generator({
@@ -643,13 +643,13 @@ define(function (require, exports, module) {
 
                     // 取消最佳
                     if (method === 'delete') {
-                        the._acceptItem(options.acceptResponse, false);
-                        options.acceptResponse = '';
+                        the._acceptItem(options.acceptByResponse, false);
+                        options.acceptByResponse = '';
                         the.emit('accept', false);
                     }
                     // 设置最佳
                     else {
-                        options.acceptResponse = id;
+                        options.acceptByResponse = id;
                         the._acceptItem(id, true);
 
                         if (id !== json.data) {
