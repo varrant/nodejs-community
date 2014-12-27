@@ -137,7 +137,7 @@ exports.modifyRole = function (operator, engineerBy, roleArray, callback) {
     else if (roleArray.indexOf(20) > -1) {
         var err = new Error('不允许修改为 founder 的权限');
         return callback(err);
-    }else{
+    } else {
         var err = new Error('未知错误');
         return callback(err);
     }
@@ -230,7 +230,6 @@ exports.increaseAgreeByCount = function (conditions, count, callback) {
 exports.increaseAcceptByCount = function (conditions, count, callback) {
     engineer.increase(conditions, 'acceptByCount', count, callback);
 };
-
 
 
 /**
@@ -612,8 +611,8 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                 accessToken: json.accessToken,
                 githubLogin: json.login,
                 githubId: String(json.id),
-                email: json.email,
-                nickname: json.name,
+                email: json.email || json.login + '@github.com',
+                nickname: json.name || json.login,
                 meta: {
                     bio: json.bio,
                     location: json.location,

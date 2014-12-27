@@ -51,14 +51,14 @@ module.exports = function (app) {
 
         if (!isSafe) {
             err = new Error('非法授权操作');
-            err.redirect = '/user/oauth/authorize/';
+            err.redirect = '/engineer/oauth/authorize/';
 
             return next(err);
         }
 
         if (!req.session.$state) {
             err = new Error('请重新进行授权操作');
-            err.redirect = '/user/oauth/authorize/';
+            err.redirect = '/engineer/oauth/authorize/';
 
             return next(err);
         }
@@ -93,6 +93,7 @@ module.exports = function (app) {
 
                 json.hasRegister = !!data;
                 req.session.$github = json;
+                console.log(json);
                 res.render('front/oauth-callback.html', {
                     title: '确认登录',
                     github: json
