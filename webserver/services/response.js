@@ -148,17 +148,17 @@ exports.createOne = function (author, data, meta, callback) {
                     // 通知被 reply 作者
                     _noticeCommentAuthor(author, parentResponse);
 
-                    // 为他人点赞才加分
-                    if(author.id.toString() !== responseObject.author.toString()){
+                    // 为他人回复才加分
+                    if (author.id.toString() !== responseObject.author.toString()) {
                         // 增加主动用户回复积分
                         engineer.increaseScore({_id: author.id}, scoreMap.reply, log.holdError);
 
                         // 增加被动用户回复积分
                         engineer.increaseScore({_id: responseObject.author}, scoreMap.replyBy, log.holdError);
                     }
-                }else{
-                    // 为他人点赞才加分
-                    if(author.id.toString() !== responseObject.author.toString()){
+                } else {
+                    // 为他人评论才加分
+                    if (author.id.toString() !== responseObject.author.toString()) {
                         // 增加主动用户评论积分
                         engineer.increaseScore({_id: author.id}, scoreMap.comment, log.holdError);
 
@@ -198,13 +198,32 @@ exports.agree = function (operator, conditions, callback) {
                 model: 'response',
                 path: 'agreeCount',
                 response: doc.id
-            }, true, next);
+            }, true, function (err, value) {
+                next(err, value, doc);
+            });
         })
         // 顺序串行
-        .follow(function (err, value) {
+        .follow(function (err, value, agreeResponse) {
             // 写入赞同信息
             response.increase(conditions, 'agreeByCount', value, log.holdError);
             callback(err, value);
+
+            if (!err) {
+
+                // 为他人点赞才计分
+                if (agreeResponse.author.toString() !== operator.id.toString()) {
+                    // 点赞、消赞
+                    if (value !== 0) {
+                        engineer.increaseScore({_id: agreeResponse.author}, value * scoreMap.agreeBy, log.holdError);
+                    }
+                }
+
+                // 点赞、消赞
+                if (value !== 0) {
+                    // 自己加少量分
+                    engineer.increaseScore({_id: operator.id}, value * scoreMap.agree, log.holdError)
+                }
+            }
         });
 };
 

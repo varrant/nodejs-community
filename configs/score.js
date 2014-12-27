@@ -17,9 +17,11 @@ module.exports = function (app) {
         reply: 1,
         // 被动回复
         replyBy: 1,
-        // 被采纳
-        acceptBy: 10,
-        // 被赞同
-        agreeBy: 5
+        // 被动采纳
+        acceptBy: 5,
+        // 主动赞同
+        agree: 1,
+        // 被动赞同
+        agreeBy: 3
     };
 };
