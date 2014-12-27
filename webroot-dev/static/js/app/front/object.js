@@ -28,7 +28,8 @@ define(function (require, exports, module) {
                 object: window['-object-']
             },
             respond: {
-                id: window['-object-'].id
+                id: window['-object-'].id,
+                avatar: window['-engineer-'].avatar
             },
             acceptResponse: window['-object-'].acceptResponse
         });

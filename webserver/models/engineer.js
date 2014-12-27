@@ -6,6 +6,7 @@
 
 'use strict';
 
+var dato = require('ydr-util').dato;
 var mongoose = require('mongoose');
 var schema = new mongoose.Schema({
     // 邮箱，由 github 过来
@@ -168,6 +169,13 @@ var schema = new mongoose.Schema({
 
 schema.set('toJSON', {getters: true, virtuals: true});
 schema.set('toObject', {getters: true, virtuals: true});
+
+
+schema.virtual('avatar').get(function () {
+    return dato.gravatar(this.email, {
+        size: 100
+    });
+});
 
 
 module.exports = mongoose.model('engineer', schema);
