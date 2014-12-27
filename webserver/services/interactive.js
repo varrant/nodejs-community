@@ -11,6 +11,12 @@ var interactive = require('../models/').interactive;
 
 
 /**
+ * 查找
+ */
+exports.findOne = interactive.findOne;
+
+
+/**
  * 写入交互记录
  * @param data {Object} 写入数据
  * @param data.operator {String} 操作者 ID

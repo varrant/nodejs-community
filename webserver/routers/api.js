@@ -29,7 +29,7 @@ module.exports = function (app, ctrlApi) {
     // response
     app.get('/api/response/', ctrlApi.response.get);
     app.get('/api/response/count/', ctrlApi.response.count);
-    app.post('/api/response/', ctrlApi.response.post);
+    app.post('/admin/api/response/', ctrlApi.response.post);
 
 
     // oss

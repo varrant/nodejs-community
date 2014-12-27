@@ -11,6 +11,7 @@ define(function (require, exports, module) {
     var generator = require('../../../alien/ui/generator.js');
     var selector = require('../../../alien/core/dom/selector.js');
     var modification = require('../../../alien/core/dom/modification.js');
+    var attribute = require('../../../alien/core/dom/attribute.js');
     var event = require('../../../alien/core/event/base.js');
     var dato = require('../../../alien/util/dato.js');
     var qs = require('../../../alien/util/querystring.js');
@@ -27,12 +28,14 @@ define(function (require, exports, module) {
     var tplWrap = new Template(templateWrap);
     var tplContainer = new Template(templateContainer);
     var tplList = new Template(templateList);
+    var alienClass = 'alien-ui-response';
     var defaults = {
         url: {
             // get/post
             get: '/api/response/',
-            post: '/api/response/',
-            count: '/api/response/count/'
+            post: '/admin/api/response/',
+            count: '/api/response/count/',
+            agree: '/admin/api/response/agree/'
         },
         language: {
             comment: '评论',
@@ -69,11 +72,17 @@ define(function (require, exports, module) {
          */
         _init: function () {
             var the = this;
+            var options = the._options;
             var $parent = the._$parent;
             var html = tplWrap.render({
                 language: the._options.language
             });
 
+            the._replyMap = {};
+            the._agreeMap = {};
+            the._acceptMap = {};
+            the._$commentByCount = selector.query(options.sync.comment);
+            the._$replyByCount = selector.query(options.sync.reply);
             $parent.innerHTML = html;
             the._$wrap = selector.children($parent)[0];
             the._ajaxContainer();
@@ -160,6 +169,23 @@ define(function (require, exports, module) {
 
 
         /**
+         * 初始化事件
+         * @private
+         */
+        _initEvent: function () {
+            var the = this;
+            var replyClass = '.' + alienClass + '-reply';
+            var agreeClass = '.' + alienClass + '-agree';
+            var acceptClass = '.' + alienClass + '-accept';
+            var $parent = the._$listParent;
+
+            event.on($parent, 'click', replyClass, the._reply.bind(the));
+            event.on($parent, 'click', agreeClass, the._agree.bind(the));
+            event.on($parent, 'click', acceptClass, the._accept.bind(the));
+        },
+
+
+        /**
          * 获取评论
          * @private
          */
@@ -226,6 +252,20 @@ define(function (require, exports, module) {
 
 
         /**
+         * 获取当前 response 的 ID
+         * @param $node
+         * @returns {*}
+         * @private
+         */
+        _getResponseId: function ($node) {
+            var itemClass = '.' + alienClass + '-item';
+            var $item = selector.closest($node, itemClass)[0];
+
+            return attribute.data($item, 'id');
+        },
+
+
+        /**
          * 提交评论/回复
          * @param content
          * @param callback
@@ -239,8 +279,8 @@ define(function (require, exports, module) {
                 object: options.query.object
             };
 
-            if (the._replyParent) {
-                data.parent = the._replyParent;
+            if (the._replyParentId) {
+                data.parent = the._replyParentId;
             }
 
             ajax({
@@ -282,6 +322,12 @@ define(function (require, exports, module) {
 
             the._$commentCount.innerHTML = count.comment;
             the._$replyCount.innerHTML = count.reply;
+            dato.each(the._$commentByCount, function (i, $node) {
+                $node.innerHTML = count.comment;
+            });
+            dato.each(the._$replyByCount, function (i, $node) {
+                $node.innerHTML = count.reply;
+            });
         },
 
 
@@ -312,6 +358,64 @@ define(function (require, exports, module) {
             var node = modification.parse(html)[0];
 
             modification.insert(node, $parent, 'beforeend');
+        },
+
+
+        /**
+         * 增加数字
+         * @param $node
+         * @param count
+         * @private
+         */
+        _increaseHTML: function ($node, count) {
+            var old = dato.parseInt($node.innerHTML, 0);
+
+            old += count;
+            $node.innerHTML = old;
+        },
+
+
+        /**
+         * 回复
+         * @private
+         */
+        _reply: function (eve) {
+            var the = this;
+            var id = the._getResponseId(eve.target);
+
+            console.log(id);
+        },
+
+
+        /**
+         * 赞同
+         * @private
+         */
+        _agree: function (eve) {
+            var the = this;
+            var $ele = eve.target;
+            var id = the._getResponseId($ele);
+
+            the._increaseHTML($ele, the._agreeMap[id] ? -1 : 1);
+            ajax({
+                url: the._options.url.agree,
+                method: 'post',
+                data: {
+                    id: id
+                }
+            });
+        },
+
+
+        /**
+         * 采纳
+         * @private
+         */
+        _accept: function (eve) {
+            var the = this;
+            var id = the._getResponseId(eve.target);
+
+            console.log(id);
         }
     });
 
