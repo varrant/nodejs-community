@@ -108,6 +108,8 @@ module.exports = function (app) {
 
         if (parentId) {
             conditions.parent = parentId;
+        } else {
+            conditions.parent = null;
         }
 
         options.populate = ['author'];
