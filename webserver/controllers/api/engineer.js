@@ -186,6 +186,7 @@ module.exports = function (app) {
                     return next(err);
                 }
 
+                req.session.$engineer = res.locals.$engineer = doc;
                 res.json({
                     code: 200,
                     data: doc

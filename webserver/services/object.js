@@ -62,7 +62,7 @@ exports.createOne = function (author, data, callback) {
                     return next(err);
                 }
 
-                if (author.role & (1 << doc.role) === 0) {
+                if ((author.role & (1 << doc.role)) === 0) {
                     err = new Error('在该板块暂无发布权限');
                     err.code = 403;
                     return next(err);
@@ -210,7 +210,7 @@ exports.updateOne = function (author, conditions, data, callback) {
                     return next(err);
                 }
 
-                if (author.role & (1 << doc.role) === 0) {
+                if ((author.role & (1 << doc.role)) === 0) {
                     err = new Error('在该板块暂无发布权限');
                     err.code = 403;
                     return next(err);
