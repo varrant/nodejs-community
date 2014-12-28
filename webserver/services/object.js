@@ -503,19 +503,32 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
                 if (oldDoc.acceptByAuthor) {
                     // 当前被采纳的人加分
                     engineer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
+
+                    // 当前被采纳的人+1
+                    engineer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
+
                     // 当前被取消采纳的人减分
                     engineer.increaseScore({_id: oldDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
+
+                    // 当前被取消采纳的人-1
+                    engineer.increaseAcceptByCount({_id: oldDoc.acceptByAuthor}, -1, log.holdError);
                 }
                 // 首次设置为采纳
                 else {
                     // 当前被采纳的人加分
                     engineer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
+
+                    // 当前被采纳的人+1
+                    engineer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
                 }
             }
             // 取消采纳
             else if (!boolean && oldDoc) {
                 // 当前被取消采纳的人减分
                 engineer.increaseScore({_id: oldDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
+
+                // 当前被取消采纳的人-1
+                engineer.increaseAcceptByCount({_id: oldDoc.acceptByAuthor}, -1, log.holdError);
             }
         });
 };

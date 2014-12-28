@@ -212,9 +212,13 @@ exports.agree = function (operator, conditions, callback) {
         })
         // 顺序串行
         .follow(function (err, value, agreeResponse) {
+            callback(err, value);
+
             // 写入赞同信息
             response.increase(conditions, 'agreeByCount', value, log.holdError);
-            callback(err, value);
+
+            // 用户被赞数量
+            engineer.increaseAgreeByCount(conditions, value, log.holdError);
 
             if (!err) {
 
