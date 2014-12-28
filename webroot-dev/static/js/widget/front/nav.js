@@ -22,6 +22,10 @@ define(function (require, exports, module) {
         var $bg = nodes[0];
         var $toggle = nodes[1];
         var $menu = nodes[2];
+        var section = window['-section-'] || 'home';
+        var $active = selector.query('.nav-item-' + section, $menu)[0];
+
+        attribute.addClass($active, 'active');
 
         event.on($toggle, 'click', function (eve) {
             eve.preventDefault();
