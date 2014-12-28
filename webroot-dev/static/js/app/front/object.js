@@ -51,4 +51,6 @@ define(function (require, exports, module) {
     };
 
     app.response();
+    require('../../widget/front/login.js');
+    require('../../widget/front/nav.js');
 });

@@ -9,7 +9,7 @@ body {
 /*nav*/
 nav {
   background: rgba(18, 140, 194, 0.9);
-  line-height: 50px;
+  line-height: 40px;
   margin-bottom: 3rem;
 }
 nav:hover {
@@ -17,17 +17,16 @@ nav:hover {
 }
 nav .i-bars {
   position: absolute;
-  top: 4px;
-  left: 10px;
+  top: 16px;
+  left: 16px;
   color: #fff;
 }
 nav .nav-logo {
   width: 120px;
-  height: 40px;
   margin: 0;
   padding: 0;
-  line-height: 45px;
   text-align: center;
+  line-height: 1;
 }
 nav .nav-right li {
   margin-right: 10px;
@@ -36,27 +35,61 @@ nav .nav-right li:last-child {
   margin-right: 0;
 }
 @media (max-width: 767px) {
+  nav {
+    position: relative;
+  }
+  nav .nav-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 8;
+  }
   nav .nav-logo {
-    margin-left: 50px;
+    text-align: left;
   }
   nav .nav-left {
     display: none;
+    -o-flex-direction: column;
+    -ms-flex-direction: column;
+    -moz-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    -o-justify-content: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
     position: fixed;
-    top: 40px;
+    top: 0;
     left: 0;
     bottom: 0;
     background: #128cc2;
-    min-width: 100px;
-    width: 33%;
+    min-width: 150px;
+    width: 50%;
     z-index: 9;
+    max-width: 200px;
   }
   nav .nav-left li {
     float: none;
     display: block;
     text-align: center;
+    border-bottom: 1px dotted #68C1E8;
+    -o-flex-grow: 1;
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    -ms-flex-grow: 1;
+    flex-grow: 1;
+    height: 100px;
+    position: relative;
+    max-height: 100px;
+    line-height: 100px;
   }
-  nav .nav-left a {
-    display: block;
+  nav .nav-left li:first-child {
+    border-top: 1px dotted #68C1E8;
   }
 }
 /*m-nav*/
@@ -85,7 +118,7 @@ nav .nav-right li:last-child {
   font-size: 100%;
   padding: 0 10px;
   line-height: 30px;
-  margin-top: 10px;
+  margin-top: 5px;
   font-weight: normal;
 }
 .g-container {

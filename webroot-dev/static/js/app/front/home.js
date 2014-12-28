@@ -7,4 +7,5 @@
 
 define(function (require, exports, module) {
     require('../../widget/front/login.js');
+    require('../../widget/front/nav.js');
 });
