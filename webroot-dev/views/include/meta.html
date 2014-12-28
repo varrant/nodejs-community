@@ -15,7 +15,7 @@
     id: '{{$engineer.id ? $engineer.id : ""}}',
     nickname: '{{$engineer.nickname ? $engineer.nickname : ""}}',
     email: '{{$engineer.email ? $engineer.email : ""}}',
-    avatar: '{{=$engineer.avatar ? $engineer.avatar : "/static/img/avatar.png"}}',
+    avatar: '{{=$engineer.avatar ||  "/static/img/avatar.png"}}',
     score: '{{$engineer.score}}',
     githubLogin: '{{$engineer.githubLogin ? $engineer.githubLogin : ""}}'
 };</script>
