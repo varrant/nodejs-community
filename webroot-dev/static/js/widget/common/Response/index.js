@@ -61,7 +61,7 @@ define(function (require, exports, module) {
                 var fd = new FormData();
 
                 // key, val, name
-                fd.append('img', list[0], 'img.png');
+                fd.append('img', list[0].file, 'img.png');
 
                 ajax({
                     url: '/admin/api/oss/',

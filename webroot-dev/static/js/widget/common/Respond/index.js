@@ -69,7 +69,6 @@ define(function (require, exports, module) {
 
             the._$content = nodes[0];
             the._$submit = nodes[1];
-            debugger;
             the._editor = new Editor(the._$content, options);
         },
 
