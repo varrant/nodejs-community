@@ -294,15 +294,32 @@ define(function (require, exports, module) {
                         the._initRespond(the._$respondParent, the._$listParent);
                         the._pagination = new Pagination(the._$paginationParent, the._paginationOptions);
                         the._pagination.on('change', function (page) {
-                            the._scrollTo(the._$listParent);
-                            the._options.query.page = page;
-                            the._ajaxComment();
+                            the.changePage(page);
                             the.emit('page', page);
                         });
                     }
                 })
                 .on('error', alert)
                 .on('finish', the._ajaxFinish.bind(the));
+        },
+
+
+        /**
+         * 改变当前分页
+         * @param page
+         */
+        changePage: function (page) {
+            var the = this;
+
+            page = dato.parseInt(page, 1);
+
+            if (the._options.query.page === page) {
+                return;
+            }
+
+            the._scrollTo(the._$listParent);
+            the._options.query.page = page;
+            the._ajaxComment();
         },
 
 
@@ -428,6 +445,11 @@ define(function (require, exports, module) {
                 list: [data]
             }, the._options.list));
             var node = modification.parse(html)[0];
+            var $findLoadingItem = selector.query('.' + alienClass + '-loading', $parent)[0];
+
+            if ($findLoadingItem) {
+                $parent.innerHTML = '';
+            }
 
             modification.insert(node, $parent, 'beforeend');
             the._scrollTo(node, function () {

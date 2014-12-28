@@ -55,6 +55,10 @@ define(function (require, exports, module) {
                 page: page
             });
         });
+
+        hashbang.on('query', 'page', function (eve, neo, old) {
+            res.changePage(neo.query.page);
+        });
     };
 
     app.response();
