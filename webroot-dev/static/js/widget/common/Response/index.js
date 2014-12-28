@@ -423,8 +423,13 @@ define(function (require, exports, module) {
             var the = this;
 
             dato.each(the._replyMap, function (id, item) {
-                item.respond.destory();
-                item.pager.destory();
+                if (item.respond) {
+                    item.respond.destory();
+                }
+
+                if (item.pager) {
+                    item.pager.destory();
+                }
             });
 
             the._replyMap = {};

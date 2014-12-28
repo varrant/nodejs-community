@@ -218,7 +218,7 @@ exports.agree = function (operator, conditions, callback) {
             response.increase(conditions, 'agreeByCount', value, log.holdError);
 
             // 用户被赞数量
-            engineer.increaseAgreeByCount(conditions, value, log.holdError);
+            engineer.increaseAgreeByCount({_id: agreeResponse.author}, value, log.holdError);
 
             if (!err) {
 

@@ -6,6 +6,8 @@
 
 'use strict';
 
+var engineer = require('../../services/').engineer;
+
 module.exports = function (app) {
     var exports = {};
 
@@ -20,7 +22,16 @@ module.exports = function (app) {
             title: '管理首页'
         };
 
-        res.render('admin/home.html', data);
+        engineer.findOne({
+            _id: res.locals.$engineer.id
+        }, function (err, doc) {
+            if(err){
+                return next(err);
+            }
+
+            req.session.$engineer = res.locals.$engineer = doc;
+            res.render('admin/home.html', data);
+        });
     };
 
     return exports;
