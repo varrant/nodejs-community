@@ -175,7 +175,6 @@ define(function (require, exports, module) {
                 key = 'transform';
             }
 
-
             var fixVal = _toCssVal(key, val);
 
             return {
