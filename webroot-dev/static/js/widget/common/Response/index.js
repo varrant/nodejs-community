@@ -202,14 +202,14 @@ define(function (require, exports, module) {
          * @param $target
          * @private
          */
-        _scrollTo: function ($target) {
+        _scrollTo: function ($target, callback) {
             var top = attribute.top($target);
 
             animation.scrollTo(window, {
                 y: top - 70
             }, {
                 duration: 123
-            });
+            }, callback);
         },
 
 
@@ -396,7 +396,9 @@ define(function (require, exports, module) {
             var node = modification.parse(html)[0];
 
             modification.insert(node, $parent, 'beforeend');
-            the._scrollTo(node);
+            the._scrollTo(node, function () {
+                attribute.addClass(node, alienClass + '-item-new');
+            });
         },
 
 

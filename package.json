@@ -49,7 +49,7 @@
     "ydr-log": "^1.1.0",
     "ydr-template": "^1.2.0",
     "ydr-translate": "^1.0.0",
-    "ydr-util": "^1.11.2",
+    "ydr-util": "^1.11.5",
     "ydr-validator": "^1.2.4"
   },
   "devDependencies": {

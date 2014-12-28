@@ -35,6 +35,9 @@
     border-bottom: 1px solid #f0f0f0;
     padding-bottom: 20px;
     margin-bottom: 20px;
+    -webkit-transition: background .5s;
+    transition: background .5s;
+    background: #fff;
 }
 
 .alien-ui-response-item:last-child {
@@ -43,10 +46,8 @@
     margin-bottom: 0;
 }
 
-.alien-ui-response-item-new{
+.alien-ui-response-item-new {
     background: #FFFCEA;
-    -webkit-transition: background .5s;
-    transition: background .5s;
 }
 
 .alien-ui-response-avatar {
@@ -66,6 +67,14 @@
 
 .alien-ui-response-meta li {
     margin-right: 10px;
+}
+
+.alien-ui-response-content img{
+    max-width: 50%;
+}
+
+.alien-ui-response-content p:last-child{
+    margin-bottom: 0;
 }
 
 .alien-ui-response-action {
@@ -112,10 +121,11 @@
 
 .alien-ui-response-children {
     position: relative;
-    margin: -10px 0 0 60px;
+    margin: -10px 20px 0 80px;
     border-radius: 4px;
     border: 1px solid #F0F0F0;
     display: none;
+    background: #fff;
 }
 
 .alien-ui-response-children .alien-ui-response-body {
@@ -141,7 +151,7 @@
     top: -19px;
 }
 
-.alien-ui-response-children .alien-ui-response-item{
+.alien-ui-response-children .alien-ui-response-item {
     padding: 0;
     margin: 0;
 }
@@ -155,10 +165,9 @@
     margin: 20px 0 -1px;
 }
 
-.alien-ui-response-children .alien-ui-pager{
+.alien-ui-response-children .alien-ui-pager {
     margin-top: 30px;
 }
-
 
 @media (max-width: 767px) {
     .alien-ui-response-respond {
@@ -169,13 +178,13 @@
         padding: 10px;
     }
 
-    .alien-ui-response-children{
+    .alien-ui-response-children {
         margin-top: 0;
         margin-left: 0;
     }
 
     .alien-ui-response-children::before,
-    .alien-ui-response-children::after{
+    .alien-ui-response-children::after {
         left: 80px;
     }
 }
