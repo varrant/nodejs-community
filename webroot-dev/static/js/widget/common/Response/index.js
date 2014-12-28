@@ -647,14 +647,16 @@ define(function (require, exports, module) {
                     if (method === 'delete') {
                         the._acceptItem(options.acceptByResponse, false);
                         options.acceptByResponse = '';
+                        options.list.object.acceptByResponse = '';
                         the.emit('accept', false);
                     }
                     // 设置最佳
                     else {
                         options.acceptByResponse = id;
+                        options.list.object.acceptByResponse = id;
                         the._acceptItem(id, true);
 
-                        if (id !== json.data) {
+                        if (json.data) {
                             the._acceptItem(json.data, false);
                         }
 

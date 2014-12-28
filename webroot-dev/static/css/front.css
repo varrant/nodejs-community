@@ -5,17 +5,12 @@
  */
 body {
   background: #f5f5f5;
-  margin-top: 100px;
 }
 /*nav*/
 nav {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
   background: rgba(18, 140, 194, 0.9);
   line-height: 50px;
-  z-index: 9;
+  margin-bottom: 3rem;
 }
 nav:hover {
   background: #128cc2;
