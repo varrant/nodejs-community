@@ -180,7 +180,7 @@ module.exports = function (app) {
 
             res.json({
                 code: 200,
-                data: oldDoc.acceptByResponse
+                data: oldDoc && oldDoc.acceptByResponse
             });
         });
     };

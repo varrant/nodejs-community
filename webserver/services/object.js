@@ -483,8 +483,14 @@ exports.acceptByResponse = function (operator, conditions, responseId, boolean, 
         })
         // 4. 更新
         .task(function (next, acceptObject, acceptByResponse) {
+
+            // 同一 object 采纳同一个 response
             if (acceptObject.acceptByResponse &&
-                acceptObject.acceptByResponse.toString() === acceptByResponse.id.toString()) {
+                acceptObject.acceptByResponse.toString() === acceptByResponse.id.toString() &&
+                boolean === true ||
+                    // object 的 acceptByResponse 为空 但设置为 取消
+                !acceptObject.acceptByResponse && boolean === false
+            ) {
                 return next();
             }
 
@@ -500,21 +506,21 @@ exports.acceptByResponse = function (operator, conditions, responseId, boolean, 
             // 设置为采纳
             if (boolean && newDoc) {
                 // 换人了
-                if (oldDoc.acceptByAuthor) {
+                if (oldDoc && oldDoc.acceptByAuthor && newDoc.acceptByAuthor.toString() !== oldDoc.acceptByAuthor.toString()) {
                     // 当前被采纳的人加分
                     engineer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
 
-                    // 当前被采纳的人+1
-                    engineer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
-
                     // 当前被取消采纳的人减分
                     engineer.increaseScore({_id: oldDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
+
+                    // 当前被采纳的人+1
+                    engineer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
 
                     // 当前被取消采纳的人-1
                     engineer.increaseAcceptByCount({_id: oldDoc.acceptByAuthor}, -1, log.holdError);
                 }
                 // 首次设置为采纳
-                else {
+                else if (!oldDoc.acceptByAuthor) {
                     // 当前被采纳的人加分
                     engineer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
 
@@ -523,7 +529,7 @@ exports.acceptByResponse = function (operator, conditions, responseId, boolean, 
                 }
             }
             // 取消采纳
-            else if (!boolean && oldDoc) {
+            else if (!boolean && oldDoc.acceptByAuthor) {
                 // 当前被取消采纳的人减分
                 engineer.increaseScore({_id: oldDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
 
