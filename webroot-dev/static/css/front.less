@@ -17,6 +17,7 @@ nav {
   background: fade(@primary-bg-color, 90%);
   line-height: 40px;
   margin-bottom: 3rem;
+  padding: 10px;
 
   &:hover {
     background: fade(@primary-bg-color, 100%);
@@ -255,7 +256,7 @@ nav {
 
 
 .m-oauth{
-  width: 500px;
+  max-width: 500px;
   margin: 0 auto;
   background: #fff;
   padding: 50px 30px;
@@ -276,6 +277,13 @@ nav {
       left: 0;
       text-align: right;
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .m-oauth{
+    max-width: none;
+    margin: 20px;
   }
 }
 

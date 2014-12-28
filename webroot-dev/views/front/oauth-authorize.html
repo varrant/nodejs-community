@@ -20,11 +20,14 @@
 
         window.location.href = '{{url}}';
         setTimeout(function () {
-            $m.innerHTML = '<i class="i i-smile-o"></i>稍等片刻，请勿关闭窗口……';
+            $m.innerHTML = '<i class="i i-smile-o"></i><br>稍等片刻，请勿关闭窗口……';
         }, 2000);
         setTimeout(function () {
-            $m.innerHTML = '<i class="i i-coffee"></i>先喝杯咖啡吧……';
+            $m.innerHTML = '<i class="i i-coffee"></i><br>先喝杯咖啡吧……';
         }, 5000);
+        setTimeout(function () {
+            $m.innerHTML = '<i class="i i-coffee"></i>&times;2<br>呵呵，再喝杯咖啡吧……';
+        }, 10000);
     </script>
 </body>
 </html>
