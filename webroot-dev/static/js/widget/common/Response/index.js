@@ -454,6 +454,11 @@ define(function (require, exports, module) {
             modification.insert(node, $parent, 'beforeend');
             the._scrollTo(node, function () {
                 attribute.addClass(node, alienClass + '-item-new');
+                //setTimeout(function () {
+                //    if (node) {
+                //        attribute.removeClass(node, alienClass + '-item-new');
+                //    }
+                //}, 1000);
             });
         },
 
