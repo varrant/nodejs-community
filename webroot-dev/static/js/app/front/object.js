@@ -11,6 +11,7 @@ define(function (require, exports, module) {
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
     var Response = require('../../widget/common/Response/');
+    var hashbang = require('../../alien/core/navigator/hashbang.js');
     var app = {};
 
     app.response = function () {
@@ -19,7 +20,7 @@ define(function (require, exports, module) {
         var res = new Response('#response', {
             id: object.id,
             query: {
-                page: window['-page-'],
+                page: hashbang.get('query', 'page') || 1,
                 limit: 3,
                 object: object.id
             },
@@ -47,6 +48,12 @@ define(function (require, exports, module) {
                 attribute.addClass($title, 'un-accepted');
                 attribute.removeClass($title, 'has-accepted');
             }
+        });
+
+        res.on('page', function (page) {
+            hashbang.set('query', {
+                page: page
+            });
         });
     };
 

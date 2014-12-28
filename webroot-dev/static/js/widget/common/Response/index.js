@@ -297,6 +297,7 @@ define(function (require, exports, module) {
                             the._scrollTo(the._$listParent);
                             the._options.query.page = page;
                             the._ajaxComment();
+                            the.emit('page', page);
                         });
                     }
                 })
