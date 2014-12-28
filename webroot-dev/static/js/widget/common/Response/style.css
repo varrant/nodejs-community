@@ -43,6 +43,12 @@
     margin-bottom: 0;
 }
 
+.alien-ui-response-item-new{
+    background: #FFFCEA;
+    -webkit-transition: background .5s;
+    transition: background .5s;
+}
+
 .alien-ui-response-avatar {
     width: 50px;
     height: 50px;
@@ -147,4 +153,29 @@
 
 .alien-ui-response-children .alien-ui-respond {
     margin: 20px 0 -1px;
+}
+
+.alien-ui-response-children .alien-ui-pager{
+    margin-top: 30px;
+}
+
+
+@media (max-width: 767px) {
+    .alien-ui-response-respond {
+        margin: 20px -10px -10px;
+    }
+
+    .alien-ui-response-main {
+        padding: 10px;
+    }
+
+    .alien-ui-response-children{
+        margin-top: 0;
+        margin-left: 0;
+    }
+
+    .alien-ui-response-children::before,
+    .alien-ui-response-children::after{
+        left: 80px;
+    }
 }

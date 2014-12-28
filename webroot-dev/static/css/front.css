@@ -88,6 +88,7 @@ nav .nav-right li:last-child {
     position: relative;
     max-height: 100px;
     line-height: 100px;
+    margin: 0;
   }
   nav .nav-left li:first-child {
     border-top: 1px dotted #68C1E8;
