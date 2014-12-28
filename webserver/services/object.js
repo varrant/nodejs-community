@@ -423,7 +423,7 @@ exports.pushContributor = function (conditions, contributor, callback) {
  * @param boolean
  * @param callback
  */
-exports.acceptResponse = function (operator, conditions, responseId, boolean, callback) {
+exports.acceptByResponse = function (operator, conditions, responseId, boolean, callback) {
     howdo
         // 1. 查找 object
         .task(function (next) {
@@ -457,40 +457,40 @@ exports.acceptResponse = function (operator, conditions, responseId, boolean, ca
         .task(function (next, acceptObject) {
             response.findOne({
                 _id: responseId
-            }, function (err, acceptResponse) {
+            }, function (err, acceptByResponse) {
                 if (err) {
                     return next(err);
                 }
 
-                if (!acceptResponse) {
+                if (!acceptByResponse) {
                     err = new Error('该 response 不存在');
                     err.code = 404;
                     return next(err);
                 }
 
-                if (acceptResponse.author.toString() === operator.id.toString()) {
+                if (acceptByResponse.author.toString() === operator.id.toString()) {
                     err = new Error('不能采纳自己的回答');
                     return next(err);
                 }
 
-                if (acceptResponse.parent) {
+                if (acceptByResponse.parent) {
                     err = new Error('不能采纳他人的回复');
                     return next(err);
                 }
 
-                next(err, acceptObject, acceptResponse);
+                next(err, acceptObject, acceptByResponse);
             });
         })
         // 4. 更新
-        .task(function (next, acceptObject, acceptResponse) {
-            if (acceptObject.acceptResponse &&
-                acceptObject.acceptResponse.toString() === acceptResponse.id.toString()) {
+        .task(function (next, acceptObject, acceptByResponse) {
+            if (acceptObject.acceptByResponse &&
+                acceptObject.acceptByResponse.toString() === acceptByResponse.id.toString()) {
                 return next();
             }
 
             object.findOneAndUpdate(conditions, {
-                acceptByAuthor: boolean ? acceptResponse.author.toString() : null,
-                acceptByResponse: boolean ? acceptResponse.id.toString() : null
+                acceptByAuthor: boolean ? acceptByResponse.author.toString() : null,
+                acceptByResponse: boolean ? acceptByResponse.id.toString() : null
             }, next);
         })
         // 异步顺序串行

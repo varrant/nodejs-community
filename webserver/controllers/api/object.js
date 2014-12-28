@@ -171,7 +171,7 @@ module.exports = function (app) {
         var objectId = req.body.object;
         var responseId = req.body.response;
 
-        object.acceptResponse(res.locals.$engineer, {
+        object.acceptByResponse(res.locals.$engineer, {
             _id: objectId
         }, responseId, true, function (err, newDoc, oldDoc) {
             if (err) {
@@ -180,7 +180,7 @@ module.exports = function (app) {
 
             res.json({
                 code: 200,
-                data: oldDoc.acceptResponse
+                data: oldDoc.acceptByResponse
             });
         });
     };
@@ -195,7 +195,7 @@ module.exports = function (app) {
         var objectId = req.body.object;
         var responseId = req.body.response;
 
-        object.acceptResponse(res.locals.$engineer, {
+        object.acceptByResponse(res.locals.$engineer, {
             _id: objectId
         }, responseId, false, function (err, newDoc, oldDoc) {
             if (err) {
