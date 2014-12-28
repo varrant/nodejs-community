@@ -56,7 +56,40 @@ define(function (require, exports, module) {
             placeholder: '期待你的回答',
             link: '#',
             text: 'markdown 编辑器使用帮助',
-            avatar: '/static/img/avatar.png'
+            avatar: '/static/img/avatar.png',
+            uploadCallback: function (list, onprogress, ondone) {
+                var fd = new FormData();
+
+                // key, val, name
+                fd.append('img', list[0], 'img.png');
+
+                ajax({
+                    url: '/admin/api/oss/',
+                    method: 'put',
+                    data: fd
+                })
+                    .on('progress', function (eve) {
+                        onprogress(eve.alienDetail.percent);
+                    })
+                    .on('success', function (json) {
+                        if (json.code !== 200) {
+                            return ondone(new Error(json.message));
+                        }
+
+                        //cacheControl: "max-age=315360000"
+                        //contentType: "image/png"
+                        //encoding: "utf8"
+                        //image: {type: "png", width: 200, height: 200}
+                        //ourl: "http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f/i/20141228233411750487888485"
+                        //surl: "http://s.ydr.me/f/i/20141228233411750487888485"
+                        var data = json.data;
+                        ondone(null, [{
+                            name: "img.png",
+                            url: data.surl
+                        }]);
+                    })
+                    .on('error', ondone);
+            }
         },
         sync: {
             commentByCountClass: 'j-comment-by-count',
@@ -69,7 +102,7 @@ define(function (require, exports, module) {
         constructor: function ($parent, options) {
             var the = this;
 
-            the._options = dato.extend({}, defaults, options);
+            the._options = dato.extend(true, {}, defaults, options);
             the._$parent = selector.query($parent)[0];
             the._init();
         },

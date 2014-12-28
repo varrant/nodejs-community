@@ -13,7 +13,7 @@ define(function (require, exports, module) {
     var modification = require('../../../alien/core/dom/modification.js');
     var event = require('../../../alien/core/event/base.js');
     var dato = require('../../../alien/util/dato.js');
-    var Editor = require('../../../alien/ui/Editor/index');
+    var Editor = require('../../../alien/ui/Editor/');
     var Template = require('../../../alien/libs/Template.js');
     var template = require('html!./template.html');
     var style = require('css!./style.css');
@@ -25,7 +25,8 @@ define(function (require, exports, module) {
         text: 'markdown 编辑器使用帮助',
         placeholder: '说点什么吧',
         submit: '提交',
-        autoFocus: false
+        autoFocus: false,
+        uploadCallback: null
     };
     var Respond = generator({
         /**
@@ -68,6 +69,7 @@ define(function (require, exports, module) {
 
             the._$content = nodes[0];
             the._$submit = nodes[1];
+            debugger;
             the._editor = new Editor(the._$content, options);
         },
 
