@@ -118,6 +118,7 @@ define(function (require, exports, module) {
             var the = this;
 
             the._editor.setContent('');
+            the._editor.clearStore();
             return the;
         },
 
