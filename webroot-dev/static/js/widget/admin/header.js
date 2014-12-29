@@ -45,7 +45,7 @@ define(function (require) {
             if (json.code === 200) {
                 $span.innerHTML = '<a class="badge badge-' +
                 (json.data === 0 ? 'default' : 'danger') +
-                '" href="/admin/notification/"><i class="i i-at"></i>' + json.data + '</a>';
+                '" href="/admin/notification/"><i class="i i-at"></i><span>' + json.data + '</span></a>';
             } else {
                 $span.innerHTML = html_1;
             }

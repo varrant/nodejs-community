@@ -3,7 +3,7 @@
         <p><i class="i i-info-circle"></i>红色背景表示该条提醒未读。</p>
     </div>
     <div class="u-labels">
-        <label><input type="radio" name="status" value="unactive" v-model="type" v-on="change:onchange" checked>未读提醒</label>
+        <label><input type="radio" name="status" value="unactive" v-model="type" v-on="change:onchange">未读提醒</label>
         <label><input type="radio" name="status" value="active" v-model="type" v-on="change:onchange">已读提醒</label>
         <label><input type="radio" name="status" value="all" v-model="type" v-on="change:onchange">全部提醒</label>
     </div>
@@ -33,8 +33,9 @@
                 </div>
             </td>
             <td>
-                <button v-if="type!=='active'" class="btn btn-success btn-xs" v-on="click: setActive(notification)" v-attr="disabled: notification.hasActived">\{{notification.hasActived?"已读":"标记已读"}}</button>
-                <button v-if="type==='active'" class="btn btn-success btn-xs" v-on="click: setUnactive(notification)" v-attr="disabled: !notification.hasActived">\{{!notification.hasActived?"未读":"标记未读"}}</button>
+                <button v-if="type==='unactive'" class="btn btn-success btn-xs" v-on="click: toggle(notification)" v-attr="disabled: notification.hasActived">\{{notification.hasActived?"已读":"标记已读"}}</button>
+                <button v-if="type==='active'" class="btn btn-success btn-xs" v-on="click: toggle(notification)" v-attr="disabled: !notification.hasActived">\{{!notification.hasActived?"未读":"标记未读"}}</button>
+                <button v-if="type==='all'" class="btn btn-success btn-xs" v-on="click: toggle(notification)">\{{notification.hasActived?"标记未读":"标记已读"}}</button>
             </td>
         </tr>
         </tbody>

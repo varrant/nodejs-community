@@ -45,7 +45,7 @@ module.exports = function (app) {
     exports.delete = function (req, res, next) {
         var userId = res.locals.$engineer.id;
 
-        notification.setActive({_id: req.body.id, source: userId}, function (err) {
+        notification.setActive({_id: req.body.id, target: userId}, function (err) {
             if (err) {
                 return next(err);
             }
@@ -66,7 +66,7 @@ module.exports = function (app) {
     exports.put = function (req, res, next) {
         var userId = res.locals.$engineer.id;
 
-        notification.cancelActive({_id: req.body.id, source: userId}, function (err) {
+        notification.cancelActive({_id: req.body.id, target: userId}, function (err) {
             if (err) {
                 return next(err);
             }

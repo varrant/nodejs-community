@@ -20,8 +20,13 @@ define(function (require, exports, module) {
     var defaults = {
         url: '/admin/api/object/list/',
         section: '',
-        limit: 20,
-        type: null,
+        query: {
+            page: 1,
+            limit: 20,
+            section: null,
+            type: null
+        },
+        data: null,
         methods: null
     };
     var List = generator({
@@ -32,17 +37,11 @@ define(function (require, exports, module) {
             the._paginationSelector = paginationSelector;
             the._options = dato.extend({}, defaults, options);
             the.query = {
-                page: dato.parseInt(hashbang.get('query', 'page'), 1),
-                limit: the._options.limit
+                page: dato.parseInt(hashbang.get('query', 'page'), the._options.query.page),
+                limit: dato.parseInt(hashbang.get('query', 'limit'), the._options.query.limit),
+                type: hashbang.get('query', 'type') || the._options.query.type,
+                section: the._options.query.section
             };
-
-            if(the._options.section){
-                the.query.section = the._options.section;
-            }
-
-            if(the._options.type){
-                the.query.type = the._options.type;
-            }
 
             the._init();
         },
@@ -96,10 +95,10 @@ define(function (require, exports, module) {
             } else {
                 the.vue = new Vue({
                     el: the._listSelector,
-                    data: {
+                    data: dato.extend({
                         list: data.list,
                         req: the.query
-                    },
+                    }, the._options.data),
                     methods: the._options.methods
                 });
 
