@@ -68,11 +68,11 @@ exports.createOne = function (author, data, callback) {
                     return next(err);
                 }
 
-                next();
+                next(null, doc);
             });
         })
         // 2. 检查 category 是否存在
-        .task(function (next) {
+        .task(function (next, objectInSection) {
             category.findOne({_id: data.category}, function (err, doc) {
                 if (err) {
                     return next(err);
@@ -84,11 +84,11 @@ exports.createOne = function (author, data, callback) {
                     return next(err);
                 }
 
-                next();
+                next(null, objectInSection, doc);
             });
         })
         // 3. 检查 column 是否存在，以及发布权限
-        .task(function (next) {
+        .task(function (next, objectInSection, objectOnCategory) {
             if (!data.column) {
                 return next();
             }
@@ -110,11 +110,11 @@ exports.createOne = function (author, data, callback) {
                     return next(err);
                 }
 
-                next();
+                next(null, objectInSection, objectOnCategory, doc);
             });
         })
         // 4. 新建数据
-        .task(function (next) {
+        .task(function (next, objectInSection, objectOnCategory, objectAtColumn) {
             var date = new Date();
             var data2 = dato.pick(data, ['section', 'title', 'uri', 'type', 'category', 'labels',
                 'introduction', 'content', 'isDisplay']);
@@ -129,10 +129,12 @@ exports.createOne = function (author, data, callback) {
             };
             var data4 = dato.extend(data2, data3);
 
-            object.createOne(data4, next);
+            object.createOne(data4, function (err, doc) {
+                next(err, objectInSection, objectOnCategory, objectAtColumn, doc);
+            });
         })
         // 顺序串行
-        .follow(function (err, doc) {
+        .follow(function (err, objectInSection, objectOnCategory, objectAtColumn, doc) {
             callback(err, doc);
 
             if (!err && doc) {
@@ -165,6 +167,9 @@ exports.createOne = function (author, data, callback) {
 
                 // 更新 engineer.objectCount
                 engineer.increaseObjectCount({_id: doc.author}, 1, log.holdError);
+
+                // 发布积分
+                engineer.increaseScore({_id: doc.author}, scoreMap[objectInSection.name] || 0, log.holdError)
             }
         });
 };
