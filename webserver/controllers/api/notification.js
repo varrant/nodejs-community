@@ -79,6 +79,7 @@ module.exports = function (app) {
                 break;
         }
 
+        options.populate = ['source', 'object', 'response'];
         notification.find(conditions, options, function (err, docs) {
             if (err) {
                 return next(err);

@@ -18,7 +18,7 @@ define(function (require, exports, module) {
         url: '/admin/api/notification/',
         type: 'unactive',
         methods: methods,
-        limit: 10
+        limit: 2
     });
 
     methods.onchange = function () {

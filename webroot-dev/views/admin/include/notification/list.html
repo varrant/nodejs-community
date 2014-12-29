@@ -11,7 +11,7 @@
         <thead>
         <tr>
             <th width="8%">序号</th>
-            <th width="*">来源</th>
+            <th width="*">内容</th>
         </tr>
         </thead>
         <tbody>
@@ -20,7 +20,9 @@
         </tr>
         <tr v-repeat="notification:list" v-class="danger:!notification.hasActiveBy">
             <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>
-            <td>\{{notification.source}}</td>
+            <td v-if="notification.type === 'comment'">
+                \{{notification.source.nickname}}评论了你的object
+            </td>
         </tr>
         </tbody>
         <tfoot>
