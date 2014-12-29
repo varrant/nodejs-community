@@ -35,7 +35,7 @@ exports.find = notification.find;
  * @param callback {Function} 回调
  */
 exports.setActive = function (conditions, callback) {
-    notification.toggle(conditions, 'hasActiveBy', true, callback);
+    notification.toggle(conditions, 'hasActived', true, callback);
 };
 
 /**
@@ -44,5 +44,5 @@ exports.setActive = function (conditions, callback) {
  * @param callback {Function} 回调
  */
 exports.cancelActive = function (conditions, callback) {
-    notification.toggle(conditions, 'hasActiveBy', false, callback);
+    notification.toggle(conditions, 'hasActived', false, callback);
 };

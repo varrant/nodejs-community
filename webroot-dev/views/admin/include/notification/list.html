@@ -19,7 +19,7 @@
         <tr v-if="!list.length">
             <td colspan="3" class="table-empty-td">暂无相关提醒。</td>
         </tr>
-        <tr v-repeat="notification:list" v-class="danger:!notification.hasActiveBy">
+        <tr v-repeat="notification:list" v-class="danger:!notification.hasActived">
             <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>
             <td>
                 <div v-if="notification.type === 'comment'">
@@ -33,7 +33,8 @@
                 </div>
             </td>
             <td>
-                <button class="btn btn-success btn-xs">标记已读</button>
+                <button v-if="type!=='active'" class="btn btn-success btn-xs" v-on="click: setActive(notification)" v-attr="disabled: notification.hasActived">\{{notification.hasActived?"已读":"标记已读"}}</button>
+                <button v-if="type==='active'" class="btn btn-success btn-xs" v-on="click: setUnactive(notification)" v-attr="disabled: !notification.hasActived">\{{!notification.hasActived?"未读":"标记未读"}}</button>
             </td>
         </tr>
         </tbody>

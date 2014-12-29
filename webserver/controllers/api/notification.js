@@ -23,7 +23,7 @@ module.exports = function (app) {
     exports.count = function (req, res, next) {
         var userId = res.locals.$engineer.id;
 
-        notification.count({hasActive: false, source: userId}, function (err, count) {
+        notification.count({hasActived: false, source: userId}, function (err, count) {
             if (err) {
                 return next(err);
             }
@@ -42,10 +42,31 @@ module.exports = function (app) {
      * @param res
      * @param next
      */
-    exports.setActive = function (req, res, next) {
+    exports.delete = function (req, res, next) {
         var userId = res.locals.$engineer.id;
 
         notification.setActive({_id: req.body.id, source: userId}, function (err) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                code: 200
+            });
+        });
+    };
+
+
+    /**
+     * 取消激活通知
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.put = function (req, res, next) {
+        var userId = res.locals.$engineer.id;
+
+        notification.cancelActive({_id: req.body.id, source: userId}, function (err) {
             if (err) {
                 return next(err);
             }
