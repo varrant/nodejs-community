@@ -7,7 +7,9 @@
 - `type` 通知类型，详见下表
 - `source` 来源
 - `target` 目标
-- `object` 影响者
+- `object` object
+- `response` response
+- `value` value
 - `hasActived` 是否已经激活了
 - `activeAt` 激活时间
 - `activeByAt` 被激活时间

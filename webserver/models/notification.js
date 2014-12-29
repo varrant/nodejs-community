@@ -52,6 +52,10 @@ var schema = new mongoose.Schema({
         required: false,
         ref: 'response'
     },
+    // 通知的值
+    value : {
+        type: String
+    },
     // 是否已被激活
     hasActived: {
         type: Boolean,
