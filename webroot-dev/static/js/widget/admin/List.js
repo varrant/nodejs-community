@@ -20,7 +20,9 @@ define(function (require, exports, module) {
     var defaults = {
         url: '/admin/api/object/list/',
         section: '',
-        limit: 20
+        limit: 20,
+        type: null,
+        methods: null
     };
     var List = generator({
         constructor: function (listSelector, paginationSelector, options) {
@@ -29,14 +31,17 @@ define(function (require, exports, module) {
             the._listSelector = listSelector;
             the._paginationSelector = paginationSelector;
             the._options = dato.extend({}, defaults, options);
-            the._query = {
-                section: the._options.section,
+            the.query = {
                 page: dato.parseInt(hashbang.get('query', 'page'), 1),
                 limit: the._options.limit
             };
 
+            if(the._options.section){
+                the.query.section = the._options.section;
+            }
+
             if(the._options.type){
-                the._query.type = the._options.type;
+                the.query.type = the._options.type;
             }
 
             the._init();
@@ -45,7 +50,7 @@ define(function (require, exports, module) {
         _init: function () {
             var the = this;
 
-            the._getData();
+            the.getList();
             the._initEvent();
 
             return the;
@@ -56,19 +61,19 @@ define(function (require, exports, module) {
             var the = this;
 
             hashbang.on('query', 'page', function (eve, neo) {
-                the._query.page = neo.query.page || 1;
-                the._query.limit = neo.query.limit || 20;
-                the._getData();
+                the.query.page = neo.query.page || 1;
+                the.query.limit = neo.query.limit || 20;
+                the.getList();
             });
         },
 
 
-        _getData: function () {
+        getList: function () {
             var the = this;
             var options = the._options;
 
             ajax({
-                url: options.url + '?' + qs.stringify(the._query)
+                url: options.url + '?' + qs.stringify(the.query)
             }).on('success', the._onsuccess.bind(the)).on('error', alert);
         },
 
@@ -83,27 +88,27 @@ define(function (require, exports, module) {
             if (the.vue) {
                 the.vue.$data.list = json.data;
                 the._pagination.render({
-                    page: the._query.page,
-                    max: Math.ceil(json.count / the._query.limit)
+                    page: the.query.page,
+                    max: Math.ceil(json.count / the.query.limit)
                 });
             } else {
                 the.vue = new Vue({
                     el: the._listSelector,
                     data: {
                         list: json.data,
-                        req: the._query
+                        req: the.query
                     },
-                    methods: {}
+                    methods: the._options.methods
                 });
 
                 the.vue.$el.classList.remove('f-none');
                 the._pagination = new Pagination(the._paginationSelector, {
-                    page: the._query.page,
-                    max: Math.ceil(json.count / the._query.limit)
+                    page: the.query.page,
+                    max: Math.ceil(json.count / the.query.limit)
                 }).on('change', function (_page) {
                         hashbang.set('query', {
                             page: _page,
-                            limit: the._query.limit
+                            limit: the.query.limit
                         });
                         attribute.scrollTop(window, 0);
                     });

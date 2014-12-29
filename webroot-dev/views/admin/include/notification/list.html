@@ -3,9 +3,9 @@
         <p><i class="i i-info-circle"></i>红色背景表示该条提醒未读。</p>
     </div>
     <div class="u-labels">
-        <label><input type="radio" name="status" value="unactive" v-model="status" v-on="change:onchange" checked>未读提醒</label>
-        <label><input type="radio" name="status" value="active" v-model="status" v-on="change:onchange">已读提醒</label>
-        <label><input type="radio" name="status" value="all" v-model="status" v-on="change:onchange">全部提醒</label>
+        <label><input type="radio" name="status" value="unactive" v-model="type" v-on="change:onchange" checked>未读提醒</label>
+        <label><input type="radio" name="status" value="active" v-model="type" v-on="change:onchange">已读提醒</label>
+        <label><input type="radio" name="status" value="all" v-model="type" v-on="change:onchange">全部提醒</label>
     </div>
     <table class="table table-striped table-hover">
         <thead>
