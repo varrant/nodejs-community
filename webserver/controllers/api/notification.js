@@ -64,17 +64,18 @@ module.exports = function (app) {
      * @param next
      */
     exports.get = function (req, res, next) {
-        var userId = res.locals.$engineer.id;
-        var conditions = {activedUser: userId};
+        var conditions = {
+            target: res.locals.$engineer.id
+        };
         var options = filter.skipLimit(req.query);
 
         switch (req.query.type) {
             case 'active':
-                conditions.hasActive = true;
+                conditions.hasActived = true;
                 break;
 
             case 'unactive':
-                conditions.hasActive = false;
+                conditions.hasActived = false;
                 break;
         }
 
@@ -82,8 +83,6 @@ module.exports = function (app) {
             if (err) {
                 return next(err);
             }
-
-            docs = docs || [];
 
             res.json({
                 code: 200,
