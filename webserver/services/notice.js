@@ -30,9 +30,9 @@ exports.comment = function (sourceEngineer, objectAuthor, commentByObject) {
     }, log.holdError);
 
     // 2. 邮件通知
-    var notiComment = configs.notification.comment;
-    var subject = notiComment.subject;
-    var content = notiComment.template.render({});
+    var noti = configs.notification.comment;
+    var subject = noti.subject;
+    var content = noti.template.render({});
     email.send(objectAuthor, subject, content);
 };
 
@@ -53,9 +53,9 @@ exports.reply = function (sourceEngineer, commentAuthor, replyByComment) {
     }, log.holdError);
 
     // 2. 邮件通知
-    var notiReply = configs.notification.reply;
-    var subject = notiReply.subject;
-    var content = notiReply.template.render({});
+    var noti = configs.notification.reply;
+    var subject = noti.subject;
+    var content = noti.template.render({});
     email.send(commentAuthor, subject, content);
 };
 
@@ -65,17 +65,18 @@ exports.reply = function (sourceEngineer, commentAuthor, replyByComment) {
  * @param operator {Object} 操作者
  * @param operatorBy {Object} 被操作者
  */
-exports.role = function (operator, operatorBy) {
+exports.role = function (operator, operatorBy, group) {
     // 1. 站内通知
     notification.createOne({
         source: operator.id,
-        target: operatorBy.id
+        target: operatorBy.id,
+        value: group
     }, log.holdError);
 
     // 2. 邮件通知
-    var notiRole = configs.notification.role;
-    var subject = notiRole.subject;
-    var content = notiRole.template.render({});
+    var noti = configs.notification.role;
+    var subject = noti.subject;
+    var content = noti.template.render({});
     email.send(operatorBy, subject, content);
 };
 
@@ -84,19 +85,21 @@ exports.role = function (operator, operatorBy) {
  * 回答被采纳通知
  * @param askEngineer {Object} 问者
  * @param answerEngineer {Object} 答者
- * @param questionObject {Object} 题者
+ * @param questionObject {Object} 题
+ * @param questionResponse {Object} 答
  */
-exports.acceptBy = function (askEngineer, answerEngineer, questionObject) {
+exports.accept = function (askEngineer, answerEngineer, questionObject, questionResponse) {
     // 1. 站内通知
     notification.createOne({
         source: askEngineer.id,
         target: answerEngineer.id,
-        object: questionObject.id
+        object: questionObject.id,
+        response: questionResponse.id
     }, log.holdError);
 
     // 2. 邮件通知
-    var notiRole = configs.notification.acceptBy;
-    var subject = notiRole.subject;
-    var content = notiRole.template.render({});
+    var noti = configs.notification.acceptBy;
+    var subject = noti.subject;
+    var content = noti.template.render({});
     email.send(answerEngineer, subject, content);
 };
