@@ -88,10 +88,10 @@ define(function (require, exports, module) {
             var data = json.data;
 
             if (the.vue) {
-                the.vue.$data.list = json.data;
+                the.vue.$data.list = data.list;
                 the._pagination.render({
                     page: the.query.page,
-                    max: Math.ceil(json.count / the.query.limit)
+                    max: Math.ceil(data.count / the.query.limit)
                 });
             } else {
                 the.vue = new Vue({

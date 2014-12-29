@@ -21,6 +21,11 @@ var email = require('./email.js');
  * @param object {commentByObject} 被评论的 object
  */
 exports.comment = function (sourceEngineer, objectAuthor, commentByObject) {
+    // 自己不必通知自己
+    if (sourceEngineer.id.toString() === objectAuthor.id.toString) {
+        return;
+    }
+
     // 1. 站内通知
     notification.createOne({
         type: 'comment',
@@ -44,6 +49,11 @@ exports.comment = function (sourceEngineer, objectAuthor, commentByObject) {
  * @param object {replyByComment} 被 reply 的 comment
  */
 exports.reply = function (sourceEngineer, commentAuthor, replyByComment) {
+    // 自己不必通知自己
+    if (sourceEngineer.id.toString() === commentAuthor.id.toString) {
+        return;
+    }
+
     // 1. 站内通知
     notification.createOne({
         type: 'reply',
@@ -66,6 +76,11 @@ exports.reply = function (sourceEngineer, commentAuthor, replyByComment) {
  * @param operatorBy {Object} 被操作者
  */
 exports.role = function (operator, operatorBy, group) {
+    // 自己不必通知自己
+    if (operator.id.toString() === operatorBy.id.toString) {
+        return;
+    }
+
     // 1. 站内通知
     notification.createOne({
         type: 'role',
@@ -90,6 +105,11 @@ exports.role = function (operator, operatorBy, group) {
  * @param questionResponse {Object} 答
  */
 exports.accept = function (askEngineer, answerEngineer, questionObject, questionResponse) {
+    // 自己不必通知自己
+    if (askEngineer.id.toString() === answerEngineer.id.toString) {
+        return;
+    }
+
     // 1. 站内通知
     notification.createOne({
         type: 'accept',

@@ -1,5 +1,5 @@
 <div id="list" class="m-notification f-none">
-    <div class="alert alert-warning alert-line">
+    <div class="alert alert-danger alert-line">
         <p><i class="i i-info-circle"></i>红色背景表示该条提醒未读。</p>
     </div>
     <div class="u-labels">
@@ -17,15 +17,20 @@
         </thead>
         <tbody>
         <tr v-if="!list.length">
-            <td colspan="2" class="table-empty-td">暂无相关提醒。</td>
+            <td colspan="3" class="table-empty-td">暂无相关提醒。</td>
         </tr>
         <tr v-repeat="notification:list" v-class="danger:!notification.hasActiveBy">
             <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>
-            <td v-if="notification.type === 'comment'">
-                \{{notification.source.nickname}}评论了你的《\{{notification.object.title}}》
-            </td>
-            <td v-if="notification.type === 'comment'">
-                \{{notification.source.nickname}}评论了你的《\{{notification.object.title}}》
+            <td>
+                <div v-if="notification.type === 'comment'">
+                    <a href="#"><strong>\{{notification.source.nickname}}</strong> 评论了你的《\{{notification.object.title}}》</a>
+                </div>
+                <div v-if="notification.type === 'reply' && notification.object">
+                    <a href="#"><strong>\{{notification.source.nickname}}</strong> 回复了你的《\{{notification.object.title}}》</a>
+                </div>
+                <div v-if="notification.type === 'reply' && notification.response">
+                    <a href="#"><strong>\{{notification.source.nickname}}</strong> 回复了你的“\{{notification.response.content.slice(0, 100)}}”</a>
+                </div>
             </td>
             <td>
                 <button class="btn btn-success btn-xs">标记已读</button>

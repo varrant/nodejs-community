@@ -9,6 +9,7 @@
 var notification = require('../../services/').notification;
 var dato = require('ydr-util').dato;
 var filter = require('../../utils/').filter;
+var howdo = require('howdo');
 
 module.exports = function (app) {
     var exports = {};
@@ -80,16 +81,29 @@ module.exports = function (app) {
         }
 
         options.populate = ['source', 'object', 'response'];
-        notification.find(conditions, options, function (err, docs) {
-            if (err) {
-                return next(err);
-            }
+        howdo
+            // 计数
+            .task(function (done) {
+                notification.count(conditions, done);
+            })
+            // 列表
+            .task(function (done) {
+                notification.find(conditions, options, done);
+            })
+            // 异步并行
+            .together(function (err, count, list) {
+                if (err) {
+                    return next(err);
+                }
 
-            res.json({
-                code: 200,
-                data: docs
+                res.json({
+                    code: 200,
+                    data: {
+                        count: count,
+                        list: list
+                    }
+                });
             });
-        });
     };
 
     return exports;
