@@ -182,11 +182,12 @@ define(function (require, exports, module) {
 
         /**
          * 初始化响应框
-         * @params $respondParent
-         * @params $listParent
+         * @params $respondParent {Object} 编辑框父级
+         * @params $listParent {Object} 列表父级
+         * @params [$replyNumberBtn] {Object} 回复数字按钮
          * @private
          */
-        _initRespond: function ($respondParent, $listParent) {
+        _initRespond: function ($respondParent, $listParent, $replyNumberBtn) {
             var the = this;
             var options = the._options;
             var respond;
@@ -204,6 +205,10 @@ define(function (require, exports, module) {
                         if (!err) {
                             respond.reset();
                             the._appendItem($listParent, data);
+
+                            if($replyNumberBtn){
+                                the._increaseHTML($replyNumberBtn, 1);
+                            }
                         }
                     });
                 });
@@ -467,14 +472,20 @@ define(function (require, exports, module) {
          * 增加数字
          * @param $node
          * @param count
+         * @param [isToCount]
          * @private
          */
-        _increaseHTML: function ($node, count) {
+        _increaseHTML: function ($node, count, isToCount) {
             var $number = selector.query('.' + alienClass + '-number', $node)[0];
-            var old = dato.parseInt($number.innerHTML, 0);
+            var neo = 0;
 
-            old += count;
-            $number.innerHTML = old;
+            if (isToCount) {
+                neo = count;
+            } else {
+                neo = dato.parseInt($number.innerHTML, 0) + count;
+            }
+
+            $number.innerHTML = neo;
         },
 
 
@@ -506,26 +517,28 @@ define(function (require, exports, module) {
         _reply: function (eve) {
             var the = this;
             var id = the._getResponseId(eve.target);
+            var $btn = selector.closest(eve.target, 'button')[0];
 
             the._replyMap[id] = the._replyMap[id] || {};
 
             if (the._replyMap[id].isOpen) {
                 the._replyMap[id].isOpen = false;
-                the._toggleReply(id, false);
+                the._toggleReply($btn, id, false);
             } else {
                 the._replyMap[id].isOpen = true;
-                the._toggleReply(id, true);
+                the._toggleReply($btn, id, true);
             }
         },
 
 
         /**
          * 切换评论的收起与展开
+         * @param $btn
          * @param id
          * @param boolean {Boolean} 是否展开
          * @private
          */
-        _toggleReply: function (id, boolean) {
+        _toggleReply: function ($btn, id, boolean) {
             var the = this;
             var $li = selector.query('#response-' + id)[0];
 
@@ -537,7 +550,7 @@ define(function (require, exports, module) {
                 attribute.addClass($li, alienClass + '-active');
 
                 if (!the._replyMap || !the._replyMap[id] || !the._replyMap[id].respond) {
-                    the._ajaxReply($li, id);
+                    the._ajaxReply($btn, $li, id);
                 }
             } else {
                 attribute.removeClass($li, alienClass + '-active');
@@ -551,7 +564,7 @@ define(function (require, exports, module) {
          * @param id
          * @private
          */
-        _ajaxReply: function ($li, id) {
+        _ajaxReply: function ($btn, $li, id) {
             var the = this;
             var options = the._options;
             var $children = selector.query('.' + alienClass + '-children', $li)[0];
@@ -603,6 +616,8 @@ define(function (require, exports, module) {
                         type: 'reply'
                     }));
 
+                    the._increaseHTML($btn, data.count, true);
+
                     if (!the._replyMap[id].pager) {
                         the._replyMap[id].pager = new Pager($pagerParent, {
                             page: 1,
@@ -610,13 +625,13 @@ define(function (require, exports, module) {
                         }).on('change', function (page) {
                                 the._scrollTo($listParent);
                                 the._replyMap[id].query.page = page;
-                                the._ajaxReply($li, id);
+                                the._ajaxReply($btn, $li, id);
                                 this.render({
                                     page: page,
                                     max: Math.ceil(data.count / options.query.limit)
                                 });
                             });
-                        the._replyMap[id].respond = the._initRespond($contentParent, $listParent);
+                        the._replyMap[id].respond = the._initRespond($contentParent, $listParent, $btn);
                         the._replyMap[id].respond._replyParentId = id;
                     }
                 })
