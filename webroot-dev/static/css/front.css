@@ -422,6 +422,10 @@ nav .nav-right li:last-child {
 .m-usercard .usercard-statistics li {
   margin-right: 20px;
 }
+.m-404,
+.m-500 {
+  margin-top: 200px;
+}
 footer {
   margin-top: 100px;
 }

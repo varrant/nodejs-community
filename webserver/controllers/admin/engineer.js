@@ -68,7 +68,20 @@ module.exports = function (app) {
             me: res.locals.$engineer
         };
 
-        res.render('admin/engineer-me.html', data);
+        engineer.findOne({
+            _id: res.locals.$engineer.id
+        }, function (err, doc) {
+            if(err){
+                return next(err);
+            }
+
+            if(!doc){
+                return next();
+            }
+
+            req.session.$engineer = res.locals.$engineer = doc;
+            res.render('admin/engineer-me.html', data);
+        });
     };
 
     return exports;
