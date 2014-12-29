@@ -22,7 +22,7 @@ var email = require('./email.js');
  */
 exports.comment = function (sourceEngineer, objectAuthor, commentByObject) {
     // 自己不必通知自己
-    if (sourceEngineer.id.toString() === objectAuthor.id.toString) {
+    if (sourceEngineer.id.toString() === objectAuthor.id.toString()) {
         return;
     }
 
@@ -50,7 +50,7 @@ exports.comment = function (sourceEngineer, objectAuthor, commentByObject) {
  */
 exports.reply = function (sourceEngineer, commentAuthor, replyByComment) {
     // 自己不必通知自己
-    if (sourceEngineer.id.toString() === commentAuthor.id.toString) {
+    if (sourceEngineer.id.toString() === commentAuthor.id.toString()) {
         return;
     }
 
@@ -77,7 +77,7 @@ exports.reply = function (sourceEngineer, commentAuthor, replyByComment) {
  */
 exports.role = function (operator, operatorBy, group) {
     // 自己不必通知自己
-    if (operator.id.toString() === operatorBy.id.toString) {
+    if (operator.id.toString() === operatorBy.id.toString()) {
         return;
     }
 
@@ -106,7 +106,7 @@ exports.role = function (operator, operatorBy, group) {
  */
 exports.accept = function (askEngineer, answerEngineer, questionObject, questionResponse) {
     // 自己不必通知自己
-    if (askEngineer.id.toString() === answerEngineer.id.toString) {
+    if (askEngineer.id.toString() === answerEngineer.id.toString()) {
         return;
     }
 
