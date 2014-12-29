@@ -18,7 +18,7 @@ module.exports = function (app, ctrlApi) {
     // notification
     app.get('/admin/api/notification/count/', ctrlApi.notification.count);
     app.get('/admin/api/notification/', ctrlApi.notification.get);
-    app.put('/admin/api/notification/', ctrlApi.notification.setActive);
+    app.delete('/admin/api/notification/', ctrlApi.notification.setActive);
 
 
     // nav

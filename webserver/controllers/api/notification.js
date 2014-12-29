@@ -51,8 +51,7 @@ module.exports = function (app) {
             }
 
             res.json({
-                code: 200,
-                data: true
+                code: 200
             });
         });
     };
