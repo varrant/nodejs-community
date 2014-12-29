@@ -12,6 +12,7 @@
         <tr>
             <th width="8%">序号</th>
             <th width="*">内容</th>
+            <th width="10%">操作</th>
         </tr>
         </thead>
         <tbody>
@@ -21,13 +22,19 @@
         <tr v-repeat="notification:list" v-class="danger:!notification.hasActiveBy">
             <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>
             <td v-if="notification.type === 'comment'">
-                \{{notification.source.nickname}}评论了你的object
+                \{{notification.source.nickname}}评论了你的《\{{notification.object.title}}》
+            </td>
+            <td v-if="notification.type === 'comment'">
+                \{{notification.source.nickname}}评论了你的《\{{notification.object.title}}》
+            </td>
+            <td>
+                <button class="btn btn-success btn-xs">标记已读</button>
             </td>
         </tr>
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="2" id="pagination"></td>
+            <td colspan="3" id="pagination"></td>
         </tr>
         </tfoot>
     </table>

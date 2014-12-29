@@ -85,6 +85,8 @@ define(function (require, exports, module) {
                 return alert(json);
             }
 
+            var data = json.data;
+
             if (the.vue) {
                 the.vue.$data.list = json.data;
                 the._pagination.render({
@@ -95,7 +97,7 @@ define(function (require, exports, module) {
                 the.vue = new Vue({
                     el: the._listSelector,
                     data: {
-                        list: json.data,
+                        list: data.list,
                         req: the.query
                     },
                     methods: the._options.methods
@@ -104,7 +106,7 @@ define(function (require, exports, module) {
                 the.vue.$el.classList.remove('f-none');
                 the._pagination = new Pagination(the._paginationSelector, {
                     page: the.query.page,
-                    max: Math.ceil(json.count / the.query.limit)
+                    max: Math.ceil(data.count / the.query.limit)
                 }).on('change', function (_page) {
                         hashbang.set('query', {
                             page: _page,

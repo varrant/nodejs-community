@@ -76,8 +76,10 @@ module.exports = function (app) {
 
                 res.json({
                     code: 200,
-                    count: count,
-                    data: docs
+                    data: {
+                        list: docs,
+                        count: count
+                    }
                 });
             });
     };
