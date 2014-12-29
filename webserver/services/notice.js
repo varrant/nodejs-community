@@ -68,6 +68,7 @@ exports.reply = function (sourceEngineer, commentAuthor, replyByComment) {
 exports.role = function (operator, operatorBy, group) {
     // 1. 站内通知
     notification.createOne({
+        type: 'role',
         source: operator.id,
         target: operatorBy.id,
         value: group
@@ -91,6 +92,7 @@ exports.role = function (operator, operatorBy, group) {
 exports.accept = function (askEngineer, answerEngineer, questionObject, questionResponse) {
     // 1. 站内通知
     notification.createOne({
+        type: 'accept',
         source: askEngineer.id,
         target: answerEngineer.id,
         object: questionObject.id,

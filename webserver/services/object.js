@@ -17,6 +17,7 @@ var label = require('./label.js');
 var setting = require('./setting.js');
 var engineer = require('./engineer.js');
 var response = require('./response.js');
+var notice = require('./notice.js');
 var howdo = require('howdo');
 var dato = require('ydr-util').dato;
 var log = require('ydr-log');
@@ -449,8 +450,8 @@ exports.acceptByResponse = function (operator, conditions, responseId, boolean, 
                 return next(err);
             }
 
-            if ((operator.role & 1 << 19) !== 0 ||
-                operator.id.toString() === acceptObject.author.toString()) {
+            // 只有作者自己可以采纳
+            if (operator.id.toString() === acceptObject.author.toString()) {
                 return next(null, acceptObject);
             }
 
@@ -501,10 +502,12 @@ exports.acceptByResponse = function (operator, conditions, responseId, boolean, 
             object.findOneAndUpdate(conditions, {
                 acceptByAuthor: boolean ? acceptByResponse.author.toString() : null,
                 acceptByResponse: boolean ? acceptByResponse.id.toString() : null
-            }, next);
+            }, function(err, newDoc, oldDoc){
+                next(err, newDoc, oldDoc, acceptByResponse);
+            });
         })
         // 异步顺序串行
-        .follow(function (err, newDoc, oldDoc) {
+        .follow(function (err, newDoc, oldDoc, acceptByResponse) {
             callback(err, newDoc, oldDoc);
 
             // 设置为采纳
@@ -520,6 +523,9 @@ exports.acceptByResponse = function (operator, conditions, responseId, boolean, 
                     // 当前被采纳的人+1
                     engineer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
 
+                    // 通知被采纳的人
+                    notice.accept(operator, {id: newDoc.acceptByAuthor}, newDoc, acceptByResponse);
+
                     // 当前被取消采纳的人-1
                     engineer.increaseAcceptByCount({_id: oldDoc.acceptByAuthor}, -1, log.holdError);
                 }
@@ -530,6 +536,9 @@ exports.acceptByResponse = function (operator, conditions, responseId, boolean, 
 
                     // 当前被采纳的人+1
                     engineer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
+
+                    // 通知被采纳的人
+                    notice.accept(operator, {id: newDoc.acceptByAuthor}, newDoc, acceptByResponse);
                 }
             }
             // 取消采纳

@@ -9,6 +9,7 @@
 var engineer = require('../models/').engineer;
 var object = require('./object.js');
 var interactive = require('./interactive.js');
+var notice = require('./notice.js');
 var random = require('ydr-util').random;
 var dato = require('ydr-util').dato;
 var crypto = require('ydr-util').crypto;
@@ -120,7 +121,13 @@ exports.modifyRole = function (operator, engineerBy, roleArray, callback) {
             group: group
         };
 
-        engineer.findOneAndUpdate({_id: engineerBy.id}, data, callback);
+        engineer.findOneAndUpdate({_id: engineerBy.id}, data, function (err, newDoc, oldDoc) {
+            callback(err, newDoc, oldDoc);
+
+            if (!err && newDoc) {
+                notice.role(operator, engineerBy, group || 'none');
+            }
+        });
     }
     // founder 才有权限修改他人权限
     else if ((operator.role & role20) === 0) {
