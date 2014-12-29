@@ -488,7 +488,6 @@ exports.acceptByResponse = function (operator, conditions, responseId, boolean, 
         })
         // 4. 更新
         .task(function (next, acceptObject, acceptByResponse) {
-
             // 同一 object 采纳同一个 response
             if (acceptObject.acceptByResponse &&
                 acceptObject.acceptByResponse.toString() === acceptByResponse.id.toString() &&
