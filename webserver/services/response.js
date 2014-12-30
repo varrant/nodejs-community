@@ -113,10 +113,13 @@ exports.createOne = function (author, data, meta, callback) {
 
             if (!err && doc) {
                 // 数
+                developer.increaseCommentCount({_id: author.id}, 1, log.holdError);
+                
                 // 评论
                 if (!doc.parent) {
                     // 作者的评论数量
                     developer.increaseCommentCount({_id: author.id}, 1, log.holdError);
+
                     // object 的被评论数量
                     object.increaseCommentByCount({_id: doc.object}, 1, log.holdError);
                 }
@@ -124,10 +127,13 @@ exports.createOne = function (author, data, meta, callback) {
                 else {
                     // 作者的回复数量
                     developer.increaseReplyCount({_id: author.id}, 1, log.holdError);
+
                     // 被回复评论作者的被回复数量
                     developer.increaseReplyByCount({_id: parentResponse.author}, 1, log.holdError);
+
                     // object 的被回复数量
                     object.increaseReplyByCount({_id: doc.object}, 1, log.holdError);
+
                     // response 的被回复数量
                     response.increase({_id: parentResponse.id}, 'replyByCount', 1, log.holdError);
                 }
