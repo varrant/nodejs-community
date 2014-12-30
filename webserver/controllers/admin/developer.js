@@ -24,7 +24,7 @@ module.exports = function (app) {
             title: '用户管理'
         };
 
-        var engineerRole = res.locals.$engineer.role;
+        var engineerRole = res.locals.$developer.role;
 
         if ((engineerRole & role20) === 0) {
             return next();
@@ -46,7 +46,7 @@ module.exports = function (app) {
             id: req.query.id || ''
         };
 
-        var engineerRole = res.locals.$engineer.role;
+        var engineerRole = res.locals.$developer.role;
 
         if ((engineerRole & role20) === 0) {
             return next();
@@ -65,11 +65,11 @@ module.exports = function (app) {
     exports.me = function (req, res, next) {
         var data = {
             title: '我',
-            me: res.locals.$engineer
+            me: res.locals.$developer
         };
 
         developer.findOne({
-            _id: res.locals.$engineer.id
+            _id: res.locals.$developer.id
         }, function (err, doc) {
             if(err){
                 return next(err);
@@ -79,7 +79,7 @@ module.exports = function (app) {
                 return next();
             }
 
-            req.session.$engineer = res.locals.$engineer = doc;
+            req.session.$developer = res.locals.$developer = doc;
             res.render('admin/developer-me.html', data);
         });
     };

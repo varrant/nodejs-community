@@ -19,7 +19,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.get = function (req, res, next) {
-        if (!permission.can(res.locals.$engineer, 'setting')) {
+        if (!permission.can(res.locals.$developer, 'setting')) {
             var err = new Error('权限不足');
             err.code = 403;
             return next(err);
@@ -37,7 +37,7 @@ module.exports = function (app) {
      */
     exports.put = function (key) {
         return function (req, res, next) {
-            if (!permission.can(res.locals.$engineer, 'setting')) {
+            if (!permission.can(res.locals.$developer, 'setting')) {
                 var err = new Error('权限不足');
                 err.code = 403;
                 return next(err);

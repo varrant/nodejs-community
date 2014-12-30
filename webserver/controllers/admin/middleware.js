@@ -19,14 +19,14 @@ module.exports = function (app) {
     exports.login = function (req, res, next) {
         var err;
 
-        if (!req.session.$engineer || !req.session.$engineer.id) {
+        if (!req.session.$developer || !req.session.$developer.id) {
             err = new Error('您尚未登录，或登录信息已过期。');
             err.redirect = '/';
             err.code = 401;
             return next(err);
         }
 
-        if (req.session.$engineer.isBlock) {
+        if (req.session.$developer.isBlock) {
             err = new Error('您已被禁止访问管理后台，如有疑问请联系管理员。');
             err.redirect = '/';
             err.code = 403;

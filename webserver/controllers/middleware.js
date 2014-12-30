@@ -117,14 +117,14 @@ module.exports = function (app) {
         }
 
         // 与 session 不匹配
-        if (req.session.$engineer && req.session.$engineer.id !== userId) {
+        if (req.session.$developer && req.session.$developer.id !== userId) {
             cookie.logout(req, res);
             return next();
         }
 
         // 与 session 匹配
-        if (req.session.$engineer && req.session.$engineer.id === userId) {
-            res.locals.$engineer = req.session.$engineer;
+        if (req.session.$developer && req.session.$developer.id === userId) {
+            res.locals.$developer = req.session.$developer;
             return next();
         }
 
@@ -143,7 +143,7 @@ module.exports = function (app) {
                 return next();
             }
 
-            req.session.$engineer = res.locals.$engineer = doc;
+            req.session.$developer = res.locals.$developer = doc;
             next();
         });
     };

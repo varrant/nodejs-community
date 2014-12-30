@@ -48,7 +48,7 @@ module.exports = function (app) {
             return next();
         }
 
-        var can = (res.locals.$engineer.role & (1 << findSection.role)) !== 0;
+        var can = (res.locals.$developer.role & (1 << findSection.role)) !== 0;
 
         if (!can) {
             var err = new Error('权限不足');
@@ -56,7 +56,7 @@ module.exports = function (app) {
             return next(err);
         }
 
-        conditions.author = res.locals.$engineer.id;
+        conditions.author = res.locals.$developer.id;
         howdo
             // 统计总数
             .task(function (done) {
@@ -130,7 +130,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.post = function (req, res, next) {
-        object.createOne(res.locals.$engineer, req.body, function (err, doc) {
+        object.createOne(res.locals.$developer, req.body, function (err, doc) {
             if (err) {
                 return next(err);
             }
@@ -150,7 +150,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        object.updateOne(res.locals.$engineer, {_id: req.body.id}, req.body, function (err, doc) {
+        object.updateOne(res.locals.$developer, {_id: req.body.id}, req.body, function (err, doc) {
             if (err) {
                 return next(err);
             }
@@ -173,7 +173,7 @@ module.exports = function (app) {
         var objectId = req.body.object;
         var responseId = req.body.response;
 
-        object.acceptByResponse(res.locals.$engineer, {
+        object.acceptByResponse(res.locals.$developer, {
             _id: objectId
         }, responseId, true, function (err, newDoc, oldDoc) {
             if (err) {
@@ -197,7 +197,7 @@ module.exports = function (app) {
         var objectId = req.body.object;
         var responseId = req.body.response;
 
-        object.acceptByResponse(res.locals.$engineer, {
+        object.acceptByResponse(res.locals.$developer, {
             _id: objectId
         }, responseId, false, function (err, newDoc, oldDoc) {
             if (err) {

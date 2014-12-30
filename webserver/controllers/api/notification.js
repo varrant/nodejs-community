@@ -21,7 +21,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.count = function (req, res, next) {
-        var userId = res.locals.$engineer.id;
+        var userId = res.locals.$developer.id;
 
         notification.count({hasActived: false, source: userId}, function (err, count) {
             if (err) {
@@ -43,7 +43,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.delete = function (req, res, next) {
-        var userId = res.locals.$engineer.id;
+        var userId = res.locals.$developer.id;
 
         notification.setActive({_id: req.body.id, target: userId}, function (err) {
             if (err) {
@@ -64,7 +64,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        var userId = res.locals.$engineer.id;
+        var userId = res.locals.$developer.id;
 
         notification.cancelActive({_id: req.body.id, target: userId}, function (err) {
             if (err) {
@@ -86,7 +86,7 @@ module.exports = function (app) {
      */
     exports.get = function (req, res, next) {
         var conditions = {
-            target: res.locals.$engineer.id
+            target: res.locals.$developer.id
         };
         var options = filter.skipLimit(req.query);
 

@@ -20,14 +20,14 @@ module.exports = function (app) {
      * @param next
      */
     exports.get = function (req, res, next) {
-        if(!permission.can(res.locals.$engineer, 'column')){
+        if(!permission.can(res.locals.$developer, 'column')){
             var err = new Error('权限不足');
             err.code = 403;
             return next(err);
         }
 
         column.find({
-            author: res.locals.$engineer.id
+            author: res.locals.$developer.id
         }, function (err, docs) {
             if (err) {
                 return next(err);
@@ -48,7 +48,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        if(!permission.can(res.locals.$engineer, 'column')){
+        if(!permission.can(res.locals.$developer, 'column')){
             var err = new Error('权限不足');
             err.code = 403;
             return next(err);
@@ -57,7 +57,7 @@ module.exports = function (app) {
         var id = req.body.id;
 
         if (id) {
-            return column.findOneAndUpdate(res.locals.$engineer, {
+            return column.findOneAndUpdate(res.locals.$developer, {
                 _id: id
             }, req.body, function (err, doc) {
                 if (err) {
@@ -71,7 +71,7 @@ module.exports = function (app) {
             });
         }
 
-        column.createOne(res.locals.$engineer, req.body, function (err, doc) {
+        column.createOne(res.locals.$developer, req.body, function (err, doc) {
             if (err) {
                 return next(err);
             }
@@ -91,7 +91,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.delete = function (req, res, next) {
-        if(!permission.can(res.locals.$engineer, 'column')){
+        if(!permission.can(res.locals.$developer, 'column')){
             var err = new Error('权限不足');
             err.code = 403;
             return next(err);
@@ -99,7 +99,7 @@ module.exports = function (app) {
 
         var id = req.body.id;
 
-        column.findOneAndRemove(res.locals.$engineer, {_id: id}, function (err, doc) {
+        column.findOneAndRemove(res.locals.$developer, {_id: id}, function (err, doc) {
             if (err) {
                 return next(err);
             }

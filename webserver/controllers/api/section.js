@@ -20,7 +20,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.get = function (req, res, next) {
-        if(!permission.can(res.locals.$engineer, 'section')){
+        if(!permission.can(res.locals.$developer, 'section')){
             var err = new Error('权限不足');
             err.code = 403;
             return next(err);
@@ -40,7 +40,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        if(!permission.can(res.locals.$engineer, 'section')){
+        if(!permission.can(res.locals.$developer, 'section')){
             var err = new Error('权限不足');
             err.code = 403;
             return next(err);
@@ -91,7 +91,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.delete = function (req, res, next) {
-        if(!permission.can(res.locals.$engineer, 'section')){
+        if(!permission.can(res.locals.$developer, 'section')){
             var err = new Error('权限不足');
             err.code = 403;
             return next(err);

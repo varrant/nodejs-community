@@ -161,7 +161,7 @@ module.exports = function (app) {
             ip: req.ip
         };
 
-        response.createOne(res.locals.$engineer, req.body, meta, function (err, doc) {
+        response.createOne(res.locals.$developer, req.body, meta, function (err, doc) {
             if (err) {
                 return next(err);
             }
@@ -180,7 +180,7 @@ module.exports = function (app) {
     exports.agree = function (req, res, next) {
         var id = req.body.id;
 
-        response.agree(res.locals.$engineer, {_id: id}, function (err, value) {
+        response.agree(res.locals.$developer, {_id: id}, function (err, value) {
             if (err) {
                 return next(err);
             }

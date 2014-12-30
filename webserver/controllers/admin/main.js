@@ -23,13 +23,13 @@ module.exports = function (app) {
         };
 
         developer.findOne({
-            _id: res.locals.$engineer.id
+            _id: res.locals.$developer.id
         }, function (err, doc) {
             if(err){
                 return next(err);
             }
 
-            req.session.$engineer = res.locals.$engineer = doc;
+            req.session.$developer = res.locals.$developer = doc;
             res.render('admin/home.html', data);
         });
     };

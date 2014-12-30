@@ -13,13 +13,13 @@ module.exports = function (app) {
     var exports = {};
 
     exports.list = function (req, res, next) {
-        var $engineer = res.locals.$engineer;
-        var canSetting = permission.can($engineer, 'setting');
-        var canSection = permission.can($engineer, 'section');
-        var canCategory = permission.can($engineer, 'category');
-        var canColumn = permission.can($engineer, 'column');
+        var $developer = res.locals.$developer;
+        var canSetting = permission.can($developer, 'setting');
+        var canSection = permission.can($developer, 'section');
+        var canCategory = permission.can($developer, 'category');
+        var canColumn = permission.can($developer, 'column');
         var list = [];
-        var engineerRole = $engineer.role;
+        var engineerRole = $developer.role;
         var $section = app.locals.$section;
         var sectionMap = {};
 

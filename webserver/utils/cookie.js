@@ -38,6 +38,6 @@ exports.logout = function (req, res) {
         maxAge: -1
     });
 
-    req.session.$engineer = res.locals.$engineer = {};
+    req.session.$developer = res.locals.$developer = {};
     res.cookie(secret.cookie.userKey, '', options);
 };

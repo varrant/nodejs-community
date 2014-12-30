@@ -54,7 +54,7 @@ module.exports = function (app) {
             }
 
             cookie.login(res, doc.id);
-            req.session.$engineer = res.locals.$engineer = doc;
+            req.session.$developer = res.locals.$developer = doc;
             res.json({
                 code: 200,
                 data: true,
@@ -178,7 +178,7 @@ module.exports = function (app) {
             })
             // 修改权限
             .task(function (next, doc) {
-                developer.modifyRole(res.locals.$engineer, doc, roleArray2, next);
+                developer.modifyRole(res.locals.$developer, doc, roleArray2, next);
             })
             // 异步串行
             .follow(function (err, doc) {
@@ -186,7 +186,7 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                req.session.$engineer = res.locals.$engineer = doc;
+                req.session.$developer = res.locals.$developer = doc;
                 res.json({
                     code: 200,
                     data: doc
