@@ -214,51 +214,52 @@ exports.agree = function (operator, conditions, callback) {
             callback(err, value);
 
             if (!err) {
-                // 写入赞同信息
-                response.increase(conditions, 'agreeByCount', value, log.holdError);
+                // 赞
+                if (value === 1) {
+                    howdo
+                        // 查 object 作者
+                        .task(function (done) {
+                            developer.findOne({_id: agreeByResponse.author}, done);
+                        })
+                        // 查 object
+                        .task(function (done) {
+                            object.findOne({id: agreeByResponse.object}, done);
+                        })
+                        // 异步并行
+                        .together(function (err, agreeInObjectAuthor, agreeInObject) {
 
-                // 用户被赞数量
-                developer.increaseAgreeByCount({_id: agreeByResponse.author}, value, log.holdError);
-
-                // 为他人点赞才计分
-                if (agreeByResponse.author.toString() !== operator.id.toString()) {
-                    // 点赞、消赞
-                    if (value !== 0) {
-                        developer.increaseScore({_id: agreeByResponse.author}, value * scoreMap.agreeBy, log.holdError);
-                    }
-
-                    // 为他人点赞
-                    if (value === 1) {
-                        howdo
-                            // 查 object 作者
-                            .task(function (done) {
-                                developer.findOne({_id: agreeByResponse.author}, done);
-                            })
-                            // 查 object
-                            .task(function (done) {
-                                object.findOne({id: agreeByResponse.object}, done);
-                            })
-                            // 异步并行
-                            .together(function (err, agreeInObjectAuthor, agreeInObject) {
-
-                                if (!err && agreeInObjectAuthor && agreeInObject) {
-                                    // 评论
-                                    if (agreeByResponse.parent === null) {
-                                        notice.agreeComment(operator, agreeInObjectAuthor, agreeInObject, agreeByResponse);
-                                    }
-                                    // 回复
-                                    else {
-                                        notice.agreeReply(operator, agreeInObjectAuthor, agreeInObject, agreeByResponse);
-                                    }
+                            if (!err && agreeInObjectAuthor && agreeInObject) {
+                                // 评论
+                                if (agreeByResponse.parent === null) {
+                                    notice.agreeComment(operator, agreeInObjectAuthor, agreeInObject, agreeByResponse);
                                 }
-                            });
-                    }
+                                // 回复
+                                else {
+                                    notice.agreeReply(operator, agreeInObjectAuthor, agreeInObject, agreeByResponse);
+                                }
+                            }
+                        });
                 }
 
-                // 点赞、消赞
+
+                // 赞或取消赞
                 if (value !== 0) {
+                    // 被赞数量
+                    response.increase(conditions, 'agreeByCount', value, log.holdError);
+
+                    // 用户赞数量
+                    developer.increaseAgreeCount({_id: operator.id}, value, log.holdError);
+
+                    // 用户被赞数量
+                    developer.increaseAgreeByCount({_id: agreeByResponse.author}, value, log.holdError);
+
                     // 自己加少量分
                     developer.increaseScore({_id: operator.id}, value * scoreMap.agree, log.holdError)
+
+                    // 为他人点赞才计分
+                    if (agreeByResponse.author.toString() !== operator.id.toString()) {
+                        developer.increaseScore({_id: agreeByResponse.author}, value * scoreMap.agreeBy, log.holdError);
+                    }
                 }
             }
         });
