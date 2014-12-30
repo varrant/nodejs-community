@@ -25,10 +25,10 @@
                 <div v-if="notification.type === 'comment'">
                     <a v-attr="href: '/' + sectionURIMap[notification.object.section] + '/' + notification.object.uri + '.html'"><strong>\{{notification.source.nickname}}</strong> 评论了你的《\{{notification.object.title}}》</a>
                 </div>
-                <div v-if="notification.type === 'reply' && notification.object">
+                <div v-if="notification.type === 'replyObject'">
                     <a href="#"><strong>\{{notification.source.nickname}}</strong> 回复了你的《\{{notification.object.title}}》</a>
                 </div>
-                <div v-if="notification.type === 'reply' && notification.response">
+                <div v-if="notification.type === 'replyComment'">
                     <a href="#"><strong>\{{notification.source.nickname}}</strong> 回复了你的“\{{notification.response.content.slice(0, 100)}}”</a>
                 </div>
                 <div v-if="notification.type === 'role'">
