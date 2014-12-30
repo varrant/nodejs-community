@@ -18,6 +18,7 @@ define(function (require, exports, module) {
     var qs = require('../../../alien/util/querystring.js');
     var ajax = require('../ajax.js');
     var alert = require('../alert.js');
+    var confirm = require('../confirm.js');
     var Pager = require('../../../alien/ui/Pager/');
     var Respond = require('../Respond/index');
     var Template = require('../../../alien/libs/Template.js');
@@ -230,7 +231,9 @@ define(function (require, exports, module) {
 
             event.on($parent, 'click', replyClass, the._reply.bind(the));
             event.on($parent, 'click', agreeClass, the._agree.bind(the));
-            event.on($parent, 'click', acceptClass, the._accept.bind(the));
+            event.on($parent, 'click', acceptClass, function () {
+                confirm('确定要采纳该回答为最佳答案吗？采纳后无法取消和更换。', the._accept.bind(the));
+            });
         },
 
 

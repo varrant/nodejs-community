@@ -143,7 +143,7 @@ module.exports = function (app) {
                     .task(function (done) {
                         // 有采纳答案 && 列出第一页，
                         // 将最佳答案排除，并列到第一位
-                        if (acceptResponseId && !parentId) {
+                        if (acceptResponseId && options.page === 1 && !parentId) {
                             options.nor = {
                                 _id: acceptResponseId
                             };
