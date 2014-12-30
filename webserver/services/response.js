@@ -280,12 +280,12 @@ function _noticeObjectAuthor(repondAuthor, responseObject, responseComment) {
             developer.findOne({_id: responseObject.author}, next);
         })
         // 顺序串行
-        .follow(function (err, doc) {
+        .follow(function (err, objectAuthor) {
             if (err) {
                 return log.holdError(err);
             }
 
-            if (!doc) {
+            if (!objectAuthor) {
                 err = new Error('该作者不存在');
                 err.type = 'notFound';
                 err.code = 404;
@@ -293,7 +293,7 @@ function _noticeObjectAuthor(repondAuthor, responseObject, responseComment) {
             }
 
             // 评论通知
-            notice.comment(repondAuthor, doc, responseObject, responseComment);
+            notice.comment(repondAuthor, objectAuthor, responseObject, responseComment);
         });
 }
 
