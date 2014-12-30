@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * api category controller
  * @author ydr.me
  * @create 2014-12-22 21:59
  */

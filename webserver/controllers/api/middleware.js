@@ -1,5 +1,5 @@
 /*!
- * API 中间件
+ * api middleware
  * @author ydr.me
  * @create 2014-12-27 23:56
  */

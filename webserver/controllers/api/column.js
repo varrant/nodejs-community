@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * api column controller
  * @author ydr.me
  * @create 2014-12-22 21:59
  */

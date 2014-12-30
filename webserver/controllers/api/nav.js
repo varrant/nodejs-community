@@ -1,5 +1,5 @@
 /*!
- * 导航
+ * api nav controller
  * @author ydr.me
  * @create 2014-12-20 16:08
  */

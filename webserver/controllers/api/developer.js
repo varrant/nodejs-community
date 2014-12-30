@@ -1,5 +1,5 @@
 /*!
- * 用户相关 API
+ * api developer controller
  * @author ydr.me
  * @create 2014-11-23 11:51
  */
