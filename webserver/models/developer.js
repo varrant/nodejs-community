@@ -102,12 +102,22 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    // 回答被赞同次数
+    // 赞同次数
+    agreeCount: {
+        type: Number,
+        default: 0
+    },
+    // 被赞同次数
     agreeByCount: {
         type: Number,
         default: 0
     },
-    // 回答被接受次数
+    // 接受次数
+    acceptCount: {
+        type: Number,
+        default: 0
+    },
+    // 被接受次数
     acceptByCount: {
         type: Number,
         default: 0
