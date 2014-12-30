@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * response api controller
  * @author ydr.me
  * @create 2014-12-26 14:24
  */

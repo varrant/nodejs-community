@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * setting api controller
  * @author ydr.me
  * @create 2014-12-20 20:20
  */

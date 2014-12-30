@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * translate api controller
  * @author ydr.me
  * @create 2014-12-17 11:02
  */
