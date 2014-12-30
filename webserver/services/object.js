@@ -507,6 +507,9 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
             // 当前被采纳的人加分
             developer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
 
+            // 当前采纳的人的采纳次数+1
+            developer.increaseAcceptByCount({_id: operator.id}, 1, log.holdError);
+
             // 当前被采纳的人的被采纳次数+1
             developer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
 
