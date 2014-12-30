@@ -1,26 +1,26 @@
 <div class="m-me">
     <div class="f-clearfix">
         <div class="me-avatar f-left">
-            <a href="/admin/engineer/profile/"><img src="{{$engineer.email|gravatar:200}}" alt="avatar" width="100" height="100"/></a>
+            <a href="/admin/engineer/profile/"><img src="{{$developer.email|gravatar:200}}" alt="avatar" width="100" height="100"/></a>
         </div>
         <ul class="me-profile">
-            <li><i class="i i-user"></i><strong>{{$engineer.nickname}}</strong>{{$engineer.group ? '（' + $engineer.group + '）' : ''}}</li>
-            <li><i class="i i-location-arrow"></i>{{$engineer.meta.location}}</li>
-            <li><i class="i i-link"></i>{{$engineer.meta.blog}}</li>
+            <li><i class="i i-user"></i><strong>{{$developer.nickname}}</strong>{{$developer.group ? '（' + $developer.group + '）' : ''}}</li>
+            <li><i class="i i-location-arrow"></i>{{$developer.meta.location}}</li>
+            <li><i class="i i-link"></i>{{$developer.meta.blog}}</li>
         </ul>
     </div>
 
-    <blockquote class="me-bio">{{$engineer.meta.bio}}</blockquote>
+    <blockquote class="me-bio">{{$developer.meta.bio}}</blockquote>
 
     <ul class="me-get f-small f-list-left s-muted">
-        <li><i class="i i-eye"></i><strong>{{$engineer.viewByCount|humanize}}</strong>次访问</li>
-        <li><i class="i i-comment"></i><a href="/engineer/{{$engineer.github}}/comment/"><strong>{{$engineer.commentCount|humanize}}</strong>次评论</a></li>
-        <li><i class="i i-reply"></i><a href="/engineer/{{$engineer.github}}/replied/"><strong>{{$engineer.replyByCount|humanize}}</strong>次被回复</a></li>
-        <li><i class="i i-thumbs-up"></i><a href="/engineer/{{$engineer.github}}/agreed/"><strong>{{$engineer.agreeByCount|humanize}}</strong>次被赞同</a></li>
-        <li><i class="i i-check-square-o"></i><a href="/engineer/{{$engineer.github}}/accepted/"><strong>{{$engineer.acceptByCount|humanize}}</strong>次被采纳</a></li>
+        <li><i class="i i-eye"></i><strong>{{$developer.viewByCount|humanize}}</strong>次访问</li>
+        <li><i class="i i-comment"></i><a href="/engineer/{{$developer.github}}/comment/"><strong>{{$developer.commentCount|humanize}}</strong>次评论</a></li>
+        <li><i class="i i-reply"></i><a href="/engineer/{{$developer.github}}/replied/"><strong>{{$developer.replyByCount|humanize}}</strong>次被回复</a></li>
+        <li><i class="i i-thumbs-up"></i><a href="/engineer/{{$developer.github}}/agreed/"><strong>{{$developer.agreeByCount|humanize}}</strong>次被赞同</a></li>
+        <li><i class="i i-check-square-o"></i><a href="/engineer/{{$developer.github}}/accepted/"><strong>{{$developer.acceptByCount|humanize}}</strong>次被采纳</a></li>
         <li><i class="i i-star"></i>
-            <a href="/engineer/{{$engineer.github}}/follow/">已关注<strong>{{$engineer.followCount|humanize}}</strong></a>/
-            <a href="/engineer/{{$engineer.github}}/followed/">被关注<strong>{{$engineer.followByCount|humanize}}</strong></a>
+            <a href="/engineer/{{$developer.github}}/follow/">已关注<strong>{{$developer.followCount|humanize}}</strong></a>/
+            <a href="/engineer/{{$developer.github}}/followed/">被关注<strong>{{$developer.followByCount|humanize}}</strong></a>
         </li>
     </ul>
 
