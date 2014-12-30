@@ -196,6 +196,17 @@ exports.increaseCommentCount = function (conditions, count, callback) {
 
 
 /**
+ * 增加被评论数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseCommentByCount = function (conditions, count, callback) {
+    developer.increase(conditions, 'commentByCount', count, callback);
+};
+
+
+/**
  * 增加回复数量
  * @param conditions {Object} 查询条件
  * @param count {Number} 更新值
@@ -218,7 +229,18 @@ exports.increaseReplyByCount = function (conditions, count, callback) {
 
 
 /**
- * 增加同意数量
+ * 增加赞同数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseAgreeCount = function (conditions, count, callback) {
+    developer.increase(conditions, 'agreeCount', count, callback);
+};
+
+
+/**
+ * 增加被赞同数量
  * @param conditions {Object} 查询条件
  * @param count {Number} 更新值
  * @param callback {Function} 回调
@@ -230,6 +252,17 @@ exports.increaseAgreeByCount = function (conditions, count, callback) {
 
 /**
  * 增加赞同数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseAcceptCount = function (conditions, count, callback) {
+    developer.increase(conditions, 'acceptCount', count, callback);
+};
+
+
+/**
+ * 增加被赞同数量
  * @param conditions {Object} 查询条件
  * @param count {Number} 更新值
  * @param callback {Function} 回调
@@ -370,6 +403,7 @@ exports.increaseCategoryStatistics = function (conditions, categoryId, count, ca
         developer.findOneAndUpdate(conditions, {categoryStatistics: data2}, callback);
     });
 };
+
 
 /**
  * 增加 column 中的 object 统计
