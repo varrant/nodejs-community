@@ -422,14 +422,13 @@ exports.pushContributor = function (conditions, contributor, callback) {
 
 
 /**
- * 采纳/取消采纳 response
- * @param operator {Object} 文章作者、管理员（19+）都可以
- * @param conditions
- * @param responseId
- * @param boolean
- * @param callback
+ * 采纳采纳 response
+ * @param operator {Object} 文章作者
+ * @param conditions {Object} 查询条件
+ * @param responseId {String} 回应 ID
+ * @param callback {Function} 回调
  */
-exports.acceptByResponse = function (operator, conditions, responseId, boolean, callback) {
+exports.acceptByResponse = function (operator, conditions, responseId, callback) {
     howdo
         // 1. 查找 object
         .task(function (next) {
@@ -446,7 +445,12 @@ exports.acceptByResponse = function (operator, conditions, responseId, boolean, 
             }
 
             if (acceptObject.section.uri !== 'question') {
-                var err = new Error('该 object 不允许采纳他人评论');
+                var err = new Error('该版块下不允许此操作');
+                return next(err);
+            }
+
+            if(acceptObject.acceptByResponse){
+                var err = new Error('无法重复采纳最佳答案');
                 return next(err);
             }
 
@@ -489,19 +493,9 @@ exports.acceptByResponse = function (operator, conditions, responseId, boolean, 
         })
         // 4. 更新
         .task(function (next, acceptObject, acceptByResponse) {
-            // 同一 object 采纳同一个 response
-            if (acceptObject.acceptByResponse &&
-                acceptObject.acceptByResponse.toString() === acceptByResponse.id.toString() &&
-                boolean === true ||
-                    // object 的 acceptByResponse 为空 但设置为 取消
-                !acceptObject.acceptByResponse && boolean === false
-            ) {
-                return next();
-            }
-
             object.findOneAndUpdate(conditions, {
-                acceptByAuthor: boolean ? acceptByResponse.author.toString() : null,
-                acceptByResponse: boolean ? acceptByResponse.id.toString() : null
+                acceptByAuthor: acceptByResponse.author.toString(),
+                acceptByResponse:acceptByResponse.id.toString()
             }, function(err, newDoc, oldDoc){
                 next(err, newDoc, oldDoc, acceptByResponse);
             });
@@ -510,45 +504,14 @@ exports.acceptByResponse = function (operator, conditions, responseId, boolean, 
         .follow(function (err, newDoc, oldDoc, acceptByResponse) {
             callback(err, newDoc, oldDoc);
 
-            // 设置为采纳
-            if (boolean && newDoc) {
-                // 换人了
-                if (oldDoc && oldDoc.acceptByAuthor && newDoc.acceptByAuthor.toString() !== oldDoc.acceptByAuthor.toString()) {
-                    // 当前被采纳的人加分
-                    developer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
+            // 当前被采纳的人加分
+            developer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
 
-                    // 当前被取消采纳的人减分
-                    developer.increaseScore({_id: oldDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
+            // 当前被采纳的人的被采纳次数+1
+            developer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
 
-                    // 当前被采纳的人+1
-                    developer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
-
-                    // 通知被采纳的人
-                    notice.accept(operator, {id: newDoc.acceptByAuthor}, newDoc, acceptByResponse);
-
-                    // 当前被取消采纳的人-1
-                    developer.increaseAcceptByCount({_id: oldDoc.acceptByAuthor}, -1, log.holdError);
-                }
-                // 首次设置为采纳
-                else if (!oldDoc.acceptByAuthor) {
-                    // 当前被采纳的人加分
-                    developer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
-
-                    // 当前被采纳的人+1
-                    developer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
-
-                    // 通知被采纳的人
-                    notice.accept(operator, {id: newDoc.acceptByAuthor}, newDoc, acceptByResponse);
-                }
-            }
-            // 取消采纳
-            else if (!boolean && oldDoc.acceptByAuthor) {
-                // 当前被取消采纳的人减分
-                developer.increaseScore({_id: oldDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
-
-                // 当前被取消采纳的人-1
-                developer.increaseAcceptByCount({_id: oldDoc.acceptByAuthor}, -1, log.holdError);
-            }
+            // 通知被采纳的人
+            notice.accept(operator, {id: newDoc.acceptByAuthor}, newDoc, acceptByResponse);
         });
 };
 

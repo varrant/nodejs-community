@@ -175,7 +175,7 @@ module.exports = function (app) {
 
         object.acceptByResponse(res.locals.$developer, {
             _id: objectId
-        }, responseId, true, function (err, newDoc, oldDoc) {
+        }, responseId, function (err, newDoc, oldDoc) {
             if (err) {
                 return next(err);
             }
@@ -183,29 +183,6 @@ module.exports = function (app) {
             res.json({
                 code: 200,
                 data: oldDoc && oldDoc.acceptByResponse
-            });
-        });
-    };
-
-    /**
-     * 取消采纳
-     * @param req
-     * @param res
-     * @param next
-     */
-    exports.acceptCancel = function (req, res, next) {
-        var objectId = req.body.object;
-        var responseId = req.body.response;
-
-        object.acceptByResponse(res.locals.$developer, {
-            _id: objectId
-        }, responseId, false, function (err, newDoc, oldDoc) {
-            if (err) {
-                return next(err);
-            }
-
-            res.json({
-                code: 200
             });
         });
     };
