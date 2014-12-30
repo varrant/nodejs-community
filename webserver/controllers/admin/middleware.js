@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * admin middleware controller
  * @author ydr.me
  * @create 2014-12-13 23:05
  */

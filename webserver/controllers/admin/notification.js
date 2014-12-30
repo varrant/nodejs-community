@@ -1,5 +1,5 @@
 /*!
- * notification
+ * notification controller
  * @author ydr.me
  * @create 2014-12-21 22:07
  */

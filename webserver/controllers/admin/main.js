@@ -1,5 +1,5 @@
 /*!
- * main
+ * main controller
  * @author ydr.me
  * @create 2014-12-13 23:10
  */

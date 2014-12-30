@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * setting controller
  * @author ydr.me
  * @create 2014-12-19 18:38
  */
