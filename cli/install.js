@@ -12,7 +12,7 @@ var file = process.argv[2];
 var json = fs.readFileSync(file, 'utf8');
 var mongoose = require('../webserver/mongoose.js');
 var setting = require('../webserver/services/').setting;
-var engineer = require('../webserver/models/').engineer;
+var developer = require('../webserver/models/').developer;
 var howdo = require('howdo');
 
 json = dato.removeComments(json);
@@ -39,7 +39,7 @@ mongoose(function (err) {
 
     howdo
         .task(function (next) {
-            engineer.count({}, function (err, count) {
+            developer.count({}, function (err, count) {
                 if (err) {
                     console.log('count user error');
                     console.error(err);
@@ -58,7 +58,7 @@ mongoose(function (err) {
             });
         })
         .task(function (next) {
-            engineer.createOne(userData, next);
+            developer.createOne(userData, next);
         })
         .task(function (next) {
             setting.set(settings, next);
