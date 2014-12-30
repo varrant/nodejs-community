@@ -112,68 +112,68 @@ exports.createOne = function (author, data, meta, callback) {
             callback(err, doc);
 
             if (!err && doc) {
-                // object.commentByCount
+                // 数
+                // 评论
                 if (!doc.parent) {
+                    // 作者的评论数量
+                    developer.increaseCommentCount({_id: author.id}, 1, log.holdError);
+                    // object 的被评论数量
                     object.increaseCommentByCount({_id: doc.object}, 1, log.holdError);
                 }
-                // object.replyByCount
+                // 回复
                 else {
-                    object.increaseReplyByCount({_id: doc.object}, 1, log.holdError);
-                }
-
-
-                // developer.commentCount
-                if (!doc.parent) {
-                    developer.increaseCommentCount({_id: author.id}, 1, log.holdError);
-                }
-                // developer.replyCount
-                else {
+                    // 作者的回复数量
                     developer.increaseReplyCount({_id: author.id}, 1, log.holdError);
+                    // 被回复评论作者的被回复数量
+                    developer.increaseReplyByCount({_id: parentResponse.author}, 1, log.holdError);
+                    // object 的被回复数量
+                    object.increaseReplyByCount({_id: doc.object}, 1, log.holdError);
+                    // response 的被回复数量
+                    response.increase({_id: parentResponse.id}, 'replyByCount', 1, log.holdError);
                 }
 
-                // 通知 object 作者
-                _noticeObjectAuthor(author, responseObject, doc);
 
-                // 推入 object 的 contributors
-                object.pushContributor({_id: doc.object}, author, log.holdError);
-
-                // 评论父级
-                if (parentResponse) {
-                    // parentResponse response.replyCount
-                    response.increase({_id: parentResponse.id}, 'replyByCount', 1, log.holdError);
-
-                    // parentResponse developer.replyByCount
-                    developer.increaseReplyByCount({_id: parentResponse.author}, 1, log.holdError);
-
-                    // 通知被 reply 作者
-                    _noticeCommentAuthor(author, responseObject, parentResponse);
-
-                    // 为他人回复才加分
-                    if (author.id.toString() !== responseObject.author.toString() &&
-                        author.id.toString() !== parentResponse.author.toString()) {
-                        // 增加主动用户回复积分
-                        developer.increaseScore({_id: author.id}, scoreMap.reply, log.holdError);
-                    }
-
-                    if (author.id.toString() !== responseObject.author.toString()) {
-                        // 增加被动用户回复积分
-                        developer.increaseScore({_id: responseObject.author}, scoreMap.replyBy, log.holdError);
-                    }
-
-                    if (author.id.toString() !== parentResponse.author.toString()) {
-                        // 增加被动用户回复积分
-                        developer.increaseScore({_id: parentResponse.author}, scoreMap.replyBy, log.holdError);
-                    }
-                } else {
-                    // 为他人评论才加分
+                // 分
+                // 评论
+                if(!doc.parent){
                     if (author.id.toString() !== responseObject.author.toString()) {
                         // 增加主动用户评论积分
                         developer.increaseScore({_id: author.id}, scoreMap.comment, log.holdError);
-
                         // 增加被动用户评论积分
                         developer.increaseScore({_id: responseObject.author}, scoreMap.commentBy, log.holdError);
                     }
                 }
+                // 回复
+                else{
+                    if (author.id.toString() !== responseObject.author.toString() &&
+                        author.id.toString() !== parentResponse.author.toString()) {
+                        // 增加主动用户回复积分
+                        developer.increaseScore({_id: author.id}, scoreMap.reply, log.holdError);
+                        // 增加被动用户回复积分
+                        developer.increaseScore({_id: responseObject.author}, scoreMap.replyBy, log.holdError);
+                        // 增加被动用户回复积分
+                        developer.increaseScore({_id: parentResponse.author}, scoreMap.replyBy, log.holdError);
+                    }
+                }
+
+
+
+                // 知
+                // 评论
+                if(!doc.parent){
+                    // 通知 object 作者
+                    _noticeObjectAuthor(author, responseObject, doc);
+                }
+                // 回复
+                else{
+                    // 通知被 reply 作者
+                    _noticeCommentAuthor(author, responseObject, parentResponse);
+                }
+
+
+                // 其他
+                // 推入 object 的 contributors
+                object.pushContributor({_id: doc.object}, author, log.holdError);
             }
         });
 };
