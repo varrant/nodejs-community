@@ -16,20 +16,20 @@ var email = require('./email.js');
 
 /**
  * 评论通知
- * @param sourceEngineer {Object} 评论人
- * @param targetEngineer {Object} object 作者
+ * @param sourceDeveloper {Object} 评论人
+ * @param targetDeveloper {Object} object 作者
  * @param object {commentByObject} 被评论的 object
  */
-exports.comment = function (sourceEngineer, objectAuthor, commentByObject) {
+exports.comment = function (sourceDeveloper, objectAuthor, commentByObject) {
     // 自己不必通知自己
-    if (sourceEngineer.id.toString() === objectAuthor.id.toString()) {
+    if (sourceDeveloper.id.toString() === objectAuthor.id.toString()) {
         return;
     }
 
     // 1. 站内通知
     notification.createOne({
         type: 'comment',
-        source: sourceEngineer.id,
+        source: sourceDeveloper.id,
         target: objectAuthor.id,
         object: commentByObject.id
     }, log.holdError);
@@ -44,20 +44,20 @@ exports.comment = function (sourceEngineer, objectAuthor, commentByObject) {
 
 /**
  * 回复通知
- * @param sourceEngineer {Object} 评论人
- * @param targetEngineer {Object} object 作者
+ * @param sourceDeveloper {Object} 评论人
+ * @param targetDeveloper {Object} object 作者
  * @param object {replyByComment} 被 reply 的 comment
  */
-exports.reply = function (sourceEngineer, commentAuthor, replyByComment) {
+exports.reply = function (sourceDeveloper, commentAuthor, replyByComment) {
     // 自己不必通知自己
-    if (sourceEngineer.id.toString() === commentAuthor.id.toString()) {
+    if (sourceDeveloper.id.toString() === commentAuthor.id.toString()) {
         return;
     }
 
     // 1. 站内通知
     notification.createOne({
         type: 'reply',
-        source: sourceEngineer.id,
+        source: sourceDeveloper.id,
         target: commentAuthor.id,
         response: replyByComment.id
     }, log.holdError);
@@ -99,22 +99,22 @@ exports.role = function (operator, operatorBy, group) {
 
 /**
  * 回答被采纳通知
- * @param askEngineer {Object} 问者
- * @param answerEngineer {Object} 答者
+ * @param askDeveloper {Object} 问者
+ * @param answerDeveloper {Object} 答者
  * @param questionObject {Object} 题
  * @param questionResponse {Object} 答
  */
-exports.accept = function (askEngineer, answerEngineer, questionObject, questionResponse) {
+exports.accept = function (askDeveloper, answerDeveloper, questionObject, questionResponse) {
     // 自己不必通知自己
-    if (askEngineer.id.toString() === answerEngineer.id.toString()) {
+    if (askDeveloper.id.toString() === answerDeveloper.id.toString()) {
         return;
     }
 
     // 1. 站内通知
     notification.createOne({
         type: 'accept',
-        source: askEngineer.id,
-        target: answerEngineer.id,
+        source: askDeveloper.id,
+        target: answerDeveloper.id,
         object: questionObject.id,
         response: questionResponse.id
     }, log.holdError);
@@ -123,5 +123,35 @@ exports.accept = function (askEngineer, answerEngineer, questionObject, question
     var noti = configs.notification.acceptBy;
     var subject = noti.subject;
     var content = noti.template.render({});
-    email.send(answerEngineer, subject, content);
+    email.send(answerDeveloper, subject, content);
+};
+
+
+/**
+ * 回答被赞同通知
+ * @param askDeveloper {Object} 问者
+ * @param answerDeveloper {Object} 答者
+ * @param questionObject {Object} 题
+ * @param questionResponse {Object} 答
+ */
+exports.agree = function (agreeDeveloper, agreeByDeveloper, questionObject, questionResponse) {
+    // 自己不必通知自己
+    if (agreeDeveloper.id.toString() === agreeByDeveloper.id.toString()) {
+        return;
+    }
+
+    // 1. 站内通知
+    notification.createOne({
+        type: 'agree',
+        source: askDeveloper.id,
+        target: answerDeveloper.id,
+        object: questionObject.id,
+        response: questionResponse.id
+    }, log.holdError);
+
+    // 2. 邮件通知
+    var noti = configs.notification.acceptBy;
+    var subject = noti.subject;
+    var content = noti.template.render({});
+    email.send(answerDeveloper, subject, content);
 };

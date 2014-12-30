@@ -7,6 +7,7 @@
 'use strict';
 
 var response = require('../../services/').response;
+var object = require('../../services/').object;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
 var dato = require('ydr-util').dato;
@@ -115,37 +116,92 @@ module.exports = function (app) {
         options.populate = ['author'];
 
         howdo
-            //1. count
-            .task(function (done) {
-                response.count(conditions, done);
+            // 1. 查找 object
+            .task(function (next) {
+                object.findOne({
+                    _id: objectId,
+                    isDisplay: true
+                }, next);
             })
-            //2. list
-            .task(function (done) {
-                response.find(conditions, options, done);
-            })
-            // 异步并行
-            .together(function (err, count, list) {
+            .follow(function (err, responseByObject) {
                 if (err) {
                     return next(err);
                 }
 
-                list.forEach(function (item) {
-                    var author = item.author;
+                if (!responseByObject) {
+                    return next();
+                }
 
-                    item.author = dato.pick(author, ['id', 'nickname', 'githubLogin', 'githubId', 'score']);
-                    item.author.avatar = dato.gravatar(author.email, {
-                        size: 100
+                var acceptResponseId = responseByObject.acceptByResponse;
+
+                howdo
+                    //1. count
+                    .task(function (done) {
+                        response.count(conditions, done);
+                    })
+                    //2. list
+                    .task(function (done) {
+                        // 有采纳答案 && 列出第一页，
+                        // 将最佳答案排除，并列到第一位
+                        if (acceptResponseId) {
+                            options.nor = {
+                                _id: acceptResponseId
+                            };
+                        }
+
+                        howdo
+                            // 最佳
+                            .task(function (done) {
+                                if (!acceptResponseId || options.page > 1) {
+                                    return done();
+                                }
+
+                                response.findOne({_id: acceptResponseId}, {populate: ['author']}, done);
+                            })
+                            // 列表
+                            .task(function (done) {
+                                response.find(conditions, options, done);
+                            })
+                            // 合并
+                            .together(function (err, acceptByResponse, responseList) {
+                                var list = [];
+
+                                if (acceptByResponse) {
+                                    list.push(acceptByResponse);
+                                }
+
+                                if (responseList) {
+                                    list = list.concat(responseList);
+                                }
+
+                                done(err, list);
+                            });
+                    })
+                    // 异步并行
+                    .together(function (err, count, list) {
+                        if (err) {
+                            return next(err);
+                        }
+
+                        list.forEach(function (item) {
+                            var author = item.author;
+
+                            item.author = dato.pick(author, ['id', 'nickname', 'githubLogin', 'githubId', 'score']);
+                            item.author.avatar = dato.gravatar(author.email, {
+                                size: 100
+                            });
+                        });
+
+                        res.json({
+                            code: 200,
+                            data: {
+                                count: count,
+                                list: list
+                            }
+                        });
                     });
-                });
-
-                res.json({
-                    code: 200,
-                    data: {
-                        count: count,
-                        list: list
-                    }
-                });
             });
+
     };
 
 
