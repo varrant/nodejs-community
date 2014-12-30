@@ -633,7 +633,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                     bio: json.bio || 'unknown',
                     location: json.location || 'unknown',
                     company: json.company || 'unknown',
-                    blog: json.blog || 'unknown'
+                    blog: json.blog || ''
                 }
             };
 

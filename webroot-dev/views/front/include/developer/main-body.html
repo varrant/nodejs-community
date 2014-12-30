@@ -1,31 +1,42 @@
 <div class="m-card">
-    <h2 class="card-title"><i class="i i-user"></i>云淡然<i class="i i-check-circle s-success" title="个人认证"></i>
+    <h2 class="card-title"><i class="i i-user"></i>{{developer.nickname}}
+        {{if developer.hasCertificated}}<i class="i i-check-circle s-success" title="个人认证"></i>{{/if}}
         <div class="card-endtitle">
-            <a href="#" class="s-danger"><i class="i i-weibo"></i></a>
-            <a href="#" class="s-danger"><i class="i i-github"></i></a>
+            {{if developer.weibo}}
+            <a href="http://weibo.com/{{developer.weibo}}/" class="s-danger"><i class="i i-weibo"></i></a>
+            {{/if}}
+
+            <a href="https://github.com/{{developer.githubLogin}}" class="s-danger"><i class="i i-github"></i></a>
         </div>
     </h2>
     <div class="card-body">
         <div class="m-usercard">
             <div class="usercard-main f-clearfix">
                 <div class="usercard-avatar f-left">
-                    <a href="#"><img src="/static/img/avatar.png" alt="avatar" width="100"
-                                     height="100"/></a>
+                    <img src="{{developer.email|gravatar:200}}" alt="avatar" width="100"
+                                     height="100"/>
                 </div>
                 <div class="usercard-body">
                     <ul class="m-simplelist">
-                        <li><i class="i i-map-marker"></i>浙江杭州</li>
-                        <li><i class="i i-group"></i>网易杭州</li>
-                        <li><i class="i i-link"></i><a href="#">http://ydr.me/</a></li>
+                        <li><i class="i i-map-marker"></i>{{developer.meta.location}}</li>
+                        <li><i class="i i-group"></i>{{developer.meta.company}}</li>
+                        <li><i
+                                class="i i-link"></i>{{if developer.meta.blog}}<a
+                                href="{{developer.meta.blog}}" target="_blank">{{developer.meta.blog}}</a>{{/if}}</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="usercard-bio s-muted">世界上所有的角色都有人出演，唯独你自己。</div>
+            <div class="usercard-bio s-muted">{{developer.meta.bio}}</div>
 
             <ul class="usercard-statistics f-list-left s-light f-small">
-                <li class="s-warning"><i class="i i-cube i-striped"></i>20,123,900 次智问</li>
-                <li class="s-success"><i class="i i-comment i-striped"></i>20,123,900 次回答</li>
+                <li><i class="i i-circle i-striped"></i>{{developer.score|humanize}} 分</li>
+                <!--<li><i class="i i-star i-striped"></i>{{developer.followByCount|humanize}} 个关注</li>-->
+                <li><i class="i i-check-square-o i-striped"></i>{{developer.acceptByCount|humanize}} 次采纳</li>
+                <li><i class="i i-thumbs-up i-striped"></i>{{developer.agreeByCount|humanize}} 次赞同</li>
+                <li><i class="i i-comment i-striped"></i>{{developer.commentCount|humanize}} 次评论</li>
+                <li><i class="i i-reply i-striped"></i>{{developer.replyCount|humanize}} 次回复</li>
+                <li><i class="i i-cube i-striped"></i>{{developer.sectionStatistics[sectionUriIdMap.question]|humanize}} 次智问</li>
             </ul>
         </div>
     </div>

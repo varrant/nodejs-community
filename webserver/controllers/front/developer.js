@@ -63,7 +63,7 @@ module.exports = function (app) {
             return next(err);
         }
 
-        if(req.session.$github ){
+        if (req.session.$github) {
             return res.render('front/oauth-callback.html', {
                 title: '确认登录',
                 github: req.session.$github
@@ -108,8 +108,31 @@ module.exports = function (app) {
      * @param next
      */
     exports.getEngineer = function (req, res, next) {
-        res.render('front/developer.html', {
-            title: req.params.developer
+        var githubLogin = req.params.developer;
+        var sectionUriIdMap = {};
+
+        app.locals.$section.forEach(function (section) {
+            sectionUriIdMap[section.uri] = section.id;
+        });
+
+        developer.findOne({
+            githubLogin: githubLogin
+        }, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            if (!doc) {
+                return next();
+            }
+
+            var data = {
+                developer: doc,
+                title: doc.nickname,
+                sectionUriIdMap: sectionUriIdMap
+            };
+
+            res.render('front/developer.html', data);
         });
     };
 
