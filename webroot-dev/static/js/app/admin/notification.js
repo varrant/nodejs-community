@@ -28,7 +28,7 @@ define(function (require, exports, module) {
     // 标记已读
     methods.toggle = function (item) {
         ajax({
-            method: item.hasActived ? 'delete' : 'put',
+            method: item.hasActived ? 'put' : 'delete',
             url: '/admin/api/notification/',
             data: {
                 id: item.id
