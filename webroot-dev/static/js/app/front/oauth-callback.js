@@ -32,13 +32,18 @@ define(function (require) {
             }
 
             if (json.data) {
-                if (window.opener && !window.opener['-norefresh-']) {
-                    window.opener.location.reload();
-                }
+                // 有打开源
+                if (window.opener) {
+                    if (!window.opener['-norefresh-']) {
+                        window.opener.location.reload();
+                    }
 
-                if (window.top !== window) {
-                    window.close();
-                }else{
+                    setTimeout(function () {
+                        window.close();
+                    }, 345);
+                }
+                // 当前页
+                else {
                     window.location.href = json.redirect;
                 }
             }
