@@ -38,7 +38,7 @@ var schema = new mongoose.Schema({
     target: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: developerr'
+        ref: 'developer'
     },
     // 被操作 object
     object: {

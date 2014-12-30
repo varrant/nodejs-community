@@ -91,7 +91,7 @@ var schema = new mongoose.Schema({
     updateList: [{
        developerr: {
             type: mongoose.Schema.Types.ObjectId,
-            ref:developerer'
+            ref: 'developer'
         },
         date: {
             type: Date
@@ -137,7 +137,7 @@ var schema = new mongoose.Schema({
     scoreList: [{
      developereer: {
             type: mongoose.Schema.Types.ObjectId,
-            redeveloperneer'
+            ref: 'developer'
         },
         date: {
             type: Date
@@ -174,7 +174,7 @@ var schema = new mongoose.Schema({
     // 被采纳的 response author
     acceptByAuthor: {
         type: mongoose.Schema.Types.ObjectId,
-        rdeveloperineer',
+        ref: 'developer',
         default: null
     },
     // 被采纳的 response
@@ -194,7 +194,7 @@ var schema = new mongoose.Schema({
     // }]
     contributors: [{
         type: mongoose.Schema.Types.ObjectId,
-        developergineer'
+        ref: 'developer'
     }],
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证

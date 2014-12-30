@@ -22,7 +22,7 @@ var schema = new mongoose.Schema({
     // 字段，行为：点赞、评论、分享、关注
     path: {
         type: String,
-        required: true,
+        required: true
     },
     // 被操作 object
     object: {
