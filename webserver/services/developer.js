@@ -484,11 +484,20 @@ exports.createOauthURL = function (oauthSettings, redirect) {
  * @returns {Boolean}
  */
 exports.isSafeOauthState = function (state) {
+    if(!state){
+        return false;
+    }
+
     var ret = crypto.decode(state, configs.secret.session.secret);
     var arr = ret.split('\n');
-    var num1 = dato.parseInt(arr[0], 0);
-    var num2 = dato.parseInt(arr[1], 0);
-    var num3 = dato.parseInt(arr[2], 0);
+
+    if(arr.length !== 3){
+        return false;
+    }
+
+    var num1 = dato.parseInt(arr[0], 1);
+    var num2 = dato.parseInt(arr[1], 1);
+    var num3 = dato.parseInt(arr[2], 1);
 
     return num1 + num2 === num3;
 };

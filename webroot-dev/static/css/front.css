@@ -189,7 +189,7 @@ nav .nav-right li:last-child {
 }
 .m-oauth {
   max-width: 500px;
-  margin: 0 auto;
+  margin: 10rem auto;
   background: #fff;
   padding: 50px 30px;
   border: 1px solid #EFEFEF;

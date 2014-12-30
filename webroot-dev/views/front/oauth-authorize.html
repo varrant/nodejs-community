@@ -18,7 +18,7 @@
     <script>
         var $m = document.getElementById('m');
 
-        window.location.href = '{{url}}';
+        window.location.href = '{{=url}}';
         setTimeout(function () {
             $m.innerHTML = '<i class="i i-smile-o"></i><br>稍等片刻，请勿关闭窗口……';
         }, 2000);
