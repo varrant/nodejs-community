@@ -16,7 +16,7 @@ define(function (require, exports, module) {
     var app = {};
 
     app.tab = function () {
-        var $tab = selector.query('##object-tab')[0];
+        var $tab = selector.query('#object-tab')[0];
 
         if(!$tab){
             return;
