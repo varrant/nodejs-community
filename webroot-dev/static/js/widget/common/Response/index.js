@@ -18,7 +18,6 @@ define(function (require, exports, module) {
     var qs = require('../../../alien/util/querystring.js');
     var ajax = require('../ajax.js');
     var alert = require('../alert.js');
-    var Pagination = require('../../../alien/ui/Pagination/index');
     var Pager = require('../../../alien/ui/Pager/');
     var Respond = require('../Respond/index');
     var Template = require('../../../alien/libs/Template.js');
@@ -141,7 +140,7 @@ define(function (require, exports, module) {
                 replyByCountClass: replyByCountClass
             };
             the._renderContainer(data);
-            the._paginationOptions = {
+            the._pagerOptions = {
                 page: options.query.page,
                 max: Math.ceil(options.count.comment / options.query.limit)
             };
@@ -280,8 +279,8 @@ define(function (require, exports, module) {
                     the._count.comment = data.count;
 
                     // 渲染分页
-                    if (the._pagination) {
-                        the._pagination.render({
+                    if (the._pager) {
+                        the._pager.render({
                             page: options.query.page,
                             max: Math.ceil(the._count.comment / options.query.limit)
                         });
@@ -297,8 +296,8 @@ define(function (require, exports, module) {
                     if (!the._readyComment) {
                         the._readyComment = true;
                         the._initRespond(the._$respondParent, the._$listParent);
-                        the._pagination = new Pagination(the._$paginationParent, the._paginationOptions);
-                        the._pagination.on('change', function (page) {
+                        the._pager = new Pager(the._$paginationParent, the._pagerOptions);
+                        the._pager.on('change', function (page) {
                             the.changePage(page);
                             the.emit('page', page);
                         });
@@ -498,11 +497,11 @@ define(function (require, exports, module) {
 
             dato.each(the._replyMap, function (id, item) {
                 if (item.respond) {
-                    item.respond.destory();
+                    item.respond.destroy();
                 }
 
                 if (item.pager) {
-                    item.pager.destory();
+                    item.pager.destroy();
                 }
             });
 
