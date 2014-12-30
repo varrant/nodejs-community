@@ -3,9 +3,9 @@
 - api
 	- /api/ 不需要鉴权的API
 	- /admin/api/ 需要鉴权的API
-- engineer
-	- /engineer/about/
-	- /engineer/ 各种统计
+- developer
+	- developerr/about/
+	-developerer/ 各种统计
 - home
 - object
 	- 各种 type

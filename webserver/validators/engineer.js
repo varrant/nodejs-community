@@ -1,5 +1,5 @@
 /*!
- * engineer validator
+ * developer validator
  * @author ydr.me
  * @create 2014-12-17 20:03
  */

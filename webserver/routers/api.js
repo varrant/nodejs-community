@@ -72,12 +72,12 @@ module.exports = function (app, ctrlApi) {
     app.delete('/admin/api/column/', ctrlApi.column.delete);
 
 
-    // engineer
-    app.post('/api/engineer/login/', ctrlApi.engineer.login);
-    app.post('/api/engineer/logout/', ctrlApi.engineer.logout);
-    app.get('/api/engineer/', ctrlApi.engineer.get);
-    app.get('/admin/api/engineer/', ctrlApi.engineer.detail);
-    app.post('/admin/api/engineer/', ctrlApi.engineer.role);
+    // developer
+    app.post('/api/developer/login/', ctrlApi.developer.login);
+    app.post('/api/developer/logout/', ctrlApi.developer.logout);
+    app.get('/api/developer/', ctrlApi.developer.get);
+    app.get('/admin/api/developer/', ctrlApi.developer.detail);
+    app.post('/admin/api/developer/', ctrlApi.developer.role);
 
 
     // translate

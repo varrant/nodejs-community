@@ -11,7 +11,7 @@ module.exports = {
     category: require('./category.js'),
     column: require('./column.js'),
     email: require('./email.js'),
-    engineer: require('./engineer.js'),
+    developer: require('./developer.js'),
     interactive: require('./interactive.js'),
     label: require('./label.js'),
     notice: require('./notice.js'),

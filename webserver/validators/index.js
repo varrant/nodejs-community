@@ -10,7 +10,7 @@
 module.exports = {
     category: require('./category.js'),
     column: require('./column.js'),
-    engineer: require('./engineer.js'),
+    developer: require('./developer.js'),
     interactive: require('./interactive.js'),
     label: require('./label.js'),
     notification: require('./notification.js'),

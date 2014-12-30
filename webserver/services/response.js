@@ -11,7 +11,7 @@ var configs = require('../../configs/');
 var scoreMap = configs.score;
 var response = require('../models/').response;
 var object = require('./object.js');
-var engineer = require('./engineer.js');
+var developer = require('./developer.js');
 var notification = require('./notification.js');
 var email = require('./email.js');
 var notice = require('./notice.js');
@@ -122,13 +122,13 @@ exports.createOne = function (author, data, meta, callback) {
                 }
 
 
-                // engineer.commentCount
+                // developer.commentCount
                 if (!doc.parent) {
-                    engineer.increaseCommentCount({_id: author.id}, 1, log.holdError);
+                    developer.increaseCommentCount({_id: author.id}, 1, log.holdError);
                 }
-                // engineer.replyCount
+                // developer.replyCount
                 else {
-                    engineer.increaseReplyCount({_id: author.id}, 1, log.holdError);
+                    developer.increaseReplyCount({_id: author.id}, 1, log.holdError);
                 }
 
                 // 通知 object 作者
@@ -142,8 +142,8 @@ exports.createOne = function (author, data, meta, callback) {
                     // parentResponse response.replyCount
                     response.increase({_id: parentResponse.id}, 'replyByCount', 1, log.holdError);
 
-                    // parentResponse engineer.replyByCount
-                    engineer.increaseReplyByCount({_id: parentResponse.author}, 1, log.holdError);
+                    // parentResponse developer.replyByCount
+                    developer.increaseReplyByCount({_id: parentResponse.author}, 1, log.holdError);
 
                     // 通知被 reply 作者
                     _noticeCommentAuthor(author, parentResponse);
@@ -152,26 +152,26 @@ exports.createOne = function (author, data, meta, callback) {
                     if (author.id.toString() !== responseObject.author.toString() &&
                         author.id.toString() !== parentResponse.author.toString()) {
                         // 增加主动用户回复积分
-                        engineer.increaseScore({_id: author.id}, scoreMap.reply, log.holdError);
+                        developer.increaseScore({_id: author.id}, scoreMap.reply, log.holdError);
                     }
 
                     if (author.id.toString() !== responseObject.author.toString()) {
                         // 增加被动用户回复积分
-                        engineer.increaseScore({_id: responseObject.author}, scoreMap.replyBy, log.holdError);
+                        developer.increaseScore({_id: responseObject.author}, scoreMap.replyBy, log.holdError);
                     }
 
                     if (author.id.toString() !== parentResponse.author.toString()) {
                         // 增加被动用户回复积分
-                        engineer.increaseScore({_id: parentResponse.author}, scoreMap.replyBy, log.holdError);
+                        developer.increaseScore({_id: parentResponse.author}, scoreMap.replyBy, log.holdError);
                     }
                 } else {
                     // 为他人评论才加分
                     if (author.id.toString() !== responseObject.author.toString()) {
                         // 增加主动用户评论积分
-                        engineer.increaseScore({_id: author.id}, scoreMap.comment, log.holdError);
+                        developer.increaseScore({_id: author.id}, scoreMap.comment, log.holdError);
 
                         // 增加被动用户评论积分
-                        engineer.increaseScore({_id: responseObject.author}, scoreMap.commentBy, log.holdError);
+                        developer.increaseScore({_id: responseObject.author}, scoreMap.commentBy, log.holdError);
                     }
                 }
             }
@@ -218,7 +218,7 @@ exports.agree = function (operator, conditions, callback) {
             response.increase(conditions, 'agreeByCount', value, log.holdError);
 
             // 用户被赞数量
-            engineer.increaseAgreeByCount({_id: agreeResponse.author}, value, log.holdError);
+            developer.increaseAgreeByCount({_id: agreeResponse.author}, value, log.holdError);
 
             if (!err) {
 
@@ -226,14 +226,14 @@ exports.agree = function (operator, conditions, callback) {
                 if (agreeResponse.author.toString() !== operator.id.toString()) {
                     // 点赞、消赞
                     if (value !== 0) {
-                        engineer.increaseScore({_id: agreeResponse.author}, value * scoreMap.agreeBy, log.holdError);
+                        developer.increaseScore({_id: agreeResponse.author}, value * scoreMap.agreeBy, log.holdError);
                     }
                 }
 
                 // 点赞、消赞
                 if (value !== 0) {
                     // 自己加少量分
-                    engineer.increaseScore({_id: operator.id}, value * scoreMap.agree, log.holdError)
+                    developer.increaseScore({_id: operator.id}, value * scoreMap.agree, log.holdError)
                 }
             }
         });
@@ -250,7 +250,7 @@ function _noticeObjectAuthor(repondAuthor, responseObject) {
     howdo
         // 1. 查找 object 作者
         .task(function (next) {
-            engineer.findOne({_id: responseObject.author}, next);
+            developer.findOne({_id: responseObject.author}, next);
         })
         // 顺序串行
         .follow(function (err, doc) {
@@ -281,7 +281,7 @@ function _noticeCommentAuthor(replyAuthor, parentResponse) {
     howdo
         // 1. 查找 parentResponse 作者
         .task(function (next) {
-            engineer.findOne({_id: parentResponse.author}, next);
+            developer.findOne({_id: parentResponse.author}, next);
         })
         // 顺序串行
         .follow(function (err, doc) {

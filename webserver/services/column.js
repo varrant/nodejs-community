@@ -7,7 +7,7 @@
 'use strict';
 
 var column = require('../models/').column;
-var engineer = require('./engineer.js');
+var developer = require('./developer.js');
 var dato = require('ydr-util').dato;
 var howdo = require('howdo');
 var log = require('ydr-log');
@@ -103,8 +103,8 @@ exports.createOne = function (author, data, callback) {
             callback(err, doc);
 
             if (!err && doc) {
-                // 更新 engineer.columnCount
-                engineer.increaseColumnCount({_id: author.id}, 1, log.holdError);
+                // 更新 developer.columnCount
+                developer.increaseColumnCount({_id: author.id}, 1, log.holdError);
             }
         });
 };

@@ -15,7 +15,7 @@ var category = require('./category.js');
 var column = require('./column.js');
 var label = require('./label.js');
 var setting = require('./setting.js');
-var engineer = require('./engineer.js');
+var developer = require('./developer.js');
 var response = require('./response.js');
 var notice = require('./notice.js');
 var howdo = require('howdo');
@@ -124,7 +124,7 @@ exports.createOne = function (author, data, callback) {
                 publishAt: date,
                 updateAt: date,
                 updateList: [{
-                    engineer: author.id,
+                    developer: author.id,
                     date: date
                 }]
             };
@@ -155,22 +155,22 @@ exports.createOne = function (author, data, callback) {
                     label.increaseObjectCount({name: name}, 1, log.holdError);
                 });
 
-                // 更新 engineer.sectionStatistics
-                engineer.increaseSectionStatistics({_id: author.id}, data.section, 1, log.holdError);
+                // 更新 developer.sectionStatistics
+                developer.increaseSectionStatistics({_id: author.id}, data.section, 1, log.holdError);
 
-                // 更新 engineer.categoryStatistics
-                engineer.increaseCategoryStatistics({_id: author.id}, data.category, 1, log.holdError);
+                // 更新 developer.categoryStatistics
+                developer.increaseCategoryStatistics({_id: author.id}, data.category, 1, log.holdError);
 
-                // 更新 engineer.columnStatistics
+                // 更新 developer.columnStatistics
                 if (data.column) {
-                    engineer.increaseColumnStatistics({_id: author.id}, data.column, 1, log.holdError);
+                    developer.increaseColumnStatistics({_id: author.id}, data.column, 1, log.holdError);
                 }
 
-                // 更新 engineer.objectCount
-                engineer.increaseObjectCount({_id: doc.author}, 1, log.holdError);
+                // 更新 developer.objectCount
+                developer.increaseObjectCount({_id: doc.author}, 1, log.holdError);
 
                 // 发布积分
-                engineer.increaseScore({_id: doc.author}, scoreMap[objectInSection.name] || 0, log.holdError)
+                developer.increaseScore({_id: doc.author}, scoreMap[objectInSection.name] || 0, log.holdError)
             }
         });
 };
@@ -275,7 +275,7 @@ exports.updateOne = function (author, conditions, data, callback) {
             data2.updateAt = date;
             data2.$push = {
                 updateList: {
-                    engineer: author.id,
+                    developer: author.id,
                     date: date
                 }
             };
@@ -300,24 +300,24 @@ exports.updateOne = function (author, conditions, data, callback) {
                     label.increaseObjectCount({name: name}, -1, log.holdError);
                 });
 
-                // 更新 engineer.increaseSectionStatistics
+                // 更新 developer.increaseSectionStatistics
                 if (doc.section.toString() !== oldDoc.section.toString()) {
-                    engineer.increaseSectionStatistics({_id: author.id}, doc.section, 1, log.holdError);
-                    engineer.increaseSectionStatistics({_id: author.id}, oldDoc.section, -1, log.holdError);
+                    developer.increaseSectionStatistics({_id: author.id}, doc.section, 1, log.holdError);
+                    developer.increaseSectionStatistics({_id: author.id}, oldDoc.section, -1, log.holdError);
                 }
 
-                // 更新 engineer.increaseCategoryStatistics
+                // 更新 developer.increaseCategoryStatistics
                 if (doc.category.toString() !== oldDoc.category.toString()) {
-                    engineer.increaseCategoryStatistics({_id: author.id}, doc.category, 1, log.holdError);
-                    engineer.increaseCategoryStatistics({_id: author.id}, oldDoc.category, -1, log.holdError);
+                    developer.increaseCategoryStatistics({_id: author.id}, doc.category, 1, log.holdError);
+                    developer.increaseCategoryStatistics({_id: author.id}, oldDoc.category, -1, log.holdError);
                 }
 
                 if (oldDoc.column) {
-                    engineer.increaseCategoryStatistics({_id: author.id}, oldDoc.column, -1, log.holdError);
+                    developer.increaseCategoryStatistics({_id: author.id}, oldDoc.column, -1, log.holdError);
                 }
 
                 if (doc.column) {
-                    engineer.increaseCategoryStatistics({_id: author.id}, doc.column, 1, log.holdError);
+                    developer.increaseCategoryStatistics({_id: author.id}, doc.column, 1, log.holdError);
                 }
             }
         });
@@ -348,7 +348,7 @@ exports.increaseScore = function (operator, id, count, callback) {
             object.push(conditions, 'scoreList', {
                 date: date,
                 score: count,
-                engineer: operator.id
+                developer: operator.id
             }, done);
         })
         // 异步并行
@@ -515,27 +515,27 @@ exports.acceptByResponse = function (operator, conditions, responseId, boolean, 
                 // 换人了
                 if (oldDoc && oldDoc.acceptByAuthor && newDoc.acceptByAuthor.toString() !== oldDoc.acceptByAuthor.toString()) {
                     // 当前被采纳的人加分
-                    engineer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
+                    developer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
 
                     // 当前被取消采纳的人减分
-                    engineer.increaseScore({_id: oldDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
+                    developer.increaseScore({_id: oldDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
 
                     // 当前被采纳的人+1
-                    engineer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
+                    developer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
 
                     // 通知被采纳的人
                     notice.accept(operator, {id: newDoc.acceptByAuthor}, newDoc, acceptByResponse);
 
                     // 当前被取消采纳的人-1
-                    engineer.increaseAcceptByCount({_id: oldDoc.acceptByAuthor}, -1, log.holdError);
+                    developer.increaseAcceptByCount({_id: oldDoc.acceptByAuthor}, -1, log.holdError);
                 }
                 // 首次设置为采纳
                 else if (!oldDoc.acceptByAuthor) {
                     // 当前被采纳的人加分
-                    engineer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
+                    developer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
 
                     // 当前被采纳的人+1
-                    engineer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
+                    developer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
 
                     // 通知被采纳的人
                     notice.accept(operator, {id: newDoc.acceptByAuthor}, newDoc, acceptByResponse);
@@ -544,10 +544,10 @@ exports.acceptByResponse = function (operator, conditions, responseId, boolean, 
             // 取消采纳
             else if (!boolean && oldDoc.acceptByAuthor) {
                 // 当前被取消采纳的人减分
-                engineer.increaseScore({_id: oldDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
+                developer.increaseScore({_id: oldDoc.acceptByAuthor}, -scoreMap.acceptBy, log.holdError);
 
                 // 当前被取消采纳的人-1
-                engineer.increaseAcceptByCount({_id: oldDoc.acceptByAuthor}, -1, log.holdError);
+                developer.increaseAcceptByCount({_id: oldDoc.acceptByAuthor}, -1, log.holdError);
             }
         });
 };

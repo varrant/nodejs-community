@@ -91,7 +91,7 @@ exports.active = function (data, callback) {
         return callback(err);
     }
 
-    if (data.model === 'engineer' || data.model === 'object') {
+    if (data.model === 'developer' || data.model === 'object') {
         // 发送邮件给被动用户
     }
 

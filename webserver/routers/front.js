@@ -9,8 +9,8 @@
 
 module.exports = function (app, ctrlFront) {
     // user
-    app.get('/engineer/oauth/authorize/', ctrlFront.engineer.oauthAuthorize);
-    app.get('/engineer/oauth/callback/', ctrlFront.engineer.oauthCallback);
+    app.get('/developer/oauth/authorize/', ctrlFront.developer.oauthAuthorize);
+    app.get('/developer/oauth/callback/', ctrlFront.developer.oauthCallback);
 
 
     // home
@@ -90,6 +90,6 @@ module.exports = function (app, ctrlFront) {
     });
 
 
-    // engineer
-    app.get('/engineer/:engineer/', ctrlFront.engineer.getEngineer);
+    // developer
+    app.get('/developer/:developer/', ctrlFront.developer.getEngineer);
 };
