@@ -231,8 +231,8 @@ define(function (require, exports, module) {
 
             event.on($parent, 'click', replyClass, the._reply.bind(the));
             event.on($parent, 'click', agreeClass, the._agree.bind(the));
-            event.on($parent, 'click', acceptClass, function () {
-                confirm('确定要采纳该回答为最佳答案吗？采纳后无法取消和更换。', the._accept.bind(the));
+            event.on($parent, 'click', acceptClass, function (eve) {
+                confirm('确定要采纳该回答为最佳答案吗？采纳后无法取消和更换。', the._accept.bind(the, eve));
             });
         },
 
@@ -724,12 +724,7 @@ define(function (require, exports, module) {
 
                     options.acceptByResponse = id;
                     options.list.object.acceptByResponse = id;
-                    the._acceptItem(id, true);
-
-                    if (json.data) {
-                        the._acceptItem(json.data, false);
-                    }
-
+                    the._acceptItem(id);
                     the.emit('accept', true);
                 })
                 .on('error', alert)
@@ -740,25 +735,19 @@ define(function (require, exports, module) {
         /**
          * 设置/取消 item 为最佳
          * @param itemId
-         * @param boolean
          * @private
          */
-        _acceptItem: function (itemId, boolean) {
+        _acceptItem: function (itemId) {
             var $item = selector.query('#response-' + itemId)[0];
 
             if (!$item) {
                 return;
             }
 
-            var className = alienClass + '-item-accepted';
+            attribute.addClass($item, alienClass + '-item-accepted');
 
-            if (boolean) {
-                attribute.addClass($item, className);
-            } else {
-                attribute.removeClass($item, className);
-            }
-
-            var $li = selector.query('.' + alienClass + '-accept-li', $item)[0];
+            var liSelector = '.' + alienClass + '-accept-li';
+            var $li = selector.query(liSelector, $item)[0];
 
             if (!$li) {
                 return;
@@ -766,15 +755,17 @@ define(function (require, exports, module) {
 
             var $btn = selector.children($li)[0];
 
-            if (boolean) {
-                attribute.removeClass($btn, 'btn-warning');
-                attribute.addClass($btn, 'btn-success');
-                $btn.innerHTML = '<i class="i i-check"></i>取消最佳回答';
-            } else {
-                attribute.removeClass($btn, 'btn-success');
-                attribute.addClass($btn, 'btn-warning');
-                $btn.innerHTML = '<i class="i i-check"></i>采纳回答';
-            }
+            attribute.removeClass($btn, 'btn-warning');
+            attribute.addClass($btn, 'btn-success');
+            $btn.innerHTML = '<i class="i i-check"></i>最佳回答';
+
+            var $siblings = selector.siblings($item);
+
+            $siblings.forEach(function ($item) {
+                var $li = selector.query(liSelector, $item)[0];
+
+                modification.remove($li);
+            });
         }
     });
 
