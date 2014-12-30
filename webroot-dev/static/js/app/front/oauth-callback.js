@@ -36,7 +36,9 @@ define(function (require) {
                     window.opener.location.reload();
                 }
 
-                window.close();
+                if (window.top !== window) {
+                    window.close();
+                }
             }
 
             app._message('success', json.message);
