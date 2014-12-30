@@ -108,27 +108,27 @@ module.exports = function (app) {
             return next();
         }
 
-        var userId = crypto.decode(userCookie, configs.secret.cookie.secret);
+        var developerId = crypto.decode(userCookie, configs.secret.cookie.secret);
 
         // 解析错误
-        if (!userId) {
+        if (!developerId) {
             cookie.logout(req, res);
             return next();
         }
 
         // 与 session 不匹配
-        if (req.session.$developer && req.session.$developer.id !== userId) {
+        if (req.session.$developer && req.session.$developer.id !== developerId) {
             cookie.logout(req, res);
             return next();
         }
 
         // 与 session 匹配
-        if (req.session.$developer && req.session.$developer.id === userId) {
+        if (req.session.$developer && req.session.$developer.id === developerId) {
             res.locals.$developer = req.session.$developer;
             return next();
         }
 
-        developer.findOne({_id: userId}, function (err, doc) {
+        developer.findOne({_id: developerId}, function (err, doc) {
             if (err) {
                 cookie.logout(req, res);
                 return next(err);

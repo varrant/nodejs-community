@@ -6,7 +6,7 @@
 - app.locals.$founder 社区创始人
 - app.locals.$system 系统信息
 - req.session.$csrf 请求令牌
-- req.session.$engineer 请求工程师
+- req.session.$developer 请求开发者
 - req.session.$github github授权
 - req.session.$state 授权状态值
 - res.locals.$csrf 响应令牌
