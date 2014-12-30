@@ -35,7 +35,7 @@ define(function (require, exports, module) {
 
             the._listSelector = listSelector;
             the._paginationSelector = paginationSelector;
-            the._options = dato.extend({}, defaults, options);
+            the._options = dato.extend(true, {}, defaults, options);
             the.query = {
                 page: dato.parseInt(hashbang.get('query', 'page'), the._options.query.page),
                 limit: dato.parseInt(hashbang.get('query', 'limit'), the._options.query.limit),
@@ -97,7 +97,7 @@ define(function (require, exports, module) {
                     el: the._listSelector,
                     data: dato.extend({
                         list: data.list,
-                        req: the.query
+                        query: the.query
                     }, the._options.data),
                     methods: the._options.methods
                 });

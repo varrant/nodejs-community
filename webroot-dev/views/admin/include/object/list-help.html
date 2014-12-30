@@ -11,7 +11,7 @@
             <td colspan="2" class="table-empty-td">暂无相关帮助文档。</td>
         </tr>
         <tr v-repeat="object:list">
-            <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>
+            <td>\{{(query.page - 1) * query.limit + $index + 1}}</td>
             <td><a href="/admin/object/help/?id=\{{object._id}}">《\{{object.title}}》</a></td>
             <td>
                 \{{object}}

@@ -23,7 +23,7 @@ module.exports = function (app) {
     exports.count = function (req, res, next) {
         var userId = res.locals.$developer.id;
 
-        notification.count({hasActived: false, source: userId}, function (err, count) {
+        notification.count({hasActived: false, target: userId}, function (err, count) {
             if (err) {
                 return next(err);
             }

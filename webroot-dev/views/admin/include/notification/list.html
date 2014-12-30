@@ -20,7 +20,7 @@
             <td colspan="3" class="table-empty-td">暂无相关提醒。</td>
         </tr>
         <tr v-repeat="notification:list" v-class="danger:!notification.hasActived">
-            <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>
+            <td>\{{(query.page - 1) * query.limit + $index + 1}}</td>
             <td>
                 <div v-if="notification.type === 'comment'">
                     <a href="#"><strong>\{{notification.source.nickname}}</strong> 评论了你的《\{{notification.object.title}}》</a>
