@@ -20,6 +20,22 @@ module.exports = function(app){
             subject: '新回复提醒',
             template:_template('reply.html')
         },
+        role: {
+            subject: '权限变动提醒',
+            template:_template('role.html')
+        },
+        accept: {
+            subject: '被采纳提醒',
+            template:_template('accept.html')
+        },
+        agreeComment: {
+            subject: '被赞同提醒',
+            template:_template('agreeComment.html')
+        },
+        agreeReply: {
+            subject: '被赞同提醒',
+            template:_template('agreeReply.html')
+        },
         favorite: {
             subject: '收藏提醒',
             template:_template('favorite.html')
@@ -56,10 +72,6 @@ module.exports = function(app){
             subject: '更新提醒',
             template:_template('update.html')
         },
-        acceptBy: {
-            subject: '被采纳提醒',
-            template:_template('acceptBy.html')
-        },
         certificated: {
             subject: '认证提醒',
             template:_template('certificated.html')
@@ -67,10 +79,6 @@ module.exports = function(app){
         weibo: {
             subject: '认证提醒',
             template:_template('weibo.html')
-        },
-        role: {
-            subject: '权限变动提醒',
-            template:_template('role.html')
         }
     };
 };
