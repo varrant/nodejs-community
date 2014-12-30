@@ -104,12 +104,28 @@ module.exports = function (app) {
                 });
             });
         } else {
-            developer.find({}, options, function (err, docs) {
-                res.json({
-                    code: 200,
-                    data: docs
+            howdo
+                // 1. 计数
+                .task(function (done) {
+                    developer.count({}, done);
+                })
+                // 2. 分页
+                .task(function (done) {
+                    developer.find({}, options, done);
+                })
+                .together(function (err, count, docs) {
+                    if(err){
+                        return next(err);
+                    }
+
+                    res.json({
+                        code: 200,
+                        data: {
+                            list: docs,
+                            count: count
+                        }
+                    });
                 });
-            });
         }
     };
 
