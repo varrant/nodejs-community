@@ -128,6 +128,7 @@ module.exports = function (app) {
             return next();
         }
 
+        // 不存在则读取数据库
         developer.findOne({_id: developerId}, function (err, doc) {
             if (err) {
                 cookie.logout(req, res);
