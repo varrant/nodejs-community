@@ -16,13 +16,9 @@ module.exports = function(app){
             subject: '新评论提醒',
             template:_template('comment.html')
         },
-        replyObject: {
+        reply: {
             subject: '新回复提醒',
-            template:_template('replyObject.html')
-        },
-        replyComment: {
-            subject: '新回复提醒',
-            template:_template('replyComment.html')
+            template:_template('reply.html')
         },
         role: {
             subject: '权限变动提醒',
