@@ -38,6 +38,8 @@ define(function (require) {
 
                 if (window.top !== window) {
                     window.close();
+                }else{
+                    window.location.href = json.redirect;
                 }
             }
 

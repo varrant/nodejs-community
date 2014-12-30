@@ -22,16 +22,18 @@ module.exports = function (app) {
      * @param next
      */
     exports.serverError = function (err, req, res, next) {
+        var code = err.code || 500;
+
         if (REG_ACCEPT_JSON.test(req.headers.accept)) {
             res.json({
-                code: err.code || 500,
+                code: code,
                 message: err.message,
                 data: err.data || null,
                 redirect: err.redirect || null
             });
         } else {
-            res.status(err.code || 500).render('server-error.html', {
-                title: '500',
+            res.status(code).render('server-error.html', {
+                title: code,
                 redirect: err.redirect,
                 error: err.message
             });
