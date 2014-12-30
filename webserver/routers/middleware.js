@@ -17,5 +17,5 @@ module.exports = function (app, ctrlMiddleware) {
     app.delete('*', ctrlMiddleware.safeDetection);
 
     // 读取用户
-    app.use(ctrlMiddleware.readEngineer);
+    app.use(ctrlMiddleware.readDeveloper);
 };

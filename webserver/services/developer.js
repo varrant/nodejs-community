@@ -83,12 +83,12 @@ exports.count = developer.count;
  * @param callback
  * @returns {*}
  */
-exports.modifyRole = function (operator, engineerBy, roleArray, callback) {
+exports.modifyRole = function (operator, developerBy, roleArray, callback) {
     if (
         // 只有 founder 才有权限修改他人权限
     (operator.role & role20) !== 0 &&
         // 不允许修改自己的权限
-    operator.id.toString() !== engineerBy.id.toString() &&
+    operator.id.toString() !== developerBy.id.toString() &&
         // 不允许修改为 founder 的权限
     roleArray.indexOf(20) === -1
     ) {
@@ -121,11 +121,11 @@ exports.modifyRole = function (operator, engineerBy, roleArray, callback) {
             group: group
         };
 
-        developer.findOneAndUpdate({_id: engineerBy.id}, data, function (err, newDoc, oldDoc) {
+        developer.findOneAndUpdate({_id: developerBy.id}, data, function (err, newDoc, oldDoc) {
             callback(err, newDoc, oldDoc);
 
             if (!err && newDoc) {
-                notice.role(operator, engineerBy, group || 'none');
+                notice.role(operator, developerBy, group || 'none');
             }
         });
     }

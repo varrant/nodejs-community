@@ -95,7 +95,7 @@ module.exports = function (app) {
      * @param res
      * @param next
      */
-    exports.readEngineer = function (req, res, next) {
+    exports.readDeveloper = function (req, res, next) {
         if (!req.cookies) {
             return next();
         }
@@ -125,6 +125,13 @@ module.exports = function (app) {
         // 与 session 匹配
         if (req.session.$developer && req.session.$developer.id === developerId) {
             res.locals.$developer = req.session.$developer;
+
+            // 有当前用户的缓存
+            if (app.locals.$system.developer[developerId]) {
+                res.locals.$developer = req.session.$developer = app.locals.$system.developer[developerId];
+                delete(app.locals.$system.developer[developerId]);
+            }
+
             return next();
         }
 

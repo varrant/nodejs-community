@@ -186,7 +186,12 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                req.session.$developer = res.locals.$developer = doc;
+                if (!doc) {
+                    return next();
+                }
+
+                // 记录下被修改者的信息，以便下次访问时更新
+                app.locals.$system.developer[doc.id] = doc;
                 res.json({
                     code: 200,
                     data: doc
