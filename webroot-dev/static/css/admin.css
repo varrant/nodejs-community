@@ -23,10 +23,8 @@ body {
   color: #aaa;
 }
 .g-main {
-  height: 100%;
   margin-left: 120px;
   margin-top: 50px;
-  overflow: auto;
 }
 nav {
   height: 100%;

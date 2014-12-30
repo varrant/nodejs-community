@@ -128,7 +128,6 @@ module.exports = function (app) {
 
             // 有当前用户的缓存
             if (app.locals.$system.developer[developerId]) {
-                console.log('用户信息被修改：', developerId);
                 res.locals.$developer = req.session.$developer = app.locals.$system.developer[developerId];
                 delete(app.locals.$system.developer[developerId]);
             }
