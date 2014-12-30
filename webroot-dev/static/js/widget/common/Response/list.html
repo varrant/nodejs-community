@@ -31,13 +31,13 @@
                             class="alien-ui-response-number">{{item.agreeByCount}}</span></button>
                 </li>
                 {{if !item.parent}}
-                    {{if engineer.id === author.id && object.acceptByResponse === item.id}}
+                    {{if developer.id === author.id && object.acceptByResponse === item.id}}
                     <li class="alien-ui-response-accept-li">
                         <button class="btn btn-success btn-xs alien-ui-response-accept"
                                 title="点击取消为最佳答案"><i
                                 class="i i-check"></i>取消最佳回答</button>
                     </li>
-                    {{else if engineer.id === author.id && item.author.id !== engineer.id}}
+                    {{else if developer.id === author.id && item.author.id !== developer.id}}
                     <li class="alien-ui-response-accept-li">
                         <button class="btn btn-warning btn-xs alien-ui-response-accept"><i
                                 class="i i-check"></i>采纳回答</button>

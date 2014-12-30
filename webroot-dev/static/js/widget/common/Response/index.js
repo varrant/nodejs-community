@@ -403,7 +403,7 @@ define(function (require, exports, module) {
 
                     var data = json.data;
 
-                    data.author = options.list.engineer;
+                    data.author = options.list.developer;
 
                     if (json.data.parent) {
                         the._count.reply++;

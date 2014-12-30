@@ -22,7 +22,7 @@ define(function (require) {
         }
 
         ajax({
-            url: '/api/engineer/login/',
+            url: '/api/developer/login/',
             method: 'post',
             data: locals
         }).on('success', function (json) {

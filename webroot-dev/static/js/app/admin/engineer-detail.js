@@ -16,7 +16,7 @@ define(function (require, exports, module) {
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
     var dato = require('../../alien/util/dato.js');
-    var url = '/admin/api/engineer/?id=' + window['-id-'];
+    var url = '/admin/api/developer/?id=' + window['-id-'];
     var app = {};
 
     app.init = function () {
@@ -35,7 +35,7 @@ define(function (require, exports, module) {
         var vue1 = new Vue({
             el: '#form',
             data: {
-                engineer: data1.engineer
+                developer: data1.developer
             }
         });
         var vue2 = new Vue({
@@ -48,7 +48,7 @@ define(function (require, exports, module) {
         var vue3 = new Vue({
             el: '#role',
             data: dato.extend({
-                engineer: data1.engineer
+                developer: data1.developer
             }, data2),
             methods: {
                 onsave: app._onsave
@@ -71,13 +71,13 @@ define(function (require, exports, module) {
      * @private
      */
     app._calData = function (data) {
-        var engineer = data.engineer;
-        var sectionStatistics = engineer.sectionStatistics || {};
-        var categoryStatistics = engineer.categoryStatistics || {};
+        var developer = data.developer;
+        var sectionStatistics = developer.sectionStatistics || {};
+        var categoryStatistics = developer.categoryStatistics || {};
         var section = data.section;
         var category = data.category;
         var group = data.group;
-        var engineerRole = data.engineer.role;
+        var engineerRole = data.developer.role;
 
         section.forEach(function (item) {
             item.roleVal = 1 << item.role;
@@ -148,9 +148,9 @@ define(function (require, exports, module) {
                     return alert(json);
                 }
 
-                var engineer = json.data;
-                app.vue1.$data.engineer = engineer;
-                the.$data.engineer = engineer;
+                var developer = json.data;
+                app.vue1.$data.developer = developer;
+                the.$data.developer = developer;
                 app._calData(the.$data);
             }).on('error', alert).on('finish', function () {
                 $btn.disabled = false;

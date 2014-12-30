@@ -62,7 +62,7 @@ define(function (require, exports, module) {
                 object: object.id
             },
             list: {
-                engineer: window['-developer-'],
+                developer: window['-developer-'],
                 author: author,
                 object: object
             },

@@ -60,7 +60,7 @@ define(function (require) {
         var logout = function () {
             ajax({
                 method: 'post',
-                url: '/api/engineer/logout/'
+                url: '/api/developer/logout/'
             }).on('success', function (json) {
                 if (json.code !== 200) {
                     return alert(json);
