@@ -16,7 +16,7 @@ var models = {
     // 专栏
     column: require('./column.js'),
     // 工程师
-    engineer: require('./engineer.js'),
+    developer: require('./developer.js'),
     // 交互
     interactive: require('./interactive.js'),
     // 标注

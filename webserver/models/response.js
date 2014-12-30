@@ -13,7 +13,7 @@ var schema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: false,
         unique: false,
-        ref: 'engineer'
+        ref: 'developer'
     },
     // markdown 响应内容
     content: {

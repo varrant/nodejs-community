@@ -6,7 +6,7 @@
 
 'use strict';
 
-var engineer = require('../../services/').engineer;
+var developer = require('../../services/').developer;
 
 module.exports = function (app) {
     var exports = {};
@@ -22,7 +22,7 @@ module.exports = function (app) {
             title: '管理首页'
         };
 
-        engineer.findOne({
+        developer.findOne({
             _id: res.locals.$engineer.id
         }, function (err, doc) {
             if(err){

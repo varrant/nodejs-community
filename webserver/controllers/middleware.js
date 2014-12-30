@@ -10,7 +10,7 @@ var URL = require('url');
 var crypto = require('ydr-util').crypto;
 var dato = require('ydr-util').dato;
 var configs = require('../../configs/');
-var engineer = require('../services/').engineer;
+var developer = require('../services/').developer;
 var cookie = require('../utils/').cookie;
 var REG_ENDXIE = /(\/|\.[^\.\/]+)$/;
 var REG_ACCEPT = /^application\/json;\s*charset=utf-8$/i;
@@ -128,7 +128,7 @@ module.exports = function (app) {
             return next();
         }
 
-        engineer.findOne({_id: userId}, function (err, doc) {
+        developer.findOne({_id: userId}, function (err, doc) {
             if (err) {
                 cookie.logout(req, res);
                 return next(err);

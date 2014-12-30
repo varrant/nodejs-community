@@ -101,10 +101,10 @@ module.exports = function (app) {
 
         if ((engineerRole & role20) !== 0) {
             list.push({
-                href: '/admin/engineer/list/',
+                href: '/admin/developer/list/',
                 text: '用户管理',
                 icon: 'i i-users',
-                reg: '^engineer\\/'
+                reg: '^developer\\/'
             });
         }
 

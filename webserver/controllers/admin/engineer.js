@@ -6,7 +6,7 @@
 
 'use strict';
 
-var engineer = require('../../models/').engineer;
+var developer = require('../../models/').developer;
 var typeis = require('ydr-util').typeis;
 var role20 = 1 << 20;
 
@@ -30,7 +30,7 @@ module.exports = function (app) {
             return next();
         }
 
-        res.render('admin/engineer-list.html', data);
+        res.render('admin/developer-list.html', data);
     };
 
 
@@ -52,7 +52,7 @@ module.exports = function (app) {
             return next();
         }
 
-        res.render('admin/engineer-detail.html', data);
+        res.render('admin/developer-detail.html', data);
     };
 
 
@@ -68,7 +68,7 @@ module.exports = function (app) {
             me: res.locals.$engineer
         };
 
-        engineer.findOne({
+        developer.findOne({
             _id: res.locals.$engineer.id
         }, function (err, doc) {
             if(err){
@@ -80,7 +80,7 @@ module.exports = function (app) {
             }
 
             req.session.$engineer = res.locals.$engineer = doc;
-            res.render('admin/engineer-me.html', data);
+            res.render('admin/developer-me.html', data);
         });
     };
 

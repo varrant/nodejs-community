@@ -32,13 +32,13 @@ var schema = new mongoose.Schema({
     source: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'engineer'
+        ref: 'developer'
     },
     // 目标
     target: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'engineer'
+        ref: developerr'
     },
     // 被操作 object
     object: {

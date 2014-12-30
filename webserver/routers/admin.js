@@ -31,7 +31,7 @@ module.exports = function (app, ctrlAdmin) {
     app.get('/admin/column/', ctrlAdmin.column.get);
 
 
-    // engineer
+    // developer
     app.get('/admin/engineer/list/', ctrlAdmin.engineer.list);
     app.get('/admin/engineer/', ctrlAdmin.engineer.get);
     app.get('/admin/me/', ctrlAdmin.engineer.me);

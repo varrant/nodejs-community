@@ -8,7 +8,7 @@
 
 module.exports = function (app) {
     return {
-        engineer: require('./engineer.js')(app),
+        developer: require('./developer.js')(app),
         main: require('./main.js')(app)
     };
 };

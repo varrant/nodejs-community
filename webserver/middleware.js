@@ -9,7 +9,7 @@
 var setting = require('./services/').setting;
 var section = require('./services/').section;
 var category = require('./services/').category;
-var engineer = require('./services/').engineer;
+var developer = require('./services/').developer;
 var howdo = require('howdo');
 var configs = require('../configs/');
 
@@ -56,7 +56,7 @@ module.exports = function (next, app) {
         // 初始化社区分类
         // 初始化网站管理员
         .task(function (done) {
-            engineer.findOne({
+            developer.findOne({
                 role: 2097151
             }, function (err, doc) {
                 if (err) {

@@ -12,7 +12,7 @@ var schema = new mongoose.Schema({
     author: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'engineer'
+        ref: 'developer'
     },
     // 名称
     name: {

@@ -178,7 +178,7 @@ schema.virtual('avatar').get(function () {
 });
 
 
-module.exports = mongoose.model('engineer', schema);
+module.exports = mongoose.model('developer', schema);
 //
 //
 ///**

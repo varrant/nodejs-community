@@ -8,7 +8,7 @@
 
 
 var configs = require('../../../configs/');
-var engineer = require('../../services/').engineer;
+var developer = require('../../services/').developer;
 var setting = require('../../services/').setting;
 var cookie = require('../../utils/').cookie;
 var filter = require('../../utils/').filter;
@@ -34,7 +34,7 @@ module.exports = function (app) {
         if (!(req.session && req.session.$github &&
             req.session.$github.accessToken === accessToken)) {
             var err = new Error('请重新授权操作');
-            err.redirect = '/engineer/oauth/authorize/';
+            err.redirect = '/developer/oauth/authorize/';
             return next(err);
         }
 
@@ -44,7 +44,7 @@ module.exports = function (app) {
         delete(githubOauth.githubId);
         githubOauth.loginAt = new Date();
 
-        engineer.login({
+        developer.login({
             githubId: githubId
         }, githubOauth, function (err, doc) {
             req.session.$github = null;
@@ -89,7 +89,7 @@ module.exports = function (app) {
         var options = filter.skipLimit(req.query);
 
         if (id) {
-            engineer.findOne({
+            developer.findOne({
                 _id: id
             }, function (err, doc) {
                 if (err) {
@@ -102,7 +102,7 @@ module.exports = function (app) {
                 });
             });
         } else {
-            engineer.find({}, options, function (err, docs) {
+            developer.find({}, options, function (err, docs) {
                 res.json({
                     code: 200,
                     data: docs
@@ -121,7 +121,7 @@ module.exports = function (app) {
     exports.detail = function (req, res, next) {
         var id = req.query.id;
 
-        engineer.findOne({
+        developer.findOne({
             _id: id
         }, function (err, doc) {
             if (err) {
@@ -135,7 +135,7 @@ module.exports = function (app) {
             res.json({
                 code: 200,
                 data: {
-                    engineer: doc,
+                    developer: doc,
                     section: app.locals.$section,
                     category: app.locals.$category,
                     group: configs.group
@@ -174,11 +174,11 @@ module.exports = function (app) {
         howdo
             // 查找用户
             .task(function (next) {
-                engineer.findOne({_id: id}, next);
+                developer.findOne({_id: id}, next);
             })
             // 修改权限
             .task(function (next, doc) {
-                engineer.modifyRole(res.locals.$engineer, doc, roleArray2, next);
+                developer.modifyRole(res.locals.$engineer, doc, roleArray2, next);
             })
             // 异步串行
             .follow(function (err, doc) {
