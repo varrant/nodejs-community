@@ -50,7 +50,8 @@ define(function (require, exports, module) {
             limit: 2
         },
         data: {
-            type: type
+            type: type,
+            sectionURIMap: window['-section-uri-map-']
         },
         methods: methods
     });

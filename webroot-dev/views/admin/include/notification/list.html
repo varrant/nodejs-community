@@ -23,13 +23,19 @@
             <td>\{{(query.page - 1) * query.limit + $index + 1}}</td>
             <td>
                 <div v-if="notification.type === 'comment'">
-                    <a href="#"><strong>\{{notification.source.nickname}}</strong> 评论了你的《\{{notification.object.title}}》</a>
+                    <a v-attr="href: '/' + sectionURIMap[notification.object.section] + '/' + notification.object.uri + '.html'"><strong>\{{notification.source.nickname}}</strong> 评论了你的《\{{notification.object.title}}》</a>
                 </div>
                 <div v-if="notification.type === 'reply' && notification.object">
                     <a href="#"><strong>\{{notification.source.nickname}}</strong> 回复了你的《\{{notification.object.title}}》</a>
                 </div>
                 <div v-if="notification.type === 'reply' && notification.response">
                     <a href="#"><strong>\{{notification.source.nickname}}</strong> 回复了你的“\{{notification.response.content.slice(0, 100)}}”</a>
+                </div>
+                <div v-if="notification.type === 'role'">
+                    <strong>\{{notification.source.nickname}}</strong> 修改了你的权限为“\{{notification.value}}”
+                </div>
+                <div v-if="notification.type === 'accept'">
+                    <a href="#"><strong>\{{notification.source.nickname}}</strong> 采纳了你在《\{{notification.object.title}}》上的回答。</a>
                 </div>
             </td>
             <td>
