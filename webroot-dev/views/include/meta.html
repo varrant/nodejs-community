@@ -11,11 +11,11 @@
 <meta name="keywords" content="关键词1,关键词2">
 <meta name="description" content="描述语句">
 <script>window['-csrf-']='{{$csrf}}';</script>
-<script>window['-engineer-']={
-    id: '{{$developer.id ?$developerr.id : ""}}',
-    nickname: '{{$developerer.nickname || ""}}',
-    email: '{{$developerneer.email || ""}}',
-    avatar: '{{$developergineer.avatar ||  "/static/img/avatar.png"}}',
+<script>window['-developer-']={
+    id: '{{$developer.id ?$developer.id : ""}}',
+    nickname: '{{$developer.nickname || ""}}',
+    email: '{{$developer.email || ""}}',
+    avatar: '{{$developer.avatar ||  "/static/img/avatar.png"}}',
     score: '{{$developer.score}}',
     githubLoin: '{{$developer.githubLogin || ""}}'
 };</script>

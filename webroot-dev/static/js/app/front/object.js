@@ -25,7 +25,7 @@ define(function (require, exports, module) {
                 object: object.id
             },
             list: {
-                engineer: window['-engineer-'],
+                engineer: window['-developer-'],
                 author: window['-author-'],
                 object: object
             },
@@ -35,7 +35,7 @@ define(function (require, exports, module) {
             },
             respond: {
                 id: object.id,
-                avatar: window['-engineer-'].avatar
+                avatar: window['-developer-'].avatar
             },
             acceptByResponse: object.acceptByResponse
         });
