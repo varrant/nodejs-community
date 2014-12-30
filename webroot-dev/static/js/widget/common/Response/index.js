@@ -206,7 +206,7 @@ define(function (require, exports, module) {
                             respond.reset();
                             the._appendItem($listParent, data);
 
-                            if($replyNumberBtn){
+                            if ($replyNumberBtn) {
                                 the._increaseHTML($replyNumberBtn, 1);
                             }
                         }
@@ -702,7 +702,6 @@ define(function (require, exports, module) {
             var options = the._options;
             var $ele = eve.target;
             var id = the._getResponseId($ele);
-            var method = options.acceptByResponse === id ? 'delete' : 'post';
 
             if (the._isAjaxing) {
                 return alert('正忙，请稍后再试');
@@ -710,7 +709,7 @@ define(function (require, exports, module) {
 
             ajax({
                 url: options.url.accept,
-                method: method,
+                method: 'post',
                 data: {
                     response: id,
                     object: options.query.object
@@ -721,25 +720,15 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
-                    // 取消最佳
-                    if (method === 'delete') {
-                        the._acceptItem(options.acceptByResponse, false);
-                        options.acceptByResponse = '';
-                        options.list.object.acceptByResponse = '';
-                        the.emit('accept', false);
-                    }
-                    // 设置最佳
-                    else {
-                        options.acceptByResponse = id;
-                        options.list.object.acceptByResponse = id;
-                        the._acceptItem(id, true);
+                    options.acceptByResponse = id;
+                    options.list.object.acceptByResponse = id;
+                    the._acceptItem(id, true);
 
-                        if (json.data) {
-                            the._acceptItem(json.data, false);
-                        }
-
-                        the.emit('accept', true);
+                    if (json.data) {
+                        the._acceptItem(json.data, false);
                     }
+
+                    the.emit('accept', true);
                 })
                 .on('error', alert)
                 .on('finish', the._ajaxFinish.bind(the));

@@ -33,11 +33,10 @@
                 {{if !item.parent}}
                     {{if developer.id === author.id && object.acceptByResponse === item.id}}
                     <li class="alien-ui-response-accept-li">
-                        <button class="btn btn-success btn-xs alien-ui-response-accept"
-                                title="点击取消为最佳答案"><i
-                                class="i i-check"></i>取消最佳回答</button>
+                        <button class="btn btn-success btn-xs active" readonly><i
+                                class="i i-check"></i>最佳回答</button>
                     </li>
-                    {{else if developer.id === author.id && item.author.id !== developer.id}}
+                    {{else if !object.acceptByResponse}}
                     <li class="alien-ui-response-accept-li">
                         <button class="btn btn-warning btn-xs alien-ui-response-accept"><i
                                 class="i i-check"></i>采纳回答</button>
