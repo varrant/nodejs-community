@@ -40,14 +40,9 @@ define(function (require, exports, module) {
             acceptByResponse: object.acceptByResponse
         });
 
-        res.on('accept', function (boolean) {
-            if (boolean) {
-                attribute.addClass($title, 'has-accepted');
-                attribute.removeClass($title, 'un-accepted');
-            } else {
-                attribute.addClass($title, 'un-accepted');
-                attribute.removeClass($title, 'has-accepted');
-            }
+        res.on('accept', function () {
+            attribute.addClass($title, 'has-accepted');
+            attribute.removeClass($title, 'un-accepted');
         });
 
         res.on('page', function (page) {

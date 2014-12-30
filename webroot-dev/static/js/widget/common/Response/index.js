@@ -725,7 +725,7 @@ define(function (require, exports, module) {
                     options.acceptByResponse = id;
                     options.list.object.acceptByResponse = id;
                     the._acceptItem(id);
-                    the.emit('accept', true);
+                    the.emit('accept');
                 })
                 .on('error', alert)
                 .on('finish', the._ajaxFinish.bind(the));
