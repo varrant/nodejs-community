@@ -15,21 +15,7 @@ define(function (require, exports, module) {
     var methods = {};
 
 
-    require('../../widget/admin/header.js');
-    require('../../widget/admin/sidebar.js');
 
-    var type = hashbang.get('query', 'type') || 'unactive';
-    var list = new List('#list', '#pagination', {
-        url: '/admin/api/notification/',
-        query: {
-            type: type,
-            limit: 2
-        },
-        data: {
-            type: type
-        },
-        methods: methods
-    });
 
     // 选择读状态
     methods.onchange = function () {
@@ -51,6 +37,23 @@ define(function (require, exports, module) {
         item.hasActived = !item.hasActived;
         increse(item.hasActived ? -1 : 1);
     };
+
+
+    require('../../widget/admin/header.js');
+    require('../../widget/admin/sidebar.js');
+
+    var type = hashbang.get('query', 'type') || 'unactive';
+    var list = new List('#list', '#pagination', {
+        url: '/admin/api/notification/',
+        query: {
+            type: type,
+            limit: 2
+        },
+        data: {
+            type: type
+        },
+        methods: methods
+    });
 
 
     /**
