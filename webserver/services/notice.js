@@ -50,7 +50,7 @@ exports.comment = function (sourceDeveloper, objectAuthor, commentInObject, comm
  * @param replyInObject {Object} 所在的 object
  * @param replyByComment {Object} 被回复的评论
  */
-exports.reply = function (sourceDeveloper, commentAuthor, replyInObject, replyByComment) {
+exports.replyComment = function (sourceDeveloper, commentAuthor, replyInObject, replyByComment) {
     // 自己不必通知自己
     if (sourceDeveloper.id.toString() === commentAuthor.id.toString()) {
         return;
@@ -58,7 +58,7 @@ exports.reply = function (sourceDeveloper, commentAuthor, replyInObject, replyBy
 
     // 1. 站内通知
     notification.createOne({
-        type: 'reply',
+        type: 'replyComment',
         source: sourceDeveloper.id,
         target: commentAuthor.id,
         object: replyInObject.id,
@@ -70,6 +70,36 @@ exports.reply = function (sourceDeveloper, commentAuthor, replyInObject, replyBy
     var subject = noti.subject;
     var content = noti.template.render({});
     email.send(commentAuthor, subject, content);
+};
+
+
+/**
+ * 回复通知
+ * @param sourceDeveloper {Object} 评论人
+ * @param targetDeveloper {Object} object 作者
+ * @param replyInObject {Object} 所在的 object
+ * @param replyByComment {Object} 被回复的评论
+ */
+exports.replyObject = function (sourceDeveloper, objectAuthor, replyInObject, replyByComment) {
+    // 自己不必通知自己
+    if (sourceDeveloper.id.toString() === objectAuthor.id.toString()) {
+        return;
+    }
+
+    // 1. 站内通知
+    notification.createOne({
+        type: 'replyObject',
+        source: sourceDeveloper.id,
+        target: objectAuthor.id,
+        object: replyInObject.id,
+        response: replyByComment.id
+    }, log.holdError);
+
+    // 2. 邮件通知
+    var noti = configs.notification.reply;
+    var subject = noti.subject;
+    var content = noti.template.render({});
+    email.send(objectAuthor, subject, content);
 };
 
 

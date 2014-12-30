@@ -311,21 +311,33 @@ function _noticeCommentAuthor(replyAuthor, replyInObject, parentResponse) {
         .task(function (next) {
             developer.findOne({_id: parentResponse.author}, next);
         })
+        // 1. 查找 replyInObject 作者
+        .task(function (next) {
+            object.findOne({_id: replyInObject.author}, next);
+        })
         // 顺序串行
-        .follow(function (err, doc) {
+        .together(function (err, parentResponseAuthor, replyInObjectAuthor) {
             if (err) {
                 return log.holdError(err);
             }
 
-            if (!doc) {
+            if (!parentResponseAuthor) {
                 err = new Error('该评论作者不存在');
                 err.type = 'notFound';
                 err.code = 404;
                 return log.holdError(err);
             }
 
+            if (!replyInObjectAuthor) {
+                err = new Error('该 object 作者不存在');
+                err.type = 'notFound';
+                err.code = 404;
+                return log.holdError(err);
+            }
+
             // 回复通知
-            notice.reply(replyAuthor, doc, replyInObject, parentResponse);
+            notice.replyComment(replyAuthor, parentResponseAuthor, replyInObject, parentResponse);
+            notice.replyObject(replyAuthor, replyInObjectAuthor, replyInObject, parentResponse);
         });
 }
 
