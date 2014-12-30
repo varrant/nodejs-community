@@ -499,6 +499,8 @@ exports.isSafeOauthState = function (state) {
     var num2 = dato.parseInt(arr[1], 1);
     var num3 = dato.parseInt(arr[2], 1);
 
+    console.log(num1, num2, num3);
+
     return num1 + num2 === num3;
 };
 
