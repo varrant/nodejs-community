@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * cookie 的设置
  * @author ydr.me
  * @create 2014-12-15 20:21
  */
