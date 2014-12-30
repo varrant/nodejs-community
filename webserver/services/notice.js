@@ -145,7 +145,7 @@ exports.agreeComment = function (agreeDeveloper, agreeByDeveloper, agreeinObject
 
     // 1. 站内通知
     notification.createOne({
-        type: 'agree',
+        type: 'agreeComment',
         source: agreeDeveloper.id,
         target: agreeByDeveloper.id,
         object: agreeinObject.id,
@@ -175,7 +175,7 @@ exports.agreeReply = function (agreeDeveloper, agreeByDeveloper, agreeinObject, 
 
     // 1. 站内通知
     notification.createOne({
-        type: 'agree',
+        type: 'agreeReply',
         source: agreeDeveloper.id,
         target: agreeByDeveloper.id,
         object: agreeinObject.id,
