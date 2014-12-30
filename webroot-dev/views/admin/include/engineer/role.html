@@ -1,6 +1,6 @@
 <div id="role" class="f-none">
     <div class="alert alert-danger alert-line">
-        <p><i class="i i-exclamation-triangle"></i>对 <strong>\{{engineer.nickname}}</strong> 的权限控制。</p>
+        <p><i class="i i-exclamation-triangle"></i>对 <strong>\{{developer.nickname}}</strong> 的权限控制。</p>
     </div>
     <ul>
         <li v-repeat="kind:kinds">
@@ -14,6 +14,6 @@
     </ul>
 
     <div class="f-text-center">
-        <button class="btn btn-danger btn-lg" v-on="click:onsave($event, engineer._id)">保存权限设置</button>
+        <button class="btn btn-danger btn-lg" v-on="click:onsave($event, developer._id)">保存权限设置</button>
     </div>
 </div>

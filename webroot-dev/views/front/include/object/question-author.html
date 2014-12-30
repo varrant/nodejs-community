@@ -3,10 +3,10 @@
     <div class="card-title"><i class="i i-user"></i>作者</div>
     <div class="card-body f-text-center">
         <div>
-            <a href="/engineer/{{object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:200}}" alt="avatar" width="100" height="100"/></a>
+            <a href="/developer/{{object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:200}}" alt="avatar" width="100" height="100"/></a>
         </div>
         <div>
-            <a href="/engineer/{{object.author.githubLogin}}/"><i class="i i-user"></i>{{object.author.nickname}}</a>
+            <a href="/developer/{{object.author.githubLogin}}/"><i class="i i-user"></i>{{object.author.nickname}}</a>
             <strong>{{object.author.score}}</strong>
             {{if object.author.hasCertificated}}
             <i class="i i-check-circle-o s-success"></i>

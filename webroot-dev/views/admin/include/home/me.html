@@ -1,7 +1,7 @@
 <div class="m-me">
     <div class="f-clearfix">
         <div class="me-avatar f-left">
-            <a href="/admin/engineer/profile/"><img src="{{$developer.email|gravatar:200}}" alt="avatar" width="100" height="100"/></a>
+            <a href="/admin/developer/profile/"><img src="{{$developer.email|gravatar:200}}" alt="avatar" width="100" height="100"/></a>
         </div>
         <ul class="me-profile">
             <li><i class="i i-user"></i><strong>{{$developer.nickname}}</strong>{{$developer.group ? '（' + $developer.group + '）' : ''}}</li>
@@ -14,13 +14,13 @@
 
     <ul class="me-get f-small f-list-left s-muted">
         <li><i class="i i-eye"></i><strong>{{$developer.viewByCount|humanize}}</strong>次访问</li>
-        <li><i class="i i-comment"></i><a href="/engineer/{{$developer.github}}/comment/"><strong>{{$developer.commentCount|humanize}}</strong>次评论</a></li>
-        <li><i class="i i-reply"></i><a href="/engineer/{{$developer.github}}/replied/"><strong>{{$developer.replyByCount|humanize}}</strong>次被回复</a></li>
-        <li><i class="i i-thumbs-up"></i><a href="/engineer/{{$developer.github}}/agreed/"><strong>{{$developer.agreeByCount|humanize}}</strong>次被赞同</a></li>
-        <li><i class="i i-check-square-o"></i><a href="/engineer/{{$developer.github}}/accepted/"><strong>{{$developer.acceptByCount|humanize}}</strong>次被采纳</a></li>
+        <li><i class="i i-comment"></i><a href="/developer/{{$developer.github}}/comment/"><strong>{{$developer.commentCount|humanize}}</strong>次评论</a></li>
+        <li><i class="i i-reply"></i><a href="/developer/{{$developer.github}}/replied/"><strong>{{$developer.replyByCount|humanize}}</strong>次被回复</a></li>
+        <li><i class="i i-thumbs-up"></i><a href="/developer/{{$developer.github}}/agreed/"><strong>{{$developer.agreeByCount|humanize}}</strong>次被赞同</a></li>
+        <li><i class="i i-check-square-o"></i><a href="/developer/{{$developer.github}}/accepted/"><strong>{{$developer.acceptByCount|humanize}}</strong>次被采纳</a></li>
         <li><i class="i i-star"></i>
-            <a href="/engineer/{{$developer.github}}/follow/">已关注<strong>{{$developer.followCount|humanize}}</strong></a>/
-            <a href="/engineer/{{$developer.github}}/followed/">被关注<strong>{{$developer.followByCount|humanize}}</strong></a>
+            <a href="/developer/{{$developer.github}}/follow/">已关注<strong>{{$developer.followCount|humanize}}</strong></a>/
+            <a href="/developer/{{$developer.github}}/followed/">被关注<strong>{{$developer.followByCount|humanize}}</strong></a>
         </li>
     </ul>
 

@@ -11,10 +11,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-repeat="engineer:list" v-class="danger:engineer.isBlock">
+        <tr v-repeat="developer:list" v-class="danger:developer.isBlock">
             <td>\{{(req.page - 1) * req.limit + $index + 1}}</td>
-            <td>\{{engineer.email}}</td>
-            <td><a href="/admin/engineer/?id=\{{engineer._id}}">\{{engineer.nickname}}</a></td>
+            <td>\{{developer.email}}</td>
+            <td><a href="/admin/engineer/?id=\{{engineer._id}}">\{{developer.nickname}}</a></td>
         </tr>
         </tbody>
         <tfoot>
