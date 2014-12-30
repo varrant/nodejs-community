@@ -17,12 +17,16 @@
 <div class="g-main">
     <div class="m-main">
         <h1 class="main-title">
+            {{if id}}
             <ul class="main-tab f-list-left" id="object-tab">
                 <li class="active"><a href="#tab-form"><i class="i i-cube"></i>{{title}}</a></li>
                 <li><a href="#tab-response"><i class="i i-comments"></i><span
                         class="j-comment-by-count">0</span>评论，<span
                         class="j-reply-by-count">0</span>回复</a></li>
             </ul>
+            {{else}}
+            <i class="i i-cube"></i>{{title}}
+            {{/if}}
         </h1>
         <div class="main-body">
             <div id="tab-form">

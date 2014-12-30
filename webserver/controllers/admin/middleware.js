@@ -23,7 +23,7 @@ module.exports = function (app) {
             err = new Error('您尚未登录，或登录信息已过期。');
             err.redirect = '/developer/oauth/authorize/';
             err.code = 401;
-            req.session.$redirect = req.url;
+            req.session.$redirect = req.originalUrl;
             return next(err);
         }
 
