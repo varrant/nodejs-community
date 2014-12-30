@@ -135,7 +135,7 @@ exports.createOne = function (author, data, meta, callback) {
 
                 // 分
                 // 评论
-                if(!doc.parent){
+                if (!doc.parent) {
                     if (author.id.toString() !== responseObject.author.toString()) {
                         // 增加主动用户评论积分
                         developer.increaseScore({_id: author.id}, scoreMap.comment, log.holdError);
@@ -144,7 +144,7 @@ exports.createOne = function (author, data, meta, callback) {
                     }
                 }
                 // 回复
-                else{
+                else {
                     if (author.id.toString() !== responseObject.author.toString() &&
                         author.id.toString() !== parentResponse.author.toString()) {
                         // 增加主动用户回复积分
@@ -157,16 +157,15 @@ exports.createOne = function (author, data, meta, callback) {
                 }
 
 
-
                 // 知
                 // 评论
-                if(!doc.parent){
+                if (!doc.parent) {
                     // 通知 object 作者
                     _noticeObjectAuthor(author, responseObject, doc);
                 }
                 // 回复
-                else{
-                    // 通知被 reply 作者
+                else {
+                    // 通知 comment 作者
                     _noticeCommentAuthor(author, responseObject, parentResponse);
                 }
 

@@ -91,7 +91,7 @@ exports.createOne = function (author, data, callback) {
         // 3. 检查 column 是否存在，以及发布权限
         .task(function (next, objectInSection, objectOnCategory) {
             if (!data.column) {
-                return next();
+                return next(null, objectInSection, objectOnCategory);
             }
 
             column.findOne({_id: data.column}, function (err, doc) {
@@ -449,7 +449,7 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
                 return next(err);
             }
 
-            if(acceptObject.acceptByResponse){
+            if (acceptObject.acceptByResponse) {
                 var err = new Error('无法重复采纳最佳答案');
                 return next(err);
             }
@@ -495,8 +495,8 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
         .task(function (next, acceptObject, acceptByResponse) {
             object.findOneAndUpdate(conditions, {
                 acceptByAuthor: acceptByResponse.author.toString(),
-                acceptByResponse:acceptByResponse.id.toString()
-            }, function(err, newDoc, oldDoc){
+                acceptByResponse: acceptByResponse.id.toString()
+            }, function (err, newDoc, oldDoc) {
                 next(err, newDoc, oldDoc, acceptByResponse);
             });
         })
