@@ -20,7 +20,7 @@ var email = require('./email.js');
  * @param targetDeveloper {Object} object 作者
  * @param object {commentByObject} 被评论的 object
  */
-exports.comment = function (sourceDeveloper, objectAuthor, commentByObject) {
+exports.comment = function (sourceDeveloper, objectAuthor, commentInObject, comment) {
     // 自己不必通知自己
     if (sourceDeveloper.id.toString() === objectAuthor.id.toString()) {
         return;
@@ -31,7 +31,8 @@ exports.comment = function (sourceDeveloper, objectAuthor, commentByObject) {
         type: 'comment',
         source: sourceDeveloper.id,
         target: objectAuthor.id,
-        object: commentByObject.id
+        object: commentInObject.id,
+        response: comment.id
     }, log.holdError);
 
     // 2. 邮件通知
@@ -46,9 +47,10 @@ exports.comment = function (sourceDeveloper, objectAuthor, commentByObject) {
  * 回复通知
  * @param sourceDeveloper {Object} 评论人
  * @param targetDeveloper {Object} object 作者
- * @param object {replyByComment} 被 reply 的 comment
+ * @param replyInObject {Object} 所在的 object
+ * @param replyByComment {Object} 被回复的评论
  */
-exports.reply = function (sourceDeveloper, commentAuthor, replyByComment) {
+exports.reply = function (sourceDeveloper, commentAuthor, replyInObject, replyByComment) {
     // 自己不必通知自己
     if (sourceDeveloper.id.toString() === commentAuthor.id.toString()) {
         return;
@@ -59,6 +61,7 @@ exports.reply = function (sourceDeveloper, commentAuthor, replyByComment) {
         type: 'reply',
         source: sourceDeveloper.id,
         target: commentAuthor.id,
+        object: replyInObject.id,
         response: replyByComment.id
     }, log.holdError);
 
@@ -120,7 +123,7 @@ exports.accept = function (askDeveloper, answerDeveloper, questionObject, questi
     }, log.holdError);
 
     // 2. 邮件通知
-    var noti = configs.notification.acceptBy;
+    var noti = configs.notification.accept;
     var subject = noti.subject;
     var content = noti.template.render({});
     email.send(answerDeveloper, subject, content);
@@ -128,13 +131,13 @@ exports.accept = function (askDeveloper, answerDeveloper, questionObject, questi
 
 
 /**
- * 回答被赞同通知
+ * 评论被赞同通知
  * @param askDeveloper {Object} 问者
  * @param answerDeveloper {Object} 答者
  * @param questionObject {Object} 题
  * @param questionResponse {Object} 答
  */
-exports.agree = function (agreeDeveloper, agreeByDeveloper, questionObject, questionResponse) {
+exports.agreeComment = function (agreeDeveloper, agreeByDeveloper, agreeinObject, agreeByResponse) {
     // 自己不必通知自己
     if (agreeDeveloper.id.toString() === agreeByDeveloper.id.toString()) {
         return;
@@ -143,15 +146,45 @@ exports.agree = function (agreeDeveloper, agreeByDeveloper, questionObject, ques
     // 1. 站内通知
     notification.createOne({
         type: 'agree',
-        source: askDeveloper.id,
-        target: answerDeveloper.id,
-        object: questionObject.id,
-        response: questionResponse.id
+        source: agreeDeveloper.id,
+        target: agreeByDeveloper.id,
+        object: agreeinObject.id,
+        response: agreeByResponse.id
     }, log.holdError);
 
     // 2. 邮件通知
-    var noti = configs.notification.acceptBy;
+    var noti = configs.notification.agreeComment;
     var subject = noti.subject;
     var content = noti.template.render({});
-    email.send(answerDeveloper, subject, content);
+    email.send(agreeByDeveloper, subject, content);
+};
+
+
+/**
+ * 回复被赞同通知
+ * @param askDeveloper {Object} 问者
+ * @param answerDeveloper {Object} 答者
+ * @param questionObject {Object} 题
+ * @param questionResponse {Object} 答
+ */
+exports.agreeReply = function (agreeDeveloper, agreeByDeveloper, agreeinObject, agreeByResponse) {
+    // 自己不必通知自己
+    if (agreeDeveloper.id.toString() === agreeByDeveloper.id.toString()) {
+        return;
+    }
+
+    // 1. 站内通知
+    notification.createOne({
+        type: 'agree',
+        source: agreeDeveloper.id,
+        target: agreeByDeveloper.id,
+        object: agreeinObject.id,
+        response: agreeByResponse.id
+    }, log.holdError);
+
+    // 2. 邮件通知
+    var noti = configs.notification.agreeReply;
+    var subject = noti.subject;
+    var content = noti.template.render({});
+    email.send(agreeByDeveloper, subject, content);
 };

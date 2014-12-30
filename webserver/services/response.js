@@ -132,7 +132,7 @@ exports.createOne = function (author, data, meta, callback) {
                 }
 
                 // 通知 object 作者
-                _noticeObjectAuthor(author, responseObject);
+                _noticeObjectAuthor(author, responseObject, doc);
 
                 // 推入 object 的 contributors
                 object.pushContributor({_id: doc.object}, author, log.holdError);
@@ -146,7 +146,7 @@ exports.createOne = function (author, data, meta, callback) {
                     developer.increaseReplyByCount({_id: parentResponse.author}, 1, log.holdError);
 
                     // 通知被 reply 作者
-                    _noticeCommentAuthor(author, parentResponse);
+                    _noticeCommentAuthor(author, responseObject, parentResponse);
 
                     // 为他人回复才加分
                     if (author.id.toString() !== responseObject.author.toString() &&
@@ -244,9 +244,10 @@ exports.agree = function (operator, conditions, callback) {
  * 通知 object 作者
  * @param repondAuthor {Object} 评论人
  * @param responseObject {Object} 被评论 object
+ * @param responseComment {Object} 评论
  * @private
  */
-function _noticeObjectAuthor(repondAuthor, responseObject) {
+function _noticeObjectAuthor(repondAuthor, responseObject, responseComment) {
     howdo
         // 1. 查找 object 作者
         .task(function (next) {
@@ -266,7 +267,7 @@ function _noticeObjectAuthor(repondAuthor, responseObject) {
             }
 
             // 评论通知
-            notice.comment(repondAuthor, doc, responseObject);
+            notice.comment(repondAuthor, doc, responseObject, responseComment);
         });
 }
 
@@ -274,10 +275,11 @@ function _noticeObjectAuthor(repondAuthor, responseObject) {
 /**
  * 通知 comment 作者
  * @param replyAuthor {Object} 回复人
+ * @param replyInObject {Object} 回复的 object
  * @param parentResponse {Object} 被回复 response
  * @private
  */
-function _noticeCommentAuthor(replyAuthor, parentResponse) {
+function _noticeCommentAuthor(replyAuthor, replyInObject, parentResponse) {
     howdo
         // 1. 查找 parentResponse 作者
         .task(function (next) {
@@ -297,7 +299,7 @@ function _noticeCommentAuthor(replyAuthor, parentResponse) {
             }
 
             // 回复通知
-            notice.reply(replyAuthor, doc, parentResponse);
+            notice.reply(replyAuthor, doc, replyInObject, parentResponse);
         });
 }
 
