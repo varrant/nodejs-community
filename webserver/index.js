@@ -29,8 +29,16 @@ howdo
         }
 
         app.locals.$system = {
+            // 服务器开始时间
             startTime: Date.now(),
-            hash: random.string(20, 'Aa')
+            // 服务器随机 hash
+            hash: random.string(20, 'Aa'),
+            // 服务器保存被修改过的 开发者 信息，
+            // 开发者访问的时候更新上去，然后销毁
+            // {
+            //     "id": developerObject
+            // }
+            developer: {}
         };
 
         console.log('');
