@@ -80,6 +80,7 @@ module.exports = function (app) {
     exports.getList = function (section) {
         return function (req, res, next) {
             var data = {
+                section: section,
                 title: section.name,
                 categories: app.locals.$category
             };
