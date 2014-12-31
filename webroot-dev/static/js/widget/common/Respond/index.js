@@ -21,8 +21,11 @@ define(function (require, exports, module) {
     var defaults = {
         id: '',
         avatar: '/static/img/avatar.png',
-        link: '#',
-        text: 'markdown 编辑器使用帮助',
+        githubLogin: '#',
+        markdownHelp: {
+            link: '#',
+            text: '#'
+        },
         placeholder: '说点什么吧',
         submit: '提交',
         autoFocus: false,
@@ -38,7 +41,7 @@ define(function (require, exports, module) {
             var the = this;
 
             the._$parent = selector.query($parent)[0];
-            the._options = dato.extend({}, defaults, options);
+            the._options = dato.extend(true, {}, defaults, options);
             the._init();
         },
 

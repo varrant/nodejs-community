@@ -1,12 +1,12 @@
 <div class="alien-ui-respond f-clearfix">
     <div class="alien-ui-respond-avatar f-left">
-        <a href="#"><img src="{{avatar}}" alt="avatar" width="50" height="50"/></a>
+        <a href="/developer/{{=githubLogin}}/"><img src="{{avatar}}" alt="avatar" width="50" height="50"/></a>
     </div>
     <div class="alien-ui-respond-body">
         <textarea class="alien-ui-respond-input ipt j-flag" rows="3" placeholder="{{placeholder}}"></textarea>
 
         <div class="alien-ui-respond-action f-text-right">
-            <a href="{{link}}" class="f-small"><i class="i i-question"></i>{{text}}</a>
+            <a href="{{=markdownHelp.link}}" class="f-small"><i class="i i-question"></i>{{markdownHelp.text}}</a>
             <i class="f-space"></i>
             <button class="btn btn-primary alien-ui-respond-submit j-flag"><i class="i i-comment"></i>{{submit}}</button>
         </div>

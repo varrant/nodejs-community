@@ -53,9 +53,12 @@ define(function (require, exports, module) {
             page: 1
         },
         respond: {
+            githubLogin: '#',
             placeholder: '期待你的回答',
-            link: '#',
-            text: 'markdown 编辑器使用帮助',
+            markdownHelp: {
+                link: '/help/markdown.html',
+                text: 'markdown 编辑器使用帮助'
+            },
             avatar: '/static/img/avatar.png',
             uploadCallback: function (list, onprogress, ondone) {
                 var fd = new FormData();

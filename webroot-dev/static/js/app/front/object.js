@@ -34,6 +34,7 @@ define(function (require, exports, module) {
                 reply: object.replyByCount
             },
             respond: {
+                githubLogin: window['-developer-'].githubLogin,
                 id: object.id,
                 avatar: window['-developer-'].avatar
             },
