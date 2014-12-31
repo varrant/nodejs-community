@@ -11,6 +11,7 @@ var developer = require('../../services/').developer;
 var setting = require('../../services/').setting;
 var howdo = require('howdo');
 var configs = require('../../../configs/');
+var log = require('ydr-log');
 
 
 module.exports = function (app) {
@@ -132,6 +133,7 @@ module.exports = function (app) {
                 sectionUriIdMap: sectionUriIdMap
             };
 
+            developer.increaseViewByCount({_id: doc.id}, 1, log.holdError);
             res.render('front/developer.html', data);
         });
     };

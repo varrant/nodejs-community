@@ -87,22 +87,22 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 1
     },
-    // 评论次数
+    // 评论 object 次数
     commentCount: {
         type: Number,
         default: 0
     },
-    // 被评论次数
+    // object 被评论次数
     commentByCount: {
         type: Number,
         default: 0
     },
-    // 回复他人次数
+    // 回复 comment 次数
     replyCount: {
         type: Number,
         default: 0
     },
-    // 被回复次数
+    // comment 被回复次数
     replyByCount: {
         type: Number,
         default: 0
