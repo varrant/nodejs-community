@@ -9,11 +9,11 @@
 
 module.exports = {
     // 可选环境: dev/pro
-    env: 'dev',
+    env: process.env === 'AY140601002820618982Z' ? 'pro' : 'dev',
     // 端口
     port: 18084,
     // 主机
     host: 'http://sb.com:18084',
     // mongodb
-    mongodb: 'mongodb://localhost:27017/f2ec-org'
+    mongodb: 'mongodb://localhost:27017/community'
 };
