@@ -38,10 +38,8 @@
   },
   // 邮件服务器
   "smtp": {
-    "auth": {
-      "user": "smtp_user",
-      "pass": "smtp_password"
-    },
+    "user": "smtp_user",
+    "pass": "smtp_password",
     "service": "smtp_host",
     "port": "smtp_port",
     "secure": true

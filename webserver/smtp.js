@@ -6,14 +6,20 @@
 
 'use strict';
 
-var emailjs = require('emailjs');
+var nodemailer = require('nodemailer');
 var email = require('./services/email.js');
 var log = require('ydr-log');
 var configs = require('../configs/');
 
 module.exports = function (next, app) {
     var options = app.locals.$setting.smtp;
-    var smtp = emailjs.server.connect(options);
+
+    options.auth = {
+        user: options.user,
+        pass: options.pass
+    };
+
+    var smtp = nodemailer.createTransport(options);
 
     email.init(smtp, app.locals.$founder);
 

@@ -44,13 +44,10 @@ exports.send = function (receiver, subject, content) {
         from: configs.smtp.from,
         to: receiver.nickname + ' <' + receiver.email + '>',
         subject: subject,
-        attachment: [{
-            data: content,
-            alternative: true
-        }]
+        html: content
     };
 
     if (smtp && typeis(smtp.send) === 'function') {
-        smtp.send(data, log.holdError);
+        smtp.sendMail(data, log.holdError);
     }
 };
