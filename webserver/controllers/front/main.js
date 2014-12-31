@@ -146,6 +146,7 @@ module.exports = function (app) {
             var data = {};
 
             object.findOne({
+                section: section.id,
                 uri: uri,
                 isDisplay: true
             }, {populate: ['author', 'category']}, function (err, doc) {

@@ -1,0 +1,34 @@
+<!--内容-->
+<div class="m-card">
+    <h2 class="card-title {{if object.acceptByResponse}}has-accepted{{else}}un-accepted{{/if}}" id="object-title">
+        <i class="i i-cube"></i>
+        {{object.title}}
+        <div class="card-endtitle">
+            <span class="f-small s-success card-has-accepted"><i class="i i-check i-striped"></i>已解决</span>
+            <span class="f-small s-danger card-un-accepted"><i class="i i-exclamation-circle i-striped"></i>待解决</span>
+        </div>
+    </h2>
+
+    <div class="card-body m-postmain">
+        <div class="postmain-content">{{=object.contentHTML}}</div>
+        <ul class="postmain-meta s-light">
+            <li>
+                <i class="i i-folder"></i>
+                <a href="/question/in/{{object.category.uri}}/" class="label label-default">{{object.category.name}}</a>
+            </li>
+            {{if object.labels.length }}
+            <li>
+                <i class="i i-tags"></i>
+                {{list object.labels as label}}
+                <a class="label label-light" href="/question/on/{{label}}/">{{label}}</a>
+                {{/list}}
+            </li>
+            {{/if}}
+            <li>
+                <i class="i i-clock-o"></i>
+                <span class="f-small">{{object.updateAt|datefrom}} &times; {{object.updateList.length}}</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--/内容-->
