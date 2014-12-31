@@ -13,7 +13,7 @@ var configs = require('../../configs/');
 var developer = require('../services/').developer;
 var cookie = require('../utils/').cookie;
 var REG_ENDXIE = /(\/|\.[^\.\/]+)$/;
-var REG_ACCEPT = /^application\/json;\s*charset=utf-8$/i;
+var REG_ACCEPT = /^application\/json;\s*charset=utf-8/i;
 
 module.exports = function (app) {
     var exports = {};

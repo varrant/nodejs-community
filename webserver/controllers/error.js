@@ -8,7 +8,7 @@
 
 var dato = require('ydr-util').dato;
 var httpStatus = require('ydr-util').httpStatus;
-var REG_ACCEPT_JSON = /^application\/json;\s*charset=utf-8$/i;
+var REG_ACCEPT_JSON = /^application\/json;\s*charset=utf-8/i;
 
 
 module.exports = function (app) {
