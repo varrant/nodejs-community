@@ -504,15 +504,17 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
         .follow(function (err, newDoc, oldDoc, acceptByResponse) {
             callback(err, newDoc, oldDoc);
 
-            // 当前被采纳的人加分
-            developer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
-
+            // 数
             // 当前采纳的人的采纳次数+1
-            developer.increaseAcceptByCount({_id: operator.id}, 1, log.holdError);
-
+            developer.increaseAcceptCount({_id: operator.id}, 1, log.holdError);
             // 当前被采纳的人的被采纳次数+1
             developer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
 
+            // 分
+            // 当前被采纳的人加分
+            developer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
+
+            // 知
             // 通知被采纳的人
             notice.accept(operator, {id: newDoc.acceptByAuthor}, newDoc, acceptByResponse);
         });
