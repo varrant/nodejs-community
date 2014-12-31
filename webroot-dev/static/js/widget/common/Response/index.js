@@ -201,9 +201,13 @@ define(function (require, exports, module) {
             var respond;
 
             if (options.respond) {
-                var data = dato.extend({}, options.respond, options.language);
+                var respondOptions = dato.extend({}, options.respond, options.language);
 
-                respond = new Respond($respondParent, data);
+                if ($replyNumberBtn) {
+                    respondOptions.icon = 'reply';
+                }
+
+                respond = new Respond($respondParent, respondOptions);
                 respond.on('submit', function (content) {
                     respond.disable();
 
