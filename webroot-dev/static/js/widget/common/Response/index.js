@@ -769,7 +769,7 @@ define(function (require, exports, module) {
 
             attribute.removeClass($btn, 'btn-warning');
             attribute.addClass($btn, 'btn-success');
-            $btn.innerHTML = '<i class="i i-check"></i>最佳回答';
+            $btn.innerHTML = '<i class="i i-check"></i>已被采纳';
 
             var $siblings = selector.siblings($item);
 
