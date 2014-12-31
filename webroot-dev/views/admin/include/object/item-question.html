@@ -6,7 +6,7 @@
             <input v-if="!object._id" class="ipt" type="text" name="title" v-model="object.title"
                    value="\{{object.title}}" id="title"/>
 
-            <p class="form-desc">智问的标题，5-100字符以内。</p>
+            <p class="form-desc">智问的标题，5-100字符以内。仅支持：中文、英文、数字、短横线、下划线、逗号。</p>
         </div>
     </li>
 
@@ -17,7 +17,7 @@
             <input v-if="!object._id" class="ipt" type="text" name="uri" v-model="object.uri" value="\{{object.uri}}"
                    id="uri"/>
 
-            <p class="form-desc">智问的 uri 展示，5-200 字符长度以内。</p>
+            <p class="form-desc">智问的 uri 展示，5-200 字符长度以内。仅支持：英文、数字、下划线、短横线。</p>
         </div>
     </li>
 
