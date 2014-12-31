@@ -118,7 +118,7 @@ exports.createOne = function (author, data, meta, callback) {
                     // 作者的评论数量
                     developer.increaseCommentCount({_id: author.id}, 1, log.holdError);
 
-                    // 作者的评论数量
+                    // object 作者的被评论数量
                     developer.increaseCommentByCount({_id: responseObject.author}, 1, log.holdError);
 
                     // object 的被评论数量

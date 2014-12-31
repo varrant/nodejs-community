@@ -12,6 +12,7 @@ var setting = require('../../services/').setting;
 var howdo = require('howdo');
 var configs = require('../../../configs/');
 var log = require('ydr-log');
+var dato = require('ydr-util').dato;
 
 
 module.exports = function (app) {
@@ -110,11 +111,6 @@ module.exports = function (app) {
      */
     exports.get = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var sectionUriIdMap = {};
-
-        app.locals.$section.forEach(function (section) {
-            sectionUriIdMap[section.uri] = section.id;
-        });
 
         developer.findOne({
             githubLogin: githubLogin
@@ -127,10 +123,21 @@ module.exports = function (app) {
                 return next();
             }
 
+            var sectionStatistics = {};
+
+            doc.sectionStatistics = doc.sectionStatistics || {};
+            app.locals.$section.forEach(function (section) {
+                var uri = section.uri;
+                var id = section.id;
+                var count = doc.sectionStatistics[id] || 0;
+
+                sectionStatistics[uri] = count;
+            });
+
             var data = {
                 developer: doc,
                 title: doc.nickname,
-                sectionUriIdMap: sectionUriIdMap
+                sectionStatistics: sectionStatistics
             };
 
             developer.increaseViewByCount({_id: doc.id}, 1, log.holdError);
