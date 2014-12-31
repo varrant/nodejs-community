@@ -69,6 +69,10 @@
     margin-right: 10px;
 }
 
+.alien-ui-response-content{
+    white-space: pre-wrap;
+}
+
 .alien-ui-response-content img{
     max-width: 50%;
 }
