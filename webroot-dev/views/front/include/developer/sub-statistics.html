@@ -5,10 +5,10 @@
         <ul class="m-simplelist s-muted">
             <li><i class="i i-clock-o"></i>{{developer.registerAt|datefrom}} 时加入</li>
             <li><i class="i i-eye"></i>被访问 {{developer.viewByCount|humanize}} 次</li>
-            <li><i class="i i-comment"></i>被评论 {{developer.commentByCount|humanize}} 次</li>
-            <li><i class="i i-reply"></i>被回复 {{developer.replyByCount|humanize}} 次</li>
-            <li><i class="i i-thumbs-up"></i>被赞同 {{developer.agreeByCount|humanize}} 次</li>
-            <li><i class="i i-check-square"></i>被采纳 {{developer.acceptByCount|humanize}} 次</li>
+            <li><i class="i i-comment"></i>评论 {{developer.commentCount|humanize}} 次</li>
+            <li><i class="i i-reply"></i>回复 {{developer.replyCount|humanize}} 次</li>
+            <li><i class="i i-thumbs-up"></i>赞同 {{developer.agreeCount|humanize}} 次</li>
+            <li><i class="i i-check-square"></i>采纳 {{developer.acceptCount|humanize}} 次</li>
             <li><i class="i i-cube"></i>{{sectionStatistics.question}} 次智问</li>
             <!--<li><i class="i i-bookmark"></i>31,091,331 个关注</li>-->
             {{if $developer.id !== developer.id}}
