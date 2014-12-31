@@ -27,13 +27,22 @@
         </div>
     </li>
 
+    <!--<li class="form-striped">-->
+        <!--<div class="form-key">关注/被关注</div>-->
+        <!--<div class="form-val">-->
+            <!--<div class="form-opt">-->
+                <!--<a href="/developer/{{me.github}}/follow/">已关注{{me.followCount}}</a>-->
+                <!--/-->
+                <!--<a href="/developer/{{me.github}}/follow-by/">被关注{{me.followByCount}}</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</li>-->
+
     <li class="form-striped">
-        <div class="form-key">关注/被关注</div>
+        <div class="form-key">采纳他人</div>
         <div class="form-val">
             <div class="form-opt">
-                <a href="/developer/{{me.github}}/follow/">已关注{{me.followCount}}</a>
-                /
-                <a href="/developer/{{me.github}}/follow-by/">被关注{{me.followByCount}}</a>
+                {{me.acceptCount}}次
             </div>
         </div>
     </li>
@@ -42,16 +51,52 @@
         <div class="form-key">被采纳</div>
         <div class="form-val">
             <div class="form-opt">
-                <a href="/developer/{{me.github}}/accept-by/">{{me.acceptByCount}}次</a>
+                {{me.acceptByCount}}次
             </div>
         </div>
     </li>
 
     <li class="form-striped">
-        <div class="form-key">被赞同次数</div>
+        <div class="form-key">赞同他人</div>
         <div class="form-val">
             <div class="form-opt">
-                <a href="/developer/{{me.github}}/agree-by/">{{me.agreeByCount}}次</a>
+                {{me.agreeCount}}次
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">被赞同</div>
+        <div class="form-val">
+            <div class="form-opt">
+                {{me.agreeByCount}}次
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">评论他人</div>
+        <div class="form-val">
+            <div class="form-opt">
+                {{me.commentCount}}次
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">被评论</div>
+        <div class="form-val">
+            <div class="form-opt">
+                {{me.commentByCount}}次
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">回复他人</div>
+        <div class="form-val">
+            <div class="form-opt">
+                {{me.replyCount}}次
             </div>
         </div>
     </li>
@@ -60,16 +105,7 @@
         <div class="form-key">被回复</div>
         <div class="form-val">
             <div class="form-opt">
-                <a href="/developer/{{me.github}}/reply-by/">{{me.replyByCount}}次</a>
-            </div>
-        </div>
-    </li>
-
-    <li class="form-striped">
-        <div class="form-key">评论</div>
-        <div class="form-val">
-            <div class="form-opt">
-                <a href="/developer/{{me.github}}/comment-count/">{{me.commentCount}}次</a>
+                {{me.replyByCount}}次
             </div>
         </div>
     </li>
