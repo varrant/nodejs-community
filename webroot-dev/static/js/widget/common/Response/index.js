@@ -59,6 +59,7 @@ define(function (require, exports, module) {
             avatar: '/static/img/avatar.png',
             uploadCallback: function (list, onprogress, ondone) {
                 var fd = new FormData();
+                var the = this;
 
                 // key, val, name
                 fd.append('img', list[0].file, 'img.png');
@@ -73,7 +74,8 @@ define(function (require, exports, module) {
                     })
                     .on('success', function (json) {
                         if (json.code !== 200) {
-                            return ondone(new Error(json.message));
+                            the.uploadDestroy();
+                            return alert(json);
                         }
 
                         //cacheControl: "max-age=315360000"
@@ -88,7 +90,10 @@ define(function (require, exports, module) {
                             url: data.surl
                         }]);
                     })
-                    .on('error', ondone);
+                    .on('error', function (err) {
+                        the.uploadDestroy();
+                        alert(err);
+                    });
             }
         },
         sync: {
