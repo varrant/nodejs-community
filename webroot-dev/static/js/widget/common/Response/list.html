@@ -37,7 +37,7 @@
                                 class="i i-check"></i>已被采纳</button>
                     </li>
                     {{/if}}
-                    {{if developer.id === author.id && !object.acceptByResponse}}
+                    {{if developer.id === author.id && author.id !== item.author && !object.acceptByResponse}}
                     <li class="alien-ui-response-accept-li">
                         <button class="btn btn-warning btn-xs alien-ui-response-accept"><i
                                 class="i i-check"></i>采纳回答</button>
