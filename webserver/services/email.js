@@ -47,7 +47,7 @@ exports.send = function (receiver, subject, content) {
         html: content
     };
 
-    if (smtp && typeis(smtp.send) === 'function') {
+    if (smtp && typeis(smtp.sendMail) === 'function') {
         smtp.sendMail(data, log.holdError);
     }
 };
