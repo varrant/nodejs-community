@@ -29,7 +29,7 @@ mongoose(function (err) {
     var userData = json.owner;
 
     dato.each(json, function (key, val) {
-        if (key !== 'owner') {
+        if (key !== 'founder') {
             settings.push({
                 key: key,
                 val: val
