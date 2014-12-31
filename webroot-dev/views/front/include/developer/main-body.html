@@ -29,13 +29,13 @@
 
             <div class="usercard-bio s-muted">{{developer.meta.bio}}</div>
 
-            <ul class="usercard-statistics f-list-left s-light f-small">
-                <li><i class="i i-circle i-striped"></i>{{developer.score|humanize}} 分</li>
-                <!--<li><i class="i i-star i-striped"></i>{{developer.followByCount|humanize}} 个关注</li>-->
-                <li><i class="i i-check-square-o i-striped"></i>{{developer.acceptByCount|humanize}} 次采纳</li>
-                <li><i class="i i-thumbs-up i-striped"></i>{{developer.agreeByCount|humanize}} 次赞同</li>
-                <li><i class="i i-comment i-striped"></i>{{developer.commentCount|humanize}} 次评论</li>
-                <li><i class="i i-reply i-striped"></i>{{developer.replyCount|humanize}} 次回复</li>
+            <ul class="usercard-statistics f-list-left s-muted f-small">
+                <li><i class="i i-circle"></i>{{developer.score|humanize}} 分</li>
+                <!--<li><i class="i i-star"></i>{{developer.followByCount|humanize}} 个关注</li>-->
+                <li><i class="i i-check-square"></i>采纳 {{developer.acceptByCount|humanize}} 次</li>
+                <li><i class="i i-thumbs-up"></i>赞同 {{developer.agreeByCount|humanize}} 次</li>
+                <li><i class="i i-comment"></i>评论 {{developer.commentCount|humanize}} 次</li>
+                <li><i class="i i-reply"></i>回复 {{developer.replyCount|humanize}} 次</li>
             </ul>
         </div>
     </div>

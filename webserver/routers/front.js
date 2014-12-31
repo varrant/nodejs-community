@@ -91,5 +91,5 @@ module.exports = function (app, ctrlFront) {
 
 
     // developer
-    app.get('/developer/:developer/', ctrlFront.developer.getEngineer);
+    app.get('/developer/:githubLogin/', ctrlFront.developer.get);
 };

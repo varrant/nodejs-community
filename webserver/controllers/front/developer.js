@@ -102,13 +102,13 @@ module.exports = function (app) {
 
 
     /**
-     * 工程师主页
+     * 开发者主页
      * @param req
      * @param res
      * @param next
      */
-    exports.getEngineer = function (req, res, next) {
-        var githubLogin = req.params.developer;
+    exports.get = function (req, res, next) {
+        var githubLogin = req.params.githubLogin;
         var sectionUriIdMap = {};
 
         app.locals.$section.forEach(function (section) {
