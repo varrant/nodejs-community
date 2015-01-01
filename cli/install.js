@@ -26,7 +26,7 @@ mongoose(function (err) {
     }
 
     var settings = [];
-    var userData = json.owner;
+    var userData = json.founder;
 
     dato.each(json, function (key, val) {
         if (key !== 'founder') {
