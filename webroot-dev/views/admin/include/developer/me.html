@@ -1,5 +1,33 @@
 <ul class="m-form" id="form">
     <li class="form-striped">
+        <div class="form-key">排序</div>
+        <div class="form-val">
+            <div class="form-opt">第{{$developer.index+1}}位</div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key">组别</div>
+        <div class="form-val">
+            <div class="form-opt">{{$developer.group || "未分组"}}</div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>账号</div>
+        <div class="form-val">
+            <div class="form-opt">{{me.githubLogin}}</div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>ID</div>
+        <div class="form-val">
+            <div class="form-opt">{{me.githubId}}</div>
+        </div>
+    </li>
+
+    <li class="form-striped">
         <div class="form-key"><i class="i i-github"></i>邮箱</div>
         <div class="form-val">
             <div class="form-opt">{{me.email}}</div>
@@ -7,9 +35,38 @@
     </li>
 
     <li class="form-striped">
-        <div class="form-key"><i class="i i-github"></i>账号</div>
+        <div class="form-key"><i class="i i-github"></i>位置</div>
         <div class="form-val">
-            <div class="form-opt">{{me.githubLogin}}（{{me.githubId}}）</div>
+            <div class="form-opt">
+                {{me.meta.location}}
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>博客</div>
+        <div class="form-val">
+            <div class="form-opt">
+                <a href="{{me.meta.blog}}?from=f2ec.org" target="_blank">{{me.meta.blog}}</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>公司</div>
+        <div class="form-val">
+            <div class="form-opt">
+                {{me.meta.company}}
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>简介</div>
+        <div class="form-val">
+            <div class="form-opt">
+                {{me.meta.bio ? me.meta.bio : '你还没来得及向大家介绍你自己呢。'}}
+            </div>
         </div>
     </li>
 
@@ -110,47 +167,11 @@
         </div>
     </li>
 
-    <li class="form-striped">
+    <li class="">
         <div class="form-key">主页被访问</div>
         <div class="form-val">
             <div class="form-opt">
                {{me.viewByCount}}次
-            </div>
-        </div>
-    </li>
-
-    <li class="form-striped">
-        <div class="form-key"><i class="i i-github"></i>位置</div>
-        <div class="form-val">
-            <div class="form-opt">
-                {{me.meta.location}}
-            </div>
-        </div>
-    </li>
-
-    <li class="form-striped">
-        <div class="form-key"><i class="i i-github"></i>博客</div>
-        <div class="form-val">
-            <div class="form-opt">
-                <a href="{{me.meta.blog}}?from=f2ec.org" target="_blank">{{me.meta.blog}}</a>
-            </div>
-        </div>
-    </li>
-
-    <li class="form-striped">
-        <div class="form-key"><i class="i i-github"></i>公司</div>
-        <div class="form-val">
-            <div class="form-opt">
-                {{me.meta.company}}
-            </div>
-        </div>
-    </li>
-
-    <li class="">
-        <div class="form-key"><i class="i i-github"></i>简介</div>
-        <div class="form-val">
-            <div class="form-opt">
-                {{me.meta.bio ? me.meta.bio : '你还没来得及向大家介绍你自己呢。'}}
             </div>
         </div>
     </li>

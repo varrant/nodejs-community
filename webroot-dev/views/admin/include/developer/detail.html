@@ -1,22 +1,15 @@
 <ul class="m-form f-none" id="form">
     <li class="form-striped">
-        <div class="form-key"><i class="i i-github"></i>email</div>
+        <div class="form-key">排序</div>
         <div class="form-val">
-            <div class="form-opt">\{{developer.email}}</div>
+            <div class="form-opt">第\{{developer.index+1}}位</div>
         </div>
     </li>
 
     <li class="form-striped">
-        <div class="form-key"><i class="i i-github"></i>github</div>
+        <div class="form-key">组别</div>
         <div class="form-val">
-            <div class="form-opt">\{{developer.githubLogin}}（\{{developer.githubId}}）</div>
-        </div>
-    </li>
-
-    <li class="form-striped">
-        <div class="form-key"><i class="i i-github"></i>nickname</div>
-        <div class="form-val">
-            <div class="form-opt">\{{developer.nickname}}\{{developer.group?'（' + developer.group + '）':''}}</div>
+            <div class="form-opt">\{{developer.group||"未分组"}}</div>
         </div>
     </li>
 
@@ -24,6 +17,70 @@
         <div class="form-key">role</div>
         <div class="form-val">
             <div class="form-opt">\{{developer.role}}</div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>github</div>
+        <div class="form-val">
+            <div class="form-opt">\{{developer.githubLogin}}</div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>ID</div>
+        <div class="form-val">
+            <div class="form-opt">\{{developer.githubId}}</div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>email</div>
+        <div class="form-val">
+            <div class="form-opt">\{{developer.email}}</div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>nickname</div>
+        <div class="form-val">
+            <div class="form-opt">\{{developer.nickname}}</div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>location</div>
+        <div class="form-val">
+            <div class="form-opt">
+                \{{developer.meta.location}}
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>blog</div>
+        <div class="form-val">
+            <div class="form-opt">
+                <a href="\{{developer.meta.blog}}?from=f2ec.org" target="_blank">\{{developer.meta.blog}}</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>company</div>
+        <div class="form-val">
+            <div class="form-opt">
+                \{{developer.meta.company}}
+            </div>
+        </div>
+    </li>
+
+    <li class="form-striped">
+        <div class="form-key"><i class="i i-github"></i>bio</div>
+        <div class="form-val">
+            <div class="form-opt">
+                \{{developer.meta.bio}}
+            </div>
         </div>
     </li>
 
@@ -129,42 +186,6 @@
         <div class="form-val">
             <div class="form-opt">
                \{{developer.viewByCount}}次
-            </div>
-        </div>
-    </li>
-
-    <li class="form-striped">
-        <div class="form-key"><i class="i i-github"></i>location</div>
-        <div class="form-val">
-            <div class="form-opt">
-               \{{developer.meta.location}}
-            </div>
-        </div>
-    </li>
-
-    <li class="form-striped">
-        <div class="form-key"><i class="i i-github"></i>blog</div>
-        <div class="form-val">
-            <div class="form-opt">
-               <a href="\{{developer.meta.blog}}?from=f2ec.org" target="_blank">\{{developer.meta.blog}}</a>
-            </div>
-        </div>
-    </li>
-
-    <li class="form-striped">
-        <div class="form-key"><i class="i i-github"></i>company</div>
-        <div class="form-val">
-            <div class="form-opt">
-                \{{developer.meta.company}}
-            </div>
-        </div>
-    </li>
-
-    <li class="form-striped">
-        <div class="form-key"><i class="i i-github"></i>bio</div>
-        <div class="form-val">
-            <div class="form-opt">
-                \{{developer.meta.bio}}
             </div>
         </div>
     </li>
