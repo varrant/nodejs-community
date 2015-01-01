@@ -28,6 +28,8 @@ mongoose(function (err) {
     var settings = [];
     var userData = json.founder;
 
+    userData.index = 0;
+
     dato.each(json, function (key, val) {
         if (key !== 'founder') {
             settings.push({
