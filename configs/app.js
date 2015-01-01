@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * app
  * @author ydr.me
  * @create 2014-11-22 12:31
  */
