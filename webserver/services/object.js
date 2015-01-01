@@ -517,7 +517,7 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
 
                 // 知
                 // 通知被采纳的人
-                notice.accept(operator, {id: newDoc.acceptByAuthor}, newDoc, acceptByResponse);
+                notice.accept(operator, {_id: newDoc.acceptByAuthor}, newDoc, acceptByResponse);
             }
         });
 };
