@@ -16,9 +16,8 @@ font-size: 16px;
 ">
     <p>亲爱的<strong style="margin: 0 5px;">{{nickname}}</strong>，你好：</p>
 
-    <p>很高兴的告诉你，你的评论被{{author.nickname}}回复了，声望微涨。</p>
+    <p>很高兴的告诉你，你的 object 被他人回复了，声望微涨。</p>
 
-    <p>你说：</p>
     <blockquote style="
 padding-top: 5px;
 padding-bottom: 5px;
@@ -26,16 +25,6 @@ padding-left: 15px;
 border-left: 4px solid #ddd;
 font-family: Georgia, 'Times New Roman', Times, Kai, 'Kaiti SC', KaiTi, BiauKai, 'FontAwesome', serif
     ">{{response}}
-    </blockquote>
-
-    <p>{{author.nickname}}说：</p>
-    <blockquote style="
-padding-top: 5px;
-padding-bottom: 5px;
-padding-left: 15px;
-border-left: 4px solid #ddd;
-font-family: Georgia, 'Times New Roman', Times, Kai, 'Kaiti SC', KaiTi, BiauKai, 'FontAwesome', serif
-    ">{{author.response}}
     </blockquote>
 
     <p><a href="{{link}}">点击这里去查看详情。</a></p>
