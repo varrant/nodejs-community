@@ -316,15 +316,23 @@ dato.each(models, function (key, model) {
     /**
      * 确保存在一个，不存在时新建，存在时更新
      * @param conditions {Object} 查询条件
-     * @param data {Object} 更新数据
+     * @param data {Object} 创建/更新数据
+     * @param [options] {Object} 创建/更新配置
+     * @param [options.onbeforecreate] {Function} 创建之前
+     * @param [options.onbeforeupdate] {Function} 更新之前
      * @param callback {Function} 回调
      */
-    exports[key].existOne = function (conditions, data, callback) {
+    exports[key].existOne = function (conditions, data, options, callback) {
         if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
             return callback(new Error('the id of conditions is invalid'));
         }
 
         data = _toPureData(data, ['_id']);
+
+        if (arguments.length === 3) {
+            callback = arguments[2];
+            options = {};
+        }
 
         this.findOne(conditions, function (err, doc) {
             if (err) {
@@ -335,9 +343,20 @@ dato.each(models, function (key, model) {
 
             // 存在
             if (doc) {
+                if (options.onbeforeupdate) {
+                    data = options.onbeforeupdate(data);
+                }
+
                 exports[key].findOneAndUpdate(conditions, data, callback);
-            } else {
+            }
+            // 不存在
+            else {
                 saveData = dato.extend(true, {}, conditions, data);
+
+                if (options.onbeforecreate) {
+                    saveData = options.onbeforecreate(saveData);
+                }
+
                 exports[key].createOne(saveData, callback);
             }
         });
