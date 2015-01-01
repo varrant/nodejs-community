@@ -504,7 +504,7 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
         .follow(function (err, newDoc, oldDoc, acceptByResponse) {
             callback(err, newDoc, oldDoc);
 
-            if(!err && newDoc){
+            if (!err && newDoc) {
                 // 数
                 // 当前采纳的人的采纳次数+1
                 developer.increaseAcceptCount({_id: operator.id}, 1, log.holdError);
@@ -517,7 +517,18 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
 
                 // 知
                 // 通知被采纳的人
-                notice.accept(operator, {_id: newDoc.acceptByAuthor}, newDoc, acceptByResponse);
+                developer.findOne({_id: newDoc.acceptByAuthor}, function (err, doc) {
+                    if(err){
+                        return log.holdError(err);
+                    }
+
+                    notice.accept(operator, doc, newDoc, acceptByResponse);
+                });
+
+                // response
+                response.findOneAndUpdate({_id: acceptByResponse.id}, {
+                    acceptByObject: newDoc.id
+                }, log.holdError);
             }
         });
 };
