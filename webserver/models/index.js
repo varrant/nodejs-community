@@ -319,7 +319,9 @@ dato.each(models, function (key, model) {
      * @param data {Object} 创建/更新数据
      * @param [options] {Object} 创建/更新配置
      * @param [options.onbeforecreate] {Function} 创建之前
+     * @param [options.onaftercreate] {Function} 创建之后
      * @param [options.onbeforeupdate] {Function} 更新之前
+     * @param [options.onafterupdate] {Function} 更新之后
      * @param callback {Function} 回调
      */
     exports[key].existOne = function (conditions, data, options, callback) {
@@ -347,7 +349,13 @@ dato.each(models, function (key, model) {
                     data = options.onbeforeupdate(data);
                 }
 
-                exports[key].findOneAndUpdate(conditions, data, callback);
+                exports[key].findOneAndUpdate(conditions, data, function (err, newDoc, oldDoc) {
+                    callback(err, newDoc, oldDoc);
+
+                    if (!err && newDoc && options.onafterupdate) {
+                        options.onafterupdate(newDoc);
+                    }
+                });
             }
             // 不存在
             else {
@@ -357,7 +365,13 @@ dato.each(models, function (key, model) {
                     saveData = options.onbeforecreate(saveData);
                 }
 
-                exports[key].createOne(saveData, callback);
+                exports[key].createOne(saveData, function (err, doc) {
+                    callback(err, doc);
+
+                    if (!err && doc && options.onaftercreate) {
+                        options.onaftercreate(doc);
+                    }
+                });
             }
         });
     };

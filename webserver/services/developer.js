@@ -35,19 +35,7 @@ var role20 = 1 << 20;
  * @param data {Object} 更新内容
  * @param callback {Function} 回调
  */
-exports.login = function (conditions, data, callback) {
-    developer.findOneAndUpdate(conditions, data, function (err, doc) {
-        if(err){
-            return callback(err);
-        }
-
-        if(doc){
-            return callback(err, doc);
-        }
-
-        developer.createOne();
-    });
-};
+exports.login = developer.existOne;
 
 
 /**

@@ -44,6 +44,12 @@ module.exports = function (app) {
         delete(githubOauth.githubId);
         githubOauth.loginAt = new Date();
 
+        var options = {
+            onbeforecreate: function (data) {
+                data.index = 0;
+            }
+        };
+
         developer.login({
             githubId: githubId
         }, githubOauth, function (err, doc) {
