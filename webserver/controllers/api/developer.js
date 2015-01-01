@@ -44,10 +44,16 @@ module.exports = function (app) {
         delete(githubOauth.githubId);
         githubOauth.loginAt = new Date();
 
-        var options = {
-            onbeforecreate: function (data) {
-                data.index = 0;
-            }
+        var options = {};
+
+        // 创建之前
+        options.onbeforecreate = function (data) {
+            data.index = app.locals.$autoIndex;
+        };
+
+        // 创建之后
+        options.onaftercreate = function (data) {
+            app.locals.$autoIndex++;
         };
 
         developer.login({
@@ -120,7 +126,7 @@ module.exports = function (app) {
                     developer.find({}, options, done);
                 })
                 .together(function (err, count, docs) {
-                    if(err){
+                    if (err) {
                         return next(err);
                     }
 
