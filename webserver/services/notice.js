@@ -201,7 +201,19 @@ exports.agreeComment = function (agreeDeveloper, agreeByDeveloper, agreeinObject
     // 2. 邮件通知
     var noti = configs.notification.agreeComment;
     var subject = noti.subject;
-    var content = noti.template.render({});
+    var data = {
+        from: configs.smtp.from,
+        sender: {
+            nickname: agreeDeveloper.nickname,
+            response: agreeinObject.contentHTML
+        },
+        receiver: {
+            nickname: agreeByDeveloper.nickname,
+            object: agreeinObject.title,
+            link: configs.app.host + '/object/?id=' + agreeinObject.id
+        }
+    };
+    var content = noti.template.render(data);
     email.send(agreeByDeveloper, subject, content);
 };
 
@@ -231,6 +243,18 @@ exports.agreeReply = function (agreeDeveloper, agreeByDeveloper, agreeinObject, 
     // 2. 邮件通知
     var noti = configs.notification.agreeReply;
     var subject = noti.subject;
-    var content = noti.template.render({});
+    var data = {
+        from: configs.smtp.from,
+        sender: {
+            nickname: agreeDeveloper.nickname,
+            response: agreeinObject.contentHTML
+        },
+        receiver: {
+            nickname: agreeByDeveloper.nickname,
+            object: agreeinObject.title,
+            link: configs.app.host + '/object/?id=' + agreeinObject.id
+        }
+    };
+    var content = noti.template.render(data);
     email.send(agreeByDeveloper, subject, content);
 };
