@@ -228,46 +228,20 @@ exports.agree = function (operator, conditions, callback) {
                         .task(function (done) {
                             developer.findOne({_id: agreeByResponse.author}, done);
                         })
-                        // 查 agreeByResponse.parent 作者
-                        .task(function (done) {
-                            // 评论
-                            if(!agreeByResponse.parent){
-                                return done(null, null);
-                            }
-
-
-                            response.findOne({
-                                _id: agreeByResponse.parent
-                            }, {
-                                populate: ['author']
-                            }, function (err, agreeByResponseParent) {
-                                if(err){
-                                    return done(err);
-                                }
-
-                                if(!agreeByResponseParent){
-                                    err = new Error('该评论父级不存在');
-                                    err.code = 404;
-                                    return done(err);
-                                }
-
-                                done(err, agreeByResponseParent.author);
-                            });
-                        })
                         // 查 object
                         .task(function (done) {
                             object.findOne({_id: agreeByResponse.object}, done);
                         })
                         // 异步并行
-                        .together(function (err, agreeInObjectAuthor, agreeByResponseParentAuthor, agreeInObject) {
-                            if (!err && agreeInObjectAuthor && agreeInObject) {
+                        .together(function (err, agreeByResponseAuthor,  agreeInObject) {
+                            if (!err && agreeInObject) {
                                 // 评论
                                 if (agreeByResponse.parent === null) {
-                                    notice.agreeComment(operator, agreeInObjectAuthor, agreeInObject, agreeByResponse);
+                                    notice.agreeComment(operator, agreeByResponseAuthor, agreeInObject, agreeByResponse);
                                 }
                                 // 回复
                                 else {
-                                    notice.agreeReply(operator, agreeByResponseParentAuthor, agreeInObject, agreeByResponse);
+                                    notice.agreeReply(operator, agreeByResponseAuthor, agreeInObject, agreeByResponse);
                                 }
                             }
                         });
