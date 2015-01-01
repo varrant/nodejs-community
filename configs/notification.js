@@ -12,9 +12,13 @@ var path = require('path');
 
 module.exports = function(app){
     return {
-        comment: {
+        commentObject: {
             subject: '新评论提醒',
-            template:_template('comment.html')
+            template:_template('commentObject.html')
+        },
+        replyObject: {
+            subject: '新回复提醒',
+            template:_template('replyObject.html')
         },
         reply: {
             subject: '新回复提醒',
