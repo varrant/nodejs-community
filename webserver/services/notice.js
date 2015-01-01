@@ -39,7 +39,19 @@ exports.toObjectAuthor = function (respondDeveloper, objectAuthor, commentInObje
     // 2. 邮件通知
     var noti = configs.notification[type];
     var subject = noti.subject;
-    var content = noti.template.render({});
+    var data = {
+        from: configs.smtp.from,
+        sender: {
+            nickname: objectAuthor.nickname,
+            response: response.contentHTML
+        },
+        receiver: {
+            nickname: objectAuthor.nickname,
+            object: commentInObject.title,
+            link: configs.app.host + '/object/?id=' + commentInObject.id
+        }
+    };
+    var content = noti.template.render(data);
     email.send(objectAuthor, subject, content);
 };
 
