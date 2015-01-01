@@ -136,6 +136,39 @@ module.exports = function (app) {
 
 
     /**
+     * ID 303 => uri
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.redirect = function (req, res, next) {
+        var id = req.query.id;
+
+        object.findOne({
+            _id: id,
+            isDisplay: true
+        }, function (err, doc) {
+            if (err) {
+                if (err) {
+                    return next(err);
+                }
+
+                if (!doc) {
+                    return next();
+                }
+            }
+
+            var sectionMap = {};
+            app.locals.$section.forEach(function (index, sec) {
+                sectionMap[sec.id] = sec;
+            });
+
+            res.redirect('/' + sectionMap[doc.section] + '/' + doc.uri + '.html');
+        });
+    };
+
+
+    /**
      * post 页
      * @param type
      * @returns {Function}(req, res, next)
