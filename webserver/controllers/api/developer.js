@@ -49,6 +49,7 @@ module.exports = function (app) {
         // 创建之前
         options.onbeforecreate = function (data) {
             data.index = app.locals.$autoIndex;
+            return data;
         };
 
         // 创建之后
@@ -58,7 +59,7 @@ module.exports = function (app) {
 
         developer.login({
             githubId: githubId
-        }, githubOauth, function (err, doc) {
+        }, githubOauth, options, function (err, doc) {
             req.session.$github = null;
 
             if (err) {

@@ -205,6 +205,9 @@ nav .nav-right li:last-child {
   border: 1px solid #EFEFEF;
   border-radius: 6px;
 }
+.m-oauth-callback {
+  margin: 1rem auto;
+}
 .m-oauth .oauth-info {
   list-style: none;
 }

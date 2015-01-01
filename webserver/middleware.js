@@ -84,6 +84,7 @@ module.exports = function (next, app) {
                 }
 
                 app.locals.$autoIndex = count;
+                done();
             });
         })
         // 异步并行
