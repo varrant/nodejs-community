@@ -76,16 +76,6 @@ module.exports = function (next, app) {
                 done();
             });
         })
-        // 注册人数索引值
-        .task(function (done) {
-            developer.count({}, function (err, count) {
-                if(err){
-                    return done(err);
-                }
-
-                app.locals.$autoIndex = count;
-            });
-        })
         // 异步并行
         .together(function (err) {
             next(err, app);

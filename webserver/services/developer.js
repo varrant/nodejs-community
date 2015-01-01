@@ -27,16 +27,27 @@ var urls = {
 var role20 = 1 << 20;
 
 
-/**
- * 注册
- */
-exports.register = developer.createOne;
 
 
 /**
  * 登录
+ * @param conditions {Object} 查询条件
+ * @param data {Object} 更新内容
+ * @param callback {Function} 回调
  */
-exports.login = developer.existOne;
+exports.login = function (conditions, data, callback) {
+    developer.findOneAndUpdate(conditions, data, function (err, doc) {
+        if(err){
+            return callback(err);
+        }
+
+        if(doc){
+            return callback(err, doc);
+        }
+
+        developer.createOne();
+    });
+};
 
 
 /**
