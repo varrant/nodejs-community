@@ -122,7 +122,14 @@ exports.role = function (operator, operatorBy, group) {
     // 2. 邮件通知
     var noti = configs.notification.role;
     var subject = noti.subject;
-    var content = noti.template.render({});
+    var data = {
+        from: configs.smtp.from,
+        receiver: {
+            nickname: operatorBy.nickname,
+            group: group
+        }
+    };
+    var content = noti.template.render(data);
     email.send(operatorBy, subject, content);
 };
 
@@ -152,7 +159,19 @@ exports.accept = function (askDeveloper, answerDeveloper, questionObject, questi
     // 2. 邮件通知
     var noti = configs.notification.accept;
     var subject = noti.subject;
-    var content = noti.template.render({});
+    var data = {
+        from: configs.smtp.from,
+        sender: {
+            nickname: askDeveloper.nickname,
+            response: questionObject.contentHTML
+        },
+        receiver: {
+            nickname: answerDeveloper.nickname,
+            object: questionObject.title,
+            link: configs.app.host + '/object/?id=' + questionObject.id
+        }
+    };
+    var content = noti.template.render(data);
     email.send(answerDeveloper, subject, content);
 };
 
