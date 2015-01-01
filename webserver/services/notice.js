@@ -10,6 +10,7 @@
 
 var configs = require('../../configs/');
 var notification = require('./notification.js');
+var response = require('./response.js');
 var log = require('ydr-log');
 var email = require('./email.js');
 
@@ -81,7 +82,20 @@ exports.toResponseAuthor = function (sourceDeveloper, commentAuthor, replyInObje
     // 2. 邮件通知
     var noti = configs.notification.reply;
     var subject = noti.subject;
-    var content = noti.template.render({});
+    var data = {
+        from: configs.smtp.from,
+        sender: {
+            nickname: sourceDeveloper.nickname,
+            response: replyResponse.contentHTML
+        },
+        receiver: {
+            nickname: commentAuthor.nickname,
+            object: replyInObject.title,
+            link: configs.app.host + '/object/?id=' + replyInObject.id
+        }
+    };
+
+    var content = noti.template.render(data);
     email.send(commentAuthor, subject, content);
 };
 
