@@ -53,6 +53,10 @@ var schema = new mongoose.Schema({
         max: 2097151,
         default: 1
     },
+    // 索引值
+    index: {
+        type: Number
+    },
     // 用户头衔
     title: {
         type: String,

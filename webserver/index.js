@@ -38,7 +38,9 @@ howdo
             // {
             //     "id": developerObject
             // }
-            developer: {}
+            developer: {},
+            // 自动索引
+            autoIndex: 1
         };
 
         console.log('');
