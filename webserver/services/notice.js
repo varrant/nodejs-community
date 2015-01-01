@@ -42,7 +42,7 @@ exports.toObjectAuthor = function (respondDeveloper, objectAuthor, commentInObje
     var data = {
         from: configs.smtp.from,
         sender: {
-            nickname: objectAuthor.nickname,
+            nickname: respondDeveloper.nickname,
             response: response.contentHTML
         },
         receiver: {

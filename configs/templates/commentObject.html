@@ -14,18 +14,18 @@ line-height: 1.6;
 color: #333;
 font-size: 16px;
 ">
-    <p>亲爱的<strong style="margin: 0 5px;">{{=receiver.nickname}}</strong>，你好：</p>
+    <p>亲爱的{{=receiver.nickname}}，你好：</p>
 
-    <p>很高兴的告诉你，你发表的《{{receiver.object}}》被{{=sender.nickname}}评论了，声望微涨。</p>
+    <p>很高兴的告诉你，你发表的<strong style="margin: 0 5px;">《{{receiver.object}}》</strong>被<strong style="margin: 0 5px;">{{=sender.nickname}}</strong>评论了，声望微涨。</p>
 
     <blockquote style="
 padding-top: 5px;
 padding-bottom: 5px;
 padding-left: 15px;
 border-left: 4px solid #ddd;
-font-family: Georgia, 'Times New Roman', Times, Kai, 'Kaiti SC', KaiTi, BiauKai, 'FontAwesome', serif
-    ">{{=sender.response}}
-    </blockquote>
+font-family: Georgia, 'Times New Roman', Times, Kai, 'Kaiti SC', KaiTi, BiauKai, 'FontAwesome', serif;
+white-space: pre-wrap;
+    ">{{=sender.response}}</blockquote>
 
     <p><a href="{{=receiver.link}}">点击这里去查看详情。</a></p>
 

@@ -159,11 +159,11 @@ module.exports = function (app) {
             }
 
             var sectionMap = {};
-            app.locals.$section.forEach(function (index, sec) {
+            app.locals.$section.forEach(function (sec) {
                 sectionMap[sec.id] = sec;
             });
 
-            res.redirect('/' + sectionMap[doc.section] + '/' + doc.uri + '.html');
+            res.redirect('/' + sectionMap[doc.section].uri + '/' + doc.uri + '.html');
         });
     };
 

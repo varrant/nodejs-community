@@ -21,7 +21,7 @@ module.exports = function (app, ctrlFront) {
     // in category at column on label
     app.locals.$section.forEach(function (section) {
         var uri = section.uri;
-        
+
         // ''
         app.get('/' + uri + '/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'page/:page/', ctrlFront.main.getList(section));
@@ -86,6 +86,7 @@ module.exports = function (app, ctrlFront) {
         app.get('/' + uri + '/' + 'on/:label/at/:column/in/:category/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'on/:label/at/:column/in/:category/page/:page/', ctrlFront.main.getList(section));
 
+        app.get('/object/', ctrlFront.main.redirect);
         app.get('/' + uri + '/' + ':uri.html', ctrlFront.main.getObject(section));
     });
 
