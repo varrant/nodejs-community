@@ -28,7 +28,7 @@ module.exports = function (next, app) {
             from: configs.smtp.from,
             email: app.locals.$founder.email
         });
-        log.initSmtp(options);
+        log.initSmtp(smtp);
     }
 
     next(null, app);
