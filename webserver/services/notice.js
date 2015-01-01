@@ -20,9 +20,9 @@ var email = require('./email.js');
  * @param targetDeveloper {Object} object 作者
  * @param object {commentByObject} 被评论的 object
  */
-exports.toObjectAuthor = function (sourceDeveloper, objectAuthor, commentInObject, response) {
+exports.toObjectAuthor = function (respondDeveloper, objectAuthor, commentInObject, response) {
     // 自己不必通知自己
-    if (sourceDeveloper.id.toString() === objectAuthor.id.toString()) {
+    if (respondDeveloper.id.toString() === objectAuthor.id.toString()) {
         return;
     }
 
@@ -30,7 +30,7 @@ exports.toObjectAuthor = function (sourceDeveloper, objectAuthor, commentInObjec
     var type = response.parent ? 'replyObject' : 'commentObject';
     notification.createOne({
         type: type,
-        source: sourceDeveloper.id,
+        source: respondDeveloper.id,
         target: objectAuthor.id,
         object: commentInObject.id,
         response: response.id
@@ -45,7 +45,7 @@ exports.toObjectAuthor = function (sourceDeveloper, objectAuthor, commentInObjec
 
 
 /**
- * 回复通知
+ * 回复通知评论者
  * @param sourceDeveloper {Object} 评论人
  * @param targetDeveloper {Object} object 作者
  * @param replyInObject {Object} 所在的 object

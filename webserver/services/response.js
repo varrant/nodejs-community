@@ -172,12 +172,12 @@ exports.createOne = function (author, data, meta, callback) {
 
                 // 知
                 // 通知 object 作者
-                _noticeObjectAuthor(author, responseObject, doc);
+                _noticeToObjectAuthor(author, responseObject, doc);
 
                 // 回复
                 if (doc.parent) {
                     // 通知 comment 作者
-                    _noticeCommentAuthor(author, responseObject, doc, parentResponse);
+                    _noticeToCommentAuthor(author, responseObject, doc, parentResponse);
                 }
 
 
@@ -283,7 +283,7 @@ exports.agree = function (operator, conditions, callback) {
  * @param responseComment {Object} 评论
  * @private
  */
-function _noticeObjectAuthor(repondAuthor, responseObject, responseComment) {
+function _noticeToObjectAuthor(repondAuthor, responseObject, response) {
     howdo
         // 1. 查找 object 作者
         .task(function (next) {
@@ -303,7 +303,7 @@ function _noticeObjectAuthor(repondAuthor, responseObject, responseComment) {
             }
 
             // 评论通知
-            notice.toObjectAuthor(repondAuthor, objectAuthor, responseObject, responseComment);
+            notice.toObjectAuthor(repondAuthor, objectAuthor, responseObject, response);
         });
 }
 
@@ -316,7 +316,7 @@ function _noticeObjectAuthor(repondAuthor, responseObject, responseComment) {
  * @param parentResponse {Object} 被回复的 response
  * @private
  */
-function _noticeCommentAuthor(replyAuthor, replyInObject, replyResponse, parentResponse) {
+function _noticeToCommentAuthor(replyAuthor, replyInObject, replyResponse, parentResponse) {
     howdo
         // 1. 查找 parentResponse 作者
         .task(function (next) {
