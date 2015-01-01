@@ -171,13 +171,11 @@ exports.createOne = function (author, data, meta, callback) {
 
 
                 // 知
-                // 评论
-                if (!doc.parent) {
-                    // 通知 object 作者
-                    _noticeObjectAuthor(author, responseObject, doc);
-                }
+                // 通知 object 作者
+                _noticeObjectAuthor(author, responseObject, doc);
+
                 // 回复
-                else {
+                if (doc.parent) {
                     // 通知 comment 作者
                     _noticeCommentAuthor(author, responseObject, doc, parentResponse);
                 }
@@ -305,7 +303,7 @@ function _noticeObjectAuthor(repondAuthor, responseObject, responseComment) {
             }
 
             // 评论通知
-            notice.comment(repondAuthor, objectAuthor, responseObject, responseComment);
+            notice.toObjectAuthor(repondAuthor, objectAuthor, responseObject, responseComment);
         });
 }
 
@@ -338,7 +336,7 @@ function _noticeCommentAuthor(replyAuthor, replyInObject, replyResponse, parentR
             }
 
             // 回复通知
-            notice.reply(replyAuthor, parentResponseAuthor, replyInObject, replyResponse);
+            notice.toResponseAuthor(replyAuthor, parentResponseAuthor, replyInObject, replyResponse);
         });
 }
 
