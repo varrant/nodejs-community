@@ -46,7 +46,7 @@
     "nodemailer": "^1.3.0",
     "supervisor": "^0.6.0",
     "ydr-ali-oss": "^1.1.8",
-    "ydr-log": "^1.2.0",
+    "ydr-log": "^1.2.2",
     "ydr-template": "^1.2.1",
     "ydr-translate": "^1.0.0",
     "ydr-util": "^1.11.5",

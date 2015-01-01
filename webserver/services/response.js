@@ -173,7 +173,7 @@ exports.createOne = function (author, data, meta, callback) {
                 // 回复
                 else {
                     // 通知 comment 作者
-                    _noticeCommentAuthor(author, responseObject, parentResponse);
+                    _noticeCommentAuthor(author, responseObject, doc, parentResponse);
                 }
 
 
@@ -256,7 +256,7 @@ exports.agree = function (operator, conditions, callback) {
                         })
                         // 查 object
                         .task(function (done) {
-                            object.findOne({id: agreeByResponse.object}, done);
+                            object.findOne({_id: agreeByResponse.object}, done);
                         })
                         // 异步并行
                         .together(function (err, agreeInObjectAuthor, agreeByResponseParentAuthor, agreeInObject) {
@@ -334,10 +334,11 @@ function _noticeObjectAuthor(repondAuthor, responseObject, responseComment) {
  * 通知 comment 作者
  * @param replyAuthor {Object} 回复人
  * @param replyInObject {Object} 回复的 object
- * @param parentResponse {Object} 被回复 response
+ * @param replyResponse {Object} 该回复的 response
+ * @param parentResponse {Object} 被回复的 response
  * @private
  */
-function _noticeCommentAuthor(replyAuthor, replyInObject, parentResponse) {
+function _noticeCommentAuthor(replyAuthor, replyInObject, replyResponse, parentResponse) {
     howdo
         // 1. 查找 parentResponse 作者
         .task(function (next) {
@@ -357,7 +358,7 @@ function _noticeCommentAuthor(replyAuthor, replyInObject, parentResponse) {
             }
 
             // 回复通知
-            notice.reply(replyAuthor, parentResponseAuthor, replyInObject, parentResponse);
+            notice.reply(replyAuthor, parentResponseAuthor, replyInObject, replyResponse);
         });
 }
 

@@ -50,7 +50,7 @@ exports.comment = function (sourceDeveloper, objectAuthor, commentInObject, comm
  * @param replyInObject {Object} 所在的 object
  * @param replyByComment {Object} 被回复的评论
  */
-exports.reply = function (sourceDeveloper, commentAuthor, replyInObject, replyByComment) {
+exports.reply = function (sourceDeveloper, commentAuthor, replyInObject, replyResponse) {
     // 自己不必通知自己
     if (sourceDeveloper.id.toString() === commentAuthor.id.toString()) {
         return;
@@ -62,7 +62,7 @@ exports.reply = function (sourceDeveloper, commentAuthor, replyInObject, replyBy
         source: sourceDeveloper.id,
         target: commentAuthor.id,
         object: replyInObject.id,
-        response: replyByComment.id
+        response: replyResponse.id
     }, log.holdError);
 
     // 2. 邮件通知
