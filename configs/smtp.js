@@ -8,6 +8,6 @@
 
 module.exports = function (app) {
     return {
-        from: '前端开发社区<admin@f2ec.org>'
+        from: '前端开发社区<admin@FrontEndDev.org>'
     };
 };
