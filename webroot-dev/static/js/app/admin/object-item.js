@@ -53,6 +53,12 @@ define(function (require, exports, module) {
             return;
         }
 
+        var $tab = selector.query('#tab-response')[0];
+
+        if(!$tab){
+            return;
+        }
+
         var author = object.author;
         new Response('#tab-response', {
             id: object.id,
