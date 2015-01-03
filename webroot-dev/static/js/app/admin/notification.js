@@ -15,8 +15,6 @@ define(function (require, exports, module) {
     var methods = {};
 
 
-
-
     // 选择读状态
     methods.onchange = function () {
         list.query.type = this.$data.type;
@@ -36,6 +34,21 @@ define(function (require, exports, module) {
         });
         item.hasActived = !item.hasActived;
         increse(item.hasActived ? -1 : 1);
+
+        var hasActivedLength = 0;
+        var unActivedLength = 0;
+        var length = this.$data.list.length;
+        this.$data.list.forEach(function (item) {
+            if (item.hasActived) {
+                hasActivedLength++;
+            } else {
+                unActivedLength++;
+            }
+        });
+
+        if ((hasActivedLength === length || unActivedLength === length) && this.$data.type !== 'all') {
+            list.getList();
+        }
     };
 
 
@@ -47,7 +60,7 @@ define(function (require, exports, module) {
         url: '/admin/api/notification/',
         query: {
             type: type,
-            limit: 2
+            limit: 10
         },
         data: {
             type: type,
