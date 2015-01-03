@@ -13,8 +13,11 @@
  * -------------------------- */
 @font-face {
     font-family: 'FontAwesome';
-    src: url('../fonts/fontawesome-webfont.eot?v=4.2.0');
-    src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+    src: url('http://s.ydr.me/p/f/awesome/4.2.0/FontAwesome.otf?v=4.2.0');
+    src: url('http://s.ydr.me/p/f/awesome/4.2.0/FontAwesome.otf?#iefix&v=4.2.0') format('embedded-opentype'),
+    url('http://s.ydr.me/p/f/awesome/4.2.0/fontawesome-webfont.woff?v=4.2.0') format('woff'),
+    url('http://s.ydr.me/p/f/awesome/4.2.0/fontawesome-webfont.ttf?v=4.2.0') format('truetype'),
+    url('http://s.ydr.me/p/f/awesome/4.2.0/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -34,10 +37,9 @@
     margin-left: 0;
 }
 
-.i-striped{
+.i-striped {
     margin: 0;
 }
-
 
 /* makes the font 33% larger relative to the icon container */
 .i-lg {
