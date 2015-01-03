@@ -167,6 +167,7 @@
 
 .alien-ui-response-children .alien-ui-respond {
     margin: 20px 0 -1px;
+    border-top: 1px solid #eee;
 }
 
 .alien-ui-response-children .alien-ui-pager {
