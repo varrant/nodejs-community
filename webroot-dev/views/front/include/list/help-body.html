@@ -3,24 +3,26 @@
         <i class="i i-question-circle"></i>{{section.name}}
         <small class="card-subtitle s-muted hidden-xs">——{{section.introduction}}</small>
         <div class="card-endtitle">
-            <span class="s-light f-small hidden-xs"><i class="i i-file-o"></i>{{count}}</span>
+            <span class="s-light f-small hidden-xs"><i class="i i-file-o"></i>{{pager.count}}</span>
         </div>
     </h2>
 
     <div class="card-body">
-        <div class="m-scopes">
-            <div class="scopes-title s-muted"><i class="i i-folder"></i>所有分类</div>
-            <ul class="scopes-list f-list-left">
-                <li>
-                    <a href="/help/" class="label label-default">所有</a>
-                </li>
-                {{list categories as index,category}}
-                <li>
-                    <a href="/help/in/{{category.uri}}/" class="label label-default">{{category.name}}</a>
-                </li>
+        <ul class="m-choose">
+            <li class="f-clearfix">
+                <strong class="choose-type">分类</strong>
+                <a class="{{if !choose.category}}active{{/if}}" href="/question/{{if choose.status}}as/{{choose.status}}/{{/if}}">所有分类</a>
+                {{list categories as category}}
+                <a class="{{if category.id == choose.category}}active{{/if}}" href="/question/in/{{=category.uri}}/{{if choose.status}}as/{{choose.status}}/{{/if}}">{{=category.name}}</a>
                 {{/list}}
-            </ul>
-        </div>
+            </li>
+            <li class="f-clearfix">
+                <strong class="choose-type">状态</strong>
+                <a class="{{if !choose.status}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}">所有状态</a>
+                <a class="{{if choose.status == 'resolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/resolved/">已解决</a>
+                <a class="{{if choose.status == 'unresolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/unresolved/">待解决</a>
+            </li>
+        </ul>
 
         <!--列表-->
         <ul class="m-summarylist">

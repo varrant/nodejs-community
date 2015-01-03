@@ -19,7 +19,7 @@
             </li>
             <li class="f-clearfix">
                 <strong class="choose-type">状态</strong>
-                <a class="{{if !choose.status}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{choose.status}}{{/if}}">所有状态</a>
+                <a class="{{if !choose.status}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}">所有状态</a>
                 <a class="{{if choose.status == 'resolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/resolved/">已解决</a>
                 <a class="{{if choose.status == 'unresolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/unresolved/">待解决</a>
             </li>

@@ -83,7 +83,7 @@ module.exports = function (app) {
             var column = req.params.column;
             var label = req.params.label;
             var status = req.params.status;
-            var options = filter.skipLimit(req.params, 1, 3);
+            var listOptions = filter.skipLimit(req.params);
             var conditions = {
                 section: section.id,
                 isDisplay: true
@@ -97,7 +97,6 @@ module.exports = function (app) {
                 choose: {}
             };
             var isPjax = req.headers['x-request-as'] === 'pjax';
-
             var categoryId = 0;
             dato.each(app.locals.$category, function (index, _category) {
                 if (_category.uri === category) {
@@ -115,25 +114,26 @@ module.exports = function (app) {
                 data.choose.label = conditions.labels = label;
             }
 
+            var countOptions = {};
             if (status === 'resolved') {
                 data.choose.status = 'resolved';
+                listOptions.nor = {acceptByResponse: null};
+                countOptions.nor = {acceptByResponse: null};
             } else if (status === 'unresolved') {
                 data.choose.status = 'unresolved';
+                conditions.acceptByResponse = null;
             }
 
             howdo
                 // 统计数量
                 .task(function (done) {
-                    object.count({
-                        section: section.id,
-                        isDisplay: true
-                    }, done);
+                    object.count(conditions, countOptions, done);
                 })
                 // 列表
                 .task(function (done) {
-                    options.populate = ['author', 'contributors'];
-                    options.sort = {publishAt: -1};
-                    object.find(conditions, options, done);
+                    listOptions.populate = ['author', 'contributors'];
+                    listOptions.sort = {publishAt: -1};
+                    object.find(conditions, listOptions, done);
                 })
                 // 异步并行
                 .together(function (err, count, docs) {
@@ -143,17 +143,17 @@ module.exports = function (app) {
 
                     data.objects = docs;
                     data.pager = {
-                        page: options.page,
-                        limit: options.limit,
+                        page: listOptions.page,
+                        limit: listOptions.limit,
                         count: count
                     };
 
-                    if(isPjax){
-                        return res.json({
-                            code: 200,
-                            data: data
-                        });
-                    }
+                    //if(isPjax){
+                    //    return res.json({
+                    //        code: 200,
+                    //        data: data
+                    //    });
+                    //}
 
                     res.render('front/list-' + section.uri + '.html', data);
                 });
