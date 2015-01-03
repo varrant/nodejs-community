@@ -64,6 +64,7 @@ module.exports = function (app) {
             })
             // 分页查询
             .task(function (done) {
+                options.sort = {publishAt: -1};
                 object.find(conditions, options, done);
             })
             // 异步并行

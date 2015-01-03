@@ -162,13 +162,13 @@ exports.accept = function (askDeveloper, answerDeveloper, questionObject, questi
     var data = {
         from: configs.smtp.from,
         sender: {
-            nickname: askDeveloper.nickname,
-            response: questionObject.contentHTML
+            nickname: askDeveloper.nickname
         },
         receiver: {
             nickname: answerDeveloper.nickname,
             object: questionObject.title,
-            link: configs.app.host + '/object/?id=' + questionObject.id
+            link: configs.app.host + '/object/?id=' + questionObject.id,
+            response: questionResponse.contentHTML
         }
     };
     var content = noti.template.render(data);
