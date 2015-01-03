@@ -399,26 +399,22 @@ nav {
   }
 }
 
-// m-scopes
-.m-scopes {
+// m-choose
+.m-choose {
   padding: 20px;
-  margin-bottom: 30px;
-  border-radius: 4px;
-  border: 1px solid #F0F0F0;
+  margin: -20px -20px 20px;
+  list-style: none;
+  background: #F8FDFF;
+  line-height: 30px;
 
-  .scopes-title {
-    font-size: 20px;
-    border-left: 4px solid #ddd;
-    padding-left: 10px;
-    margin-bottom: 15px;
-  }
-
-  .scopes-list {
-    padding: 0;
-    margin: 0;
-    > li {
+  li{
+    & > *{
+      float: left;
       margin-right: 10px;
-      line-height: 30px;
+    }
+
+    & > a:last-child{
+      margin-right: 0;
     }
   }
 }

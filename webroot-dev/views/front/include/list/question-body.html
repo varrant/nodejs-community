@@ -9,19 +9,22 @@
     </h2>
 
     <div class="card-body">
-        <div class="m-scopes">
-            <div class="scopes-title s-muted"><i class="i i-folder"></i>所有分类</div>
-            <ul class="scopes-list f-list-left">
-                <li>
-                    <a href="/question/" class="label label-default">所有</a>
-                </li>
+        <ul class="m-choose">
+            <li class="f-clearfix">
+                <strong class="choose-type">分类</strong>
+                <a href="/question/">所有</a>
                 {{list categories as index,category}}
-                <li>
-                    <a href="/question/in/{{category.uri}}/" class="label label-default">{{category.name}}</a>
-                </li>
+                <a href="/question/in/{{=category.uri}}/">{{=category.name}}</a>
                 {{/list}}
-            </ul>
-        </div>
+            </li>
+            <li class="f-clearfix">
+                <strong class="choose-type">状态</strong>
+                <a href="/question/">所有</a>
+                {{list categories as index,category}}
+                <a href="/question/in/{{=category.uri}}/">{{=category.name}}</a>
+                {{/list}}
+            </li>
+        </ul>
 
         <!--列表-->
         <ul class="m-summarylist">
@@ -36,7 +39,7 @@
                     <a href="#"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50"/></a>
                 </div>
                 <div class="summarylist-body">
-                    <h2 class="summarylist-name f-ellipsis"><a
+                    <h2 class="summarylist-name f-ellipsis"><a class="s-muted" href="/question/in/{{=categoryMap[object.category].uri}}/">[{{=categoryMap[object.category].name}}]</a><i class="f-space"></i><a
                             href="/question/{{object.uri}}.html">{{object.title}}</a></h2>
 
                     <div class="summarylist-meta s-light f-small row">

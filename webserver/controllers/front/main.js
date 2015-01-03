@@ -79,10 +79,12 @@ module.exports = function (app) {
      */
     exports.getList = function (section) {
         return function (req, res, next) {
+            var categoryMap = {};
             var data = {
                 section: section,
                 title: section.name,
-                categories: app.locals.$category
+                categories: app.locals.$category,
+                categoryMap: categoryMap
             };
             var category = req.params.category;
             var label = req.params.label;
@@ -96,8 +98,9 @@ module.exports = function (app) {
             dato.each(app.locals.$category, function (index, _category) {
                 if (_category.uri === category) {
                     categoryId = _category.id;
-                    return false;
                 }
+
+                categoryMap[_category.id] = _category;
             });
 
             if (categoryId) {
