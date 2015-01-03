@@ -72,41 +72,17 @@ exports.findOneAndRemove = function (author, conditions, callback) {
  * @param callback {Function} 回调
  */
 exports.createOne = function (author, data, callback) {
-    howdo
-        // 1、检查是否有重复
-        .task(function (next) {
-            column.findOne({
-                author: author.id,
-                uri: data.uri
-            }, function (err, doc) {
-                if (err) {
-                    return next(err);
-                }
+    var data2 = dato.pick(data, ['name', 'uri', 'cover', 'introduction']);
 
-                if (doc) {
-                    err = new Error('专栏 URI 重复');
-                    return next(err);
-                }
+    data2.author = author.id;
+    column.createOne(data2, function (err, doc) {
+        callback(err, doc);
 
-                next();
-            });
-        })
-        // 2、插入数据
-        .task(function (next) {
-            var data2 = dato.pick(data, ['name', 'uri', 'cover', 'introduction']);
-
-            data2.author = author.id;
-            column.createOne(data2, next);
-        })
-        // 异步串行
-        .follow(function (err, doc) {
-            callback(err, doc);
-
-            if (!err && doc) {
-                // 更新 developer.columnCount
-                developer.increaseColumnCount({_id: author.id}, 1, log.holdError);
-            }
-        });
+        if (!err && doc) {
+            // 更新 developer.columnCount
+            developer.increaseColumnCount({_id: author.id}, 1, log.holdError);
+        }
+    });
 };
 
 
@@ -141,7 +117,6 @@ exports.findOneAndUpdate = function (author, conditions, data, callback) {
         // 2. 检查 uri 是否重复
         .task(function (next) {
             var _condtions = {
-                author: author.id,
                 uri: data.uri
             };
 

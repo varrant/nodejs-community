@@ -17,12 +17,14 @@ var schema = new mongoose.Schema({
     // 名称
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
-    // URI，同一个 owner 不能有重复的 uri
+    // URI
     uri: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     // 封面
     cover: {

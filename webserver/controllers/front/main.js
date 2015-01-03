@@ -80,7 +80,9 @@ module.exports = function (app) {
     exports.getList = function (section) {
         return function (req, res, next) {
             var category = req.params.category;
+            var column = req.params.column;
             var label = req.params.label;
+            var status = req.params.status;
             var options = filter.skipLimit(req.params);
             var conditions = {
                 section: section.id,
@@ -105,11 +107,11 @@ module.exports = function (app) {
             });
 
             if (categoryId) {
-                data.category = conditions.category = categoryId;
+                data.choose.category = conditions.category = categoryId;
             }
 
             if (label) {
-                conditions.labels = label;
+                data.choose.label = conditions.labels = label;
             }
 
             howdo
