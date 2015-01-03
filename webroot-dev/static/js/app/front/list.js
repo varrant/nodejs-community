@@ -9,6 +9,7 @@ define(function (require, exports, module) {
     require('../../widget/front/login.js');
     require('../../widget/front/nav.js');
 
+    var Pjax = require('../../alien/libs/Pjax.js');
     var Pager = require('../../alien/ui/Pager/');
     var pager = window['-pager-'];
     var app = {};
@@ -66,7 +67,7 @@ define(function (require, exports, module) {
 
             pg.on('change', function (page) {
                 app.options.page = page;
-                history.pushState({}, '', app.buildPath());
+                location.href = app.buildPath();
             });
         }
     };
