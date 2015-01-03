@@ -114,6 +114,12 @@ module.exports = function (app) {
                 data.choose.label = conditions.labels = label;
             }
 
+            if (status === 'resolved') {
+                data.choose.status = 'resolved';
+            } else if (status === 'unresolved') {
+                data.choose.status = 'unresolved';
+            }
+
             howdo
                 // 统计数量
                 .task(function (done) {

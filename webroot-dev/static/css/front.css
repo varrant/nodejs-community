@@ -310,11 +310,21 @@ nav .nav-right li:last-child {
   margin: -20px -20px 20px;
   list-style: none;
   background: #F8FDFF;
-  line-height: 30px;
+  line-height: 26px;
+}
+.m-choose li {
+  margin-bottom: 10px;
 }
 .m-choose li > * {
   float: left;
   margin-right: 10px;
+}
+.m-choose li > a {
+  padding: 0 10px;
+}
+.m-choose li > a.active {
+  background: #0e90d2;
+  color: #fff;
 }
 .m-choose li > a:last-child {
   margin-right: 0;
