@@ -174,8 +174,9 @@
 }
 
 @media (max-width: 767px) {
-    .alien-ui-response-respond {
-        margin: 20px -10px -10px;
+    .alien-ui-respond {
+        margin: -10px -10px 20px;
+        padding: 20px 10px;
     }
 
     .alien-ui-response-main {
@@ -183,8 +184,7 @@
     }
 
     .alien-ui-response-children {
-        margin-top: 0;
-        margin-left: 0;
+        margin: 0 10px 0 10px;
     }
 
     .alien-ui-response-children::before,

@@ -26,10 +26,10 @@
                 </div>
             </div>
 
-            <div class="usercard-bio s-muted">{{developer.meta.bio}}</div>
+            <blockquote class="usercard-bio">{{developer.meta.bio}}</blockquote>
 
             <ul class="usercard-statistics f-list-left s-muted f-small">
-                <li><i class="i i-circle"></i>已得 {{developer.score|humanize}} 分</li>
+                <li><i class="i i-circle"></i>{{developer.score|humanize}} 声望</li>
                 <!--<li><i class="i i-star"></i>{{developer.followByCount|humanize}} 个关注</li>-->
                 <li><i class="i i-check-square"></i>被采纳 {{developer.acceptByCount|humanize}} 次</li>
                 <li><i class="i i-thumbs-up"></i>被赞同 {{developer.agreeByCount|humanize}} 次</li>

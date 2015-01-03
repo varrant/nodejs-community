@@ -21,7 +21,7 @@ define(function (require, exports, module) {
             id: object.id,
             query: {
                 page: hashbang.get('query', 'page') || 1,
-                limit: 3,
+                limit: 10,
                 object: object.id
             },
             list: {
