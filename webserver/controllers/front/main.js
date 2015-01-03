@@ -96,6 +96,7 @@ module.exports = function (app) {
                 categoryMap: categoryMap,
                 choose: {}
             };
+            var isPjax = req.headers['x-request-as'] === 'pjax';
 
             var categoryId = 0;
             dato.each(app.locals.$category, function (index, _category) {
@@ -146,6 +147,14 @@ module.exports = function (app) {
                         limit: options.limit,
                         count: count
                     };
+
+                    if(isPjax){
+                        return res.json({
+                            code: 200,
+                            data: data
+                        });
+                    }
+
                     res.render('front/list-' + section.uri + '.html', data);
                 });
         };
