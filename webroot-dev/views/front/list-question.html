@@ -9,6 +9,12 @@
     {{include ../include/meta.html}}
     {{include ./include/meta.html}}
     <script>window['-section-']='question';</script>
+    <script>window['-pager-']={
+        count: '{{pager.count}}',
+        page: '{{pager.page}}',
+        max: '{{Math.ceil(pager.count/pager.limit)}}',
+        limit: '{{pager.limit}}'
+    };</script>
 </head>
 <body ontouchstart="" class="p-home">
 {{include ./include/nav.html}}

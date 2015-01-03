@@ -131,6 +131,8 @@ module.exports = function (app) {
                 // 列表
                 .task(function (done) {
                     options.populate = ['author', 'contributors'];
+                    options.sort = {publishAt: -1};
+                    options.limit = 2;
                     object.find(conditions, options, done);
                 })
                 // 异步并行
@@ -139,8 +141,12 @@ module.exports = function (app) {
                         return next(err);
                     }
 
-                    data.count = count;
                     data.objects = docs;
+                    data.pager = {
+                        page: options.page,
+                        limit: options.limit,
+                        count: count
+                    };
                     res.render('front/list-' + section.uri + '.html', data);
                 });
         };
