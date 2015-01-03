@@ -17,8 +17,7 @@ var schema = new mongoose.Schema({
     // 名称
     name: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     // URI
     uri: {
