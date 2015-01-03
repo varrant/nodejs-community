@@ -83,7 +83,7 @@ module.exports = function (app) {
             var column = req.params.column;
             var label = req.params.label;
             var status = req.params.status;
-            var options = filter.skipLimit(req.params);
+            var options = filter.skipLimit(req.params, 1, 3);
             var conditions = {
                 section: section.id,
                 isDisplay: true
@@ -132,7 +132,6 @@ module.exports = function (app) {
                 .task(function (done) {
                     options.populate = ['author', 'contributors'];
                     options.sort = {publishAt: -1};
-                    options.limit = 2;
                     object.find(conditions, options, done);
                 })
                 // 异步并行
