@@ -79,19 +79,20 @@ module.exports = function (app) {
      */
     exports.getList = function (section) {
         return function (req, res, next) {
-            var categoryMap = {};
-            var data = {
-                section: section,
-                title: section.name,
-                categories: app.locals.$category,
-                categoryMap: categoryMap
-            };
             var category = req.params.category;
             var label = req.params.label;
             var options = filter.skipLimit(req.params);
             var conditions = {
                 section: section.id,
                 isDisplay: true
+            };
+            var categoryMap = {};
+            var data = {
+                section: section,
+                title: section.name,
+                categories: app.locals.$category,
+                categoryMap: categoryMap,
+                choose: {}
             };
 
             var categoryId = 0;
@@ -104,7 +105,7 @@ module.exports = function (app) {
             });
 
             if (categoryId) {
-                conditions.category = categoryId;
+                data.category = conditions.category = categoryId;
             }
 
             if (label) {
