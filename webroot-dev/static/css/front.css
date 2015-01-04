@@ -132,13 +132,16 @@ nav .nav-right li:last-child {
 .g-container {
   background-color: #fff;
 }
+@media (max-width: 991px) {
+  .g-container .g-sub {
+    border-left: 0;
+    margin-left: 0;
+  }
+}
 .g-container .g-main,
 .g-container .g-sub {
   padding-left: 0;
   padding-right: 0;
-}
-.g-container .g-main {
-  border-right: 1px solid #e6e6e6;
 }
 .g-container .col-md-12.g-main {
   border-right: 0;
@@ -148,9 +151,6 @@ nav .nav-right li:last-child {
   margin-left: -1px;
 }
 @media (max-width: 991px) {
-  .g-container .g-main {
-    border-right: 0;
-  }
   .g-container .g-sub {
     border-left: 0;
     margin-left: 0;
@@ -304,6 +304,11 @@ nav .nav-right li:last-child {
 }
 .m-card .card-body {
   padding: 20px;
+}
+@media (max-width: 767px) {
+  .m-card .card-body {
+    padding: 10px;
+  }
 }
 .m-card .card-footer {
   border-top: 1px solid #e6e6e6;
