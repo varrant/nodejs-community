@@ -13,6 +13,21 @@ nav {
   margin-bottom: 3rem;
   padding: 10px;
 }
+@media (max-width: 767px) {
+  nav {
+    position: relative;
+    margin-bottom: 0;
+  }
+}
+nav .nav-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 8;
+}
 nav:hover {
   background: #128cc2;
 }
@@ -29,28 +44,12 @@ nav .nav-logo {
   text-align: center;
   line-height: 1;
 }
-nav .nav-right li {
-  margin-right: 10px;
-}
-nav .nav-right li:last-child {
-  margin-right: 0;
-}
 @media (max-width: 767px) {
-  nav {
-    position: relative;
-  }
-  nav .nav-bg {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 8;
-  }
   nav .nav-logo {
     text-align: left;
   }
+}
+@media (max-width: 767px) {
   nav .nav-left {
     display: none;
     -o-flex-direction: column;
@@ -93,6 +92,12 @@ nav .nav-right li:last-child {
   nav .nav-left li:first-child {
     border-top: 1px dotted #68C1E8;
   }
+}
+nav .nav-right li {
+  margin-right: 10px;
+}
+nav .nav-right li:last-child {
+  margin-right: 0;
 }
 /*m-nav*/
 .m-nav {
@@ -312,12 +317,14 @@ nav .nav-right li:last-child {
   background: #F8FDFF;
   line-height: 26px;
 }
+.m-choose .choose-type {
+  margin-right: 10px;
+}
 .m-choose li {
   margin-bottom: 10px;
 }
 .m-choose li > * {
   float: left;
-  margin-right: 10px;
 }
 .m-choose li > a {
   padding: 0 10px;
@@ -356,11 +363,14 @@ nav .nav-right li:last-child {
 }
 .m-summarylist .summarylist-name {
   padding: 0;
-  height: 20px;
-  line-height: 20px;
   font-size: 18px;
   margin: 0 0 10px;
   font-weight: normal;
+}
+@media (max-width: 767px) {
+  .m-summarylist .summarylist-name {
+    font-size: 14px;
+  }
 }
 .m-summarylist .summarylist-meta {
   height: 20px;
