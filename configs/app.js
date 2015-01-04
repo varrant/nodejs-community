@@ -12,7 +12,7 @@ module.exports = {
     // 可选环境: dev/pro
     env: isAliYun ? 'pro' : 'dev',
     // 端口
-    port: 18084,
+    port: 18082,
     // 主机
     host: isAliYun ? 'http://112.124.114.165:18084' : 'http://sb.com:18084',
     // mongodb
