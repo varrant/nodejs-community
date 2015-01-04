@@ -369,7 +369,7 @@ nav .nav-right li:last-child {
 }
 @media (max-width: 767px) {
   .m-summarylist .summarylist-name {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 .m-summarylist .summarylist-meta {
