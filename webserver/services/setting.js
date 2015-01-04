@@ -14,24 +14,24 @@ var howdo = require('howdo');
 
 /**
  * 设置配置
- * @param [key] {String} 键
+ * @param [key] {String} 键 或 键值对
  * @param [val] {String} 值
  * @param callback {Function} 回调
  */
 exports.set = function (key, val, callback) {
-    var map = [];
+    var list = [];
 
     if (typeis(val) === 'function') {
         callback = val;
-        map = key;
+        list = key;
     } else {
-        map.push({
+        list.push({
             key: key,
             val: val
         });
     }
 
-    howdo.each(map, function (index, json, done) {
+    howdo.each(list, function (index, json, done) {
         setting.existOne({
             key: json.key
         }, {
