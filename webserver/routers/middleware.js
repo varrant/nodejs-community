@@ -15,7 +15,6 @@ module.exports = function (app, ctrlMiddleware) {
     app.use(ctrlMiddleware.strictHost);
 
 
-
     // POST|PUT|DELETE 安全性检测
     app.use(ctrlMiddleware.createCsrf);
     app.post('*', ctrlMiddleware.safeDetection);
