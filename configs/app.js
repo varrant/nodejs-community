@@ -16,5 +16,5 @@ module.exports = {
     // 主机
     host: isAliYun ? 'http://112.124.114.165:18084' : 'http://sb.com:18084',
     // mongodb
-    mongodb: 'mongodb://localhost:27017/community'
+    mongodb: 'mongodb://cloudcome1:123123@localhost:27017/community'
 };
