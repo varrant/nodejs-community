@@ -322,6 +322,12 @@ nav .nav-right li:last-child {
   background: #F8FDFF;
   line-height: 26px;
 }
+@media (max-width: 767px) {
+  .m-choose {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+}
 .m-choose .choose-type {
   margin-right: 10px;
 }
