@@ -156,7 +156,8 @@ define(function (require, exports, module) {
             the._$body = $body;
             the._$dialog = $dialog;
             the._$title = selector.query('.' + alienClass + '-title', $dialog)[0];
-            attribute.addClass($dialog, options.addClass);
+
+            attribute.addClass($bg || $dialog, options.addClass);
             modification.insert(the._$ele, $body ? $body : $dialog, 'beforeend');
         },
 
@@ -180,7 +181,10 @@ define(function (require, exports, module) {
                 eve.stopPropagation();
 
                 if (!selector.closest(eve.target, '.' + alienClass).length) {
-                    the.shake();
+
+                    if (the.emit('hitbg') !== false) {
+                        the.shake();
+                    }
                 }
             });
 
@@ -206,7 +210,7 @@ define(function (require, exports, module) {
             var findIndex;
             var dialogStyle = {
                 display: 'block',
-                visibility: 'hidden',
+                visibility: 'hidden'
             };
             var bodyStyle = {
                 width: options.width,
@@ -371,7 +375,7 @@ define(function (require, exports, module) {
          * @param {Function} [callback] 打开之后回调
          * @returns {Dialog}
          */
-        position: function (callback) {
+        resize: function (callback) {
             var the = this;
             var options = the._options;
             var pos = the._position();
@@ -419,7 +423,7 @@ define(function (require, exports, module) {
             }
 
             modification.insert(content, the._$ele, 'beforeend');
-            the.position();
+            the.resize();
 
             return the;
         },
@@ -445,7 +449,7 @@ define(function (require, exports, module) {
 
             the._$ele.innerHTML = '';
             modification.insert($iframe, the._$ele, 'beforeend');
-            the.position();
+            the.resize();
 
             return the;
         },
@@ -459,12 +463,15 @@ define(function (require, exports, module) {
             var the = this;
 
             if (the.shakeTimeid) {
-                the.shakeTimeid = 0;
                 clearTimeout(the.shakeTimeid);
                 attribute.removeClass(the._$dialog, alienClass + '-shake');
             }
 
             attribute.addClass(the._$dialog, alienClass + '-shake');
+            the.shakeTimeid = setTimeout(function () {
+                the.shakeTimeid = 0;
+                attribute.removeClass(the._$dialog, alienClass + '-shake');
+            }, 500);
 
             return the;
         },
@@ -552,7 +559,10 @@ define(function (require, exports, module) {
             d = dialogsMap[openDialogs[openDialogs.length - 1]];
 
             if (d && d.constructor === Dialog) {
-                d.shake();
+
+                if (d.emit('esc') !== false) {
+                    d.shake();
+                }
             }
         }
     });
@@ -584,6 +594,11 @@ define(function (require, exports, module) {
 
     /**
      * 实例化一个模态交互对话框
+     *
+     * @event hitbg
+     * @event esc
+     * @event open
+     * @event close
      *
      * @param ele {HTMLElement|Node|String} 元素或选择器
      * @param [options] {Object}
