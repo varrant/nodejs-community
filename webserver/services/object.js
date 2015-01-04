@@ -191,7 +191,7 @@ exports.updateOne = function (author, conditions, data, callback) {
         .task(function (next) {
             object.findOne(conditions, function (err, doc) {
                 if (err) {
-                    return callback(err);
+                    return next(err);
                 }
 
                 if (!doc) {
