@@ -7,14 +7,20 @@
 'use strict';
 
 module.exports = function (app, ctrlMiddleware) {
+    // 严格Host
+    app.use(ctrlMiddleware.strictHost);
+
+
     // 严格路由
     app.use(ctrlMiddleware.strictRouting);
+
 
     // POST|PUT|DELETE 安全性检测
     app.use(ctrlMiddleware.createCsrf);
     app.post('*', ctrlMiddleware.safeDetection);
     app.put('*', ctrlMiddleware.safeDetection);
     app.delete('*', ctrlMiddleware.safeDetection);
+    
 
     // 读取用户
     app.use(ctrlMiddleware.readDeveloper);

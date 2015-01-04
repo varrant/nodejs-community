@@ -18,6 +18,32 @@ var REG_ACCEPT = /^application\/json;\s*charset=utf-8/i;
 module.exports = function (app) {
     var exports = {};
 
+    /**
+     * 严格头信息
+     * @param req
+     * @param res
+     * @param next
+     * @returns {*}
+     */
+    exports.strictHost = function (req, res, next) {
+        //if (configs.app.env === 'dev') {
+        //    return next();
+        //}
+
+        var reqHost = req.headers.host;
+        var configHost = configs.app.host;
+
+        if (configHost.replace(reqHost, '') === 'http://') {
+            return next();
+        }
+
+        var urlParser = URL.parse(req.originalUrl);
+        var pathname = urlParser.pathname;
+        var search = urlParser.search;
+
+        res.redirect(configs.app.host + pathname + '/' + (search ? search : ''));
+    };
+
 
     /**
      * 严格路由
@@ -27,7 +53,7 @@ module.exports = function (app) {
      * @returns {*}
      */
     exports.strictRouting = function (req, res, next) {
-        var urlParser = URL.parse(req.url);
+        var urlParser = URL.parse(req.originalUrl);
         var pathname = urlParser.pathname;
         var search = urlParser.search;
 
