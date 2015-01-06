@@ -10,8 +10,10 @@ define(function (require, exports, module) {
 
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
+    var event = require('../../alien/core/event/base.js');
     var Response = require('../../widget/common/Response/');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
+    var Imgview = require('../../alien/ui/Imgview/');
     var app = {};
 
     app.response = function () {
@@ -57,7 +59,19 @@ define(function (require, exports, module) {
         });
     };
 
+
+    app.imgview = function () {
+        var imgview = new Imgview();
+        var onview = function () {
+            imgview.open([this.src]);
+        };
+
+        event.on(document.body, 'click', '.alien-ui-response-content img', onview);
+        event.on(document.body, 'click', '.postmain-content img', onview);
+    };
+
     app.response();
+    app.imgview();
     require('../../widget/front/login.js');
     require('../../widget/front/nav.js');
 });

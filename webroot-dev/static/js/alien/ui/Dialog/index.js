@@ -38,6 +38,7 @@ define(function (require, exports, module) {
     var event = require('../../core/event/touch.js');
     var dato = require('../../util/dato.js');
     var typeis = require('../../util/typeis.js');
+    var Scrollbar = require('../Scrollbar/');
     var alienIndex = 0;
     var zIndex = 9999;
     var body = document.body;
@@ -53,7 +54,7 @@ define(function (require, exports, module) {
         title: '无标题对话框',
         canDrag: true,
         hideClose: false,
-        duration: 345,
+        duration: 456,
         easing: 'ease-in-out-back',
         addClass: '',
         // 优先级2
@@ -155,8 +156,12 @@ define(function (require, exports, module) {
             the._$bg = $bg;
             the._$body = $body;
             the._$dialog = $dialog;
-            the._$title = selector.query('.' + alienClass + '-title', $dialog)[0];
 
+            if (options.isModal) {
+                the._scrollbar = new Scrollbar(the._$dialog);
+            }
+
+            the._$title = selector.query('.' + alienClass + '-title', $dialog)[0];
             attribute.addClass($bg || $dialog, options.addClass);
             modification.insert(the._$ele, $body ? $body : $dialog, 'beforeend');
         },
@@ -210,9 +215,7 @@ define(function (require, exports, module) {
             var findIndex;
             var dialogStyle = {
                 display: 'block',
-                visibility: 'hidden'
-            };
-            var bodyStyle = {
+                visibility: 'hidden',
                 width: options.width,
                 height: options.height
             };
@@ -249,7 +252,6 @@ define(function (require, exports, module) {
             }
 
             attribute.css($dialog, dialogStyle);
-            attribute.css(the._$body, bodyStyle);
             the._zIndex = zIndex;
             to = the._position();
             to.opacity = '';
@@ -272,19 +274,16 @@ define(function (require, exports, module) {
                 });
             }
 
-            animation.animate($dialog, to, {
-                duration: options.duration,
-                easing: options.easing
-            }, function () {
-                the.emit('open');
+            the.animate(to, function () {
+                if (the._scrollbar) {
+                    the._scrollbar.resize();
+                }
 
                 if (!options.content && options.remote) {
                     the.setRemote(options.remote);
                 }
 
-                if (typeis(callback) === 'function') {
-                    callback.call(the);
-                }
+                the.emit('open');
             });
 
             if (options.content) {
@@ -292,6 +291,33 @@ define(function (require, exports, module) {
             }
 
             return the;
+        },
+
+
+        /**
+         * 动画
+         * @param to
+         * @param callback
+         */
+        animate: function (to, callback) {
+            var the = this;
+            var options = the._options;
+
+            attribute.css(the._$bg, 'overflow', 'hidden');
+            animation.animate(the._$dialog, to, {
+                duration: options.duration,
+                easing: options.easing
+            }, function () {
+                if (the._scrollbar) {
+                    the._scrollbar.resize();
+                }
+
+                if (typeis(callback) === 'function') {
+                    callback.call(the);
+                }
+
+                attribute.css(the._$bg, 'overflow', 'auto');
+            });
         },
 
 
@@ -377,15 +403,16 @@ define(function (require, exports, module) {
          */
         resize: function (callback) {
             var the = this;
-            var options = the._options;
             var pos = the._position();
 
-            animation.animate(the._$dialog, pos, {
-                duration: options.duration,
-                easing: options.easing
-            }, function () {
+            animation.stop(the._$dialog, false);
+            the.animate(pos, function () {
                 if (typeis(callback) === 'function') {
                     callback.call(the);
+                }
+
+                if (the._scrollbar) {
+                    the._scrollbar.resize();
                 }
             });
 
@@ -436,7 +463,6 @@ define(function (require, exports, module) {
          * @returns {Dialog}
          */
         setRemote: function (url, height) {
-
             var the = this;
             var options = the._options;
             var $iframe = modification.create('iframe', {
@@ -448,8 +474,10 @@ define(function (require, exports, module) {
             });
 
             the._$ele.innerHTML = '';
+            $iframe.onload = $iframe.onerror = function () {
+                the.resize();
+            };
             modification.insert($iframe, the._$ele, 'beforeend');
-            the.resize();
 
             return the;
         },
@@ -489,6 +517,9 @@ define(function (require, exports, module) {
                 // 从对话框 map 里删除
                 delete(dialogsMap[the._id]);
 
+                if (the._scrollbar) {
+                    the._scrollbar.destroy();
+                }
 
                 // 将内容放到 body 里
                 modification.insert(the._$ele, body, 'beforeend');
@@ -519,16 +550,16 @@ define(function (require, exports, module) {
             var winW = attribute.width(window);
             var winH = attribute.height(window);
             var pos = {};
+            var pre = attribute.css(the._$dialog, ['width', 'height']);
 
             animation.stop(the._$dialog, true);
-
             attribute.css(the._$dialog, {
                 width: options.width,
                 height: options.height
             });
-
             pos.width = attribute.outerWidth(the._$dialog);
             pos.height = attribute.outerHeight(the._$dialog);
+            attribute.css(the._$dialog, pre);
 
             if (options.left === 'center') {
                 pos.left = (winW - pos.width) / 2;

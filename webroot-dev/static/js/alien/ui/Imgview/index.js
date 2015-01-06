@@ -21,12 +21,11 @@ define(function (require, exports, module) {
     var Template = require('../../libs/Template.js');
     var templateWrap = require('html!./wrap.html');
     var templateLoading = require('html!./loading.html');
-    var templateNav = require('html!./nav.html');
     var style = require('css!./style.css');
     var dato = require('../../util/dato.js');
+    var howdo = require('../../util/howdo.js');
     var tplWrap = new Template(templateWrap);
     var tplLoading = new Template(templateLoading);
-    var tplNav = new Template(templateNav);
     var alienClass = 'alien-ui-imgview';
     var noop = function () {
         // ignore
@@ -64,9 +63,26 @@ define(function (require, exports, module) {
         _init: function () {
             var the = this;
 
+            the._initData();
             the._initNode();
             the._initDialog();
             the._initEvent();
+
+            return the;
+        },
+
+
+        /**
+         * 初始化数据
+         * @private
+         */
+        _initData: function () {
+            var the = this;
+
+            the._list = [];
+            the._index = 0;
+            the._isSame = false;
+            the._hasFirstShow = false;
         },
 
 
@@ -88,9 +104,10 @@ define(function (require, exports, module) {
             the._$ele = nodeWrap;
             the._$loading = nodeLoading;
             the._$mainParent = nodes[0];
-            the._$navParent = nodes[1];
-            the._$prev = nodes[2];
-            the._$next = nodes[3];
+            the._$prev = nodes[1];
+            the._$next = nodes[2];
+            the._$loadingParent = nodes[3];
+            modification.insert(the._$loading, the._$loadingParent);
         },
 
 
@@ -151,53 +168,40 @@ define(function (require, exports, module) {
                     the._show();
                 }
             });
-
-            // 导航切换
-            event.on(the._$navParent, 'click', '.' + alienClass + '-nav-item', function () {
-                var index = attribute.data(this, 'index') * 1;
-
-                if (index !== the._index) {
-                    the._index = index;
-                    the._show();
-                }
-            });
         },
 
 
         /**
          * 加载图片
          * @param src {String} 图片地址
-         * @param [onbefore] {Function} 加载之前
          * @param [callback] {Function} 加载之后
          * @private
          */
-        _load: function (src, onbefore, callback) {
+        _load: function (src, callback) {
             var img = new Image();
             var index = this._index;
 
             img.src = src;
-            onbefore = onbefore || noop;
             callback = callback || noop;
 
-            if (img.complete) {
+            //if (img.complete) {
+            //    callback(null, {
+            //        index: index,
+            //        src: src,
+            //        width: img.width,
+            //        height: img.height
+            //    });
+            //} else {
+            img.onload = function () {
                 callback(null, {
                     index: index,
                     src: src,
                     width: img.width,
                     height: img.height
                 });
-            } else {
-                onbefore();
-                img.onload = function () {
-                    callback(null, {
-                        index: index,
-                        src: src,
-                        width: img.width,
-                        height: img.height
-                    });
-                };
-                img.onerror = callback;
-            }
+            };
+            img.onerror = callback;
+            //}
         },
 
 
@@ -224,74 +228,109 @@ define(function (require, exports, module) {
 
 
         /**
-         * 导航
-         * @private
-         */
-        _nav: function () {
-            var the = this;
-            var $items = selector.query('.' + alienClass + '-nav-item');
-            var activeClass = alienClass + '-nav-item-active';
-
-            $items.forEach(function ($item, index) {
-                if (index === the._index) {
-                    attribute.addClass($item, activeClass);
-                } else {
-                    attribute.removeClass($item, activeClass);
-                }
-            });
-        },
-
-
-        /**
          * 展示
          * @private
          */
         _show: function () {
             var the = this;
 
+            if (the._isSame) {
+                the._isSame = false;
+                return;
+            }
+
             the._ctrl();
-            the._nav();
-            the._load(the._list[the._index], function () {
-                the._$mainParent.innerHTML = '';
-                modification.insert(the._$loading, the._$mainParent, 'beforeend');
-                the._dialog.resize();
-            }, function (err, info) {
+
+            attribute.addClass(the._$ele, alienClass + '-isloading');
+            the._load(the._list[the._index], function (err, info) {
                 if (err) {
                     return the.emit('error', err);
                 }
 
                 if (the._index === info.index) {
-                    var $img = modification.create('img', info);
+                    var width = Math.min(info.width, attribute.width(window) - 20);
+                    var ratio = info.width / info.height;
+                    var height = width / ratio;
 
-                    the._$mainParent.innerHTML = '';
-                    modification.insert($img, the._$mainParent, 'beforeend');
-                    the._dialog.resize();
+                    the._dialog.setOptions({
+                        width: width,
+                        height: height
+                    });
+                    the._dialog.resize(function () {
+                        var $img = modification.create('img', info);
+                        the._$mainParent.innerHTML = '';
+                        modification.insert($img, the._$mainParent, 'beforeend');
+                        attribute.removeClass(the._$ele, alienClass + '-isloading');
+                    });
                 }
             });
         },
 
 
         /**
-         * 打开图片查看器
-         * @param list {Array} 图片列表
-         * @param [index] {Number} 打开时显示的图片索引
+         * 判断本次和上次是否一致
+         * @param list
+         * @param index
+         * @returns {boolean}
+         * @private
          */
-        open: function (list, index) {
-            var the = this;
-            var navHTML = tplNav.render({
-                list: list
-            });
+        _compare: function (list, index) {
+            index = index || 0;
 
-            the._$navParent.innerHTML = navHTML;
-            the._list = list;
-            the._index = index || 0;
-            the._dialog.setOptions('width', attribute.width(window) - 20);
-            the._dialog.open();
+            var the = this;
+
+            if ((index !== the._index) || (list.length !== the._list.length)) {
+                return false;
+            }
+
+            var compare = dato.compare(list, the._list);
+
+            return !compare.different.length && !compare.only[0].length && !compare.only[1].length;
         },
 
 
-        close: function () {
+        /**
+         * 打开图片查看器
+         * @param list {Array} 图片列表
+         * @param [index=0] {Number} 打开时显示的图片索引
+         */
+        open: function (list, index) {
+            var the = this;
 
+            the._isSame = the._compare(list, index);
+            the._list = list;
+            the._index = index || 0;
+
+            if (!the._isSame) {
+                the._hasFirstShow = false;
+                the._$mainParent.innerHTML = '';
+            }
+
+            if (!the._hasFirstShow) {
+                the._dialog.setOptions({
+                    width: 300,
+                    height: 300
+                });
+            }
+
+            the._hasFirstShow = true;
+            the._dialog.open();
+
+            return the;
+        },
+
+
+        /**
+         * 销毁实例
+         */
+        destroy: function () {
+            var the = this;
+
+            the._dialog.destroy(function () {
+                modification.remove(the._$ele);
+            });
+            event.un(the._$prev, 'click');
+            event.un(the._$next, 'click');
         }
     });
 
