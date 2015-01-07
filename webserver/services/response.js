@@ -216,12 +216,12 @@ exports.agree = function (operator, conditions, callback) {
                 model: 'response',
                 path: 'agreeCount',
                 response: doc.id
-            }, true, function (err, value) {
-                next(err, value, doc);
+            }, true, function (err, value, newDoc, oldDoc) {
+                next(err, value, doc, oldDoc);
             });
         })
         // 顺序串行
-        .follow(function (err, value, agreeByResponse) {
+        .follow(function (err, value, agreeByResponse, oldDoc) {
             callback(err, value);
 
             if (!err) {
@@ -237,8 +237,9 @@ exports.agree = function (operator, conditions, callback) {
                             object.findOne({_id: agreeByResponse.object}, done);
                         })
                         // 异步并行
-                        .together(function (err, agreeByResponseAuthor,  agreeInObject) {
-                            if (!err && agreeInObject) {
+                        .together(function (err, agreeByResponseAuthor, agreeInObject) {
+                            // 只在第一次赞同时通知
+                            if (!err && agreeInObject && !oldDoc) {
                                 // 评论
                                 if (agreeByResponse.parent === null) {
                                     notice.agreeComment(operator, agreeByResponseAuthor, agreeInObject, agreeByResponse);
