@@ -204,11 +204,11 @@ exports.agreeComment = function (agreeDeveloper, agreeByDeveloper, agreeinObject
     var data = {
         from: configs.smtp.from,
         sender: {
-            nickname: agreeDeveloper.nickname,
-            response: agreeinObject.contentHTML
+            nickname: agreeDeveloper.nickname
         },
         receiver: {
             nickname: agreeByDeveloper.nickname,
+            response: agreeByResponse.contentHTML,
             object: agreeinObject.title,
             link: configs.app.host + '/object/?id=' + agreeinObject.id
         }
@@ -246,11 +246,11 @@ exports.agreeReply = function (agreeDeveloper, agreeByDeveloper, agreeinObject, 
     var data = {
         from: configs.smtp.from,
         sender: {
-            nickname: agreeDeveloper.nickname,
-            response: agreeinObject.contentHTML
+            nickname: agreeDeveloper.nickname
         },
         receiver: {
             nickname: agreeByDeveloper.nickname,
+            response: agreeByResponse.contentHTML,
             object: agreeinObject.title,
             link: configs.app.host + '/object/?id=' + agreeinObject.id
         }
