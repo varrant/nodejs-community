@@ -7,8 +7,8 @@
 
 define(function (require, exports, module) {
     /**
-     * @module ui/Editor/index
-     * @requires ui/generator
+     * @module ui/Editor/
+     * @requires ui/base
      * @requires core/dom/selector
      * @requires core/dom/modification
      * @requires core/dom/attribute
@@ -25,7 +25,7 @@ define(function (require, exports, module) {
      */
     'use strict';
 
-    var generator = require('../generator.js');
+    var ui = require('../base.js');
     var selector = require('../../core/dom/selector.js');
     var modification = require('../../core/dom/modification.js');
     var attribute = require('../../core/dom/attribute.js');
@@ -69,7 +69,7 @@ define(function (require, exports, module) {
         autoFocus: true
     };
     var requestAnimationFrame = compatible.html5('requestAnimationFrame', window);
-    var Editor = generator({
+    var Editor = ui.create({
         STATIC: {
             defaults: defaults
         },

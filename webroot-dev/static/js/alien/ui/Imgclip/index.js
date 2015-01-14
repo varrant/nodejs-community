@@ -7,8 +7,8 @@
 
 define(function (require, exports, module) {
     /**
-     * @module ui/Imgclip/index
-     * @requires ui/generator
+     * @module ui/Imgclip/
+     * @requires ui/base
      * @requires libs/Template
      * @requires util/dato
      * @requires core/dom/selector
@@ -20,7 +20,7 @@ define(function (require, exports, module) {
      */
     'use strict';
 
-    var generator = require('../generator.js');
+    var ui = require('../base.js');
     var style = require('text!./style.css');
     var template = require('text!./template.html');
     var Template = require('../../libs/Template.js');
@@ -42,7 +42,7 @@ define(function (require, exports, module) {
         maxHeight: 0,
         ratio: 0
     };
-    var Imgclip = generator({
+    var Imgclip = ui.create({
         STATIC: {
             defaults: defaults
         },

@@ -7,8 +7,8 @@
 
 define(function (require, exports, module) {
     /**
-     * @module ui/Resize/index
-     * @requires ui/generator
+     * @module ui/Resize/
+     * @requires ui/base
      * @requires util/dato
      * @requires libs/Template
      * @requires core/dom/selector
@@ -18,7 +18,7 @@ define(function (require, exports, module) {
      */
     'use strict';
 
-    var generator = require('../generator.js');
+    var ui = require('../base.js');
     var style = require('css!./style.css');
     var template = require('html!./template.html');
     var dato = require('../../util/dato.js');
@@ -37,7 +37,7 @@ define(function (require, exports, module) {
         maxHeight: 0,
         ratio: 0
     };
-    var Resize = generator({
+    var Resize = ui.create({
         STATIC: {
             defaults: defaults
         },

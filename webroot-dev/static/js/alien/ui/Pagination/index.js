@@ -7,8 +7,8 @@
 
 define(function (require, exports, module) {
     /**
-     * @module ui/Pagination
-     * @requires ui/generator
+     * @module ui/Pagination/
+     * @requires ui/base
      * @requires util/dato
      * @requires libs/Pagination
      * @requires libs/Template
@@ -19,7 +19,7 @@ define(function (require, exports, module) {
      */
     'use strict';
 
-    var generator = require('../generator.js');
+    var ui = require('../base.js');
     var style = require('css!./style.css');
     var template = require('html!./template.html');
     var dato = require('../../util/dato.js');
@@ -37,7 +37,7 @@ define(function (require, exports, module) {
         page: 1,
         size: 3
     };
-    var Pagination = generator({
+    var Pagination = ui.create({
         STATIC: {
             /**
              * 默认配置

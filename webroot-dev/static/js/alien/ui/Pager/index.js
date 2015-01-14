@@ -7,8 +7,8 @@
 
 define(function (require, exports, module) {
     /**
-     * @module ui/Pager
-     * @requires ui/generator
+     * @module ui/Pager/
+     * @requires ui/base
      * @requires core/dom/selector
      * @requires core/dom/modification
      * @requires core/dom/attribute
@@ -18,7 +18,7 @@ define(function (require, exports, module) {
      */
     'use strict';
 
-    var generator = require('../generator.js');
+    var ui = require('../base.js');
     var selector = require('../../core/dom/selector.js');
     var modification = require('../../core/dom/modification.js');
     var attribute = require('../../core/dom/attribute.js');
@@ -38,7 +38,7 @@ define(function (require, exports, module) {
         max: 1
     };
     var alienClass = 'alien-ui-pager';
-    var Pager = generator({
+    var Pager = ui.create({
         STATIC: {},
         constructor: function ($parent, options) {
             var the = this;

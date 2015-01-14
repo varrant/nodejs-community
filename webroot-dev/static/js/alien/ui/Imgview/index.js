@@ -7,12 +7,21 @@
 
 define(function (require, exports, module) {
     /**
-     * @module ui/Viewer
+     * @module ui/Viewer/
+     * @requires ui/base/
+     * @requires ui/Dialog/
+     * @requires core/dom/selector
+     * @requires core/dom/attribute
+     * @requires core/dom/modification
+     * @requires core/event/base
+     * @requires libs/Template
+     * @requires util/dato
+     * @requires util/howdo
      */
     'use strict';
 
 
-    var generator = require('../generator.js');
+    var ui = require('../base.js');
     var Dialog = require('../Dialog/');
     var selector = require('../../core/dom/selector.js');
     var attribute = require('../../core/dom/attribute.js');

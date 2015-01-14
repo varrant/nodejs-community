@@ -244,16 +244,32 @@ define(function (require, exports, module) {
     /**
      * 解析时间
      * @param {String|Date} string 时间字符串
+     * @param {Date} [dftDate] 如果前置时间不合法，默认时间，默认为现在
      * @returns {Date}
      *
      * @example
      * date.parse('12/21/2014 12:21:22');
      * // => Sun Dec 21 2014 12:21:22 GMT+0800 (CST)
      */
-    exports.parse = function (string) {
-        var date = typeis(string) === 'date' ? string : new Date(string);
+    exports.parse = function (string, dftDate) {
+        var date;
 
-        return typeis.validDate(date) ? new Date(date) : new Date();
+        dftDate = dftDate || new Date();
+
+        switch (typeis(string)) {
+            case 'string':
+            case 'number':
+                date = string;
+                break;
+
+            case 'date':
+                return string;
+
+            default :
+                return dftDate;
+        }
+
+        return typeis.validDate(date) ? new Date(date) : dftDate;
     };
 
 
@@ -595,74 +611,4 @@ define(function (require, exports, module) {
             to: to
         };
     };
-
-
-
-    /**
-     * 日历
-     * @param year {Number} 年
-     * @param month {Number} 月
-     * @param [isNatualMonth=false] {Boolean} 是否自然月，默认 false
-     * @param [firstDayInWeek=0] {Number} 一周的第一天星期几，默认为0，即星期日
-     */
-    exports.calendar = function calendar(year, month, isNatualMonth, firstDayInWeek) {
-        month = isNatualMonth ? month - 1 : month;
-        firstDayInWeek = firstDayInWeek || 0;
-
-        var list = [];
-        var prevDate = new Date(year, month - 1);
-        var thisDate = new Date(year, month, 1);
-        var thisMonthDays = exports.getDaysInMonth(year, month);
-        var thisMonthFirstDateDay = thisDate.getDay();
-        var deltaDays = thisMonthFirstDateDay - firstDayInWeek;
-        var prevMonthDays = exports.getDaysInMonth(year, month - 1);
-        var i = 0;
-
-        // 上月
-        for (; i < deltaDays; i++) {
-            list.push({
-                year: prevDate.getFullYear(),
-                month: prevDate.getMonth() + 1,
-                date: prevMonthDays - i,
-                type: 'prev'
-            });
-        }
-
-        list.reverse();
-
-        // 本月
-        for (i = 1; i <= thisMonthDays; i++) {
-            list.push({
-                year: thisDate.getFullYear(),
-                month: thisDate.getMonth() + 1,
-                date: i,
-                type: 'this'
-            });
-        }
-
-        deltaDays = list.length % 7;
-
-        // 下月
-        if (deltaDays) {
-            var nextDate = new Date(year, month + 1);
-
-            for (i = 1; i <= 7 - deltaDays; i++) {
-                list.push({
-                    year: nextDate.getFullYear(),
-                    month: nextDate.getMonth() + 1,
-                    date: i,
-                    type: 'next'
-                });
-            }
-        }
-
-        // 分组
-        var group = [];
-
-        while (list.length) {
-            group.push(list.splice(0, 7));
-        }
-
-        return group;
-    }
 });

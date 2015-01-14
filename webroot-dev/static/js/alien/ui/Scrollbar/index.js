@@ -7,8 +7,8 @@
 
 define(function (require, exports, module) {
     /**
-     * @module ui/Scrollbar/index
-     * @requires ui/generator
+     * @module ui/Scrollbar/
+     * @requires ui/base
      * @requires util/dato
      * @requires libs/Template
      * @requires core/dom/selector
@@ -20,7 +20,7 @@ define(function (require, exports, module) {
      */
     'use strict';
 
-    var generator = require('../generator.js');
+    var ui = require('../base.js');
     var style = require('css!./style.css');
     var template = require('html!./template.html');
     var dato = require('../../util/dato.js');
@@ -63,7 +63,7 @@ define(function (require, exports, module) {
         addClass: '',
         isStandAlone: false
     };
-    var Scrollbar = generator({
+    var Scrollbar = ui.create({
         STATIC: {
             defaults: defaults
         },
@@ -153,10 +153,13 @@ define(function (require, exports, module) {
             var the = this;
 
             the._trigger = true;
-            the._calScrollSize();
-            the._calTrackSize();
-            the._scrollX();
-            the._scrollY();
+
+            if (isPlaceholderScroll) {
+                the._calScrollSize();
+                the._calTrackSize();
+                the._scrollX();
+                the._scrollY();
+            }
 
             return the;
         },

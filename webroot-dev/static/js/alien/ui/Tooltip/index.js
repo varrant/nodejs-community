@@ -7,8 +7,8 @@
 
 define(function (require, exports, module) {
     /**
-     * @module ui/Tooltip
-     * @requires ui/generator
+     * @module ui/Tooltip/
+     * @requires ui/base
      * @requires util/dato
      * @requires libs/Template
      * @requires core/dom/selector
@@ -19,7 +19,7 @@ define(function (require, exports, module) {
      */
     'use strict';
 
-    var style = require('css!./style.css');
+    var ui = require('../base.js');
     var template = require('html!./template.html');
     var generator = require('../generator.js');
     var dato = require('../../util/dato.js');
@@ -41,7 +41,7 @@ define(function (require, exports, module) {
         placement: 'auto',
         body: 'Hello world!'
     };
-    var Tooltip = generator({
+    var Tooltip = ui.create({
         STATIC: {
             /**
              * 默认配置

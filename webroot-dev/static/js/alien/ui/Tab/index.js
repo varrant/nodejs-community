@@ -7,8 +7,8 @@
 
 define(function (require, exports, module) {
     /**
-     * @module ui/Tab/index
-     * @requires ui/generator
+     * @module ui/Tab/
+     * @requires ui/base
      * @requires core/dom/selector
      * @requires core/dom/attribute
      * @requires core/event/touch
@@ -16,7 +16,7 @@ define(function (require, exports, module) {
      */
     'use strict';
 
-    var generator = require('../generator.js');
+    var ui = require('../base.js');
     var selector = require('../../core/dom/selector.js');
     var attribute = require('../../core/dom/attribute.js');
     var event = require('../../core/event/touch.js');
@@ -26,7 +26,7 @@ define(function (require, exports, module) {
         event: 'click tap',
         activeClass: 'active'
     };
-    var Tab = generator({
+    var Tab = ui.create({
         constructor: function ($ele, options) {
             var the = this;
 
