@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var generator = require('../../../alien/ui/generator.js');
+    var ui = require('../../../alien/ui/base.js');
     var compatible = require('../../../alien/core/navigator/compatible.js');
     var selector = require('../../../alien/core/dom/selector.js');
     var modification = require('../../../alien/core/dom/modification.js');
@@ -30,7 +30,7 @@ define(function (require, exports, module) {
         minHeight: 200,
         ratio: 1
     };
-    var Upload = generator({
+    var Upload = ui.create({
         constructor: function (options) {
             var the = this;
 

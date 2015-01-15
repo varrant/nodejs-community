@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var generator = require('../../alien/ui/generator.js');
+    var ui = require('../../alien/ui/base.js');
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
     var confirm = require('../common/confirm.js');
@@ -28,7 +28,7 @@ define(function (require, exports, module) {
         listKey: '',
         type: ''
     };
-    var Setting = generator({
+    var Setting = ui.create({
         constructor: function (selector, options) {
             var the = this;
 

@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var generator = require('../../../alien/ui/generator.js');
+    var ui = require('../../../alien/ui/base.js');
     var selector = require('../../../alien/core/dom/selector.js');
     var modification = require('../../../alien/core/dom/modification.js');
     var event = require('../../../alien/core/event/base.js');
@@ -32,7 +32,7 @@ define(function (require, exports, module) {
         autoFocus: false,
         uploadCallback: null
     };
-    var Respond = generator({
+    var Respond = ui.create({
         /**
          * 构造函数
          * @param $parent

@@ -12,7 +12,7 @@ define(function (require, exports, module) {
     var alert = require('../common/alert.js');
     var confirm = require('../common/confirm.js');
     var selector = require('../../alien/core/dom/selector.js');
-    var generator = require('../../alien/ui/generator.js');
+    var ui = require('../../alien/ui/base.js');
     var Editor = require('../../alien/ui/Editor/');
     var dato = require('../../alien/util/dato.js');
     var defaults = {
@@ -20,7 +20,7 @@ define(function (require, exports, module) {
         id: '',
         section: ''
     };
-    var Item = generator({
+    var Item = ui.create({
         constructor: function (formSelector, contentSelector, options, methods) {
             var the = this;
 

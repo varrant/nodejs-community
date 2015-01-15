@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var generator = require('../../alien/ui/generator.js');
+    var ui = require('../../alien/ui/base.js');
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
     var confirm = require('../common/confirm.js');
@@ -29,7 +29,7 @@ define(function (require, exports, module) {
         data: null,
         methods: null
     };
-    var List = generator({
+    var List = ui.create({
         constructor: function (listSelector, paginationSelector, options) {
             var the = this;
 

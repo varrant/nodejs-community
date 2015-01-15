@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var generator = require('../../alien/ui/generator.js');
+    var ui = require('../../alien/ui/base.js');
     var selector = require('../../alien/core/dom/selector.js');
     var modification = require('../../alien/core/dom/modification.js');
     var dato = require('../../alien/util/dato.js');
@@ -21,7 +21,7 @@ define(function (require, exports, module) {
         maxHeight: 100,
         ratio: 1
     };
-    var Upload = generator({
+    var Upload = ui.create({
         constructor: function (options) {
             var the = this;
 
@@ -48,5 +48,5 @@ define(function (require, exports, module) {
         }
     });
 
-    module.exports = {};
+    module.exports = Upload;
 });

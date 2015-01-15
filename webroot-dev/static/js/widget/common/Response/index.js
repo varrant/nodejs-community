@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var generator = require('../../../alien/ui/generator.js');
+    var ui = require('../../../alien/ui/base.js');
     var selector = require('../../../alien/core/dom/selector.js');
     var modification = require('../../../alien/core/dom/modification.js');
     var attribute = require('../../../alien/core/dom/attribute.js');
@@ -106,7 +106,7 @@ define(function (require, exports, module) {
         acceptByResponse: '',
         list: {}
     };
-    var Response = generator({
+    var Response = ui.create({
         constructor: function ($parent, options) {
             var the = this;
 
