@@ -94,7 +94,7 @@
 }
 
 .f-loading {
-    background: url(/static/img/loading.gif) no-repeat 0 4px/16px;
+    background: url(../img/loading.gif) no-repeat 0 4px/16px;
     display: inline-block;
     padding-left: 20px;
     color: #888;
