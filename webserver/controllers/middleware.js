@@ -14,6 +14,7 @@ var developer = require('../services/').developer;
 var cookie = require('../utils/').cookie;
 var REG_ENDXIE = /(\/|\.[^\.\/]+)$/;
 var REG_ACCEPT = /^application\/json;\s*charset=utf-8/i;
+var REG_SCHEMA = /^https?:\/\/$/i;
 
 module.exports = function (app) {
     var exports = {};
@@ -54,9 +55,10 @@ module.exports = function (app) {
         }
 
         var reqHost = req.headers.host;
-        var configHost = configs.app.host;
+        var configHost = configs.app.host.toLowerCase();
+        var schema = configHost.replace(reqHost, '');
 
-        if (configHost.replace(reqHost, '') === 'http://') {
+        if (REG_SCHEMA.test(schema)) {
             return next();
         }
 
@@ -64,7 +66,7 @@ module.exports = function (app) {
         var pathname = urlParser.pathname;
         var search = urlParser.search;
 
-        res.redirect(configs.app.host + pathname + (search ? search : ''));
+        res.redirect(configs.app.host.toLowerCase() + pathname + (search ? search : ''));
     };
 
 
