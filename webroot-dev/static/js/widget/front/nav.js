@@ -14,8 +14,6 @@ define(function (require, exports, module) {
     var event = require('../../alien/core/event/base.js');
     var app = {};
 
-    //alert(compatible.css3('flex'));
-
     app.toggle = function () {
         var $nav = selector.query('#nav')[0];
         var nodes = selector.query('.j-flag', $nav);
@@ -27,6 +25,10 @@ define(function (require, exports, module) {
 
         attribute.addClass($active, 'active');
 
+        if (attribute.state($menu) === 'show') {
+            return;
+        }
+
         event.on($toggle, 'click', function (eve) {
             eve.preventDefault();
             attribute.css($bg, 'display', 'block');
@@ -37,7 +39,7 @@ define(function (require, exports, module) {
             attribute.css($bg, 'display', 'none');
             attribute.css($menu, 'display', 'none');
         });
-    }
+    };
 
     app.toggle();
 });
