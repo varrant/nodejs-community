@@ -10,6 +10,7 @@
   "html": [
     "./views/**/*.html"
   ],
+  "res": "./static/img/**/*.*",
   "dest": "../webroot-pro/",
   "coolie.js": "./static/js/libs/coolie.min.js",
   "coolie-config.js": "./static/js/libs/coolie-config.js",
