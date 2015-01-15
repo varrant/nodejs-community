@@ -104,7 +104,45 @@ define(function (require, exports, module) {
             the.editor = new Editor(the._contentSelector, {
                 id: data.id,
                 // 更新的时候自动聚焦
-                autoFocus: !!data.id
+                autoFocus: !!data.id,
+                uploadCallback: function (list, onprogress, ondone) {
+                    var fd = new FormData();
+                    var the = this;
+
+                    // key, val, name
+                    fd.append('img', list[0].file, 'img.png');
+
+                    ajax({
+                        url: '/admin/api/oss/',
+                        method: 'put',
+                        data: fd
+                    })
+                        .on('progress', function (eve) {
+                            onprogress(eve.alienDetail.percent);
+                        })
+                        .on('success', function (json) {
+                            if (json.code !== 200) {
+                                the.uploadDestroy();
+                                return alert(json);
+                            }
+
+                            //cacheControl: "max-age=315360000"
+                            //contentType: "image/png"
+                            //encoding: "utf8"
+                            //image: {type: "png", width: 200, height: 200}
+                            //ourl: "http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f/i/20141228233411750487888485"
+                            //surl: "http://s.ydr.me/f/i/20141228233411750487888485"
+                            var data = json.data;
+                            ondone(null, [{
+                                name: "img.png",
+                                url: data.surl
+                            }]);
+                        })
+                        .on('error', function (err) {
+                            the.uploadDestroy();
+                            alert(err);
+                        });
+                }
             }).on('change', function (val) {
                     the.vue.$data.object.content = val;
                 });
