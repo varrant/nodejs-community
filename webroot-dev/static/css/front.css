@@ -419,9 +419,6 @@ nav .nav-right li:last-child {
 .m-postmain {
   position: relative;
 }
-.m-postmain .postmain-content {
-  white-space: pre-wrap;
-}
 .m-postmain .postmain-meta {
   list-style: none;
   padding: 0;
