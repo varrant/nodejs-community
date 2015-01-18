@@ -327,9 +327,8 @@ define(function (require, exports, module) {
                     try {
                         return JSON.parse(ret);
                     } catch (err1) {
-                        var fn = new Function('', 'return ' + ret);
-
                         try {
+                            var fn = new Function('', 'return ' + ret);
                             ret = fn();
                         } catch (err2) {
                             // ignore
@@ -480,9 +479,10 @@ define(function (require, exports, module) {
             var key = 'display';
             var none = 'none';
             var block = 'block !important';
+            var nowDisplay = attribute.css(ele, 'display');
 
-            if (!ele[alienKey + key]) {
-                ele[alienKey + key] = attribute.css(ele, 'display');
+            if (!ele[alienKey + key] && nowDisplay !== 'none') {
+                ele[alienKey + key] = nowDisplay;
             }
 
             // get

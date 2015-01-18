@@ -17,6 +17,7 @@ define(function (require, exports, module) {
      * @requires core/dom/animation
      * @requires core/event/wheel
      * @requires core/event/drag
+     * @requires core/event/touch
      */
     'use strict';
 
@@ -32,7 +33,6 @@ define(function (require, exports, module) {
     var attribute = require('../../core/dom/attribute.js');
     var animation = require('../../core/dom/animation.js');
     var event = require('../../core/event/wheel.js');
-    var drag = require('../../core/event/drag.js');
     var bodyClass = 'alien-ui-scrollbar-body';
     //var trackClass = 'alien-ui-scrollbar-track';
     var trackXClass = 'alien-ui-scrollbar-track-x';
@@ -350,19 +350,24 @@ define(function (require, exports, module) {
                 });
 
                 event.on(document, 'wheelend', the._onwheelend.bind(the, $thumb));
+                event.on(the._$trackX, 'click tap', function () {
+                    return false;
+                });
+                event.on(the._$trackY, 'click tap', function () {
+                    return false;
+                });
 
                 // 拖拽支持
                 event.on(the._$thumbX, 'dragstart', function (eve) {
-                    eve.preventDefault();
                     the._isDrag = true;
                     x0 = eve.pageX;
                     left0 = parseFloat(attribute.css(the._$thumbX, 'left'));
                     attribute.addClass(the._$thumbX, thumbActiveClass);
+
+                    return false;
                 });
 
                 event.on(the._$thumbX, 'drag', function (eve) {
-                    eve.preventDefault();
-
                     var left = left0 + eve.pageX - x0;
 
                     if (left < 0) {
@@ -374,12 +379,15 @@ define(function (require, exports, module) {
                     attribute.css(the._$thumbX, 'left', left);
                     the._scrollLeft = the._scrollLeftMax * left / the._thumbLeftMax;
                     the._scrollX();
+
+                    return false;
                 });
 
                 event.on(the._$thumbX, 'dragend', function (eve) {
-                    eve.preventDefault();
                     the._isDrag = false;
                     attribute.removeClass(the._$thumbX, thumbActiveClass);
+
+                    return false;
                 });
 
                 event.on(the._$thumbY, 'dragstart', function (eve) {
@@ -391,8 +399,6 @@ define(function (require, exports, module) {
                 });
 
                 event.on(the._$thumbY, 'drag', function (eve) {
-                    eve.preventDefault();
-
                     var top = top0 + eve.pageY - y0;
 
                     if (top < 0) {
@@ -404,12 +410,15 @@ define(function (require, exports, module) {
                     attribute.css(the._$thumbY, 'top', top);
                     the._scrollTop = the._scrollTopMax * top / the._thumbTopMax;
                     the._scrollY();
+
+                    return false;
                 });
 
                 event.on(the._$thumbY, 'dragend', function (eve) {
-                    eve.preventDefault();
                     the._isDrag = false;
                     attribute.removeClass(the._$thumbY, thumbActiveClass);
+
+                    return false;
                 });
 
                 event.on(window, 'resize', the._onresize = control.debounce(the.resize.bind(the)));
@@ -597,8 +606,14 @@ define(function (require, exports, module) {
             var the = this;
 
             // 清除拖拽
-            event.un(the._$thumbX, 'dragsatrt drag dragend');
-            event.un(the._$thumbY, 'dragsatrt drag dragend');
+            var eve1 = 'dragsatrt drag dragend';
+            event.un(the._$thumbX, eve1);
+            event.un(the._$thumbY, eve1);
+
+            // 清楚单击、tap
+            var eve2 = 'click tap';
+            event.un(the._$trackX, eve2);
+            event.un(the._$trackY, eve2);
 
             // 清除监听
             event.un(the._$ele, updateEvent);
@@ -616,6 +631,8 @@ define(function (require, exports, module) {
         }
     });
 
+    require('../../core/event/drag.js');
+    require('../../core/event/touch.js');
     modification.importStyle(style);
 
     /**

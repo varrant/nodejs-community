@@ -23,6 +23,7 @@ define(function (require, exports, module) {
     var selector = require('../../core/dom/selector.js');
     var attribute = require('../../core/dom/attribute.js');
     var modification = require('../../core/dom/modification.js');
+    var event = require('../../core/event/touch.js');
     var animation = require('../../core/dom/animation.js');
     var ui = require('../base.js');
     var style = require('css!./style.css');
@@ -68,6 +69,16 @@ define(function (require, exports, module) {
          */
         _init: function () {
             var the = this;
+
+            the._initNode();
+            the._initEvent();
+
+            return the;
+        },
+
+
+        _initNode: function () {
+            var the = this;
             var options = the._options;
             var style = {
                 display: 'none'
@@ -81,8 +92,15 @@ define(function (require, exports, module) {
             });
             attribute.addClass(the._$mask, options.addClass);
             modification.insert(the._$mask, document.body);
+        },
 
-            return the;
+
+        _initEvent: function () {
+            var the = this;
+
+            event.on(the._$mask, 'click tap', function (eve) {
+                the.emit('hit');
+            });
         },
 
 
@@ -224,6 +242,7 @@ define(function (require, exports, module) {
             var the = this;
 
             the.close();
+            event.un(the._$mask, 'click tap');
             modification.remove(the._$mask);
 
             if (typeis.function(callback)) {
@@ -244,4 +263,12 @@ define(function (require, exports, module) {
      */
     module.exports = Mask;
     modification.importStyle(style);
+    event.on(document, 'keyup', function (eve) {
+        var mask;
+
+        if (eve.which === 27 && Mask.maskWindowList.length) {
+            mask = Mask.getTopMask();
+            mask.emit('esc');
+        }
+    });
 });
