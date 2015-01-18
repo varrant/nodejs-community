@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/attribute.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/attribute.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/error.js" afterPath="$PROJECT_DIR$/webserver/controllers/error.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Imgview/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Imgview/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Mask/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Mask/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Window/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Window/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/list.html" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Imgview/loading.html" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Imgview/loading.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/meta.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/meta.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/include/meta.html" afterPath="$PROJECT_DIR$/webroot-dev/views/include/meta.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Imgview/style.css" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Imgview/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Mask/style.css" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Mask/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Dialog/template.html" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Dialog/template.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/readme.md" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/typeis.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/typeis.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -66,8 +54,8 @@
       <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="361">
-              <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.75247526" vertical-offset="0" max-vertical-offset="361">
+              <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -628,13 +616,20 @@
       <option name="project" value="LOCAL" />
       <updated>1421405699921</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="beta 1">
+      <created>1421585936211</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1421585936211</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4696734" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -650,7 +645,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970452" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -676,7 +670,8 @@
     <MESSAGE value="alpha 36" />
     <MESSAGE value="alpha 37" />
     <MESSAGE value="alpha 38" />
-    <option name="LAST_COMMIT_MESSAGE" value="alpha 38" />
+    <MESSAGE value="beta 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="beta 1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1050,8 +1045,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="361">
-          <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.75247526" vertical-offset="0" max-vertical-offset="361">
+          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
           <folding />
         </state>
       </provider>
