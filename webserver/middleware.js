@@ -12,11 +12,13 @@ var category = require('./services/').category;
 var developer = require('./services/').developer;
 var howdo = require('howdo');
 var configs = require('../configs/');
+var pkg = require('../package.json');
 
 module.exports = function (next, app) {
     howdo
         // 初始化启动配置
         .task(function (done) {
+            configs.package = pkg;
             app.locals.$config = configs;
             done();
         })
