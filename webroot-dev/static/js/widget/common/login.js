@@ -15,9 +15,14 @@ define(function (require, exports, module) {
         var winH = 600;
         var left = (screenW - winW) / 2;
         var top = (screenH - winH) / 3;
+        var url = '/developer/oauth/authorize/';
 
-        window.open('/developer/oauth/authorize/', '授权 github 登录到前端开发者社区',
-            'width=' + winW + ',height=' + winH + ',top=' + top + ',left=' + left + ',' +
-            'scrollbars=no,resizable=no,menubar=no');
+        if (screenW > 1080) {
+            window.open(url, '授权 github 登录',
+                'width=' + winW + ',height=' + winH + ',top=' + top + ',left=' + left + ',' +
+                'scrollbars=no,resizable=no,menubar=no');
+        } else {
+            window.location.href = url;
+        }
     };
 });

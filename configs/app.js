@@ -14,7 +14,7 @@ module.exports = {
     // 端口
     port: 18082,
     // 主机
-    host: isAliYun ? 'http://FrontEndDev.org' : 'http://sb.com:18082',
+    host: isAliYun ? 'http://FrontEndDev.org' : 'http://192.168.1.106:18082',
     // mongodb
     mongodb: 'mongodb://cloudcome1:123123@localhost:27017/community'
 };
