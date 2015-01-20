@@ -2,7 +2,7 @@
   "name": "nodejs-community",
   "version": "0.0.1 beta 2",
   "private": true,
-  "description": "前端开发者社区",
+  "description": "前端开发社区",
   "scripts": {
     "install": "node ./cli/install.js ./settings.json",
     "start": "node ./cli/start.js"
