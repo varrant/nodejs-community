@@ -19,7 +19,7 @@ module.exports = function (next, app) {
         // 初始化启动配置
         .task(function (done) {
             configs.package = pkg;
-            app.locals.$config = configs;
+            app.locals.$configs = configs;
             done();
         })
         // 初始化 web 设置
