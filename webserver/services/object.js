@@ -195,8 +195,14 @@ exports.updateOne = function (author, conditions, data, callback) {
                 }
 
                 if (!doc) {
-                    err = new Error('该对象不存在');
+                    err = new Error('该 object 不存在');
                     err.code = 404;
+                    return next(err);
+                }
+
+                if (doc.author.toString() !== author.id.toString()) {
+                    err = new Error('不允许修改他人的 object');
+                    err.code = 403;
                     return next(err);
                 }
 
@@ -518,7 +524,7 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
                 // 知
                 // 通知被采纳的人
                 developer.findOne({_id: newDoc.acceptByAuthor}, function (err, doc) {
-                    if(err){
+                    if (err) {
                         return log.holdError(err);
                     }
 
