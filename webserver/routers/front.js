@@ -92,5 +92,6 @@ module.exports = function (app, ctrlFront) {
 
 
     // developer
-    app.get('/developer/:githubLogin/', ctrlFront.developer.get);
+    app.get('/developer/:githubLogin/', ctrlFront.developer.home);
+    app.get('/developer/:githubLogin/comment/', ctrlFront.developer.comment);
 };

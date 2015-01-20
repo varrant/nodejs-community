@@ -19,13 +19,7 @@ module.exports = function (app) {
     var exports = {};
     var oauthSettings = app.locals.$setting.oauth;
 
-    /**
-     * 跳转至授权地址
-     * @param req
-     * @param res
-     * @param next
-     * @returns {*}
-     */
+    // 授权页面
     exports.oauthAuthorize = function (req, res, next) {
         var oauth = developer.createOauthURL(oauthSettings, configs.app.host + '/developer/oauth/callback/');
 
@@ -37,13 +31,7 @@ module.exports = function (app) {
     };
 
 
-    /**
-     * 跳转回调
-     * @param req
-     * @param res
-     * @param next
-     * @returns {*}
-     */
+    // 授权回调
     exports.oauthCallback = function (req, res, next) {
         var query = req.query;
         var code = query.code;
@@ -103,13 +91,8 @@ module.exports = function (app) {
     };
 
 
-    /**
-     * 开发者主页
-     * @param req
-     * @param res
-     * @param next
-     */
-    exports.get = function (req, res, next) {
+    // 我的主页
+    exports.home = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
 
         developer.findOne({
@@ -141,8 +124,42 @@ module.exports = function (app) {
             };
 
             developer.increaseViewByCount({_id: doc.id}, 1, log.holdError);
-            res.render('front/developer.html', data);
+            res.render('front/developer-home.html', data);
         });
+    };
+
+
+    // 我的评论
+    exports.comment = function (req, res, next) {
+        res.send('我的评论');
+    };
+
+
+    // 我的被评论
+    exports.commentBy = function (req, res, next) {
+        res.send('我的被评论');
+    };
+
+
+    // 我的回复
+    exports.reply = function (req, res, next) {
+        res.send('我的回复');
+    };
+
+
+    // 我的被回复
+    exports.replyBy = function (req, res, next) {
+        res.send('我的被回复');
+    };
+
+    // 我的被赞同
+    exports.agreeBy = function (req, res, next) {
+        res.send('我的被赞同');
+    };
+
+    // 我的被采纳
+    exports.acceptBy = function (req, res, next) {
+        res.send('我的被采纳');
     };
 
     return exports;
