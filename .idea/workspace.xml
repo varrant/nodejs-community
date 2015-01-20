@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/app/admin/object-item.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/app/admin/object-item.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -40,8 +39,8 @@
       <file leaf-file-name="object.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webserver/controllers/api/object.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55609757" vertical-offset="1520" max-vertical-offset="3306">
-              <caret line="108" column="38" selection-start-line="108" selection-start-column="38" selection-end-line="108" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.5252032" vertical-offset="1520" max-vertical-offset="3306">
+              <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -826,7 +825,13 @@
       <option name="project" value="LOCAL" />
       <updated>1421761723569</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="beta 3">
+      <created>1421763132031</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1421763132031</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1284,8 +1289,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/controllers/api/object.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55609757" vertical-offset="1520" max-vertical-offset="3306">
-          <caret line="108" column="38" selection-start-line="108" selection-start-column="38" selection-end-line="108" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.5252032" vertical-offset="1520" max-vertical-offset="3306">
+          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
