@@ -28,11 +28,11 @@
     "clientId": "github_oauth_client_id",
     "clientSecret": "github_oauth_client_secret"
   },
-  // 网站名称
+  // 网站配置
   "website": {
-    "title": "前端开发者社区",
-    "keywords": "前端开发者社区",
-    "description": "前端开发者社区",
+    "title": "前端开发社区",
+    "keywords": "前端开发社区",
+    "description": "前端开发社区",
     "meta": "<meta name=\"website\" content=\"f2ec.com\"/>",
     "statistics": ""
   },

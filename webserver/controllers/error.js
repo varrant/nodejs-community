@@ -38,7 +38,7 @@ module.exports = function (app) {
                 error: err.message
             });
         }
-    }
+    };
 
 
     /**

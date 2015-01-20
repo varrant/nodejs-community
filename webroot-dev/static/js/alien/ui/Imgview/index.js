@@ -22,11 +22,13 @@ define(function (require, exports, module) {
 
 
     var ui = require('../base.js');
-    var Dialog = require('../Dialog/');
+    var Scrollbar = require('../Scrollbar/');
+    var Mask = require('../Mask/');
+    var Window = require('../Window/');
     var selector = require('../../core/dom/selector.js');
     var attribute = require('../../core/dom/attribute.js');
     var modification = require('../../core/dom/modification.js');
-    var event = require('../../core/event/base.js');
+    var event = require('../../core/event/touch.js');
     var Template = require('../../libs/Template.js');
     var templateWrap = require('html!./wrap.html');
     var templateLoading = require('html!./loading.html');
@@ -40,11 +42,12 @@ define(function (require, exports, module) {
         // ignore
     };
     var defaults = {
+        minWidth: 100,
+        minHeight: 100,
         loading: {
             src: 'http://s.ydr.me/p/i/loading-128.gif',
             width: 64,
-            height: 64,
-            text: '加载中……'
+            height: 64
         },
         nav: {
             prev: {
@@ -74,7 +77,6 @@ define(function (require, exports, module) {
 
             the._initData();
             the._initNode();
-            the._initDialog();
             the._initEvent();
 
             return the;
@@ -105,8 +107,19 @@ define(function (require, exports, module) {
             var nodeWrap = modification.parse(htmlWrap)[0];
             var nodeLoading = modification.parse(htmlLoading)[0];
             var nodes = selector.query('.j-flag', nodeWrap);
+            var loadingWidth = options.loading.width;
+            var loadingHeight = options.loading.height;
 
             the._load(options.loading.src);
+            the._mask = new Mask(window, {
+                addClass: alienClass + '-bg'
+            });
+            the._$mask = the._mask.getNode();
+            the._window = new Window(null, {
+                parentNode: the._$mask
+            });
+            the._$window = the._window.getNode();
+            the._scrollbar = new Scrollbar(the._$window);
             modification.insert(nodeWrap, document.body, 'beforeend');
             the._$ele = nodeWrap;
             the._$loading = nodeLoading;
@@ -114,23 +127,14 @@ define(function (require, exports, module) {
             the._$prev = nodes[1];
             the._$next = nodes[2];
             the._$loadingParent = nodes[3];
+            attribute.css(the._$loading, {
+                width: loadingWidth,
+                height: loadingHeight,
+                marginLeft: -loadingWidth / 2,
+                marginTop: -loadingHeight / 2
+            });
             modification.insert(the._$loading, the._$loadingParent);
-        },
-
-
-        /**
-         * 初始化对话框
-         * @private
-         */
-        _initDialog: function () {
-            var the = this;
-
-            the._dialogOptions = {
-                title: null,
-                addClass: alienClass + '-dialog',
-                canDrag: false
-            };
-            the._dialog = new Dialog(the._$ele, the._dialogOptions);
+            modification.insert(the._$ele, the._$window);
         },
 
 
@@ -141,18 +145,25 @@ define(function (require, exports, module) {
         _initEvent: function () {
             var the = this;
             var onclose = function () {
-                this.close();
+                the._window.close(function () {
+                    the._mask.close();
+                });
+
                 return false;
             };
 
+            event.on(the._$window, 'click tap', function (eve) {
+                return false;
+            });
+
             // 单击背景
-            the._dialog.on('hitbg', onclose);
+            the._mask.on('hit', onclose);
 
             // 按 esc
-            the._dialog.on('esc', onclose);
+            the._mask.on('esc', onclose);
 
             // 打开
-            the._dialog.on('open', function () {
+            the._window.on('open', function () {
                 the._show();
             });
 
@@ -241,8 +252,8 @@ define(function (require, exports, module) {
         _show: function () {
             var the = this;
 
-            the._ctrl();
             attribute.addClass(the._$ele, alienClass + '-isloading');
+            the._ctrl();
             the._load(the._list[the._index], function (err, info) {
                 if (err) {
                     return the.emit('error', err);
@@ -253,15 +264,17 @@ define(function (require, exports, module) {
                     var ratio = info.width / info.height;
                     var height = width / ratio;
 
-                    the._dialog.setOptions({
+                    the._window.setOptions({
                         width: width,
                         height: height
                     });
-                    the._dialog.resize(function () {
+                    the._window.resize(function () {
                         var $img = modification.create('img', info);
+
                         the._$mainParent.innerHTML = '';
                         modification.insert($img, the._$mainParent, 'beforeend');
                         attribute.removeClass(the._$ele, alienClass + '-isloading');
+                        the._scrollbar.resize();
                     });
                 }
             });
@@ -275,14 +288,20 @@ define(function (require, exports, module) {
          */
         open: function (list, index) {
             var the = this;
+            var options = the._options;
 
             the._list = list;
             the._index = index || 0;
             the._$mainParent.innerHTML = '';
-            the._dialog.setOptions({
-                width: 300,
-                height: 300
+            the._window.setOptions({
+                width: options.minWidth,
+                height: options.minHeight
             });
+            attribute.css(the._$window, {
+                width: options.minWidth,
+                height: options.minHeight
+            });
+            attribute.addClass(the._$ele, alienClass + '-isloading');
 
             if (the._list.length > 1) {
                 attribute.css(the._$prev, 'display', 'block');
@@ -292,7 +311,8 @@ define(function (require, exports, module) {
                 attribute.css(the._$next, 'display', 'none');
             }
 
-            the._dialog.open();
+            the._mask.open();
+            the._window.open();
 
             return the;
         },
@@ -304,7 +324,7 @@ define(function (require, exports, module) {
         destroy: function () {
             var the = this;
 
-            the._dialog.destroy(function () {
+            the._window.destroy(function () {
                 modification.remove(the._$ele);
             });
             event.un(the._$prev, 'click');

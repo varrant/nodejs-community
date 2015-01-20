@@ -24,6 +24,12 @@
                 <i class="i i-clock-o"></i>
                 <span class="f-small">{{object.updateAt|datefrom}} &times; {{object.updateList.length}}</span>
             </li>
+            {{if object.author.id === $developer.id}}
+            <li>
+                <i class="i i-pencil"></i>
+                <a class="f-small" href="/admin/object/question/?id={{object.id}}">重新编辑</a>
+            </li>
+            {{/if}}
         </ul>
     </div>
 </div>
