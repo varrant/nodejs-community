@@ -342,7 +342,13 @@
       <option name="project" value="LOCAL" />
       <updated>1421757476218</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="beta 3">
+      <created>1421757885682</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1421757885682</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -391,7 +397,8 @@
     <MESSAGE value="alpha 37" />
     <MESSAGE value="alpha 38" />
     <MESSAGE value="beta 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="beta 2" />
+    <MESSAGE value="beta 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="beta 3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -745,6 +752,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06440678" vertical-offset="0" max-vertical-offset="1235">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/settings.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1007">
@@ -753,18 +768,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25762713" vertical-offset="0" max-vertical-offset="1235">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27804878" vertical-offset="0" max-vertical-offset="615">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+          <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
           <folding />
         </state>
       </provider>
