@@ -10,15 +10,17 @@ define(function (require, exports, module) {
 
     var Item = require('../../widget/admin/Item.js');
     var Tab = require('../../alien/ui/Tab/');
+    var Imgview = require('../../alien/ui/Imgview/');
     var Response = require('../../widget/common/Response/');
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
+    var event = require('../../alien/core/event/base.js');
     var app = {};
 
     app.tab = function () {
         var $tab = selector.query('#object-tab')[0];
 
-        if(!$tab){
+        if (!$tab) {
             return;
         }
 
@@ -55,7 +57,7 @@ define(function (require, exports, module) {
 
         var $tab = selector.query('#tab-response')[0];
 
-        if(!$tab){
+        if (!$tab) {
             return;
         }
 
@@ -81,8 +83,18 @@ define(function (require, exports, module) {
         });
     };
 
+    app.imgview = function () {
+        var imgview = new Imgview();
+        var onview = function () {
+            imgview.open([this.src]);
+        };
+
+        event.on(document.body, 'click', '.alien-ui-response-content img', onview);
+    };
+
     require('../../widget/admin/header.js');
     require('../../widget/admin/sidebar.js');
     app.tab();
     app.object();
+    app.imgview();
 });
