@@ -9,6 +9,7 @@
 
 var configs = require('../../configs/');
 var scoreMap = configs.score;
+var scoreUtil = require('../utils/').score;
 var object = require('../models').object;
 var section = require('./section.js');
 var category = require('./category.js');
@@ -444,19 +445,21 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
         })
         // 2. 检查权限
         .task(function (next, acceptObject) {
+            var err;
+
             if (!acceptObject) {
-                var err = new Error('该 object 不存在');
+                err = new Error('该 object 不存在');
                 err.code = 404;
                 return next(err);
             }
 
             if (acceptObject.section.uri !== 'question') {
-                var err = new Error('该版块下不允许此操作');
+                err = new Error('该版块下不允许此操作');
                 return next(err);
             }
 
             if (acceptObject.acceptByResponse) {
-                var err = new Error('无法重复采纳最佳答案');
+                err = new Error('无法重复采纳最佳答案');
                 return next(err);
             }
 
@@ -465,7 +468,7 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
                 return next(null, acceptObject);
             }
 
-            var err = new Error('权限不足');
+            err = new Error('权限不足');
             err.code = 403;
             next(err);
         })
@@ -517,18 +520,18 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
                 // 当前被采纳的人的被采纳次数+1
                 developer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
 
-                // 分
-                // 当前被采纳的人加分
-                developer.increaseScore({_id: newDoc.acceptByAuthor}, scoreMap.acceptBy, log.holdError);
-
-                // 知
-                // 通知被采纳的人
                 developer.findOne({_id: newDoc.acceptByAuthor}, function (err, doc) {
                     if (err) {
                         return log.holdError(err);
                     }
 
+                    // 知
+                    // 通知被采纳的人
                     notice.accept(operator, doc, newDoc, acceptByResponse);
+
+                    // 分
+                    // 当前被采纳的人加分
+                    developer.increaseScore({_id: newDoc.acceptByAuthor}, scoreUtil.acceptBy(operator, doc), log.holdError);
                 });
 
                 // response
@@ -538,6 +541,7 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
             }
         });
 };
+
 
 /**
  * 取出两个数组中独有的部分
