@@ -24,5 +24,10 @@ module.exports = function (app) {
             role: 18,
             introduction: '会员'
         },
+        {
+            name: 'writer',
+            role: 17,
+            introduction: '作者'
+        }
     ];
 }
