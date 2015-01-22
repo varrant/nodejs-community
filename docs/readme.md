@@ -51,3 +51,4 @@
 - <http://www.imooc.com/wenda/0>
 - <https://nodebb.org.cn/>
 - <https://coderq.com/>
+- <http://nodeclass.com/>

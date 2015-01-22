@@ -27,7 +27,7 @@ var compression = require('compression');
 // 模板引擎
 var ydrTemplate = require('ydr-template');
 
-ydrTemplate.setOptions({
+ydrTemplate.setDefaults({
     cache: 'pro' === configs.app.env,
     compress: 'pro' === configs.app.env
 });

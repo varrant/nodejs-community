@@ -18,13 +18,17 @@
         <!--主-->
         <div class="col-md-9 g-main">
             <ul class="avg-xs-1 avg-sm-2 f-text-center m-home">
-                <!--<li class="home-opinion">-->
-                    <!--<a href="/opinion/">-->
-                        <!--<div class="home-icon"><i class="i i-gavel"></i></div>-->
-                        <!--<div class="home-name">观点</div>-->
-                        <!--<div class="home-desc">智慧提问，智慧回答。</div>-->
-                    <!--</a>-->
-                <!--</li>-->
+                {{var sectionTypes = ['opinion', 'question', 'link', 'help']}}
+                {{if section.opinion}}
+                <li class="home-opinion">
+                    <a href="/opinion/">
+                        <div class="home-icon"><i class="i i-gavel"></i></div>
+                        <div class="home-name">{{section.opinion.name}}</div>
+                        <div class="home-desc">{{section.opinion.introduction}}</div>
+                    </a>
+                </li>
+                {{/if}}
+
                 {{if section.question}}
                 <li class="home-question">
                     <a href="/question/">
@@ -34,13 +38,17 @@
                     </a>
                 </li>
                 {{/if}}
-                <!--<li class="home-weibo">-->
-                    <!--<a href="/weibo/">-->
-                        <!--<div class="home-icon"><i class="i i-twitter"></i></div>-->
-                        <!--<div class="home-name">微博</div>-->
-                        <!--<div class="home-desc">闲言碎语。</div>-->
-                    <!--</a>-->
-                <!--</li>-->
+
+                {{if section.link}}
+                <li class="home-question">
+                    <a href="/link/">
+                        <div class="home-icon"><i class="i i-link"></i></div>
+                        <div class="home-name">{{section.link.name}}</div>
+                        <div class="home-desc">{{section.link.introduction}}</div>
+                    </a>
+                </li>
+                {{/if}}
+
                 {{if section.help}}
                 <li class="home-help">
                     <a href="/help/">
