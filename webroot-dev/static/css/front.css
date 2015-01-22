@@ -194,12 +194,12 @@ nav .nav-right li:last-child {
 .m-home .home-question a:hover {
   background: #fff9e1;
 }
-.m-home .home-weibo a {
-  background: #e3fff9;
-  color: #00b08a;
+.m-home .home-link a {
+  background: #dee6fd;
+  color: #0a309f;
 }
-.m-home .home-weibo a:hover {
-  background: #d4fff6;
+.m-home .home-link a:hover {
+  background: #d0dbfc;
 }
 .m-home .home-help a {
   background: #fff3f3;

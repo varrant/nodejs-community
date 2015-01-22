@@ -29,7 +29,7 @@
                     <li class="home-{{=st.name}}">
                         <a href="/{{=st.name}}/">
                             <div class="home-icon"><i class="i i-{{=st.icon}}"></i></div>
-                            <div class="home-name">{{section[st.name].name}}</div>
+                            <div class="home-name">{{section[st.name].name}}<small>/{{section[st.name].objectCount|humanize}}</small></div>
                             <div class="home-desc">{{section[st.name].introduction}}</div>
                         </a>
                     </li>
@@ -46,13 +46,19 @@
                 <div class="card-title"><i class="i i-bar-chart"></i>统计</div>
                 <div class="card-body">
                     <ul class="m-simplelist s-muted">
-                        <!--<li><i class="i i-gavel"></i>{{statistics.opinion|humanize}}</li>-->
-                        <li><i class="i i-cube"></i>{{statistics.question|humanize}}</li>
-                        <!--<li><i class="i i-twitter"></i>{{statistics.weibo|humanize}}</li>-->
-                        <li><i class="i i-question-circle"></i>{{statistics.help|humanize}}</li>
-                        <li><i class="i i-user"></i>{{statistics.engineers|humanize}}</li>
-                        <li><i class="i i-cloud"></i>{{(Date.now() - $system.startTime)|humanize}}</li>
-                        <li><i class="i i-shield"></i>{{$system.hash}}</li>
+                        {{var bestList = [];}}
+                        {{# bestList.push({type: '最活跃', key: 'bestActive'});}}
+                        {{# bestList.push({type: '最人气', key: 'bestPopularity'});}}
+                        {{# bestList.push({type: '最积极', key: 'bestInitiative'});}}
+                        {{# bestList.push({type: '最热门', key: 'bestHot'});}}
+                        {{# bestList.push({type: '最欢迎', key: 'bestWelcome'});}}
+                        {{# bestList.push({type: '最神话', key: 'bestRespect'});}}
+
+                        {{list bestList as best}}
+                            <li><i class="i i-user"></i>{{best.type}}：<a href="{{$configs.app.host}}/developer/{{=statistics[best.key].githubLogin}}/"><img src="{{statistics[best.key].email|gravatar:40}}" width="20" height="20">{{statistics[best.key].nickname}}</a></li>
+                        {{/list}}
+
+                        <li><i class="i i-user"></i>总用户：{{statistics.engineers|humanize}}</li>
                     </ul>
                 </div>
             </div>

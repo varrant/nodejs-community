@@ -8,6 +8,7 @@
 <head lang="zh-cn">
     {{include ../include/meta.html}}
     {{include ./include/meta.html}}
+    <script>window['-section-']='opinion';</script>
 </head>
 <body ontouchstart="" class="p-home">
 {{include ./include/nav.html}}
@@ -16,21 +17,19 @@
 <div class="container">
     <div class="row g-container">
         <!--主-->
-        <div class="col-md-9 g-main">
-            {{include ./include/list-main-body.html}}
+        <div class="col-md-12 g-main">
+            <div class="alert alert-warning" style="margin: 20px;">即将来袭。</div>
         </div>
         <!--/主-->
-
-        <!--副-->
-        <div class="col-md-3 g-sub">
-            {{include ./include/list-sub-tab1.html}}
-            {{include ./include/list-sub-tab2.html}}
-        </div>
-        <!--/副-->
     </div>
 </div>
 
 
 {{include ./include/footer.html}}
+
+<script src="/static/js/libs/coolie.min.js"
+        data-config="./coolie-config.js"
+        data-main="./front/home.js"></script>
+
 </body>
 </html>

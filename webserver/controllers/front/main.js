@@ -39,17 +39,6 @@ module.exports = function (app) {
 
 
         howdo
-            // 统计个数
-            .each(app.locals.$section, function (index, section, done) {
-                object.count({section: section.id}, function (err, count) {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    statistics[section.uri] = count;
-                    done();
-                });
-            })
             // 注册用户数
             .task(function (done) {
                 developer.count({}, function (err, count) {
@@ -58,6 +47,72 @@ module.exports = function (app) {
                     }
 
                     statistics.engineers = count;
+                    done();
+                });
+            })
+            // objectCount 最活跃的用户
+            .task(function (done) {
+                developer.findOne({}, {sort: '-objectCount'}, function (err, dp) {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    statistics.bestActive = dp;
+                    done();
+                });
+            })
+            // viewByCount 最大人气的用户
+            .task(function (done) {
+                developer.findOne({}, {sort: '-viewByCount'}, function (err, dp) {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    statistics.bestPopularity = dp;
+                    done();
+                });
+            })
+            // commentCount 最积极的用户
+            .task(function (done) {
+                developer.findOne({}, {sort: '-commentCount'}, function (err, dp) {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    statistics.bestInitiative = dp;
+                    done();
+                });
+            })
+            // commentByCount 最热门的用户
+            .task(function (done) {
+                developer.findOne({}, {sort: '-commentByCount'}, function (err, dp) {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    statistics.bestHot = dp;
+                    done();
+                });
+            })
+            // agreeByCount 最受欢迎的用户
+            .task(function (done) {
+                developer.findOne({}, {sort: '-agreeByCount'}, function (err, dp) {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    statistics.bestWelcome = dp;
+                    done();
+                });
+            })
+            // acceptByCount 最受崇敬的用户
+            .task(function (done) {
+                developer.findOne({}, {sort: '-acceptByCount'}, function (err, dp) {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    statistics.bestRespect = dp;
                     done();
                 });
             })
