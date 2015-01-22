@@ -18,46 +18,23 @@
         <!--主-->
         <div class="col-md-9 g-main">
             <ul class="avg-xs-1 avg-sm-2 f-text-center m-home">
-                {{var sectionTypes = ['opinion', 'question', 'link', 'help']}}
-                {{if section.opinion}}
-                <li class="home-opinion">
-                    <a href="/opinion/">
-                        <div class="home-icon"><i class="i i-gavel"></i></div>
-                        <div class="home-name">{{section.opinion.name}}</div>
-                        <div class="home-desc">{{section.opinion.introduction}}</div>
-                    </a>
-                </li>
-                {{/if}}
+                {{var sectionTypes = [];}}
+                {{# sectionTypes.push({name: 'opinion', icon: 'gavel'});}}
+                {{# sectionTypes.push({name: 'question', icon: 'cube'});}}
+                {{# sectionTypes.push({name: 'link', icon: 'link'});}}
+                {{# sectionTypes.push({name: 'help', icon: 'question-circle'});}}
 
-                {{if section.question}}
-                <li class="home-question">
-                    <a href="/question/">
-                        <div class="home-icon"><i class="i i-cube"></i></div>
-                        <div class="home-name">{{section.question.name}}</div>
-                        <div class="home-desc">{{section.question.introduction}}</div>
-                    </a>
-                </li>
-                {{/if}}
-
-                {{if section.link}}
-                <li class="home-question">
-                    <a href="/link/">
-                        <div class="home-icon"><i class="i i-link"></i></div>
-                        <div class="home-name">{{section.link.name}}</div>
-                        <div class="home-desc">{{section.link.introduction}}</div>
-                    </a>
-                </li>
-                {{/if}}
-
-                {{if section.help}}
-                <li class="home-help">
-                    <a href="/help/">
-                        <div class="home-icon"><i class="i i-question-circle"></i></div>
-                        <div class="home-name">{{section.help.name}}</div>
-                        <div class="home-desc">{{section.help.introduction}}</div>
-                    </a>
-                </li>
-                {{/if}}
+                {{list sectionTypes as st}}
+                    {{if section[st.name]}}
+                    <li class="home-{{=st.name}}">
+                        <a href="/{{=st.name}}/">
+                            <div class="home-icon"><i class="i i-{{=st.icon}}"></i></div>
+                            <div class="home-name">{{section[st.name].name}}</div>
+                            <div class="home-desc">{{section[st.name].introduction}}</div>
+                        </a>
+                    </li>
+                    {{/if}}
+                {{/list}}
             </ul>
         </div>
         <!--/主-->
