@@ -2,7 +2,6 @@
  * Banner.js
  * @author ydr.me
  * @create 2014-10-10 22:36
- *
  */
 
 define(function (require, exports, module) {
@@ -37,10 +36,11 @@ define(function (require, exports, module) {
         width: 700,
         height: 300,
         itemSelector: 'li',
-        duration: 678,
+        duration: 345,
         timeout: 3456,
-        easing: 'ease-in-out-back',
+        easing: 'ease-out-cubic',
         isAutoPlay: true,
+        isLoop: true,
         // 运动方向
         // -x x 轴向左
         // +x x 轴向右
@@ -79,7 +79,6 @@ define(function (require, exports, module) {
 
         /**
          * 初始化
-         * @public
          * @private
          */
         _init: function () {
@@ -89,8 +88,9 @@ define(function (require, exports, module) {
             the._initNode();
             the._initEvent();
             the._activeNav(0);
+            the.resize(the._options);
             the.play();
-            setTimeout(function(){
+            setTimeout(function () {
                 the.emit('change', 0);
             }, 0);
 
@@ -178,11 +178,31 @@ define(function (require, exports, module) {
 
         /**
          * 切换克隆元素显隐
-         * @param isDisplay
+         * @param isDisplay {Boolean} 是否显示
+         * @param [duration] {Number} 动画时间
          * @private
          */
-        _toggleClone: function (isDisplay) {
-            attribute[(isDisplay ? 'remove' : 'add') + 'Class'](this._$banner, alienClass + '-touch');
+        _toggleClone: function (isDisplay, duration) {
+            var the = this;
+
+            if (the._options.isLoop) {
+                return;
+            }
+
+            var _toggle = function () {
+                if (the._toggleTimer) {
+                    clearTimeout(the._toggleTimer);
+                    the._toggleTimer = 0;
+                }
+
+                attribute[(isDisplay ? 'remove' : 'add') + 'Class'](the._$banner, alienClass + '-touch');
+            };
+
+            if (isDisplay) {
+                the._toggleTimer = setTimeout(_toggle, duration + 30);
+            } else {
+                _toggle();
+            }
         },
 
 
@@ -197,8 +217,8 @@ define(function (require, exports, module) {
             var touch0;
             var touch1;
             // 触摸结束
-            var _touchdone = function _touchdone() {
-                the._toggleClone(true);
+            var _touchdone = function (duration) {
+                the._toggleClone(true, duration);
             };
 
             // 单击 nav
@@ -223,37 +243,102 @@ define(function (require, exports, module) {
 
             // 触摸
             event.on(the._$banner, 'touch1start', function (eve) {
-                the.pause();
                 the._toggleClone(false);
+                the.pause();
                 translate = the._translate;
-                touch0 = eve['page' + the._direction];
-                eve.preventDefault();
+                touch0 = eve.alienDetail['start' + the._direction];
             });
 
             event.on(the._$banner, 'touch1move', function (eve) {
-                touch1 = eve['page' + the._direction];
-                attribute.css(the._$ele, the._calTranslate(translate + touch1 - touch0, false));
+                var changed = eve.alienDetail['changed' + the._direction];
+
+                if (options.isLoop) {
+                    var translateChanged = translate + changed;
+                    var count = the._$items.length - 4;
+
+                    if (changed > 0 && translateChanged >= the._maxTranslate) {
+                        translate = translateChanged - count * the._distance;
+                        attribute.css(the._$ele, the._calTranslate(translate, false));
+                    } else if (changed < 0 && translateChanged <= the._minTranslate) {
+                        translate = translateChanged + count * the._distance;
+                        attribute.css(the._$ele, the._calTranslate(translate, false));
+                    }
+                }
+
+                attribute.css(the._$ele, the._calTranslate(translate + changed, false));
                 eve.preventDefault();
             });
 
-            event.on(the._$banner, 'touch1end', function () {
-                var index = the._getIndex(touch1 - touch0, translate + touch1 - touch0);
-                var type = touch1 <= touch0 && the._increase > 0 ||
-                touch1 >= touch0 && the._increase < 0 ? 'next' : 'prev';
+            event.on(the._$banner, 'touch1end', function (eve) {
+                touch1 = touch1 || touch0;
+
+                var changed = eve.alienDetail['changed' + the._direction];
+                var translateChanged = translate + changed;
+
+                if (!changed) {
+                    _touchdone(-30);
+                    the.play();
+                    return;
+                }
+
+                var index = the._getIndex(changed, translateChanged);
+                var type = changed < 0 && the._increase > 0 || changed > 0 && the._increase < 0 ? 'next' : 'prev';
+                var touchEasing = 'linear';
+                var remainDuration = the._calDuration(index, translateChanged);
 
                 if (index === the._showIndex) {
                     animation.animate(the._$ele, the._calTranslate(the._translate), {
-                        duration: options.duration,
-                        easing: options.easing
-                    }, _touchdone);
+                        duration: 234,
+                        easing: touchEasing
+                    });
+                    _touchdone(234);
                 } else {
-                    the.index(type, index, _touchdone);
+                    the._index(type, index, noop, {
+                        duration: remainDuration,
+                        easing: touchEasing
+                    });
+                    _touchdone(remainDuration);
                 }
 
                 the.play();
             });
+        },
 
-            the.resize(options);
+
+        /**
+         * 计算偏移量
+         * @param val {Number} 设置值
+         * @param [isOverWrite=true] {Boolean} 是否覆盖
+         * @private
+         */
+        _calTranslate: function (val, isOverWrite) {
+            var the = this;
+            var sett = {};
+
+            if (isOverWrite !== false) {
+                the._translate = val;
+            }
+
+            sett['translate' + the._direction] = val + 'px';
+
+            return sett;
+        },
+
+
+        /**
+         * 计算剩余便宜动画时间
+         * @param index {Number} 显示的索引值
+         * @param distance {Number} 滑动的距离
+         * @private
+         */
+        _calDuration: function (index, distance) {
+            var the = this;
+            var options = the._options;
+            var delta = the._distance * (index + 2) + distance;
+            var ratio = delta / the._distance;
+            var duration = options.duration * ratio;
+
+            return Math.abs(duration > options.duration ? options.duration : duration);
         },
 
 
@@ -295,26 +380,6 @@ define(function (require, exports, module) {
 
 
         /**
-         * 计算偏移量
-         * @param val
-         * @param [isOverWrite=true]
-         * @private
-         */
-        _calTranslate: function (val, isOverWrite) {
-            var the = this;
-            var set = {};
-
-            if (isOverWrite !== false) {
-                the._translate = val;
-            }
-
-            set['translate' + the._direction] = val + 'px';
-
-            return set;
-        },
-
-
-        /**
          * 重置尺寸
          * @param {Object} size  尺寸对象
          * @param {Number} [size.width]  宽度
@@ -323,18 +388,21 @@ define(function (require, exports, module) {
         resize: function (size) {
             var the = this;
             var options = the._options;
-            var set;
+            var sett;
             var width;
             var height;
+            var count = the._$items.length - 4;
 
             options.width = size.width || options.width;
             options.height = size.height || options.height;
             width = options.width * (the._direction === 'X' ? the._$items.length : 1);
             height = options.height * (the._direction === 'Y' ? the._$items.length : 1);
             the._distance = the._direction === 'X' ? options.width : options.height;
-            set = the._calTranslate(the._$items.length > 5 ? -(the._showIndex + 2) * the._distance : 0);
+            the._maxTranslate = count > 1 ? -2 * the._distance : 0
+            the._minTranslate = count > 1 ? -(count + 1) * the._distance : 0
+            sett = the._calTranslate(count > 1 ? -(the._showIndex + 2) * the._distance : 0);
 
-            dato.extend(true, set, {
+            dato.extend(true, sett, {
                 position: 'relative',
                 width: width,
                 height: height
@@ -349,7 +417,7 @@ define(function (require, exports, module) {
                     overflow: 'hidden'
                 });
             });
-            attribute.css(the._$ele, set);
+            attribute.css(the._$ele, sett);
             attribute.css(the._$banner, {
                 position: 'relative',
                 width: options.width,
@@ -363,9 +431,8 @@ define(function (require, exports, module) {
 
         /**
          * 运动前的索引值计算
-         * @param move -1：反序，1：正序
-         * @param index
-         * @returns {*}
+         * @param {Number} move -1：反序，1：正序
+         * @param {Number} showIndex 要展示的索引
          * @private
          */
         _beforeShowIndex: function (move, showIndex) {
@@ -388,16 +455,14 @@ define(function (require, exports, module) {
 
         /**
          * 显示之前的定位与计算下一帧的位置
-         * @param type
-         * @param showIndex
-         * @returns {*}
+         * @param type {String} 动作类型
+         * @param _showIndex {Number} 要显示的索引值
          * @private
          */
-        _beforeDisplayIndex: function (type, showIndex) {
+        _beforeDisplayIndex: function (type, _showIndex) {
             var the = this;
             var length = the._$items.length;
             var count = length - 4;
-            var _showIndex = the._showIndex;
             var $ele = the._$ele;
             var distance = the._distance;
             var isPlusPlus = the._increase < 0 && type === 'prev' ||
@@ -405,14 +470,19 @@ define(function (require, exports, module) {
             var isMinusMinus = the._increase < 0 && type === 'next' ||
                 the._increase > 0 && type === 'prev';
 
-            if (isPlusPlus && _showIndex === count - 1) {
+            if (isPlusPlus && _showIndex === 0) {
                 attribute.css($ele, the._calTranslate(-1 * distance));
-            } else if (isMinusMinus && _showIndex === 0) {
+            } else if (isMinusMinus && _showIndex === count - 1) {
                 attribute.css($ele, the._calTranslate(-(count + 2) * distance));
             }
         },
 
 
+        /**
+         * 高亮导航
+         * @param index
+         * @private
+         */
         _activeNav: function (index) {
             var the = this;
 
@@ -426,42 +496,68 @@ define(function (require, exports, module) {
 
         /**
          * 播放第几个项目
-         * @param {String} [type] 展示方式，默认下一张
          * @param {Number} index 需要展示的序号
          * @param {Function} [callback] 回调
          */
-        index: function (type, index, callback) {
-            var args = arguments;
-            var argL = args.length;
+        index: function (index, callback) {
             var the = this;
-            var options = the._options;
+            var type = the._increase > 0 ?
+                (the._showIndex > index ? 'prev' : 'next') :
+                (the._showIndex < index ? 'prev' : 'next');
+            var length = the._$items.length;
+            var count = length - 4;
+
+            if (the._options.isLoop) {
+                if (count - 1 === the._showIndex && index === 0) {
+                    type = the._increase > 0 ? 'next' : 'prev';
+                } else if (the._showIndex === 0 && index === count - 1) {
+                    type = the._increase > 0 ? 'prev' : 'next';
+                }
+            } else {
+                type = index > the._showIndex ?
+                    (the._increase > 0 ? 'next' : 'prev') :
+                    (the._increase > 0 ? 'prev' : 'next');
+            }
+
+            the._index(type, index, callback);
+
+            return the;
+        },
+
+
+        /**
+         * 播放第几个项目
+         * @param {String} type 展示方式
+         * @param {Number} index 需要展示的序号
+         * @param {Function} callback 回调
+         * @param {Object} [otp] 额外参数
+         * @private
+         */
+        _index: function (type, index, callback, otp) {
+            var the = this;
+            var options = dato.extend(true, {}, the._options, otp);
             var count = the._$items.length - 2;
-            var set;
+            var sett;
 
             if (count < 2 || index === the._showIndex) {
                 return the;
             }
 
-            if (typeis(args[0]) === 'number') {
-                type = 'next';
-                index = args[0];
+            if (!otp || !options.isLoop) {
+                the._beforeDisplayIndex(type, index);
             }
-
-            callback = args[argL - 1];
-
-            if (typeis(callback) !== 'function') {
-                callback = noop;
-            }
-
-            the._beforeDisplayIndex(type, index);
 
             if (index >= count) {
                 throw new Error('can not go to ' + type + ' ' + index);
             }
 
-            set = the._calTranslate(-the._distance * (index + 2));
+            if (!typeis.function(callback)) {
+                callback = noop;
+            }
 
-            animation.animate(the._$ele, set, {
+            sett = the._calTranslate(-the._distance * (index + 2));
+
+            animation.animate(the._$ele, sett, {
                 duration: options.duration,
                 easing: options.easing
             }, function () {
@@ -481,14 +577,19 @@ define(function (require, exports, module) {
         prev: function (callback) {
             var the = this;
             var showIndex = the._showIndex;
+            var type = 'prev';
 
             if (the._$items.length < 4) {
                 return the;
             }
 
+            if (!the._options.isLoop && showIndex === 0) {
+                type = 'next';
+            }
+
             the.pause();
             showIndex = the._beforeShowIndex(-1, showIndex);
-            the.index('prev', showIndex, callback);
+            the._index(type, showIndex, callback);
             the.play();
 
             return the;
@@ -502,14 +603,19 @@ define(function (require, exports, module) {
         next: function (callback) {
             var the = this;
             var showIndex = the._showIndex;
+            var type = 'next';
 
             if (the._$items.length < 4) {
                 return the;
             }
 
+            if (!the._options.isLoop && showIndex === the._$items.length - 5) {
+                type = 'prev';
+            }
+
             the.pause();
             showIndex = the._beforeShowIndex(1, showIndex);
-            the.index('next', showIndex, callback);
+            the._index(type, showIndex, callback);
             the.play();
 
             return the;
