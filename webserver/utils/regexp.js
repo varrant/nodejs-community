@@ -11,13 +11,13 @@ var dato = require('ydr-util').dato;
 
 /**
  * 标题正则
- * 中文、字母、数字、空格、下划线、短横线、中英逗号
+ * 中文、字母、数字、空格、下划线、短横线、中英逗号、顿号、冒号、反斜杠、斜杆
  * @param minLength {Number} 最小长度
  * @param maxLength {Number} 最大长度
  * @returns {RegExp}
  */
 exports.title = function (minLength, maxLength) {
-    var title = '[\\u4e00-\\u9fa5\\w\\d \\-，,.?？]';
+    var title = '[\\u4e00-\\u9fa5\\w\\d \\-，,.?？、\\\\:：/]';
 
     return new RegExp('^' + title + '{' + minLength + ',' + maxLength + '}$');
 };

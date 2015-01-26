@@ -26,7 +26,7 @@ validator.pushRule({
     maxLength: 100,
     regexp: REG_TITLE,
     msg: {
-        regexp: '标题仅支持中英文、数字、“-”(短横线)、“_”（下划线）和中英文逗号、问号'
+        regexp: '标题仅支持中英文、数字、“-”(短横线)、“_”（下划线）和中英文逗号、问号等常用字符'
     }
 });
 
