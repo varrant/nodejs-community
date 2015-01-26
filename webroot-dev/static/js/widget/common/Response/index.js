@@ -770,7 +770,7 @@ define(function (require, exports, module) {
             var $btn = selector.children($li)[0];
 
             attribute.removeClass($btn, 'btn-warning');
-            attribute.addClass($btn, 'btn-success');
+            attribute.addClass($btn, 'btn-success active');
             $btn.innerHTML = '<i class="i i-check"></i>已被采纳';
 
             var $siblings = selector.siblings($item);

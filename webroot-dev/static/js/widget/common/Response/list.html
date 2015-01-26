@@ -9,6 +9,10 @@
     <div class="f-clearfix alien-ui-response-main">
         <div class="alien-ui-response-avatar f-left">
             <a href="/developer/{{=item.author.githubLogin}}/"><img src="{{item.author.avatar}}" alt="avatar" width="50" height="50"/></a>
+
+            {{if !item.parent}}
+            <i class="i i-check alien-ui-response-flag"></i>
+            {{/if}}
         </div>
         <div class="alien-ui-response-body">
             <ul class="alien-ui-response-meta f-list-left">
@@ -54,7 +58,6 @@
         <div class="j-flag f-text-center"></div>
         <div class="j-flag f-text-center"></div>
     </div>
-    <i class="i i-flag"></i>
     {{/if}}
 </li>
 {{/list}}

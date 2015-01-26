@@ -51,6 +51,7 @@
 }
 
 .alien-ui-response-avatar {
+    position: relative;
     width: 50px;
     height: 50px;
 }
@@ -76,7 +77,7 @@
     cursor: zoom-in;
 }
 
-.alien-ui-response-content p{
+.alien-ui-response-content p {
     white-space: pre-wrap;
 }
 
@@ -93,17 +94,26 @@
     font-weight: 900;
 }
 
-.alien-ui-response-item .i-flag {
+.alien-ui-response-item .alien-ui-response-flag {
     display: none;
 }
 
-.alien-ui-response-item-accepted .i-flag {
+.alien-ui-response-item-accepted {
+}
+
+.alien-ui-response-item-accepted .alien-ui-response-flag{
     display: block;
     position: absolute;
-    top: 0;
-    right: 0;
-    color: #007E00;
+    top: 104%;
+    left: 50%;
+    margin-left: -14px;
     font-size: 30px;
+    color: #449D44;
+}
+
+.alien-ui-response-item-accepted .alien-ui-response-accept {
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 .alien-ui-response-main .alien-ui-pager {
