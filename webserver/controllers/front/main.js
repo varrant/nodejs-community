@@ -13,6 +13,7 @@ var howdo = require('howdo');
 var object = require('../../services/').object;
 var developer = require('../../services/').developer;
 var column = require('../../services/').column;
+var section = require('../../services/').section;
 var filter = require('../../utils/').filter;
 var log = require('ydr-log');
 
@@ -26,7 +27,6 @@ module.exports = function (app) {
      * @param next
      */
     exports.getHome = function (req, res, next) {
-        var section = {};
         var statistics = {};
         var data = {
             title: '主页',
@@ -34,12 +34,20 @@ module.exports = function (app) {
             section: section
         };
 
-        app.locals.$section.forEach(function (sec) {
-            section[sec.uri] = sec;
-        });
 
 
         howdo
+            // 版块
+            .task(function (done) {
+                section.find({}, function (err, datas) {
+                    if(err){
+                        return done(err);
+                    }
+
+                    data.section = datas;
+                    done();
+                });
+            })
             // 注册用户数
             .task(function (done) {
                 developer.count({}, function (err, count) {
@@ -122,6 +130,10 @@ module.exports = function (app) {
                     return next(err);
                 }
 
+                app.locals.$section.forEach(function (sec) {
+                    data.section[sec.uri] = sec;
+                });
+                
                 res.render('front/home.html', data);
             });
     };
