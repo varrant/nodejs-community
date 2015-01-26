@@ -12,6 +12,7 @@ var typeis = require('ydr-util').typeis;
 var howdo = require('howdo');
 var object = require('../../services/').object;
 var developer = require('../../services/').developer;
+var column = require('../../services/').column;
 var filter = require('../../utils/').filter;
 var log = require('ydr-log');
 
@@ -128,14 +129,11 @@ module.exports = function (app) {
 
     /**
      * list 页
-     * @param req
-     * @param type
-     * @returns {Function}(req, res, next)
      */
     exports.getList = function (section) {
         return function (req, res, next) {
             var category = req.params.category;
-            var column = req.params.column;
+            var columnId = req.params.column;
             var label = req.params.label;
             var status = req.params.status;
             var listOptions = filter.skipLimit(req.params);
@@ -151,7 +149,7 @@ module.exports = function (app) {
                 categoryMap: categoryMap,
                 choose: {}
             };
-            var isPjax = req.headers['x-request-as'] === 'pjax';
+            //var isPjax = req.headers['x-request-as'] === 'pjax';
             var categoryId = 0;
             dato.each(app.locals.$category, function (index, _category) {
                 if (_category.uri === category) {
@@ -190,11 +188,23 @@ module.exports = function (app) {
                     listOptions.sort = {publishAt: -1};
                     object.find(conditions, listOptions, done);
                 })
+                // 查找 columns
+                .task(function (done) {
+                    column.find({
+                        author: res.locals.$developer.id
+                    }, done);
+                })
                 // 异步并行
-                .together(function (err, count, docs) {
+                .together(function (err, count, docs, columns) {
                     if (err) {
                         return next(err);
                     }
+
+                    data.columnsMap = {};
+
+                    columns.forEach(function (item) {
+                        data.columnsMap[item.id] = item;
+                    });
 
                     data.objects = docs;
                     data.pager = {

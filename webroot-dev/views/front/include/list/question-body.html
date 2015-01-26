@@ -39,7 +39,12 @@
                 </div>
                 <div class="summarylist-body">
                     <h2 class="summarylist-name"><span class="s-muted">[{{=categoryMap[object.category].name}}]</span><i class="f-space"></i><a
-                            href="/question/{{object.uri}}.html">{{object.title}}</a></h2>
+                            href="/question/{{object.uri}}.html" class="{{if !object.acceptByResponse}}s-danger{{/if}}">{{object.title}}</a>
+                        {{if object.acceptByResponse}}
+                        <i class="i i-check i-striped s-success"></i>
+                        {{else}}
+                        <i class="i i-exclamation-circle i-striped s-danger"></i>
+                        {{/if}}</h2>
 
                     <div class="summarylist-meta s-light f-small row">
                         <div class="col-sm-8">
@@ -47,13 +52,9 @@
                                 <li><i class="i i-user i-striped"></i><a href="#">{{object.author.nickname}}</a></li>
                                 <li class="hidden-xs"><i class="i i-eye"></i>{{object.viewByCount}}</li>
                                 <li class="hidden-xs"><i class="i i-comments"></i>{{object.commentByCount}}</li>
-                                <li>
-                                    {{if object.acceptByResponse}}
-                                    <span class="s-success"><i class="i i-check i-striped"></i>已解决</span>
-                                    {{else}}
-                                    <span class="s-danger"><i class="i i-exclamation-circle i-striped"></i>待解决</span>
-                                    {{/if}}
-                                </li>
+                                {{if columnsMap[object.column]}}
+                                <li class="hidden-xs"><i class="i i-book"></i>{{columnsMap[object.column].name}}</li>
+                                {{/if}}
                             </ul>
                         </div>
                         <div class="col-sm-4">
