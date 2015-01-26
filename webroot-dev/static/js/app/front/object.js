@@ -29,7 +29,8 @@ define(function (require, exports, module) {
             list: {
                 developer: window['-developer-'],
                 author: window['-author-'],
-                object: object
+                object: object,
+                canAccept: window['-section-'] === 'question'
             },
             count: {
                 comment: object.commentByCount,

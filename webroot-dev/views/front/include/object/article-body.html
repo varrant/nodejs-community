@@ -1,0 +1,36 @@
+<!--内容-->
+<div class="m-card">
+    <h2 class="card-title" id="object-title">
+        <i class="i i-cube"></i>
+        {{object.title}}
+    </h2>
+
+    <div class="card-body m-postmain">
+        <div class="postmain-content">{{=object.contentHTML}}</div>
+        <ul class="postmain-meta s-light">
+            <li>
+                <i class="i i-folder"></i>
+                <a href="/article/in/{{object.category.uri}}/" class="label label-default">{{object.category.name}}</a>
+            </li>
+            {{if object.labels.length }}
+            <li>
+                <i class="i i-tags"></i>
+                {{list object.labels as label}}
+                <a class="label label-light" href="/article/on/{{label}}/">{{label}}</a>
+                {{/list}}
+            </li>
+            {{/if}}
+            <li>
+                <i class="i i-clock-o"></i>
+                <span class="f-small">{{object.updateAt|datefrom}} &times; {{object.updateList.length}}</span>
+            </li>
+            {{if object.author.id === $developer.id}}
+            <li>
+                <i class="i i-pencil"></i>
+                <a class="f-small" href="/admin/object/article/?id={{object.id}}">重新编辑</a>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+</div>
+<!--/内容-->

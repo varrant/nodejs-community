@@ -185,6 +185,7 @@ define(function (require, exports, module) {
                 listener(true);
             }
 
+            console.log(fixTo);
             dato.each(fixTo, function (key, val) {
                 attribute.css(ele, key, val);
             });

@@ -104,7 +104,9 @@ define(function (require, exports, module) {
             replyByCountClass: 'j-reply-by-count'
         },
         acceptByResponse: '',
-        list: {}
+        list: {
+            canAccept: false
+        }
     };
     var Response = ui.create({
         constructor: function ($parent, options) {
