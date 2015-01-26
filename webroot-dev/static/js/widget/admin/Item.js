@@ -91,6 +91,14 @@ define(function (require, exports, module) {
                     data.object.category = item.id;
                 }
             });
+            data.columns.forEach(function (item) {
+                item.text = item.name;
+                item.value = item.id;
+
+                //if (item.uri === 'default' && !data.object.category) {
+                //    data.object.category = item.id;
+                //}
+            });
             the.vue = new Vue({
                 el: the._formSelector,
                 data: data,

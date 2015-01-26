@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+ - 观点管理
+ - @author ydr.me
+ - @create 2014-12-15 21:28
+ -->
+<html>
+<head lang="zh-cn">
+    {{include ../include/meta.html}}
+    {{include ./include/meta.html}}
+    <script>window['-section-']='{{section}}';</script>
+</head>
+<body ontouchstart="">
+{{include ./include/sidebar.html}}
+{{include ./include/header.html}}
+<div class="g-main">
+    <div class="m-main">
+        <h1 class="main-title">
+            <i class="i i-gavel"></i>{{title}}
+            <a class="btn btn-success btn-xs" href="/admin/object/opinion/"><i class="i i-plus"></i>新建观点</a>
+        </h1>
+        <div class="main-body">
+            {{include ./include/object/list-opinion.html}}
+        </div>
+    </div>
+    {{include ./include/footer.html}}
+</div>
+
+<script src="/static/js/libs/coolie.min.js"
+        data-config="./coolie-config.js"
+        data-main="./admin/object-list.js"></script>
+
+</body>
+</html>
