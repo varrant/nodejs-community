@@ -1,6 +1,6 @@
 <div id="list" class="m-object-question f-none">
     <div class="alert alert-success alert-line">
-        <p><i class="i i-check"></i>绿色背景表示该智问已有最佳回答。</p>
+        <p><i class="i i-check"></i>绿色背景表示该提问已有最佳回答。</p>
     </div>
 
     <table class="table table-striped table-hover">
@@ -13,7 +13,7 @@
         </thead>
         <tbody>
         <tr v-if="list.length == 0">
-            <td colspan="3" class="table-empty-td">暂无相关智问。</td>
+            <td colspan="3" class="table-empty-td">暂无相关提问。</td>
         </tr>
         <tr v-repeat="object:list" v-class="success: object.acceptResponse">
             <td>\{{(query.page - 1) * query.limit + $index + 1}}</td>
