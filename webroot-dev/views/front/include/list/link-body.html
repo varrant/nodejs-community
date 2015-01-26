@@ -1,9 +1,8 @@
 <div class="m-card">
     <h2 class="card-title">
-        <i class="i i-cube"></i>{{section.name}}
+        <i class="i i-link"></i>{{section.name}}
         <small class="card-subtitle s-muted hidden-xs">——{{section.introduction}}</small>
         <div class="card-endtitle">
-            <a class="btn btn-success btn-sm" href="/admin/object/question/"><i class="i i-plus"></i>提问</a>
             <span class="s-light f-small hidden-xs"><i class="i i-file-o"></i>{{pager.count}}</span>
         </div>
     </h2>
@@ -12,39 +11,28 @@
         <ul class="m-choose">
             <li class="f-clearfix">
                 <strong class="choose-type">分类</strong>
-                <a class="{{if !choose.category}}active{{/if}}" href="/question/{{if choose.status}}as/{{choose.status}}/{{/if}}">所有分类</a>
+                <a class="{{if !choose.category}}active{{/if}}" href="/help/{{if choose.status}}as/{{choose.status}}/{{/if}}">所有分类</a>
                 {{list categories as category}}
-                <a class="{{if category.id == choose.category}}active{{/if}}" href="/question/in/{{=category.uri}}/{{if choose.status}}as/{{choose.status}}/{{/if}}">{{=category.name}}</a>
+                <a class="{{if category.id == choose.category}}active{{/if}}" href="/help/in/{{=category.uri}}/{{if choose.status}}as/{{choose.status}}/{{/if}}">{{=category.name}}</a>
                 {{/list}}
-            </li>
-            <li class="f-clearfix">
-                <strong class="choose-type">状态</strong>
-                <a class="{{if !choose.status}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}">所有状态</a>
-                <a class="{{if choose.status == 'resolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/resolved/">已解决</a>
-                <a class="{{if choose.status == 'unresolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/unresolved/">待解决</a>
             </li>
         </ul>
 
         <!--列表-->
-        <ul class="m-summarylist" id="list">
+        <ul class="m-summarylist">
             {{if !objects.length}}
-            <li>
-                <div class="alert alert-warning"> <i class="i i-info-circle"></i>暂无相关内容。</div>
-            </li>
+                <li>
+                    <div class="alert alert-warning"> <i class="i i-info-circle"></i>暂无相关内容。</div>
+                </li>
             {{/if}}
             {{list objects as object}}
             <li class="summarylist-item f-clearfix">
                 <div class="summarylist-avatar f-left">
-                    <a href="#"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50"/></a>
+                    <a href="/"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50"/></a>
                 </div>
                 <div class="summarylist-body">
                     <h2 class="summarylist-name"><a
-                            href="/question/{{object.uri}}.html" class="{{if !object.acceptByResponse}}s-danger{{/if}}">{{object.title}}</a>
-                        {{if object.acceptByResponse}}
-                        <i class="i i-check i-striped s-success"></i>
-                        {{else}}
-                        <i class="i i-exclamation-circle i-striped s-danger"></i>
-                        {{/if}}</h2>
+                            href="/help/{{object.uri}}.html">{{object.title}}</a></h2>
 
                     <div class="summarylist-meta s-light f-small row">
                         <div class="col-sm-8">

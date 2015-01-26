@@ -10,6 +10,7 @@ define(function (require, exports, module) {
 
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
+    var see = require('../../alien/core/dom/see.js');
     //var compatible = require('../../alien/core/navigator/compatible.js');
     var event = require('../../alien/core/event/base.js');
     var app = {};
@@ -25,7 +26,7 @@ define(function (require, exports, module) {
 
         attribute.addClass($active, 'active');
 
-        if (attribute.state($menu) === 'show') {
+        if (see.visibility($menu) === 'visible') {
             return;
         }
 
