@@ -68,23 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="animation.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="animation.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2934" max-vertical-offset="5797">
-              <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37873754" vertical-offset="11179" max-vertical-offset="11849">
-              <caret line="671" column="54" selection-start-line="671" selection-start-column="54" selection-end-line="671" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.35049835" vertical-offset="2934" max-vertical-offset="5797">
+              <caret line="185" column="13" selection-start-line="185" selection-start-column="13" selection-end-line="185" selection-end-column="13" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -859,13 +847,7 @@
       <workItem from="1421849158910" duration="2192000" />
       <workItem from="1421853091552" duration="17000" />
       <workItem from="1421927977957" duration="312000" />
-      <workItem from="1421928465424" duration="19974000" />
-    </task>
-    <task id="LOCAL-00026" summary="alpha 37">
-      <created>1421322689125</created>
-      <option name="number" value="00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1421322689125</updated>
+      <workItem from="1421928465424" duration="20022000" />
     </task>
     <task id="LOCAL-00027" summary="alpha 38">
       <created>1421371254313</created>
@@ -1155,11 +1137,17 @@
       <option name="project" value="LOCAL" />
       <updated>1422283453904</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="beta7">
+      <created>1422283463130</created>
+      <option name="number" value="00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1422283463130</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24172000" />
+    <option name="totallyTimeSpent" value="24220000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1670,20 +1658,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js">
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2934" max-vertical-offset="5797">
-          <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33388704" vertical-offset="4066" max-vertical-offset="11815">
+          <caret line="251" column="0" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js">
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37873754" vertical-offset="11179" max-vertical-offset="11849">
-          <caret line="671" column="54" selection-start-line="671" selection-start-column="54" selection-end-line="671" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.35049835" vertical-offset="2934" max-vertical-offset="5797">
+          <caret line="185" column="13" selection-start-line="185" selection-start-column="13" selection-end-line="185" selection-end-column="13" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
