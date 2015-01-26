@@ -86,6 +86,17 @@ define(function (require, exports, module) {
 
             var data = json.data;
 
+            var categoriesMap = {};
+            var columnsMap = {};
+
+            data.categories.forEach(function (item) {
+                categoriesMap[item.id] = item;
+            });
+
+            data.columns.forEach(function (item) {
+                columnsMap[item.id] = item;
+            });
+
             if (the.vue) {
                 the.vue.$data.list = data.list;
                 the._pagination.render({
@@ -97,7 +108,9 @@ define(function (require, exports, module) {
                     el: the._listSelector,
                     data: dato.extend({
                         list: data.list,
-                        query: the.query
+                        query: the.query,
+                        categoriesMap: categoriesMap,
+                        columnsMap: columnsMap
                     }, the._options.data),
                     methods: the._options.methods
                 });
