@@ -71,6 +71,11 @@ var schema = new mongoose.Schema({
         type: String,
         required: false
     },
+    // 链接地址
+    link: {
+        type: String,
+        required: false
+    },
     // 发布时间
     publishAt: {
         type: Date,

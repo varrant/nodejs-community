@@ -50,7 +50,7 @@
     "ydr-template": "^1.4.1",
     "ydr-translate": "^1.0.0",
     "ydr-util": "^1.11.8",
-    "ydr-validator": "^1.2.4"
+    "ydr-validator": "^1.3.1"
   },
   "devDependencies": {
     "supervisor": "^0.6.0"

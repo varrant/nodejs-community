@@ -21,6 +21,7 @@ var response = require('./response.js');
 var notice = require('./notice.js');
 var howdo = require('howdo');
 var dato = require('ydr-util').dato;
+var typeis = require('ydr-util').typeis;
 var log = require('ydr-log');
 
 
@@ -119,7 +120,7 @@ exports.createOne = function (author, data, callback) {
         .task(function (next, objectInSection, objectOnCategory, objectAtColumn) {
             var date = new Date();
             var data2 = dato.pick(data, ['section', 'title', 'uri', 'type', 'category', 'labels',
-                'introduction', 'content', 'isDisplay']);
+                'introduction', 'link', 'content', 'isDisplay']);
             var data3 = {
                 author: author.id,
                 publishAt: date,
@@ -130,6 +131,24 @@ exports.createOne = function (author, data, callback) {
                 }]
             };
             var data4 = dato.extend(data2, data3);
+            var err;
+
+            if (objectInSection.uri === 'link') {
+                if (!data4.link) {
+                    err = new Error('链接地址不能为空');
+                    return next(err);
+                }
+
+                if (!typeis.url(data4.link)) {
+                    err = new Error('链接地址不合法');
+                    return next(err);
+                }
+
+                if (data4.link.length > 255) {
+                    err = new Error('链接地址过长');
+                    return next(err);
+                }
+            }
 
             object.createOne(data4, function (err, doc) {
                 next(err, objectInSection, objectOnCategory, objectAtColumn, doc);
@@ -229,11 +248,11 @@ exports.updateOne = function (author, conditions, data, callback) {
                     return next(err);
                 }
 
-                next();
+                next(err, doc);
             });
         })
         // 3. 检查 category 是否存在
-        .task(function (next) {
+        .task(function (next, objectInSection) {
             category.findOne({_id: data.category}, function (err, doc) {
                 if (err) {
                     return next(err);
@@ -245,11 +264,11 @@ exports.updateOne = function (author, conditions, data, callback) {
                     return next(err);
                 }
 
-                next();
+                next(err, objectInSection);
             });
         })
         // 4. 检查 column 是否存在，以及发布权限
-        .task(function (next) {
+        .task(function (next, objectInSection) {
             if (!data.column) {
                 return next();
             }
@@ -271,13 +290,15 @@ exports.updateOne = function (author, conditions, data, callback) {
                     return next(err);
                 }
 
-                next();
+                next(err, objectInSection);
             });
         })
         // 5. 更新
-        .task(function (next) {
+        .task(function (next, objectInSection) {
             var date = new Date();
-            var data2 = dato.pick(data, ['category', 'column', 'labels', 'introduction', 'content', 'isDisplay']);
+            var data2 = dato.pick(data, ['category', 'column', 'labels', 'introduction',
+                'link', 'content', 'isDisplay']);
+            var err;
 
             data2.updateAt = date;
             data2.$push = {
@@ -286,6 +307,23 @@ exports.updateOne = function (author, conditions, data, callback) {
                     date: date
                 }
             };
+
+            if (objectInSection.uri === 'link') {
+                if (!data2.link) {
+                    err = new Error('链接地址不能为空');
+                    return next(err);
+                }
+
+                if (!typeis.url(data2.link)) {
+                    err = new Error('链接地址不合法');
+                    return next(err);
+                }
+
+                if (data2.link.length > 255) {
+                    err = new Error('链接地址过长');
+                    return next(err);
+                }
+            }
 
             object.findOneAndUpdate(conditions, data2, next);
         })
