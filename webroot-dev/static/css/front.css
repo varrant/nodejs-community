@@ -180,11 +180,11 @@ nav .nav-right li:last-child {
 .m-home .home-desc {
   font-size: 14px;
 }
-.m-home .home-opinion a {
+.m-home .home-article a {
   background: #f6e3ff;
   color: #7700b0;
 }
-.m-home .home-opinion a:hover {
+.m-home .home-article a:hover {
   background: #f1d4ff;
 }
 .m-home .home-question a {
