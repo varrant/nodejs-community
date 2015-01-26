@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.json" afterPath="$PROJECT_DIR$/settings.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -110,8 +108,8 @@
       <file leaf-file-name="main-body.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-body.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5711806" vertical-offset="130" max-vertical-offset="799">
-              <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.6597222" vertical-offset="130" max-vertical-offset="799">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1194,13 +1192,7 @@
       <workItem from="1421849158910" duration="2192000" />
       <workItem from="1421853091552" duration="17000" />
       <workItem from="1421927977957" duration="312000" />
-      <workItem from="1421928465424" duration="28506000" />
-    </task>
-    <task id="LOCAL-00044" summary="beta 4">
-      <created>1421844553294</created>
-      <option name="number" value="00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1421844553294</updated>
+      <workItem from="1421928465424" duration="28578000" />
     </task>
     <task id="LOCAL-00045" summary="beta 4">
       <created>1421853121640</created>
@@ -1490,11 +1482,17 @@
       <option name="project" value="LOCAL" />
       <updated>1422294289843</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="beta7">
+      <created>1422296918702</created>
+      <option name="number" value="00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1422296918702</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32704000" />
+    <option name="totallyTimeSpent" value="32776000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -2003,8 +2001,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-body.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5711806" vertical-offset="130" max-vertical-offset="799">
-          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.6597222" vertical-offset="130" max-vertical-offset="799">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
