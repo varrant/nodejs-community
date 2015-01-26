@@ -7,6 +7,7 @@
 'use strict';
 
 var object = require('../../services/').object;
+var column = require('../../services/').column;
 var dato = require('ydr-util').dato;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
@@ -100,6 +101,12 @@ module.exports = function (app) {
             .task(function (done) {
                 done(null, app.locals.$category);
             })
+            // 查找 columns
+            .task(function (done) {
+                column.find({
+                    author: res.locals.$developer.id
+                }, done);
+            })
             // 查找 object
             .task(function (done) {
                 if (!req.query.id) {
@@ -108,7 +115,7 @@ module.exports = function (app) {
 
                 object.findOne({_id: id}, {populate: ['author']}, done);
             })
-            .together(function (err, docs, doc) {
+            .together(function (err, categories, columns, object) {
                 if (err) {
                     return next(err);
                 }
@@ -116,8 +123,9 @@ module.exports = function (app) {
                 res.json({
                     code: 200,
                     data: {
-                        categories: docs,
-                        object: doc
+                        categories: categories,
+                        columns: columns,
+                        object: object
                     }
                 });
             });
