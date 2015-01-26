@@ -26,8 +26,10 @@ module.exports = function (app) {
         $section.forEach(function (section) {
             sectionMap[section.uri] = section;
         });
-        var helpRole = sectionMap['help'] ? sectionMap['help'].role : 20;
-        var questionRole = sectionMap['question'] ? sectionMap['question'].role : 20;
+        var opinionRole = sectionMap.opinion ? sectionMap.opinion.role : 20;
+        var questionRole = sectionMap.question ? sectionMap.question.role : 20;
+        var linkRole = sectionMap.link ? sectionMap.link.role : 20;
+        var helpRole = sectionMap.help ? sectionMap.help.role : 20;
 
 
         list.push({
@@ -80,15 +82,14 @@ module.exports = function (app) {
             });
         }
 
-        if ((engineerRole & 1 << helpRole) !== 0) {
+        if ((engineerRole & 1 << opinionRole) !== 0) {
             list.push({
-                href: '/admin/object/help/list/',
-                text: '帮助管理',
-                icon: 'i i-question-circle',
-                reg: '^object\\/help\\/'
+                href: '/admin/object/opinion/list/',
+                text: '观点管理',
+                icon: 'i i-gavel',
+                reg: '^object\\/opinion\\/'
             });
         }
-
 
         if ((engineerRole & 1 << questionRole) !== 0) {
             list.push({
@@ -96,6 +97,24 @@ module.exports = function (app) {
                 text: '智问管理',
                 icon: 'i i-cube',
                 reg: '^object\\/question\\/'
+            });
+        }
+
+        if ((engineerRole & 1 << linkRole) !== 0) {
+            list.push({
+                href: '/admin/object/link/list/',
+                text: '链接管理',
+                icon: 'i i-link',
+                reg: '^object\\/link\\/'
+            });
+        }
+
+        if ((engineerRole & 1 << helpRole) !== 0) {
+            list.push({
+                href: '/admin/object/help/list/',
+                text: '帮助管理',
+                icon: 'i i-question-circle',
+                reg: '^object\\/help\\/'
             });
         }
 
