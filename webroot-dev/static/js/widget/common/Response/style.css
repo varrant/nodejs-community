@@ -76,6 +76,10 @@
     cursor: zoom-in;
 }
 
+.alien-ui-response-content p{
+    white-space: pre-wrap;
+}
+
 .alien-ui-response-content p:last-child {
     margin-bottom: 0;
 }

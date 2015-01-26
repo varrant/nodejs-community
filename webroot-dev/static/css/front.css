@@ -433,6 +433,9 @@ nav .nav-right li:last-child {
 .m-postmain .postmain-meta li {
   line-height: 2;
 }
+.m-postmain .postmain-content p {
+  white-space: pre-wrap;
+}
 .m-usercard .usercard-main {
   margin-bottom: 20px;
 }
