@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/models/index.js" afterPath="$PROJECT_DIR$/webserver/models/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/main.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -84,8 +83,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webserver/models/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8585366" vertical-offset="7122" max-vertical-offset="12784">
-              <caret line="454" column="11" selection-start-line="454" selection-start-column="11" selection-end-line="454" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.44390243" vertical-offset="7088" max-vertical-offset="12699">
+              <caret line="437" column="13" selection-start-line="437" selection-start-column="13" selection-end-line="437" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -1124,13 +1123,7 @@
       <workItem from="1421849158910" duration="2192000" />
       <workItem from="1421853091552" duration="17000" />
       <workItem from="1421927977957" duration="312000" />
-      <workItem from="1421928465424" duration="27918000" />
-    </task>
-    <task id="LOCAL-00041" summary="beta 3">
-      <created>1421763132031</created>
-      <option name="number" value="00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1421763132031</updated>
+      <workItem from="1421928465424" duration="28129000" />
     </task>
     <task id="LOCAL-00042" summary="beta 3">
       <created>1421770366396</created>
@@ -1420,11 +1413,17 @@
       <option name="project" value="LOCAL" />
       <updated>1422291847315</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="beta7">
+      <created>1422293688348</created>
+      <option name="number" value="00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1422293688348</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32116000" />
+    <option name="totallyTimeSpent" value="32327000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1923,8 +1922,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/models/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8585366" vertical-offset="7122" max-vertical-offset="12784">
-          <caret line="454" column="11" selection-start-line="454" selection-start-column="11" selection-end-line="454" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.44390243" vertical-offset="7088" max-vertical-offset="12699">
+          <caret line="437" column="13" selection-start-line="437" selection-start-column="13" selection-end-line="437" selection-end-column="13" />
           <folding />
         </state>
       </provider>
