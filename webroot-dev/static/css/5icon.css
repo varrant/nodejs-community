@@ -30,6 +30,16 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transform: translate(0, 0);
+    margin-right: .3em;
+    min-width: 0.8em;
+}
+
+.btn > .i:first-child {
+    margin-left: 0;
+}
+
+.i-striped {
+    margin: 0;
 }
 
 /* makes the font 33% larger relative to the icon container */
