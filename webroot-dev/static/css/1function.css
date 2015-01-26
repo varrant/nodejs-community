@@ -72,12 +72,20 @@
     visibility: hidden !important;
 }
 
+.f-xlarge {
+    font-size: 140%;
+}
+
 .f-large {
     font-size: 120%;
 }
 
 .f-small {
     font-size: 80%;
+}
+
+.f-xsmall {
+    font-size: 60%;
 }
 
 .f-space {

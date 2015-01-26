@@ -23,7 +23,8 @@ module.exports = function (app) {
         return function (req, res, next) {
             var data = {
                 title: section.name + '管理',
-                section: section.id
+                section: section.id,
+                introduction: section.introduction
             };
 
             res.render('admin/object-list-' + section.uri + '.html', data);
@@ -41,12 +42,13 @@ module.exports = function (app) {
             var data = {
                 title: section.name + (req.query.id ? '更新' : '创建'),
                 id: req.query.id || '',
-                section: section.id
+                section: section.id,
+                introduction: section.introduction
             };
 
             res.render('admin/object-item-' + section.uri + '.html', data);
-        }
-    }
+        };
+    };
 
     return exports;
 }
