@@ -31,6 +31,15 @@
     </li>
 
     <li>
+        <div class="form-key">所在专栏<span class="form-required">*</span></div>
+        <div class="form-val">
+            <select name="category" v-model="object.column" options="columns" class="ipt"></select>
+
+            <p class="form-desc">可以将帮助分配到自己的专栏内（<a href="/admin/column/">新建专栏</a>）。</p>
+        </div>
+    </li>
+
+    <li>
         <div class="form-key">帮助内容<span class="form-required">*</span></div>
         <div class="form-val">
             <textarea name="content" rows="5" v-model="object.content" class="ipt"

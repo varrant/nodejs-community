@@ -94,7 +94,7 @@ var schema = new mongoose.Schema({
     //    date: date
     // }]
     updateList: [{
-       developerr: {
+        developerr: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'developer'
         },
@@ -140,7 +140,7 @@ var schema = new mongoose.Schema({
     //    score: score
     // }]
     scoreList: [{
-     developereer: {
+        developereer: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'developer'
         },

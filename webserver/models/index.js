@@ -221,12 +221,12 @@ dato.each(models, function (key, model) {
                 var validateData = {};
 
                 validateData[key] = val;
-                validator.validateOne(validateData, function (err, newVal) {
+                validator.validateOne(validateData, function (err, newVal, data) {
                     if (err) {
                         return next(err);
                     }
 
-                    newData[key] = newVal;
+                    dato.extend(newData, data);
                     next();
                 });
             }).follow(function (err) {
