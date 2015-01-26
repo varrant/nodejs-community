@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+ - post-opinion
+ - @author ydr.me
+ - @create 2014-12-06 14:13
+ -->
+<html>
+<head lang="zh-cn">
+    {{include ../include/meta.html}}
+    {{include ./include/meta.html}}
+    <script>window['-author-']={
+        id: '{{object.author.id}}',
+        nickname: '{{object.author.nickname}}',
+        githubLogin: '{{object.author.githubLogin}}'
+    };</script>
+    <script>window['-object-']={
+        id: '{{object.id}}',
+        acceptByResponse: '{{object.acceptByResponse || ""}}',
+        commentByCount: '{{object.commentByCount}}',
+        replyByCount: '{{object.replyByCount}}'
+    };</script>
+    <script>window['-section-']='link';</script>
+</head>
+<body ontouchstart="" class="p-post p-post-opinion">
+{{include ./include/nav.html}}
+
+<div class="container">
+<div class="row g-container">
+    <!--主-->
+    <div class="col-md-9 g-main">
+        {{include ./include/object/link-body.html}}
+
+        <div id="response"></div>
+    </div>
+    <!--/主-->
+    <!--副-->
+    <div class="col-md-3 g-sub">
+        {{include ./include/object/question-author.html}}
+        {{include ./include/object/question-statistics.html}}
+    </div>
+    <!--/副-->
+</div>
+</div>
+
+{{include ./include/footer.html}}
+
+<script src="/static/js/libs/coolie.min.js"
+        data-config="./coolie-config.js"
+        data-main="./front/object.js"></script>
+
+
+</body>
+</html>
