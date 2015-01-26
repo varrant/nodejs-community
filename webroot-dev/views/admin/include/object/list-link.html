@@ -10,7 +10,7 @@
         </thead>
         <tbody>
         <tr v-if="list.length == 0">
-            <td colspan="4" class="table-empty-td">暂无相关文章。</td>
+            <td colspan="4" class="table-empty-td">暂无相关链接。</td>
         </tr>
         <tr v-repeat="object:list" v-class="success: object.acceptResponse">
             <td>\{{(query.page - 1) * query.limit + $index + 1}}</td>
