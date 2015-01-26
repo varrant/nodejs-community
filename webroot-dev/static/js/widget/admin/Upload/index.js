@@ -46,6 +46,7 @@ define(function (require, exports, module) {
         _init: function () {
             var the = this;
 
+            the._dialogTitle = '裁剪并上传图片';
             the._initNode();
             the._initEvent();
         },
@@ -63,7 +64,7 @@ define(function (require, exports, module) {
             modification.insert($dialog, document.body, 'beforeend');
             the._$dialog = $dialog;
             the._dialog = new Dialog(the._$dialog, {
-                title: '裁剪并上传图片',
+                title: the._dialogTitle,
                 width: 'auto'
             });
 
@@ -182,7 +183,9 @@ define(function (require, exports, module) {
                 .on('progress', function (eve) {
                     var percent = eve.alienDetail.percent;
 
-                    the._$sure.innerHTML = '上传中 ' + percent;
+                    the._dialog.setTitle(the._dialogTitle + '（' + percent + '）');
+                    // @todo 以下表达式会出现 Mask -》 display:block 的 BUG
+                    // the._$sure.innerHTML = '上传中 ' + percent;
                 })
                 .on('success', function (json) {
                     if (json.code !== 200) {
@@ -195,6 +198,7 @@ define(function (require, exports, module) {
                 .on('finish', function () {
                     the._$sure.disabled = false;
                     the._$sure.innerHTML = text;
+                    the._dialog.setTitle(the._dialogTitle);
                 });
         },
 

@@ -39,6 +39,9 @@ define(function (require, exports, module) {
     var tpl = new Template(template);
     var ui = require('../base.js');
     var $body = document.body;
+    var noop = function(){
+        // ignore
+    };
     var defaults = {
         width: 600,
         height: 'auto',
@@ -270,7 +273,6 @@ define(function (require, exports, module) {
          */
         close: function (callback) {
             var the = this;
-
 
             the._window.close(function () {
                 if (the._mask) {

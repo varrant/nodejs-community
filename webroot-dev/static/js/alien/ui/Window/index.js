@@ -28,6 +28,9 @@ define(function (require, exports, module) {
     var ui = require('../base.js');
     var alienIndex = 0;
     var alienClass = 'alien-ui-window';
+    var noop = function () {
+        // ignore
+    };
     var defaults = {
         parentNode: document.body,
         width: 500,
@@ -126,6 +129,7 @@ define(function (require, exports, module) {
             var the = this;
 
             if (the.visible) {
+                animation.stop(the._$window);
                 return the;
             }
 
@@ -133,6 +137,7 @@ define(function (require, exports, module) {
             var options = the._options;
 
             attribute.css(the._$window, {
+                display: 'block',
                 opacity: 0,
                 visibility: 'visible',
                 left: to.left,
@@ -150,6 +155,7 @@ define(function (require, exports, module) {
                 easing: options.easing
             }, function () {
                 the.emit('open');
+                console.log('open');
 
                 if (typeis.function(callback)) {
                     callback.call(the);
@@ -168,7 +174,10 @@ define(function (require, exports, module) {
         resize: function (size, callback) {
             var the = this;
 
+            callback = typeis.function(callback) ? callback : noop;
+
             if (!the.visible) {
+                callback.call(the);
                 return the;
             }
 
@@ -189,9 +198,7 @@ define(function (require, exports, module) {
                 duration: options.duration,
                 easing: options.easing
             }, function () {
-                if (typeis.function(callback)) {
-                    callback.call(the);
-                }
+                callback.call(the);
             });
 
             return the;
@@ -205,7 +212,11 @@ define(function (require, exports, module) {
         close: function (callback) {
             var the = this;
 
+            callback = typeis.function(callback) ? callback : noop;
+
             if (!the.visible) {
+                animation.stop(the._$window);
+                callback.call(the);
                 return the;
             }
 
@@ -214,22 +225,20 @@ define(function (require, exports, module) {
                 opacity: 0,
                 scale: 0
             };
-
             the.visible = false;
             animation.animate(the._$window, to, {
                 duration: options.duration,
                 easing: options.easing
             }, function () {
                 the.emit('close');
+                console.log('close');
 
                 attribute.css(the._$window, {
                     transform: '',
                     display: 'none'
                 });
 
-                if (typeis.function(callback)) {
-                    callback.call(the);
-                }
+                callback.call(the);
             });
 
             return the;
@@ -243,8 +252,6 @@ define(function (require, exports, module) {
         getNode: function () {
             return this._$window;
         },
-
-
 
 
         /**
