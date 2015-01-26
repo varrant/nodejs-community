@@ -68,8 +68,18 @@ module.exports = function (app) {
                 options.sort = {publishAt: -1};
                 object.find(conditions, options, done);
             })
+            // 查找 category
+            .task(function (done) {
+                done(null, app.locals.$category);
+            })
+            // 查找 columns
+            .task(function (done) {
+                column.find({
+                    author: res.locals.$developer.id
+                }, done);
+            })
             // 异步并行
-            .together(function (err, count, docs) {
+            .together(function (err, count, docs, categories, columns) {
                 if (err) {
                     return next(err);
                 }
@@ -80,7 +90,9 @@ module.exports = function (app) {
                     code: 200,
                     data: {
                         list: docs,
-                        count: count
+                        count: count,
+                        categories: categories,
+                        columns: columns
                     }
                 });
             });

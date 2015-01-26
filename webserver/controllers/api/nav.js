@@ -26,7 +26,7 @@ module.exports = function (app) {
         $section.forEach(function (section) {
             sectionMap[section.uri] = section;
         });
-        var postRole = sectionMap.post ? sectionMap.post.role : 20;
+        var articleRole = sectionMap.article ? sectionMap.article.role : 20;
         var questionRole = sectionMap.question ? sectionMap.question.role : 20;
         var linkRole = sectionMap.link ? sectionMap.link.role : 20;
         var helpRole = sectionMap.help ? sectionMap.help.role : 20;
@@ -82,19 +82,19 @@ module.exports = function (app) {
             });
         }
 
-        if ((engineerRole & 1 << postRole) !== 0) {
+        if ((engineerRole & 1 << articleRole) !== 0) {
             list.push({
-                href: '/admin/object/opinion/list/',
-                text: '观点管理',
-                icon: 'i i-gavel',
-                reg: '^object\\/opinion\\/'
+                href: '/admin/object/article/list/',
+                text: '我的文章',
+                icon: 'i i-file',
+                reg: '^object\\/article\\/'
             });
         }
 
         if ((engineerRole & 1 << questionRole) !== 0) {
             list.push({
                 href: '/admin/object/question/list/',
-                text: '智问管理',
+                text: '我的提问',
                 icon: 'i i-cube',
                 reg: '^object\\/question\\/'
             });
@@ -103,7 +103,7 @@ module.exports = function (app) {
         if ((engineerRole & 1 << linkRole) !== 0) {
             list.push({
                 href: '/admin/object/link/list/',
-                text: '链接管理',
+                text: '我的链接',
                 icon: 'i i-link',
                 reg: '^object\\/link\\/'
             });

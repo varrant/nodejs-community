@@ -3,16 +3,20 @@
         <thead>
         <tr>
             <th width="8%">序号</th>
+            <th width="20%">专栏</th>
             <th width="*">标题</th>
             <th width="20%">评论/阅读</th>
         </tr>
         </thead>
         <tbody>
         <tr v-if="list.length == 0">
-            <td colspan="3" class="table-empty-td">暂无相关文章。</td>
+            <td colspan="4" class="table-empty-td">暂无相关文章。</td>
         </tr>
         <tr v-repeat="object:list" v-class="success: object.acceptResponse">
             <td>\{{(query.page - 1) * query.limit + $index + 1}}</td>
+            <td>
+                所在专栏
+            </td>
             <td>
                 <a href="/admin/object/opinion/?id=\{{object._id}}">《\{{object.title}}》</a>
             </td>
@@ -23,7 +27,7 @@
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="3" id="pagination"></td>
+            <td colspan="4" id="pagination"></td>
         </tr>
         </tfoot>
     </table>
