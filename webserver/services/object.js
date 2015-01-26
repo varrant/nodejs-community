@@ -120,7 +120,7 @@ exports.createOne = function (author, data, callback) {
         .task(function (next, objectInSection, objectOnCategory, objectAtColumn) {
             var date = new Date();
             var data2 = dato.pick(data, ['section', 'title', 'uri', 'type', 'category', 'labels',
-                'introduction', 'link', 'content', 'isDisplay']);
+                'column', 'introduction', 'link', 'content', 'isDisplay']);
             var data3 = {
                 author: author.id,
                 publishAt: date,
@@ -190,7 +190,7 @@ exports.createOne = function (author, data, callback) {
                 developer.increaseObjectCount({_id: doc.author}, 1, log.holdError);
 
                 // 发布积分
-                developer.increaseScore({_id: doc.author}, scoreMap[objectInSection.name] || 0, log.holdError)
+                developer.increaseScore({_id: doc.author}, scoreMap[objectInSection.name] || 0, log.holdError);
             }
         });
 };
@@ -270,7 +270,7 @@ exports.updateOne = function (author, conditions, data, callback) {
         // 4. 检查 column 是否存在，以及发布权限
         .task(function (next, objectInSection) {
             if (!data.column) {
-                return next();
+                return next(null, objectInSection);
             }
 
             column.findOne({_id: data.column}, function (err, doc) {
