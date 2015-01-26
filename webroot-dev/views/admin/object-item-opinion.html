@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+ - 文件描述
+ - @author ydr.me
+ - @create 2014-12-15 22:38
+ -->
+<html>
+<head lang="zh-cn">
+    {{include ../include/meta.html}}
+    {{include ./include/meta.html}}
+    <script>window['-section-']='{{section}}';</script>
+    <script>window['-id-']='{{id}}';</script>
+</head>
+<body ontouchstart="">
+{{include ./include/sidebar.html}}
+{{include ./include/header.html}}
+<div class="g-main">
+    <div class="m-main">
+        <h1 class="main-title">
+            {{if id}}
+            <ul class="main-tab f-list-left" id="object-tab">
+                <li class="active"><a href="#tab-form"><i class="i i-cube"></i>{{title}}</a></li>
+                <li><a href="#tab-response"><i class="i i-comments"></i><span
+                        class="j-comment-by-count">0</span>评论，<span
+                        class="j-reply-by-count">0</span>回复</a></li>
+            </ul>
+            {{else}}
+            <i class="i i-cube"></i>{{title}}
+            {{/if}}
+        </h1>
+        <div class="main-body">
+            <div id="tab-form">
+                {{include ./include/object/item-question.html}}
+            </div>
+            <div id="tab-response" class="f-none"></div>
+        </div>
+    </div>
+    {{include ./include/footer.html}}
+</div>
+
+<script src="/static/js/libs/coolie.min.js"
+        data-config="./coolie-config.js"
+        data-main="./admin/object-item.js"></script>
+
+</body>
+</html>
