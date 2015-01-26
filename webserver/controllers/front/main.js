@@ -287,7 +287,7 @@ module.exports = function (app) {
                 data.object = doc;
                 res.render('front/object-' + section.uri + '.html', data);
             });
-        }
+        };
     };
 
     return exports;

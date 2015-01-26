@@ -446,7 +446,12 @@ dato.each(models, function (key, model) {
                 data[path] = 0;
             }
 
-            exports[key].findOneAndUpdate(conditions, data, callback);
+            exports[key].findOneAndUpdate(conditions, data, function (err, doc) {
+                callback.apply(this, arguments);
+
+                console.log(arguments[0]);
+                console.log(arguments[1]);
+            });
         });
     };
 
