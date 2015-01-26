@@ -26,7 +26,7 @@ module.exports = function (app) {
         $section.forEach(function (section) {
             sectionMap[section.uri] = section;
         });
-        var opinionRole = sectionMap.opinion ? sectionMap.opinion.role : 20;
+        var postRole = sectionMap.post ? sectionMap.post.role : 20;
         var questionRole = sectionMap.question ? sectionMap.question.role : 20;
         var linkRole = sectionMap.link ? sectionMap.link.role : 20;
         var helpRole = sectionMap.help ? sectionMap.help.role : 20;
@@ -82,7 +82,7 @@ module.exports = function (app) {
             });
         }
 
-        if ((engineerRole & 1 << opinionRole) !== 0) {
+        if ((engineerRole & 1 << postRole) !== 0) {
             list.push({
                 href: '/admin/object/opinion/list/',
                 text: '观点管理',
@@ -141,4 +141,4 @@ module.exports = function (app) {
     };
 
     return exports;
-}
+};
