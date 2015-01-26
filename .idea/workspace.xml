@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/item-link.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/item-link.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-link.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-link.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-item-link.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-item-link.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-link.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-link.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -88,8 +83,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33222592" vertical-offset="3353" max-vertical-offset="11849">
-              <caret line="209" column="59" selection-start-line="209" selection-start-column="59" selection-end-line="209" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.37873754" vertical-offset="11179" max-vertical-offset="11849">
+              <caret line="671" column="54" selection-start-line="671" selection-start-column="54" selection-end-line="671" selection-end-column="54" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -864,13 +859,7 @@
       <workItem from="1421849158910" duration="2192000" />
       <workItem from="1421853091552" duration="17000" />
       <workItem from="1421927977957" duration="312000" />
-      <workItem from="1421928465424" duration="19965000" />
-    </task>
-    <task id="LOCAL-00025" summary="alpha 37">
-      <created>1421321222304</created>
-      <option name="number" value="00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1421321222304</updated>
+      <workItem from="1421928465424" duration="19974000" />
     </task>
     <task id="LOCAL-00026" summary="alpha 37">
       <created>1421322689125</created>
@@ -1160,11 +1149,17 @@
       <option name="project" value="LOCAL" />
       <updated>1422282686467</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="beta7">
+      <created>1422283453904</created>
+      <option name="number" value="00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1422283453904</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24163000" />
+    <option name="totallyTimeSpent" value="24172000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1687,8 +1682,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33222592" vertical-offset="3353" max-vertical-offset="11849">
-          <caret line="209" column="59" selection-start-line="209" selection-start-column="59" selection-end-line="209" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.37873754" vertical-offset="11179" max-vertical-offset="11849">
+          <caret line="671" column="54" selection-start-line="671" selection-start-column="54" selection-end-line="671" selection-end-column="54" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
