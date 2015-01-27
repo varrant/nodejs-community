@@ -11,6 +11,6 @@ module.exports = function (app) {
         setting: ['founder'],
         section: ['founder'],
         category: ['founder', 'admin'],
-        column: ['founder']
+        column: []
     };
 };
