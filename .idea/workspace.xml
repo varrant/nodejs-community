@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Setting.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Setting.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/category/form.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/category/form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/column/form.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/column/form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/section/form.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/section/form.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -1344,13 +1340,7 @@
       <workItem from="1421849158910" duration="2192000" />
       <workItem from="1421853091552" duration="17000" />
       <workItem from="1421927977957" duration="312000" />
-      <workItem from="1421928465424" duration="33751000" />
-    </task>
-    <task id="LOCAL-00056" summary="beta 7">
-      <created>1422273077821</created>
-      <option name="number" value="00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1422273077821</updated>
+      <workItem from="1421928465424" duration="34310000" />
     </task>
     <task id="LOCAL-00057" summary="beta 7">
       <created>1422273082087</created>
@@ -1640,11 +1630,17 @@
       <option name="project" value="LOCAL" />
       <updated>1422366197624</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="beta8">
+      <created>1422369804422</created>
+      <option name="number" value="00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1422369804422</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37949000" />
+    <option name="totallyTimeSpent" value="38508000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
