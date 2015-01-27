@@ -89,13 +89,17 @@ define(function (require, exports, module) {
             var categoriesMap = {};
             var columnsMap = {};
 
-            data.categories.forEach(function (item) {
-                categoriesMap[item.id] = item;
-            });
+            if (data.categories) {
+                data.categories.forEach(function (item) {
+                    categoriesMap[item.id] = item;
+                });
+            }
 
-            data.columns.forEach(function (item) {
-                columnsMap[item.id] = item;
-            });
+            if (data.columns) {
+                data.columns.forEach(function (item) {
+                    columnsMap[item.id] = item;
+                });
+            }
 
             if (the.vue) {
                 the.vue.$data.list = data.list;
