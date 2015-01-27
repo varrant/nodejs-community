@@ -19,7 +19,7 @@ var dato = require('ydr-util').dato;
 exports.can = function (operator, what) {
     var per = permission[what];
 
-    if (!per) {
+    if (!per || !per.length) {
         return true;
     }
 
