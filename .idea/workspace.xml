@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/link-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/link-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/main.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/api/nav.js" afterPath="$PROJECT_DIR$/webserver/controllers/api/nav.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-article.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-article.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/touch.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/touch.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -38,8 +38,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/sub-statistics.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list-main-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/home.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/object-item-link.html" />
@@ -59,7 +57,6 @@
         <option value="$PROJECT_DIR$/webserver/controllers/admin/object.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/object-list-question.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/object-list-help.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/admin/object-list-article.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/help-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/list-link.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" />
@@ -70,7 +67,6 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/nav.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/list.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/style.css" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/list-article.html" />
@@ -89,6 +85,10 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/main.js" />
         <option value="$PROJECT_DIR$/webserver/services/section.js" />
+        <option value="$PROJECT_DIR$/webserver/controllers/api/nav.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/admin/object-list-article.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/touch.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" />
       </list>
     </option>
   </component>
@@ -1137,13 +1137,7 @@
       <workItem from="1421849158910" duration="2192000" />
       <workItem from="1421853091552" duration="17000" />
       <workItem from="1421927977957" duration="312000" />
-      <workItem from="1421928465424" duration="30905000" />
-    </task>
-    <task id="LOCAL-00051" summary="beta 6">
-      <created>1422170058377</created>
-      <option name="number" value="00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1422170058377</updated>
+      <workItem from="1421928465424" duration="31290000" />
     </task>
     <task id="LOCAL-00052" summary="beta 6">
       <created>1422273043505</created>
@@ -1433,11 +1427,17 @@
       <option name="project" value="LOCAL" />
       <updated>1422300894643</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="beta7">
+      <created>1422301990298</created>
+      <option name="number" value="00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1422301990298</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35103000" />
+    <option name="totallyTimeSpent" value="35488000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1461,8 +1461,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4059098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4059098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1524,24 +1524,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webserver/controllers/admin/object.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41951218" vertical-offset="218" max-vertical-offset="1020">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/object-list-link.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.730769" vertical-offset="87" max-vertical-offset="680">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/object-list-question.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.384615" vertical-offset="61" max-vertical-offset="680">
@@ -1554,14 +1536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="697">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/object-list-article.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2777778" vertical-offset="61" max-vertical-offset="680">
-          <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1661,16 +1635,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64285713" vertical-offset="12703" max-vertical-offset="13498">
-          <caret line="770" column="0" selection-start-line="770" selection-start-column="0" selection-end-line="770" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1943,7 +1907,7 @@
         <state vertical-scroll-proportion="0.48870057" vertical-offset="1000" max-vertical-offset="1411">
           <caret line="69" column="3" selection-start-line="69" selection-start-column="3" selection-end-line="69" selection-end-column="3" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1955,6 +1919,42 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/api/nav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24878049" vertical-offset="1343" max-vertical-offset="2550">
+          <caret line="88" column="36" selection-start-line="88" selection-start-column="36" selection-end-line="88" selection-end-column="36" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/touch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.55813956" vertical-offset="4339" max-vertical-offset="5474">
+          <caret line="275" column="25" selection-start-line="275" selection-start-column="25" selection-end-line="275" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/object-list-article.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5138889" vertical-offset="61" max-vertical-offset="680">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41860464" vertical-offset="10747" max-vertical-offset="13430">
+          <caret line="651" column="21" selection-start-line="651" selection-start-column="21" selection-end-line="651" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>

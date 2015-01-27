@@ -86,7 +86,7 @@ module.exports = function (app) {
             list.push({
                 href: '/admin/object/article/list/',
                 text: '我的文章',
-                icon: 'i i-file',
+                icon: 'i i-file-text',
                 reg: '^object\\/article\\/'
             });
         }

@@ -647,7 +647,7 @@ define(function (require, exports, module) {
                                     max: Math.ceil(data.count / options.query.limit)
                                 });
                             });
-                        the._replyMap[id].respond = the._initRespond($contentParent, $listParent, $btn);
+                        the._replyMap[id].respond = the._initRespond($contentParent, $listParent, $btn) || {};
                         the._replyMap[id].respond._replyParentId = id;
                     }
                 })
