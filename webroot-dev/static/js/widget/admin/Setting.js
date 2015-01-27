@@ -12,7 +12,9 @@ define(function (require, exports, module) {
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
     var confirm = require('../common/confirm.js');
+    var selector = require('../../alien/core/dom/selector.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
+    var event = require('../../alien/core/event/base.js');
     var id = hashbang.get('query', 'id');
     var dato = require('../../alien/util/dato.js');
     var Upload = require('./Upload/');
@@ -215,15 +217,15 @@ define(function (require, exports, module) {
             var xhr = null;
             var itemKey = this._options.itemKey;
             var vue = this.vue;
+            var $translate = selector.query('#translate')[0];
 
-            // 实时翻译
-            vue.$watch(itemKey + '.name', function (word) {
+            event.on($translate, 'keyup', function(){
                 if (xhr) {
                     xhr.abort();
                 }
 
                 xhr = ajax({
-                    url: '/api/translate/?word=' + encodeURIComponent(word)
+                    url: '/api/translate/?word=' + encodeURIComponent(this.value)
                 })
                     .on('success', function (json) {
                         if (json.code === 200) {
@@ -234,6 +236,25 @@ define(function (require, exports, module) {
                         xhr = null;
                     });
             });
+
+            // 实时翻译
+            //vue.$watch(itemKey + '.name', function (word) {
+            //    if (xhr) {
+            //        xhr.abort();
+            //    }
+            //
+            //    xhr = ajax({
+            //        url: '/api/translate/?word=' + encodeURIComponent(word)
+            //    })
+            //        .on('success', function (json) {
+            //            if (json.code === 200) {
+            //                vue.$data[itemKey].uri = json.data;
+            //            }
+            //        })
+            //        .on('complete', function () {
+            //            xhr = null;
+            //        });
+            //});
         }
     });
 
