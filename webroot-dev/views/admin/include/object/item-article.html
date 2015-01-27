@@ -1,32 +1,32 @@
 <ul class="m-form f-none" id="form">
     <li>
-        <div class="form-key">观点标题<span class="form-required">*</span></div>
+        <div class="form-key">文章标题<span class="form-required">*</span></div>
         <div class="form-val">
             <p class="form-opt" v-if="object._id">\{{object.title}}</p>
             <input v-if="!object._id" class="ipt" type="text" name="title" v-model="object.title"
                    value="\{{object.title}}" id="title"/>
 
-            <p class="form-desc">观点的标题，5-100字符以内。仅支持：中文、英文、数字、短横线、下划线、逗号。</p>
+            <p class="form-desc">文章的标题，5-100字符以内。仅支持：中文、英文、数字、短横线、下划线、逗号等常用字符。</p>
         </div>
     </li>
 
     <li>
-        <div class="form-key">观点 uri<span class="form-required">*</span></div>
+        <div class="form-key">文章 uri<span class="form-required">*</span></div>
         <div class="form-val">
             <p class="form-opt" v-if="object._id">\{{object.uri}}</p>
             <input v-if="!object._id" class="ipt" type="text" name="uri" v-model="object.uri" value="\{{object.uri}}"
                    id="uri"/>
 
-            <p class="form-desc">观点的 uri 展示，5-200 字符长度以内。仅支持：英文、数字、下划线、短横线。</p>
+            <p class="form-desc">文章的 uri 展示，5-200 字符长度以内。仅支持：英文、数字、下划线、短横线。</p>
         </div>
     </li>
 
     <li>
-        <div class="form-key">观点分类<span class="form-required">*</span></div>
+        <div class="form-key">文章分类<span class="form-required">*</span></div>
         <div class="form-val">
             <select name="category" v-model="object.category" options="categories" class="ipt"></select>
 
-            <p class="form-desc">观点所在的分类。</p>
+            <p class="form-desc">文章所在的分类。</p>
         </div>
     </li>
 
@@ -40,17 +40,17 @@
     </li>
 
     <li>
-        <div class="form-key">观点内容<span class="form-required">*</span></div>
+        <div class="form-key">文章内容<span class="form-required">*</span></div>
         <div class="form-val">
             <textarea name="content" rows="5" v-model="object.content" class="ipt"
                       id="content">\{{object.content}}</textarea>
 
-            <p class="form-desc">使用<code>markdown</code>语法详细的观点描述，不能使用任何标签，详细阅读<a href="#">《前端开发者社区 markdown 语法约定》</a>。</p>
+            <p class="form-desc">使用<code>markdown</code>语法详细的文章描述，不能使用任何标签，详细阅读<a href="#">《前端开发者社区 markdown 语法约定》</a>。</p>
         </div>
     </li>
 
     <li>
-        <div class="form-key">观点标签</div>
+        <div class="form-key">文章标签</div>
         <div class="form-val">
             <div class="row">
                 <div class="col-xs-4">
