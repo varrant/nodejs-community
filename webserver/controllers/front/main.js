@@ -34,8 +34,6 @@ module.exports = function (app) {
             section: section
         };
 
-
-
         howdo
             // 版块
             .task(function (done) {
@@ -44,7 +42,7 @@ module.exports = function (app) {
                         return done(err);
                     }
 
-                    data.section = datas;
+                    app.locals.$section = data.section = datas;
                     done();
                 });
             })
@@ -133,7 +131,7 @@ module.exports = function (app) {
                 app.locals.$section.forEach(function (sec) {
                     data.section[sec.uri] = sec;
                 });
-                
+
                 res.render('front/home.html', data);
             });
     };
