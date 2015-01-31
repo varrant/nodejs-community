@@ -195,7 +195,6 @@ exports.createOne = function (author, data, meta, callback) {
  * 赞同/取消赞同某条评论
  * @param operator
  * @param conditions
- * @param boolean
  * @param callback
  */
 exports.agree = function (operator, conditions, callback) {

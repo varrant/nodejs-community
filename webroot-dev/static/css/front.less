@@ -143,11 +143,20 @@ nav {
   }
 
   .label {
+    position: relative;
     font-size: 100%;
     padding: 0 10px;
     line-height: 30px;
     margin-top: 5px;
     font-weight: normal;
+
+    .badge {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      border-radius: 100%;
+      padding: 5px 8px;
+    }
   }
 }
 
@@ -156,7 +165,6 @@ nav {
   background-color: #fff;
 
   @media (max-width: 991px) {
-
 
     .g-sub {
       border-left: 0;
@@ -174,10 +182,10 @@ nav {
     border-right: 0;
   }
 
-  .g-main{
+  .g-main {
     border-right: 1px solid @border-color;
 
-    &:only-child{
+    &:only-child {
       border-right: 0;
     }
   }
@@ -192,8 +200,6 @@ nav {
     }
   }
 }
-
-
 
 // m-home
 .m-home {
@@ -539,8 +545,8 @@ nav {
     }
   }
 
-  .postmain-content{
-    p{
+  .postmain-content {
+    p {
       white-space: pre-wrap;
     }
   }
