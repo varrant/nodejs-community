@@ -25,6 +25,7 @@ define(function (require, exports, module) {
     var templateWrap = require('html!./wrap.html');
     var templateContainer = require('html!./container.html');
     var templateList = require('html!./list.html');
+    var Prettify = require('../../../alien/ui/Prettify/');
     var style = require('css!./style.css');
     var tplWrap = new Template(templateWrap);
     var tplContainer = new Template(templateContainer);
@@ -319,6 +320,8 @@ define(function (require, exports, module) {
                             the.emit('page', page);
                         });
                     }
+
+                    the.prettify();
                 })
                 .on('error', alert)
                 .on('finish', the._ajaxFinish.bind(the));
@@ -385,6 +388,7 @@ define(function (require, exports, module) {
         /**
          * 提交评论/回复
          * @param content
+         * @param parentId
          * @param callback
          * @private
          */
@@ -475,12 +479,21 @@ define(function (require, exports, module) {
             modification.insert(node, $parent, 'beforeend');
             the._scrollTo(node, function () {
                 attribute.addClass(node, alienClass + '-item-new');
+                the.prettify();
                 //setTimeout(function () {
                 //    if (node) {
                 //        attribute.removeClass(node, alienClass + '-item-new');
                 //    }
                 //}, 1000);
             });
+        },
+
+
+        /**
+         * 高亮代码
+         */
+        prettify: function () {
+            new Prettify('.' + alienClass + '-wrap pre');
         },
 
 

@@ -411,6 +411,7 @@ exports.increaseViewByCount = function (conditions, count, callback) {
     object.increase(conditions, 'viewByCount', count, callback);
 };
 
+
 /**
  * 增加 object 评论数量
  * @param conditions

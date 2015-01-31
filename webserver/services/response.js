@@ -181,12 +181,11 @@ exports.createOne = function (author, data, meta, callback) {
                 if (doc.parent) {
                     // 通知 comment 作者
                     _noticeToCommentAuthor(author, responseObject, doc, parentResponse);
+                } else {
+                    // 其他
+                    // 推入 object 的 contributors
+                    object.pushContributor({_id: doc.object}, author, log.holdError);
                 }
-
-
-                // 其他
-                // 推入 object 的 contributors
-                object.pushContributor({_id: doc.object}, author, log.holdError);
             }
         });
 };

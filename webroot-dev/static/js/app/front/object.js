@@ -14,8 +14,10 @@ define(function (require, exports, module) {
     var Response = require('../../widget/common/Response/');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var Imgview = require('../../alien/ui/Imgview/');
+    var Prettify = require('../../alien/ui/Prettify/');
     var app = {};
 
+    // 评论
     app.response = function () {
         var $title = selector.query('#object-title')[0];
         var object = window['-object-'];
@@ -60,7 +62,7 @@ define(function (require, exports, module) {
         });
     };
 
-
+    // 图片预览
     app.imgview = function () {
         var imgview = new Imgview();
         var onview = function () {
@@ -71,8 +73,14 @@ define(function (require, exports, module) {
         event.on(document.body, 'click', '.postmain-content img', onview);
     };
 
+    // 代码高亮
+    app.prettify = function () {
+        new Prettify('.postmain-content pre');
+    };
+
     app.response();
     app.imgview();
+    app.prettify();
     require('../../widget/front/login.js');
     require('../../widget/front/nav.js');
 });
