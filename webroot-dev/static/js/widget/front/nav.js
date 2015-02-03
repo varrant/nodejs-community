@@ -61,6 +61,10 @@ define(function (require, exports, module) {
                 return alert(json);
             }
 
+            if (!json.data) {
+                return;
+            }
+
             var $span = modification.create('span', {
                 class: 'badge badge-danger'
             });
