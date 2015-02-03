@@ -190,7 +190,9 @@ exports.createOne = function (author, data, callback) {
                 developer.increaseObjectCount({_id: doc.author}, 1, log.holdError);
 
                 // 发布积分
-                developer.increaseScore({_id: doc.author}, scoreMap[objectInSection.name] || 0, log.holdError);
+                console.log(scoreMap);
+                console.log(objectInSection);
+                developer.increaseScore({_id: doc.author}, scoreMap[objectInSection.uri] || 0, log.holdError);
             }
         });
 };

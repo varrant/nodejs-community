@@ -29,7 +29,7 @@
             {{list objects as object}}
             <li class="summarylist-item f-clearfix">
                 <div class="summarylist-avatar f-left">
-                    <a href="/"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50"/></a>
+                    <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50"/></a>
                 </div>
                 <div class="summarylist-body">
                     <h2 class="summarylist-name"><a

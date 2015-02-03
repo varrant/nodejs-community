@@ -16,8 +16,12 @@ module.exports = function (app) {
     return {
         // 发布帮助
         help: 1,
+        // 发布链接
+        link: 1,
         // 发布问题
         question: 1,
+        // 发布文章
+        article: 3,
         // 主动评论
         comment: 2,
         // 被动评论
