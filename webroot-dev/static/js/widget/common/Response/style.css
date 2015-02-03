@@ -70,6 +70,25 @@
     margin-right: 10px;
 }
 
+.alien-ui-response-agreers {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.alien-ui-response-agreers a {
+    opacity: 0.5;
+    margin-left: 5px;
+}
+
+.alien-ui-response-agreers a:hover {
+    opacity: 1;
+}
+
+.alien-ui-response-meta img {
+    width: 18px;
+    height: 18px;
+}
+
 .alien-ui-response-content img {
     max-width: 50%;
     cursor: -webkit-zoom-in;
@@ -101,7 +120,7 @@
 .alien-ui-response-item-accepted {
 }
 
-.alien-ui-response-item-accepted .alien-ui-response-flag{
+.alien-ui-response-item-accepted .alien-ui-response-flag {
     display: block;
     position: absolute;
     top: 104%;
