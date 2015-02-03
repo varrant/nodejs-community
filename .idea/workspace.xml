@@ -1,36 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="beta10">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/allocation.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/storage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Banner/touch-slider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/zepto-touch.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/DDB-old.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/DDB.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Lex.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/control.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/1function.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/1function.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/cookie.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/cookie.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/dato.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/dato.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/models/developer.js" afterPath="$PROJECT_DIR$/webserver/models/developer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Banner/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Banner/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Imgclip/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Imgclip/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Prettify/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Prettify/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Tab/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Tab/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/interactive.js" afterPath="$PROJECT_DIR$/webserver/services/interactive.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/list.html" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/object.js" afterPath="$PROJECT_DIR$/webserver/services/object.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/api/response.js" afterPath="$PROJECT_DIR$/webserver/controllers/api/response.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/models/response.js" afterPath="$PROJECT_DIR$/webserver/models/response.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/response.js" afterPath="$PROJECT_DIR$/webserver/services/response.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/touch.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/touch.js" />
+    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -93,10 +66,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="response.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+              <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.37521222" vertical-offset="0" max-vertical-offset="1105">
+              <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="response.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webserver/services/response.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.08617886" vertical-offset="4078" max-vertical-offset="6749">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4078" max-vertical-offset="6749">
               <caret line="247" column="41" selection-start-line="247" selection-start-column="41" selection-end-line="247" selection-end-column="41" />
               <folding />
             </state>
@@ -118,16 +111,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="4827" max-vertical-offset="11764">
               <caret line="296" column="16" selection-start-line="296" selection-start-column="16" selection-end-line="296" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webserver/models/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="9961" max-vertical-offset="12699">
-              <caret line="611" column="0" selection-start-line="611" selection-start-column="0" selection-end-line="611" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -200,8 +183,6 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/nav.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/front.less" />
-        <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/index.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" />
@@ -216,6 +197,8 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/css/1function.css" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/list.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/style.css" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -1004,13 +987,7 @@
       <workItem from="1422787522004" duration="627000" />
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
-      <workItem from="1422967616233" duration="5573000" />
-    </task>
-    <task id="LOCAL-00066" summary="beta7">
-      <created>1422281014330</created>
-      <option name="number" value="00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1422281014330</updated>
+      <workItem from="1422967616233" duration="5632000" />
     </task>
     <task id="LOCAL-00067" summary="beta7">
       <created>1422281723200</created>
@@ -1300,11 +1277,17 @@
       <option name="project" value="LOCAL" />
       <updated>1422973761249</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="beta11">
+      <created>1422973769239</created>
+      <option name="number" value="00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1422973769239</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56787000" />
+    <option name="totallyTimeSpent" value="56846000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1549,20 +1532,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-          <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="1105">
-          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/object-article.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="969">
@@ -1769,6 +1738,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/services/response.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4078" max-vertical-offset="6749">
+          <caret line="247" column="41" selection-start-line="247" selection-start-column="41" selection-end-line="247" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1050" max-vertical-offset="3944">
@@ -1777,10 +1754,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/services/response.js">
+    <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08617886" vertical-offset="4078" max-vertical-offset="6749">
-          <caret line="247" column="41" selection-start-line="247" selection-start-column="41" selection-end-line="247" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+          <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37521222" vertical-offset="0" max-vertical-offset="1105">
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
           <folding />
         </state>
       </provider>
