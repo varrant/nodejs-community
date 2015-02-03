@@ -13,6 +13,7 @@ npm install
 npm start
 ```
 
+
 ## update
 ```
 mv configs/app.js configs/app.js.bak
