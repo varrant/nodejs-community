@@ -221,9 +221,46 @@ exports.agree = function (operator, conditions, callback) {
                 next(err, value, doc, oldDoc);
             });
         })
+        // 3. 写入5个最新赞同用户
+        .task(function (next, value, doc, oldDoc) {
+            interactive.find({
+                model: 'response',
+                path: 'agreeCount',
+                response: conditions._id,
+                hasApproved: true
+            }, {
+                limit: 5
+            }, function (err, docs) {
+                if (err) {
+                    return next(err);
+                }
+
+                var agreers = docs.map(function (doc) {
+                    return doc.operator;
+                });
+
+                response.findOneAndUpdate({
+                    _id: conditions._id
+                }, {
+                    agreers: agreers
+                }, log.holdError);
+
+                next(null, value, doc, oldDoc, agreers);
+            });
+        })
+        // 4. 找出这5个用户
+        .task(function (next, value, agreeByResponse, oldDoc, agreers) {
+            howdo
+                .each(agreers, function (index, agreer, done) {
+                    developer.findOne({_id: agreer}, done);
+                })
+                .together(function (err) {
+                    next(err, value, agreeByResponse, oldDoc, [].slice.call(arguments, 1));
+                });
+        })
         // 顺序串行
-        .follow(function (err, value, agreeByResponse, oldDoc) {
-            callback(err, value);
+        .follow(function (err, value, agreeByResponse, oldDoc, agreers) {
+            callback(err, value, agreers);
 
             if (!err) {
                 // 赞
@@ -279,6 +316,17 @@ exports.agree = function (operator, conditions, callback) {
             }
         });
 };
+
+
+///**
+// * 最多推入 5 个最新的赞同者
+// * @param conditions {Object} 查询条件
+// * @param agreer {Object} 赞同者
+// * @param callback {Function} 回调
+// */
+//exports.pushAgreer = function (conditions, agreer, callback) {
+//    object.push(conditions, 'agreers', agreer.id, 5, callback);
+//};
 
 
 /**

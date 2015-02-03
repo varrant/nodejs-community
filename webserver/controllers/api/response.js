@@ -113,7 +113,7 @@ module.exports = function (app) {
             conditions.parent = null;
         }
 
-        options.populate = ['author'];
+        options.populate = ['author', 'agreers'];
 
         howdo
             // 1. 查找 object
@@ -156,7 +156,7 @@ module.exports = function (app) {
                                     return done(null, null);
                                 }
 
-                                response.findOne({_id: acceptResponseId}, {populate: ['author']}, done);
+                                response.findOne({_id: acceptResponseId}, {populate: ['author', 'agreers']}, done);
                             })
                             // 列表
                             .task(function (done) {
@@ -184,11 +184,9 @@ module.exports = function (app) {
                         }
 
                         list.forEach(function (item) {
-                            var author = item.author;
-
-                            item.author = dato.pick(author, ['id', 'nickname', 'githubLogin', 'githubId', 'score']);
-                            item.author.avatar = dato.gravatar(author.email, {
-                                size: 100
+                            item.author = dato.pick(item.author, ['id', 'nickname', 'githubLogin', 'githubId', 'score', 'avatar']);
+                            item.agreers = item.agreers.map(function (agreer) {
+                                return dato.pick(agreer, ['id', 'nickname', 'githubLogin', 'avatarM']);
                             });
                         });
 
@@ -236,14 +234,21 @@ module.exports = function (app) {
     exports.agree = function (req, res, next) {
         var id = req.body.id;
 
-        response.agree(res.locals.$developer, {_id: id}, function (err, value) {
+        response.agree(res.locals.$developer, {_id: id}, function (err, value, agreers) {
             if (err) {
                 return next(err);
             }
 
+            agreers = agreers.map(function (agreer) {
+                return dato.pick(agreer, ['id', 'nickname', 'avatarM', 'githubLogin']);
+            });
+
             return res.json({
                 code: 200,
-                data: value
+                data: {
+                    value: value,
+                    agreers: agreers
+                }
             });
         });
     };

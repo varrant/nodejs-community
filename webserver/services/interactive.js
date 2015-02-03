@@ -16,25 +16,27 @@ var response = require('./response.js');
  * 查找
  */
 exports.findOne = interactive.findOne;
+exports.find = interactive.find;
 
 
 /**
  * 切换
- * @param data
+ * @param conditions
  * @param boolean
  * @param callback
  */
 exports.toggle = function (conditions, boolean, callback) {
+    var err;
+
     if (!conditions.object && !conditions.response) {
-        var err = new Error('至少需要一个 object 或 response');
+        err = new Error('至少需要一个 object 或 response');
         return callback(err);
     }
 
     if (conditions.object && conditions.response) {
-        var err = new Error('object 和 response 不能同时存在');
+        err = new Error('object 和 response 不能同时存在');
         return callback(err);
     }
-
 
     interactive.mustToggle(conditions, 'hasApproved', boolean, function (err, newDoc, oldDoc) {
         if (err) {
@@ -90,9 +92,9 @@ exports.active = function (data, callback) {
         return callback(err);
     }
 
-    if (data.model === 'developer' || data.model === 'object') {
-        // 发送邮件给被动用户
-    }
+    //if (data.model === 'developer' || data.model === 'object') {
+    //    // 发送邮件给被动用户
+    //}
 
     if (data.object) {
         conditions.object = data.object;

@@ -51,6 +51,14 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    // 赞同者，最多五个
+    // [{
+    //     id: 'xxx'
+    // }]
+    agreers: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'developer'
+    }],
     // 回复数量
     replyByCount: {
         type: Number,

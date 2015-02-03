@@ -403,9 +403,9 @@ exports.increaseScore = function (operator, id, count, callback) {
 
 /**
  * 增加 object 阅读数量
- * @param conditions
- * @param count
- * @param callback
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 数量
+ * @param callback {Function} 回调
  */
 exports.increaseViewByCount = function (conditions, count, callback) {
     object.increase(conditions, 'viewByCount', count, callback);
@@ -414,9 +414,9 @@ exports.increaseViewByCount = function (conditions, count, callback) {
 
 /**
  * 增加 object 评论数量
- * @param conditions
- * @param count
- * @param callback
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 数量
+ * @param callback {Function} 回调
  */
 exports.increaseCommentByCount = function (conditions, count, callback) {
     object.increase(conditions, 'commentByCount', count, callback);
@@ -425,9 +425,9 @@ exports.increaseCommentByCount = function (conditions, count, callback) {
 
 /**
  * 增加 object 回复数量
- * @param conditions
- * @param count
- * @param callback
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 数量
+ * @param callback {Function} 回调
  */
 exports.increaseReplyByCount = function (conditions, count, callback) {
     object.increase(conditions, 'replyByCount', count, callback);
@@ -436,9 +436,9 @@ exports.increaseReplyByCount = function (conditions, count, callback) {
 
 /**
  * 增加 object 收藏数量
- * @param conditions
- * @param count
- * @param callback
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 数量
+ * @param callback {Function} 回调
  */
 exports.increaseFavoriteByCount = function (conditions, count, callback) {
     object.increase(conditions, 'favoriteByCount', count, callback);
@@ -447,9 +447,9 @@ exports.increaseFavoriteByCount = function (conditions, count, callback) {
 
 /**
  * 增加组织申请数量
- * @param conditions
- * @param count
- * @param callback
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 数量
+ * @param callback {Function} 回调
  */
 exports.increaseApplyByCount = function (conditions, count, callback) {
     object.increase(conditions, 'applyByCount', count, callback);
@@ -458,9 +458,9 @@ exports.increaseApplyByCount = function (conditions, count, callback) {
 
 /**
  * 最多推入 5 个最新的贡献者
- * @param conditions
- * @param contributor
- * @param callback
+ * @param conditions {Object} 查询条件
+ * @param contributor {Object} 贡献者
+ * @param callback {Function} 回调
  */
 exports.pushContributor = function (conditions, contributor, callback) {
     object.push(conditions, 'contributors', contributor.id, 5, callback);
@@ -526,13 +526,13 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
                     return next(err);
                 }
 
-                if (acceptByResponse.author.toString() === operator.id.toString()) {
-                    err = new Error('不能采纳自己的回答');
-                    return next(err);
-                }
+                //if (acceptByResponse.author.toString() === operator.id.toString()) {
+                //    err = new Error('不能采纳自己的回答');
+                //    return next(err);
+                //}
 
                 if (acceptByResponse.parent) {
-                    err = new Error('不能采纳他人的回复');
+                    err = new Error('不能采纳他人的回复为最近答案');
                     return next(err);
                 }
 
@@ -559,19 +559,21 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
                 // 当前被采纳的人的被采纳次数+1
                 developer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
 
-                developer.findOne({_id: newDoc.acceptByAuthor}, function (err, doc) {
-                    if (err) {
-                        return log.holdError(err);
-                    }
+                if (operator.id.toString() !== newDoc.acceptByAuthor.toString()) {
+                    developer.findOne({_id: newDoc.acceptByAuthor}, function (err, doc) {
+                        if (err) {
+                            return log.holdError(err);
+                        }
 
-                    // 知
-                    // 通知被采纳的人
-                    notice.accept(operator, doc, newDoc, acceptByResponse);
+                        // 知
+                        // 通知被采纳的人
+                        notice.accept(operator, doc, newDoc, acceptByResponse);
 
-                    // 分
-                    // 当前被采纳的人加分
-                    developer.increaseScore({_id: newDoc.acceptByAuthor}, scoreUtil.acceptBy(operator, doc), log.holdError);
-                });
+                        // 分
+                        // 当前被采纳的人加分
+                        developer.increaseScore({_id: newDoc.acceptByAuthor}, scoreUtil.acceptBy(operator, doc), log.holdError);
+                    });
+                }
 
                 // response
                 response.findOneAndUpdate({_id: acceptByResponse.id}, {

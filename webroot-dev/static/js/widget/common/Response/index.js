@@ -32,6 +32,7 @@ define(function (require, exports, module) {
     var tplList = new Template(templateList);
     var alienClass = 'alien-ui-response';
     var defaults = {
+        developer: window['-developer-'],
         loading: '<div class="alien-ui-response-loading"><div class="f-loading">加载中……</div></div>',
         url: {
             list: '/api/response/list/',
@@ -239,6 +240,7 @@ define(function (require, exports, module) {
          */
         _initEvent: function () {
             var the = this;
+            var options = the._options;
             var replyClass = '.' + alienClass + '-reply';
             var agreeClass = '.' + alienClass + '-agree';
             var acceptClass = '.' + alienClass + '-accept';
@@ -247,7 +249,13 @@ define(function (require, exports, module) {
             event.on($parent, 'click', replyClass, the._reply.bind(the));
             event.on($parent, 'click', agreeClass, the._agree.bind(the));
             event.on($parent, 'click', acceptClass, function (eve) {
-                confirm('确定要采纳该回答为最佳答案吗？采纳后无法取消和更改。', the._accept.bind(the, eve));
+                var $item = the._getItem(eve.target);
+                var author = attribute.data($item, 'author');
+                var acceptMyself = options.developer.id === author;
+
+                confirm('确定要采纳' + (acceptMyself ? '你自己的' : '该') + '回答为最佳答案吗？采纳后将无法取消或更改' +
+                (acceptMyself ? '，其中采纳自己的回答不会提升任何威望' : '') +
+                '。', the._accept.bind(the, eve));
             });
         },
 
@@ -372,16 +380,27 @@ define(function (require, exports, module) {
 
 
         /**
+         * 获取当前的 item
+         * @param $node
+         * @returns {*}
+         * @private
+         */
+        _getItem: function ($node) {
+            var itemClass = '.' + alienClass + '-item';
+            var $item = selector.closest($node, itemClass)[0];
+
+            return $item;
+        },
+
+
+        /**
          * 获取当前 response 的 ID
          * @param $node
          * @returns {*}
          * @private
          */
         _getResponseId: function ($node) {
-            var itemClass = '.' + alienClass + '-item';
-            var $item = selector.closest($node, itemClass)[0];
-
-            return attribute.data($item, 'id');
+            return attribute.data(this._getItem($node), 'id');
         },
 
 
@@ -519,6 +538,26 @@ define(function (require, exports, module) {
 
 
         /**
+         * 渲染赞同者
+         * @param $node
+         * @param agreers
+         * @private
+         */
+        _renderAgreers: function ($node, agreers) {
+            //var the = this;
+            //var $item = the._getItem($node);
+            //var id = attribute.data($item, 'id');
+            var $agreesParent = selector.next($node)[0];
+            var html = '';
+
+            dato.each(agreers, function (index, agreer) {
+                html += '<a href="/developer/' + agreer.githubLogin + '/"><img src="' + agreer.avatarM + '"></a>';
+            });
+            $agreesParent.innerHTML = html;
+        },
+
+
+        /**
          * 翻页之后销毁回复实例
          * @private
          */
@@ -589,6 +628,7 @@ define(function (require, exports, module) {
 
         /**
          * 加载回复
+         * @param $btn
          * @param $li
          * @param id
          * @private
@@ -715,7 +755,10 @@ define(function (require, exports, module) {
                         return alert(json);
                     }
 
-                    the._increaseHTML($ele, json.data);
+                    var data = json.data;
+
+                    the._increaseHTML($ele, data.value);
+                    the._renderAgreers($ele, data.agreers);
                 })
                 .on('error', alert)
                 .on('finish', the._ajaxFinish.bind(the));

@@ -55,12 +55,12 @@
 }
 
 .f-left,
-.f-list-left > li {
+.f-list-left > * {
     float: left !important;
 }
 
 .f-right,
-.f-list-right > li {
+.f-list-right > * {
     float: right !important;
 }
 

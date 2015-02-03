@@ -5,6 +5,7 @@
 {{if object.acceptByResponse === item.id}} alien-ui-response-item-accepted{{/if}}"
     id="response-{{item.id}}"
     data-id="{{item.id}}"
+    data-author="{{item.author.id}}"
     data-parent="{{item.parent}}">
     <div class="f-clearfix alien-ui-response-main">
         <div class="alien-ui-response-avatar f-left">
@@ -33,6 +34,11 @@
                 <li>
                     <button class="btn btn-default btn-xs alien-ui-response-agree"><i class="i i-thumbs-up"></i>赞同<span
                             class="alien-ui-response-number">{{item.agreeByCount}}</span></button>
+                    <span class="alien-ui-response-agreers f-list-left">
+                        {{list item.agreers as agreer}}
+                        <a href="/developer/{{=agreer.githubLogin}}/"><img src="{{=agreer.avatarM}}"></a>
+                        {{/list}}
+                    </span>
                 </li>
                 {{if !item.parent}}
                     {{if item.acceptByObject}}
@@ -41,7 +47,7 @@
                                 class="i i-check"></i>已被采纳</button>
                     </li>
                     {{/if}}
-                    {{if canAccept && developer.id === author.id && author.id !== item.author.id && !object.acceptByResponse}}
+                    {{if canAccept && developer.id === author.id && !object.acceptByResponse}}
                     <li class="alien-ui-response-accept-li">
                         <button class="btn btn-warning btn-xs alien-ui-response-accept"><i
                                 class="i i-check"></i>采纳回答</button>
