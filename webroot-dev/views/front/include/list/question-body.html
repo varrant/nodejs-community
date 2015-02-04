@@ -12,16 +12,16 @@
         <ul class="m-choose">
             <li class="f-clearfix">
                 <strong class="choose-type">分类</strong>
-                <a class="{{if !choose.category}}active{{/if}}" href="/question/{{if choose.status}}as/{{choose.status}}/{{/if}}">所有分类</a>
+                <a class="{{if !choose.category}}active{{/if}}" href="/question/{{if choose.status}}as/{{choose.status}}/{{/if}}{{if choose.author}}by/{{choose.author}}/{{/if}}">所有分类</a>
                 {{list categories as category}}
-                <a class="{{if category.id == choose.category}}active{{/if}}" href="/question/in/{{=category.uri}}/{{if choose.status}}as/{{choose.status}}/{{/if}}">{{=category.name}}</a>
+                <a class="{{if category.id == choose.category}}active{{/if}}" href="/question/in/{{=category.uri}}/{{if choose.status}}as/{{choose.status}}/{{/if}}{{if choose.author}}by/{{choose.author}}/{{/if}}">{{=category.name}}</a>
                 {{/list}}
             </li>
             <li class="f-clearfix">
                 <strong class="choose-type">状态</strong>
-                <a class="{{if !choose.status}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}">所有状态</a>
-                <a class="{{if choose.status == 'resolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/resolved/">已解决</a>
-                <a class="{{if choose.status == 'unresolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/unresolved/">待解决</a>
+                <a class="{{if !choose.status}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}{{if choose.author}}by/{{choose.author}}/{{/if}}">所有状态</a>
+                <a class="{{if choose.status == 'resolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/resolved{{if choose.author}}by/{{choose.author}}/{{/if}}">已解决</a>
+                <a class="{{if choose.status == 'unresolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/unresolved{{if choose.author}}by/{{choose.author}}/{{/if}}">待解决</a>
             </li>
         </ul>
 

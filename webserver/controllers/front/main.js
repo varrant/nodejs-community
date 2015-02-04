@@ -250,7 +250,8 @@ module.exports = function (app) {
                         return next();
                     }
 
-                    data.choose.author = conditions.author = de.id.toString();
+                    data.choose.author = de.githubLogin;
+                    conditions.author = de.id.toString();
                     onnext();
                 });
             } else {
