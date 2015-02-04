@@ -10,6 +10,7 @@
 var developer = require('../../services/').developer;
 var setting = require('../../services/').setting;
 var response = require('../../services/').response;
+var interactive = require('../../services/').interactive;
 var howdo = require('howdo');
 var configs = require('../../../configs/');
 var log = require('ydr-log');
@@ -199,14 +200,12 @@ module.exports = function (app) {
                     next(err, de);
                 });
             })
-            // 查找评论
+            // 查找被评论
             .task(function (next, de) {
                 response.find({
-                    author: de.id
+                    parentAuthor: de.id,
+                    parentResponse: null
                 }, {
-                    nor: {
-                        parentResponse: null
-                    },
                     sort: {
                         publishAt: -1
                     }
@@ -276,12 +275,89 @@ module.exports = function (app) {
 
     // 我的被回复
     exports.replyBy = function (req, res, next) {
-        res.send('我的被回复');
+        var githubLogin = req.params.githubLogin;
+
+        howdo
+            // 查找用户
+            .task(function (next) {
+                developer.findOne({
+                    githubLogin: githubLogin
+                }, function (err, de) {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    if (!de) {
+                        err.code = 404;
+                        err = new Error('该开发者不存在');
+                        return next(err);
+                    }
+
+                    next(err, de);
+                });
+            })
+            // 查找评论
+            .task(function (next, de) {
+                response.find({
+                    parentAuthor: de.id
+                }, {
+                    nor: {
+                        parentResponse: null
+                    },
+                    sort: {
+                        publishAt: -1
+                    }
+                }, function (err, docs) {
+                    next(err, de, docs);
+                });
+            })
+            // 顺序串行
+            .follow(function (err, de, docs) {
+                if (err) {
+                    return next(err);
+                }
+
+                res.json(docs);
+            });
     };
 
     // 我的被赞同
     exports.agreeBy = function (req, res, next) {
-        res.send('我的被赞同');
+        var githubLogin = req.params.githubLogin;
+
+        howdo
+            // 查找用户
+            .task(function (next) {
+                developer.findOne({
+                    githubLogin: githubLogin
+                }, function (err, de) {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    if (!de) {
+                        err.code = 404;
+                        err = new Error('该开发者不存在');
+                        return next(err);
+                    }
+
+                    next(err, de);
+                });
+            })
+            // 查找评论
+            .task(function (next, de) {
+               interactive.find({
+
+               });
+            })
+            // 顺序串行
+            .follow(function (err, de, docs) {
+                if (err) {
+                    return next(err);
+                }
+
+                res.json(docs);
+            });
     };
 
     // 我的被采纳
