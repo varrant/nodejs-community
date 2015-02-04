@@ -20,9 +20,11 @@
             <li class="f-clearfix">
                 <strong class="choose-type">状态</strong>
                 <a class="{{if !choose.status}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}{{if choose.author}}by/{{choose.author}}/{{/if}}">所有状态</a>
-                <a class="{{if choose.status == 'resolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/resolved{{if choose.author}}by/{{choose.author}}/{{/if}}">已解决</a>
-                <a class="{{if choose.status == 'unresolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/unresolved{{if choose.author}}by/{{choose.author}}/{{/if}}">待解决</a>
+                <a class="{{if choose.status == 'resolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/resolved/{{if choose.author}}by/{{choose.author}}/{{/if}}">已解决</a>
+                <a class="{{if choose.status == 'unresolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/unresolved/{{if choose.author}}by/{{choose.author}}/{{/if}}">待解决</a>
             </li>
+            {{if choose.author}}
+            {{/if}}
         </ul>
 
         <!--列表-->

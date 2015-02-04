@@ -106,6 +106,10 @@ module.exports = function (app, ctrlFront) {
         app.get('/' + uri + '/' + 'in/:category/on/:label/by/:author/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'in/:category/on/:label/by/:author/page/:page/', ctrlFront.main.getList(section));
 
+        // category + status + author
+        app.get('/' + uri + '/' + 'in/:category/as/:status/by/:author/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'in/:category/as/:status/by/:author/page/:page/', ctrlFront.main.getList(section));
+
         // column + label + status
         app.get('/' + uri + '/' + 'at/:column/on/:label/as/:status/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'at/:column/on/:label/as/:status/page/:page/', ctrlFront.main.getList(section));
