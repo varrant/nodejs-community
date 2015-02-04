@@ -17,9 +17,10 @@ var email = require('./email.js');
 
 /**
  * 评论通知 object 作者
- * @param sourceDeveloper {Object} 评论人
- * @param targetDeveloper {Object} object 作者
- * @param object {commentByObject} 被评论的 object
+ * @param respondDeveloper {Object} 评论人
+ * @param objectAuthor {Object} object 作者
+ * @param commentInObject {Object} 被评论的 object
+ * @param response {Object} 被评论的 object
  */
 exports.toObjectAuthor = function (respondDeveloper, objectAuthor, commentInObject, response) {
     // 自己不必通知自己
@@ -60,9 +61,9 @@ exports.toObjectAuthor = function (respondDeveloper, objectAuthor, commentInObje
 /**
  * 回复通知评论者
  * @param sourceDeveloper {Object} 评论人
- * @param targetDeveloper {Object} object 作者
+ * @param commentAuthor {Object} object 作者
  * @param replyInObject {Object} 所在的 object
- * @param replyByComment {Object} 被回复的评论
+ * @param replyResponse {Object} 被回复的评论
  */
 exports.toResponseAuthor = function (sourceDeveloper, commentAuthor, replyInObject, replyResponse) {
     // 自己不必通知自己
@@ -104,6 +105,7 @@ exports.toResponseAuthor = function (sourceDeveloper, commentAuthor, replyInObje
  * 权限变动通知
  * @param operator {Object} 操作者
  * @param operatorBy {Object} 被操作者
+ * @param group {String} 变动后的分组
  */
 exports.role = function (operator, operatorBy, group) {
     // 自己不必通知自己
@@ -178,10 +180,10 @@ exports.accept = function (askDeveloper, answerDeveloper, questionObject, questi
 
 /**
  * 评论被赞同通知
- * @param askDeveloper {Object} 问者
- * @param answerDeveloper {Object} 答者
- * @param questionObject {Object} 题
- * @param questionResponse {Object} 答
+ * @param agreeDeveloper {Object} 赞同者
+ * @param agreeByDeveloper {Object} 被赞同者
+ * @param agreeinObject {Object} 所在object
+ * @param agreeByResponse {Object} 所在响应
  */
 exports.agreeComment = function (agreeDeveloper, agreeByDeveloper, agreeinObject, agreeByResponse) {
     // 自己不必通知自己
@@ -220,7 +222,7 @@ exports.agreeComment = function (agreeDeveloper, agreeByDeveloper, agreeinObject
 
 /**
  * 回复被赞同通知
- * @param askDeveloper {Object} 问者
+ * @param agreeDeveloper {Object} 问者
  * @param answerDeveloper {Object} 答者
  * @param questionObject {Object} 题
  * @param questionResponse {Object} 答
