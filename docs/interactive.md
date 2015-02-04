@@ -5,6 +5,7 @@
 `*`表示虚拟字段
 
 - `operator` 操作者
+- `operatorBy` 被操作者
 - `model` 模型
 - `path` 字段
 - `object` 被操作 object
