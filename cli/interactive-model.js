@@ -1,5 +1,5 @@
 /*!
- * response model parent => parentDeveloper parentResponse
+ * interactive model operator => source target
  * @author ydr.me
  * @create 2015-02-04 21:20
  */
