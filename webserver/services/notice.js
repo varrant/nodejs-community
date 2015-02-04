@@ -222,10 +222,10 @@ exports.agreeComment = function (agreeDeveloper, agreeByDeveloper, agreeinObject
 
 /**
  * 回复被赞同通知
- * @param agreeDeveloper {Object} 问者
- * @param answerDeveloper {Object} 答者
- * @param questionObject {Object} 题
- * @param questionResponse {Object} 答
+ * @param agreeDeveloper {Object} 赞同者
+ * @param agreeByDeveloper {Object} 被赞同者
+ * @param agreeinObject {Object} 所在 object
+ * @param agreeByResponse {Object} 所在响应
  */
 exports.agreeReply = function (agreeDeveloper, agreeByDeveloper, agreeinObject, agreeByResponse) {
     // 自己不必通知自己
