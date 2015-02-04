@@ -216,7 +216,7 @@ exports.agree = function (operator, conditions, callback) {
                 source: operator.id,
                 target: doc.author,
                 model: 'response',
-                path: 'agreeCount',
+                path: 'agreeByCount',
                 response: doc.id
             }, true, function (err, value, newDoc, oldDoc) {
                 next(err, value, doc, oldDoc);
@@ -226,7 +226,7 @@ exports.agree = function (operator, conditions, callback) {
         .task(function (next, value, doc, oldDoc) {
             interactive.find({
                 model: 'response',
-                path: 'agreeCount',
+                path: 'agreeByCount',
                 response: conditions._id,
                 hasApproved: true
             }, {
