@@ -213,7 +213,8 @@ exports.agree = function (operator, conditions, callback) {
 
             // 默认点赞
             interactive.toggle({
-                operator: operator.id,
+                source: operator.id,
+                target: doc.author,
                 model: 'response',
                 path: 'agreeCount',
                 response: doc.id

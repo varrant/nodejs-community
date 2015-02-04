@@ -290,10 +290,10 @@ exports.increaseColumnCount = function (conditions, count, callback) {
  */
 exports.follow = function (operatorId, userId, callback) {
     interactive.active({
-        operator: operatorId,
-        model: 'user',
-        path: 'followByCount',
-        object: userId,
+        source: operatorId,
+        target: userId,
+        model: 'developer',
+        path: 'followCount',
         value: 1
     }, function (err, isModified) {
         callback(err);
@@ -314,10 +314,10 @@ exports.follow = function (operatorId, userId, callback) {
  */
 exports.unfollow = function (operatorId, userId, callback) {
     interactive.active({
-        operator: operatorId,
-        model: 'user',
-        path: 'followByCount',
-        object: userId,
+        source: operatorId,
+        target: userId,
+        model: 'developer',
+        path: 'followCount',
         value: 0
     }, function (err, isModified) {
         callback(err);
