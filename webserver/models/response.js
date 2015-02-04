@@ -39,7 +39,15 @@ var schema = new mongoose.Schema({
         default: null
     },
     // 响应父级
-    parent: {
+    parentDeveloper: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+        unique: false,
+        ref: 'developer',
+        default: null
+    },
+    // 响应父级
+    parentResponse: {
         type: mongoose.Schema.Types.ObjectId,
         required: false,
         unique: false,

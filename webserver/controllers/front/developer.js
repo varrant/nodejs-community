@@ -9,6 +9,7 @@
 
 var developer = require('../../services/').developer;
 var setting = require('../../services/').setting;
+var response = require('../../services/').response;
 var howdo = require('howdo');
 var configs = require('../../../configs/');
 var log = require('ydr-log');
@@ -112,9 +113,8 @@ module.exports = function (app) {
             app.locals.$section.forEach(function (section) {
                 var uri = section.uri;
                 var id = section.id;
-                var count = doc.sectionStatistics[id] || 0;
 
-                sectionStatistics[uri] = count;
+                sectionStatistics[uri] = doc.sectionStatistics[id] || 0;
             });
 
             var data = {
@@ -131,19 +131,146 @@ module.exports = function (app) {
 
     // 我的评论
     exports.comment = function (req, res, next) {
-        res.send('我的评论');
+        var githubLogin = req.params.githubLogin;
+
+        howdo
+            // 查找用户
+            .task(function (next) {
+                developer.findOne({
+                    githubLogin: githubLogin
+                }, function (err, de) {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    if (!de) {
+                        err.code = 404;
+                        err = new Error('该开发者不存在');
+                        return next(err);
+                    }
+
+                    next(err, de);
+                });
+            })
+            // 查找评论
+            .task(function (next, de) {
+                response.find({
+                    parent: null,
+                    author: de.id
+                }, {
+                    sort: {
+                        publishAt: -1
+                    }
+                }, function (err, docs) {
+                    next(err, de, docs);
+                });
+            })
+            // 顺序串行
+            .follow(function (err, de, docs) {
+                if (err) {
+                    return next(err);
+                }
+
+                res.json(docs);
+            });
     };
 
 
     // 我的被评论
     exports.commentBy = function (req, res, next) {
-        res.send('我的被评论');
+        var githubLogin = req.params.githubLogin;
+
+        howdo
+            // 查找用户
+            .task(function (next) {
+                developer.findOne({
+                    githubLogin: githubLogin
+                }, function (err, de) {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    if (!de) {
+                        err.code = 404;
+                        err = new Error('该开发者不存在');
+                        return next(err);
+                    }
+
+                    next(err, de);
+                });
+            })
+            // 查找评论
+            .task(function (next, de) {
+                response.find({
+                    author: de.id
+                }, {
+                    nor: {
+                        parent: null
+                    },
+                    sort: {
+                        publishAt: -1
+                    }
+                }, function (err, docs) {
+                    next(err, de, docs);
+                });
+            })
+            // 顺序串行
+            .follow(function (err, de, docs) {
+                if (err) {
+                    return next(err);
+                }
+
+                res.json(docs);
+            });
     };
 
 
     // 我的回复
     exports.reply = function (req, res, next) {
-        res.send('我的回复');
+        var githubLogin = req.params.githubLogin;
+
+        howdo
+            // 查找用户
+            .task(function (next) {
+                developer.findOne({
+                    githubLogin: githubLogin
+                }, function (err, de) {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    if (!de) {
+                        err.code = 404;
+                        err = new Error('该开发者不存在');
+                        return next(err);
+                    }
+
+                    next(err, de);
+                });
+            })
+            // 查找评论
+            .task(function (next, de) {
+                response.find({
+                    author: de.id
+                }, {
+                    nor: {
+                        parent: null
+                    },
+                    sort: {
+                        publishAt: -1
+                    }
+                }, function (err, docs) {
+                    next(err, de, docs);
+                });
+            })
+            // 顺序串行
+            .follow(function (err, de, docs) {
+                if (err) {
+                    return next(err);
+                }
+
+                res.json(docs);
+            });
     };
 
 

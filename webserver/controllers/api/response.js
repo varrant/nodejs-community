@@ -108,9 +108,9 @@ module.exports = function (app) {
         };
 
         if (parentId) {
-            conditions.parent = parentId;
+            conditions.parentResponse = parentId;
         } else {
-            conditions.parent = null;
+            conditions.parentResponse = null;
         }
 
         options.populate = ['author', 'agreers'];

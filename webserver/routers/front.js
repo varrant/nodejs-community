@@ -94,4 +94,9 @@ module.exports = function (app, ctrlFront) {
     // developer
     app.get('/developer/:githubLogin/', ctrlFront.developer.home);
     app.get('/developer/:githubLogin/comment/', ctrlFront.developer.comment);
+    app.get('/developer/:githubLogin/comment-by/', ctrlFront.developer.commentBy);
+    app.get('/developer/:githubLogin/reply/', ctrlFront.developer.reply);
+    app.get('/developer/:githubLogin/reply-by/', ctrlFront.developer.replyBy);
+    app.get('/developer/:githubLogin/accept-by/', ctrlFront.developer.acceptBy);
+    app.get('/developer/:githubLogin/agree-by/', ctrlFront.developer.agreeBy);
 };

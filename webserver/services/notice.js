@@ -28,7 +28,7 @@ exports.toObjectAuthor = function (respondDeveloper, objectAuthor, commentInObje
     }
 
     // 1. 站内通知
-    var type = response.parent ? 'replyObject' : 'commentObject';
+    var type = response.parentResponse ? 'replyObject' : 'commentObject';
     notification.createOne({
         type: type,
         source: respondDeveloper.id,

@@ -533,7 +533,7 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
                 //    return next(err);
                 //}
 
-                if (acceptByResponse.parent) {
+                if (acceptByResponse.parentResponse) {
                     err = new Error('不能采纳他人的回复为最近答案');
                     return next(err);
                 }

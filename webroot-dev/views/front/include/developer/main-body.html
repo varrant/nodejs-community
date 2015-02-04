@@ -31,10 +31,10 @@
             <ul class="usercard-statistics f-list-left s-muted f-small">
                 <li><i class="i i-circle"></i>{{developer.score|humanize}} 声望</li>
                 <!--<li><i class="i i-star"></i>{{developer.followByCount|humanize}} 个关注</li>-->
-                <li><i class="i i-check-square"></i>被采纳 {{developer.acceptByCount|humanize}} 次</li>
-                <li><i class="i i-thumbs-up"></i>被赞同 {{developer.agreeByCount|humanize}} 次</li>
-                <li><i class="i i-comment"></i>被评论 {{developer.commentByCount|humanize}} 次</li>
-                <li><i class="i i-reply"></i>被回复 {{developer.replyByCount|humanize}} 次</li>
+                <li><a href="/developer/{{=developer.githubLogin}}/accept-by/"><i class="i i-check-square"></i>被采纳 {{developer.acceptByCount|humanize}} 次</a></li>
+                <li><a href="/developer/{{=developer.githubLogin}}/agree-by/"><i class="i i-thumbs-up"></i>被赞同 {{developer.agreeByCount|humanize}} 次</a></li>
+                <li><a href="/developer/{{=developer.githubLogin}}/comment-by/"><i class="i i-comment"></i>被评论 {{developer.commentByCount|humanize}} 次</a></li>
+                <li><a href="/developer/{{=developer.githubLogin}}/reply-by/"><i class="i i-reply"></i>被回复 {{developer.replyByCount|humanize}} 次</a></li>
             </ul>
         </div>
     </div>

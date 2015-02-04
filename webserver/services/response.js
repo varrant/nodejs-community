@@ -82,12 +82,12 @@ exports.createOne = function (author, data, meta, callback) {
         })
         // 2. 检查父级评论是否存在
         .task(function (next, responseObject) {
-            if (!data2.parent) {
+            if (!data2.parentResponse) {
                 return next(null, responseObject);
             }
 
             response.findOne({
-                _id: data2.parent
+                _id: data2.parentResponse
             }, function (err, doc) {
                 if (err) {
                     return next(err);
@@ -100,7 +100,7 @@ exports.createOne = function (author, data, meta, callback) {
                     return next(err);
                 }
 
-                if (doc.parent) {
+                if (doc.parentResponse) {
                     err = new Error('不能补充他人的回复');
                     return next(err);
                 }
@@ -121,7 +121,7 @@ exports.createOne = function (author, data, meta, callback) {
             if (!err && doc) {
                 // 数
                 // 评论
-                if (!doc.parent) {
+                if (!doc.parentResponse) {
                     // 作者的评论数量
                     developer.increaseCommentCount({_id: author.id}, 1, log.holdError);
 
@@ -149,7 +149,7 @@ exports.createOne = function (author, data, meta, callback) {
 
                 // 分
                 // 评论
-                if (!doc.parent) {
+                if (!doc.parentResponse) {
                     if (author.id.toString() !== responseObject.author.toString()) {
                         // 增加主动用户评论积分
                         developer.increaseScore({_id: author.id}, scoreMap.comment, log.holdError);
@@ -178,7 +178,7 @@ exports.createOne = function (author, data, meta, callback) {
                 _noticeToObjectAuthor(author, responseObject, doc);
 
                 // 回复
-                if (doc.parent) {
+                if (doc.parentResponse) {
                     // 通知 comment 作者
                     _noticeToCommentAuthor(author, responseObject, doc, parentResponse);
                 } else {
@@ -279,7 +279,7 @@ exports.agree = function (operator, conditions, callback) {
                             // 只在第一次赞同时通知
                             if (!err && agreeInObject && !oldDoc) {
                                 // 评论
-                                if (agreeByResponse.parent === null) {
+                                if (agreeByResponse.parentResponse === null) {
                                     notice.agreeComment(operator, agreeByResponseAuthor, agreeInObject, agreeByResponse);
                                 }
                                 // 回复
