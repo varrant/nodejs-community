@@ -3,10 +3,10 @@
         {{if developer.hasCertificated}}<i class="i i-check-circle s-success" title="个人认证"></i>{{/if}}
         <div class="card-endtitle">
             {{if developer.weibo}}
-            <a href="http://weibo.com/{{developer.weibo}}/" class="s-danger"><i class="i i-weibo"></i></a>
+            <a href="http://weibo.com/{{=developer.weibo}}/" class="s-danger"><i class="i i-weibo"></i></a>
             {{/if}}
 
-            <a href="https://github.com/{{developer.githubLogin}}" class="s-danger"><i class="i i-github"></i></a>
+            <a href="https://github.com/{{=developer.githubLogin}}" class="s-danger"><i class="i i-github"></i></a>
         </div>
     </h2>
     <div class="card-body">
@@ -28,14 +28,22 @@
 
             <blockquote class="usercard-bio">{{developer.meta.bio}}</blockquote>
 
-            <ul class="usercard-statistics f-list-left s-muted f-small">
-                <li><i class="i i-circle"></i>{{developer.score|humanize}} 声望</li>
-                <!--<li><i class="i i-star"></i>{{developer.followByCount|humanize}} 个关注</li>-->
-                <li><a href="/developer/{{=developer.githubLogin}}/accept-by/"><i class="i i-check-square"></i>被采纳 {{developer.acceptByCount|humanize}} 次</a></li>
-                <li><a href="/developer/{{=developer.githubLogin}}/agree-by/"><i class="i i-thumbs-up"></i>被赞同 {{developer.agreeByCount|humanize}} 次</a></li>
-                <li><a href="/developer/{{=developer.githubLogin}}/comment-by/"><i class="i i-comment"></i>被评论 {{developer.commentByCount|humanize}} 次</a></li>
-                <li><a href="/developer/{{=developer.githubLogin}}/reply-by/"><i class="i i-reply"></i>被回复 {{developer.replyByCount|humanize}} 次</a></li>
-            </ul>
+            <div class="usercard-statistics s-muted f-small">
+                <ul class="f-list-left">
+                    <li><i class="i i-circle"></i>{{developer.score|humanize}} 声望</li>
+                    <!--<li><i class="i i-star"></i>{{developer.followByCount|humanize}} 个关注</li>-->
+                    <li><i class="i i-check-square"></i><a href="/developer/{{=developer.githubLogin}}/accept-by/">被采纳 {{developer.acceptByCount|humanize}} 次</a></li>
+                    <li><i class="i i-thumbs-up"></i><a href="/developer/{{=developer.githubLogin}}/agree-by/">被赞同 {{developer.agreeByCount|humanize}} 次</a></li>
+                    <li><i class="i i-comment"></i><a href="/developer/{{=developer.githubLogin}}/comment-by/">被评论 {{developer.commentByCount|humanize}} 次</a></li>
+                    <li><i class="i i-reply"></i><a href="/developer/{{=developer.githubLogin}}/reply-by/">被回复 {{developer.replyByCount|humanize}} 次</a></li>
+                </ul>
+
+                <ul class="f-list-left">
+                    <li><i class="i i-file-text"></i>{{sectionStatistics.article}} 篇文章</li>
+                    <li><i class="i i-cube"></i>{{sectionStatistics.question}} 次提问</li>
+                    <li><i class="i i-link"></i>{{sectionStatistics.link}} 个链接</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

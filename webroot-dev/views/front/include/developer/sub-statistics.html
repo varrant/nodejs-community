@@ -5,11 +5,10 @@
         <ul class="m-simplelist s-muted">
             <li><i class="i i-clock-o"></i>{{developer.registerAt|datefrom}} 加入</li>
             <li><i class="i i-eye"></i>被访问 {{developer.viewByCount|humanize}} 次</li>
-            <li><i class="i i-comment"></i>评论 {{developer.commentCount|humanize}} 次</li>
-            <li><i class="i i-reply"></i>回复 {{developer.replyCount|humanize}} 次</li>
-            <li><i class="i i-thumbs-up"></i>赞同 {{developer.agreeCount|humanize}} 次</li>
-            <li><i class="i i-check-square"></i>采纳 {{developer.acceptCount|humanize}} 次</li>
-            <li><i class="i i-cube"></i>{{sectionStatistics.question}} 次提问</li>
+            <li><i class="i i-comment"></i><a href="/developer/{{=developer.githubLogin}}/comment/">评论 {{developer.commentCount|humanize}} 次</a></li>
+            <li><i class="i i-reply"></i><a href="/developer/{{=developer.githubLogin}}/reply/">回复 {{developer.replyCount|humanize}} 次</a></li>
+            <li><i class="i i-thumbs-up"></i><a href="/developer/{{=developer.githubLogin}}/agree/">赞同 {{developer.agreeCount|humanize}} 次</a></li>
+            <li><i class="i i-check-square"></i><a href="/developer/{{=developer.githubLogin}}/accept/">采纳 {{developer.acceptCount|humanize}} 次</a></li>
             <!--<li><i class="i i-bookmark"></i>31,091,331 个关注</li>-->
             {{if $developer.id !== developer.id}}
             <!--<li class="f-text-center">-->

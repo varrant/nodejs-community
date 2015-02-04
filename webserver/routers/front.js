@@ -101,4 +101,7 @@ module.exports = function (app, ctrlFront) {
     app.get('/developer/:githubLogin/accept-by/', ctrlFront.developer.acceptBy);
     app.get('/developer/:githubLogin/agree/', ctrlFront.developer.agree);
     app.get('/developer/:githubLogin/agree-by/', ctrlFront.developer.agreeBy);
+    app.locals.$section.forEach(function (sec) {
+        app.get('/developer/:githubLogin/' + sec.uri + '/', ctrlFront.developer.object(sec.id));
+    });
 };
