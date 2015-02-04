@@ -60,7 +60,7 @@ mongoose(function (err) {
                             _id: doc.id
                         }, {
                             parentResponse: parentResponse.id.toString(),
-                            parentDeveloper: parentResponse.author.toString()
+                            parentAuthor: parentResponse.author.toString()
                         }, next);
                     })
                     .follow(next);
