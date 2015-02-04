@@ -567,7 +567,7 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
                     source: operator.id,
                     target: acceptByResponse.author,
                     model: 'object',
-                    path: 'acceptByRespose',
+                    path: 'acceptByAuthor',
                     object: newDoc.id,
                     response: acceptByResponse.id,
                     value: 1,
