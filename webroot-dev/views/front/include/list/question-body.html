@@ -24,6 +24,11 @@
                 <a class="{{if choose.status == 'unresolved'}}active{{/if}}" href="/question/{{if choose.category}}in/{{=categoryMap[choose.category].uri}}/{{/if}}as/unresolved/{{if choose.author}}by/{{choose.author}}/{{/if}}">待解决</a>
             </li>
             {{if choose.author}}
+            <li class="f-clearfix">
+                <strong class="choose-type">作者</strong>
+                <a href="/question/">所有作者</a>
+                <a class="active" href="/question/{{if choose.author}}by/{{choose.author}}/{{/if}}">{{=choose.authorNickname}}</a>
+            </li>
             {{/if}}
         </ul>
 

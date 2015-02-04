@@ -251,6 +251,7 @@ module.exports = function (app) {
                     }
 
                     data.choose.author = de.githubLogin;
+                    data.choose.authorNickname = de.nickname;
                     conditions.author = de.id.toString();
                     onnext();
                 });
