@@ -203,13 +203,15 @@ module.exports = function (app) {
             })
             // 查找被评论
             .task(function (next, de) {
-                response.find({
-                    parentAuthor: de.id,
-                    parentResponse: null
+                interactive.find({
+                    target: de.id,
+                    model: 'developer',
+                    path: 'commentCount'
                 }, {
                     sort: {
-                        publishAt: -1
-                    }
+                        interactiveAt: -1
+                    },
+                    populate: ['response']
                 }, function (err, docs) {
                     next(err, de, docs);
                 });
@@ -220,7 +222,11 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                res.json(docs);
+                var list = docs.map(function (doc) {
+                    return doc.response;
+                });
+
+                res.json(list);
             });
     };
 

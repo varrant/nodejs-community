@@ -1,5 +1,5 @@
 /*!
- * object.acceptByAuthor + object.acceptByResponse => interactive source + target
+ * response.object => interactive developer commentCount
  * @author ydr.me
  * @create 2015-02-04 21:20
  */
@@ -20,7 +20,9 @@ mongoose(function (err) {
         return process.exit();
     }
 
-    response.find({}, function (err, docs) {
+    response.find({
+        parent: null
+    }, function (err, docs) {
         if (err) {
             console.log('query object error');
             console.error(err);
