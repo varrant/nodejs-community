@@ -8,13 +8,13 @@
 
 var mongoose = require('mongoose');
 var schema = new mongoose.Schema({
-    // 操作者
+    // 源
     source: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'developer'
     },
-    // 被操作者
+    // 目标
     target: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,

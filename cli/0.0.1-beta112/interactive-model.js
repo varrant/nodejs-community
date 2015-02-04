@@ -6,10 +6,10 @@
 
 'use strict';
 
-var mongoose = require('../webserver/mongoose.js');
-var developer = require('../webserver/models/').developer;
-var response = require('../webserver/models/').response;
-var interactive = require('../webserver/models/').interactive;
+var mongoose = require('../../webserver/mongoose.js');
+var developer = require('../../webserver/models/index').developer;
+var response = require('../../webserver/models/index').response;
+var interactive = require('../../webserver/models/index').interactive;
 var howdo = require('howdo');
 
 

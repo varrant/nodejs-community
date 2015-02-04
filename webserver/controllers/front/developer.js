@@ -344,11 +344,15 @@ module.exports = function (app) {
                     next(err, de);
                 });
             })
-            // 查找评论
+            // 查找被赞同
             .task(function (next, de) {
-               interactive.find({
-
-               });
+                interactive.find({
+                    model: 'response',
+                    path: 'agreeByCount',
+                    target: de.id.toString()
+                }, function (err, docs) {
+                    next(err, de, docs);
+                });
             })
             // 顺序串行
             .follow(function (err, de, docs) {
