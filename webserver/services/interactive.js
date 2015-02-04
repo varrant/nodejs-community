@@ -63,7 +63,8 @@ exports.toggle = function (conditions, boolean, callback) {
 /**
  * 写入交互记录
  * @param data {Object} 写入数据
- * @param data.operator {String} 操作者 ID
+ * @param data.source {String} 操作者 ID
+ * @param data.target {String} 被操作者 ID
  * @param data.model {String} 模型名称
  * @param data.path {String} 模型字段
  * @param data.object {String} object ID
@@ -77,7 +78,8 @@ exports.active = function (data, callback) {
     // 四个的组合一定是唯一的
     // 例：用户A（operator）只能关注用户（model+path）B（object）一次
     var conditions = {
-        operator: data.operator,
+        source: data.source,
+        target: data.target,
         model: data.model,
         path: data.path
     };

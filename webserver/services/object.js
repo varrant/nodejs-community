@@ -11,6 +11,7 @@ var configs = require('../../configs/');
 var scoreMap = configs.score;
 var scoreUtil = require('../utils/').score;
 var object = require('../models').object;
+var interactive = require('./interactive.js');
 var section = require('./section.js');
 var category = require('./category.js');
 var column = require('./column.js');
@@ -560,6 +561,17 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
                 developer.increaseAcceptCount({_id: operator.id}, 1, log.holdError);
                 // 当前被采纳的人的被采纳次数+1
                 developer.increaseAcceptByCount({_id: newDoc.acceptByAuthor}, 1, log.holdError);
+
+                // 交互
+                interactive.active({
+                    source: operator.id,
+                    target: acceptByResponse.author,
+                    path: 'response',
+                    object: newDoc.id,
+                    response: acceptByResponse.id,
+                    value: 1,
+                    hasApproved: true
+                }, log.holdError);
 
                 if (operator.id.toString() !== newDoc.acceptByAuthor.toString()) {
                     developer.findOne({_id: newDoc.acceptByAuthor}, function (err, doc) {
