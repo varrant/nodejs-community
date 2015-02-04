@@ -76,7 +76,7 @@ exports.toggle = function (conditions, boolean, callback) {
  */
 exports.active = function (data, callback) {
     // 四个的组合一定是唯一的
-    // 例：用户A（operator）只能关注用户（model+path）B（object）一次
+    // 例：用户A（source）只能关注(model+path)用户B（target）一次
     var conditions = {
         source: data.source,
         target: data.target,
