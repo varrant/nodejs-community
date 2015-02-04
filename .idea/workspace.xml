@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/notice.js" afterPath="$PROJECT_DIR$/webserver/services/notice.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/interactive.md" afterPath="$PROJECT_DIR$/docs/interactive.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -33,27 +33,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="developer.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="developer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4026" max-vertical-offset="4726">
-              <caret line="349" column="0" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.36422765" vertical-offset="3669" max-vertical-offset="4726">
+              <caret line="326" column="0" selection-start-line="326" selection-start-column="0" selection-end-line="326" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#616#893#0" expanded="false" />
                 <element signature="e#963#2541#0" expanded="false" />
                 <element signature="e#2602#3544#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="interactive.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/interactive.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -73,18 +63,8 @@
       <file leaf-file-name="response.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webserver/services/response.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4419" max-vertical-offset="6749">
-              <caret line="282" column="42" selection-start-line="282" selection-start-column="36" selection-end-line="282" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="notice.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webserver/services/notice.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25365853" vertical-offset="3839" max-vertical-offset="4454">
-              <caret line="241" column="36" selection-start-line="241" selection-start-column="36" selection-end-line="241" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3092" max-vertical-offset="6749">
+              <caret line="198" column="3" selection-start-line="198" selection-start-column="3" selection-end-line="198" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -146,9 +126,9 @@
         <option value="$PROJECT_DIR$/docs/response.md" />
         <option value="$PROJECT_DIR$/cli/response-model.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
-        <option value="$PROJECT_DIR$/docs/interactive.md" />
         <option value="$PROJECT_DIR$/maintain.js" />
         <option value="$PROJECT_DIR$/webserver/services/notice.js" />
+        <option value="$PROJECT_DIR$/docs/interactive.md" />
       </list>
     </option>
   </component>
@@ -1046,13 +1026,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="4723000" />
-    </task>
-    <task id="LOCAL-00085" summary="beta7">
-      <created>1422289332520</created>
-      <option name="number" value="00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1422289332520</updated>
+      <workItem from="1423053668098" duration="4832000" />
     </task>
     <task id="LOCAL-00086" summary="beta7">
       <created>1422289911052</created>
@@ -1342,11 +1316,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423058745664</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="beta12">
+      <created>1423058778218</created>
+      <option name="number" value="00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1423058778218</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62591000" />
+    <option name="totallyTimeSpent" value="62700000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1830,19 +1810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4026" max-vertical-offset="4726">
-          <caret line="349" column="0" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#616#893#0" expanded="false" />
-            <element signature="e#963#2541#0" expanded="false" />
-            <element signature="e#2602#3544#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/maintain.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13821138" vertical-offset="0" max-vertical-offset="816">
@@ -1856,14 +1823,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/interactive.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/services/notification.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
@@ -1874,19 +1833,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/services/response.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4419" max-vertical-offset="6749">
-          <caret line="282" column="42" selection-start-line="282" selection-start-column="36" selection-end-line="282" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/services/notice.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25365853" vertical-offset="3839" max-vertical-offset="4454">
           <caret line="241" column="36" selection-start-line="241" selection-start-column="36" selection-end-line="241" selection-end-column="36" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/services/response.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3092" max-vertical-offset="6749">
+          <caret line="198" column="3" selection-start-line="198" selection-start-column="3" selection-end-line="198" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/interactive.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13821138" vertical-offset="0" max-vertical-offset="615">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36422765" vertical-offset="3669" max-vertical-offset="4726">
+          <caret line="326" column="0" selection-start-line="326" selection-start-column="0" selection-end-line="326" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#616#893#0" expanded="false" />
+            <element signature="e#963#2541#0" expanded="false" />
+            <element signature="e#2602#3544#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
