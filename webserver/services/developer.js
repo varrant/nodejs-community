@@ -27,8 +27,6 @@ var urls = {
 var role20 = 1 << 20;
 
 
-
-
 /**
  * 登录
  * @param conditions {Object} 查询条件
@@ -77,12 +75,14 @@ exports.count = developer.count;
 /**
  * 修改他人 权限
  * @param operator
- * @param engineerBy
+ * @param developerBy
  * @param roleArray
  * @param callback
  * @returns {*}
  */
 exports.modifyRole = function (operator, developerBy, roleArray, callback) {
+    var err;
+
     if (
         // 只有 founder 才有权限修改他人权限
     (operator.role & role20) !== 0 &&
@@ -130,21 +130,21 @@ exports.modifyRole = function (operator, developerBy, roleArray, callback) {
     }
     // founder 才有权限修改他人权限
     else if ((operator.role & role20) === 0) {
-        var err = new Error('权限不足');
+        err = new Error('权限不足');
         err.code = 403;
         return callback(err);
     }
     // 不允许修改自己的权限
-    else if (operator.id.toString() === engineerBy.id.toString()) {
-        var err = new Error('founder 的权限已经最大，无须修改');
+    else if (operator.id.toString() === developerBy.id.toString()) {
+        err = new Error('founder 的权限已经最大，无须修改');
         return callback(err);
     }
     // 不允许修改为 founder 的权限
     else if (roleArray.indexOf(20) > -1) {
-        var err = new Error('不允许修改为 founder 的权限');
+        err = new Error('不允许修改为 founder 的权限');
         return callback(err);
     } else {
-        var err = new Error('未知错误');
+        err = new Error('未知错误');
         return callback(err);
     }
 };
@@ -517,14 +517,14 @@ exports.createOauthURL = function (oauthSettings, redirect) {
  * @returns {Boolean}
  */
 exports.isSafeOauthState = function (state) {
-    if(!state){
+    if (!state) {
         return false;
     }
 
     var ret = crypto.decode(state, configs.secret.session.secret);
     var arr = ret.split('\n');
 
-    if(arr.length !== 3){
+    if (arr.length !== 3) {
         return false;
     }
 
