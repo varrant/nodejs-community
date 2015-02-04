@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/developer.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/routers/front.js" afterPath="$PROJECT_DIR$/webserver/routers/front.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -37,8 +36,8 @@
       <file leaf-file-name="developer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.796748" vertical-offset="5811" max-vertical-offset="6919">
-              <caret line="410" column="9" selection-start-line="410" selection-start-column="9" selection-end-line="410" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.77886176" vertical-offset="6168" max-vertical-offset="6919">
+              <caret line="488" column="26" selection-start-line="488" selection-start-column="26" selection-end-line="488" selection-end-column="26" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#616#893#0" expanded="false" />
@@ -164,8 +163,8 @@
         <option value="$PROJECT_DIR$/cli/object-interactive.js" />
         <option value="$PROJECT_DIR$/webserver/services/response.js" />
         <option value="$PROJECT_DIR$/cli/0.0.1-beta112/interactive.js" />
-        <option value="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
         <option value="$PROJECT_DIR$/webserver/routers/front.js" />
+        <option value="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
       </list>
     </option>
   </component>
@@ -1084,13 +1083,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="9755000" />
-    </task>
-    <task id="LOCAL-00098" summary="beta7">
-      <created>1422300326106</created>
-      <option name="number" value="00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1422300326106</updated>
+      <workItem from="1423053668098" duration="9771000" />
     </task>
     <task id="LOCAL-00099" summary="beta7">
       <created>1422300894643</created>
@@ -1380,11 +1373,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423064102662</updated>
     </task>
-    <option name="localTasksCounter" value="147" />
+    <task id="LOCAL-00147" summary="beta12">
+      <created>1423064725905</created>
+      <option name="number" value="00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1423064725905</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67623000" />
+    <option name="totallyTimeSpent" value="67639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1927,8 +1926,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.796748" vertical-offset="5811" max-vertical-offset="6919">
-          <caret line="410" column="9" selection-start-line="410" selection-start-column="9" selection-end-line="410" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.77886176" vertical-offset="6168" max-vertical-offset="6919">
+          <caret line="488" column="26" selection-start-line="488" selection-start-column="26" selection-end-line="488" selection-end-column="26" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#616#893#0" expanded="false" />

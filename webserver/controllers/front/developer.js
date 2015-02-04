@@ -435,7 +435,7 @@ module.exports = function (app) {
             .task(function (next, de) {
                 interactive.find({
                     model: 'response',
-                    path: 'agreeByObject',
+                    path: 'acceptByObject',
                     source: de.id.toString()
                 }, function (err, docs) {
                     next(err, de, docs);
@@ -478,7 +478,7 @@ module.exports = function (app) {
             .task(function (next, de) {
                 interactive.find({
                     model: 'response',
-                    path: 'agreeByObject',
+                    path: 'acceptByObject',
                     target: de.id.toString()
                 }, function (err, docs) {
                     next(err, de, docs);
