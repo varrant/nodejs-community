@@ -38,15 +38,15 @@ var schema = new mongoose.Schema({
         ref: 'object',
         default: null
     },
-    // 响应父级
-    parentDeveloper: {
+    // 父级作者
+    parentAuthor: {
         type: mongoose.Schema.Types.ObjectId,
         required: false,
         unique: false,
         ref: 'developer',
         default: null
     },
-    // 响应父级
+    // 父级评论
     parentResponse: {
         type: mongoose.Schema.Types.ObjectId,
         required: false,
