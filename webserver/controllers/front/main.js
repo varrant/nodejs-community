@@ -38,7 +38,7 @@ module.exports = function (app) {
             // 版块
             .task(function (done) {
                 section.find({}, function (err, datas) {
-                    if(err){
+                    if (err) {
                         return done(err);
                     }
 
@@ -146,6 +146,7 @@ module.exports = function (app) {
             var columnId = req.params.column;
             var label = req.params.label;
             var status = req.params.status;
+            var author = req.params.author;
             var listOptions = filter.skipLimit(req.params);
             var conditions = {
                 section: section.id,
@@ -177,6 +178,7 @@ module.exports = function (app) {
                 data.choose.label = conditions.labels = label;
             }
 
+
             var countOptions = {};
             if (status === 'resolved') {
                 data.choose.status = 'resolved';
@@ -187,51 +189,73 @@ module.exports = function (app) {
                 conditions.acceptByResponse = null;
             }
 
-            howdo
-                // 统计数量
-                .task(function (done) {
-                    object.count(conditions, countOptions, done);
-                })
-                // 列表
-                .task(function (done) {
-                    listOptions.populate = ['author', 'contributors'];
-                    listOptions.sort = {publishAt: -1};
-                    object.find(conditions, listOptions, done);
-                })
-                // 查找 columns
-                .task(function (done) {
-                    column.find({
-                        author: res.locals.$developer.id
-                    }, done);
-                })
-                // 异步并行
-                .together(function (err, count, docs, columns) {
+            var onnext = function () {
+                howdo
+                    // 统计数量
+                    .task(function (done) {
+                        object.count(conditions, countOptions, done);
+                    })
+                    // 列表
+                    .task(function (done) {
+                        listOptions.populate = ['author', 'contributors'];
+                        listOptions.sort = {publishAt: -1};
+                        object.find(conditions, listOptions, done);
+                    })
+                    // 查找 columns
+                    .task(function (done) {
+                        column.find({
+                            author: res.locals.$developer.id
+                        }, done);
+                    })
+                    // 异步并行
+                    .together(function (err, count, docs, columns) {
+                        if (err) {
+                            return next(err);
+                        }
+
+                        data.columnsMap = {};
+
+                        columns.forEach(function (item) {
+                            data.columnsMap[item.id] = item;
+                        });
+
+                        data.objects = docs;
+                        data.pager = {
+                            page: listOptions.page,
+                            limit: listOptions.limit,
+                            count: count
+                        };
+
+                        //if(isPjax){
+                        //    return res.json({
+                        //        code: 200,
+                        //        data: data
+                        //    });
+                        //}
+
+                        res.render('front/list-' + section.uri + '.html', data);
+                    });
+            };
+
+            if (author) {
+                // 查找作者
+                developer.findOne({
+                    githubLogin: author
+                }, function (err, de) {
                     if (err) {
                         return next(err);
                     }
 
-                    data.columnsMap = {};
+                    if (!de) {
+                        return next();
+                    }
 
-                    columns.forEach(function (item) {
-                        data.columnsMap[item.id] = item;
-                    });
-
-                    data.objects = docs;
-                    data.pager = {
-                        page: listOptions.page,
-                        limit: listOptions.limit,
-                        count: count
-                    };
-
-                    //if(isPjax){
-                    //    return res.json({
-                    //        code: 200,
-                    //        data: data
-                    //    });
-                    //}
-
-                    res.render('front/list-' + section.uri + '.html', data);
+                    data.choose.author = conditions.author = de.id.toString();
+                    onnext();
                 });
+            } else {
+                onnext();
+            }
         };
     };
 

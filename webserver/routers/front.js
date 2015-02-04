@@ -18,7 +18,7 @@ module.exports = function (app, ctrlFront) {
 
 
     // list + detail
-    // in category at column on label as status
+    // in category at column on label as status by autho
     app.locals.$section.forEach(function (section) {
         var uri = section.uri;
 
@@ -42,6 +42,10 @@ module.exports = function (app, ctrlFront) {
         app.get('/' + uri + '/' + 'as/:status/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'as/:status/page/:page/', ctrlFront.main.getList(section));
 
+        // author
+        app.get('/' + uri + '/' + 'by/:author/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'by/:author/page/:page/', ctrlFront.main.getList(section));
+
         // category + column
         app.get('/' + uri + '/' + 'in/:category/at/:column/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'in/:category/at/:column/page/:page/', ctrlFront.main.getList(section));
@@ -54,6 +58,10 @@ module.exports = function (app, ctrlFront) {
         app.get('/' + uri + '/' + 'in/:category/as/:status/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'in/:category/as/:status/page/:page/', ctrlFront.main.getList(section));
 
+        // category + author
+        app.get('/' + uri + '/' + 'in/:category/by/:author/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'in/:category/by/:author/page/:page/', ctrlFront.main.getList(section));
+
         // column + label
         app.get('/' + uri + '/' + 'at/:column/on/:label/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'at/:column/on/:label/page/:page/', ctrlFront.main.getList(section));
@@ -62,9 +70,21 @@ module.exports = function (app, ctrlFront) {
         app.get('/' + uri + '/' + 'at/:column/as/:status/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'at/:column/as/:status/page/:page/', ctrlFront.main.getList(section));
 
+        // column + author
+        app.get('/' + uri + '/' + 'at/:column/by/:author/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'at/:column/by/:author/page/:page/', ctrlFront.main.getList(section));
+
         // label + status
         app.get('/' + uri + '/' + 'on/:label/as/:status/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'on/:label/as/:status/page/:page/', ctrlFront.main.getList(section));
+
+        // label + author
+        app.get('/' + uri + '/' + 'on/:label/by/:author/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'on/:label/by/:author/page/:page/', ctrlFront.main.getList(section));
+
+        // status + author
+        app.get('/' + uri + '/' + 'as/:status/by/:author/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'as/:status/by/:author/page/:page/', ctrlFront.main.getList(section));
 
         // category + column + label
         app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/', ctrlFront.main.getList(section));
@@ -74,17 +94,41 @@ module.exports = function (app, ctrlFront) {
         app.get('/' + uri + '/' + 'in/:category/at/:column/as/:status/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'in/:category/at/:column/as/:status/page/:page/', ctrlFront.main.getList(section));
 
+        // category + column + author
+        app.get('/' + uri + '/' + 'in/:category/at/:column/by/:author/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'in/:category/at/:column/by/:author/page/:page/', ctrlFront.main.getList(section));
+
         // category + label + status
         app.get('/' + uri + '/' + 'in/:category/on/:label/as/:status/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'in/:category/on/:label/as/:status/page/:page/', ctrlFront.main.getList(section));
+
+        // category + label + author
+        app.get('/' + uri + '/' + 'in/:category/on/:label/by/:author/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'in/:category/on/:label/by/:author/page/:page/', ctrlFront.main.getList(section));
 
         // column + label + status
         app.get('/' + uri + '/' + 'at/:column/on/:label/as/:status/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'at/:column/on/:label/as/:status/page/:page/', ctrlFront.main.getList(section));
 
+        // column + label + author
+        app.get('/' + uri + '/' + 'at/:column/on/:label/by/:author/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'at/:column/on/:label/by/:author/page/:page/', ctrlFront.main.getList(section));
+
+        // label + status + author
+        app.get('/' + uri + '/' + 'on/:label/as/:status/by/:author/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'on/:label/as/:status/by/:author/page/:page/', ctrlFront.main.getList(section));
+
         // category + column + label + status
         app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/as/:status/', ctrlFront.main.getList(section));
         app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/as/:status/page/:page/', ctrlFront.main.getList(section));
+
+        // category + column + label + author
+        app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/by/:author/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/by/:author/page/:page/', ctrlFront.main.getList(section));
+
+        // category + column + label + status + author
+        app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/as/:status/by/:author/', ctrlFront.main.getList(section));
+        app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/as/:status/by/:author/page/:page/', ctrlFront.main.getList(section));
 
         app.get('/object/', ctrlFront.main.redirect);
         app.get('/' + uri + '/' + ':uri.html', ctrlFront.main.getObject(section));
