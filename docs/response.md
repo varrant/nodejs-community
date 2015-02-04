@@ -9,7 +9,8 @@
 - `contentHTML` html 内容
 - `publishAt` 发布时间
 - `object` 响应文章
-- `parent` 响应父级
+- `parentDeveloper` 响应父级作者
+- `parentResponse` 响应父级响应
 - `agreeCount` 赞同数量
 - `replyCount` 回复数量
 - `meta` 响应元信息
