@@ -321,6 +321,50 @@ module.exports = function (app) {
             });
     };
 
+    // 我的赞同
+    exports.agree = function (req, res, next) {
+        var githubLogin = req.params.githubLogin;
+
+        howdo
+            // 查找用户
+            .task(function (next) {
+                developer.findOne({
+                    githubLogin: githubLogin
+                }, function (err, de) {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    if (!de) {
+                        err.code = 404;
+                        err = new Error('该开发者不存在');
+                        return next(err);
+                    }
+
+                    next(err, de);
+                });
+            })
+            // 查找被赞同
+            .task(function (next, de) {
+                interactive.find({
+                    model: 'response',
+                    path: 'agreeByCount',
+                    source: de.id.toString()
+                }, function (err, docs) {
+                    next(err, de, docs);
+                });
+            })
+            // 顺序串行
+            .follow(function (err, de, docs) {
+                if (err) {
+                    return next(err);
+                }
+
+                res.json(docs);
+            });
+    };
+
+
     // 我的被赞同
     exports.agreeBy = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
@@ -364,9 +408,90 @@ module.exports = function (app) {
             });
     };
 
+    // 我的采纳
+    exports.accept = function (req, res, next) {
+        var githubLogin = req.params.githubLogin;
+
+        howdo
+            // 查找用户
+            .task(function (next) {
+                developer.findOne({
+                    githubLogin: githubLogin
+                }, function (err, de) {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    if (!de) {
+                        err.code = 404;
+                        err = new Error('该开发者不存在');
+                        return next(err);
+                    }
+
+                    next(err, de);
+                });
+            })
+            // 查找被赞同
+            .task(function (next, de) {
+                interactive.find({
+                    model: 'response',
+                    path: 'agreeByObject',
+                    source: de.id.toString()
+                }, function (err, docs) {
+                    next(err, de, docs);
+                });
+            })
+            // 顺序串行
+            .follow(function (err, de, docs) {
+                if (err) {
+                    return next(err);
+                }
+
+                res.json(docs);
+            });
+    };
+
     // 我的被采纳
     exports.acceptBy = function (req, res, next) {
-        res.send('我的被采纳');
+        var githubLogin = req.params.githubLogin;
+
+        howdo
+            // 查找用户
+            .task(function (next) {
+                developer.findOne({
+                    githubLogin: githubLogin
+                }, function (err, de) {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    if (!de) {
+                        err.code = 404;
+                        err = new Error('该开发者不存在');
+                        return next(err);
+                    }
+
+                    next(err, de);
+                });
+            })
+            // 查找被赞同
+            .task(function (next, de) {
+                interactive.find({
+                    model: 'response',
+                    path: 'agreeByObject',
+                    target: de.id.toString()
+                }, function (err, docs) {
+                    next(err, de, docs);
+                });
+            })
+            // 顺序串行
+            .follow(function (err, de, docs) {
+                if (err) {
+                    return next(err);
+                }
+
+                res.json(docs);
+            });
     };
 
     return exports;
