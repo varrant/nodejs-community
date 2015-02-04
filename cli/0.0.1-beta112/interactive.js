@@ -21,43 +21,23 @@ mongoose(function (err) {
         return process.exit();
     }
 
-    object.find({}, function (err, docs) {
+    interactive.find({
+        path: 'agreeCount'
+    }, function (err, docs) {
         if (err) {
-            console.log('query object error');
+            console.log('query interactive error');
             console.error(err);
             return process.exit();
         }
 
         howdo
             .each(docs, function (index, doc, next) {
-                // 如果没有被采纳，则跳过
-                if (!doc.acceptByAuthor) {
-                    return next();
-                }
-
                 console.log('update ' + doc.id.toString() + ' now');
-                interactive.existOne({
-                    source: doc.author.toString(),
-                    target: doc.acceptByAuthor.toString(),
-                    model: 'response',
-                    path: 'acceptByObject',
-                    response: doc.acceptByResponse.toString(),
-                    object: doc.id
+                interactive.findOneAndUpdate({
+                    _id: doc.id.toString()
                 }, {
-                    hasApproved: true
-                }, function (err, doc) {
-                    if (err) {
-                        console.log('create error');
-                        return next(err);
-                    }
-
-                    if (!doc) {
-                        err = new Error('create empty');
-                        return next(err);
-                    }
-
-                    next(err);
-                });
+                    path: 'agreeByCount'
+                }, next);
             })
             .follow(function (err) {
                 if (err) {
