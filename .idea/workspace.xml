@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cli/interactive-model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/models/interactive.js" afterPath="$PROJECT_DIR$/webserver/models/interactive.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/interactive.md" afterPath="$PROJECT_DIR$/docs/interactive.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -33,10 +35,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="developer.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="developer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36422765" vertical-offset="3669" max-vertical-offset="4726">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3669" max-vertical-offset="4726">
               <caret line="326" column="0" selection-start-line="326" selection-start-column="0" selection-end-line="326" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -44,6 +46,36 @@
                 <element signature="e#963#2541#0" expanded="false" />
                 <element signature="e#2602#3544#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="interactive-model.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cli/interactive-model.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="371" max-vertical-offset="986">
+              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="interactive.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webserver/models/interactive.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.19349593" vertical-offset="0" max-vertical-offset="1258">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="response-model.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cli/response-model.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1428">
+              <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,8 +110,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/item-article.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/item-help.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/item-link.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/item-question.html" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/main.js" />
@@ -128,6 +158,8 @@
         <option value="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
         <option value="$PROJECT_DIR$/maintain.js" />
         <option value="$PROJECT_DIR$/webserver/services/notice.js" />
+        <option value="$PROJECT_DIR$/cli/interactive-model.js" />
+        <option value="$PROJECT_DIR$/webserver/models/interactive.js" />
         <option value="$PROJECT_DIR$/docs/interactive.md" />
       </list>
     </option>
@@ -907,11 +939,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cli" />
       <recent name="$PROJECT_DIR$/webroot-dev/views/front/include/object" />
       <recent name="$PROJECT_DIR$/webroot-dev/views/front" />
       <recent name="$PROJECT_DIR$/webroot-dev/views/front/include/list" />
       <recent name="$PROJECT_DIR$/webroot-dev/views/admin" />
-      <recent name="$PROJECT_DIR$/webroot-dev/views/admin/include/object" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.devlopment">
@@ -1026,13 +1058,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="4832000" />
-    </task>
-    <task id="LOCAL-00086" summary="beta7">
-      <created>1422289911052</created>
-      <option name="number" value="00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1422289911052</updated>
+      <workItem from="1423053668098" duration="5040000" />
     </task>
     <task id="LOCAL-00087" summary="beta7">
       <created>1422290147546</created>
@@ -1322,11 +1348,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423058778218</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="beta12">
+      <created>1423058886779</created>
+      <option name="number" value="00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1423058886780</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62700000" />
+    <option name="totallyTimeSpent" value="62908000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1445,13 +1477,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="714">
-          <caret line="29" column="59" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/link-body.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="765">
@@ -1740,16 +1765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cli/response-model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5252032" vertical-offset="748" max-vertical-offset="1428">
-          <caret line="63" column="33" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16747968" vertical-offset="6935" max-vertical-offset="7684">
@@ -1782,14 +1797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44227642" vertical-offset="0" max-vertical-offset="2125">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/models/interactive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.027642276" vertical-offset="170" max-vertical-offset="1156">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -1849,6 +1856,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3669" max-vertical-offset="4726">
+          <caret line="326" column="0" selection-start-line="326" selection-start-column="0" selection-end-line="326" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#616#893#0" expanded="false" />
+            <element signature="e#963#2541#0" expanded="false" />
+            <element signature="e#2602#3544#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/response-model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1428">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/interactive-model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="371" max-vertical-offset="986">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/docs/interactive.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13821138" vertical-offset="0" max-vertical-offset="615">
@@ -1857,16 +1893,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
+    <entry file="file://$PROJECT_DIR$/webserver/models/interactive.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36422765" vertical-offset="3669" max-vertical-offset="4726">
-          <caret line="326" column="0" selection-start-line="326" selection-start-column="0" selection-end-line="326" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#616#893#0" expanded="false" />
-            <element signature="e#963#2541#0" expanded="false" />
-            <element signature="e#2602#3544#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.19349593" vertical-offset="0" max-vertical-offset="1258">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

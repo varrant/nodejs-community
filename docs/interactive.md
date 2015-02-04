@@ -4,7 +4,8 @@
 
 `*`表示虚拟字段
 
-- `operator` 操作者
+- `source` 源
+- `target` 目标
 - `model` 模型
 - `path` 字段
 - `object` 被操作 object
