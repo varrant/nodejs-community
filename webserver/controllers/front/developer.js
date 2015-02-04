@@ -155,7 +155,7 @@ module.exports = function (app) {
             // 查找评论
             .task(function (next, de) {
                 response.find({
-                    parent: null,
+                    parentResponse: null,
                     author: de.id
                 }, {
                     sort: {
@@ -205,7 +205,7 @@ module.exports = function (app) {
                     author: de.id
                 }, {
                     nor: {
-                        parent: null
+                        parentResponse: null
                     },
                     sort: {
                         publishAt: -1
@@ -254,7 +254,7 @@ module.exports = function (app) {
                     author: de.id
                 }, {
                     nor: {
-                        parent: null
+                        parentResponse: null
                     },
                     sort: {
                         publishAt: -1
