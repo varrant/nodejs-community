@@ -33,6 +33,10 @@ mongoose(function (err) {
             .each(docs, function (index, doc, next) {
                 console.log('update ' + doc.id.toString() + ' now');
 
+                if (!doc.path) {
+                    return next();
+                }
+
                 interactive.findOneAndUpdate({
                     _id: doc.id.toString()
                 }, {
