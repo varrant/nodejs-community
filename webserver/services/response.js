@@ -203,8 +203,16 @@ exports.agree = function (operator, conditions, callback) {
         .task(function (next) {
             response.findOne(conditions, next);
         })
-        // 2. 判断用户是否赞同过
+        // 2. 查找该 object
         .task(function (next, doc) {
+            object.findOne({
+                _id: doc.object.toString()
+            }, function (err, responseAtObject) {
+                next(err, doc, responseAtObject);
+            });
+        })
+        // 2. 判断用户是否赞同过
+        .task(function (next, doc, responseAtObject) {
             if (!doc) {
                 var err = new Error('该 response 不存在');
                 err.code = 404;
@@ -217,6 +225,7 @@ exports.agree = function (operator, conditions, callback) {
                 target: doc.author,
                 model: 'response',
                 path: 'agreeByCount',
+                object: responseAtObject.id,
                 response: doc.id
             }, true, function (err, value, newDoc, oldDoc) {
                 next(err, value, doc, oldDoc);
@@ -227,7 +236,7 @@ exports.agree = function (operator, conditions, callback) {
             interactive.find({
                 model: 'response',
                 path: 'agreeByCount',
-                response: conditions._id,
+                response: doc.id,
                 hasApproved: true
             }, {
                 limit: 5
@@ -241,7 +250,7 @@ exports.agree = function (operator, conditions, callback) {
                 });
 
                 response.findOneAndUpdate({
-                    _id: conditions._id
+                    _id: doc.id
                 }, {
                     agreers: agreers
                 }, log.holdError);
