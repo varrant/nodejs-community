@@ -217,8 +217,7 @@ module.exports = function (app) {
 
                 interactive.find({
                     target: de.id,
-                    model: 'developer',
-                    path: 'commentCount'
+                    type: 'comment'
                 }, options, function (err, docs) {
                     next(err, de, docs);
                 });
@@ -344,8 +343,7 @@ module.exports = function (app) {
                 dato.extend(options, skipLimit);
                 interactive.find({
                     target: de.id,
-                    model: 'developer',
-                    path: 'replyCount'
+                    type: 'reply'
                 }, options, function (err, docs) {
                     next(err, de, docs);
                 });
@@ -409,8 +407,7 @@ module.exports = function (app) {
             // 查找被赞同
             .task(function (next, de) {
                 interactive.find({
-                    model: 'response',
-                    path: 'agreeByCount',
+                    type: 'agree',
                     source: de.id.toString()
                 }, function (err, docs) {
                     next(err, de, docs);
@@ -459,8 +456,7 @@ module.exports = function (app) {
 
                 dato.extend(options, skipLimit);
                 interactive.find({
-                    model: 'response',
-                    path: 'agreeByCount',
+                    type: 'agree',
                     target: de.id.toString()
                 }, options, function (err, docs) {
                     next(err, de, docs);
@@ -524,8 +520,7 @@ module.exports = function (app) {
             // 查找被赞同
             .task(function (next, de) {
                 interactive.find({
-                    model: 'response',
-                    path: 'acceptByObject',
+                    type: 'accept',
                     source: de.id.toString()
                 }, function (err, docs) {
                     next(err, de, docs);
@@ -573,8 +568,7 @@ module.exports = function (app) {
 
                 dato.extend(options, skipLimit);
                 interactive.find({
-                    model: 'response',
-                    path: 'acceptByObject',
+                    type: 'accept',
                     target: de.id.toString()
                 }, options, function (err, docs) {
                     next(err, de, docs);
