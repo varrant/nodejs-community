@@ -33,10 +33,10 @@ exports.toggle = function (conditions, boolean, callback) {
         return callback(err);
     }
 
-    if (conditions.object && conditions.response) {
-        err = new Error('object 和 response 不能同时存在');
-        return callback(err);
-    }
+    //if (conditions.object && conditions.response) {
+    //    err = new Error('object 和 response 不能同时存在');
+    //    return callback(err);
+    //}
 
     interactive.mustToggle(conditions, 'hasApproved', boolean, function (err, newDoc, oldDoc) {
         if (err) {

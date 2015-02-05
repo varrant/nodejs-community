@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-obejct.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/developer.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/response.js" afterPath="$PROJECT_DIR$/webserver/services/response.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/interactive.js" afterPath="$PROJECT_DIR$/webserver/services/interactive.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree-by.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree-by.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -38,8 +38,8 @@
       <file leaf-file-name="main-accept-by.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-accept-by.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="425">
-              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+            <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="425">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -58,18 +58,28 @@
       <file leaf-file-name="main-agree-by.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree-by.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="425">
-              <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
+            <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="442">
+              <caret line="8" column="85" selection-start-line="8" selection-start-column="85" selection-end-line="8" selection-end-column="85" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="developer.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="interactive.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webserver/services/interactive.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.47479674" vertical-offset="286" max-vertical-offset="2159">
+              <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="developer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5203252" vertical-offset="6055" max-vertical-offset="9197">
-              <caret line="439" column="0" selection-start-line="439" selection-start-column="0" selection-end-line="439" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5630" max-vertical-offset="9197">
+              <caret line="405" column="41" selection-start-line="405" selection-start-column="41" selection-end-line="405" selection-end-column="41" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#664#941#0" expanded="false" />
@@ -126,7 +136,6 @@
         <option value="$PROJECT_DIR$/webserver/services/notice.js" />
         <option value="$PROJECT_DIR$/docs/interactive.md" />
         <option value="$PROJECT_DIR$/webserver/services/developer.js" />
-        <option value="$PROJECT_DIR$/webserver/services/interactive.js" />
         <option value="$PROJECT_DIR$/webserver/services/object.js" />
         <option value="$PROJECT_DIR$/cli/interactive-model.js" />
         <option value="$PROJECT_DIR$/webserver/models/interactive.js" />
@@ -145,11 +154,12 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/article-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/app/front/list.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree-by.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-accept-by.html" />
         <option value="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-obejct.js" />
         <option value="$PROJECT_DIR$/webserver/services/response.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree-by.html" />
+        <option value="$PROJECT_DIR$/webserver/services/interactive.js" />
       </list>
     </option>
   </component>
@@ -1217,13 +1227,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="18874000" />
-    </task>
-    <task id="LOCAL-00115" summary="beta11">
-      <created>1422973769239</created>
-      <option name="number" value="00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1422973769239</updated>
+      <workItem from="1423053668098" duration="19051000" />
     </task>
     <task id="LOCAL-00116" summary="beta11">
       <created>1422973825573</created>
@@ -1513,11 +1517,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423143808892</updated>
     </task>
-    <option name="localTasksCounter" value="164" />
+    <task id="LOCAL-00164" summary="beta13">
+      <created>1423144615903</created>
+      <option name="number" value="00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1423144615904</updated>
+    </task>
+    <option name="localTasksCounter" value="165" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76742000" />
+    <option name="totallyTimeSpent" value="76919000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1541,7 +1551,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40279937" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1842,14 +1852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/services/interactive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.772472" vertical-offset="0" max-vertical-offset="2159">
-          <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta12/response-model.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.110569105" vertical-offset="119" max-vertical-offset="1428">
@@ -2028,22 +2030,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree-by.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="425">
-          <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-accept-by.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="425">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta12/interactive.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.304065" vertical-offset="14" max-vertical-offset="918">
@@ -2072,15 +2058,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-accept-by.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="425">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5203252" vertical-offset="6055" max-vertical-offset="9197">
-          <caret line="439" column="0" selection-start-line="439" selection-start-column="0" selection-end-line="439" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5630" max-vertical-offset="9197">
+          <caret line="405" column="41" selection-start-line="405" selection-start-column="41" selection-end-line="405" selection-end-column="41" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#664#941#0" expanded="false" />
             <element signature="e#1011#2589#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree-by.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="442">
+          <caret line="8" column="85" selection-start-line="8" selection-start-column="85" selection-end-line="8" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/services/interactive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47479674" vertical-offset="286" max-vertical-offset="2159">
+          <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
