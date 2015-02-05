@@ -308,6 +308,7 @@ module.exports = function (app) {
     // 我的被回复
     exports.replyBy = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
+        var skipLimit = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -328,18 +329,21 @@ module.exports = function (app) {
                     next(err, de);
                 });
             })
-            // 查找评论
+            // 查找被回复
             .task(function (next, de) {
-                response.find({
-                    parentAuthor: de.id
-                }, {
+                var options = {
                     nor: {
                         parentResponse: null
                     },
                     sort: {
                         publishAt: -1
                     }
-                }, function (err, docs) {
+                };
+
+                dato.extend(options, skipLimit);
+                response.find({
+                    parentAuthor: de.id
+                }, options, function (err, docs) {
                     next(err, de, docs);
                 });
             })
