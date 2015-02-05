@@ -470,6 +470,14 @@ nav .nav-right li:last-child {
 .m-usercard .usercard-statistics li {
   margin-right: 20px;
 }
+.m-history li {
+  position: relative;
+}
+.m-history .history-time {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 .m-404,
 .m-500 {
   margin-top: 200px;
