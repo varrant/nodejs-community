@@ -400,6 +400,7 @@ module.exports = function (app) {
     // 我的被赞同
     exports.agreeBy = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
+        var skipLimit = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -422,13 +423,16 @@ module.exports = function (app) {
             })
             // 查找被赞同
             .task(function (next, de) {
+                var options = {
+                    populate: ['source', 'object', 'response']
+                };
+
+                dato.extend(options, skipLimit);
                 interactive.find({
                     model: 'response',
                     path: 'agreeByCount',
                     target: de.id.toString()
-                }, {
-                    populate: ['source', 'object', 'response']
-                }, function (err, docs) {
+                }, options, function (err, docs) {
                     next(err, de, docs);
                 });
             })
