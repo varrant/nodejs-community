@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/developer.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/models/interactive.js" afterPath="$PROJECT_DIR$/webserver/models/interactive.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -70,9 +70,11 @@
       <file leaf-file-name="interactive.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webserver/models/interactive.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36097562" vertical-offset="254" max-vertical-offset="1343">
-              <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-              <folding />
+            <state vertical-scroll-proportion="0.110569105" vertical-offset="0" max-vertical-offset="1173">
+              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+              <folding>
+                <marker date="1423147271000" expanded="true" signature="400:418" placeholder="//..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -198,12 +200,12 @@
         <option value="$PROJECT_DIR$/docs/interactive.md" />
         <option value="$PROJECT_DIR$/docs/notification.md" />
         <option value="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-model.js" />
-        <option value="$PROJECT_DIR$/webserver/models/interactive.js" />
         <option value="$PROJECT_DIR$/webserver/services/interactive.js" />
         <option value="$PROJECT_DIR$/webserver/services/developer.js" />
         <option value="$PROJECT_DIR$/webserver/services/object.js" />
         <option value="$PROJECT_DIR$/webserver/services/response.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
+        <option value="$PROJECT_DIR$/webserver/models/interactive.js" />
       </list>
     </option>
   </component>
@@ -1274,13 +1276,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="21273000" />
-    </task>
-    <task id="LOCAL-00126" summary="beta12">
-      <created>1423057247820</created>
-      <option name="number" value="00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1423057247820</updated>
+      <workItem from="1423053668098" duration="21333000" />
     </task>
     <task id="LOCAL-00127" summary="beta12">
       <created>1423057319423</created>
@@ -1570,11 +1566,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423147092624</updated>
     </task>
-    <option name="localTasksCounter" value="175" />
+    <task id="LOCAL-00175" summary="beta13">
+      <created>1423147219381</created>
+      <option name="number" value="00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1423147219382</updated>
+    </task>
+    <option name="localTasksCounter" value="176" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79141000" />
+    <option name="totallyTimeSpent" value="79201000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -2133,9 +2135,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/models/interactive.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36097562" vertical-offset="254" max-vertical-offset="1343">
-          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-          <folding />
+        <state vertical-scroll-proportion="0.110569105" vertical-offset="0" max-vertical-offset="1173">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+          <folding>
+            <marker date="1423147271000" expanded="true" signature="400:418" placeholder="//..." />
+          </folding>
         </state>
       </provider>
     </entry>

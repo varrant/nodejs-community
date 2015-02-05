@@ -20,16 +20,6 @@ var schema = new mongoose.Schema({
         required: true,
         ref: 'developer'
     },
-    //// 模型，支持 object、user、comment 等
-    //model: {
-    //    type: String,
-    //    required: true
-    //},
-    //// 字段，行为：点赞、评论、分享、关注
-    //path: {
-    //    type: String,
-    //    required: true
-    //},
     // 类型，详细参考 doc
     type: {
         type: String,
