@@ -403,7 +403,7 @@ module.exports = function (app) {
                     path: 'agreeByCount',
                     target: de.id.toString()
                 }, {
-                    popuate: ['object', 'response']
+                    populate: ['response']
                 }, function (err, docs) {
                     next(err, de, docs);
                 });
@@ -435,8 +435,19 @@ module.exports = function (app) {
                     list: docs
                 };
 
+                //howdo.each(docs, function (index, doc, done) {
+                //    object.findOne();
+                //}).together(function (err) {
+                //    if(err){
+                //        return next(err);
+                //    }
+                //
+                //
+                //});
+
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
-                res.render('front/developer-home.html', data);
+                //res.render('front/developer-home.html', data);
+                res.json(docs);
             });
     };
 

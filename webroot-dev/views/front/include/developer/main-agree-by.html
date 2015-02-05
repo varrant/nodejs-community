@@ -5,8 +5,8 @@
         <ul class="m-simplelist">
             {{list list as item}}
             <li>
-                在<a href="/{{=sectionURIMap[item.object.section]}}/{{=item.object.uri}}.html">《{{item.object.title}}》</a>上的评论/回复被赞同。
-                <blockquote>{{=item.response.content}}</blockquote>
+                被赞同。
+                <blockquote>{{=item.response.contentHTML}}</blockquote>
             </li>
             {{/list}}
         </ul>
