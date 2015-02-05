@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment-by.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/developer.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -98,8 +96,8 @@
       <file leaf-file-name="developer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41951218" vertical-offset="3244" max-vertical-offset="9605">
-              <caret line="270" column="21" selection-start-line="270" selection-start-column="21" selection-end-line="270" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.69593495" vertical-offset="7664" max-vertical-offset="9673">
+              <caret line="540" column="0" selection-start-line="540" selection-start-column="0" selection-end-line="540" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#709#986#0" expanded="false" />
@@ -1250,13 +1248,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="19832000" />
-    </task>
-    <task id="LOCAL-00119" summary="beta11">
-      <created>1422974379177</created>
-      <option name="number" value="00119" />
-      <option name="project" value="LOCAL" />
-      <updated>1422974379177</updated>
+      <workItem from="1423053668098" duration="19895000" />
     </task>
     <task id="LOCAL-00120" summary="beta11">
       <created>1422974772057</created>
@@ -1546,11 +1538,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423145228446</updated>
     </task>
-    <option name="localTasksCounter" value="168" />
+    <task id="LOCAL-00168" summary="beta13">
+      <created>1423145727572</created>
+      <option name="number" value="00168" />
+      <option name="project" value="LOCAL" />
+      <updated>1423145727572</updated>
+    </task>
+    <option name="localTasksCounter" value="169" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77700000" />
+    <option name="totallyTimeSpent" value="77763000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -2107,8 +2105,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41951218" vertical-offset="3244" max-vertical-offset="9605">
-          <caret line="270" column="21" selection-start-line="270" selection-start-column="21" selection-end-line="270" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.69593495" vertical-offset="7664" max-vertical-offset="9673">
+          <caret line="540" column="0" selection-start-line="540" selection-start-column="0" selection-end-line="540" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#709#986#0" expanded="false" />
