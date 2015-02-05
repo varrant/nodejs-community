@@ -331,11 +331,8 @@ module.exports = function (app) {
             // 查找被回复
             .task(function (next, de) {
                 var options = {
-                    nor: {
-                        parentResponse: null
-                    },
                     sort: {
-                        publishAt: -1
+                        interactiveAt: -1
                     },
                     populate: ['source', 'object', 'response']
                 };
@@ -376,8 +373,7 @@ module.exports = function (app) {
                 };
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
-                res.json(docs);
-                //res.render('front/developer-home.html', data);
+                res.render('front/developer-home.html', data);
             });
     };
 
