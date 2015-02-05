@@ -512,7 +512,8 @@ module.exports = function (app) {
                     developer: de,
                     title: de.nickname,
                     pageType: 'accept-by',
-                    sectionStatistics: sectionStatistics
+                    sectionStatistics: sectionStatistics,
+                    list: docs
                 };
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);

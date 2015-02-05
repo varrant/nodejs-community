@@ -36,6 +36,7 @@ define(function (require, exports, module) {
             at: get('at'),
             on: get('on'),
             as: get('as'),
+            by: get('by'),
             page: get('page') || 1
         };
     };
@@ -45,7 +46,7 @@ define(function (require, exports, module) {
      * 根据信息构建 path
      */
     app.buildPath = function () {
-        var array1 = ['in', 'at', 'on', 'as', 'page'];
+        var array1 = ['in', 'at', 'on', 'as', 'by', 'page'];
         var array2 = [section];
 
         array1.forEach(function (item) {
