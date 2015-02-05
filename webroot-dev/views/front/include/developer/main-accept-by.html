@@ -5,7 +5,7 @@
         <ul class="m-simplelist">
             {{list list as item}}
             <li>
-                在<a href="/{{=sectionURIMap[item.object.section]}}/">《{{item.object.title}}》</a>上的回答被采纳。
+                在<a href="/{{=sectionURIMap[item.object.section]}}/{{=item.object.uri}}.html">《{{item.object.title}}》</a>上的回答被采纳。
                 <blockquote>{{=item.response.content}}</blockquote>
             </li>
             {{/list}}
