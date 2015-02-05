@@ -402,6 +402,8 @@ module.exports = function (app) {
                     model: 'response',
                     path: 'agreeByCount',
                     target: de.id.toString()
+                }, {
+                    popuate: ['object', 'response']
                 }, function (err, docs) {
                     next(err, de, docs);
                 });
@@ -412,7 +414,29 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                res.json(docs);
+                var sectionStatistics = {};
+
+                de.sectionStatistics = de.sectionStatistics || {};
+                var sectionURIMap = {};
+                app.locals.$section.forEach(function (section) {
+                    var uri = section.uri;
+                    var id = section.id;
+
+                    sectionURIMap[id] = section.uri;
+                    sectionStatistics[uri] = de.sectionStatistics[id] || 0;
+                });
+
+                var data = {
+                    developer: de,
+                    title: de.nickname,
+                    pageType: 'agree-by',
+                    sectionStatistics: sectionStatistics,
+                    sectionURIMap: sectionURIMap,
+                    list: docs
+                };
+
+                developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
+                res.render('front/developer-home.html', data);
             });
     };
 
@@ -490,7 +514,7 @@ module.exports = function (app) {
                     target: de.id.toString()
                 }, {
                     populate: ['object', 'response']
-                },function (err, docs) {
+                }, function (err, docs) {
                     next(err, de, docs);
                 });
             })
