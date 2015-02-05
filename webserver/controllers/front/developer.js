@@ -488,7 +488,9 @@ module.exports = function (app) {
                     model: 'response',
                     path: 'acceptByObject',
                     target: de.id.toString()
-                }, function (err, docs) {
+                }, {
+                    populate: ['object', 'response']
+                },function (err, docs) {
                     next(err, de, docs);
                 });
             })
@@ -501,10 +503,12 @@ module.exports = function (app) {
                 var sectionStatistics = {};
 
                 de.sectionStatistics = de.sectionStatistics || {};
+                var sectionURIMap = {};
                 app.locals.$section.forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
+                    sectionURIMap[id] = section.uri;
                     sectionStatistics[uri] = de.sectionStatistics[id] || 0;
                 });
 
@@ -513,6 +517,7 @@ module.exports = function (app) {
                     title: de.nickname,
                     pageType: 'accept-by',
                     sectionStatistics: sectionStatistics,
+                    sectionURIMap: sectionURIMap,
                     list: docs
                 };
 

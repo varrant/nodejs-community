@@ -4,8 +4,16 @@
     <div class="card-body">
         <ul class="m-simplelist">
             {{list list as item}}
-            <li></li>
+            <li>
+                在<a href="/{{=sectionURIMap[item.object.section]}}/">《{{item.object.title}}》</a>上的回答被采纳。
+                <blockquote>{{=item.response.content}}</blockquote>
+            </li>
             {{/list}}
         </ul>
+    </div>
+    <div class="card-footer f-text-center">
+        <!--分页器-->
+        <div id="pager"></div>
+        <!--/分页器-->
     </div>
 </div>
