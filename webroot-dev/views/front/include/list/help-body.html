@@ -37,7 +37,7 @@
                     <div class="summarylist-meta s-light f-small row">
                         <div class="col-sm-8">
                             <ul class="avg-xs-2 avg-md-4">
-                                <li><i class="i i-user i-striped"></i><a href="#">{{object.author.nickname}}</a></li>
+                                <li><i class="i i-user i-striped"></i><a href="/developer/{{=object.author.githubLogin}}/">{{object.author.nickname}}</a></li>
                                 <li class="hidden-xs"><i class="i i-eye"></i>{{object.viewByCount}}</li>
                                 <li class="hidden-xs"><i class="i i-comments"></i>{{object.commentByCount}}</li>
                                 {{if columnsMap[object.column]}}

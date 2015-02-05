@@ -17,6 +17,13 @@
                 <a class="{{if category.id == choose.category}}active{{/if}}" href="/article/in/{{=category.uri}}/{{if choose.status}}as/{{choose.status}}/{{/if}}">{{=category.name}}</a>
                 {{/list}}
             </li>
+            {{if choose.author}}
+            <li class="f-clearfix">
+                <strong class="choose-type">作者</strong>
+                <a href="/article/">所有作者</a>
+                <a class="active" href="/article/{{if choose.author}}by/{{choose.author}}/{{/if}}">{{=choose.authorNickname}}</a>
+            </li>
+            {{/if}}
         </ul>
 
         <!--列表-->
@@ -38,7 +45,7 @@
                     <div class="summarylist-meta s-light f-small row">
                         <div class="col-sm-8">
                             <ul class="avg-xs-2 avg-md-4">
-                                <li><i class="i i-user i-striped"></i><a href="#">{{object.author.nickname}}</a></li>
+                                <li><i class="i i-user i-striped"></i><a href="/developer/{{=object.author.githubLogin}}/">{{object.author.nickname}}</a></li>
                                 <li class="hidden-xs"><i class="i i-eye"></i>{{object.viewByCount}}</li>
                                 <li class="hidden-xs"><i class="i i-comments"></i>{{object.commentByCount}}</li>
                                 {{if columnsMap[object.column]}}
