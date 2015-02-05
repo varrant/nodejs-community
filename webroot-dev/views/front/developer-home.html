@@ -17,6 +17,9 @@
         <!--主-->
         <div class="col-md-8 g-main">
             {{include ./include/developer/main-body.html}}
+            {{if pageType === "accept-by"}}
+            {{include ./include/developer/main-accept-by.html}}
+            {{/if}}
         </div>
         <!--/主-->
         <!--副-->

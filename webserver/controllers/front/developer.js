@@ -122,6 +122,7 @@ module.exports = function (app) {
             var data = {
                 developer: doc,
                 title: doc.nickname,
+                pageType: 'home',
                 sectionStatistics: sectionStatistics
             };
 
@@ -497,7 +498,25 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                res.json(docs);
+                var sectionStatistics = {};
+
+                de.sectionStatistics = de.sectionStatistics || {};
+                app.locals.$section.forEach(function (section) {
+                    var uri = section.uri;
+                    var id = section.id;
+
+                    sectionStatistics[uri] = de.sectionStatistics[id] || 0;
+                });
+
+                var data = {
+                    developer: de,
+                    title: de.nickname,
+                    pageType: 'accept-by',
+                    sectionStatistics: sectionStatistics
+                };
+
+                developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
+                res.render('front/developer-home.html', data);
             });
     };
 

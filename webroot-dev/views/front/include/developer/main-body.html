@@ -1,6 +1,7 @@
 <div class="m-card">
     <h2 class="card-title"><i class="i i-user"></i>{{developer.nickname}}
         {{if developer.hasCertificated}}<i class="i i-check-circle s-success" title="个人认证"></i>{{/if}}
+        {{if pageType !== "home"}}<span class="f-space s-light">/</span><i class="i i-home"></i><a href="/developer/{{=developer.githubLogin}}/">主页</a>{{/if}}
         <div class="card-endtitle">
             {{if developer.weibo}}
             <a href="http://weibo.com/{{=developer.weibo}}/" class="s-danger"><i class="i i-weibo"></i></a>

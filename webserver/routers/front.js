@@ -142,13 +142,21 @@ module.exports = function (app, ctrlFront) {
     // developer
     app.get('/developer/:githubLogin/', ctrlFront.developer.home);
     app.get('/developer/:githubLogin/comment/', ctrlFront.developer.comment);
+    app.get('/developer/:githubLogin/comment/page/:page/', ctrlFront.developer.comment);
     app.get('/developer/:githubLogin/comment-by/', ctrlFront.developer.commentBy);
+    app.get('/developer/:githubLogin/comment-by/page/:page/', ctrlFront.developer.commentBy);
     app.get('/developer/:githubLogin/reply/', ctrlFront.developer.reply);
+    app.get('/developer/:githubLogin/reply/page/:page/', ctrlFront.developer.reply);
     app.get('/developer/:githubLogin/reply-by/', ctrlFront.developer.replyBy);
+    app.get('/developer/:githubLogin/reply-by/page/:page/', ctrlFront.developer.replyBy);
     app.get('/developer/:githubLogin/accept/', ctrlFront.developer.accept);
+    app.get('/developer/:githubLogin/accept/page/:page/', ctrlFront.developer.accept);
     app.get('/developer/:githubLogin/accept-by/', ctrlFront.developer.acceptBy);
+    app.get('/developer/:githubLogin/accept-by/page/:page/', ctrlFront.developer.acceptBy);
     app.get('/developer/:githubLogin/agree/', ctrlFront.developer.agree);
+    app.get('/developer/:githubLogin/agree/page/:page/', ctrlFront.developer.agree);
     app.get('/developer/:githubLogin/agree-by/', ctrlFront.developer.agreeBy);
+    app.get('/developer/:githubLogin/agree-by/page/:page/', ctrlFront.developer.agreeBy);
     //app.locals.$section.forEach(function (sec) {
     //    app.get('/developer/:githubLogin/' + sec.uri + '/', ctrlFront.developer.object(sec.id));
     //});
