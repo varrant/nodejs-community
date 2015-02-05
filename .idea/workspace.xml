@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/article-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/article-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/help-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/help-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/link-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/link-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -36,55 +34,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="developer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4895" max-vertical-offset="10081">
-              <caret line="369" column="42" selection-start-line="369" selection-start-column="42" selection-end-line="369" selection-end-column="42" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#709#986#0" expanded="false" />
-                <element signature="e#1056#2634#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="question-body.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51952463" vertical-offset="799" max-vertical-offset="1649">
-              <caret line="65" column="33" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+              <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="article-body.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/list/article-body.html">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846" vertical-offset="561" max-vertical-offset="1445">
-              <caret line="47" column="121" selection-start-line="47" selection-start-column="121" selection-end-line="47" selection-end-column="121" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="help-body.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/list/help-body.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.423077" vertical-offset="340" max-vertical-offset="1309">
-              <caret line="39" column="121" selection-start-line="39" selection-start-column="121" selection-end-line="39" selection-end-column="121" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="link-body.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/list/link-body.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.038462" vertical-offset="289" max-vertical-offset="1326">
-              <caret line="40" column="121" selection-start-line="40" selection-start-column="121" selection-end-line="40" selection-end-column="121" />
+            <state vertical-scroll-proportion="0.20203735" vertical-offset="0" max-vertical-offset="1122">
+              <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -104,8 +68,6 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/home/me.html" />
-        <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/webserver/controllers/api/response.js" />
         <option value="$PROJECT_DIR$/webserver/models/response.js" />
         <option value="$PROJECT_DIR$/docs/response.md" />
@@ -149,6 +111,8 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/help-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/link-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -1219,13 +1183,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="23446000" />
-    </task>
-    <task id="LOCAL-00131" summary="beta12">
-      <created>1423057828780</created>
-      <option name="number" value="00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1423057828780</updated>
+      <workItem from="1423053668098" duration="23597000" />
     </task>
     <task id="LOCAL-00132" summary="beta12">
       <created>1423058530516</created>
@@ -1515,11 +1473,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423149395115</updated>
     </task>
-    <option name="localTasksCounter" value="180" />
+    <task id="LOCAL-00180" summary="beta13">
+      <created>1423149650860</created>
+      <option name="number" value="00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1423149650860</updated>
+    </task>
+    <option name="localTasksCounter" value="181" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81314000" />
+    <option name="totallyTimeSpent" value="81465000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1543,7 +1507,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40279937" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1639,16 +1603,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cli/install.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35934958" vertical-offset="17" max-vertical-offset="1496">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/response.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19349593" vertical-offset="0" max-vertical-offset="615">
@@ -1711,14 +1665,6 @@
           <folding>
             <element signature="n#!!doc" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-          <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2050,7 +1996,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/list/article-body.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846" vertical-offset="561" max-vertical-offset="1445">
+        <state vertical-scroll-proportion="0.4040747" vertical-offset="561" max-vertical-offset="1445">
           <caret line="47" column="121" selection-start-line="47" selection-start-column="121" selection-end-line="47" selection-end-column="121" />
           <folding />
         </state>
@@ -2058,7 +2004,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/list/help-body.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077" vertical-offset="340" max-vertical-offset="1309">
+        <state vertical-scroll-proportion="0.5483871" vertical-offset="340" max-vertical-offset="1309">
           <caret line="39" column="121" selection-start-line="39" selection-start-column="121" selection-end-line="39" selection-end-column="121" />
           <folding />
         </state>
@@ -2066,7 +2012,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/list/link-body.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.038462" vertical-offset="289" max-vertical-offset="1326">
+        <state vertical-scroll-proportion="0.663837" vertical-offset="289" max-vertical-offset="1326">
           <caret line="40" column="121" selection-start-line="40" selection-start-column="121" selection-end-line="40" selection-end-column="121" />
           <folding />
         </state>
@@ -2076,6 +2022,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.51952463" vertical-offset="799" max-vertical-offset="1649">
           <caret line="65" column="33" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+          <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20203735" vertical-offset="0" max-vertical-offset="1122">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
           <folding />
         </state>
       </provider>
