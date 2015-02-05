@@ -46,7 +46,6 @@ mongoose(function (err) {
                 }, {
                     interactiveAt: doc.publishAt
                 }, function (err, doc) {
-                    console.log(doc);
                     next(err);
                 });
             })

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-comment-count.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-response.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-comment-count.js" afterPath="$PROJECT_DIR$/cli/0.0.1-beta13/1-interactive-comment-count.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-model.js" afterPath="$PROJECT_DIR$/cli/0.0.1-beta13/3-interactive-model.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-obejct.js" afterPath="$PROJECT_DIR$/cli/0.0.1-beta13/0-interactive-obejct.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-response.js" afterPath="$PROJECT_DIR$/cli/0.0.1-beta13/2-interactive-response.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -48,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="interactive-response.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/interactive-response.js">
+      <file leaf-file-name="2-interactive-response.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/2-interactive-response.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="201" max-vertical-offset="1173">
-              <caret line="30" column="9" selection-start-line="26" selection-start-column="8" selection-end-line="30" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.44715446" vertical-offset="541" max-vertical-offset="1156">
+              <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -60,11 +62,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="interactive-comment-count.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/interactive-comment-count.js">
+      <file leaf-file-name="3-interactive-model.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/3-interactive-model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71869916" vertical-offset="0" max-vertical-offset="615">
-              <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+              <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="0-interactive-obejct.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/0-interactive-obejct.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1547">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1-interactive-comment-count.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/1-interactive-comment-count.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+              <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -78,8 +102,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/1function.css" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/list.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/style.css" />
         <option value="$PROJECT_DIR$/configs/score.js" />
@@ -129,6 +151,8 @@
         <option value="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-comment.js" />
         <option value="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-response.js" />
         <option value="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-comment-count.js" />
+        <option value="$PROJECT_DIR$/cli/0.0.1-beta13/1-interactive-comment-count.js" />
+        <option value="$PROJECT_DIR$/cli/0.0.1-beta13/2-interactive-response.js" />
       </list>
     </option>
   </component>
@@ -1199,13 +1223,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="22440000" />
-    </task>
-    <task id="LOCAL-00128" summary="beta12">
-      <created>1423057346600</created>
-      <option name="number" value="00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1423057346600</updated>
+      <workItem from="1423053668098" duration="22784000" />
     </task>
     <task id="LOCAL-00129" summary="beta12">
       <created>1423057365754</created>
@@ -1495,11 +1513,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423147279710</updated>
     </task>
-    <option name="localTasksCounter" value="177" />
+    <task id="LOCAL-00177" summary="beta13">
+      <created>1423148387651</created>
+      <option name="number" value="00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1423148387651</updated>
+    </task>
+    <option name="localTasksCounter" value="178" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80308000" />
+    <option name="totallyTimeSpent" value="80652000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1846,16 +1870,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/interactive-obejct.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13821138" vertical-offset="391" max-vertical-offset="1547">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/developer/sub-statistics.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17317487" vertical-offset="0" max-vertical-offset="589">
@@ -1941,16 +1955,6 @@
         <state vertical-scroll-proportion="0.5804878" vertical-offset="17" max-vertical-offset="1513">
           <caret line="26" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/interactive-model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58536583" vertical-offset="337" max-vertical-offset="986">
-          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2046,21 +2050,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/interactive-response.js">
+    <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/0-interactive-obejct.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="201" max-vertical-offset="1173">
-          <caret line="30" column="9" selection-start-line="26" selection-start-column="8" selection-end-line="30" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="201" max-vertical-offset="1547">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/interactive-comment-count.js">
+    <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/3-interactive-model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71869916" vertical-offset="0" max-vertical-offset="615">
-          <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/1-interactive-comment-count.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/2-interactive-response.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44715446" vertical-offset="541" max-vertical-offset="1156">
+          <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

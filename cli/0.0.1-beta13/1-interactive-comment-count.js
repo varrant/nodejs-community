@@ -1,5 +1,5 @@
 /*!
- * interactive add comment/reply type
+ * interactive remove commentCount
  * @author ydr.me
  * @create 2015-02-05 21:43
  */
@@ -29,5 +29,25 @@ mongoose(function (err) {
             console.error(err);
             return process.exit();
         }
+
+        howdo
+            .each(docs, function (index, doc, next) {
+                console.log('remove ' + doc.id + ' now');
+                interactive.findOneAndRemove({
+                    _id: doc.id
+                }, next);
+            })
+            .follow(function (err) {
+                if (err) {
+                    console.log('update interactive error');
+                    console.error(err);
+                } else {
+                    console.log('update interactive success');
+                }
+
+                process.exit();
+            });
+
+
     });
 });
