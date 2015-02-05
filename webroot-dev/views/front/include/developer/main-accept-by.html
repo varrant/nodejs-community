@@ -5,7 +5,7 @@
         <ul class="m-simplelist m-history">
             {{list list as item}}
             <li>
-                在<a href="/{{=sectionURIMap[item.object.section]}}/{{=item.object.uri}}.html">《{{item.object.title}}》</a>
+                {{developer.nickname}}在<a href="/{{=sectionURIMap[item.object.section]}}/{{=item.object.uri}}.html">《{{item.object.title}}》</a>
                 上的{{item.response.parentResponse ? "回复":"评论"}}被<a href="/developer/{{=item.source.githubLogin}}">{{item.source.nickname}}</a>采纳为最佳答案。
                 <blockquote>{{=item.response.contentHTML}}</blockquote>
                 <span class="history-time s-light">{{item.interactiveAt|datefrom}}</span>

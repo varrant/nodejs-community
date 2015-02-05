@@ -337,12 +337,15 @@ module.exports = function (app) {
                     },
                     sort: {
                         publishAt: -1
-                    }
+                    },
+                    populate: ['source', 'object', 'response']
                 };
 
                 dato.extend(options, skipLimit);
-                response.find({
-                    parentAuthor: de.id
+                interactive.find({
+                    target: de.id,
+                    model: 'developer',
+                    path: 'replyCount'
                 }, options, function (err, docs) {
                     next(err, de, docs);
                 });
@@ -353,7 +356,30 @@ module.exports = function (app) {
                     return next(err);
                 }
 
+                var sectionStatistics = {};
+
+                de.sectionStatistics = de.sectionStatistics || {};
+                var sectionURIMap = {};
+                app.locals.$section.forEach(function (section) {
+                    var uri = section.uri;
+                    var id = section.id;
+
+                    sectionURIMap[id] = section.uri;
+                    sectionStatistics[uri] = de.sectionStatistics[id] || 0;
+                });
+
+                var data = {
+                    developer: de,
+                    title: de.nickname,
+                    pageType: 'reply-by',
+                    sectionStatistics: sectionStatistics,
+                    sectionURIMap: sectionURIMap,
+                    list: docs
+                };
+
+                developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.json(docs);
+                //res.render('front/developer-home.html', data);
             });
     };
 

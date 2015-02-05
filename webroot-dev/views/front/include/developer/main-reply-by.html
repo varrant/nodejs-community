@@ -1,12 +1,12 @@
 <div class="m-card" id="list">
-    <h2 class="card-title"><i class="i i-thumbs-up"></i>被赞同记录
+    <h2 class="card-title"><i class="i i-comment"></i>被评论记录
     </h2>
     <div class="card-body">
         <ul class="m-simplelist m-history">
             {{list list as item}}
             <li>
                 {{developer.nickname}}在<a href="/{{=sectionURIMap[item.object.section]}}/{{=item.object.uri}}.html">《{{item.object.title}}》</a>
-                上的{{item.response.parentResponse ? "回复":"评论"}}被<a href="/developer/{{=item.source.githubLogin}}">{{item.source.nickname}}</a>赞同。
+                上的评论被<a href="/developer/{{=item.source.githubLogin}}">{{item.source.nickname}}</a>回复道：
                 <blockquote>{{=item.response.contentHTML}}</blockquote>
                 <span class="history-time s-light">{{item.interactiveAt|datefrom}}</span>
             </li>

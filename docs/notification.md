@@ -20,6 +20,7 @@
 - `comment`: A评论了B的object
 - `reply`: A回复了B的comment
 - `accept`: A的回答被接受了
+- `agree`: A的评论/回复被赞同
 - `role`: A的权限被修改了
 - `favorite`: A收藏了B的object
 - `apply`: A申请了B的organization
