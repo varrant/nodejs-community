@@ -292,8 +292,7 @@ exports.follow = function (operatorId, userId, callback) {
     interactive.active({
         source: operatorId,
         target: userId,
-        model: 'developer',
-        path: 'followCount',
+        type: 'follow',
         value: 1
     }, function (err, isModified) {
         callback(err);
@@ -316,8 +315,7 @@ exports.unfollow = function (operatorId, userId, callback) {
     interactive.active({
         source: operatorId,
         target: userId,
-        model: 'developer',
-        path: 'followCount',
+        type: 'follow',
         value: 0
     }, function (err, isModified) {
         callback(err);

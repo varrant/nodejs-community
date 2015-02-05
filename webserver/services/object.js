@@ -566,8 +566,7 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
                 interactive.active({
                     source: operator.id,
                     target: acceptByResponse.author,
-                    model: 'response',
-                    path: 'acceptByObject',
+                    type: 'accept',
                     object: newDoc.id,
                     response: acceptByResponse.id,
                     value: 1,

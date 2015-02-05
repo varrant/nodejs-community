@@ -65,8 +65,7 @@ exports.toggle = function (conditions, boolean, callback) {
  * @param data {Object} 写入数据
  * @param data.source {String} 操作者 ID
  * @param data.target {String} 被操作者 ID
- * @param data.model {String} 模型名称
- * @param data.path {String} 模型字段
+ * @param data.type {String} 类型
  * @param data.object {String} object ID
  * @param data.response {String} response ID
  * @param [data.value=0] {Number} 影响值
@@ -76,12 +75,11 @@ exports.toggle = function (conditions, boolean, callback) {
  */
 exports.active = function (data, callback) {
     // 四个的组合一定是唯一的
-    // 例：用户A（source）只能关注(model+path)用户B（target）一次
+    // 例：用户A（source）只能关注(type="follow")用户B（target）一次
     var conditions = {
         source: data.source,
         target: data.target,
-        model: data.model,
-        path: data.path
+        type: data.type
     };
     var data2 = {
         at: new Date(),

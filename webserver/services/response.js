@@ -223,8 +223,7 @@ exports.agree = function (operator, conditions, callback) {
             interactive.toggle({
                 source: operator.id,
                 target: doc.author,
-                model: 'response',
-                path: 'agreeByCount',
+                type: 'agree',
                 object: responseAtObject.id,
                 response: doc.id
             }, true, function (err, value, newDoc, oldDoc) {
@@ -234,8 +233,7 @@ exports.agree = function (operator, conditions, callback) {
         // 3. 写入5个最新赞同用户
         .task(function (next, value, doc, oldDoc) {
             interactive.find({
-                model: 'response',
-                path: 'agreeByCount',
+                type: 'agree',
                 response: doc.id,
                 hasApproved: true
             }, {
