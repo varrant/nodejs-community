@@ -36,7 +36,7 @@ mongoose(function (err) {
                 interactive.findOneAndUpdate({
                     _id: doc.id.toString()
                 }, {
-                    type: ''
+                    type: doc.path.replace(REG_BY, '')
                 }, next);
             })
             .follow(function (err) {

@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-model.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-reply-by.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/developer.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/interactive.md" afterPath="$PROJECT_DIR$/docs/interactive.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-accept-by.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-accept-by.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree-by.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree-by.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment-by.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment-by.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/notification.md" afterPath="$PROJECT_DIR$/docs/notification.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-model.js" afterPath="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/models/interactive.js" afterPath="$PROJECT_DIR$/webserver/models/interactive.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -109,7 +102,7 @@
         <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/interactive-model.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="337" max-vertical-offset="986">
-              <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+              <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -117,21 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notification.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webserver/models/notification.js">
+      <file leaf-file-name="interactive.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webserver/models/interactive.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1513">
-              <caret line="26" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="notification.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docs/notification.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33658537" vertical-offset="65" max-vertical-offset="697">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.35934958" vertical-offset="51" max-vertical-offset="1343">
+              <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -179,7 +162,6 @@
         <option value="$PROJECT_DIR$/webserver/services/developer.js" />
         <option value="$PROJECT_DIR$/webserver/services/object.js" />
         <option value="$PROJECT_DIR$/cli/interactive-model.js" />
-        <option value="$PROJECT_DIR$/webserver/models/interactive.js" />
         <option value="$PROJECT_DIR$/cli/object-interactive.js" />
         <option value="$PROJECT_DIR$/cli/0.0.1-beta112/interactive.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" />
@@ -203,9 +185,10 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-reply-by.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
-        <option value="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-model.js" />
         <option value="$PROJECT_DIR$/docs/interactive.md" />
         <option value="$PROJECT_DIR$/docs/notification.md" />
+        <option value="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-model.js" />
+        <option value="$PROJECT_DIR$/webserver/models/interactive.js" />
       </list>
     </option>
   </component>
@@ -1276,13 +1259,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="20893000" />
-    </task>
-    <task id="LOCAL-00123" summary="beta12">
-      <created>1423054780882</created>
-      <option name="number" value="00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1423054780882</updated>
+      <workItem from="1423053668098" duration="20966000" />
     </task>
     <task id="LOCAL-00124" summary="beta12">
       <created>1423054793311</created>
@@ -1572,11 +1549,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423145938982</updated>
     </task>
-    <option name="localTasksCounter" value="172" />
+    <task id="LOCAL-00172" summary="beta13">
+      <created>1423146839021</created>
+      <option name="number" value="00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1423146839021</updated>
+    </task>
+    <option name="localTasksCounter" value="173" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78761000" />
+    <option name="totallyTimeSpent" value="78834000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1600,7 +1583,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40279937" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1883,14 +1866,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/models/interactive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.087804876" vertical-offset="643" max-vertical-offset="1258">
-          <caret line="45" column="17" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta12/object-interactive.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23287672" vertical-offset="0" max-vertical-offset="1326">
@@ -2107,24 +2082,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/interactive-model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="337" max-vertical-offset="986">
-          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/models/notification.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1513">
-          <caret line="26" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/interactive.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
@@ -2135,8 +2092,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/notification.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33658537" vertical-offset="65" max-vertical-offset="697">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.115447156" vertical-offset="65" max-vertical-offset="697">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/models/notification.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5804878" vertical-offset="17" max-vertical-offset="1513">
+          <caret line="26" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/interactive-model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="337" max-vertical-offset="986">
+          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/models/interactive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35934958" vertical-offset="51" max-vertical-offset="1343">
+          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
           <folding />
         </state>
       </provider>
