@@ -16,6 +16,7 @@ var howdo = require('howdo');
 var configs = require('../../../configs/');
 var log = require('ydr-log');
 var dato = require('ydr-util').dato;
+var filter = require('../../utils/').filter;
 
 
 module.exports = function (app) {
@@ -182,6 +183,7 @@ module.exports = function (app) {
     // 我的被评论
     exports.commentBy = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
+        var skipLimit = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -204,16 +206,20 @@ module.exports = function (app) {
             })
             // 查找被评论
             .task(function (next, de) {
+                var options = {
+                    sort: {
+                        interactiveAt: -1
+                    },
+                    populate: ['response', 'object', 'source']
+                };
+
+                dato.extend(options, skipLimit);
+
                 interactive.find({
                     target: de.id,
                     model: 'developer',
                     path: 'commentCount'
-                }, {
-                    sort: {
-                        interactiveAt: -1
-                    },
-                    populate: ['response']
-                }, function (err, docs) {
+                }, options, function (err, docs) {
                     next(err, de, docs);
                 });
             })
@@ -223,11 +229,29 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                var list = docs.map(function (doc) {
-                    return doc.response;
+                var sectionStatistics = {};
+
+                de.sectionStatistics = de.sectionStatistics || {};
+                var sectionURIMap = {};
+                app.locals.$section.forEach(function (section) {
+                    var uri = section.uri;
+                    var id = section.id;
+
+                    sectionURIMap[id] = section.uri;
+                    sectionStatistics[uri] = de.sectionStatistics[id] || 0;
                 });
 
-                res.json(list);
+                var data = {
+                    developer: de,
+                    title: de.nickname,
+                    pageType: 'comment-by',
+                    sectionStatistics: sectionStatistics,
+                    sectionURIMap: sectionURIMap,
+                    list: docs
+                };
+
+                developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
+                res.render('front/developer-home.html', data);
             });
     };
 
