@@ -203,7 +203,7 @@ module.exports = function (app) {
                     list: docs,
                     skipLimit: skipLimit
                 };
-                skipLimit.count = de.commentByCount;
+                skipLimit.count = de.commentCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -280,7 +280,7 @@ module.exports = function (app) {
                     list: docs,
                     skipLimit: skipLimit
                 };
-                skipLimit.count = de.commentCount;
+                skipLimit.count = de.commentByCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -510,7 +510,7 @@ module.exports = function (app) {
                     list: docs,
                     skipLimit: skipLimit
                 };
-                skipLimit.count = de.commentByCount;
+                skipLimit.count = de.agreeCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -659,7 +659,7 @@ module.exports = function (app) {
                     list: docs,
                     skipLimit: skipLimit
                 };
-                skipLimit.count = de.commentByCount;
+                skipLimit.count = de.acceptCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);

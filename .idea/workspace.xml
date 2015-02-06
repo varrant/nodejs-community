@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/developer.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -35,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="developer.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="developer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="11254" max-vertical-offset="12393">
-              <caret line="700" column="36" selection-start-line="700" selection-start-column="36" selection-end-line="700" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.63577235" vertical-offset="10948" max-vertical-offset="12393">
+              <caret line="731" column="40" selection-start-line="731" selection-start-column="31" selection-end-line="731" selection-end-column="40" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#709#986#0" expanded="false" />
@@ -89,10 +87,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main-accept.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main-accept.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-accept.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.11544991" vertical-offset="0" max-vertical-offset="589">
+            <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="561">
               <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
               <folding />
             </state>
@@ -154,10 +152,10 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment-by.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-reply.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-reply-by.html" />
-        <option value="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree.html" />
+        <option value="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
       </list>
     </option>
   </component>
@@ -1340,13 +1338,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="31029000" />
-    </task>
-    <task id="LOCAL-00151" summary="beta12">
-      <created>1423067394955</created>
-      <option name="number" value="00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1423067394955</updated>
+      <workItem from="1423053668098" duration="31091000" />
     </task>
     <task id="LOCAL-00152" summary="beta12">
       <created>1423067588035</created>
@@ -1636,11 +1628,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423236871161</updated>
     </task>
-    <option name="localTasksCounter" value="200" />
+    <task id="LOCAL-00200" summary="beta14">
+      <created>1423237150032</created>
+      <option name="number" value="00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1423237150032</updated>
+    </task>
+    <option name="localTasksCounter" value="201" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88897000" />
+    <option name="totallyTimeSpent" value="88959000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -2139,18 +2137,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11254" max-vertical-offset="12393">
-          <caret line="700" column="36" selection-start-line="700" selection-start-column="36" selection-end-line="700" selection-end-column="36" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#709#986#0" expanded="false" />
-            <element signature="e#1056#2634#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/developer-home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.269231" vertical-offset="303" max-vertical-offset="1105">
@@ -2185,9 +2171,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-accept.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11544991" vertical-offset="0" max-vertical-offset="589">
+        <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="561">
           <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63577235" vertical-offset="10948" max-vertical-offset="12393">
+          <caret line="731" column="40" selection-start-line="731" selection-start-column="31" selection-end-line="731" selection-end-column="40" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#709#986#0" expanded="false" />
+            <element signature="e#1056#2634#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
