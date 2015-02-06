@@ -6,9 +6,7 @@
             {{list list as item}}
             <li>
                 {{developer.nickname}}在<a href="/{{=sectionURIMap[item.object.section]}}/{{=item.object.uri}}.html">《{{item.object.title}}》</a>
-                上的评论被<a href="/developer/{{=item.source.githubLogin}}">{{item.source.nickname}}</a>回复道：
-                <blockquote>{{=item.response.contentHTML}}</blockquote>
-                <span class="history-time s-light">{{item.interactiveAt|datefrom}}</span>
+                上的评论被<a href="/developer/{{=item.source.githubLogin}}">{{item.source.nickname}}</a>回复了。
             </li>
             {{/list}}
         </ul>
