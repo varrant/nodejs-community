@@ -136,6 +136,7 @@ module.exports = function (app) {
     // 我的评论
     exports.comment = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
+        var skipLimit = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -158,14 +159,19 @@ module.exports = function (app) {
             })
             // 查找评论
             .task(function (next, de) {
-                response.find({
-                    parentResponse: null,
-                    author: de.id
-                }, {
+                var options = {
                     sort: {
-                        publishAt: -1
-                    }
-                }, function (err, docs) {
+                        interactiveAt: -1
+                    },
+                    populate: ['response', 'object', 'target']
+                };
+
+                dato.extend(options, skipLimit);
+
+                interactive.find({
+                    source: de.id,
+                    type: 'comment'
+                }, options, function (err, docs) {
                     next(err, de, docs);
                 });
             })
@@ -175,7 +181,31 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                res.json(docs);
+                var sectionStatistics = {};
+
+                de.sectionStatistics = de.sectionStatistics || {};
+                var sectionURIMap = {};
+                app.locals.$section.forEach(function (section) {
+                    var uri = section.uri;
+                    var id = section.id;
+
+                    sectionURIMap[id] = section.uri;
+                    sectionStatistics[uri] = de.sectionStatistics[id] || 0;
+                });
+
+                var data = {
+                    developer: de,
+                    title: de.nickname,
+                    pageType: 'comment',
+                    sectionStatistics: sectionStatistics,
+                    sectionURIMap: sectionURIMap,
+                    list: docs,
+                    skipLimit: skipLimit
+                };
+                skipLimit.count = de.commentByCount;
+
+                developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
+                res.render('front/developer-home.html', data);
             });
     };
 
@@ -246,8 +276,10 @@ module.exports = function (app) {
                     pageType: 'comment-by',
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
-                    list: docs
+                    list: docs,
+                    skipLimit: skipLimit
                 };
+                skipLimit.count = de.commentCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -258,6 +290,7 @@ module.exports = function (app) {
     // 我的回复
     exports.reply = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
+        var skipLimit = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -278,18 +311,21 @@ module.exports = function (app) {
                     next(err, de);
                 });
             })
-            // 查找评论
+            // 查找回复
             .task(function (next, de) {
-                response.find({
-                    author: de.id
-                }, {
-                    nor: {
-                        parentResponse: null
-                    },
+                var options = {
                     sort: {
-                        publishAt: -1
-                    }
-                }, function (err, docs) {
+                        interactiveAt: -1
+                    },
+                    populate: ['response', 'object', 'target']
+                };
+
+                dato.extend(options, skipLimit);
+
+                interactive.find({
+                    source: de.id,
+                    type: 'reply'
+                }, options, function (err, docs) {
                     next(err, de, docs);
                 });
             })
@@ -299,7 +335,31 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                res.json(docs);
+                var sectionStatistics = {};
+
+                de.sectionStatistics = de.sectionStatistics || {};
+                var sectionURIMap = {};
+                app.locals.$section.forEach(function (section) {
+                    var uri = section.uri;
+                    var id = section.id;
+
+                    sectionURIMap[id] = section.uri;
+                    sectionStatistics[uri] = de.sectionStatistics[id] || 0;
+                });
+
+                var data = {
+                    developer: de,
+                    title: de.nickname,
+                    pageType: 'reply',
+                    sectionStatistics: sectionStatistics,
+                    sectionURIMap: sectionURIMap,
+                    list: docs,
+                    skipLimit: skipLimit
+                };
+                skipLimit.count = de.replyCount;
+
+                developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
+                res.render('front/developer-home.html', data);
             });
     };
 
@@ -369,8 +429,10 @@ module.exports = function (app) {
                     pageType: 'reply-by',
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
-                    list: docs
+                    list: docs,
+                    skipLimit: skipLimit
                 };
+                skipLimit.count = de.replyByCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -380,6 +442,7 @@ module.exports = function (app) {
     // 我的赞同
     exports.agree = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
+        var skipLimit = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -401,11 +464,21 @@ module.exports = function (app) {
                 });
             })
             // 查找被赞同
+            // 查找评论
             .task(function (next, de) {
+                var options = {
+                    sort: {
+                        interactiveAt: -1
+                    },
+                    populate: ['response', 'object', 'target']
+                };
+
+                dato.extend(options, skipLimit);
+
                 interactive.find({
-                    type: 'agree',
-                    source: de.id.toString()
-                }, function (err, docs) {
+                    source: de.id,
+                    type: 'agree'
+                }, options, function (err, docs) {
                     next(err, de, docs);
                 });
             })
@@ -415,7 +488,31 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                res.json(docs);
+                var sectionStatistics = {};
+
+                de.sectionStatistics = de.sectionStatistics || {};
+                var sectionURIMap = {};
+                app.locals.$section.forEach(function (section) {
+                    var uri = section.uri;
+                    var id = section.id;
+
+                    sectionURIMap[id] = section.uri;
+                    sectionStatistics[uri] = de.sectionStatistics[id] || 0;
+                });
+
+                var data = {
+                    developer: de,
+                    title: de.nickname,
+                    pageType: 'agree',
+                    sectionStatistics: sectionStatistics,
+                    sectionURIMap: sectionURIMap,
+                    list: docs,
+                    skipLimit: skipLimit
+                };
+                skipLimit.count = de.commentByCount;
+
+                developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
+                res.render('front/developer-home.html', data);
             });
     };
 
@@ -482,8 +579,10 @@ module.exports = function (app) {
                     pageType: 'agree-by',
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
-                    list: docs
+                    list: docs,
+                    skipLimit: skipLimit
                 };
+                skipLimit.count = de.agreeByCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -493,6 +592,7 @@ module.exports = function (app) {
     // 我的采纳
     exports.accept = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
+        var skipLimit = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -513,12 +613,21 @@ module.exports = function (app) {
                     next(err, de);
                 });
             })
-            // 查找被赞同
+            // 查找采纳
             .task(function (next, de) {
+                var options = {
+                    sort: {
+                        interactiveAt: -1
+                    },
+                    populate: ['response', 'object', 'target']
+                };
+
+                dato.extend(options, skipLimit);
+
                 interactive.find({
-                    type: 'accept',
-                    source: de.id.toString()
-                }, function (err, docs) {
+                    source: de.id,
+                    type: 'accept'
+                }, options, function (err, docs) {
                     next(err, de, docs);
                 });
             })
@@ -528,7 +637,31 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                res.json(docs);
+                var sectionStatistics = {};
+
+                de.sectionStatistics = de.sectionStatistics || {};
+                var sectionURIMap = {};
+                app.locals.$section.forEach(function (section) {
+                    var uri = section.uri;
+                    var id = section.id;
+
+                    sectionURIMap[id] = section.uri;
+                    sectionStatistics[uri] = de.sectionStatistics[id] || 0;
+                });
+
+                var data = {
+                    developer: de,
+                    title: de.nickname,
+                    pageType: 'accept',
+                    sectionStatistics: sectionStatistics,
+                    sectionURIMap: sectionURIMap,
+                    list: docs,
+                    skipLimit: skipLimit
+                };
+                skipLimit.count = de.commentByCount;
+
+                developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
+                res.render('front/developer-home.html', data);
             });
     };
 
@@ -594,8 +727,10 @@ module.exports = function (app) {
                     pageType: 'accept-by',
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
-                    list: docs
+                    list: docs,
+                    skipLimit: skipLimit
                 };
+                skipLimit.count = de.acceptByCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
