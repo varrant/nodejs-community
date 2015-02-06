@@ -550,7 +550,7 @@ module.exports = function (app) {
 
                 dato.extend(options, skipLimit);
                 interactive.find({
-                    type: 'agree-by',
+                    type: 'agree',
                     target: de.id.toString()
                 }, options, function (err, docs) {
                     next(err, de, docs);
@@ -577,7 +577,7 @@ module.exports = function (app) {
                 var data = {
                     developer: de,
                     title: de.nickname,
-                    pageType: 'agree-by',
+                    pageType: 'agree',
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
                     list: docs,
@@ -693,12 +693,15 @@ module.exports = function (app) {
             // 查找被赞同
             .task(function (next, de) {
                 var options = {
-                    populate: ['source', 'object', 'response']
+                    populate: ['source', 'object', 'response'],
+                    sort: {
+                        interactiveAt: -1
+                    }
                 };
 
                 dato.extend(options, skipLimit);
                 interactive.find({
-                    type: 'accept-by',
+                    type: 'accept',
                     target: de.id.toString()
                 }, options, function (err, docs) {
                     next(err, de, docs);
@@ -725,7 +728,7 @@ module.exports = function (app) {
                 var data = {
                     developer: de,
                     title: de.nickname,
-                    pageType: 'accept-by',
+                    pageType: 'accept',
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
                     list: docs,
