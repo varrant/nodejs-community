@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/developer.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/interactive.js" afterPath="$PROJECT_DIR$/webserver/services/interactive.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/response.js" afterPath="$PROJECT_DIR$/webserver/services/response.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -32,7 +34,52 @@
     <favorites_list name="nodejs-community" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="developer-home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/developer-home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.6538463" vertical-offset="65" max-vertical-offset="1105">
+              <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="developer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1496" max-vertical-offset="12393">
+              <caret line="165" column="22" selection-start-line="165" selection-start-column="22" selection-end-line="165" selection-end-column="22" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#709#986#0" expanded="false" />
+                <element signature="e#1056#2634#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="response.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webserver/services/response.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2106" max-vertical-offset="7259">
+              <caret line="134" column="34" selection-start-line="134" selection-start-column="34" selection-end-line="134" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="interactive.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webserver/services/interactive.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.38536584" vertical-offset="1446" max-vertical-offset="2074">
+              <caret line="103" column="26" selection-start-line="103" selection-start-column="26" selection-end-line="103" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,7 +112,6 @@
         <option value="$PROJECT_DIR$/docs/interactive.md" />
         <option value="$PROJECT_DIR$/docs/notification.md" />
         <option value="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-model.js" />
-        <option value="$PROJECT_DIR$/webserver/services/interactive.js" />
         <option value="$PROJECT_DIR$/webserver/services/developer.js" />
         <option value="$PROJECT_DIR$/webserver/services/object.js" />
         <option value="$PROJECT_DIR$/cli/0.0.1-beta13/interactive-comment.js" />
@@ -79,18 +125,19 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" />
         <option value="$PROJECT_DIR$/cli/0.0.1-beta13/3-interactive-model.js" />
         <option value="$PROJECT_DIR$/webserver/utils/filter.js" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-reply-by.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/app/front/developer.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-accept.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-reply.html" />
-        <option value="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/webserver/models/interactive.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" />
+        <option value="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
         <option value="$PROJECT_DIR$/webserver/services/response.js" />
+        <option value="$PROJECT_DIR$/webserver/services/interactive.js" />
       </list>
     </option>
   </component>
@@ -1273,13 +1320,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="29816000" />
-    </task>
-    <task id="LOCAL-00146" summary="beta12">
-      <created>1423064102662</created>
-      <option name="number" value="00146" />
-      <option name="project" value="LOCAL" />
-      <updated>1423064102662</updated>
+      <workItem from="1423053668098" duration="30289000" />
     </task>
     <task id="LOCAL-00147" summary="beta12">
       <created>1423064725905</created>
@@ -1569,15 +1610,21 @@
       <option name="project" value="LOCAL" />
       <updated>1423234626888</updated>
     </task>
-    <option name="localTasksCounter" value="195" />
+    <task id="LOCAL-00195" summary="beta14">
+      <created>1423235570869</created>
+      <option name="number" value="00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1423235570869</updated>
+    </task>
+    <option name="localTasksCounter" value="196" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87684000" />
+    <option name="totallyTimeSpent" value="88157000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.57231724" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1597,7 +1644,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40279937" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1842,14 +1889,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/services/interactive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47317073" vertical-offset="1137" max-vertical-offset="2125">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16747968" vertical-offset="3892" max-vertical-offset="5049">
@@ -1975,7 +2014,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
           <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2011,26 +2050,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11186" max-vertical-offset="12376">
-          <caret line="744" column="17" selection-start-line="744" selection-start-column="17" selection-end-line="744" selection-end-column="17" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#709#986#0" expanded="false" />
-            <element signature="e#1056#2634#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/developer-home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.846154" vertical-offset="320" max-vertical-offset="1105">
-          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2116,10 +2135,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/developer-home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6538463" vertical-offset="65" max-vertical-offset="1105">
+          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1496" max-vertical-offset="12393">
+          <caret line="165" column="22" selection-start-line="165" selection-start-column="22" selection-end-line="165" selection-end-column="22" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#709#986#0" expanded="false" />
+            <element signature="e#1056#2634#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/services/response.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7495935" vertical-offset="2157" max-vertical-offset="7259">
-          <caret line="158" column="35" selection-start-line="158" selection-start-column="35" selection-end-line="158" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2106" max-vertical-offset="7259">
+          <caret line="134" column="34" selection-start-line="134" selection-start-column="34" selection-end-line="134" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/services/interactive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38536584" vertical-offset="1446" max-vertical-offset="2074">
+          <caret line="103" column="26" selection-start-line="103" selection-start-column="26" selection-end-line="103" selection-end-column="26" />
           <folding />
         </state>
       </provider>

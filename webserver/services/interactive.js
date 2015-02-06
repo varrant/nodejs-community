@@ -96,11 +96,8 @@ exports.active = function (data, callback) {
     //    // 发送邮件给被动用户
     //}
 
-    if (data.object) {
-        conditions.object = data.object;
-    } else {
-        conditions.response = data.response;
-    }
+    conditions.object = data.object;
+    conditions.response = data.response;
 
     interactive.existOne(conditions, data2, function (err, newDoc, oldDoc) {
         if (err) {

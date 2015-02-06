@@ -124,7 +124,8 @@ module.exports = function (app) {
                 developer: doc,
                 title: doc.nickname,
                 pageType: 'home',
-                sectionStatistics: sectionStatistics
+                sectionStatistics: sectionStatistics,
+                skipLimit: {}
             };
 
             developer.increaseViewByCount({_id: doc.id}, 1, log.holdError);

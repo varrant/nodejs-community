@@ -71,7 +71,7 @@ exports.createOne = function (author, data, meta, callback) {
                 }
 
                 if (!doc) {
-                    err = new Error('评论目标不存在');
+                    err = new Error('评论 object 不存在');
                     err.type = 'notFound';
                     err.code = 404;
                     return next();
@@ -123,10 +123,10 @@ exports.createOne = function (author, data, meta, callback) {
                 // 评论
                 if (!doc.parentResponse) {
                     // 作者的评论数量
-                    developer.increaseCommentCount({_id: author.id}, 1, log.holdError);
+                    developer.increaseCommentCount({_id: author.id.toString()}, 1, log.holdError);
 
                     // object 作者的被评论数量
-                    developer.increaseCommentByCount({_id: responseObject.author}, 1, log.holdError);
+                    developer.increaseCommentByCount({_id: responseObject.author.toString()}, 1, log.holdError);
 
                     // object 的被评论数量
                     object.increaseCommentByCount({_id: doc.object}, 1, log.holdError);
@@ -134,33 +134,33 @@ exports.createOne = function (author, data, meta, callback) {
                     // 写入交互
                     interactive.active({
                         source: author.id.toString(),
-                        target: responseObject.author,
+                        target: responseObject.author.toString(),
                         type: 'comment',
-                        object: responseObject.id,
-                        response: doc.id
+                        object: responseObject.id.toString(),
+                        response: doc.id.toString()
                     }, log.holdError);
                 }
                 // 回复
                 else {
                     // 作者的回复数量
-                    developer.increaseReplyCount({_id: author.id}, 1, log.holdError);
+                    developer.increaseReplyCount({_id: author.id.toString()}, 1, log.holdError);
 
                     // 被回复评论作者的被回复数量
-                    developer.increaseReplyByCount({_id: parentResponse.author}, 1, log.holdError);
+                    developer.increaseReplyByCount({_id: parentResponse.author.toString()}, 1, log.holdError);
 
                     // object 的被回复数量
                     object.increaseReplyByCount({_id: doc.object}, 1, log.holdError);
 
                     // response 的被回复数量
-                    response.increase({_id: parentResponse.id}, 'replyByCount', 1, log.holdError);
+                    response.increase({_id: parentResponse.id.toString()}, 'replyByCount', 1, log.holdError);
 
                     // 写入交互
                     interactive.active({
                         source: author.id.toString(),
-                        target: parentResponse.author,
+                        target: parentResponse.author.toString(),
                         type: 'reply',
-                        object: responseObject.id,
-                        response: doc.id
+                        object: responseObject.id.toString(),
+                        response: doc.id.toString()
                     }, log.holdError);
                 }
 
