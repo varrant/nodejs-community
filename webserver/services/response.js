@@ -47,7 +47,7 @@ exports.findOneAndUpdate = response.findOneAndUpdate;
 
 
 /**
- * 创建一条评论
+ * 创建一条评论/回复
  * @param author {Object} 评论者
  * @param author.id {String} 评论者 ID
  * @param data {Object} 评论数据
@@ -130,6 +130,15 @@ exports.createOne = function (author, data, meta, callback) {
 
                     // object 的被评论数量
                     object.increaseCommentByCount({_id: doc.object}, 1, log.holdError);
+
+                    // 写入交互
+                    interactive.active({
+                        source: author.id.toString(),
+                        target: responseObject.author,
+                        type: 'comment',
+                        object: responseObject.id,
+                        response: doc.id
+                    }, log.holdError);
                 }
                 // 回复
                 else {
@@ -144,6 +153,15 @@ exports.createOne = function (author, data, meta, callback) {
 
                     // response 的被回复数量
                     response.increase({_id: parentResponse.id}, 'replyByCount', 1, log.holdError);
+
+                    // 写入交互
+                    interactive.active({
+                        source: author.id.toString(),
+                        target: parentResponse.author,
+                        type: 'reply',
+                        object: responseObject.id,
+                        response: doc.id
+                    }, log.holdError);
                 }
 
 
