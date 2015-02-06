@@ -248,7 +248,7 @@ module.exports = function (app) {
 
                 interactive.find({
                     target: de.id,
-                    type: 'comment'
+                    type: 'comment-by'
                 }, options, function (err, docs) {
                     next(err, de, docs);
                 });
@@ -401,7 +401,7 @@ module.exports = function (app) {
                 dato.extend(options, skipLimit);
                 interactive.find({
                     target: de.id,
-                    type: 'reply'
+                    type: 'reply-by'
                 }, options, function (err, docs) {
                     next(err, de, docs);
                 });
@@ -550,7 +550,7 @@ module.exports = function (app) {
 
                 dato.extend(options, skipLimit);
                 interactive.find({
-                    type: 'agree',
+                    type: 'agree-by',
                     target: de.id.toString()
                 }, options, function (err, docs) {
                     next(err, de, docs);
@@ -698,7 +698,7 @@ module.exports = function (app) {
 
                 dato.extend(options, skipLimit);
                 interactive.find({
-                    type: 'accept',
+                    type: 'accept-by',
                     target: de.id.toString()
                 }, options, function (err, docs) {
                     next(err, de, docs);
