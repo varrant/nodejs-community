@@ -248,7 +248,7 @@ module.exports = function (app) {
 
                 interactive.find({
                     target: de.id,
-                    type: 'comment-by'
+                    type: 'comment'
                 }, options, function (err, docs) {
                     next(err, de, docs);
                 });

@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/front.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/front.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/front.less" afterPath="$PROJECT_DIR$/webroot-dev/static/css/front.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/developer.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -34,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="developer.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="developer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5141" max-vertical-offset="12600">
-              <caret line="400" column="31" selection-start-line="400" selection-start-column="31" selection-end-line="400" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.4504065" vertical-offset="2747" max-vertical-offset="12600">
+              <caret line="267" column="26" selection-start-line="267" selection-start-column="26" selection-end-line="267" selection-end-column="26" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#709#986#0" expanded="false" />
@@ -49,10 +48,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="front.less" pinned="false" current-in-tab="true">
+      <file leaf-file-name="front.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/front.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.62478775" vertical-offset="9560" max-vertical-offset="10557">
+            <state vertical-scroll-proportion="-14.153846" vertical-offset="9560" max-vertical-offset="10557">
               <caret line="584" column="8" selection-start-line="584" selection-start-column="8" selection-end-line="584" selection-end-column="8" />
               <folding />
             </state>
@@ -166,8 +165,8 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree.html" />
-        <option value="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/front.less" />
+        <option value="$PROJECT_DIR$/webserver/controllers/front/developer.js" />
       </list>
     </option>
   </component>
@@ -1350,13 +1349,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="31569000" />
-    </task>
-    <task id="LOCAL-00156" summary="beta12">
-      <created>1423137732123</created>
-      <option name="number" value="00156" />
-      <option name="project" value="LOCAL" />
-      <updated>1423137732123</updated>
+      <workItem from="1423053668098" duration="31672000" />
     </task>
     <task id="LOCAL-00157" summary="beta13">
       <created>1423141873993</created>
@@ -1646,11 +1639,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423237550143</updated>
     </task>
-    <option name="localTasksCounter" value="205" />
+    <task id="LOCAL-00205" summary="beta14">
+      <created>1423237698189</created>
+      <option name="number" value="00205" />
+      <option name="project" value="LOCAL" />
+      <updated>1423237698189</updated>
+    </task>
+    <option name="localTasksCounter" value="206" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89437000" />
+    <option name="totallyTimeSpent" value="89540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -2181,24 +2180,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/front.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.153846" vertical-offset="9560" max-vertical-offset="10557">
+          <caret line="584" column="8" selection-start-line="584" selection-start-column="8" selection-end-line="584" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/controllers/front/developer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5141" max-vertical-offset="12600">
-          <caret line="400" column="31" selection-start-line="400" selection-start-column="31" selection-end-line="400" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.4504065" vertical-offset="2747" max-vertical-offset="12600">
+          <caret line="267" column="26" selection-start-line="267" selection-start-column="26" selection-end-line="267" selection-end-column="26" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#709#986#0" expanded="false" />
             <element signature="e#1056#2634#0" expanded="false" />
             <element signature="e#2695#3702#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/front.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62478775" vertical-offset="9560" max-vertical-offset="10557">
-          <caret line="584" column="8" selection-start-line="584" selection-start-column="8" selection-end-line="584" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
