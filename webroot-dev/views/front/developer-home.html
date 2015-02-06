@@ -8,6 +8,11 @@
 <head lang="zh-cn">
     {{include ../include/meta.html}}
     {{include ./include/meta.html}}
+    <script>window['-page-']={
+        'limit': '{{skipLimit.limit}}',
+        'page': '{{skipLimit.page}}',
+        'count': '{{skipLimit.count}}'
+    };</script>
 </head>
 <body ontouchstart="" class="p-post p-post-opinion">
 {{include ./include/nav.html}}
@@ -25,6 +30,14 @@
             {{include ./include/developer/main-comment-by.html}}
             {{else if pageType === "reply-by"}}
             {{include ./include/developer/main-reply-by.html}}
+            {{else if pageType === "comment"}}
+            {{include ./include/developer/main-comment.html}}
+            {{else if pageType === "reply"}}
+            {{include ./include/developer/main-reply.html}}
+            {{else if pageType === "agree"}}
+            {{include ./include/developer/main-agree.html}}
+           {{else if pageType === "accept"}}
+            {{include ./include/developer/main-accept.html}}
             {{/if}}
         </div>
         <!--/主-->
@@ -37,5 +50,11 @@
 </div>
 
 {{include ./include/footer.html}}
+
+
+<script src="/static/js/libs/coolie.min.js"
+        data-config="./coolie-config.js"
+        data-main="./front/developer.js"></script>
+
 </body>
 </html>
