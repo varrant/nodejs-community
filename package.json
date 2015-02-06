@@ -1,6 +1,6 @@
 {
   "name": "nodejs-community",
-  "version": "0.0.1-beta13",
+  "version": "0.0.1-beta14",
   "private": true,
   "description": "前端开发社区",
   "scripts": {
