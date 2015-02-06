@@ -401,7 +401,7 @@ module.exports = function (app) {
                 dato.extend(options, skipLimit);
                 interactive.find({
                     target: de.id,
-                    type: 'reply-by'
+                    type: 'reply'
                 }, options, function (err, docs) {
                     next(err, de, docs);
                 });
