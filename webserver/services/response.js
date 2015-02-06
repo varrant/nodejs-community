@@ -204,95 +204,99 @@ exports.agree = function (operator, conditions, callback) {
             response.findOne(conditions, next);
         })
         // 2. 查找该 object
-        .task(function (next, doc) {
-            object.findOne({
-                _id: doc.object.toString()
-            }, function (err, responseAtObject) {
-                next(err, doc, responseAtObject);
-            });
-        })
-        // 2. 判断用户是否赞同过
-        .task(function (next, doc, responseAtObject) {
-            if (!doc) {
+        .task(function (next, inResponse) {
+            if (!inResponse) {
                 var err = new Error('该 response 不存在');
                 err.code = 404;
                 return next(err);
             }
 
+            object.findOne({
+                _id: inResponse.object.toString()
+            }, function (err, responseAtObject) {
+                if (!responseAtObject) {
+                    err = new Error('该 object 不存在');
+                    err.code = 404;
+                    return next(err);
+                }
+
+                next(err, inResponse, responseAtObject);
+            });
+        })
+        // 3. 判断用户是否赞同过
+        .task(function (next, inResponse, responseAtObject) {
             // 默认点赞
             interactive.toggle({
                 source: operator.id,
-                target: doc.author,
+                target: inResponse.author,
                 type: 'agree',
                 object: responseAtObject.id,
-                response: doc.id
-            }, true, function (err, value, newDoc, oldDoc) {
-                next(err, value, doc, oldDoc);
+                response: inResponse.id
+            }, true, function (err, interactiveValue, newInteractive, oldInteractive) {
+                next(err, interactiveValue, inResponse, oldInteractive);
             });
         })
-        // 3. 写入5个最新赞同用户
-        .task(function (next, value, doc, oldDoc) {
+        // 4. 写入5个最新赞同用户
+        .task(function (next, interactiveValue, inResponse, oldInteractive) {
             interactive.find({
                 type: 'agree',
-                response: doc.id,
+                response: inResponse.id,
                 hasApproved: true
             }, {
-                limit: 5
-            }, function (err, docs) {
+                limit: 5,
+                sort: {
+                    interactiveAt: -1
+                },
+                populate: ['source']
+            }, function (err, fiveInteractive) {
                 if (err) {
                     return next(err);
                 }
 
-                var agreers = docs.map(function (doc) {
-                    return doc.operator;
+                var agreers = fiveInteractive.map(function (doc) {
+                    return doc.source;
+                });
+
+                var agreerIds = fiveInteractive.map(function (doc) {
+                    return doc.source.id.toString();
                 });
 
                 response.findOneAndUpdate({
-                    _id: doc.id
+                    _id: inResponse.id
                 }, {
-                    agreers: agreers
+                    agreers: agreerIds
                 }, log.holdError);
 
-                next(null, value, doc, oldDoc, agreers);
+                next(null, interactiveValue, inResponse, oldInteractive, agreers);
             });
         })
-        // 4. 找出这5个用户
-        .task(function (next, value, agreeByResponse, oldDoc, agreers) {
-            howdo
-                .each(agreers, function (index, agreer, done) {
-                    developer.findOne({_id: agreer}, done);
-                })
-                .together(function (err) {
-                    next(err, value, agreeByResponse, oldDoc, [].slice.call(arguments, 1));
-                });
-        })
         // 顺序串行
-        .follow(function (err, value, agreeByResponse, oldDoc, agreers) {
-            callback(err, value, agreers);
+        .follow(function (err, interactiveValue, inResponse, oldInteractive, agreers) {
+            callback(err, interactiveValue, agreers);
 
             if (!err) {
                 // 赞
-                if (value === 1) {
+                if (interactiveValue === 1) {
                     howdo
                         // 查 object 作者
                         .task(function (done) {
-                            developer.findOne({_id: agreeByResponse.author}, done);
+                            developer.findOne({_id: inResponse.author}, done);
                         })
                         // 查 object
                         .task(function (done) {
-                            object.findOne({_id: agreeByResponse.object}, done);
+                            object.findOne({_id: inResponse.object}, done);
                         })
                         // 异步并行
                         .together(function (err, agreeByResponseAuthor, agreeInObject) {
                             // 只在第一次赞同时通知
-                            if (!err && agreeInObject && !oldDoc) {
+                            if (!err && agreeInObject && !oldInteractive) {
                                 // 评论
-                                if (agreeByResponse.parentResponse === null) {
-                                    notice.agreeComment(operator, agreeByResponseAuthor, agreeInObject, agreeByResponse);
+                                if (inResponse.parentResponse === null) {
+                                    notice.agreeComment(operator, agreeByResponseAuthor, agreeInObject, inResponse);
                                 }
                                 // 回复
                                 else {
-                                    notice.agreeReply(operator, agreeByResponseAuthor, agreeInObject, agreeByResponse);
+                                    notice.agreeReply(operator, agreeByResponseAuthor, agreeInObject, inResponse);
                                 }
                             }
                         });
@@ -300,25 +304,25 @@ exports.agree = function (operator, conditions, callback) {
 
 
                 // 赞或取消赞
-                if (value !== 0) {
+                if (interactiveValue !== 0) {
                     // 被赞数量
-                    response.increase(conditions, 'agreeByCount', value, log.holdError);
+                    response.increase(conditions, 'agreeByCount', interactiveValue, log.holdError);
 
                     // 用户赞数量
-                    developer.increaseAgreeCount({_id: operator.id}, value, log.holdError);
+                    developer.increaseAgreeCount({_id: operator.id}, interactiveValue, log.holdError);
 
                     // 用户被赞数量
-                    developer.increaseAgreeByCount({_id: agreeByResponse.author}, value, log.holdError);
+                    developer.increaseAgreeByCount({_id: inResponse.author}, interactiveValue, log.holdError);
 
                     // 自己加少量分
-                    developer.increaseScore({_id: operator.id}, value * scoreMap.agree, log.holdError);
+                    developer.increaseScore({_id: operator.id}, interactiveValue * scoreMap.agree, log.holdError);
 
                     // 为他人点赞才计分
-                    if (agreeByResponse.author.toString() !== operator.id.toString()) {
-                        var s = value > 0 ?
-                            +scoreUtil.agreeBy(operator, agreeByResponse.author) :
+                    if (inResponse.author.toString() !== operator.id.toString()) {
+                        var s = interactiveValue > 0 ?
+                            +scoreUtil.agreeBy(operator, inResponse.author) :
                             -scoreMap.agreeBy;
-                        developer.increaseScore({_id: agreeByResponse.author}, s, log.holdError);
+                        developer.increaseScore({_id: inResponse.author}, s, log.holdError);
                     }
                 }
             }
