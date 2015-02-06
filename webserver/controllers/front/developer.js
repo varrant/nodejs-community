@@ -545,6 +545,9 @@ module.exports = function (app) {
             // 查找被赞同
             .task(function (next, de) {
                 var options = {
+                    sort: {
+                        interactiveAt: -1
+                    },
                     populate: ['source', 'object', 'response']
                 };
 
@@ -577,7 +580,7 @@ module.exports = function (app) {
                 var data = {
                     developer: de,
                     title: de.nickname,
-                    pageType: 'agree',
+                    pageType: 'agree-by',
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
                     list: docs,
@@ -693,10 +696,10 @@ module.exports = function (app) {
             // 查找被赞同
             .task(function (next, de) {
                 var options = {
-                    populate: ['source', 'object', 'response'],
                     sort: {
                         interactiveAt: -1
-                    }
+                    },
+                    populate: ['source', 'object', 'response']
                 };
 
                 dato.extend(options, skipLimit);
@@ -728,7 +731,7 @@ module.exports = function (app) {
                 var data = {
                     developer: de,
                     title: de.nickname,
-                    pageType: 'accept',
+                    pageType: 'accept-by',
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
                     list: docs,
