@@ -3,6 +3,7 @@
     </h2>
     <div class="card-body">
         <ul class="m-simplelist m-history">
+            {{if list.length}}
             {{list list as item}}
             <li>
                 {{developer.nickname}}对<a href="/{{=sectionURIMap[item.object.section]}}/{{=item.object.uri}}.html">《{{item.object.title}}》</a>
@@ -11,6 +12,11 @@
                 <span class="history-time s-light">{{item.interactiveAt|datefrom}}</span>
             </li>
             {{/list}}
+            {{else}}
+            <li>
+                <i class="i i-info-circle"></i>暂无相关信息。
+            </li>
+            {{/if}}
         </ul>
     </div>
     <div class="card-footer f-text-center">

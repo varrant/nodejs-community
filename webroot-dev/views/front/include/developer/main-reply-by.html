@@ -1,14 +1,20 @@
 <div class="m-card" id="list">
-    <h2 class="card-title"><i class="i i-comment"></i>被评论记录
+    <h2 class="card-title"><i class="i i-reply"></i>被评论记录
     </h2>
     <div class="card-body">
         <ul class="m-simplelist m-history">
+            {{if list.length}}
             {{list list as item}}
             <li>
                 {{developer.nickname}}在<a href="/{{=sectionURIMap[item.object.section]}}/{{=item.object.uri}}.html">《{{item.object.title}}》</a>
                 上的评论被<a href="/developer/{{=item.source.githubLogin}}">{{item.source.nickname}}</a>回复了。
             </li>
             {{/list}}
+            {{else}}
+            <li>
+                <i class="i i-info-circle"></i>暂无相关信息。
+            </li>
+            {{/if}}
         </ul>
     </div>
     <div class="card-footer f-text-center">
