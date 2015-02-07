@@ -89,10 +89,10 @@ nav .nav-logo {
     border-top: 1px dotted #68C1E8;
   }
 }
-nav.active .nav-bg {
+nav.unfolded .nav-bg {
   display: block;
 }
-nav.active .nav-left {
+nav.unfolded .nav-left {
   -webkit-transform: translateX(0);
   transform: translateX(0);
   opacity: 1;
@@ -110,6 +110,16 @@ nav .nav-group {
   right: 0;
   top: 0;
 }
+nav .nav-group:hover .nav-drop,
+nav .nav-group:active .nav-drop {
+  background: #008eb1;
+}
+nav .nav-group:hover .nav-downlist,
+nav .nav-group:active .nav-downlist {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
 nav .nav-drop {
   position: relative;
   display: block;
@@ -123,7 +133,7 @@ nav .nav-drop img {
 nav .nav-downlist {
   position: absolute;
   width: 140px;
-  background: #00a2ca;
+  background: #008eb1;
   z-index: 3;
   list-style: none;
   padding: 0;

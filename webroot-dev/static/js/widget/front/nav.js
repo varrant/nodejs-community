@@ -18,34 +18,33 @@ define(function (require, exports, module) {
     var alert = require('../common/alert.js');
     var app = {};
     var activeClass = 'active';
+    var unfoldClass = 'unfolded';
 
     // 导航切换
     app.toggle = function () {
+        var $header = selector.query('#header')[0];
         var $nav = selector.query('#nav')[0];
-        var nodes = selector.query('.j-flag', $nav);
+        var nodes = selector.query('.j-flag', $header);
         var $bg = nodes[0];
         var $toggle = nodes[1];
         var $menu = nodes[2];
+        var $group = nodes[3];
+        var $downlist = nodes[4];
         var section = window['-section-'] || 'home';
         var $active = selector.query('.nav-item-' + section, $menu)[0];
 
         attribute.addClass($active, activeClass);
 
-        //if (see.visibility($menu) === 'visible') {
-        //    return;
-        //}
-
-        event.on($toggle, 'click', function (eve) {
-            //eve.preventDefault();
-            //attribute.css($bg, 'display', 'block');
-            //attribute.css($menu, 'display', 'block');
-            attribute.addClass($nav, activeClass);
+        event.on($toggle, 'click', function () {
+            attribute.addClass($nav, unfoldClass);
         });
 
         event.on($bg, 'click', function () {
-            //attribute.css($bg, 'display', 'none');
-            //attribute.css($menu, 'display', 'none');
-            attribute.removeClass($nav, activeClass);
+            attribute.removeClass($nav, unfoldClass);
+        });
+
+        event.on($group, 'click', function () {
+            attribute.addClass($group, activeClass);
         });
     };
 
