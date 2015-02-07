@@ -4,19 +4,25 @@
  * @create 2014-12-04 17:25
  * @ref netease@1.0.0
  */
-.f-clearfix:before,
-.f-list-left:before,
-.f-list-right:before,
+
+
+
+[class*=avg-]::before,
+[class*=avg-]::after,
+.f-clearfix::before,
 .f-clearfix:after,
-.f-list-left:after,
-.f-list-right:after {
+.f-list-left::before,
+.f-list-left::after,
+.f-list-right::before,
+.f-list-right::after {
     display: table;
     content: " ";
 }
 
-.f-clearfix:after,
-.f-list-left:after,
-.f-list-right:after {
+[class*=avg-]::after,
+.f-clearfix::after,
+.f-list-left::after,
+.f-list-right::after {
     clear: both;
 }
 
