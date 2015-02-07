@@ -5,16 +5,20 @@
  */
 body {
   background: #f5f5f5;
+  padding-top: 120px;
+}
+.container-fluid {
+  max-width: 1280px;
 }
 /*nav*/
 nav {
   width: 100%;
   position: fixed;
   z-index: 9;
-  background: rgba(18, 140, 194, 0.9);
-  line-height: 40px;
-  margin-bottom: 3rem;
-  padding: 10px;
+  top: 0;
+  background: rgba(0, 162, 202, 0.9);
+  line-height: 50px;
+  border-bottom: 1px solid #008eb1;
 }
 @media (max-width: 767px) {
   nav {
@@ -102,18 +106,28 @@ nav .nav-right li:last-child {
 nav .nav-downlist {
   position: absolute;
   width: 140px;
-  background: #2795C6;
+  background: rgba(0, 162, 202, 0.9);
   z-index: 3;
   list-style: none;
   padding: 0;
-  border-bottom: 4px solid #0e6a93;
+  border: 1px solid #008eb1;
+  border-top: 0;
   top: 50px;
   right: 50%;
   margin: 0 -70px 0 0;
-  text-align: center;
 }
 nav .nav-downlist li {
   margin: 0;
+  padding: 0;
+  position: relative;
+}
+nav .nav-downlist a {
+  padding-left: 40px;
+}
+nav .nav-downlist .i {
+  position: absolute;
+  top: 13px;
+  left: 15px;
 }
 /*m-nav*/
 .m-nav {
@@ -123,21 +137,17 @@ nav .nav-downlist li {
 }
 .m-nav > li {
   position: relative;
-  float: left;
-  margin-right: 20px;
 }
 .m-nav a {
   display: block;
-  color: #ffffff;
+  color: #fff;
   padding: 0 20px;
 }
 .m-nav a:hover {
-  background: #1185b9;
-  color: #fff;
+  background: #009ec5;
 }
-.m-nav li.active a {
-  background: #0f719d;
-  color: #fff;
+.m-nav .active a {
+  background: #009ec5;
 }
 .m-nav .label {
   position: relative;
@@ -189,14 +199,27 @@ nav .nav-downlist li {
 }
 .m-home li {
   line-height: 30px;
+  border-top: 1px solid #eee;
+}
+.m-home li:nth-child(1),
+.m-home li:nth-child(2) {
+  border-top: 0;
+}
+.m-home li:nth-child(2n+1) {
+  border-right: 1px solid #eee;
 }
 .m-home a {
   position: relative;
   display: block;
   padding: 20px 0;
+  color: #666;
+}
+.m-home a:hover {
+  background: #F9F9F9;
 }
 .m-home .home-icon {
   font-size: 80px;
+  color: #ececec;
 }
 .m-home .home-name {
   font-size: 30px;
@@ -204,34 +227,6 @@ nav .nav-downlist li {
 }
 .m-home .home-desc {
   font-size: 14px;
-}
-.m-home .home-article a {
-  background: #f6e3ff;
-  color: #7700b0;
-}
-.m-home .home-article a:hover {
-  background: #f1d4ff;
-}
-.m-home .home-question a {
-  background: #fffcf0;
-  color: #bd9700;
-}
-.m-home .home-question a:hover {
-  background: #fff9e1;
-}
-.m-home .home-link a {
-  background: #dee6fd;
-  color: #0a309f;
-}
-.m-home .home-link a:hover {
-  background: #d0dbfc;
-}
-.m-home .home-help a {
-  background: #fff3f3;
-  color: #c00000;
-}
-.m-home .home-help a:hover {
-  background: #ffe4e4;
 }
 .m-oauth {
   max-width: 500px;
@@ -328,10 +323,10 @@ nav .nav-downlist li {
   color: #666;
 }
 .m-card .card-tab .active::after {
-  background: #128cc2;
+  background: #00a2ca;
 }
 .m-card .card-tab .active a {
-  color: #128cc2;
+  color: #00a2ca;
 }
 .m-card .card-body {
   padding: 20px;

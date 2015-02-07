@@ -1,8 +1,8 @@
-<nav role="navigation" class="f-transition" id="nav">
+<nav role="navigation" id="nav">
     <div class="nav-bg j-flag"></div>
-    <div class="container f-clearfix">
-        <h1 class="f-left nav-logo j-flag"><img src="/static/img/logo.png" alt="logo" width="40" height="40"/></h1>
-        <ul class="f-left nav-left m-nav j-flag">
+    <div class="container-fluid f-clearfix">
+        <!--<h1 class="f-left nav-logo j-flag"><img src="/static/img/logo.png" alt="logo" width="40" height="40"/></h1>-->
+        <ul class="f-left f-list-left nav-left m-nav j-flag">
             <li class="nav-item-home"><a href="/"><i class="i i-home"></i>社区首页</a></li>
             <li class="nav-item-article"><a href="/article/"><i class="i i-file-text"></i>文章</a></li>
             <li class="nav-item-question"><a href="/question/"><i class="i i-cube"></i>问答</a></li>
@@ -11,7 +11,7 @@
             <li class="nav-item-help"><a href="/help/"><i class="i i-question-circle"></i>帮助</a></li>
             <!--<li><a href="/rank/"><i class="i i-signal"></i>排行</a></li>-->
         </ul>
-        <ul class="f-right nav-right m-nav">
+        <ul class="f-right f-list-left nav-right m-nav">
             {{if $developer.id}}
             <li><a href="javascript:;" class="label label-success" id="admin-enter"><i class="i i-user"></i>进入</a>
                 <ul class="nav-downlist">

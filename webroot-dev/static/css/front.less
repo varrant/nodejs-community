@@ -4,12 +4,17 @@
  * @create 2014-12-04 20:52
  */
 
-@primary-bg-color: #128CC2;
+@primary-bg-color: #00A2CA;
 @primary-fg-color: lighten(@primary-bg-color, 90%);
 @border-color: #e6e6e6;
 
 body {
   background: #f5f5f5;
+  padding-top: 120px;
+}
+
+.container-fluid{
+  max-width: 1280px;
 }
 
 /*nav*/
@@ -17,10 +22,10 @@ nav {
   width: 100%;
   position: fixed;
   z-index: 9;
+  top: 0;
   background: fade(@primary-bg-color, 90%);
-  line-height: 40px;
-  margin-bottom: 3rem;
-  padding: 10px;
+  line-height: 50px;
+  border-bottom: 1px solid darken(@primary-bg-color, 5%);
 
   @media (max-width: 767px) {
     position: relative;
@@ -116,18 +121,30 @@ nav {
   .nav-downlist{
     position: absolute;
     width: 140px;
-    background: #2795C6;
+    background: fade(@primary-bg-color, 90%);
     z-index: 3;
     list-style: none;
     padding: 0;
-    border-bottom: 4px solid darken(@primary-bg-color, 10%);;
+    border: 1px solid darken(@primary-bg-color, 5%);;
+    border-top: 0;
     top: 50px;
     right: 50%;
     margin: 0 -70px 0 0;
-    text-align: center;
 
     li{
       margin: 0;
+      padding: 0;
+      position: relative;
+    }
+
+    a{
+      padding-left: 40px;
+    }
+
+    .i{
+      position: absolute;
+      top: 13px;
+      left: 15px;
     }
   }
 }
@@ -140,24 +157,20 @@ nav {
 
   & > li {
     position: relative;
-    float: left;
-    margin-right: 20px;
   }
 
   a {
     display: block;
-    color: lighten(@primary-bg-color, 95%);
+    color: #fff;
     padding: 0 20px;
   }
 
   a:hover {
-    background: darken(@primary-bg-color, 2%);
-    color: #fff;
+    background: darken(@primary-bg-color, 1%);
   }
 
-  li.active a {
-    background: darken(@primary-bg-color, 8%);
-    color: #fff;
+  .active a {
+    background: darken(@primary-bg-color, 1%);
   }
 
   .label {
@@ -223,16 +236,32 @@ nav {
 .m-home {
   li {
     line-height: 30px;
+    border-top: 1px solid #eee;
+
+    &:nth-child(1),
+    &:nth-child(2){
+      border-top: 0;
+    }
+
+    &:nth-child(2n+1){
+      border-right: 1px solid #eee;
+    }
   }
 
   a {
     position: relative;
     display: block;
     padding: 20px 0;
+    color: #666;
+
+    &:hover{
+      background: #F9F9F9;
+    }
   }
 
   .home-icon {
     font-size: 80px;
+    color: #ececec;
   }
 
   .home-name {
@@ -242,47 +271,6 @@ nav {
 
   .home-desc {
     font-size: 14px;
-  }
-
-  @color-article: #F6E3FF;
-  @color-question: #FFFCF0;
-  @color-link: #DEE6FD;
-  @color-help: #FFF3F3;
-
-  .home-article a {
-    background: @color-article;
-    color: darken(@color-article, 60%);
-
-    &:hover {
-      background: darken(@color-article, 3%);
-    }
-  }
-
-  .home-question a {
-    background: @color-question;
-    color: darken(@color-question, 60%);
-
-    &:hover {
-      background: darken(@color-question, 3%);
-    }
-  }
-
-  .home-link a {
-    background: @color-link;
-    color: darken(@color-link, 60%);
-
-    &:hover {
-      background: darken(@color-link, 3%);
-    }
-  }
-
-  .home-help a {
-    background: @color-help;
-    color: darken(@color-help, 60%);
-
-    &:hover {
-      background: darken(@color-help, 3%);
-    }
   }
 }
 

@@ -1,8 +1,8 @@
-/*!
+!
  * model test
  * @author ydr.me
  * @create 2014-11-24 20:41
- */
+ 
 
 
 var developer = require('../webserver/models/').developer;
