@@ -7,6 +7,8 @@
 
 
 
+.row::before,
+.row::after,
 [class*=avg-]::before,
 [class*=avg-]::after,
 .f-clearfix::before,
@@ -19,6 +21,7 @@
     content: " ";
 }
 
+.row::after,
 [class*=avg-]::after,
 .f-clearfix::after,
 .f-list-left::after,
