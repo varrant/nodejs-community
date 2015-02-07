@@ -2,27 +2,25 @@
  * grid
  * @author ydr.me
  * @create 2014-12-04 17:25
- * @ref http://flexboxgrid.com/
+ * @ref http://flexboxgrid.com/ v6.1.1
+ * @ref http://amazeui.org/ v2.2.1
  */
-
 
 /*Uncomment and set these variables to customize the grid.*/
 
 :root {
- --gutter-width: 1rem;
- --outer-margin: 2rem;
- --gutter-compensation: calc( var( --gutter-width / 2 ) * -1 );
- --half-gutter-width: calc( var( --gutter-width / 2 ) );
- --screen-xs-min: 30em;
- --screen-sm-min: 48em;
- --screen-md-min: 62em;
- --screen-lg-min: 75em;
- --container-sm: calc( 45rem + var( --gutter-width ) );
- --container-md: calc( 60rem + var( --gutter-width ) );
- --container-lg: calc( 70rem + var( --gutter-width ) );
+    --gutter-width: 1rem;
+    --outer-margin: 2rem;
+    --gutter-compensation: calc(var(--gutter-width / 2) * -1);
+    --half-gutter-width: calc(var(--gutter-width / 2));
+    --screen-xs-min: 30em;
+    --screen-sm-min: 48em;
+    --screen-md-min: 62em;
+    --screen-lg-min: 75em;
+    --container-sm: calc(45rem + var(--gutter-width));
+    --container-md: calc(60rem + var(--gutter-width));
+    --container-lg: calc(70rem + var(--gutter-width));
 }
-
-
 
 .container-fluid {
     margin-right: auto;
@@ -1128,5 +1126,469 @@
         -webkit-order: 1;
         -ms-flex-order: 1;
         order: 1;
+    }
+}
+
+/* ==========================================================================
+   Component: AVG Grid
+ ============================================================================ */
+[class*="avg-"] {
+    display: block;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+[class*="avg-"]:before,
+[class*="avg-"]:after {
+    content: " ";
+    display: table;
+}
+
+[class*="avg-"]:after {
+    clear: both;
+}
+
+[class*="avg-"] > li {
+    display: block;
+    height: auto;
+    float: left;
+}
+
+@media only screen {
+    .avg-sm-1 > li {
+        width: 100%;
+    }
+
+    .avg-sm-1 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-sm-1 > li:nth-of-type(1n + 1) {
+        clear: both;
+    }
+
+    .avg-sm-2 > li {
+        width: 50%;
+    }
+
+    .avg-sm-2 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-sm-2 > li:nth-of-type(2n + 1) {
+        clear: both;
+    }
+
+    .avg-sm-3 > li {
+        width: 33.33333333%;
+    }
+
+    .avg-sm-3 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-sm-3 > li:nth-of-type(3n + 1) {
+        clear: both;
+    }
+
+    .avg-sm-4 > li {
+        width: 25%;
+    }
+
+    .avg-sm-4 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-sm-4 > li:nth-of-type(4n + 1) {
+        clear: both;
+    }
+
+    .avg-sm-5 > li {
+        width: 20%;
+    }
+
+    .avg-sm-5 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-sm-5 > li:nth-of-type(5n + 1) {
+        clear: both;
+    }
+
+    .avg-sm-6 > li {
+        width: 16.66666667%;
+    }
+
+    .avg-sm-6 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-sm-6 > li:nth-of-type(6n + 1) {
+        clear: both;
+    }
+
+    .avg-sm-7 > li {
+        width: 14.28571429%;
+    }
+
+    .avg-sm-7 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-sm-7 > li:nth-of-type(7n + 1) {
+        clear: both;
+    }
+
+    .avg-sm-8 > li {
+        width: 12.5%;
+    }
+
+    .avg-sm-8 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-sm-8 > li:nth-of-type(8n + 1) {
+        clear: both;
+    }
+
+    .avg-sm-9 > li {
+        width: 11.11111111%;
+    }
+
+    .avg-sm-9 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-sm-9 > li:nth-of-type(9n + 1) {
+        clear: both;
+    }
+
+    .avg-sm-10 > li {
+        width: 10%;
+    }
+
+    .avg-sm-10 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-sm-10 > li:nth-of-type(10n + 1) {
+        clear: both;
+    }
+
+    .avg-sm-11 > li {
+        width: 9.09090909%;
+    }
+
+    .avg-sm-11 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-sm-11 > li:nth-of-type(11n + 1) {
+        clear: both;
+    }
+
+    .avg-sm-12 > li {
+        width: 8.33333333%;
+    }
+
+    .avg-sm-12 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-sm-12 > li:nth-of-type(12n + 1) {
+        clear: both;
+    }
+}
+
+@media only screen and (min-width: 641px) {
+    .avg-md-1 > li {
+        width: 100%;
+    }
+
+    .avg-md-1 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-md-1 > li:nth-of-type(1n + 1) {
+        clear: both;
+    }
+
+    .avg-md-2 > li {
+        width: 50%;
+    }
+
+    .avg-md-2 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-md-2 > li:nth-of-type(2n + 1) {
+        clear: both;
+    }
+
+    .avg-md-3 > li {
+        width: 33.33333333%;
+    }
+
+    .avg-md-3 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-md-3 > li:nth-of-type(3n + 1) {
+        clear: both;
+    }
+
+    .avg-md-4 > li {
+        width: 25%;
+    }
+
+    .avg-md-4 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-md-4 > li:nth-of-type(4n + 1) {
+        clear: both;
+    }
+
+    .avg-md-5 > li {
+        width: 20%;
+    }
+
+    .avg-md-5 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-md-5 > li:nth-of-type(5n + 1) {
+        clear: both;
+    }
+
+    .avg-md-6 > li {
+        width: 16.66666667%;
+    }
+
+    .avg-md-6 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-md-6 > li:nth-of-type(6n + 1) {
+        clear: both;
+    }
+
+    .avg-md-7 > li {
+        width: 14.28571429%;
+    }
+
+    .avg-md-7 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-md-7 > li:nth-of-type(7n + 1) {
+        clear: both;
+    }
+
+    .avg-md-8 > li {
+        width: 12.5%;
+    }
+
+    .avg-md-8 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-md-8 > li:nth-of-type(8n + 1) {
+        clear: both;
+    }
+
+    .avg-md-9 > li {
+        width: 11.11111111%;
+    }
+
+    .avg-md-9 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-md-9 > li:nth-of-type(9n + 1) {
+        clear: both;
+    }
+
+    .avg-md-10 > li {
+        width: 10%;
+    }
+
+    .avg-md-10 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-md-10 > li:nth-of-type(10n + 1) {
+        clear: both;
+    }
+
+    .avg-md-11 > li {
+        width: 9.09090909%;
+    }
+
+    .avg-md-11 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-md-11 > li:nth-of-type(11n + 1) {
+        clear: both;
+    }
+
+    .avg-md-12 > li {
+        width: 8.33333333%;
+    }
+
+    .avg-md-12 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-md-12 > li:nth-of-type(12n + 1) {
+        clear: both;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .avg-lg-1 > li {
+        width: 100%;
+    }
+
+    .avg-lg-1 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-lg-1 > li:nth-of-type(1n + 1) {
+        clear: both;
+    }
+
+    .avg-lg-2 > li {
+        width: 50%;
+    }
+
+    .avg-lg-2 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-lg-2 > li:nth-of-type(2n + 1) {
+        clear: both;
+    }
+
+    .avg-lg-3 > li {
+        width: 33.33333333%;
+    }
+
+    .avg-lg-3 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-lg-3 > li:nth-of-type(3n + 1) {
+        clear: both;
+    }
+
+    .avg-lg-4 > li {
+        width: 25%;
+    }
+
+    .avg-lg-4 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-lg-4 > li:nth-of-type(4n + 1) {
+        clear: both;
+    }
+
+    .avg-lg-5 > li {
+        width: 20%;
+    }
+
+    .avg-lg-5 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-lg-5 > li:nth-of-type(5n + 1) {
+        clear: both;
+    }
+
+    .avg-lg-6 > li {
+        width: 16.66666667%;
+    }
+
+    .avg-lg-6 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-lg-6 > li:nth-of-type(6n + 1) {
+        clear: both;
+    }
+
+    .avg-lg-7 > li {
+        width: 14.28571429%;
+    }
+
+    .avg-lg-7 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-lg-7 > li:nth-of-type(7n + 1) {
+        clear: both;
+    }
+
+    .avg-lg-8 > li {
+        width: 12.5%;
+    }
+
+    .avg-lg-8 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-lg-8 > li:nth-of-type(8n + 1) {
+        clear: both;
+    }
+
+    .avg-lg-9 > li {
+        width: 11.11111111%;
+    }
+
+    .avg-lg-9 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-lg-9 > li:nth-of-type(9n + 1) {
+        clear: both;
+    }
+
+    .avg-lg-10 > li {
+        width: 10%;
+    }
+
+    .avg-lg-10 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-lg-10 > li:nth-of-type(10n + 1) {
+        clear: both;
+    }
+
+    .avg-lg-11 > li {
+        width: 9.09090909%;
+    }
+
+    .avg-lg-11 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-lg-11 > li:nth-of-type(11n + 1) {
+        clear: both;
+    }
+
+    .avg-lg-12 > li {
+        width: 8.33333333%;
+    }
+
+    .avg-lg-12 > li:nth-of-type(n) {
+        clear: none;
+    }
+
+    .avg-lg-12 > li:nth-of-type(12n + 1) {
+        clear: both;
     }
 }
