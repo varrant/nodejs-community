@@ -5,13 +5,9 @@
  * @ref netease@1.0.0
  */
 .f-clearfix:before,
-.row:before,
-[class*=avg-]:before,
 .f-list-left:before,
 .f-list-right:before,
 .f-clearfix:after,
-.row:after,
-[class*=avg-]:after,
 .f-list-left:after,
 .f-list-right:after {
     display: table;
@@ -19,8 +15,6 @@
 }
 
 .f-clearfix:after,
-.row:after,
-[class*=avg-]:after,
 .f-list-left:after,
 .f-list-right:after {
     clear: both;
