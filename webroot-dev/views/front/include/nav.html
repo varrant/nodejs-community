@@ -12,14 +12,13 @@
                 <li class="nav-item-help"><a href="/help/"><i class="i i-question-circle"></i>帮助</a></li>
                 <!--<li><a href="/rank/"><i class="i i-signal"></i>排行</a></li>-->
             </ul>
-            <!--<ul class="f-right f-list-left nav-right m-nav">-->
-                <!--{{if !$developer.id}}-->
-                <!--<li><a href="javascript:;" class="label label-danger j-login"><i class="i i-user"></i>加入</a></li>-->
-                <!--{{/if}}-->
-            <!--</ul>-->
         </div>
         <div class="nav-group j-flag">
+            {{if $developer.id}}
             <a href="javascript:;" class="nav-drop f-transition" id="admin-enter"><img src="{{=$developer.avatarM}}" alt=""/></a>
+            {{else}}
+            <a href="javascript:;" class="label label-danger j-login"><i class="i i-user"></i>加入</a>
+            {{/if}}
         </div>
     </nav>
 

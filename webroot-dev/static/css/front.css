@@ -15,16 +15,20 @@ body {
 .container-fluid {
   max-width: 1280px;
 }
-/*nav*/
-nav {
+header {
   width: 100%;
   position: fixed;
   z-index: 9;
   top: 0;
+}
+/*nav*/
+nav {
+  position: relative;
   background: #00a2ca;
   height: 51px;
   line-height: 50px;
   border-bottom: 1px solid #008eb1;
+  z-index: 9;
 }
 @media (max-width: 767px) {
   nav {
@@ -145,6 +149,9 @@ nav .nav-drop img {
   display: block;
   color: #fff;
   padding: 10px 16px;
+}
+.nav-downlist a:hover {
+  background: #009ac0;
 }
 .active .nav-drop {
   background: #008eb1;
@@ -528,5 +535,11 @@ nav .nav-drop img {
   margin-top: 200px;
 }
 footer {
+  padding: 50px 0;
   margin-top: 100px;
+  border-top: 1px solid #EFEFEF;
+}
+footer p {
+  margin: 0;
+  line-height: 1.5;
 }

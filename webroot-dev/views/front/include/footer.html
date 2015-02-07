@@ -1,37 +1,18 @@
-<footer class="s-muted f-small">
-    <div class="container">
-        <hr/>
+<footer class="s-light f-xsmall f-text-center">
+    <h3>{{$setting.website.title}}</h3>
 
-        <div class="row">
-            <div class="col-sm-8">
-                <h3>关于{{$setting.website.title}}</h3>
-
-                <p>{{$setting.website.description}}</p>
-            </div>
-            <dl class="col-sm-4">
-                <dt>founder：</dt>
-                <dd><a href="/developer/cloudcome/"><i class="i i-github"></i>@cloudcome</a></dd>
-            </dl>
-        </div>
-
-        <hr/>
-
-        <div class="row">
-            <div class="col-xs-12 f-text-center">
-                <p>
-                    <a href="https://github.com/cloudcome/nodejs-community"><i class="i i-github"></i>nodejs-community v{{$configs.package.version}}</a>
-                    <a href="/help/bug-feedback.html"><i class="i i-bug"></i>BUG 反馈</a>
-                    &copy;2014 FrontEndDev.org
-                    MIT
-                </p>
-                <p>
-                    <i class="i i-cloud"></i>
-                    {{(Date.now() - $system.startTime)|humanize}}
-                    {{$system.hash}}
-                </p>
-            </div>
-        </div>
-    </div>
+    <p>{{$setting.website.description}}</p>
+    <p>
+        <a href="https://github.com/cloudcome/nodejs-community"><i class="i i-github"></i>nodejs-community v{{$configs.package.version}}</a>
+        <a href="/help/bug-feedback.html"><i class="i i-bug"></i>BUG 反馈</a>
+        &copy;2014 FrontEndDev.org
+        MIT
+    </p>
+    <p>
+        <i class="i i-cloud"></i>
+        {{(Date.now() - $system.startTime)|humanize}}
+        {{$system.hash}}
+    </p>
 </footer>
 
 <div class="f-none">

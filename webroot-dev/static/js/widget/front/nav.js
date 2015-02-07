@@ -20,6 +20,7 @@ define(function (require, exports, module) {
     var app = {};
     var activeClass = 'active';
     var unfoldClass = 'unfolded';
+    var hasLogin = !!window['-developer-'].id;
 
     // 导航切换
     app.toggle = function () {
@@ -44,11 +45,13 @@ define(function (require, exports, module) {
             attribute.removeClass($nav, unfoldClass);
         });
 
-        event.on($group, 'click', controller.toggle(function () {
-            attribute.addClass($header, activeClass);
-        }, function () {
-            attribute.removeClass($header, activeClass);
-        }));
+        if(hasLogin){
+            event.on($group, 'click', controller.toggle(function () {
+                attribute.addClass($header, activeClass);
+            }, function () {
+                attribute.removeClass($header, activeClass);
+            }));
+        }
     };
 
     // 未读通知
