@@ -90,7 +90,10 @@ nav .nav-logo {
     border-top: 1px dotted #68C1E8;
   }
 }
-nav .active .nav-left {
+nav.active .nav-bg {
+  display: block;
+}
+nav.active .nav-left {
   -webkit-transform: translateX(0);
   transform: translateX(0);
   opacity: 1;
@@ -117,15 +120,6 @@ nav .nav-downlist {
 nav .nav-downlist li {
   margin: 0;
   padding: 0;
-  position: relative;
-}
-nav .nav-downlist a {
-  padding-left: 40px;
-}
-nav .nav-downlist .i {
-  position: absolute;
-  top: 13px;
-  left: 15px;
 }
 /*m-nav*/
 .m-nav {

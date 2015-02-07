@@ -17,6 +17,7 @@ define(function (require, exports, module) {
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
     var app = {};
+    var activeClass = 'active';
 
     // 导航切换
     app.toggle = function () {
@@ -28,21 +29,23 @@ define(function (require, exports, module) {
         var section = window['-section-'] || 'home';
         var $active = selector.query('.nav-item-' + section, $menu)[0];
 
-        attribute.addClass($active, 'active');
+        attribute.addClass($active, activeClass);
 
         //if (see.visibility($menu) === 'visible') {
         //    return;
         //}
 
         event.on($toggle, 'click', function (eve) {
-            eve.preventDefault();
-            attribute.css($bg, 'display', 'block');
-            attribute.css($menu, 'display', 'block');
+            //eve.preventDefault();
+            //attribute.css($bg, 'display', 'block');
+            //attribute.css($menu, 'display', 'block');
+            attribute.addClass($nav, activeClass);
         });
 
         event.on($bg, 'click', function () {
-            attribute.css($bg, 'display', 'none');
-            attribute.css($menu, 'display', 'none');
+            //attribute.css($bg, 'display', 'none');
+            //attribute.css($menu, 'display', 'none');
+            attribute.removeClass($nav, activeClass);
         });
     };
 
@@ -70,7 +73,7 @@ define(function (require, exports, module) {
             });
 
             $span.innerHTML = json.data;
-            attribute.addClass($link, 'active');
+            attribute.addClass($link, activeClass);
             modification.insert($span, $link);
         }).on('error', alert);
     };
