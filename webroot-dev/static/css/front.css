@@ -12,6 +12,10 @@ body {
     padding-top: 0;
   }
 }
+body.p-oauth-authorize,
+body.p-oauth-callback {
+  padding-top: 0;
+}
 .container-fluid {
   max-width: 1280px;
 }

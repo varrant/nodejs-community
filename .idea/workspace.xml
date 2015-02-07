@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/front.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/front.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/front.less" afterPath="$PROJECT_DIR$/webroot-dev/static/css/front.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/oauth-authorize.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/oauth-authorize.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/oauth-callback.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/oauth-callback.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -44,11 +46,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.057724956" vertical-offset="0" max-vertical-offset="1122">
-              <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+            <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="1122">
+              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="front.less" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/front.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="11764">
+              <caret line="18" column="21" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="oauth-callback.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/oauth-callback.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.6538463" vertical-offset="184" max-vertical-offset="833">
+              <caret line="21" column="45" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="oauth-authorize.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/oauth-authorize.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.25976232" vertical-offset="0" max-vertical-offset="646">
+              <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -98,8 +130,6 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/front/list-help.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/list-link.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/list-question.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/oauth-authorize.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/oauth-callback.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/object-article.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/object-help.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/object-link.html" />
@@ -109,10 +139,12 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/front/home.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/footer.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/front.less" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/nav.html" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/front/oauth-callback.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/css/front.less" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/front/oauth-authorize.html" />
       </list>
     </option>
   </component>
@@ -807,13 +839,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="43790000" />
-    </task>
-    <task id="LOCAL-00180" summary="beta13">
-      <created>1423149650860</created>
-      <option name="number" value="00180" />
-      <option name="project" value="LOCAL" />
-      <updated>1423149650860</updated>
+      <workItem from="1423053668098" duration="44080000" />
     </task>
     <task id="LOCAL-00181" summary="beta13">
       <created>1423149802548</created>
@@ -1103,11 +1129,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423325852474</updated>
     </task>
-    <option name="localTasksCounter" value="229" />
+    <task id="LOCAL-00229" summary="beta15">
+      <created>1423325871646</created>
+      <option name="number" value="00229" />
+      <option name="project" value="LOCAL" />
+      <updated>1423325871646</updated>
+    </task>
+    <option name="localTasksCounter" value="230" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101658000" />
+    <option name="totallyTimeSpent" value="101948000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1521,22 +1553,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/oauth-callback.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20203735" vertical-offset="221" max-vertical-offset="833">
-          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/oauth-authorize.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31748727" vertical-offset="0" max-vertical-offset="646">
-          <caret line="11" column="47" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/list-question.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.63497454" vertical-offset="0" max-vertical-offset="901">
@@ -1629,14 +1645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/front.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50933784" vertical-offset="2318" max-vertical-offset="11679">
-          <caret line="154" column="24" selection-start-line="154" selection-start-column="24" selection-end-line="154" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/footer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.028862478" vertical-offset="0" max-vertical-offset="589">
@@ -1655,8 +1663,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.057724956" vertical-offset="0" max-vertical-offset="1122">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="1122">
+          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/oauth-callback.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6538463" vertical-offset="184" max-vertical-offset="833">
+          <caret line="21" column="45" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/front.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="11764">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/oauth-authorize.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25976232" vertical-offset="0" max-vertical-offset="646">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
           <folding />
         </state>
       </provider>
