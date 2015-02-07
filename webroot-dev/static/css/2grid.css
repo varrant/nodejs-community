@@ -1132,30 +1132,174 @@
 /* ==========================================================================
    Component: AVG Grid
  ============================================================================ */
-[class*="avg-"] {
-    display: block;
-    padding: 0;
+[class*=avg-],
+[class*=avg-] > li {
     margin: 0;
+    padding: 0;
+}
+
+[class*=avg-] {
     list-style: none;
 }
 
-[class*="avg-"]:before,
-[class*="avg-"]:after {
-    content: " ";
-    display: table;
-}
-
-[class*="avg-"]:after {
-    clear: both;
-}
-
-[class*="avg-"] > li {
-    display: block;
-    height: auto;
+[class*=avg-] > li {
     float: left;
 }
 
-@media only screen {
+.avg-xs-0 > li {
+    width: auto;
+}
+
+.avg-xs-1 > li {
+    width: 100%;
+}
+
+.avg-xs-1 > li:nth-of-type(n) {
+    clear: none;
+}
+
+.avg-xs-1 > li:nth-of-type(1n + 1) {
+    clear: both;
+}
+
+.avg-xs-2 > li {
+    width: 50%;
+}
+
+.avg-xs-2 > li:nth-of-type(n) {
+    clear: none;
+}
+
+.avg-xs-2 > li:nth-of-type(2n + 1) {
+    clear: both;
+}
+
+.avg-xs-3 > li {
+    width: 33.33333333%;
+}
+
+.avg-xs-3 > li:nth-of-type(n) {
+    clear: none;
+}
+
+.avg-xs-3 > li:nth-of-type(3n + 1) {
+    clear: both;
+}
+
+.avg-xs-4 > li {
+    width: 25%;
+}
+
+.avg-xs-4 > li:nth-of-type(n) {
+    clear: none;
+}
+
+.avg-xs-4 > li:nth-of-type(4n + 1) {
+    clear: both;
+}
+
+.avg-xs-5 > li {
+    width: 20%;
+}
+
+.avg-xs-5 > li:nth-of-type(n) {
+    clear: none;
+}
+
+.avg-xs-5 > li:nth-of-type(5n + 1) {
+    clear: both;
+}
+
+.avg-xs-6 > li {
+    width: 16.66666667%;
+}
+
+.avg-xs-6 > li:nth-of-type(n) {
+    clear: none;
+}
+
+.avg-xs-6 > li:nth-of-type(6n + 1) {
+    clear: both;
+}
+
+.avg-xs-7 > li {
+    width: 14.28571429%;
+}
+
+.avg-xs-7 > li:nth-of-type(n) {
+    clear: none;
+}
+
+.avg-xs-7 > li:nth-of-type(7n + 1) {
+    clear: both;
+}
+
+.avg-xs-8 > li {
+    width: 12.5%;
+}
+
+.avg-xs-8 > li:nth-of-type(n) {
+    clear: none;
+}
+
+.avg-xs-8 > li:nth-of-type(8n + 1) {
+    clear: both;
+}
+
+.avg-xs-9 > li {
+    width: 11.11111111%;
+}
+
+.avg-xs-9 > li:nth-of-type(n) {
+    clear: none;
+}
+
+.avg-xs-9 > li:nth-of-type(9n + 1) {
+    clear: both;
+}
+
+.avg-xs-10 > li {
+    width: 10%;
+}
+
+.avg-xs-10 > li:nth-of-type(n) {
+    clear: none;
+}
+
+.avg-xs-10 > li:nth-of-type(10n + 1) {
+    clear: both;
+}
+
+.avg-xs-11 > li {
+    width: 9.09090909%;
+}
+
+.avg-xs-11 > li:nth-of-type(n) {
+    clear: none;
+}
+
+.avg-xs-11 > li:nth-of-type(11n + 1) {
+    clear: both;
+}
+
+.avg-xs-12 > li {
+    width: 8.33333333%;
+}
+
+.avg-xs-12 > li:nth-of-type(n) {
+    clear: none;
+}
+
+.avg-xs-12 > li:nth-of-type(12n + 1) {
+    clear: both;
+}
+
+@media (min-width: 768px) {
+
+    .avg-sm-0 > li {
+        width: auto;
+    }
+
     .avg-sm-1 > li {
         width: 100%;
     }
@@ -1301,7 +1445,12 @@
     }
 }
 
-@media only screen and (min-width: 641px) {
+@media (min-width: 992px) {
+
+    .avg-md-0 > li {
+        width: auto;
+    }
+
     .avg-md-1 > li {
         width: 100%;
     }
@@ -1447,7 +1596,12 @@
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media (min-width: 1200px) {
+
+    .avg-lg-0 > li {
+        width: auto;
+    }
+
     .avg-lg-1 > li {
         width: 100%;
     }

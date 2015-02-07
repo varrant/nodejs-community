@@ -13,7 +13,7 @@ define(function (require, exports, module) {
     var modification = require('../../alien/core/dom/modification.js');
     var see = require('../../alien/core/dom/see.js');
     //var compatible = require('../../alien/core/navigator/compatible.js');
-    var event = require('../../alien/core/event/base.js');
+    var event = require('../../alien/core/event/touch.js');
     var controller = require('../../alien/util/controller.js');
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
@@ -44,7 +44,7 @@ define(function (require, exports, module) {
             attribute.removeClass($nav, unfoldClass);
         });
 
-        event.on($group, 'click', controller.toggle(function () {
+        event.on($group, 'tap', controller.toggle(function () {
             attribute.addClass($header, activeClass);
         }, function () {
             attribute.removeClass($header, activeClass);

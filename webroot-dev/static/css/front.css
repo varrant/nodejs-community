@@ -67,7 +67,7 @@ nav .nav-logo {
 @media (max-width: 767px) {
   nav .nav-left {
     position: fixed;
-    top: 0;
+    top: 49px;
     left: 0;
     bottom: 0;
     width: 30%;
@@ -131,7 +131,6 @@ nav .nav-drop img {
   right: 0;
   -webkit-transform: translateY(-100%);
   transform: translateY(-100%);
-  opacity: 0;
 }
 .nav-downlist li {
   margin: 0;
@@ -146,7 +145,6 @@ nav .nav-drop img {
   background: #008eb1;
 }
 .active .nav-downlist {
-  opacity: 1;
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
