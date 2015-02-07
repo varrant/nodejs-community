@@ -14,6 +14,7 @@ define(function (require, exports, module) {
     var see = require('../../alien/core/dom/see.js');
     //var compatible = require('../../alien/core/navigator/compatible.js');
     var event = require('../../alien/core/event/base.js');
+    var controller = require('../../alien/util/controller.js');
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
     var app = {};
@@ -29,7 +30,7 @@ define(function (require, exports, module) {
         var $toggle = nodes[1];
         var $menu = nodes[2];
         var $group = nodes[3];
-        var $downlist = nodes[4];
+        //var $downlist = nodes[4];
         var section = window['-section-'] || 'home';
         var $active = selector.query('.nav-item-' + section, $menu)[0];
 
@@ -43,9 +44,11 @@ define(function (require, exports, module) {
             attribute.removeClass($nav, unfoldClass);
         });
 
-        event.on($group, 'click', function () {
+        event.on($group, 'click', controller.toggle(function () {
             attribute.addClass($header, activeClass);
-        });
+        }, function () {
+            attribute.removeClass($header, activeClass);
+        }));
     };
 
     // 未读通知
