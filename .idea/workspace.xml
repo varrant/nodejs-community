@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/2grid.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/2grid.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/front.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/front.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/front.less" afterPath="$PROJECT_DIR$/webroot-dev/static/css/front.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
@@ -39,8 +38,8 @@
       <file leaf-file-name="nav.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1530">
-              <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1530">
+              <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -48,21 +47,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2grid.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="2grid.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/2grid.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="19122" max-vertical-offset="29801">
-              <caret line="1134" column="0" selection-start-line="1134" selection-start-column="0" selection-end-line="1134" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.36260164" vertical-offset="10011" max-vertical-offset="29801">
+              <caret line="602" column="11" selection-start-line="602" selection-start-column="5" selection-end-line="602" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="front.less" pinned="false" current-in-tab="true">
+      <file leaf-file-name="front.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/front.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.68251276" vertical-offset="1332" max-vertical-offset="11152">
-              <caret line="102" column="9" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
+            <state vertical-scroll-proportion="-9.538462" vertical-offset="3152" max-vertical-offset="11203">
+              <caret line="200" column="43" selection-start-line="200" selection-start-column="43" selection-end-line="200" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -134,9 +133,9 @@
         <option value="$PROJECT_DIR$/webserver/controllers/front/main.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/nav.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/5function.css" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/css/2grid.css" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/front.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/2grid.css" />
       </list>
     </option>
   </component>
@@ -801,13 +800,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="40823000" />
-    </task>
-    <task id="LOCAL-00173" summary="beta13">
-      <created>1423146912714</created>
-      <option name="number" value="00173" />
-      <option name="project" value="LOCAL" />
-      <updated>1423146912715</updated>
+      <workItem from="1423053668098" duration="41239000" />
     </task>
     <task id="LOCAL-00174" summary="beta13">
       <created>1423147092624</created>
@@ -1097,11 +1090,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423321525514</updated>
     </task>
-    <option name="localTasksCounter" value="222" />
+    <task id="LOCAL-00222" summary="beta15">
+      <created>1423322084021</created>
+      <option name="number" value="00222" />
+      <option name="project" value="LOCAL" />
+      <updated>1423322084021</updated>
+    </task>
+    <option name="localTasksCounter" value="223" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98691000" />
+    <option name="totallyTimeSpent" value="99107000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1627,10 +1626,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/front.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.538462" vertical-offset="3152" max-vertical-offset="11203">
+          <caret line="200" column="43" selection-start-line="200" selection-start-column="43" selection-end-line="200" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1530">
-          <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1530">
+          <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -1639,16 +1646,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/2grid.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="19122" max-vertical-offset="29801">
-          <caret line="1134" column="0" selection-start-line="1134" selection-start-column="0" selection-end-line="1134" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/front.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68251276" vertical-offset="1332" max-vertical-offset="11152">
-          <caret line="102" column="9" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.36260164" vertical-offset="10011" max-vertical-offset="29801">
+          <caret line="602" column="11" selection-start-line="602" selection-start-column="5" selection-end-line="602" selection-end-column="11" />
           <folding />
         </state>
       </provider>

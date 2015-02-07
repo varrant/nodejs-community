@@ -27,7 +27,7 @@ nav {
   position: fixed;
   z-index: 9;
   top: 0;
-  background: fade(@primary-bg-color, 90%);
+  background: @primary-bg-color;
   height: 51px;
   line-height: 50px;
   border-bottom: 1px solid darken(@primary-bg-color, 5%);
@@ -57,6 +57,9 @@ nav {
     font-size: 30px;
     color: #FFF;
     text-align: center;
+    @media (min-width: 768px) {
+      display: none;
+    }
   }
 
   .nav-logo {
@@ -195,11 +198,11 @@ nav {
   }
 
   a:hover {
-    background: darken(@primary-bg-color, 1%);
+    background: darken(@primary-bg-color, 2%);
   }
 
   .active a {
-    background: darken(@primary-bg-color, 1%);
+    background: darken(@primary-bg-color, 5%);
   }
 
   .label {
@@ -265,16 +268,16 @@ nav {
 .m-home {
   li {
     line-height: 30px;
-    border-top: 1px solid #eee;
-
-    &:nth-child(1),
-    &:nth-child(2) {
-      border-top: 0;
-    }
-
-    &:nth-child(2n+1) {
-      border-right: 1px solid #eee;
-    }
+//    border-top: 1px solid #eee;
+//
+//    &:nth-child(1),
+//    &:nth-child(2) {
+//      border-top: 0;
+//    }
+//
+//    &:nth-child(2n+1) {
+//      border-right: 1px solid #eee;
+//    }
   }
 
   a {

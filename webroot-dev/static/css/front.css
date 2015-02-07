@@ -21,7 +21,7 @@ nav {
   position: fixed;
   z-index: 9;
   top: 0;
-  background: rgba(0, 162, 202, 0.9);
+  background: #00a2ca;
   height: 51px;
   line-height: 50px;
   border-bottom: 1px solid #008eb1;
@@ -51,6 +51,11 @@ nav .nav-toggle {
   font-size: 30px;
   color: #FFF;
   text-align: center;
+}
+@media (min-width: 768px) {
+  nav .nav-toggle {
+    display: none;
+  }
 }
 nav .nav-logo {
   width: 120px;
@@ -163,10 +168,10 @@ nav .nav-drop img {
   padding: 0 20px;
 }
 .m-nav a:hover {
-  background: #009ec5;
+  background: #009ac0;
 }
 .m-nav .active a {
-  background: #009ec5;
+  background: #008eb1;
 }
 .m-nav .label {
   position: relative;
@@ -218,14 +223,6 @@ nav .nav-drop img {
 }
 .m-home li {
   line-height: 30px;
-  border-top: 1px solid #eee;
-}
-.m-home li:nth-child(1),
-.m-home li:nth-child(2) {
-  border-top: 0;
-}
-.m-home li:nth-child(2n+1) {
-  border-right: 1px solid #eee;
 }
 .m-home a {
   position: relative;
