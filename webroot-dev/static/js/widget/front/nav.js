@@ -44,7 +44,7 @@ define(function (require, exports, module) {
         });
 
         event.on($group, 'click', function () {
-            attribute.addClass($group, activeClass);
+            attribute.addClass($header, activeClass);
         });
     };
 
