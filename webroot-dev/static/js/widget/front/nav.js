@@ -30,14 +30,14 @@ define(function (require, exports, module) {
 
         attribute.addClass($active, 'active');
 
-        if (see.visibility($menu) === 'visible') {
-            return;
-        }
+        //if (see.visibility($menu) === 'visible') {
+        //    return;
+        //}
 
         event.on($toggle, 'click', function (eve) {
             eve.preventDefault();
             attribute.css($bg, 'display', 'block');
-            attribute.css($menu, 'display', 'flex');
+            attribute.css($menu, 'display', 'block');
         });
 
         event.on($bg, 'click', function () {
@@ -75,6 +75,6 @@ define(function (require, exports, module) {
         }).on('error', alert);
     };
 
-    //app.toggle();
+    app.toggle();
     app.notice();
 });
