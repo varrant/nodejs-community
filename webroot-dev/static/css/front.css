@@ -8,6 +8,9 @@ body {
 }
 /*nav*/
 nav {
+  width: 100%;
+  position: fixed;
+  z-index: 9;
   background: rgba(18, 140, 194, 0.9);
   line-height: 40px;
   margin-bottom: 3rem;
@@ -27,9 +30,6 @@ nav .nav-bg {
   bottom: 0;
   left: 0;
   z-index: 8;
-}
-nav:hover {
-  background: #128cc2;
 }
 nav .i-bars {
   position: absolute;
@@ -99,13 +99,30 @@ nav .nav-right li {
 nav .nav-right li:last-child {
   margin-right: 0;
 }
+nav .nav-downlist {
+  position: absolute;
+  width: 140px;
+  background: #2795C6;
+  z-index: 3;
+  list-style: none;
+  padding: 0;
+  border-bottom: 4px solid #0e6a93;
+  top: 50px;
+  right: 50%;
+  margin: 0 -70px 0 0;
+  text-align: center;
+}
+nav .nav-downlist li {
+  margin: 0;
+}
 /*m-nav*/
 .m-nav {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.m-nav li {
+.m-nav > li {
+  position: relative;
   float: left;
   margin-right: 20px;
 }
@@ -115,11 +132,11 @@ nav .nav-right li:last-child {
   padding: 0 20px;
 }
 .m-nav a:hover {
-  background: #149dd9;
+  background: #1185b9;
   color: #fff;
 }
 .m-nav li.active a {
-  background: #107bab;
+  background: #0f719d;
   color: #fff;
 }
 .m-nav .label {
