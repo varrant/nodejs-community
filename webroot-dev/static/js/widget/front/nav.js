@@ -75,6 +75,6 @@ define(function (require, exports, module) {
         }).on('error', alert);
     };
 
-    app.toggle();
+    //app.toggle();
     app.notice();
 });
