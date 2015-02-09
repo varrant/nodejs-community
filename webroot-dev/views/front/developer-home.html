@@ -17,39 +17,42 @@
 <body ontouchstart="" class="p-developer">
 {{include ./include/nav.html}}
 
-<div class="container a-slide-down-fixed">
-    <div class="row g-container">
-        <!--主-->
-        <div class="col-md-8 g-main">
-            {{include ./include/developer/main-body.html}}
-            {{if pageType === "accept-by"}}
-            {{include ./include/developer/main-accept-by.html}}
-            {{else if pageType === "agree-by"}}
-            {{include ./include/developer/main-agree-by.html}}
-            {{else if pageType === "comment-by"}}
-            {{include ./include/developer/main-comment-by.html}}
-            {{else if pageType === "reply-by"}}
-            {{include ./include/developer/main-reply-by.html}}
-            {{else if pageType === "comment"}}
-            {{include ./include/developer/main-comment.html}}
-            {{else if pageType === "reply"}}
-            {{include ./include/developer/main-reply.html}}
-            {{else if pageType === "agree"}}
-            {{include ./include/developer/main-agree.html}}
-            {{else if pageType === "accept"}}
-            {{include ./include/developer/main-accept.html}}
-            {{/if}}
-        </div>
-        <!--/主-->
-        <!--副-->
-        <div class="col-md-4 g-sub">
-            {{include ./include/developer/sub-statistics.html}}
-        </div>
-        <!--/副-->
-    </div>
-</div>
 
-{{include ./include/footer.html}}
+<div class="g-main a-slide-down-fixed">
+    <div class="container">
+        <div class="row g-container">
+            <!--主-->
+            <div class="col-md-8 g-main">
+                {{include ./include/developer/main-body.html}}
+                {{if pageType === "accept-by"}}
+                {{include ./include/developer/main-accept-by.html}}
+                {{else if pageType === "agree-by"}}
+                {{include ./include/developer/main-agree-by.html}}
+                {{else if pageType === "comment-by"}}
+                {{include ./include/developer/main-comment-by.html}}
+                {{else if pageType === "reply-by"}}
+                {{include ./include/developer/main-reply-by.html}}
+                {{else if pageType === "comment"}}
+                {{include ./include/developer/main-comment.html}}
+                {{else if pageType === "reply"}}
+                {{include ./include/developer/main-reply.html}}
+                {{else if pageType === "agree"}}
+                {{include ./include/developer/main-agree.html}}
+                {{else if pageType === "accept"}}
+                {{include ./include/developer/main-accept.html}}
+                {{/if}}
+            </div>
+            <!--/主-->
+            <!--副-->
+            <div class="col-md-4 g-sub">
+                {{include ./include/developer/sub-statistics.html}}
+            </div>
+            <!--/副-->
+        </div>
+    </div>
+
+    {{include ./include/footer.html}}
+</div>
 
 
 <script src="/static/js/libs/coolie.min.js"
