@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/controllers/sadmin/category.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/controllers/sadmin/column.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/controllers/sadmin/developer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/controllers/sadmin/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/controllers/sadmin/main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/controllers/sadmin/middleware.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/controllers/sadmin/notification.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/controllers/sadmin/object.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/controllers/sadmin/section.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/controllers/sadmin/setting.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/column/form.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/column/list.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/index.js" afterPath="$PROJECT_DIR$/webserver/controllers/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/routers/sadmin.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webserver/controllers/sadmin/column.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webserver/controllers/sadmin/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webserver/controllers/sadmin/notification.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webserver/controllers/sadmin/object.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/routers/admin.js" afterPath="$PROJECT_DIR$/webserver/routers/admin.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -44,7 +37,20 @@
     <favorites_list name="nodejs-community" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="sadmin.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webserver/routers/sadmin.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.13821138" vertical-offset="0" max-vertical-offset="615">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,8 +58,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/help-body.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/link-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" />
         <option value="$PROJECT_DIR$/cli/0.0.1-beta13/3-interactive-model.js" />
         <option value="$PROJECT_DIR$/webserver/utils/filter.js" />
@@ -103,6 +107,8 @@
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/webserver/controllers/index.js" />
+        <option value="$PROJECT_DIR$/webserver/routers/admin.js" />
+        <option value="$PROJECT_DIR$/webserver/routers/sadmin.js" />
       </list>
     </option>
   </component>
@@ -292,7 +298,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
+              <option name="myItemId" value="routers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -441,11 +447,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/webserver/routers" />
       <recent name="$PROJECT_DIR$/webserver/controllers" />
       <recent name="$PROJECT_DIR$/webroot-dev/views/sadmin" />
       <recent name="$PROJECT_DIR$/webroot-dev/views/front/include/developer" />
       <recent name="$PROJECT_DIR$/webroot-dev/static/js/app/front" />
-      <recent name="$PROJECT_DIR$/cli/0.0.1-beta13" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/cli/0.0.1-beta112" />
@@ -676,13 +682,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="46383000" />
-    </task>
-    <task id="LOCAL-00187" summary="beta14">
-      <created>1423234485396</created>
-      <option name="number" value="00187" />
-      <option name="project" value="LOCAL" />
-      <updated>1423234485396</updated>
+      <workItem from="1423053668098" duration="46499000" />
     </task>
     <task id="LOCAL-00188" summary="beta14">
       <created>1423234491779</created>
@@ -972,15 +972,21 @@
       <option name="project" value="LOCAL" />
       <updated>1423487112275</updated>
     </task>
-    <option name="localTasksCounter" value="236" />
+    <task id="LOCAL-00236" summary="beta16">
+      <created>1423487359858</created>
+      <option name="number" value="00236" />
+      <option name="project" value="LOCAL" />
+      <updated>1423487359858</updated>
+    </task>
+    <option name="localTasksCounter" value="237" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104251000" />
+    <option name="totallyTimeSpent" value="104367000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.57231724" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1000,7 +1006,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40279937" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1099,14 +1105,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-reply.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4040747" vertical-offset="0" max-vertical-offset="589">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.028862478" vertical-offset="0" max-vertical-offset="589">
@@ -1512,16 +1510,28 @@
         <state vertical-scroll-proportion="0.5252032" vertical-offset="0" max-vertical-offset="615">
           <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
           <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/routers/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30406505" vertical-offset="0" max-vertical-offset="615">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/controllers/sadmin/main.js">
+    <entry file="file://$PROJECT_DIR$/webserver/routers/sadmin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5252032" vertical-offset="0" max-vertical-offset="680">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.13821138" vertical-offset="0" max-vertical-offset="615">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

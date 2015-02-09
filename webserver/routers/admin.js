@@ -15,26 +15,8 @@ module.exports = function (app, ctrlAdmin) {
     app.get('/admin/', ctrlAdmin.main.home);
 
 
-    // 设置
-    app.get('/admin/setting/', ctrlAdmin.setting.get);
-
-
-    // section
-    app.get('/admin/section/', ctrlAdmin.section.get);
-
-
-    // category
-    app.get('/admin/category/', ctrlAdmin.category.get);
-
-
-    // category
+    // column
     app.get('/admin/column/', ctrlAdmin.column.get);
-
-
-    // developer
-    app.get('/admin/developer/list/', ctrlAdmin.developer.list);
-    app.get('/admin/developer/', ctrlAdmin.developer.get);
-    app.get('/admin/me/', ctrlAdmin.developer.me);
 
 
     // list
