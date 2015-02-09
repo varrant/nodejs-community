@@ -15,16 +15,36 @@
 
 {{include ../front/include/nav.html}}
 
-<div class="g-main">
-    <div class="m-main">
-        <h1 class="main-title"><i class="i i-question-circle"></i>{{title}}</h1>
-        <div class="main-body">
-            {{include ./include/object/item-help.html}}
+
+
+
+<div class="g-body a-slide-down-fixed">
+    <div class="container">
+        <div class="row g-container">
+            <div class="col-xs-12 g-main">
+                <div class="m-card">
+                    <h2 class="card-title">
+                        <i class="i i-question-circle"></i>{{title}}
+                    </h2>
+
+                    <div class="card-body">
+                        <div id="tab-form">
+                            {{include ./include/object/item-help.html}}
+                        </div>
+                        <div id="tab-response" class="f-none"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    {{include ./include/footer.html}}
+
+    {{include ../front/include/footer.html}}
 </div>
 
+
+
+
+<script src="/static/js/libs/vue.min.js"></script>
 <script src="/static/js/libs/coolie.min.js"
         data-config="./coolie-config.js"
         data-main="./admin/object-item.js"></script>
