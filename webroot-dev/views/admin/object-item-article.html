@@ -23,18 +23,18 @@
         <div class="row g-container">
             <div class="col-xs-12 g-main">
                 <div class="m-card">
+                    {{if id}}
+                    <ul class="card-tab avg-xs-2 f-text-center" id="object-tab">
+                        <li class="active"><a href="#tab-form"><i class="i i-file-text"></i>{{title}}</a></li>
+                        <li><a href="#tab-response"><i class="i i-comments"></i><span
+                                class="j-comment-by-count">0</span>评论，<span
+                                class="j-reply-by-count">0</span>回复</a></li>
+                    </ul>
+                    {{else}}
                     <h2 class="card-title">
-                        {{if id}}
-                        <ul class="main-tab f-list-left" id="object-tab">
-                            <li class="active"><a href="#tab-form"><i class="i i-file-text"></i>{{title}}</a></li>
-                            <li><a href="#tab-response"><i class="i i-comments"></i><span
-                                    class="j-comment-by-count">0</span>评论，<span
-                                    class="j-reply-by-count">0</span>回复</a></li>
-                        </ul>
-                        {{else}}
                         <i class="i i-file-text"></i>{{title}}
-                        {{/if}}
                     </h2>
+                    {{/if}}
 
                     <div class="card-body">
                         <div id="tab-form">
@@ -49,6 +49,7 @@
 </div>
 
 
+<script src="/static/js/libs/vue.min.js"></script>
 <script src="/static/js/libs/coolie.min.js"
         data-config="./coolie-config.js"
         data-main="./admin/object-item.js"></script>
