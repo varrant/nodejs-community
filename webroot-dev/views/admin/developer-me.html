@@ -15,25 +15,21 @@
 
 <div class="g-body a-slide-down-fixed">
     <div class="container">
-        <div class="row g-container">
-            <div class="col-xs-12">
-                <div class="m-card">
-                    <h2 class="card-title">
-                        <i class="i i-file-text"></i><i class="i i-user"></i>{{title}} - {{me.nickname}}
-                    </h2>
+        <div class="g-container">
+            <div class="m-card">
+                <h2 class="card-title">
+                   <i class="i i-user"></i>{{title}} - {{me.nickname}}
+                </h2>
+
+                <div class="card-body">
+                    <div class="m-me">
+                        <div class="me-avatar me-avatar-abs">
+                            <img src="{{me.email|gravatar:100}}" alt="avatar"/>
+                        </div>
+                    </div>
+                    {{include ./include/developer/me.html}}
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="m-main">
-        <h1 class="main-title"><i class="i i-user"></i>{{title}} - {{me.nickname}}</h1>
-        <div class="main-body">
-            <div class="m-me">
-                <div class="me-avatar me-avatar-abs">
-                    <img src="{{me.email|gravatar:100}}" alt="avatar"/>
-                </div>
-            </div>
-            {{include ./include/developer/me.html}}
         </div>
     </div>
 

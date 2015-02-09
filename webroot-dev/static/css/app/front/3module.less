@@ -384,3 +384,153 @@
 .m-500 {
   margin-top: 200px;
 }
+
+
+
+
+.m-me {
+  position: relative;
+
+  .me-avatar {
+    width: 100px;
+    height: 100px;
+
+    &-abs {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  .me-profile {
+    padding: 0;
+    margin: 0 0 0 110px;
+    list-style: none;
+
+    li {
+      border-bottom: 1px solid @border-color;
+      padding: 5px 0;
+
+      &:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+    }
+  }
+
+  .me-get {
+    border-top: 1px solid @border-color;
+    border-bottom: 1px solid @border-color;
+    background-color: #fcfcfc;
+    margin: 0 -20px;
+    padding: 20px;
+    list-style: none;
+
+    li {
+      margin-right: 20px;
+    }
+
+    strong {
+      margin-right: 2px;
+    }
+  }
+
+  .me-edit {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+
+
+.m-form {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  @width: 140px;
+
+  > li {
+    position: relative;
+    padding: 0 0 0 @width;
+    margin-bottom: 20px;
+    min-height: 36px;
+  }
+
+  > li.form-striped {
+    margin-bottom: 0;
+  }
+
+  > li.form-desc {
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .form-key {
+    position: absolute;
+    width: @width;
+    left: 0;
+    top: 0;
+    text-align: right;
+    font-weight: 900;
+    color: #555;
+    line-height: 36px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .form-required {
+    color: #ff0025;
+    margin-left: 5px;
+  }
+
+  .form-val {
+    padding: 0;
+    margin: 0 0 0 20px;
+  }
+
+  .form-action {
+    padding: 20px;
+    margin-left: -100px;
+    margin-top: 40px;
+    border-top: 1px solid #ECECEC;
+  }
+
+  .form-opt {
+    display: block;
+    margin: 0;
+    padding: 5px 0;
+  }
+
+  .form-desc {
+    padding: 0;
+    margin: 10px 0 0;
+    color: #888;
+    font-size: 14px;
+    line-height: 20px;
+
+    code, strong, a {
+      margin: 0 5px;
+    }
+  }
+
+  &-vertical {
+    > li {
+      padding: 0;
+    }
+
+    .form-key, .form-val {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin: 0;
+      text-align: left;
+    }
+
+    .form-action {
+      margin-left: 0;
+    }
+  }
+}
+

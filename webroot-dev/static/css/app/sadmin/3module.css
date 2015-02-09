@@ -45,50 +45,6 @@
   background: #f8f8f8;
   border-bottom: 1px solid #e6e6e6;
 }
-.m-me {
-  position: relative;
-}
-.m-me .me-avatar {
-  width: 100px;
-  height: 100px;
-}
-.m-me .me-avatar-abs {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.m-me .me-profile {
-  padding: 0;
-  margin: 0 0 0 110px;
-  list-style: none;
-}
-.m-me .me-profile li {
-  border-bottom: 1px solid #e6e6e6;
-  padding: 5px 0;
-}
-.m-me .me-profile li:last-child {
-  padding-bottom: 0;
-  border-bottom: 0;
-}
-.m-me .me-get {
-  border-top: 1px solid #e6e6e6;
-  border-bottom: 1px solid #e6e6e6;
-  background-color: #fcfcfc;
-  margin: 0 -20px;
-  padding: 20px;
-  list-style: none;
-}
-.m-me .me-get li {
-  margin-right: 20px;
-}
-.m-me .me-get strong {
-  margin-right: 2px;
-}
-.m-me .me-edit {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
 .m-types tr:first-child .types-up {
   display: none;
 }
