@@ -14,7 +14,7 @@ define(function (require, exports, module) {
 
     new List('#list', '#pagination', {
         query: {
-            section: window['-section-']
+            section: window['-section-'].id
         }
     });
 });

@@ -40,7 +40,7 @@ define(function (require, exports, module) {
 
     app.object = function () {
         var item = new Item('#form', '#content', {
-            section: window['-section-'],
+            section: window['-section-'].id,
             id: window['-id-']
         });
 
