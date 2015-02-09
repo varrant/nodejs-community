@@ -31,5 +31,5 @@ module.exports = function (app, ctrl) {
 
 
     // me
-    app.get('/admin/developer/', ctrl.developer.me);
+    app.get('/admin/me/', ctrl.developer.me);
 };
