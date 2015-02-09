@@ -9,76 +9,76 @@
 var settings = ['oauth', 'alioss', 'smtp', 'website'];
 var configs = require('../../configs/');
 
-module.exports = function (app, ctrlApi) {
+module.exports = function (app, ctrl) {
     var timeout = 'dev' === configs.app.env ? 1000 : 0;
-    app.all(/^\/api\/.*$/, ctrlApi.middleware.delay(timeout));
-    app.all(/^\/admin\/api\/.*$/, ctrlApi.middleware.delay(timeout));
+    app.all(/^\/api\/.*$/, ctrl.middleware.delay(timeout));
+    app.all(/^\/admin\/api\/.*$/, ctrl.middleware.delay(timeout));
 
 
     // notification
-    app.get('/admin/api/notification/count/', ctrlApi.notification.count);
-    app.get('/admin/api/notification/', ctrlApi.notification.get);
-    app.delete('/admin/api/notification/', ctrlApi.notification.delete);
-    app.put('/admin/api/notification/', ctrlApi.notification.put);
+    app.get('/admin/api/notification/count/', ctrl.notification.count);
+    app.get('/admin/api/notification/', ctrl.notification.get);
+    app.delete('/admin/api/notification/', ctrl.notification.delete);
+    app.put('/admin/api/notification/', ctrl.notification.put);
 
 
     // nav
-    app.get('/admin/api/nav/', ctrlApi.nav.list);
+    app.get('/admin/api/nav/', ctrl.nav.list);
 
 
     // object
-    app.get('/admin/api/object/list/', ctrlApi.object.list);
-    app.get('/admin/api/object/', ctrlApi.object.get);
-    app.post('/admin/api/object/', ctrlApi.object.post);
-    app.put('/admin/api/object/', ctrlApi.object.put);
-    app.post('/admin/api/object/accept/', ctrlApi.object.accept);
+    app.get('/admin/api/object/list/', ctrl.object.list);
+    app.get('/admin/api/object/', ctrl.object.get);
+    app.post('/admin/api/object/', ctrl.object.post);
+    app.put('/admin/api/object/', ctrl.object.put);
+    app.post('/admin/api/object/accept/', ctrl.object.accept);
 
 
     // response
-    app.get('/api/response/', ctrlApi.response.get);
-    app.get('/api/response/list/', ctrlApi.response.list);
-    app.get('/api/response/count/', ctrlApi.response.count);
-    app.post('/admin/api/response/', ctrlApi.response.post);
-    app.post('/admin/api/response/agree/', ctrlApi.response.agree);
+    app.get('/api/response/', ctrl.response.get);
+    app.get('/api/response/list/', ctrl.response.list);
+    app.get('/api/response/count/', ctrl.response.count);
+    app.post('/admin/api/response/', ctrl.response.post);
+    app.post('/admin/api/response/agree/', ctrl.response.agree);
 
 
     // oss
-    app.put('/admin/api/oss/', ctrlApi.oss.put);
+    app.put('/admin/api/oss/', ctrl.oss.put);
 
 
     // setting
-    app.get('/admin/api/setting/', ctrlApi.setting.get);
+    app.get('/admin/api/setting/', ctrl.setting.get);
     settings.forEach(function (key) {
-        app.put('/admin/api/setting/' + key + '/', ctrlApi.setting.put(key));
+        app.put('/admin/api/setting/' + key + '/', ctrl.setting.put(key));
     });
 
 
     // section
-    app.get('/admin/api/section/', ctrlApi.section.get);
-    app.put('/admin/api/section/', ctrlApi.section.put);
-    app.delete('/admin/api/section/', ctrlApi.section.delete);
+    app.get('/admin/api/section/', ctrl.section.get);
+    app.put('/admin/api/section/', ctrl.section.put);
+    app.delete('/admin/api/section/', ctrl.section.delete);
 
 
     // category
-    app.get('/admin/api/category/', ctrlApi.category.get);
-    app.put('/admin/api/category/', ctrlApi.category.put);
-    app.delete('/admin/api/category/', ctrlApi.category.delete);
+    app.get('/admin/api/category/', ctrl.category.get);
+    app.put('/admin/api/category/', ctrl.category.put);
+    app.delete('/admin/api/category/', ctrl.category.delete);
 
 
     // column
-    app.get('/admin/api/column/', ctrlApi.column.get);
-    app.put('/admin/api/column/', ctrlApi.column.put);
-    app.delete('/admin/api/column/', ctrlApi.column.delete);
+    app.get('/admin/api/column/', ctrl.column.get);
+    app.put('/admin/api/column/', ctrl.column.put);
+    app.delete('/admin/api/column/', ctrl.column.delete);
 
 
     // developer
-    app.post('/api/developer/login/', ctrlApi.developer.login);
-    app.post('/api/developer/logout/', ctrlApi.developer.logout);
-    app.get('/api/developer/', ctrlApi.developer.get);
-    app.get('/admin/api/developer/', ctrlApi.developer.detail);
-    app.post('/admin/api/developer/', ctrlApi.developer.role);
+    app.post('/api/developer/login/', ctrl.developer.login);
+    app.post('/api/developer/logout/', ctrl.developer.logout);
+    app.get('/api/developer/', ctrl.developer.get);
+    app.get('/admin/api/developer/', ctrl.developer.detail);
+    app.post('/admin/api/developer/', ctrl.developer.role);
 
 
     // translate
-    app.get('/api/translate/', ctrlApi.translate.get);
+    app.get('/api/translate/', ctrl.translate.get);
 };
