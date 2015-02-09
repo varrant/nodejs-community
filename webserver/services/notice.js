@@ -32,10 +32,10 @@ exports.toObjectAuthor = function (respondDeveloper, objectAuthor, commentInObje
     var type = response.parentResponse ? 'replyObject' : 'commentObject';
     notification.createOne({
         type: type,
-        source: respondDeveloper.id,
-        target: objectAuthor.id,
-        object: commentInObject.id,
-        response: response.id
+        source: respondDeveloper.id.toString(),
+        target: objectAuthor.id.toString(),
+        object: commentInObject.id.toString(),
+        response: response.id.toString()
     }, log.holdError);
 
     // 2. 邮件通知
@@ -74,10 +74,10 @@ exports.toResponseAuthor = function (sourceDeveloper, commentAuthor, replyInObje
     // 1. 站内通知
     notification.createOne({
         type: 'reply',
-        source: sourceDeveloper.id,
-        target: commentAuthor.id,
-        object: replyInObject.id,
-        response: replyResponse.id
+        source: sourceDeveloper.id.toString(),
+        target: commentAuthor.id.toString(),
+        object: replyInObject.id.toString(),
+        response: replyResponse.id.toString()
     }, log.holdError);
 
     // 2. 邮件通知
@@ -152,10 +152,10 @@ exports.accept = function (askDeveloper, answerDeveloper, questionObject, questi
     // 1. 站内通知
     notification.createOne({
         type: 'accept',
-        source: askDeveloper.id,
-        target: answerDeveloper.id,
-        object: questionObject.id,
-        response: questionResponse.id
+        source: askDeveloper.id.toString(),
+        target: answerDeveloper.id.toString(),
+        object: questionObject.id.toString(),
+        response: questionResponse.id.toString()
     }, log.holdError);
 
     // 2. 邮件通知
@@ -194,10 +194,10 @@ exports.agreeComment = function (agreeDeveloper, agreeByDeveloper, agreeinObject
     // 1. 站内通知
     notification.createOne({
         type: 'agreeComment',
-        source: agreeDeveloper.id,
-        target: agreeByDeveloper.id,
-        object: agreeinObject.id,
-        response: agreeByResponse.id
+        source: agreeDeveloper.id.toString(),
+        target: agreeByDeveloper.id.toString(),
+        object: agreeinObject.id.toString(),
+        response: agreeByResponse.id.toString()
     }, log.holdError);
 
     // 2. 邮件通知
@@ -236,10 +236,10 @@ exports.agreeReply = function (agreeDeveloper, agreeByDeveloper, agreeinObject, 
     // 1. 站内通知
     notification.createOne({
         type: 'agreeReply',
-        source: agreeDeveloper.id,
-        target: agreeByDeveloper.id,
-        object: agreeinObject.id,
-        response: agreeByResponse.id
+        source: agreeDeveloper.id.toString(),
+        target: agreeByDeveloper.id.toString(),
+        object: agreeinObject.id.toString(),
+        response: agreeByResponse.id.toString()
     }, log.holdError);
 
     // 2. 邮件通知

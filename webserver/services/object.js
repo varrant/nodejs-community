@@ -108,7 +108,7 @@ exports.createOne = function (author, data, callback) {
                     return next(err);
                 }
 
-                if (doc.id !== data.column) {
+                if (doc.id.toString() !== data.column) {
                     err = new Error('不允许发布到他人专栏内');
                     err.code = 403;
                     return next(err);
@@ -123,11 +123,11 @@ exports.createOne = function (author, data, callback) {
             var data2 = dato.pick(data, ['section', 'title', 'uri', 'type', 'category', 'labels',
                 'column', 'introduction', 'link', 'content', 'isDisplay']);
             var data3 = {
-                author: author.id,
+                author: author.id.toString(),
                 publishAt: date,
                 updateAt: date,
                 updateList: [{
-                    developer: author.id,
+                    developer: author.id.toString(),
                     date: date
                 }]
             };
@@ -188,12 +188,12 @@ exports.createOne = function (author, data, callback) {
                 }
 
                 // 更新 developer.objectCount
-                developer.increaseObjectCount({_id: doc.author}, 1, log.holdError);
+                developer.increaseObjectCount({_id: doc.author.toString()}, 1, log.holdError);
 
                 // 发布积分
                 console.log(scoreMap);
                 console.log(objectInSection);
-                developer.increaseScore({_id: doc.author}, scoreMap[objectInSection.uri] || 0, log.holdError);
+                developer.increaseScore({_id: doc.author.toString()}, scoreMap[objectInSection.uri] || 0, log.holdError);
             }
         });
 };
@@ -287,7 +287,7 @@ exports.updateOne = function (author, conditions, data, callback) {
                     return next(err);
                 }
 
-                if (doc.id !== data.column) {
+                if (doc.id.toString() !== data.column) {
                     err = new Error('不允许发布到他人专栏内');
                     err.code = 403;
                     return next(err);
@@ -306,7 +306,7 @@ exports.updateOne = function (author, conditions, data, callback) {
             data2.updateAt = date;
             data2.$push = {
                 updateList: {
-                    developer: author.id,
+                    developer: author.id.toString(),
                     date: date
                 }
             };
@@ -396,7 +396,7 @@ exports.increaseScore = function (operator, id, count, callback) {
             object.push(conditions, 'scoreList', {
                 date: date,
                 score: count,
-                developer: operator.id
+                developer: operator.id.toString()
             }, done);
         })
         // 异步并行
@@ -466,7 +466,7 @@ exports.increaseApplyByCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.pushContributor = function (conditions, contributor, callback) {
-    object.push(conditions, 'contributors', contributor.id, 5, callback);
+    object.push(conditions, 'contributors', contributor.id.toString(), 5, callback);
 };
 
 
@@ -564,11 +564,11 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
 
                 // 交互
                 interactive.active({
-                    source: operator.id,
-                    target: acceptByResponse.author,
+                    source: operator.id.toString(),
+                    target: acceptByResponse.author.toString(),
                     type: 'accept',
-                    object: newDoc.id,
-                    response: acceptByResponse.id,
+                    object: newDoc.id.toString(),
+                    response: acceptByResponse.id.toString(),
                     value: 1,
                     hasApproved: true
                 }, log.holdError);
@@ -591,7 +591,7 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
 
                 // response
                 response.findOneAndUpdate({_id: acceptByResponse.id}, {
-                    acceptByObject: newDoc.id
+                    acceptByObject: newDoc.id.toString()
                 }, log.holdError);
             }
         });

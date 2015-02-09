@@ -172,7 +172,7 @@ exports.createOne = function (author, data, meta, callback) {
                         // 增加主动用户评论积分
                         developer.increaseScore({_id: author.id}, scoreMap.comment, log.holdError);
                         // 增加被动用户评论积分
-                        developer.increaseScore({_id: responseObject.author}, scoreUtil.commentBy(author, responseObject.author), log.holdError);
+                        developer.increaseScore({_id: responseObject.author.toString()}, scoreUtil.commentBy(author, responseObject.author.toString()), log.holdError);
                     }
                 }
                 // 回复
@@ -184,9 +184,9 @@ exports.createOne = function (author, data, meta, callback) {
                         // 增加主动用户回复积分
                         developer.increaseScore({_id: author.id}, scoreMap.reply, log.holdError);
                         // 增加被动用户回复积分
-                        developer.increaseScore({_id: responseObject.author}, scoreUtil.replyBy(author, responseObject.author), log.holdError);
+                        developer.increaseScore({_id: responseObject.author.toString()}, scoreUtil.replyBy(author, responseObject.author.toString()), log.holdError);
                         // 增加被动用户回复积分
-                        developer.increaseScore({_id: parentResponse.author}, scoreUtil.replyBy(author, parentResponse.author), log.holdError);
+                        developer.increaseScore({_id: parentResponse.author.toString()}, scoreUtil.replyBy(author, parentResponse.author.toString()), log.holdError);
                     }
                 }
 
@@ -245,11 +245,11 @@ exports.agree = function (operator, conditions, callback) {
         .task(function (next, inResponse, responseAtObject) {
             // 默认点赞
             interactive.toggle({
-                source: operator.id,
-                target: inResponse.author,
+                source: operator.id.toString(),
+                target: inResponse.author.toString(),
                 type: 'agree',
-                object: responseAtObject.id,
-                response: inResponse.id
+                object: responseAtObject.id.toString(),
+                response: inResponse.id.toString()
             }, true, function (err, interactiveValue, newInteractive, oldInteractive) {
                 next(err, interactiveValue, inResponse, oldInteractive);
             });
@@ -258,7 +258,7 @@ exports.agree = function (operator, conditions, callback) {
         .task(function (next, interactiveValue, inResponse, oldInteractive) {
             interactive.find({
                 type: 'agree',
-                response: inResponse.id,
+                response: inResponse.id.toString(),
                 hasApproved: true
             }, {
                 limit: 5,
@@ -298,7 +298,7 @@ exports.agree = function (operator, conditions, callback) {
                     howdo
                         // 查 object 作者
                         .task(function (done) {
-                            developer.findOne({_id: inResponse.author}, done);
+                            developer.findOne({_id: inResponse.author.toString()}, done);
                         })
                         // 查 object
                         .task(function (done) {
@@ -330,7 +330,7 @@ exports.agree = function (operator, conditions, callback) {
                     developer.increaseAgreeCount({_id: operator.id}, interactiveValue, log.holdError);
 
                     // 用户被赞数量
-                    developer.increaseAgreeByCount({_id: inResponse.author}, interactiveValue, log.holdError);
+                    developer.increaseAgreeByCount({_id: inResponse.author.toString()}, interactiveValue, log.holdError);
 
                     // 自己加少量分
                     developer.increaseScore({_id: operator.id}, interactiveValue * scoreMap.agree, log.holdError);
@@ -338,9 +338,9 @@ exports.agree = function (operator, conditions, callback) {
                     // 为他人点赞才计分
                     if (inResponse.author.toString() !== operator.id.toString()) {
                         var s = interactiveValue > 0 ?
-                            +scoreUtil.agreeBy(operator, inResponse.author) :
+                            +scoreUtil.agreeBy(operator, inResponse.author.toString()) :
                             -scoreMap.agreeBy;
-                        developer.increaseScore({_id: inResponse.author}, s, log.holdError);
+                        developer.increaseScore({_id: inResponse.author.toString()}, s, log.holdError);
                     }
                 }
             }
@@ -370,7 +370,7 @@ function _noticeToObjectAuthor(repondAuthor, responseObject, response) {
     howdo
         // 1. 查找 object 作者
         .task(function (next) {
-            developer.findOne({_id: responseObject.author}, next);
+            developer.findOne({_id: responseObject.author.toString()}, next);
         })
         // 顺序串行
         .follow(function (err, objectAuthor) {
@@ -403,7 +403,7 @@ function _noticeToCommentAuthor(replyAuthor, replyInObject, replyResponse, paren
     howdo
         // 1. 查找 parentResponse 作者
         .task(function (next) {
-            developer.findOne({_id: parentResponse.author}, next);
+            developer.findOne({_id: parentResponse.author.toString()}, next);
         })
         // 顺序串行
         .follow(function (err, parentResponseAuthor) {
