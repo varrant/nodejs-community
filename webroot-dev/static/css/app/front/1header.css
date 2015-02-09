@@ -135,6 +135,7 @@ nav .nav-join {
   padding: 0;
 }
 .nav-downlist a {
+  position: relative;
   display: block;
   color: #fff;
   padding: 10px 16px;
@@ -184,4 +185,24 @@ nav .nav-join {
   left: -10px;
   border-radius: 100%;
   padding: 5px 8px;
+}
+.notification-count {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  background: #C83030;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  color: #FFF;
+  border-radius: 100%;
+  text-align: center;
+}
+.active .nav-drop .notification-count {
+  opacity: 0;
+}
+.nav-downlist .notification-count {
+  left: auto;
+  right: 10px;
+  top: 9px;
 }

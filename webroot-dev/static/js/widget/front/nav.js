@@ -73,9 +73,11 @@ define(function (require, exports, module) {
                 return;
             }
 
+            json.data = json.data > 9 ? 'N' : json.data;
+
             $notification.forEach(function ($wrap) {
                 var $span = modification.create('span', {
-                    class: 'notification-count'
+                    class: 'notification-count f-transition'
                 });
 
                 $span.innerHTML = json.data;

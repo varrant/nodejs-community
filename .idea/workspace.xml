@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/1header.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/1header.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/1header.less" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/1header.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/nav.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/nav.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -34,48 +34,7 @@
     <favorites_list name="nodejs-community" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="nav.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/nav.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.615385" vertical-offset="65" max-vertical-offset="680">
-              <caret line="17" column="78" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="78" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nav.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6682927" vertical-offset="830" max-vertical-offset="1530">
-              <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="3module.less" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/front/3module.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="210.76923" vertical-offset="8540" max-vertical-offset="9129">
-              <caret line="180" column="18" selection-start-line="180" selection-start-column="18" selection-end-line="180" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="1header.less" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/front/1header.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.692308" vertical-offset="3321" max-vertical-offset="3978">
-              <caret line="227" column="0" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -995,13 +954,7 @@
       <workItem from="1422967616233" duration="6654000" />
       <workItem from="1423053668098" duration="52142000" />
       <workItem from="1423494417640" duration="137000" />
-      <workItem from="1423494577253" duration="2605000" />
-    </task>
-    <task id="LOCAL-00250" summary="beta16">
-      <created>1423488107040</created>
-      <option name="number" value="00250" />
-      <option name="project" value="LOCAL" />
-      <updated>1423488107040</updated>
+      <workItem from="1423494577253" duration="2965000" />
     </task>
     <task id="LOCAL-00251" summary="beta16">
       <created>1423488120152</created>
@@ -1291,15 +1244,21 @@
       <option name="project" value="LOCAL" />
       <updated>1423497076103</updated>
     </task>
-    <option name="localTasksCounter" value="299" />
+    <task id="LOCAL-00299" summary="beta16">
+      <created>1423497513654</created>
+      <option name="number" value="00299" />
+      <option name="project" value="LOCAL" />
+      <updated>1423497513654</updated>
+    </task>
+    <option name="localTasksCounter" value="300" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112752000" />
+    <option name="totallyTimeSpent" value="113112000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.57231724" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1318,7 +1277,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23990306" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23990306" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40155038" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1778,34 +1737,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/nav.html">
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/front/1header.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.615385" vertical-offset="65" max-vertical-offset="680">
-          <caret line="17" column="78" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.71137524" vertical-offset="3729" max-vertical-offset="4318">
+          <caret line="244" column="13" selection-start-line="244" selection-start-column="13" selection-end-line="244" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/front/3module.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="210.76923" vertical-offset="8540" max-vertical-offset="9129">
+        <state vertical-scroll-proportion="-9.303905" vertical-offset="8540" max-vertical-offset="9129">
           <caret line="180" column="18" selection-start-line="180" selection-start-column="18" selection-end-line="180" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/front/1header.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.692308" vertical-offset="3321" max-vertical-offset="3978">
-          <caret line="227" column="0" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6682927" vertical-offset="830" max-vertical-offset="1530">
-          <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.5300813" vertical-offset="949" max-vertical-offset="1564">
+          <caret line="79" column="59" selection-start-line="79" selection-start-column="59" selection-end-line="79" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/nav.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3803056" vertical-offset="65" max-vertical-offset="680">
+          <caret line="17" column="78" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="78" />
           <folding />
         </state>
       </provider>

@@ -4,7 +4,7 @@
 @primary-fg-color: lighten(@primary-bg-color, 90%);
 @border-color: #e6e6e6;
 
-header{
+header {
   width: 100%;
   position: fixed;
   z-index: 9;
@@ -131,7 +131,7 @@ nav {
     }
   }
 
-  .nav-join{
+  .nav-join {
     display: block;
     text-align: center;
     color: #fff;
@@ -159,11 +159,12 @@ nav {
   }
 
   a {
+    position: relative;
     display: block;
     color: #fff;
     padding: 10px 16px;
 
-    &:hover{
+    &:hover {
       background: darken(@primary-bg-color, 2%);
     }
   }
@@ -223,7 +224,25 @@ nav {
   }
 }
 
+.notification-count {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  background: #C83030;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  color: #FFF;
+  border-radius: 100%;
+  text-align: center;
+}
 
-.notification-count{
+.active .nav-drop .notification-count {
+  opacity: 0;
+}
 
+.nav-downlist .notification-count {
+  left: auto;
+  right: 10px;
+  top: 9px;
 }
