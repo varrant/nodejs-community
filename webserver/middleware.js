@@ -41,6 +41,14 @@ module.exports = function (next, app) {
                 }
 
                 app.locals.$section = docs || [];
+                app.locals.$sectionIdMap = {};
+                app.locals.$sectionUriMap = {};
+
+                app.locals.$section.forEach(function (item) {
+                    app.locals.$sectionIdMap[item.id] = item;
+                    app.locals.$sectionUriMap[item.uri] = item;
+                });
+
                 done();
             });
         })
