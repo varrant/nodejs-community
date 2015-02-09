@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/routers/error.js" afterPath="$PROJECT_DIR$/webserver/routers/error.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/routers/front.js" afterPath="$PROJECT_DIR$/webserver/routers/front.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -67,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="front.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="front.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webserver/routers/front.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2856">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.22113821" vertical-offset="0" max-vertical-offset="2856">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -79,10 +79,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="error.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="error.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webserver/routers/error.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4699187" vertical-offset="0" max-vertical-offset="615">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
               <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -99,7 +99,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment-by.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-reply.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-reply-by.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment.html" />
@@ -150,6 +149,7 @@
         <option value="$PROJECT_DIR$/webserver/routers/sadmin.js" />
         <option value="$PROJECT_DIR$/webserver/routers/api.js" />
         <option value="$PROJECT_DIR$/webserver/routers/error.js" />
+        <option value="$PROJECT_DIR$/webserver/routers/front.js" />
       </list>
     </option>
   </component>
@@ -849,13 +849,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="47112000" />
-    </task>
-    <task id="LOCAL-00201" summary="beta14">
-      <created>1423237212575</created>
-      <option name="number" value="00201" />
-      <option name="project" value="LOCAL" />
-      <updated>1423237212575</updated>
+      <workItem from="1423053668098" duration="47125000" />
     </task>
     <task id="LOCAL-00202" summary="beta14">
       <created>1423237406560</created>
@@ -1145,11 +1139,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423488094728</updated>
     </task>
-    <option name="localTasksCounter" value="250" />
+    <task id="LOCAL-00250" summary="beta16">
+      <created>1423488107040</created>
+      <option name="number" value="00250" />
+      <option name="project" value="LOCAL" />
+      <updated>1423488107040</updated>
+    </task>
+    <option name="localTasksCounter" value="251" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104980000" />
+    <option name="totallyTimeSpent" value="104993000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1173,7 +1173,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40279937" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1686,20 +1686,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/routers/front.js">
+    <entry file="file://$PROJECT_DIR$/webserver/routers/error.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2856">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/routers/error.js">
+    <entry file="file://$PROJECT_DIR$/webserver/routers/front.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4699187" vertical-offset="0" max-vertical-offset="615">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.22113821" vertical-offset="0" max-vertical-offset="2856">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
