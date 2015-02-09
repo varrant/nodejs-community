@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+ - 文件描述
+ - @author ydr.me
+ - @create 2014-12-19 18:53
+ -->
+<html>
+<head lang="zh-cn">
+    {{include ../include/meta.html}}
+    {{include ./include/meta.html}}
+</head>
+<body ontouchstart="">
+
+{{include ./include/sidebar.html}}
+{{include ./include/header.html}}
+<div class="g-main">
+    <div class="m-main">
+        <h1 class="main-title"><i class="i i-folder"></i>{{title}}</h1>
+        <div class="main-body">
+            <div id="category" class="row f-none">
+                <div class="col-md-4">
+                    {{include ./include/category/form.html}}
+                </div>
+                <div class="col-md-8">
+                    {{include ./include/category/list.html}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{include ./include/footer.html}}
+</div>
+
+
+<script src="/static/js/libs/coolie.min.js"
+        data-config="./coolie-config.js"
+        data-main="./admin/category.js"></script>
+
+</body>
+</html>
