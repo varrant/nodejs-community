@@ -20,7 +20,7 @@ module.exports = function (app) {
             title: '版块设置'
         };
 
-        res.render('admin/section.html', data);
+        res.render('sadmin/section.html', data);
     };
 
 
