@@ -32,7 +32,7 @@ define(function (require, exports, module) {
         var $menu = nodes[2];
         var $group = nodes[3];
         //var $downlist = nodes[4];
-        var section = window['-section-'] || 'home';
+        var section = window['-section-'] && window['-section-'].uri || 'home';
         var $active = selector.query('.nav-item-' + section, $menu)[0];
 
         attribute.addClass($active, activeClass);
