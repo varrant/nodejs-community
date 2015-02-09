@@ -13,7 +13,7 @@ define(function (require, exports, module) {
     var Scrollbar = require('../../alien/ui/Scrollbar/');
     var dato = require('../../alien/util/dato.js');
     var app = {};
-    var pathname = location.pathname.replace(/^\/admin\//, '');
+    var pathname = location.pathname.replace(/^\/sadmin\//, '');
 
     app.init = function () {
         ajax({
