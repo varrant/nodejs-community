@@ -30,7 +30,7 @@ module.exports = function (app) {
             return next();
         }
 
-        res.render('admin/developer-list.html', data);
+        res.render('sadmin/developer-list.html', data);
     };
 
 
@@ -52,36 +52,7 @@ module.exports = function (app) {
             return next();
         }
 
-        res.render('admin/developer-detail.html', data);
-    };
-
-
-    /**
-     * 我
-     * @param req
-     * @param res
-     * @param next
-     */
-    exports.me = function (req, res, next) {
-        var data = {
-            title: '我',
-            me: res.locals.$developer
-        };
-
-        developer.findOne({
-            _id: res.locals.$developer.id
-        }, function (err, doc) {
-            if(err){
-                return next(err);
-            }
-
-            if(!doc){
-                return next();
-            }
-
-            req.session.$developer = res.locals.$developer = doc;
-            res.render('admin/developer-me.html', data);
-        });
+        res.render('sadmin/developer-detail.html', data);
     };
 
     return exports;

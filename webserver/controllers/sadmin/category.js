@@ -20,7 +20,7 @@ module.exports = function (app) {
             title: '分类设置'
         };
 
-        res.render('admin/category.html', data);
+        res.render('sadmin/category.html', data);
     };
 
 
