@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/sadmin/footer.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/sadmin/grid.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/sadmin/module.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/admin.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/admin.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/admin.less" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/admin.less" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/admin.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/admin.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front-admin-public.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front-admin-public.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front.less" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -573,6 +574,10 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -597,10 +602,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sadmin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -892,13 +893,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="50977000" />
-    </task>
-    <task id="LOCAL-00233" summary="beta16">
-      <created>1423487086310</created>
-      <option name="number" value="00233" />
-      <option name="project" value="LOCAL" />
-      <updated>1423487086316</updated>
+      <workItem from="1423053668098" duration="50992000" />
     </task>
     <task id="LOCAL-00234" summary="beta16">
       <created>1423487097189</created>
@@ -1188,11 +1183,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423492310969</updated>
     </task>
-    <option name="localTasksCounter" value="282" />
+    <task id="LOCAL-00282" summary="beta16">
+      <created>1423492402948</created>
+      <option name="number" value="00282" />
+      <option name="project" value="LOCAL" />
+      <updated>1423492402948</updated>
+    </task>
+    <option name="localTasksCounter" value="283" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108845000" />
+    <option name="totallyTimeSpent" value="108860000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
