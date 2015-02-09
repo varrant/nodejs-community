@@ -4,7 +4,7 @@
     "host": "/"
   },
   "css": {
-    "path": "./static/css/",
+    "path": "./static/css/app/",
     "host": "/"
   },
   "html": [
