@@ -6,26 +6,30 @@
 
 'use strict';
 
-module.exports = function (app, ctrlAdmin) {
+module.exports = function (app, ctrl) {
     // 中间件
-    app.use(/^\/admin\/.*$/i, ctrlAdmin.middleware.login);
+    app.use(/^\/admin\/.*$/i, ctrl.middleware.login);
 
 
     // 主页
-    app.get('/admin/', ctrlAdmin.main.home);
+    app.get('/admin/', ctrl.main.home);
 
 
     // column
-    app.get('/admin/column/', ctrlAdmin.column.get);
+    app.get('/admin/column/', ctrl.column.get);
 
 
     // list
     app.locals.$section.forEach(function (section) {
-        app.get('/admin/object/' + section.uri + '/list/', ctrlAdmin.object.list(section));
-        app.get('/admin/object/' + section.uri + '/', ctrlAdmin.object.get(section));
+        app.get('/admin/object/' + section.uri + '/list/', ctrl.object.list(section));
+        app.get('/admin/object/' + section.uri + '/', ctrl.object.get(section));
     });
 
 
     // notification
-    app.get('/admin/notification/', ctrlAdmin.notification.get);
+    app.get('/admin/notification/', ctrl.notification.get);
+
+
+    // me
+    app.get('/admin/developer/', ctrl.developer.me);
 };
