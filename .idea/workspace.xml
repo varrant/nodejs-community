@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/nav.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/admin.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/admin.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/admin.less" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/admin.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/front.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/front.less" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/meta.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/meta.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/meta.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/meta.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/meta.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/meta.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/admin.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/admin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/admin.less" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/admin.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/nav.less" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/nav.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -93,11 +88,11 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/object-list-help.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/object-list-link.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/object-list-question.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/admin.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front.less" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/nav.less" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/meta.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/meta.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/nav.less" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/admin.less" />
       </list>
     </option>
   </component>
@@ -939,13 +934,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="48632000" />
-    </task>
-    <task id="LOCAL-00220" summary="beta15">
-      <created>1423321235914</created>
-      <option name="number" value="00220" />
-      <option name="project" value="LOCAL" />
-      <updated>1423321235914</updated>
+      <workItem from="1423053668098" duration="48886000" />
     </task>
     <task id="LOCAL-00221" summary="beta15">
       <created>1423321525514</created>
@@ -1235,11 +1224,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423489595323</updated>
     </task>
-    <option name="localTasksCounter" value="269" />
+    <task id="LOCAL-00269" summary="beta16">
+      <created>1423489783835</created>
+      <option name="number" value="00269" />
+      <option name="project" value="LOCAL" />
+      <updated>1423489783835</updated>
+    </task>
+    <option name="localTasksCounter" value="270" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106500000" />
+    <option name="totallyTimeSpent" value="106754000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1760,22 +1755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/admin.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43293718" vertical-offset="0" max-vertical-offset="5491">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/nav.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2886248" vertical-offset="0" max-vertical-offset="3876">
-          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/front.less">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25976232" vertical-offset="0" max-vertical-offset="8109">
@@ -1796,6 +1775,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.057724956" vertical-offset="0" max-vertical-offset="589">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/nav.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7691002" vertical-offset="3015" max-vertical-offset="3893">
+          <caret line="204" column="62" selection-start-line="204" selection-start-column="62" selection-end-line="204" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/admin.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20203735" vertical-offset="0" max-vertical-offset="4641">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           <folding />
         </state>
       </provider>
