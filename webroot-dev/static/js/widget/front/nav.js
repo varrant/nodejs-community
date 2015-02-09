@@ -56,6 +56,10 @@ define(function (require, exports, module) {
 
     // 未读通知
     app.notification = function () {
+        if(!hasLogin){
+            return;
+        }
+
         var $notification = selector.query('.j-notification-wrap');
 
         if (!$notification.length) {

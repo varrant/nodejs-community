@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/notification.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/notification.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -33,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="notification.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/notification.html">
+      <file leaf-file-name="nav.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31748727" vertical-offset="68" max-vertical-offset="884">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.36260164" vertical-offset="729" max-vertical-offset="1615">
+              <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -99,9 +99,9 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/nav.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/1header.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/app/admin/notification.js" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/include/meta.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/notification.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
       </list>
     </option>
   </component>
@@ -907,13 +907,7 @@
       <workItem from="1422967616233" duration="6654000" />
       <workItem from="1423053668098" duration="52142000" />
       <workItem from="1423494417640" duration="137000" />
-      <workItem from="1423494577253" duration="4066000" />
-    </task>
-    <task id="LOCAL-00255" summary="beta16">
-      <created>1423488335382</created>
-      <option name="number" value="00255" />
-      <option name="project" value="LOCAL" />
-      <updated>1423488335382</updated>
+      <workItem from="1423494577253" duration="4212000" />
     </task>
     <task id="LOCAL-00256" summary="beta16">
       <created>1423488366930</created>
@@ -1203,11 +1197,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423498839755</updated>
     </task>
-    <option name="localTasksCounter" value="304" />
+    <task id="LOCAL-00304" summary="beta16">
+      <created>1423499011625</created>
+      <option name="number" value="00304" />
+      <option name="project" value="LOCAL" />
+      <updated>1423499011625</updated>
+    </task>
+    <option name="localTasksCounter" value="305" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114213000" />
+    <option name="totallyTimeSpent" value="114359000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1705,14 +1705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33658537" vertical-offset="915" max-vertical-offset="1547">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/include/meta.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20203735" vertical-offset="0" max-vertical-offset="589">
@@ -1725,6 +1717,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31748727" vertical-offset="68" max-vertical-offset="884">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36260164" vertical-offset="729" max-vertical-offset="1615">
+          <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
           <folding />
         </state>
       </provider>
