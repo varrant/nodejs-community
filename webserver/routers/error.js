@@ -6,14 +6,14 @@
 
 'use strict';
 
-module.exports = function (app, ctrlError) {
+module.exports = function (app, ctrl) {
     /**
      * client error
      */
-    app.use(ctrlError.clientError);
+    app.use(ctrl.clientError);
 
     /**
      * server error
      */
-    app.use(ctrlError.serverError);
+    app.use(ctrl.serverError);
 };
