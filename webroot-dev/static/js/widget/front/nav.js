@@ -45,7 +45,7 @@ define(function (require, exports, module) {
             attribute.removeClass($nav, unfoldClass);
         });
 
-        if(hasLogin){
+        if (hasLogin) {
             event.on($group, 'click', controller.toggle(function () {
                 attribute.addClass($header, activeClass);
             }, function () {
@@ -55,10 +55,10 @@ define(function (require, exports, module) {
     };
 
     // 未读通知
-    app.notice = function () {
-        var $link = selector.query('#admin-enter')[0];
+    app.notification = function () {
+        var $notification = selector.query('.j-notification');
 
-        if (!$link) {
+        if (!$notification.length) {
             return;
         }
 
@@ -73,16 +73,17 @@ define(function (require, exports, module) {
                 return;
             }
 
-            var $span = modification.create('span', {
-                class: 'badge badge-danger'
-            });
+            $notification.forEach(function ($wrap) {
+                var $span = modification.create('span', {
+                    class: 'notification-count'
+                });
 
-            $span.innerHTML = json.data;
-            attribute.addClass($link, activeClass);
-            modification.insert($span, $link);
+                $span.innerHTML = json.data;
+                modification.insert($span, $wrap);
+            });
         }).on('error', alert);
     };
 
     app.toggle();
-    app.notice();
+    app.notification();
 });
