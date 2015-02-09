@@ -1,0 +1,9 @@
+<div class="g-sidebar">
+    <nav>
+        <ul id="nav" class="f-none">
+            <li v-repeat="item:list" v-class="active: item.active">
+                <a href="\{{item.href}}"><i class="\{{item.icon}}"></i><span>\{{item.text}}</span></a>
+            </li>
+        </ul>
+    </nav>
+</div>
