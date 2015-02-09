@@ -6,24 +6,24 @@
 
 'use strict';
 
-module.exports = function (app, ctrlAdmin) {
+module.exports = function (app, ctrlSadmin) {
     // 中间件
-    app.use(/^\/sadmin\/.*$/i, ctrlAdmin.middleware.login);
+    app.use(/^\/sadmin\/.*$/i, ctrlSadmin.middleware.login);
 
 
     // 设置
-    app.get('/sadmin/setting/', ctrlAdmin.setting.get);
+    app.get('/sadmin/setting/', ctrlSadmin.setting.get);
 
 
     // section
-    app.get('/sadmin/section/', ctrlAdmin.section.get);
+    app.get('/sadmin/section/', ctrlSadmin.section.get);
 
 
     // category
-    app.get('/sadmin/category/', ctrlAdmin.category.get);
+    app.get('/sadmin/category/', ctrlSadmin.category.get);
 
 
     // developer
-    app.get('/sadmin/developer/list/', ctrlAdmin.developer.list);
-    app.get('/sadmin/developer/', ctrlAdmin.developer.get);
+    app.get('/sadmin/developer/list/', ctrlSadmin.developer.list);
+    app.get('/sadmin/developer/', ctrlSadmin.developer.get);
 };

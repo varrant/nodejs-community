@@ -30,6 +30,9 @@ module.exports = function (app) {
     require('./test.js')(app, exports.test);
 
     // 管理路由
+    require('./sadmin.js')(app, exports.sadmin);
+
+    // 管理路由
     require('./admin.js')(app, exports.admin);
 
     // 前端路由
