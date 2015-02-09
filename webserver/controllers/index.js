@@ -11,6 +11,7 @@ module.exports = function (app) {
     return {
         api: require('./api/')(app),
         admin: require('./admin/')(app),
+        sadmin: require('./sadmin/')(app),
         front: require('./front/')(app),
         error: require('./error.js')(app),
         middleware: require('./middleware.js')(app),
