@@ -19,7 +19,7 @@ module.exports = function (app) {
         var canCategory = permission.can($developer, 'category');
         var canColumn = permission.can($developer, 'column');
         var list = [];
-        var engineerRole = $developer.role;
+        var developerRole = $developer.role;
         var $section = app.locals.$section;
         var sectionMap = {};
 
@@ -82,7 +82,7 @@ module.exports = function (app) {
             });
         }
 
-        if ((engineerRole & 1 << articleRole) !== 0) {
+        if ((developerRole & 1 << articleRole) !== 0) {
             list.push({
                 href: '/admin/object/article/list/',
                 text: '我的文章',
@@ -91,7 +91,7 @@ module.exports = function (app) {
             });
         }
 
-        if ((engineerRole & 1 << questionRole) !== 0) {
+        if ((developerRole & 1 << questionRole) !== 0) {
             list.push({
                 href: '/admin/object/question/list/',
                 text: '我的提问',
@@ -100,7 +100,7 @@ module.exports = function (app) {
             });
         }
 
-        if ((engineerRole & 1 << linkRole) !== 0) {
+        if ((developerRole & 1 << linkRole) !== 0) {
             list.push({
                 href: '/admin/object/link/list/',
                 text: '我的链接',
@@ -109,7 +109,7 @@ module.exports = function (app) {
             });
         }
 
-        if ((engineerRole & 1 << helpRole) !== 0) {
+        if ((developerRole & 1 << helpRole) !== 0) {
             list.push({
                 href: '/admin/object/help/list/',
                 text: '帮助管理',
@@ -118,7 +118,7 @@ module.exports = function (app) {
             });
         }
 
-        if ((engineerRole & role20) !== 0) {
+        if ((developerRole & role20) !== 0) {
             list.push({
                 href: '/admin/developer/list/',
                 text: '用户管理',
