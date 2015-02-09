@@ -12,7 +12,7 @@ module.exports = function (app, ctrl) {
 
 
     // 主页
-    app.get('/admin/', ctrl.main.home);
+    //app.get('/admin/', ctrl.main.home);
 
 
     // column
