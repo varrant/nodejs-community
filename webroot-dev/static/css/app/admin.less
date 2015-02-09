@@ -3,7 +3,6 @@
 @border-color: #e6e6e6;
 @sidebar-width: 120px;
 
-
 // 管理员
 .g-sidebar {
   position: fixed;
@@ -15,7 +14,7 @@
   overflow: hidden;
 }
 
-.g-header{
+.g-header {
   position: fixed;
   left: @sidebar-width;
   top: 0;
@@ -46,13 +45,13 @@ nav {
     padding: 10px;
     color: #ccc;
 
-    &:hover{
+    &:hover {
       background: #222;
       color: #fff;
     }
   }
 
-  li.active a{
+  li.active a {
     background: #222;
     color: #fff;
     font-weight: 900;
@@ -60,40 +59,40 @@ nav {
   }
 }
 
-footer{
+footer {
   padding: 10px 0;
 }
 
 .m-main {
   .main-title,
-  .main-subtitle{
+  .main-subtitle {
     font-weight: normal;
     padding: 20px;
     margin: 0;
 
-    .i{
+    .i {
       margin-left: 0;
     }
   }
 
-  .main-title{
+  .main-title {
     color: #000;
   }
 
-  .main-subtitle{
+  .main-subtitle {
     color: #555;
   }
 
-  .main-tab{
+  .main-tab {
     padding: 0;
     margin: 0;
     list-style: none;
 
-    li{
+    li {
       float: left;
     }
 
-    a{
+    a {
       display: block;
       padding: 5px 30px;
       color: #888;
@@ -103,8 +102,8 @@ footer{
       cursor: pointer;
     }
 
-    li.active{
-      a{
+    li.active {
+      a {
         color: #0e90d2;
         cursor: default;
         background: #fff;
@@ -113,48 +112,48 @@ footer{
     }
   }
 
-  .main-body{
+  .main-body {
     padding: 20px;
   }
 }
 
-.m-welcome{
+.m-welcome {
   padding: 20px;
   background: lighten(@border-color, 7%);
   border-bottom: 1px solid @border-color;
 }
 
-.m-me{
+.m-me {
   position: relative;
 
-  .me-avatar{
+  .me-avatar {
     width: 100px;
     height: 100px;
 
-    &-abs{
+    &-abs {
       position: absolute;
       top: 0;
       right: 0;
     }
   }
 
-  .me-profile{
+  .me-profile {
     padding: 0;
     margin: 0 0 0 110px;
     list-style: none;
-    
-    li{
+
+    li {
       border-bottom: 1px solid @border-color;
       padding: 5px 0;
 
-      &:last-child{
+      &:last-child {
         padding-bottom: 0;
         border-bottom: 0;
       }
     }
   }
 
-  .me-get{
+  .me-get {
     border-top: 1px solid @border-color;
     border-bottom: 1px solid @border-color;
     background-color: #fcfcfc;
@@ -162,39 +161,37 @@ footer{
     padding: 20px;
     list-style: none;
 
-    li{
+    li {
       margin-right: 20px;
     }
 
-    strong{
+    strong {
       margin-right: 2px;
     }
   }
 
-  .me-edit{
+  .me-edit {
     position: absolute;
     top: 0;
     right: 0;
   }
 }
 
-
-.m-types{
-  tr{
-    &:first-child{
-      .types-up{
+.m-types {
+  tr {
+    &:first-child {
+      .types-up {
         display: none;
       }
     }
 
-    &:last-child{
-      .types-down{
+    &:last-child {
+      .types-down {
         display: none;
       }
     }
   }
 }
-
 
 //m-pager
 .m-pager {
@@ -229,31 +226,30 @@ footer{
   }
 }
 
-
-.m-form{
+.m-form {
   padding: 0;
   margin: 0;
   list-style: none;
   @width: 140px;
 
-  >li{
+  > li {
     position: relative;
     padding: 0 0 0 @width;
     margin-bottom: 20px;
     min-height: 36px;
   }
 
-  >li.form-striped{
+  > li.form-striped {
     margin-bottom: 0;
   }
 
-  >li.form-desc{
+  > li.form-desc {
     padding: 0;
     margin-top: 0;
     margin-bottom: 20px;
   }
 
-  .form-key{
+  .form-key {
     position: absolute;
     width: @width;
     left: 0;
@@ -266,47 +262,47 @@ footer{
     margin: 0;
   }
 
-  .form-required{
+  .form-required {
     color: #ff0025;
     margin-left: 5px;
   }
 
-  .form-val{
+  .form-val {
     padding: 0;
     margin: 0 0 0 20px;
   }
 
-  .form-action{
+  .form-action {
     padding: 20px;
     margin-left: -100px;
     margin-top: 40px;
     border-top: 1px solid #ECECEC;
   }
 
-  .form-opt{
+  .form-opt {
     display: block;
     margin: 0;
     padding: 5px 0;
   }
 
-  .form-desc{
+  .form-desc {
     padding: 0;
     margin: 10px 0 0;
     color: #888;
     font-size: 14px;
     line-height: 20px;
 
-    code,strong,a{
+    code, strong, a {
       margin: 0 5px;
     }
   }
 
-  &-vertical{
-    >li{
+  &-vertical {
+    > li {
       padding: 0;
     }
 
-    .form-key,.form-val{
+    .form-key, .form-val {
       position: relative;
       display: block;
       width: 100%;
@@ -314,7 +310,7 @@ footer{
       text-align: left;
     }
 
-    .form-action{
+    .form-action {
       margin-left: 0;
     }
   }
