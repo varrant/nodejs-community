@@ -14,7 +14,6 @@ define(function (require, exports, module) {
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
     var methods = {};
-    var $notification = selector.query('.j-notification-count');
 
 
     // 选择读状态
@@ -73,15 +72,16 @@ define(function (require, exports, module) {
 
     /**
      * 改变当前未读通知数量
-     * @param count
+     * @param num
      */
-    function increse(count) {
-        $notification.forEach(function ($nt) {
+    function increse(num) {
+        selector.query('.j-notification-count').forEach(function ($nt) {
             var val = 1 * attribute.data($nt, 'value');
 
-            val += count;
+            val += num;
             attribute.data($nt, 'value', val);
             $nt.innerHTML = val > 9 ? 'N' : val;
+            attribute.css($nt, 'display', val ? '' :'none');
         });
     }
 });

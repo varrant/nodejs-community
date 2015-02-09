@@ -56,7 +56,7 @@ define(function (require, exports, module) {
 
     // 未读通知
     app.notification = function () {
-        var $notification = selector.query('.j-notification');
+        var $notification = selector.query('.j-notification-wrap');
 
         if (!$notification.length) {
             return;
@@ -69,12 +69,8 @@ define(function (require, exports, module) {
                 return alert(json);
             }
 
-            if (!json.data) {
-                return;
-            }
-
             var val = json.data || 0;
-            var text = $notification > 9 ? 'N' : val;
+            var text = val > 9 ? 'N' : val;
 
             $notification.forEach(function ($wrap) {
                 var $span = modification.create('span', {
@@ -83,6 +79,7 @@ define(function (require, exports, module) {
                 });
 
                 $span.innerHTML = text;
+                attribute.css($span, 'display', val ? '' :'none');
                 modification.insert($span, $wrap);
             });
         }).on('error', alert);

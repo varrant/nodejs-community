@@ -15,7 +15,7 @@
         </div>
         <div class="nav-group j-flag" style="width:{{$developer.id ? '70':'100'}}px;">
             {{if $developer.id}}
-            <a href="javascript:;" class="nav-drop f-transition j-notification"><img src="{{=$developer.avatarM}}" alt=""/></a>
+            <a href="javascript:;" class="nav-drop f-transition j-notification-wrap"><img src="{{=$developer.avatarM}}" alt=""/></a>
             {{else}}
             <a href="javascript:;" class="nav-join j-login"><i class="i i-user"></i>加入</a>
             {{/if}}
@@ -24,7 +24,7 @@
 
     <ul class="nav-downlist j-flag f-transition" id="nav-downlist">
         <li><a href="/admin/me/"><i class="i i-user"></i>关于我</a></li>
-        <li><a href="/admin/notification/" class="j-notification"><i class="i i-at"></i>我的通知</a></li>
+        <li><a href="/admin/notification/" class="j-notification-wrap"><i class="i i-at"></i>我的通知</a></li>
         <li><a href="/admin/object/article/list/"><i class="i i-file-text"></i>我的文章</a></li>
         <li><a href="/admin/object/question/list/"><i class="i i-cube"></i>我的提问</a></li>
         <li><a href="/admin/object/link/list/"><i class="i i-link"></i>我的链接</a></li>

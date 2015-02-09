@@ -186,7 +186,10 @@ nav .nav-join {
   border-radius: 100%;
   padding: 5px 8px;
 }
-.notification-count {
+.j-notification-wrap {
+  position: relative;
+}
+.j-notification-count {
   position: absolute;
   left: 0;
   top: 4px;
@@ -198,10 +201,10 @@ nav .nav-join {
   border-radius: 100%;
   text-align: center;
 }
-.active .nav-drop .notification-count {
+.active .nav-drop .j-notification-count {
   opacity: 0;
 }
-.nav-downlist .notification-count {
+.nav-downlist .j-notification-count {
   left: auto;
   right: 10px;
   top: 9px;
