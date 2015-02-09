@@ -20,7 +20,7 @@ module.exports = function (app) {
             title: 'web 配置'
         };
 
-        res.render('admin/setting.html', data);
+        res.render('sadmin/setting.html', data);
     };
 
     return exports;
