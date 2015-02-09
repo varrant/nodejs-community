@@ -184,6 +184,15 @@ module.exports = function (app) {
         });
     };
 
+
+    // 版块
+    exports.readSection = function (req, res, next) {
+        res.locals.$section = app.locals.$section;
+        res.locals.$sectionIdMap = app.locals.$sectionIdMap;
+        res.locals.$sectionUriMap = app.locals.$sectionUriMap;
+        next();
+    };
+
     return exports;
 };
 

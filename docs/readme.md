@@ -2,6 +2,8 @@
 - app.locals.$config 社区配置
 - app.locals.$setting web 配置
 - app.locals.$section 社区版块
+- app.locals.$sectionIdMap 社区版块
+- app.locals.$sectionUriMap 社区版块
 - app.locals.$category 社区分类
 - app.locals.$founder 社区创始人
 - app.locals.$system 系统信息
