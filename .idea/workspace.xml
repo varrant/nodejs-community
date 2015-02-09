@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Upload/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Upload/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Upload/template.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Upload/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Upload/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Upload/template.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -631,40 +631,6 @@
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="widget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Upload" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nodejs-community" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nodejs-community" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webroot-dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1008,13 +974,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="47307000" />
-    </task>
-    <task id="LOCAL-00207" summary="beta15">
-      <created>1423312404165</created>
-      <option name="number" value="00207" />
-      <option name="project" value="LOCAL" />
-      <updated>1423312404165</updated>
+      <workItem from="1423053668098" duration="47315000" />
     </task>
     <task id="LOCAL-00208" summary="beta15">
       <created>1423315782114</created>
@@ -1304,11 +1264,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423488335382</updated>
     </task>
-    <option name="localTasksCounter" value="256" />
+    <task id="LOCAL-00256" summary="beta16">
+      <created>1423488366930</created>
+      <option name="number" value="00256" />
+      <option name="project" value="LOCAL" />
+      <updated>1423488366930</updated>
+    </task>
+    <option name="localTasksCounter" value="257" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105175000" />
+    <option name="totallyTimeSpent" value="105183000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
