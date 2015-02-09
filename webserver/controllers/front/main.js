@@ -123,6 +123,7 @@ module.exports = function (app) {
                     done();
                 });
             })
+            // 异步顺序并行
             .together(function (err) {
                 if (err) {
                     return next(err);
