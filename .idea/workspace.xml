@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/developer/me.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/notification/list.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/category/form.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/category/list.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/developer/detail.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/developer/list.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/developer/role.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/developer/statistics.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/section/form.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/section/list.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -459,6 +465,62 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="webroot-dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot-dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="developer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="configs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -735,13 +797,7 @@
       <workItem from="1422793276885" duration="5000" />
       <workItem from="1422964804238" duration="2109000" />
       <workItem from="1422967616233" duration="6654000" />
-      <workItem from="1423053668098" duration="46931000" />
-    </task>
-    <task id="LOCAL-00196" summary="beta14">
-      <created>1423236098178</created>
-      <option name="number" value="00196" />
-      <option name="project" value="LOCAL" />
-      <updated>1423236098178</updated>
+      <workItem from="1423053668098" duration="46954000" />
     </task>
     <task id="LOCAL-00197" summary="beta14">
       <created>1423236317962</created>
@@ -1031,11 +1087,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423487871962</updated>
     </task>
-    <option name="localTasksCounter" value="245" />
+    <task id="LOCAL-00245" summary="beta16">
+      <created>1423487926118</created>
+      <option name="number" value="00245" />
+      <option name="project" value="LOCAL" />
+      <updated>1423487926118</updated>
+    </task>
+    <option name="localTasksCounter" value="246" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104799000" />
+    <option name="totallyTimeSpent" value="104822000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
