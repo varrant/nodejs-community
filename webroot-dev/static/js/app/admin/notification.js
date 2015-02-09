@@ -12,7 +12,9 @@ define(function (require, exports, module) {
     var ajax = require('../../widget/common/ajax.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var selector = require('../../alien/core/dom/selector.js');
+    var attribute = require('../../alien/core/dom/attribute.js');
     var methods = {};
+    var $notification = selector.query('.j-notification-count');
 
 
     // 选择读状态
@@ -74,16 +76,12 @@ define(function (require, exports, module) {
      * @param count
      */
     function increse(count) {
-        var $notification = selector.query('#notification')[0];
+        $notification.forEach(function ($nt) {
+            var val = 1 * attribute.data($nt, 'value');
 
-        if (!$notification) {
-            return;
-        }
-
-        var $number = selector.query('span', $notification)[0];
-        var number = Number($number.innerHTML);
-
-        number += count;
-        $number.innerHTML = String(number);
+            val += count;
+            attribute.data($nt, 'value', val);
+            $nt.innerHTML = val > 9 ? 'N' : val;
+        });
     }
 });

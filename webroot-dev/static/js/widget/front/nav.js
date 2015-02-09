@@ -73,14 +73,16 @@ define(function (require, exports, module) {
                 return;
             }
 
-            json.data = json.data > 9 ? 'N' : json.data;
+            var val = json.data || 0;
+            var text = $notification > 9 ? 'N' : val;
 
             $notification.forEach(function ($wrap) {
                 var $span = modification.create('span', {
-                    class: 'notification-count f-transition'
+                    class: 'j-notification-count f-transition',
+                    'data-value': val
                 });
 
-                $span.innerHTML = json.data;
+                $span.innerHTML = text;
                 modification.insert($span, $wrap);
             });
         }).on('error', alert);
