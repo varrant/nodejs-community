@@ -13,7 +13,18 @@
 
 {{include ../front/include/nav.html}}
 
-<div class="g-main">
+<div class="g-body a-slide-down-fixed">
+    <div class="container">
+        <div class="row g-container">
+            <div class="col-xs-12">
+                <div class="m-card">
+                    <h2 class="card-title">
+                        <i class="i i-file-text"></i><i class="i i-user"></i>{{title}} - {{me.nickname}}
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="m-main">
         <h1 class="main-title"><i class="i i-user"></i>{{title}} - {{me.nickname}}</h1>
         <div class="main-body">
@@ -25,7 +36,8 @@
             {{include ./include/developer/me.html}}
         </div>
     </div>
-    {{include ./include/footer.html}}
+
+    {{include ../front/include/footer.html}}
 </div>
 
 
