@@ -92,8 +92,7 @@ define(function (require, exports, module) {
         event.on(document.body, 'click', '.alien-ui-response-content img', onview);
     };
 
-    require('../../widget/admin/header.js');
-    require('../../widget/admin/sidebar.js');
+    require('../../widget/front/nav.js');
     app.tab();
     app.object();
     app.imgview();

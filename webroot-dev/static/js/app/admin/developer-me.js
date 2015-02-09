@@ -8,6 +8,5 @@
 define(function (require, exports, module) {
     'use strict';
 
-    require('../../widget/admin/header.js');
-    require('../../widget/admin/sidebar.js');
+    require('../../widget/front/nav.js');
 });

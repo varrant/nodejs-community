@@ -10,8 +10,7 @@ define(function (require, exports, module) {
 
     var List = require('../../widget/admin/List.js');
 
-    require('../../widget/admin/header.js');
-    require('../../widget/admin/sidebar.js');
+    require('../../widget/front/nav.js');
 
     new List('#list', '#pagination', {
         query: {

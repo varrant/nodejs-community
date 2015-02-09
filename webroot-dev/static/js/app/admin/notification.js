@@ -52,8 +52,7 @@ define(function (require, exports, module) {
     };
 
 
-    require('../../widget/admin/header.js');
-    require('../../widget/admin/sidebar.js');
+    require('../../widget/front/nav.js');
 
     var type = hashbang.get('query', 'type') || 'unactive';
     var list = new List('#list', '#pagination', {
