@@ -12,11 +12,15 @@ define(function (require, exports, module) {
     var alert = require('../common/alert.js');
     var Scrollbar = require('../../alien/ui/Scrollbar/');
     var dato = require('../../alien/util/dato.js');
+    var selector = require('../../alien/core/dom/selector.js');
+    var attribute = require('../../alien/core/dom/attribute.js');
     var app = {};
-    var pathname = location.pathname.replace(/^\/sadmin\//, '');
 
     app.nav = function () {
-        var index = '';
+        var navClassName = 'nav-' + (window['-nav-'] || 'home');
+        var $li = selector.query('#nav .' + navClassName)[0];
+
+        attribute.addClass($li, 'active');
     };
 
     app.nav();
