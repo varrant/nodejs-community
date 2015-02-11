@@ -31,7 +31,7 @@ define(function (require, exports, module) {
             buttons: null,
             width: 'auto',
             addClass: 'alien-msg-' + type,
-            //timeout: 3456
+            timeout: 3456
         });
     };
 

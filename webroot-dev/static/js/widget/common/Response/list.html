@@ -6,12 +6,12 @@
     id="response-{{item.id}}"
     data-id="{{item.id}}"
     data-author="{{item.author.id}}"
-    data-parent="{{item.parent}}">
+    data-parent="{{item.parentResponse}}">
     <div class="f-clearfix alien-ui-response-main">
         <div class="alien-ui-response-avatar f-left">
             <a href="/developer/{{=item.author.githubLogin}}/"><img src="{{item.author.avatar}}" alt="avatar" width="50" height="50"/></a>
 
-            {{if !item.parent}}
+            {{if !item.parentResponse}}
             <i class="i i-check alien-ui-response-flag"></i>
             {{/if}}
         </div>
@@ -25,7 +25,7 @@
             <div class="alien-ui-response-content">{{=item.contentHTML}}</div>
 
             <ul class="alien-ui-response-meta alien-ui-response-action s-light f-list-left">
-                {{if !item.parent}}
+                {{if !item.parentResponse}}
                 <li>
                     <button class="btn btn-primary btn-xs alien-ui-response-reply"><i class="i i-reply"></i>回复<span
                             class="alien-ui-response-number">{{item.replyByCount}}</span></button>
@@ -40,7 +40,7 @@
                         {{/list}}
                     </span>
                 </li>
-                {{if !item.parent}}
+                {{if !item.parentResponse}}
                     {{if item.acceptByObject}}
                     <li class="alien-ui-response-accept-li">
                         <button class="btn btn-success btn-xs active" readonly><i
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    {{if !item.parent}}
+    {{if !item.parentResponse}}
     <div class="alien-ui-response-children">
         <ul class="alien-ui-response-list j-flag"></ul>
         <div class="j-flag f-text-center"></div>

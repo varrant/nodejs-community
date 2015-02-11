@@ -427,7 +427,7 @@ define(function (require, exports, module) {
             the._isAjaxing = true;
 
             if (parentId) {
-                data.parent = parentId;
+                data.parentResponse = parentId;
             }
 
             ajax({
@@ -445,7 +445,7 @@ define(function (require, exports, module) {
 
                     data.author = options.list.developer;
 
-                    if (json.data.parent) {
+                    if (json.data.parentResponse) {
                         the._count.reply++;
                     } else {
                         the._count.comment++;
