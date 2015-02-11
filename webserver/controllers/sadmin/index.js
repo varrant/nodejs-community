@@ -11,6 +11,7 @@ module.exports = function (app) {
     return {
         category: require('./category.js')(app),
         developer: require('./developer.js')(app),
+        main: require('./main.js')(app),
         middleware: require('./middleware.js')(app),
         section: require('./section.js')(app),
         setting: require('./setting.js')(app)
