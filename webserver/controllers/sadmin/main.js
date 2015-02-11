@@ -30,7 +30,7 @@ module.exports = function (app) {
             }
 
             req.session.$developer = res.locals.$developer = doc;
-            res.render('admin/home.html', data);
+            res.render('sadmin/home.html', data);
         });
     };
 
