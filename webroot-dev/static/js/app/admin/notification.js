@@ -26,30 +26,36 @@ define(function (require, exports, module) {
 
     // 标记已读
     methods.toggle = function (item) {
+        var the = this;
+
         ajax({
             method: item.hasActived ? 'put' : 'delete',
             url: '/admin/api/notification/',
             data: {
                 id: item.id
             }
-        });
-        item.hasActived = !item.hasActived;
-        increse(item.hasActived ? -1 : 1);
+        }).on('success', function (json) {
+            if (json.code === 200) {
+                increse(item.hasActived ? 1 : -1);
+                item.hasActived = !item.hasActived;
 
-        var hasActivedLength = 0;
-        var unActivedLength = 0;
-        var length = this.$data.list.length;
-        this.$data.list.forEach(function (item) {
-            if (item.hasActived) {
-                hasActivedLength++;
-            } else {
-                unActivedLength++;
+                var hasActivedLength = 0;
+                var unActivedLength = 0;
+                var length = the.$data.list.length;
+
+                the.$data.list.forEach(function (item) {
+                    if (item.hasActived) {
+                        hasActivedLength++;
+                    } else {
+                        unActivedLength++;
+                    }
+                });
+
+                if ((hasActivedLength === length || unActivedLength === length) && the.$data.type !== 'all') {
+                    list.getList();
+                }
             }
         });
-
-        if ((hasActivedLength === length || unActivedLength === length) && this.$data.type !== 'all') {
-            list.getList();
-        }
     };
 
 
@@ -81,7 +87,7 @@ define(function (require, exports, module) {
             val += num;
             attribute.data($nt, 'value', val);
             $nt.innerHTML = val > 9 ? 'N' : val;
-            attribute.css($nt, 'display', val ? '' :'none');
+            attribute.css($nt, 'display', val ? '' : 'none');
         });
     }
 });

@@ -17,6 +17,7 @@ define(function (require, exports, module) {
     var controller = require('../../alien/util/controller.js');
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
+    var confirm = require('../common/confirm.js');
     var app = {};
     var activeClass = 'active';
     var unfoldClass = 'unfolded';
@@ -89,6 +90,29 @@ define(function (require, exports, module) {
         }).on('error', alert);
     };
 
+
+    // 退出
+    app.logout = function () {
+        var logout = function () {
+            ajax({
+                method: 'post',
+                url: '/api/developer/logout/'
+            }).on('success', function (json) {
+                if (json.code !== 200) {
+                    return alert(json);
+                }
+
+                location.reload();
+            }).on('error', alert);
+        };
+
+        event.on(document, 'click', '.j-logout', function (eve) {
+            eve.preventDefault();
+            confirm('确定要登出吗？', logout);
+        });
+    };
+
     app.toggle();
     app.notification();
+    app.logout();
 });
