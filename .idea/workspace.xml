@@ -2,7 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Animation.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Datepicker/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Datepicker/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Datepicker/template.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/touch-new.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/zepto-touch.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Template.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Template.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/allocation.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/allocation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/attribute.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/attribute.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/base.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/base.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/base.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/base.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/calendar.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/calendar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/canvas.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/canvas.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/class.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/class.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/easing.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/easing.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/header.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/header.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/howdo.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/howdo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Msg/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Msg/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/random.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/random.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/typeis.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/typeis.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -126,8 +146,8 @@
       <file leaf-file-name="header.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/include/header.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17317487" vertical-offset="0" max-vertical-offset="589">
-              <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.11544991" vertical-offset="0" max-vertical-offset="589">
+              <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -141,7 +161,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/header.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/footer.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/grid.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front.less" />
@@ -192,6 +211,7 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/setting.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/section.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/include/header.html" />
       </list>
     </option>
   </component>
@@ -1148,13 +1168,7 @@
       <workItem from="1422967616233" duration="6654000" />
       <workItem from="1423053668098" duration="52142000" />
       <workItem from="1423494417640" duration="137000" />
-      <workItem from="1423494577253" duration="8140000" />
-    </task>
-    <task id="LOCAL-00270" summary="beta16">
-      <created>1423490150451</created>
-      <option name="number" value="00270" />
-      <option name="project" value="LOCAL" />
-      <updated>1423490150452</updated>
+      <workItem from="1423494577253" duration="8632000" />
     </task>
     <task id="LOCAL-00271" summary="beta16">
       <created>1423490452027</created>
@@ -1444,11 +1458,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423661661117</updated>
     </task>
-    <option name="localTasksCounter" value="319" />
+    <task id="LOCAL-00319" summary="beta17">
+      <created>1423661783114</created>
+      <option name="number" value="00319" />
+      <option name="project" value="LOCAL" />
+      <updated>1423661783114</updated>
+    </task>
+    <option name="localTasksCounter" value="320" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118287000" />
+    <option name="totallyTimeSpent" value="118779000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1877,7 +1897,7 @@
         <state vertical-scroll-proportion="0.27642277" vertical-offset="0" max-vertical-offset="697">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1895,7 +1915,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1905,7 +1925,7 @@
         <state vertical-scroll-proportion="0.38699186" vertical-offset="0" max-vertical-offset="615">
           <caret line="14" column="14" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="14" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2002,8 +2022,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/include/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17317487" vertical-offset="0" max-vertical-offset="589">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.11544991" vertical-offset="0" max-vertical-offset="589">
+          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
           <folding />
         </state>
       </provider>
