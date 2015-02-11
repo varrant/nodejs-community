@@ -12,6 +12,10 @@ module.exports = function (app, ctrl) {
 
 
     // 设置
+    app.get('/sadmin/', ctrl.main.home);
+
+
+    // 设置
     app.get('/sadmin/setting/', ctrl.setting.get);
 
 
