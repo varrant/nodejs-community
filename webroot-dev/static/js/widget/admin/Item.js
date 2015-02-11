@@ -11,6 +11,7 @@ define(function (require, exports, module) {
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
     var confirm = require('../common/confirm.js');
+    var tip = require('../common/tip.js');
     var selector = require('../../alien/core/dom/selector.js');
     var ui = require('../../alien/ui/base.js');
     var Editor = require('../../alien/ui/Editor/');
@@ -199,7 +200,6 @@ define(function (require, exports, module) {
             var $btn = selector.closest(eve.target, '.btn');
 
             $btn.disabled = true;
-            var the = this;
 
             ajax({
                 url: the._options.url,
@@ -220,6 +220,7 @@ define(function (require, exports, module) {
 
                 vue.$data.object = json.data;
                 the.editor.resize();
+
             }).on('error', alert).on('finish', function () {
                 $btn.disabled = false;
             });
