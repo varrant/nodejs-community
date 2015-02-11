@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -80,8 +81,8 @@
       <file leaf-file-name="sidebar.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31748727" vertical-offset="0" max-vertical-offset="589">
-              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.51952463" vertical-offset="0" max-vertical-offset="589">
+              <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -91,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -1112,13 +1113,7 @@
       <workItem from="1422967616233" duration="6654000" />
       <workItem from="1423053668098" duration="52142000" />
       <workItem from="1423494417640" duration="137000" />
-      <workItem from="1423494577253" duration="7827000" />
-    </task>
-    <task id="LOCAL-00266" summary="beta16">
-      <created>1423489458278</created>
-      <option name="number" value="00266" />
-      <option name="project" value="LOCAL" />
-      <updated>1423489458278</updated>
+      <workItem from="1423494577253" duration="7917000" />
     </task>
     <task id="LOCAL-00267" summary="beta16">
       <created>1423489509622</created>
@@ -1408,11 +1403,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423661403942</updated>
     </task>
-    <option name="localTasksCounter" value="315" />
+    <task id="LOCAL-00315" summary="beta17">
+      <created>1423661470012</created>
+      <option name="number" value="00315" />
+      <option name="project" value="LOCAL" />
+      <updated>1423661470012</updated>
+    </task>
+    <option name="localTasksCounter" value="316" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117974000" />
+    <option name="totallyTimeSpent" value="118064000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1959,15 +1960,15 @@
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31748727" vertical-offset="0" max-vertical-offset="589">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.51952463" vertical-offset="0" max-vertical-offset="589">
+          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
           <folding />
         </state>
       </provider>

@@ -16,7 +16,7 @@ define(function (require, exports, module) {
     var pathname = location.pathname.replace(/^\/sadmin\//, '');
 
     app.nav = function () {
-
+        var index = '';
     };
 
     app.nav();
