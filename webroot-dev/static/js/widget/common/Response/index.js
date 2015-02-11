@@ -208,6 +208,9 @@ define(function (require, exports, module) {
 
                 if ($replyNumberBtn) {
                     respondOptions.icon = 'reply';
+                    respondOptions.placeholder = '回复补充点什么吧';
+                } else {
+                    respondOptions.placeholder = options.list.canAccept ? '期待你的回答' : '评论说点什么吧';
                 }
 
                 respond = new Respond($respondParent, respondOptions);
