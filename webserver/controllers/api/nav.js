@@ -40,7 +40,7 @@ module.exports = function (app) {
         });
 
         list.push({
-            href: '/admin/',
+            href: '/sadmin/',
             text: '管理首页',
             icon: 'i i-dashboard',
             reg: '^$'
@@ -48,7 +48,7 @@ module.exports = function (app) {
 
         if (canSetting) {
             list.push({
-                href: '/admin/setting/',
+                href: '/sadmin/setting/',
                 text: 'web 配置',
                 icon: 'i i-cogs',
                 reg: '^setting\\/$'
@@ -57,7 +57,7 @@ module.exports = function (app) {
 
         if (canSection) {
             list.push({
-                href: '/admin/section/',
+                href: '/sadmin/section/',
                 text: '版块设置',
                 icon: 'i i-archive',
                 reg: '^section\\/$'
@@ -66,7 +66,7 @@ module.exports = function (app) {
 
         if (canCategory) {
             list.push({
-                href: '/admin/category/',
+                href: '/sadmin/category/',
                 text: '分类设置',
                 icon: 'i i-folder',
                 reg: '^category\\/$'
@@ -75,7 +75,7 @@ module.exports = function (app) {
 
         if (canColumn) {
             list.push({
-                href: '/admin/column/',
+                href: '/sadmin/column/',
                 text: '专栏设置',
                 icon: 'i i-book',
                 reg: '^column\\/$'
@@ -84,7 +84,7 @@ module.exports = function (app) {
 
         if ((developerRole & 1 << articleRole) !== 0) {
             list.push({
-                href: '/admin/object/article/list/',
+                href: '/sadmin/object/article/list/',
                 text: '我的文章',
                 icon: 'i i-file-text',
                 reg: '^object\\/article\\/'
@@ -93,7 +93,7 @@ module.exports = function (app) {
 
         if ((developerRole & 1 << questionRole) !== 0) {
             list.push({
-                href: '/admin/object/question/list/',
+                href: '/sadmin/object/question/list/',
                 text: '我的提问',
                 icon: 'i i-cube',
                 reg: '^object\\/question\\/'
@@ -102,7 +102,7 @@ module.exports = function (app) {
 
         if ((developerRole & 1 << linkRole) !== 0) {
             list.push({
-                href: '/admin/object/link/list/',
+                href: '/sadmin/object/link/list/',
                 text: '我的链接',
                 icon: 'i i-link',
                 reg: '^object\\/link\\/'
@@ -111,7 +111,7 @@ module.exports = function (app) {
 
         if ((developerRole & 1 << helpRole) !== 0) {
             list.push({
-                href: '/admin/object/help/list/',
+                href: '/sadmin/object/help/list/',
                 text: '帮助管理',
                 icon: 'i i-question-circle',
                 reg: '^object\\/help\\/'
@@ -120,7 +120,7 @@ module.exports = function (app) {
 
         if ((developerRole & role20) !== 0) {
             list.push({
-                href: '/admin/developer/list/',
+                href: '/sadmin/developer/list/',
                 text: '用户管理',
                 icon: 'i i-users',
                 reg: '^developer\\/'
@@ -128,7 +128,7 @@ module.exports = function (app) {
         }
 
         list.push({
-            href: '/admin/me/',
+            href: '/sadmin/me/',
             text: '个人资料',
             icon: 'i i-user',
             reg: '^me\\/$'
