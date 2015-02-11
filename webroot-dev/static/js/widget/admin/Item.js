@@ -197,9 +197,10 @@ define(function (require, exports, module) {
         _onsave: function (eve, data) {
             var the = this;
             var vue = the.vue;
-            var $btn = selector.closest(eve.target, '.btn');
+            var $btn = selector.closest(eve.target, '.btn')[0];
 
             $btn.disabled = true;
+            $btn.innerHTML = '保存中……';
 
             ajax({
                 url: the._options.url,
@@ -223,6 +224,7 @@ define(function (require, exports, module) {
                 tip.success('保存成功');
             }).on('error', alert).on('finish', function () {
                 $btn.disabled = false;
+                $btn.innerHTML = '保存';
             });
         },
 

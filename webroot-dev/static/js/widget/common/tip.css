@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+.alien-msg-success .alien-ui-msg {
+    background: #09A51D;
+}
+
+.alien-msg-error .alien-ui-msg {
+    background: #A50909;
+}
+
+.alien-msg-success .alien-ui-msg-body,
+.alien-msg-error .alien-ui-msg-body {
+    color: #fff;
+    text-align: center;
+    font-weight: 900;
+    padding: 10px 20px;
+}

@@ -12,6 +12,10 @@ define(function (require, exports, module) {
     'use strict';
 
     var Msg = require('../../alien/ui/Msg/index.js');
+    var modification = require('../../alien/core/dom/modification.js');
+    var style = require('css!./tip.css');
+
+    modification.importStyle(style);
 
     /**
      * 消息提示
@@ -25,6 +29,7 @@ define(function (require, exports, module) {
             title: null,
             content: content,
             buttons: null,
+            width: 'auto',
             addClass: 'alien-msg-' + type,
             //timeout: 3456
         });
