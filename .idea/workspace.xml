@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/style.css" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -36,8 +36,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52845526" vertical-offset="8260" max-vertical-offset="14450">
-              <caret line="505" column="27" selection-start-line="505" selection-start-column="27" selection-end-line="505" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.500813" vertical-offset="8124" max-vertical-offset="14484">
+              <caret line="496" column="13" selection-start-line="496" selection-start-column="13" selection-end-line="496" selection-end-column="13" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -63,7 +63,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/sadmin/header.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/sadmin/footer.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/sadmin/grid.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/admin.less" />
@@ -114,6 +113,7 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/tip.css" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/style.css" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" />
       </list>
     </option>
   </component>
@@ -1104,13 +1104,7 @@
       <workItem from="1422967616233" duration="6654000" />
       <workItem from="1423053668098" duration="52142000" />
       <workItem from="1423494417640" duration="137000" />
-      <workItem from="1423494577253" duration="10685000" />
-    </task>
-    <task id="LOCAL-00278" summary="beta16">
-      <created>1423491380654</created>
-      <option name="number" value="00278" />
-      <option name="project" value="LOCAL" />
-      <updated>1423491380654</updated>
+      <workItem from="1423494577253" duration="10792000" />
     </task>
     <task id="LOCAL-00279" summary="beta16">
       <created>1423491499876</created>
@@ -1400,11 +1394,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423666154350</updated>
     </task>
-    <option name="localTasksCounter" value="327" />
+    <task id="LOCAL-00327" summary="beta17">
+      <created>1423666181882</created>
+      <option name="number" value="00327" />
+      <option name="project" value="LOCAL" />
+      <updated>1423666181882</updated>
+    </task>
+    <option name="localTasksCounter" value="328" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120832000" />
+    <option name="totallyTimeSpent" value="120939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1962,8 +1962,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52845526" vertical-offset="8260" max-vertical-offset="14450">
-          <caret line="505" column="27" selection-start-line="505" selection-start-column="27" selection-end-line="505" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.500813" vertical-offset="8124" max-vertical-offset="14484">
+          <caret line="496" column="13" selection-start-line="496" selection-start-column="13" selection-end-line="496" selection-end-column="13" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

@@ -19,6 +19,7 @@ define(function (require, exports, module) {
     var ajax = require('../ajax.js');
     var alert = require('../alert.js');
     var confirm = require('../confirm.js');
+    var tip = require('../tip.js');
     var Pager = require('../../../alien/ui/Pager/');
     var Respond = require('../Respond/index');
     var Template = require('../../../alien/libs/Template.js');
@@ -497,7 +498,8 @@ define(function (require, exports, module) {
 
             modification.insert(node, $parent, 'beforeend');
             the._scrollTo(node, function () {
-                attribute.addClass(node, alienClass + '-item-new');
+                tip.success('感谢你的' + (data.parentResponse ? '回复':'评论'));
+                //attribute.addClass(node, alienClass + '-item-new');
                 the.prettify();
                 //setTimeout(function () {
                 //    if (node) {
