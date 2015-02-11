@@ -2,27 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Animation.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Datepicker/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Datepicker/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Datepicker/template.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/touch-new.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/zepto-touch.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Template.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Template.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/allocation.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/allocation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/attribute.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/attribute.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/base.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/base.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/base.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/base.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/calendar.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/calendar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/canvas.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/canvas.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/class.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/class.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/easing.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/easing.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/header.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/howdo.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/howdo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Msg/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Msg/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/random.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/random.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/typeis.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/typeis.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Item.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Item.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -53,26 +34,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="sadmin.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webserver/routers/sadmin.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sidebar.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="493">
-              <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="category.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/category.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -143,12 +104,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/include/header.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.11544991" vertical-offset="0" max-vertical-offset="589">
+            <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="170">
               <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Item.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3465" max-vertical-offset="4471">
+              <caret line="222" column="36" selection-start-line="0" selection-start-column="0" selection-end-line="257" selection-end-column="3" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Item.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Item.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.33658537" vertical-offset="3788" max-vertical-offset="4471">
+              <caret line="235" column="25" selection-start-line="235" selection-start-column="25" selection-end-line="235" selection-end-column="25" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -161,9 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/footer.less" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/grid.less" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/module.less" />
         <option value="$PROJECT_DIR$/webroot-dev/coolie.json" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/sadmin/header.less" />
@@ -212,6 +194,9 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/section.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/include/header.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/tip.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Item.js" />
       </list>
     </option>
   </component>
@@ -631,36 +616,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sadmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nodejs-community" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nodejs-community" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webroot-dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="widget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1168,19 +1123,7 @@
       <workItem from="1422967616233" duration="6654000" />
       <workItem from="1423053668098" duration="52142000" />
       <workItem from="1423494417640" duration="137000" />
-      <workItem from="1423494577253" duration="8632000" />
-    </task>
-    <task id="LOCAL-00271" summary="beta16">
-      <created>1423490452027</created>
-      <option name="number" value="00271" />
-      <option name="project" value="LOCAL" />
-      <updated>1423490452027</updated>
-    </task>
-    <task id="LOCAL-00272" summary="beta16">
-      <created>1423490510838</created>
-      <option name="number" value="00272" />
-      <option name="project" value="LOCAL" />
-      <updated>1423490510839</updated>
+      <workItem from="1423494577253" duration="9049000" />
     </task>
     <task id="LOCAL-00273" summary="beta16">
       <created>1423490558387</created>
@@ -1464,11 +1407,23 @@
       <option name="project" value="LOCAL" />
       <updated>1423661783114</updated>
     </task>
-    <option name="localTasksCounter" value="320" />
+    <task id="LOCAL-00320" summary="beta17">
+      <created>1423663316482</created>
+      <option name="number" value="00320" />
+      <option name="project" value="LOCAL" />
+      <updated>1423663316482</updated>
+    </task>
+    <task id="LOCAL-00321" summary="beta17">
+      <created>1423663678193</created>
+      <option name="number" value="00321" />
+      <option name="project" value="LOCAL" />
+      <updated>1423663678193</updated>
+    </task>
+    <option name="localTasksCounter" value="322" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118779000" />
+    <option name="totallyTimeSpent" value="119196000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1592,48 +1547,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60611206" vertical-offset="51" max-vertical-offset="697">
-          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33616298" vertical-offset="23" max-vertical-offset="612">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/routers/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44227642" vertical-offset="0" max-vertical-offset="680">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/list-help.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34804752" vertical-offset="169" max-vertical-offset="935">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/list-link.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72325975" vertical-offset="169" max-vertical-offset="816">
-          <caret line="35" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/developer-me.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.461538" vertical-offset="278" max-vertical-offset="867">
@@ -2020,11 +1933,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/loading.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5252032" vertical-offset="0" max-vertical-offset="615">
+          <caret line="19" column="6" selection-start-line="10" selection-start-column="4" selection-end-line="19" selection-end-column="6" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/admin/object-item.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.24390244" vertical-offset="150" max-vertical-offset="1768">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/tip.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69593495" vertical-offset="14" max-vertical-offset="697">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/include/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11544991" vertical-offset="0" max-vertical-offset="589">
+        <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="170">
           <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3465" max-vertical-offset="4471">
+          <caret line="222" column="36" selection-start-line="0" selection-start-column="0" selection-end-line="257" selection-end-column="3" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Item.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33658537" vertical-offset="3788" max-vertical-offset="4471">
+          <caret line="235" column="25" selection-start-line="235" selection-start-column="25" selection-end-line="235" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
