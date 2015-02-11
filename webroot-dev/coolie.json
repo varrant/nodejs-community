@@ -1,8 +1,5 @@
 {
-  "js": {
-    "main": "./static/js/app/**/*.js",
-    "host": "/"
-  },
+  "js": "./static/js/app/**/*.js",
   "css": {
     "path": "./static/css/app/",
     "host": "/"
