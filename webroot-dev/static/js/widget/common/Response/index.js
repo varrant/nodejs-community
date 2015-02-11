@@ -498,7 +498,7 @@ define(function (require, exports, module) {
 
             modification.insert(node, $parent, 'beforeend');
             the._scrollTo(node, function () {
-                tip.success('感谢你的' + (data.parentResponse ? '回复':'评论'));
+                tip.success('感谢你的' + (data.parentResponse ? '回复' : '评论'));
                 //attribute.addClass(node, alienClass + '-item-new');
                 the.prettify();
                 //setTimeout(function () {
