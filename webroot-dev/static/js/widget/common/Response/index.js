@@ -33,7 +33,6 @@ define(function (require, exports, module) {
     var tplList = new Template(templateList);
     var alienClass = 'alien-ui-response';
     var defaults = {
-        developer: window['-developer-'],
         loading: '<div class="alien-ui-response-loading"><div class="f-loading">加载中……</div></div>',
         url: {
             list: '/api/response/list/',
@@ -57,7 +56,6 @@ define(function (require, exports, module) {
         },
         respond: {
             githubLogin: '#',
-            placeholder: '期待你的回答',
             markdownHelp: {
                 link: '/help/markdown.html',
                 text: 'markdown 编辑器使用帮助'
