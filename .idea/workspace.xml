@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/home.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/sadmin/middleware.js" afterPath="$PROJECT_DIR$/webserver/controllers/sadmin/middleware.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configs/permission.js" afterPath="$PROJECT_DIR$/configs/permission.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/routers/sadmin.js" afterPath="$PROJECT_DIR$/webserver/routers/sadmin.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -70,11 +68,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sadmin.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sadmin.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webserver/routers/sadmin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27642277" vertical-offset="0" max-vertical-offset="615">
-              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sidebar.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.39388794" vertical-offset="176" max-vertical-offset="799">
+              <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sidebar.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -88,8 +106,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/nav.less" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/home.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/header.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/footer.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/grid.less" />
@@ -139,6 +155,8 @@
         <option value="$PROJECT_DIR$/configs/permission.js" />
         <option value="$PROJECT_DIR$/webserver/routers/sadmin.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/sadmin/middleware.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js" />
       </list>
     </option>
   </component>
@@ -484,6 +502,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot-dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1069,13 +1113,7 @@
       <workItem from="1422967616233" duration="6654000" />
       <workItem from="1423053668098" duration="52142000" />
       <workItem from="1423494417640" duration="137000" />
-      <workItem from="1423494577253" duration="7564000" />
-    </task>
-    <task id="LOCAL-00264" summary="beta16">
-      <created>1423489274635</created>
-      <option name="number" value="00264" />
-      <option name="project" value="LOCAL" />
-      <updated>1423489274635</updated>
+      <workItem from="1423494577253" duration="7759000" />
     </task>
     <task id="LOCAL-00265" summary="beta16">
       <created>1423489397000</created>
@@ -1365,11 +1403,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423660015837</updated>
     </task>
-    <option name="localTasksCounter" value="313" />
+    <task id="LOCAL-00313" summary="beta17">
+      <created>1423661206851</created>
+      <option name="number" value="00313" />
+      <option name="project" value="LOCAL" />
+      <updated>1423661206851</updated>
+    </task>
+    <option name="localTasksCounter" value="314" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117711000" />
+    <option name="totallyTimeSpent" value="117906000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1493,14 +1537,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.30050933" vertical-offset="500" max-vertical-offset="1496">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/include/object/item-question.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.4142615" vertical-offset="833" max-vertical-offset="1496">
@@ -1841,16 +1877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/header.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27642277" vertical-offset="0" max-vertical-offset="697">
@@ -1925,8 +1951,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/routers/sadmin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27642277" vertical-offset="0" max-vertical-offset="615">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39388794" vertical-offset="176" max-vertical-offset="799">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
           <folding />
         </state>
       </provider>
