@@ -21,6 +21,7 @@ define(function (require, exports, module) {
      */
     var tip = function (type, content) {
         return new Msg({
+            isModal: false,
             title: null,
             content: content,
             buttons: null,
