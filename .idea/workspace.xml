@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -81,8 +80,8 @@
       <file leaf-file-name="sidebar.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39388794" vertical-offset="176" max-vertical-offset="799">
-              <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.31748727" vertical-offset="0" max-vertical-offset="589">
+              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -155,8 +154,8 @@
         <option value="$PROJECT_DIR$/configs/permission.js" />
         <option value="$PROJECT_DIR$/webserver/routers/sadmin.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/sadmin/middleware.js" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html" />
       </list>
     </option>
   </component>
@@ -1113,13 +1112,7 @@
       <workItem from="1422967616233" duration="6654000" />
       <workItem from="1423053668098" duration="52142000" />
       <workItem from="1423494417640" duration="137000" />
-      <workItem from="1423494577253" duration="7759000" />
-    </task>
-    <task id="LOCAL-00265" summary="beta16">
-      <created>1423489397000</created>
-      <option name="number" value="00265" />
-      <option name="project" value="LOCAL" />
-      <updated>1423489397000</updated>
+      <workItem from="1423494577253" duration="7827000" />
     </task>
     <task id="LOCAL-00266" summary="beta16">
       <created>1423489458278</created>
@@ -1409,11 +1402,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423661206851</updated>
     </task>
-    <option name="localTasksCounter" value="314" />
+    <task id="LOCAL-00314" summary="beta17">
+      <created>1423661403942</created>
+      <option name="number" value="00314" />
+      <option name="project" value="LOCAL" />
+      <updated>1423661403942</updated>
+    </task>
+    <option name="localTasksCounter" value="315" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117906000" />
+    <option name="totallyTimeSpent" value="117974000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1967,8 +1966,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/include/sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39388794" vertical-offset="176" max-vertical-offset="799">
-          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.31748727" vertical-offset="0" max-vertical-offset="589">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
           <folding />
         </state>
       </provider>
