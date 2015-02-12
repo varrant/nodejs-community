@@ -193,6 +193,13 @@ module.exports = function (app) {
         next();
     };
 
+
+    // 读取权限
+    exports.readPermission = function (req, res, next) {
+
+        next();
+    };
+
     return exports;
 };
 
