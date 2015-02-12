@@ -40,7 +40,7 @@ var schema = new mongoose.Schema({
         required: false,
         ref: 'category'
     },
-    // 专栏
+    // 专辑
     column: {
         type: mongoose.Schema.Types.ObjectId,
         required: false,

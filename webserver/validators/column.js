@@ -27,7 +27,7 @@ validator.pushRule({
 
 validator.pushRule({
     name: 'uri',
-    alias: '专栏 uri',
+    alias: '专辑 uri',
     type: 'string',
     required: true,
     maxLength: 50,

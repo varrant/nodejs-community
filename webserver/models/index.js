@@ -13,7 +13,7 @@ var validators = require('../validators/');
 var models = {
     // 分类
     category: require('./category.js'),
-    // 专栏
+    // 专辑
     column: require('./column.js'),
     // 工程师
     developer: require('./developer.js'),

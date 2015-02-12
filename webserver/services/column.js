@@ -131,7 +131,7 @@ exports.updateOne = function (author, conditions, data, callback) {
                 }
 
                 if (doc) {
-                    err = new Error('专栏 URI 重复');
+                    err = new Error('专辑 URI 重复');
                     return next(err);
                 }
 

@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/3module.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/3module.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/3module.less" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/3module.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/column-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/column-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/app/admin/column.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/app/admin/column.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/column/form.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/column/form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-article.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-article.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/object/list-article.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/object/list-article.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-help.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-help.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/object/list-help.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/object/list-help.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-link.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-link.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/object/list-link.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/object/list-link.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/object/list-question.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/include/object/list-question.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/column.js" afterPath="$PROJECT_DIR$/webserver/services/column.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/column.js" afterPath="$PROJECT_DIR$/webserver/validators/column.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/models/index.js" afterPath="$PROJECT_DIR$/webserver/models/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/models/object.js" afterPath="$PROJECT_DIR$/webserver/models/object.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -52,9 +43,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/developer-detail.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/developer-list.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/home.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/setting.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/section.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/sidebar.js" />
@@ -85,7 +73,6 @@
         <option value="$PROJECT_DIR$/webserver/routers/front.js" />
         <option value="$PROJECT_DIR$/webserver/services/index.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/api/column.js" />
-        <option value="$PROJECT_DIR$/webserver/services/column.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/column.html" />
         <option value="$PROJECT_DIR$/webserver/models/section.js" />
         <option value="$PROJECT_DIR$/webserver/models/category.js" />
@@ -103,6 +90,10 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/include/object/list-help.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/include/object/list-link.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/include/object/list-question.html" />
+        <option value="$PROJECT_DIR$/webserver/models/index.js" />
+        <option value="$PROJECT_DIR$/webserver/models/object.js" />
+        <option value="$PROJECT_DIR$/webserver/services/column.js" />
+        <option value="$PROJECT_DIR$/webserver/validators/column.js" />
       </list>
     </option>
   </component>
@@ -1233,13 +1224,7 @@
       <workItem from="1422967616233" duration="6654000" />
       <workItem from="1423053668098" duration="52142000" />
       <workItem from="1423494417640" duration="137000" />
-      <workItem from="1423494577253" duration="19624000" />
-    </task>
-    <task id="LOCAL-00312" summary="beta17">
-      <created>1423660015837</created>
-      <option name="number" value="00312" />
-      <option name="project" value="LOCAL" />
-      <updated>1423660015837</updated>
+      <workItem from="1423494577253" duration="19664000" />
     </task>
     <task id="LOCAL-00313" summary="beta17">
       <created>1423661206851</created>
@@ -1529,11 +1514,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423752103099</updated>
     </task>
-    <option name="localTasksCounter" value="361" />
+    <task id="LOCAL-00361" summary="beta18">
+      <created>1423752525524</created>
+      <option name="number" value="00361" />
+      <option name="project" value="LOCAL" />
+      <updated>1423752525524</updated>
+    </task>
+    <option name="localTasksCounter" value="362" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129771000" />
+    <option name="totallyTimeSpent" value="129811000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1658,30 +1649,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/container.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/tip.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5577236" vertical-offset="184" max-vertical-offset="799">
-          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23089983" vertical-offset="0" max-vertical-offset="1411">
-          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/controllers/api/response.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3502" max-vertical-offset="4488">
@@ -1898,16 +1865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/services/column.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1382114" vertical-offset="184" max-vertical-offset="2193">
-          <caret line="87" column="7" selection-start-line="87" selection-start-column="7" selection-end-line="87" selection-end-column="7" />
-          <folding>
-            <element signature="e#556#1386#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/controllers/api/column.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08455285" vertical-offset="832" max-vertical-offset="1972">
@@ -1949,7 +1906,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="969">
           <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2094,6 +2051,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2886248" vertical-offset="0" max-vertical-offset="697">
           <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/models/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="84" max-vertical-offset="12699">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/models/object.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="543" max-vertical-offset="3740">
+          <caret line="42" column="7" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/services/column.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1563" max-vertical-offset="2193">
+          <caret line="133" column="37" selection-start-line="133" selection-start-column="37" selection-end-line="133" selection-end-column="37" />
+          <folding>
+            <element signature="e#556#1386#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/validators/column.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16747968" vertical-offset="322" max-vertical-offset="1037">
+          <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
           <folding />
         </state>
       </provider>
