@@ -101,6 +101,9 @@ module.exports = function (app) {
         }
 
         options.populate = ['source', 'object', 'response'];
+        options.sort = {
+            activeAt: -1
+        };
         howdo
             // 计数
             .task(function (done) {

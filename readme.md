@@ -1,10 +1,11 @@
-# nodejs-community@0.0.1-beta17
+# nodejs-community@0.0.1-beta18
 
 
 ## install
 read `./settings.json`.
 ```
 npm install
+npm run ready
 ```
 
 

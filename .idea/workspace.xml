@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
+    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="beta17">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webserver/controllers/front/middleware.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/nav.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/nav.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/api/notification.js" afterPath="$PROJECT_DIR$/webserver/controllers/api/notification.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -34,11 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/index.js">
+      <file leaf-file-name="notification.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webserver/controllers/api/notification.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="253" max-vertical-offset="2533">
-              <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1425" max-vertical-offset="2363">
+              <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -46,46 +50,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="object.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js">
+      <file leaf-file-name="middleware.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webserver/controllers/front/middleware.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1564">
-              <caret line="35" column="25" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="25" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3381" max-vertical-offset="14501">
-              <caret line="213" column="17" selection-start-line="213" selection-start-column="17" selection-end-line="213" selection-end-column="17" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/readme.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-              <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+              <caret line="19" column="21" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
+      <file leaf-file-name="nav.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/nav.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.057724956" vertical-offset="0" max-vertical-offset="1122">
-              <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.43803057" vertical-offset="99" max-vertical-offset="748">
+              <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notification.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webserver/models/notification.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1581">
+              <caret line="64" column="12" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="12" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,8 +90,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/0grid.less" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/sadmin/3module.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/3module.less" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/developer-me.html" />
         <option value="$PROJECT_DIR$/webserver/routers/admin.js" />
@@ -119,7 +109,6 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/include/meta.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/notification.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/app/admin/notification.js" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/nav.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/api/nav.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/sadmin/index.js" />
@@ -147,8 +136,11 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/js/app/admin/object-item.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/webserver/controllers/api/notification.js" />
+        <option value="$PROJECT_DIR$/webserver/controllers/front/middleware.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/nav.html" />
       </list>
     </option>
   </component>
@@ -223,6 +215,9 @@
             <id>JavaScript validity issuesJavaScript</id>
           </State>
           <State>
+            <id>Manifest</id>
+          </State>
+          <State>
             <id>Naming conventionsJavaScript</id>
           </State>
           <State>
@@ -256,9 +251,17 @@
             <id>Serialization issues</id>
           </State>
           <State>
+            <id>Spelling</id>
+          </State>
+          <State>
             <id>XPath</id>
           </State>
         </expanded-state>
+        <selected-state>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+        </selected-state>
       </profile-state>
     </entry>
   </component>
@@ -334,6 +337,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="routers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -493,7 +514,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sadmin" />
+              <option name="myItemId" value="front" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -515,7 +536,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sadmin" />
+              <option name="myItemId" value="front" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -946,12 +967,12 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../coolie/coolie.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../develop-config" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="options.lastSelected" value="JavaScript.Libraries" />
+    <property name="options.lastSelected" value="Errors" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="js.eslint.nodeInterpreter" value="/usr/local/bin/node" />
@@ -964,11 +985,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/webserver/controllers/front" />
       <recent name="$PROJECT_DIR$/webroot-dev/static/js/widget/admin" />
       <recent name="$PROJECT_DIR$/webserver/controllers/sadmin" />
       <recent name="$PROJECT_DIR$/webroot-dev/views/sadmin" />
       <recent name="$PROJECT_DIR$/webroot-dev/views/admin" />
-      <recent name="$PROJECT_DIR$/webroot-dev/views/include" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/webroot-dev/static/css/app" />
@@ -991,8 +1012,7 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/webroot-dev/coolie.json</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/package.json</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -1203,13 +1223,7 @@
       <workItem from="1422967616233" duration="6654000" />
       <workItem from="1423053668098" duration="52142000" />
       <workItem from="1423494417640" duration="137000" />
-      <workItem from="1423494577253" duration="12098000" />
-    </task>
-    <task id="LOCAL-00286" summary="beta16">
-      <created>1423493037935</created>
-      <option name="number" value="00286" />
-      <option name="project" value="LOCAL" />
-      <updated>1423493037935</updated>
+      <workItem from="1423494577253" duration="13786000" />
     </task>
     <task id="LOCAL-00287" summary="beta16">
       <created>1423494453201</created>
@@ -1499,11 +1513,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423667559826</updated>
     </task>
-    <option name="localTasksCounter" value="335" />
+    <task id="LOCAL-00335" summary="beta17">
+      <created>1423667798456</created>
+      <option name="number" value="00335" />
+      <option name="project" value="LOCAL" />
+      <updated>1423667798456</updated>
+    </task>
+    <option name="localTasksCounter" value="336" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122245000" />
+    <option name="totallyTimeSpent" value="123933000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1627,32 +1647,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/selector.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5083">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/front/1header.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4516129" vertical-offset="3593" max-vertical-offset="4386">
-          <caret line="227" column="21" selection-start-line="227" selection-start-column="21" selection-end-line="227" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/sadmin/include/meta.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20203735" vertical-offset="0" max-vertical-offset="589">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/notification.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31748727" vertical-offset="68" max-vertical-offset="884">
@@ -1712,14 +1706,6 @@
           <folding>
             <element signature="n#!!doc" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.384615" vertical-offset="91" max-vertical-offset="697">
-          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1812,14 +1798,6 @@
           <folding>
             <element signature="n#!!doc" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/controllers/api/nav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="705" max-vertical-offset="2482">
-          <caret line="57" column="22" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2023,9 +2001,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37260273" vertical-offset="0" max-vertical-offset="510">
+          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30088496" vertical-offset="0" max-vertical-offset="1105">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65753424" vertical-offset="3381" max-vertical-offset="14501">
+          <caret line="213" column="17" selection-start-line="213" selection-start-column="17" selection-end-line="213" selection-end-column="17" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69863015" vertical-offset="340" max-vertical-offset="1564">
+          <caret line="35" column="25" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="253" max-vertical-offset="2533">
+        <state vertical-scroll-proportion="0.33150685" vertical-offset="253" max-vertical-offset="2533">
           <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -2033,38 +2047,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js">
+    <entry file="file://$PROJECT_DIR$/webserver/models/notification.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1564">
-          <caret line="35" column="25" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1581">
+          <caret line="64" column="12" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="12" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js">
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/front/middleware.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3381" max-vertical-offset="14501">
-          <caret line="213" column="17" selection-start-line="213" selection-start-column="17" selection-end-line="213" selection-end-column="17" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-          <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <caret line="19" column="21" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/api/nav.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.057724956" vertical-offset="0" max-vertical-offset="1122">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.47317073" vertical-offset="984" max-vertical-offset="2482">
+          <caret line="79" column="31" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/api/notification.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1425" max-vertical-offset="2363">
+          <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/nav.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43803057" vertical-offset="99" max-vertical-offset="748">
+          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
           <folding />
         </state>
       </provider>
