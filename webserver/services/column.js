@@ -25,13 +25,16 @@ exports.findOne = column.findOne;
 exports.find = column.find;
 
 
+exports.findOneAndUpdate = column.findOneAndUpdate;
+
+
 /**
  * 删除某个专栏
  * @param author
  * @param conditions
  * @param callback
  */
-exports.findOneAndRemove = function (author, conditions, callback) {
+exports.removeOne = function (author, conditions, callback) {
     howdo
         // 1. 检查是否为作者的专栏
         .task(function (next) {
@@ -93,7 +96,7 @@ exports.createOne = function (author, data, callback) {
  * @param data {Object} 数据
  * @param callback {Function} 回调
  */
-exports.findOneAndUpdate = function (author, conditions, data, callback) {
+exports.updateOne = function (author, conditions, data, callback) {
     howdo
         // 1. 检查是否为作者的专栏
         .task(function (next) {

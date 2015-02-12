@@ -57,7 +57,7 @@ module.exports = function (app) {
         var id = req.body.id;
 
         if (id) {
-            return column.findOneAndUpdate(res.locals.$developer, {
+            return column.updateOne(res.locals.$developer, {
                 _id: id
             }, req.body, function (err, doc) {
                 if (err) {
@@ -99,7 +99,7 @@ module.exports = function (app) {
 
         var id = req.body.id;
 
-        column.findOneAndRemove(res.locals.$developer, {_id: id}, function (err, doc) {
+        column.removeOne(res.locals.$developer, {_id: id}, function (err, doc) {
             if (err) {
                 return next(err);
             }
