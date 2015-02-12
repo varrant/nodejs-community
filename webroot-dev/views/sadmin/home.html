@@ -2,25 +2,24 @@
 <!--
  - 文件描述
  - @author ydr.me
- - @create 2014-12-21 15:00
+ - @create 2014-12-14 13:08
  -->
 <html>
 <head lang="zh-cn">
     {{include ../include/meta.html}}
     {{include ./include/meta.html}}
-    <script>window['-nav-']='developer';</script>
+    <script>window['-nav-']='home';</script>
 </head>
 <body ontouchstart="">
 
 {{include ./include/sidebar.html}}
 {{include ./include/header.html}}
+
 <div class="g-main">
     <div class="m-main">
-        <h1 class="main-title">
-            <i class="i i-users"></i>{{title}}
-        </h1>
+        <h1 class="main-title"><i class="i i-dashboard"></i>{{title}}</h1>
         <div class="main-body">
-            {{include ./include/developer/list.html}}
+            超管主页
         </div>
     </div>
     {{include ./include/footer.html}}
@@ -29,7 +28,6 @@
 
 <script src="/static/js/libs/coolie.min.js"
         data-config="./coolie-config.js"
-        data-main="./sadmin/developer-list.js"></script>
-
+        data-main="./sadmin/home.js"></script>
 </body>
 </html>

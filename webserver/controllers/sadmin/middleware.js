@@ -6,6 +6,8 @@
 
 'use strict';
 var setting = require('../../services/').setting;
+var permission = require('../../services/').permission;
+
 
 module.exports = function (app) {
     var exports = {};
@@ -29,6 +31,29 @@ module.exports = function (app) {
 
         if (req.session.$developer.isBlock) {
             err = new Error('您已被禁止访问管理后台，如有疑问请联系管理员。');
+            err.redirect = '/';
+            err.code = 403;
+            return next(err);
+        }
+
+        next();
+    };
+
+
+    /**
+     * 检查是否有权限访问
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.sadmin = function (req, res, next) {
+        var err;
+
+        var $developer = res.locals.$developer;
+        var canSadmin = permission.can($developer, 'sadmin');
+
+        if(!canSadmin){
+            err = new Error('权限不足。');
             err.redirect = '/';
             err.code = 403;
             return next(err);

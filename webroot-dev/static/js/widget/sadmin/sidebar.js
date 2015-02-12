@@ -12,48 +12,16 @@ define(function (require, exports, module) {
     var alert = require('../common/alert.js');
     var Scrollbar = require('../../alien/ui/Scrollbar/');
     var dato = require('../../alien/util/dato.js');
+    var selector = require('../../alien/core/dom/selector.js');
+    var attribute = require('../../alien/core/dom/attribute.js');
     var app = {};
-    var pathname = location.pathname.replace(/^\/sadmin\//, '');
 
-    app.init = function () {
-        ajax({
-            url: '/admin/api/nav/'
-        }).on('success', app._onsuccess.bind(app)).on('error', alert);
+    app.nav = function () {
+        var navClassName = 'nav-' + (window['-nav-'] || 'home');
+        var $li = selector.query('#nav .' + navClassName)[0];
+
+        attribute.addClass($li, 'active');
     };
 
-    app._onsuccess = function (json) {
-        if (json.code !== 200) {
-            return alert(json);
-        }
-
-        var list = json.data;
-        var find = 0;
-
-        var regs = list.map(function (item) {
-            return new RegExp(item.reg);
-        });
-
-        dato.each(regs, function (index, reg) {
-            if (reg.test(pathname)) {
-                find = index;
-                return false;
-            }
-        });
-
-        list[find].active = true;
-
-        var vue = new Vue({
-            el: '#nav',
-            data: {
-                list: list
-            }
-        });
-
-        vue.$el.classList.remove('f-none');
-        new Scrollbar('#nav', {
-            isStandAlone: true
-        });
-    };
-
-    app.init();
+    app.nav();
 });

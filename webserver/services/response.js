@@ -55,7 +55,7 @@ exports.findOneAndUpdate = response.findOneAndUpdate;
  * @param callback {Function} 回调
  */
 exports.createOne = function (author, data, meta, callback) {
-    var data2 = dato.pick(data, ['content', 'parent', 'object']);
+    var data2 = dato.pick(data, ['content', 'parentResponse', 'object']);
 
     data2.author = author.id;
     data2.meta = meta;

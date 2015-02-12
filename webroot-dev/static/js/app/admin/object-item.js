@@ -63,6 +63,7 @@ define(function (require, exports, module) {
 
         var author = object.author;
         new Response('#tab-response', {
+            developer: window['-developer-'],
             id: object.id,
             query: {
                 page: 1,

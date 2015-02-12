@@ -9,6 +9,11 @@
 module.exports = function (app, ctrl) {
     // 中间件
     app.use(/^\/sadmin\/.*$/i, ctrl.middleware.login);
+    app.use(/^\/sadmin\/.*$/i, ctrl.middleware.sadmin);
+
+
+    // 设置
+    app.get('/sadmin/', ctrl.main.home);
 
 
     // 设置

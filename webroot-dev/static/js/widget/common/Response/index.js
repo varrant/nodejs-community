@@ -19,6 +19,7 @@ define(function (require, exports, module) {
     var ajax = require('../ajax.js');
     var alert = require('../alert.js');
     var confirm = require('../confirm.js');
+    var tip = require('../tip.js');
     var Pager = require('../../../alien/ui/Pager/');
     var Respond = require('../Respond/index');
     var Template = require('../../../alien/libs/Template.js');
@@ -32,7 +33,6 @@ define(function (require, exports, module) {
     var tplList = new Template(templateList);
     var alienClass = 'alien-ui-response';
     var defaults = {
-        developer: window['-developer-'],
         loading: '<div class="alien-ui-response-loading"><div class="f-loading">加载中……</div></div>',
         url: {
             list: '/api/response/list/',
@@ -56,7 +56,6 @@ define(function (require, exports, module) {
         },
         respond: {
             githubLogin: '#',
-            placeholder: '期待你的回答',
             markdownHelp: {
                 link: '/help/markdown.html',
                 text: 'markdown 编辑器使用帮助'
@@ -209,6 +208,9 @@ define(function (require, exports, module) {
 
                 if ($replyNumberBtn) {
                     respondOptions.icon = 'reply';
+                    respondOptions.placeholder = '回复补充点什么吧';
+                } else {
+                    respondOptions.placeholder = options.list.canAccept ? '期待你的回答' : '评论说点什么吧';
                 }
 
                 respond = new Respond($respondParent, respondOptions);
@@ -426,7 +428,7 @@ define(function (require, exports, module) {
             the._isAjaxing = true;
 
             if (parentId) {
-                data.parent = parentId;
+                data.parentResponse = parentId;
             }
 
             ajax({
@@ -444,7 +446,7 @@ define(function (require, exports, module) {
 
                     data.author = options.list.developer;
 
-                    if (json.data.parent) {
+                    if (json.data.parentResponse) {
                         the._count.reply++;
                     } else {
                         the._count.comment++;
@@ -497,7 +499,8 @@ define(function (require, exports, module) {
 
             modification.insert(node, $parent, 'beforeend');
             the._scrollTo(node, function () {
-                attribute.addClass(node, alienClass + '-item-new');
+                tip.success('感谢你的' + (data.parentResponse ? '回复' : '评论'));
+                //attribute.addClass(node, alienClass + '-item-new');
                 the.prettify();
                 //setTimeout(function () {
                 //    if (node) {

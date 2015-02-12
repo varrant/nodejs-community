@@ -22,6 +22,7 @@ define(function (require, exports, module) {
         var $title = selector.query('#object-title')[0];
         var object = window['-object-'];
         var res = new Response('#response', {
+            developer: window['-developer-'],
             id: object.id,
             query: {
                 page: hashbang.get('query', 'page') || 1,
@@ -32,7 +33,7 @@ define(function (require, exports, module) {
                 developer: window['-developer-'],
                 author: window['-author-'],
                 object: object,
-                canAccept: window['-section-'] === 'question'
+                canAccept: window['-section-'].uri === 'question'
             },
             count: {
                 comment: object.commentByCount,
