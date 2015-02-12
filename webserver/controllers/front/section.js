@@ -6,6 +6,8 @@
 
 'use strict';
 
+var column = require('../../services/').column;
+
 
 module.exports = function (app) {
     var exports = {};
@@ -13,7 +15,15 @@ module.exports = function (app) {
     exports.get = function (req, res, next) {
         var uri  = req.params.uri;
 
+        column.findOne({
+            uri: uri
+        }, function (err, doc) {
+            if(err){
+                return next(err);
+            }
 
+            res.json(doc);
+        });
     };
 
     return exports;
