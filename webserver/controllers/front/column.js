@@ -45,6 +45,8 @@ module.exports = function (app) {
             .task(function (next, col) {
                 object.find({
                     column: col.id
+                }, {
+                    populate: ['author']
                 }, function (err, docs) {
                     next(err, col, docs);
                 });
@@ -54,16 +56,18 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                res.render('front/column.html', {
+                var data = {
                     title: col.name + ':' + col.author.nickname + '的专辑',
                     column: col,
+                    objects: objects,
                     pager: {
                         page: listOptions.page,
                         limit: listOptions.limit,
-                        count: col.count,
-                        objects: objects
+                        count: col.objectCount
                     }
-                });
+                };
+
+                res.render('front/column.html', data);
             });
     };
 
