@@ -12,6 +12,7 @@ define(function (require, exports, module) {
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
     var confirm = require('../common/confirm.js');
+    var tip = require('../common/tip.js');
     var selector = require('../../alien/core/dom/selector.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var event = require('../../alien/core/event/base.js');
@@ -149,6 +150,7 @@ define(function (require, exports, module) {
                     }
 
                     vue.$data[itemKey] = json.data;
+                    tip.success('保存成功');
                 })
                 .on('error', alert);
         },
