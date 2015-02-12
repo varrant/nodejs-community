@@ -32,15 +32,10 @@ var schema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // markdown 简介
+    // 简介
     introduction: {
         type: String,
         required: true
-    },
-    // html 简介
-    introductionHTML: {
-        type: String,
-        required: false
     },
     // 项目数量
     objectCount: {

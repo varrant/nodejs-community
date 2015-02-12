@@ -21,7 +21,6 @@ module.exports = function (app) {
         var listOptions = filter.skipLimit(req.params);
         var sectionIdMap = app.locals.$sectionIdMap;
 
-
         howdo
             // 1. 查找专辑
             .task(function (next) {
