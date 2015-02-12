@@ -1,0 +1,62 @@
+<div class="m-card">
+    <h2 class="card-title">
+        <i class="i i-file-text"></i>{{column.name}}
+        <small class="card-subtitle s-muted hidden-xs">——{{column.introduction}}</small>
+        <div class="card-endtitle">
+            <a class="btn btn-warning btn-xs" href="/admin/object/article/"><i class="i i-plus"></i>撰文</a>
+            <span class="s-light f-small hidden-xs"><i class="i i-file-o"></i>{{pager.count}}</span>
+        </div>
+    </h2>
+
+    <div class="card-body">
+        <!--列表-->
+        <ul class="m-summarylist">
+            {{if !objects.length}}
+                <li>
+                    <div class="alert alert-warning"> <i class="i i-info-circle"></i>暂无相关内容。</div>
+                </li>
+            {{/if}}
+            {{list objects as object}}
+            <li class="summarylist-item f-clearfix">
+                <div class="summarylist-avatar f-left">
+                    <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50"/></a>
+                </div>
+                <div class="summarylist-body">
+                    <h2 class="summarylist-name"><a
+                            href="/article/{{object.uri}}.html">{{object.title}}</a></h2>
+
+                    <div class="summarylist-meta s-light f-small row">
+                        <div class="col-sm-8">
+                            <ul class="avg-xs-2 avg-md-4">
+                                <li><i class="i i-user i-striped"></i><a href="/developer/{{=object.author.githubLogin}}/">{{object.author.nickname}}</a></li>
+                                <li class="hidden-xs"><i class="i i-eye"></i>{{object.viewByCount}}</li>
+                                <li class="hidden-xs"><i class="i i-comments"></i>{{object.commentByCount}}</li>
+                                {{if columnsMap[object.column]}}
+                                <li class="hidden-xs"><i class="i i-book"></i>{{columnsMap[object.column].name}}</li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                        <div class="col-sm-4">
+                            <ul class="summarylist-contributors f-list-right">
+                                {{list object.contributors as contributor}}
+                                <li>
+                                    <a href="/developer/{{contributor.githubLogin}}/" title="{{contributor.nickname}}">
+                                        <img src="{{contributor.email|gravatar:40}}" width="20" height="20" alt="avatar"/>
+                                    </a>
+                                </li>
+                                {{/list}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {{/list}}
+        </ul>
+        <!--/列表-->
+    </div>
+    <div class="card-footer f-text-center">
+        <!--分页器-->
+        <div id="pager"></div>
+        <!--/分页器-->
+    </div>
+</div>
