@@ -8,6 +8,13 @@
     <div class="card-body m-postmain">
         <div class="postmain-content">{{=object.contentHTML}}</div>
         <ul class="postmain-meta s-light">
+            {{if object.column && $columnIdMap[object.column]}}
+            {{var col = $columnIdMap[object.column]}}
+            <li>
+                <i class="i i-book"></i>
+                <a href="/column/{{col.uri}}/" class="label label-default">{{col.name}}</a>
+            </li>
+            {{/if}}
             <li>
                 <i class="i i-folder"></i>
                 <a href="/article/in/{{object.category.uri}}/" class="label label-default">{{object.category.name}}</a>
