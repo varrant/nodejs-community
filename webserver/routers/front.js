@@ -17,6 +17,9 @@ module.exports = function (app, ctrl) {
     app.get('/', ctrl.main.getHome);
 
 
+    app.get('/column/:uri');
+
+
     // list + detail
     // in category at column on label as status by autho
     app.locals.$section.forEach(function (section) {
@@ -157,7 +160,4 @@ module.exports = function (app, ctrl) {
     app.get('/developer/:githubLogin/agree/page/:page/', ctrl.developer.agree);
     app.get('/developer/:githubLogin/agree-by/', ctrl.developer.agreeBy);
     app.get('/developer/:githubLogin/agree-by/page/:page/', ctrl.developer.agreeBy);
-    //app.locals.$section.forEach(function (sec) {
-    //    app.get('/developer/:githubLogin/' + sec.uri + '/', ctrl.developer.object(sec.id));
-    //});
 };

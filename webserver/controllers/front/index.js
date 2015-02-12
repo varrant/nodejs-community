@@ -9,6 +9,7 @@
 module.exports = function (app) {
     return {
         developer: require('./developer.js')(app),
-        main: require('./main.js')(app)
+        main: require('./main.js')(app),
+        object: require('./object.js')(app)
     };
 };
