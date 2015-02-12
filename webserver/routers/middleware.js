@@ -24,4 +24,10 @@ module.exports = function (app, ctrl) {
 
     // 读取用户
     app.use(ctrl.readDeveloper);
+
+    // 读取版块
+    app.use(ctrl.readSection);
+
+    // 读取权限
+    app.use(ctrl.readPermission);
 };
