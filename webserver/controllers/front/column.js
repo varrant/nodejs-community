@@ -10,6 +10,7 @@ var column = require('../../services/').column;
 var object = require('../../services/').object;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
+var log = require('ydr-log');
 
 
 module.exports = function (app) {
@@ -66,6 +67,12 @@ module.exports = function (app) {
                         count: col.objectCount
                     }
                 };
+
+                column.rawModel.findOneAndUpdate({
+                    _id: col.id
+                }, {
+                    objectCount: objects.length
+                }, log.holdError);
 
                 res.render('front/column.html', data);
             });
