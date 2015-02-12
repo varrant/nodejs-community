@@ -68,7 +68,7 @@ module.exports = function (app) {
                     }
                 };
 
-                column.rawModel.findOneAndUpdate({
+                column.findOneAndUpdate({
                     _id: col.id
                 }, {
                     objectCount: objects.length
