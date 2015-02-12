@@ -137,8 +137,8 @@ module.exports = function (app, ctrl) {
         app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/as/:status/by/:author/', ctrl.object.getList(section));
         app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/as/:status/by/:author/page/:page/', ctrl.object.getList(section));
 
-        app.get('/object/', ctrl.main.redirect);
-        app.get('/' + uri + '/' + ':uri.html', ctrl.main.getObject(section));
+        app.get('/object/', ctrl.object.redirect);
+        app.get('/' + uri + '/' + ':uri.html', ctrl.object.getObject(section));
     });
 
 
