@@ -24,13 +24,13 @@
       "url": "http://ydr.me"
     }
   ],
-  "homepage": "https://frontenddev.org",
+  "homepage": "https://FrontEndDev.org/",
   "repository": {
     "type": "git",
     "url": "https://github.com/cloudcome/nodejs-community"
   },
   "bugs": {
-    "url": "https://github.com/cloudcome/nodejs-community/issues"
+    "url": "http://frontenddev.org/help/bug-feedback.html"
   },
   "dependencies": {
     "body-parser": "^1.9.2",
