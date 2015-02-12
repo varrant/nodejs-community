@@ -6,6 +6,7 @@
 
 'use strict';
 
+var configs = require('../../configs/');
 var xss = require('ydr-util').xss;
 var Validator = require('ydr-validator');
 var regexp = require('../utils/').regexp;
@@ -56,11 +57,7 @@ validator.pushRule({
     regexp: REG_INTRODUCTION,
     onafter: function (val, data) {
         val = xss.mdSafe(val || '');
-        data.introductionHTML = xss.mdRender(val, {
-            link: {
-                host: ['*.frontenddev.org']
-            }
-        });
+        data.introductionHTML = xss.mdRender(val, configs.safe);
         return val;
     },
     msg: {
@@ -78,7 +75,7 @@ validator.pushRule({
     regexp: REG_CONTENT,
     onafter: function (val, data) {
         val = xss.mdSafe(val);
-        data.contentHTML = xss.mdRender(val);
+        data.contentHTML = xss.mdRender(val, configs.safe);
         return val;
     },
     msg: {
