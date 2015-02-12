@@ -39,7 +39,7 @@ validator.pushRule({
     maxLength: 200,
     regexp: REG_URI,
     onafter: function (val) {
-        return xss.mdSafe(val).replace(/\n/g, '');
+        return val.replace(/\n/g, '');
     },
     msg: {
         regexp: '标题 URI 仅支持英文、数字以及“-”(短横线)和“_”（下划线）'
@@ -56,7 +56,11 @@ validator.pushRule({
     regexp: REG_INTRODUCTION,
     onafter: function (val, data) {
         val = xss.mdSafe(val || '');
-        data.introductionHTML = xss.mdRender(val);
+        data.introductionHTML = xss.mdRender(val, {
+            link: {
+                host: ['*.frontenddev.org']
+            }
+        });
         return val;
     },
     msg: {
