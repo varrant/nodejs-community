@@ -199,9 +199,11 @@ module.exports = function (app) {
     // 读取权限
     exports.readPermission = function (req, res, next) {
         var $developer = res.locals.$developer;
+        var $sectionUriMap = app.locals.$sectionUriMap;
 
         res.locals.$permission = {
-            canColumn: permission.can($developer, 'column')
+            column: permission.can($developer, 'column'),
+            help: ($developer.role & $sectionUriMap.help.role) !== 0
         };
         next();
     };
