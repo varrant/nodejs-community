@@ -46,7 +46,7 @@ module.exports = function (app) {
                 object.find({
                     column: col.id
                 }, {
-                    populate: ['author']
+                    populate: ['author', 'contributors']
                 }, function (err, docs) {
                     next(err, col, docs);
                 });
