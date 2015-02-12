@@ -197,7 +197,7 @@ module.exports = function (app) {
                 section: section.id,
                 uri: uri,
                 isDisplay: true
-            }, {populate: ['author', 'category']}, function (err, doc) {
+            }, {populate: ['author', 'category', 'column']}, function (err, doc) {
                 if (err) {
                     return next(err);
                 }
