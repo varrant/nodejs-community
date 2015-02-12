@@ -8,11 +8,10 @@
     <div class="card-body m-postmain">
         <div class="postmain-content">{{=object.contentHTML}}</div>
         <ul class="postmain-meta s-light">
-            {{if object.column && $columnIdMap[object.column]}}
-            {{var col = $columnIdMap[object.column]}}
+            {{if object.column}}
             <li>
                 <i class="i i-book"></i>
-                <a href="/column/{{col.uri}}/" class="label label-default">{{col.name}}</a>
+                <a href="/column/{{object.column.uri}}/" class="label label-default">{{object.column.name}}</a>
             </li>
             {{/if}}
             <li>

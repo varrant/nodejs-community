@@ -8,6 +8,12 @@
     <div class="card-body m-postmain">
         <div class="postmain-content">{{=object.contentHTML}}</div>
         <ul class="postmain-meta s-light">
+            {{if object.column}}
+            <li>
+                <i class="i i-book"></i>
+                <a href="/column/{{object.column.uri}}/" class="label label-default">{{object.column.name}}</a>
+            </li>
+            {{/if}}
             <li>
                 <i class="i i-folder"></i>
                 <a href="/question/in/{{object.category.uri}}/" class="label label-default">{{object.category.name}}</a>
