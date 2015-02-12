@@ -13,22 +13,25 @@ module.exports = function (app) {
     var exports = {};
 
     exports.get = function (req, res, next) {
-        var uri  = req.params.uri;
+        var uri = req.params.uri;
 
         column.findOne({
             uri: uri
         }, {
             populate: ['author']
-        },function (err, doc) {
-            if(err){
+        }, function (err, doc) {
+            if (err) {
                 return next(err);
             }
 
-            if(!doc){
+            if (!doc) {
                 return next();
             }
 
-            res.json(doc);
+            res.render('front/column.html', {
+                title: doc.name + ':' + doc.author.nickname + '的专辑',
+                column: doc
+            });
         });
     };
 
