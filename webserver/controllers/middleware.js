@@ -15,6 +15,8 @@ var cookie = require('../utils/').cookie;
 var REG_ENDXIE = /(\/|\.[^\.\/]+)$/;
 var REG_ACCEPT = /^application\/json;\s*charset=utf-8/i;
 var REG_SCHEMA = /^https?:\/\/$/i;
+var permission = require('../services/').permission;
+
 
 module.exports = function (app) {
     var exports = {};
@@ -196,7 +198,11 @@ module.exports = function (app) {
 
     // 读取权限
     exports.readPermission = function (req, res, next) {
+        var $developer = res.locals.$developer;
 
+        res.locals.$permission = {
+            canColumn: permission.can($developer, 'column')
+        };
         next();
     };
 

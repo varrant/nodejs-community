@@ -13,6 +13,10 @@
 - req.session.$state 授权状态值
 - res.locals.$csrf 响应令牌
 - res.locals.$developer 响应开发者
+- res.locals.$permission 部分权限信息
+- res.locals.$section 社区版块
+- res.locals.$sectionIdMap 社区版块
+- res.locals.$sectionUriMap 社区版块
 
 
 # 全局变量
