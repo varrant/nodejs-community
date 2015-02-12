@@ -24,8 +24,14 @@
     <div class="container">
 
         <div class="m-ptitle">
-            <img src="{{=column.cover}}" alt="cover"/>
-            <div class=""></div>
+            <img class="ptitle-cover" src="{{column.cover}}" alt="cover"/>
+            <h1 class="ptitle-name"><span>{{column.name}}</span></h1>
+            <div class="ptitle-intro s-muted">{{column.introduction}}</div>
+            <div class="ptitle-desc s-light">
+                <i class="i i-user"></i>{{column.author.nickname}}
+                <span class="f-space"></span>
+                <i class="i i-bar-chart"></i>{{column.objectCount}}
+            </div>
         </div>
 
 
