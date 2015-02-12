@@ -17,9 +17,15 @@ module.exports = function (app) {
 
         column.findOne({
             uri: uri
-        }, function (err, doc) {
+        }, {
+            populate: ['author']
+        },function (err, doc) {
             if(err){
                 return next(err);
+            }
+
+            if(!doc){
+                return next();
             }
 
             res.json(doc);
