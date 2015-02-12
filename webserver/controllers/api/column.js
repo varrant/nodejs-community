@@ -85,7 +85,7 @@ module.exports = function (app) {
 
 
     /**
-     * 删除专栏
+     * 删除专辑
      * @param req
      * @param res
      * @param next

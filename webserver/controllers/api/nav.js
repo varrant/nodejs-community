@@ -76,7 +76,7 @@ module.exports = function (app) {
         if (canColumn) {
             list.push({
                 href: '/sadmin/column/',
-                text: '专栏设置',
+                text: '专辑设置',
                 icon: 'i i-book',
                 reg: '^column\\/$'
             });

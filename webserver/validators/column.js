@@ -18,7 +18,7 @@ var REG_INTRODUCTION = regexp.content(10, 1000);
 
 validator.pushRule({
     name: 'name',
-    alias: '专栏名称',
+    alias: '专辑名称',
     type: 'string',
     required: true,
     maxLength: 50,
@@ -36,7 +36,7 @@ validator.pushRule({
 
 validator.pushRule({
     name: 'cover',
-    alias: '专栏封面',
+    alias: '专辑封面',
     type: 'url',
     required: true,
     minLength: 10,
@@ -45,7 +45,7 @@ validator.pushRule({
 
 validator.pushRule({
     name: 'introduction',
-    alias: '专栏简介',
+    alias: '专辑简介',
     type: 'string',
     required: true,
     minLength: 10,

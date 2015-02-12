@@ -103,13 +103,13 @@ exports.createOne = function (author, data, callback) {
                 }
 
                 if (!doc) {
-                    err = new Error('该专栏不存在');
+                    err = new Error('该专辑不存在');
                     err.code = 404;
                     return next(err);
                 }
 
                 if (doc.id.toString() !== data.column) {
-                    err = new Error('不允许发布到他人专栏内');
+                    err = new Error('不允许发布到他人专辑内');
                     err.code = 403;
                     return next(err);
                 }
@@ -282,13 +282,13 @@ exports.updateOne = function (author, conditions, data, callback) {
                 }
 
                 if (!doc) {
-                    err = new Error('该专栏不存在');
+                    err = new Error('该专辑不存在');
                     err.code = 404;
                     return next(err);
                 }
 
                 if (doc.id.toString() !== data.column) {
-                    err = new Error('不允许发布到他人专栏内');
+                    err = new Error('不允许发布到他人专辑内');
                     err.code = 403;
                     return next(err);
                 }

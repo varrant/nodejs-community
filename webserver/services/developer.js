@@ -272,7 +272,7 @@ exports.increaseAcceptByCount = function (conditions, count, callback) {
 
 
 /**
- * 增加专栏数量
+ * 增加专辑数量
  * @param conditions {Object} 查询条件
  * @param count {Number} 更新值
  * @param callback {Function} 回调

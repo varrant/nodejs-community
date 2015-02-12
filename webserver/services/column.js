@@ -29,14 +29,14 @@ exports.findOneAndUpdate = column.findOneAndUpdate;
 
 
 /**
- * 删除某个专栏
+ * 删除某个专辑
  * @param author
  * @param conditions
  * @param callback
  */
 exports.removeOne = function (author, conditions, callback) {
     howdo
-        // 1. 检查是否为作者的专栏
+        // 1. 检查是否为作者的专辑
         .task(function (next) {
             column.findOne({
                 author: author.id,
@@ -47,13 +47,13 @@ exports.removeOne = function (author, conditions, callback) {
                 }
 
                 if (!doc) {
-                    err = new Error('该专栏不存在');
+                    err = new Error('该专辑不存在');
                     err.code = 404;
                     return next(err);
                 }
 
                 if (doc.objectCount > 0) {
-                    err = new Error('该专栏下还有' + doc.objectCount + '个项目，无法删除');
+                    err = new Error('该专辑下还有' + doc.objectCount + '个项目，无法删除');
                     return next(err);
                 }
 
@@ -98,7 +98,7 @@ exports.createOne = function (author, data, callback) {
  */
 exports.updateOne = function (author, conditions, data, callback) {
     howdo
-        // 1. 检查是否为作者的专栏
+        // 1. 检查是否为作者的专辑
         .task(function (next) {
             column.findOne({
                 author: author.id,
@@ -109,7 +109,7 @@ exports.updateOne = function (author, conditions, data, callback) {
                 }
 
                 if (!doc) {
-                    err = new Error('该专栏不存在');
+                    err = new Error('该专辑不存在');
                     err.code = 404;
                     return next(err);
                 }

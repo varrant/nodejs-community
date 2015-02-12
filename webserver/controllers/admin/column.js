@@ -17,7 +17,7 @@ module.exports = function (app) {
      */
     exports.get = function (req, res, next) {
         var data = {
-            title: '专栏设置'
+            title: '专辑设置'
         };
 
         res.render('admin/column.html', data);
