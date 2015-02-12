@@ -13,8 +13,8 @@
                     <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50"/></a>
                 </div>
                 <div class="summarylist-body">
-                    <h2 class="summarylist-name"><a
-                            href="/{{$sectionIdMap[object.section].uri}}/{{object.uri}}.html">{{object.title}}</a></h2>
+                    <h2 class="summarylist-name">{{object.section}}<a
+                            href="/{{$sectionIdMap[object.section]}}/{{object.uri}}.html">{{object.title}}</a></h2>
 
                     <div class="summarylist-meta s-light f-small row">
                         <div class="col-sm-8">
