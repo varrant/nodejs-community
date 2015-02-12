@@ -16,6 +16,6 @@ define(function (require, exports, module) {
         url: '/admin/api/column/',
         itemKey: 'column',
         listKey: 'columns',
-        type: '专栏'
+        type: '专辑'
     });
 });
