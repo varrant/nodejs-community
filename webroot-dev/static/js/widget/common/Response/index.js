@@ -443,17 +443,19 @@ define(function (require, exports, module) {
                     }
 
                     var data = json.data;
+                    var resp = data.response;
+                    var obje = data.object;
 
-                    data.author = options.list.developer;
+                    resp.author = options.list.developer;
 
-                    if (json.data.parentResponse) {
+                    if (resp.parentResponse) {
                         the._count.reply++;
                     } else {
                         the._count.comment++;
                     }
 
                     the._increaseCount();
-                    callback(null, data);
+                    callback(null, resp, obje);
                 })
                 .on('error', function (err) {
                     callback(err);
