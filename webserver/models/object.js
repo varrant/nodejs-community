@@ -71,6 +71,14 @@ var schema = new mongoose.Schema({
         type: String,
         required: false
     },
+    hide: {
+        type: String,
+        required: false
+    },
+    hideHTML: {
+        type: String,
+        required: false
+    },
     // 链接地址
     link: {
         type: String,
