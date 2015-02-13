@@ -107,7 +107,8 @@ define(function (require, exports, module) {
         acceptByResponse: '',
         list: {
             canAccept: false
-        }
+        },
+        $hidden: selector.query('#hidden')[0]
     };
     var Response = ui.create({
         constructor: function ($parent, options) {
@@ -504,6 +505,14 @@ define(function (require, exports, module) {
 
                 if (obje.hidden) {
                     msg += '，隐藏内容已对你可见。';
+                }
+
+                var $hidden = the._options.$hidden;
+
+                if ($hidden) {
+                    $hidden.innerHTML = obje.hiddenHTML;
+                    attribute.removeClass($hidden, 'alert-danger');
+                    attribute.addClass($hidden, 'alert-success');
                 }
 
                 tip.success(msg);
