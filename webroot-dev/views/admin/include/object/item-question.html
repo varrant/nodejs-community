@@ -50,16 +50,6 @@
     </li>
 
     <li>
-        <div class="form-key">隐藏内容</div>
-        <div class="form-val">
-            <textarea name="content" rows="5" v-model="object.content" class="ipt"
-                      id="hidden">\{{object.content}}</textarea>
-
-            <p class="form-desc">使用<code>markdown</code>语法详细的提问描述，不能使用任何标签，详细阅读<a href="/help/markdown.html">《前端开发者社区 markdown 语法约定》</a>。</p>
-        </div>
-    </li>
-
-    <li>
         <div class="form-key">提问标签</div>
         <div class="form-val">
             <div class="row">
@@ -78,6 +68,16 @@
                 </div>
             </div>
             <p class="form-desc">输入 label 后回车。添加合适的 label 有助于更快的被检索到。最多可以添加<strong>5</strong>个 label。</p>
+        </div>
+    </li>
+
+    <li>
+        <div class="form-key">隐藏内容</div>
+        <div class="form-val">
+            <textarea name="hidden" rows="5" v-model="object.hidden" class="ipt"
+                      id="hidden">\{{object.hidden}}</textarea>
+
+            <p class="form-desc">使用<code>markdown</code>语法添加隐藏内容（需要评论或回复后才能浏览），不能使用任何标签，详细阅读<a href="/help/markdown.html">《前端开发者社区 markdown 语法约定》</a>。</p>
         </div>
     </li>
 
