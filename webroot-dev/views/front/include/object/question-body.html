@@ -12,7 +12,7 @@
     <div class="card-body m-postmain">
         <div class="postmain-content">
             {{if object.hidden}}
-            <div class="alert alert-danger"><i class="i i-exclamation-triangle"></i>本文有隐藏内容，需要评论/回复后才可见。</div>
+            <div class="alert alert-danger" id="hidden"><i class="i i-exclamation-triangle"></i>本文有隐藏内容，需要评论/回复后才可见。</div>
             {{/if}}
             {{=object.contentHTML}}
         </div>
