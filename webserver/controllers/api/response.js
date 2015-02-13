@@ -215,14 +215,22 @@ module.exports = function (app) {
             ip: req.ip
         };
 
-        response.createOne(res.locals.$developer, req.body, meta, function (err, doc) {
+        response.createOne(res.locals.$developer, req.body, meta, function (err, resp, obje) {
             if (err) {
+                return next(err);
+            }
+
+            if (!resp) {
+                err = new Error((req.body.parentResponse ? '回复' : '评论' ) + '失败');
                 return next(err);
             }
 
             res.json({
                 code: 200,
-                data: doc
+                data: {
+                    response: resp,
+                    objecr: obje
+                }
             });
         });
     };

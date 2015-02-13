@@ -116,7 +116,7 @@ exports.createOne = function (author, data, meta, callback) {
         })
         // 顺序串行
         .follow(function (err, responseObject, parentResponse, doc) {
-            callback(err, doc);
+            callback(err, doc, responseObject);
 
             if (!err && doc) {
                 // 数
