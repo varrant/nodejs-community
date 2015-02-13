@@ -65,9 +65,8 @@ define(function (require, exports, module) {
         _initNode: function () {
             var the = this;
             var options = the._options;
-            var html = tpl.render(options);
 
-            the._$parent.innerHTML = html;
+            the._$parent.innerHTML = tpl.render(options);
 
             var nodes = selector.query('.j-flag', the._$parent);
 
