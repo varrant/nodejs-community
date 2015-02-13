@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/item-question.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/item-question.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-question.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-question.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/models/object.js" afterPath="$PROJECT_DIR$/webserver/models/object.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/object.js" afterPath="$PROJECT_DIR$/webserver/validators/object.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -78,8 +78,8 @@
       <file leaf-file-name="item-question.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/include/object/item-question.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.62478775" vertical-offset="567" max-vertical-offset="1666">
-              <caret line="55" column="32" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.27843803" vertical-offset="550" max-vertical-offset="1666">
+              <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -136,13 +136,13 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/column.html" />
         <option value="$PROJECT_DIR$/configs/safe.js" />
         <option value="$PROJECT_DIR$/configs/index.js" />
-        <option value="$PROJECT_DIR$/webserver/validators/object.js" />
         <option value="$PROJECT_DIR$/webserver/validators/response.js" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/webserver/utils/regexp.js" />
-        <option value="$PROJECT_DIR$/webserver/models/object.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/object-list-question.html" />
+        <option value="$PROJECT_DIR$/webserver/models/object.js" />
+        <option value="$PROJECT_DIR$/webserver/validators/object.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/item-question.html" />
       </list>
     </option>
@@ -322,6 +322,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="webserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validators" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -770,13 +788,7 @@
       <workItem from="1422967616233" duration="6654000" />
       <workItem from="1423053668098" duration="52142000" />
       <workItem from="1423494417640" duration="137000" />
-      <workItem from="1423494577253" duration="22107000" />
-    </task>
-    <task id="LOCAL-00326" summary="beta17">
-      <created>1423666154350</created>
-      <option name="number" value="00326" />
-      <option name="project" value="LOCAL" />
-      <updated>1423666154350</updated>
+      <workItem from="1423494577253" duration="22227000" />
     </task>
     <task id="LOCAL-00327" summary="beta17">
       <created>1423666181882</created>
@@ -1066,11 +1078,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423835433671</updated>
     </task>
-    <option name="localTasksCounter" value="375" />
+    <task id="LOCAL-00375" summary="beta19">
+      <created>1423835785546</created>
+      <option name="number" value="00375" />
+      <option name="project" value="LOCAL" />
+      <updated>1423835785546</updated>
+    </task>
+    <option name="localTasksCounter" value="376" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132254000" />
+    <option name="totallyTimeSpent" value="132374000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1510,14 +1528,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/validators/object.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1138" max-vertical-offset="1836">
-          <caret line="77" column="57" selection-start-line="77" selection-start-column="57" selection-end-line="77" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/validators/response.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
@@ -1562,14 +1572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/models/object.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44715446" vertical-offset="881" max-vertical-offset="3876">
-          <caret line="72" column="6" selection-start-line="72" selection-start-column="6" selection-end-line="72" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49066213" vertical-offset="0" max-vertical-offset="697">
@@ -1610,10 +1612,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/models/object.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41951218" vertical-offset="881" max-vertical-offset="3876">
+          <caret line="71" column="23" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/validators/object.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58536583" vertical-offset="1306" max-vertical-offset="2142">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/include/object/item-question.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62478775" vertical-offset="567" max-vertical-offset="1666">
-          <caret line="55" column="32" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.27843803" vertical-offset="550" max-vertical-offset="1666">
+          <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
           <folding />
         </state>
       </provider>

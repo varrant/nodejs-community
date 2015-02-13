@@ -84,6 +84,24 @@ validator.pushRule({
 });
 
 validator.pushRule({
+    name: 'hidden',
+    type: 'string',
+    alias: '隐藏内容',
+    trim: true,
+    exist: true,
+    maxLength: 1000,
+    regexp: REG_INTRODUCTION,
+    onafter: function (val, data) {
+        val = xss.mdSafe(val || '');
+        data.hiddenHTML = xss.mdRender(val, configs.safe);
+        return val;
+    },
+    msg: {
+        regexp: '隐藏内容仅支持中英文、数字，以及常用符号'
+    }
+});
+
+validator.pushRule({
     name: 'labels',
     type: 'array',
     alias: '标注',

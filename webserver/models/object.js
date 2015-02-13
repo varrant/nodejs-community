@@ -71,11 +71,11 @@ var schema = new mongoose.Schema({
         type: String,
         required: false
     },
-    hide: {
+    hidden: {
         type: String,
         required: false
     },
-    hideHTML: {
+    hiddenHTML: {
         type: String,
         required: false
     },
