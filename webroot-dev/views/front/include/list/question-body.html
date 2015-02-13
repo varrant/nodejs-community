@@ -45,8 +45,11 @@
                     <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50"/></a>
                 </div>
                 <div class="summarylist-body">
-                    <h2 class="summarylist-name"><a
-                            href="/question/{{object.uri}}.html" class="{{if !object.acceptByResponse}}s-danger{{/if}}">{{object.title}}</a>
+                    <h2 class="summarylist-name">
+                        {{if object.hidden}}
+                        <i class="i i-lock" title="有隐藏内容"></i>
+                        {{/if}}
+                        <a href="/question/{{object.uri}}.html" class="{{if !object.acceptByResponse}}s-danger{{/if}}">{{object.title}}</a>
                         {{if object.acceptByResponse}}
                         <i class="i i-check i-striped s-success"></i>
                         {{else}}
