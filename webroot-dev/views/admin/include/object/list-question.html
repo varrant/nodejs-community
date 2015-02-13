@@ -18,9 +18,10 @@
                 \{{columnsMap[object.column] && columnsMap[object.column].name || "未分配专辑"}}
             </td>
             <td>
+                <i v-if="object.hidden" class="i i-lock i-striped"></i>
+                <a href="/admin/object/question/?id=\{{object._id}}" v-class="s-danger: !object.acceptByResponse">《\{{object.title}}》</a>
                 <i v-if="object.acceptByResponse" class="i i-check i-striped s-success"></i>
                 <i v-if="!object.acceptByResponse" class="i i-exclamation-circle i-striped s-danger"></i>
-                <a href="/admin/object/question/?id=\{{object._id}}" v-class="s-danger: !object.acceptByResponse">《\{{object.title}}》</a>
             </td>
             <td>
                 \{{object.commentByCount}}/\{{object.viewByCount}}
