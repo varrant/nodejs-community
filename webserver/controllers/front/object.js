@@ -15,6 +15,7 @@ var object = require('../../services/').object;
 var developer = require('../../services/').developer;
 var column = require('../../services/').column;
 var section = require('../../services/').section;
+var response = require('../../services/').response;
 var filter = require('../../utils/').filter;
 var log = require('ydr-log');
 
@@ -185,31 +186,51 @@ module.exports = function (app) {
 
     /**
      * post 页
-     * @param type
+     * @param section
      * @returns {Function}(req, res, next)
      */
     exports.getObject = function (section) {
         return function (req, res, next) {
             var uri = req.params.uri;
             var data = {};
-
+            var $developer = res.locals.$developer;
             object.findOne({
                 section: section.id,
                 uri: uri,
                 isDisplay: true
-            }, {populate: ['author', 'category', 'column']}, function (err, doc) {
+            }, {populate: ['author', 'category', 'column']}, function (err, obje) {
                 if (err) {
                     return next(err);
                 }
 
-                if (!doc) {
+                if (!obje) {
                     return next();
                 }
 
-                object.increaseViewByCount({_id: doc.id}, 1, log.holdError);
-                data.title = doc.title;
-                data.object = doc;
-                res.render('front/object-' + section.uri + '.html', data);
+                data.hasResponsed = false;
+                data.title = obje.title;
+                data.object = obje;
+
+                var onend = function () {
+                    object.increaseViewByCount({_id: obje.id}, 1, log.holdError);
+                    res.render('front/object-' + section.uri + '.html', data);
+                };
+
+                if ($developer && $developer.id) {
+                    response.findOne({
+                        author: $developer.id.toString(),
+                        object: obje.id.toString()
+                    }, function (err, resp) {
+                        if (err) {
+                            return next(err);
+                        }
+
+                        data.hasResponsed = !!resp;
+                        onend();
+                    });
+                } else {
+                    onend();
+                }
             });
         };
     };
