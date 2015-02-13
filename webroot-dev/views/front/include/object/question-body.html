@@ -1,6 +1,9 @@
 <!--内容-->
 <div class="m-card">
     <h2 class="card-title {{if object.acceptByResponse}}has-accepted{{else}}un-accepted{{/if}}" id="object-title">
+        {{if object.hidden}}
+        <i class="i i-lock"></i>
+        {{/if}}
         <i class="i i-cube"></i>
         {{object.title}}
         <div class="card-endtitle">
