@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/api/response.js" afterPath="$PROJECT_DIR$/webserver/controllers/api/response.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -36,7 +36,7 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4489796" vertical-offset="8338" max-vertical-offset="14620">
+            <state vertical-scroll-proportion="0.47317073" vertical-offset="8311" max-vertical-offset="14620">
               <caret line="506" column="17" selection-start-line="506" selection-start-column="17" selection-end-line="506" selection-end-column="17" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -101,9 +101,9 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/include/home/me.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/object-question.html" />
         <option value="$PROJECT_DIR$/webserver/services/response.js" />
-        <option value="$PROJECT_DIR$/webserver/controllers/api/response.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/index.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" />
+        <option value="$PROJECT_DIR$/webserver/controllers/api/response.js" />
       </list>
     </option>
   </component>
@@ -820,13 +820,7 @@
       <workItem from="1422967616233" duration="6654000" />
       <workItem from="1423053668098" duration="52142000" />
       <workItem from="1423494417640" duration="137000" />
-      <workItem from="1423494577253" duration="23791000" />
-    </task>
-    <task id="LOCAL-00336" summary="beta18">
-      <created>1423745771005</created>
-      <option name="number" value="00336" />
-      <option name="project" value="LOCAL" />
-      <updated>1423745771005</updated>
+      <workItem from="1423494577253" duration="23815000" />
     </task>
     <task id="LOCAL-00337" summary="beta18">
       <created>1423745863944</created>
@@ -1116,11 +1110,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423837288127</updated>
     </task>
-    <option name="localTasksCounter" value="385" />
+    <task id="LOCAL-00385" summary="beta19">
+      <created>1423837486596</created>
+      <option name="number" value="00385" />
+      <option name="project" value="LOCAL" />
+      <updated>1423837486596</updated>
+    </task>
+    <option name="localTasksCounter" value="386" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133938000" />
+    <option name="totallyTimeSpent" value="133962000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
@@ -1604,17 +1604,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/controllers/api/response.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38699186" vertical-offset="2907" max-vertical-offset="3927">
-          <caret line="226" column="0" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#494#1568#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/services/response.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19512194" vertical-offset="1818" max-vertical-offset="7259">
@@ -1641,9 +1630,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/api/object.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3723">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/api/response.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44227642" vertical-offset="2907" max-vertical-offset="3927">
+          <caret line="228" column="26" selection-start-line="228" selection-start-column="26" selection-end-line="228" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#494#1568#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4489796" vertical-offset="8338" max-vertical-offset="14620">
+        <state vertical-scroll-proportion="0.47317073" vertical-offset="8311" max-vertical-offset="14620">
           <caret line="506" column="17" selection-start-line="506" selection-start-column="17" selection-end-line="506" selection-end-column="17" />
           <folding>
             <element signature="n#!!doc" expanded="true" />

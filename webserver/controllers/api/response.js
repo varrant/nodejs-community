@@ -229,7 +229,7 @@ module.exports = function (app) {
                 code: 200,
                 data: {
                     response: resp,
-                    objecr: obje
+                    object: obje
                 }
             });
         });
