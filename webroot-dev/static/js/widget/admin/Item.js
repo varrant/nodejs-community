@@ -128,22 +128,22 @@ define(function (require, exports, module) {
                         onprogress(eve.alienDetail.percent);
                     })
                     .on('success', function (json) {
-                        //if (json.code !== 200) {
-                        //    the.uploadDestroy();
-                        //    return alert(json);
-                        //}
-                        //
-                        ////cacheControl: "max-age=315360000"
-                        ////contentType: "image/png"
-                        ////encoding: "utf8"
-                        ////image: {type: "png", width: 200, height: 200}
-                        ////ourl: "http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f/i/20141228233411750487888485"
-                        ////surl: "http://s.ydr.me/f/i/20141228233411750487888485"
-                        //var data = json.data;
-                        //ondone(null, [{
-                        //    name: "img.png",
-                        //    url: data.surl
-                        //}]);
+                        if (json.code !== 200) {
+                            the.uploadDestroy();
+                            return alert(json);
+                        }
+
+                        //cacheControl: "max-age=315360000"
+                        //contentType: "image/png"
+                        //encoding: "utf8"
+                        //image: {type: "png", width: 200, height: 200}
+                        //ourl: "http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f/i/20141228233411750487888485"
+                        //surl: "http://s.ydr.me/f/i/20141228233411750487888485"
+                        var data = json.data;
+                        ondone(null, [{
+                            name: "img.png",
+                            url: data.surl
+                        }]);
                     })
                     .on('error', function (err) {
                         the.uploadDestroy();
