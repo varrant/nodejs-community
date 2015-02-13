@@ -217,12 +217,12 @@ define(function (require, exports, module) {
                 respond.on('submit', function (content) {
                     respond.disable();
 
-                    the._post(content, this._replyParentId, function (err, data) {
+                    the._post(content, this._replyParentId, function (err, resp, obje) {
                         respond.enable();
 
                         if (!err) {
                             respond.reset();
-                            the._appendItem($listParent, data);
+                            the._appendItem($listParent, resp, obje);
 
                             if ($replyNumberBtn) {
                                 the._increaseHTML($replyNumberBtn, 1);
@@ -485,9 +485,8 @@ define(function (require, exports, module) {
 
         /**
          * 动态追加项目
-         * @api
          */
-        _appendItem: function ($parent, data) {
+        _appendItem: function ($parent, data, obje) {
             var the = this;
             var html = tplList.render(dato.extend({
                 list: [data]
@@ -501,7 +500,13 @@ define(function (require, exports, module) {
 
             modification.insert(node, $parent, 'beforeend');
             the._scrollTo(node, function () {
-                tip.success('感谢你的' + (data.parentResponse ? '回复' : '评论'));
+                var msg = '感谢你的' + (data.parentResponse ? '回复' : '评论');
+
+                if (obje.hidden) {
+                    msg += '，隐藏内容已对你可见。';
+                }
+
+                tip.success(msg);
                 //attribute.addClass(node, alienClass + '-item-new');
                 the.prettify();
                 //setTimeout(function () {
