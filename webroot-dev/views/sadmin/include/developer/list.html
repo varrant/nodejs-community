@@ -14,7 +14,7 @@
         <tr v-repeat="developer:list" v-class="danger:developer.isBlock">
             <td>\{{(query.page - 1) * query.limit + $index + 1}}</td>
             <td>\{{developer.email}}</td>
-            <td><a href="/admin/developer/?id=\{{developer._id}}">\{{developer.nickname}}</a></td>
+            <td><a href="/sadmin/developer/?id=\{{developer._id}}">\{{developer.nickname}}</a></td>
         </tr>
         </tbody>
         <tfoot>
