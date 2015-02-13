@@ -16,7 +16,14 @@
         <div class="postmain-content">
             {{=object.contentHTML}}
             {{if object.hidden}}
-            <div class="alert alert-danger" id="hidden"><i class="i i-exclamation-triangle"></i>本文有隐藏内容，需要评论/回复后才可见。</div>
+                {{if hasResponsed}}
+                    <div class="alert alert-success">
+                        <p><i class="i i-exclamation-triangle"></i><strong>隐藏内容：</strong></p>
+                        {{=object.hiddenHTML}}
+                    </div>
+                {{else}}
+                    <div class="alert alert-danger" id="hidden"><i class="i i-exclamation-triangle"></i>此处有隐藏内容，需要评论/回复后才可见。</div>
+                {{/if}}
             {{/if}}
         </div>
         <ul class="postmain-meta s-light">
