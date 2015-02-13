@@ -300,7 +300,7 @@ exports.updateOne = function (author, conditions, data, callback) {
         .task(function (next, objectInSection) {
             var date = new Date();
             var data2 = dato.pick(data, ['category', 'column', 'labels', 'introduction',
-                'link', 'content', 'isDisplay']);
+                'link', 'content', 'hidden', 'isDisplay']);
             var err;
 
             data2.updateAt = date;

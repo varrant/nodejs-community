@@ -323,6 +323,18 @@
     p {
       white-space: pre-wrap;
     }
+
+    img{
+      max-width: 50%;
+      cursor: -webkit-zoom-in;
+      cursor: -moz-zoom-in;
+      cursor: zoom-in;
+    }
+
+    p > img:only-child {
+      display: block;
+      margin: 0 auto;
+    }
   }
 }
 

@@ -250,6 +250,16 @@
 .m-postmain .postmain-content p {
   white-space: pre-wrap;
 }
+.m-postmain .postmain-content img {
+  max-width: 50%;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in;
+}
+.m-postmain .postmain-content p > img:only-child {
+  display: block;
+  margin: 0 auto;
+}
 .m-usercard .usercard-main {
   margin-bottom: 20px;
 }

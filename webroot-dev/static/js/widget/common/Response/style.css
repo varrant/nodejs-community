@@ -92,6 +92,11 @@
     cursor: zoom-in;
 }
 
+.alien-ui-response-content p > img:only-child {
+    display: block;
+    margin: 0 auto;
+}
+
 .alien-ui-response-content p {
     white-space: pre-wrap;
 }
