@@ -47,7 +47,7 @@ define(function (require, exports, module) {
      */
     app.buildPath = function () {
         var array1 = ['in', 'at', 'on', 'as', 'by', 'page'];
-        var array2 = [section];
+        var array2 = [section.uri];
 
         array1.forEach(function (item) {
             if (app.options[item]) {

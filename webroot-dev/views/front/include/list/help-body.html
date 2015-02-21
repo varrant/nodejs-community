@@ -38,14 +38,14 @@
                         <div class="col-sm-8">
                             <ul class="avg-xs-2 avg-md-4">
                                 <li><i class="i i-user i-striped"></i><a href="/developer/{{=object.author.githubLogin}}/">{{object.author.nickname}}</a></li>
-                                <li class="hidden-xs"><i class="i i-eye"></i>{{object.viewByCount}}</li>
-                                <li class="hidden-xs"><i class="i i-comments"></i>{{object.commentByCount}}</li>
+                                <li><i class="i i-eye"></i>{{object.viewByCount}}</li>
+                                <li><i class="i i-comments"></i>{{object.commentByCount}}</li>
                                 {{if columnsMap[object.column]}}
-                                <li class="hidden-xs"><i class="i i-book"></i>{{columnsMap[object.column].name}}</li>
+                                <li><i class="i i-book"></i><a href="/column/{{=columnsMap[object.column].uri}}">{{columnsMap[object.column].name}}</a></li>
                                 {{/if}}
                             </ul>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 hidden-xs">
                             <ul class="summarylist-contributors f-list-right">
                                 {{list object.contributors as contributor}}
                                 <li>

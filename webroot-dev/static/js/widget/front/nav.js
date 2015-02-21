@@ -32,32 +32,46 @@ define(function (require, exports, module) {
         var $toggle = nodes[1];
         var $menu = nodes[2];
         var $group = nodes[3];
+        var $downlist = nodes[4];
         //var $downlist = nodes[4];
         var section = window['-section-'] && window['-section-'].uri || 'home';
         var $active = selector.query('.nav-item-' + section, $menu)[0];
 
         attribute.addClass($active, activeClass);
 
-        event.on($toggle, 'click', function () {
+        event.on($toggle, 'click tap', function () {
             attribute.addClass($nav, unfoldClass);
+            return false;
         });
 
-        event.on($bg, 'click', function () {
+        event.on($bg, 'click tap', function () {
             attribute.removeClass($nav, unfoldClass);
+            return false;
         });
 
         if (hasLogin) {
-            event.on($group, 'click', controller.toggle(function () {
-                attribute.addClass($header, activeClass);
-            }, function () {
+            event.on($group, 'click tap', function () {
+                if (attribute.hasClass($header, activeClass)) {
+                    attribute.removeClass($header, activeClass);
+                } else {
+                    attribute.addClass($header, activeClass);
+                }
+                return false;
+            });
+
+            event.on($downlist, 'click tap', function (eve) {
+                eve.stopPropagation();
+            });
+
+            event.on(document, 'click tap', function () {
                 attribute.removeClass($header, activeClass);
-            }));
+            });
         }
     };
 
     // 未读通知
     app.notification = function () {
-        if(!hasLogin){
+        if (!hasLogin) {
             return;
         }
 
@@ -84,7 +98,7 @@ define(function (require, exports, module) {
                 });
 
                 $span.innerHTML = text;
-                attribute.css($span, 'display', val ? '' :'none');
+                attribute.css($span, 'display', val ? '' : 'none');
                 modification.insert($span, $wrap);
             });
         }).on('error', alert);
