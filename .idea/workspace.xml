@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-item-article.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-item-article.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/app/admin/object-item.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/app/admin/object-item.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -40,7 +40,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/include/object/list-link.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/sadmin/include/object/list-question.html" />
         <option value="$PROJECT_DIR$/webserver/controllers/admin/column.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/api/column.js" />
@@ -91,6 +90,7 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/help-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/article-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/object-item-article.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/app/admin/object-item.js" />
       </list>
     </option>
   </component>
@@ -552,6 +552,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot-dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="html" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -916,13 +946,7 @@
       <workItem from="1422967616233" duration="6654000" />
       <workItem from="1423053668098" duration="52142000" />
       <workItem from="1423494417640" duration="137000" />
-      <workItem from="1423494577253" duration="31281000" />
-    </task>
-    <task id="LOCAL-00353" summary="beta18">
-      <created>1423748793328</created>
-      <option name="number" value="00353" />
-      <option name="project" value="LOCAL" />
-      <updated>1423748793328</updated>
+      <workItem from="1423494577253" duration="31373000" />
     </task>
     <task id="LOCAL-00354" summary="beta18">
       <created>1423749079779</created>
@@ -1212,11 +1236,17 @@
       <option name="project" value="LOCAL" />
       <updated>1424502689147</updated>
     </task>
-    <option name="localTasksCounter" value="402" />
+    <task id="LOCAL-00402" summary="beta20">
+      <created>1424502826150</created>
+      <option name="number" value="00402" />
+      <option name="project" value="LOCAL" />
+      <updated>1424502826151</updated>
+    </task>
+    <option name="localTasksCounter" value="403" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141428000" />
+    <option name="totallyTimeSpent" value="141520000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1343,16 +1373,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webserver/utils/regexp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39186993" vertical-offset="422" max-vertical-offset="1037">
-          <caret line="39" column="3" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/models/object.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41951218" vertical-offset="881" max-vertical-offset="3876">
@@ -1776,6 +1796,16 @@
         <state vertical-scroll-proportion="0.6903553" vertical-offset="0" max-vertical-offset="1496">
           <caret line="24" column="76" selection-start-line="24" selection-start-column="76" selection-end-line="24" selection-end-column="76" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/admin/object-item.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8265802" vertical-offset="0" max-vertical-offset="617">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
