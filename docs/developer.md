@@ -1,10 +1,13 @@
-# `engineer` 模型
+# `developer` 模型
 
 适用于：前端开发工程师。
 
 `*`表示虚拟字段
 
 - `email` 邮箱
+- `*avatarM` 中等头像 40px
+- `*avatar` 标准头像 100px
+- `*avatarL` 大头像 200px
 - `githubLogin` github 登录帐号
 - `githubId` github ID（唯一识别）
 - `weibo` 授权后的 weibo 帐号，用于个人/组织认证
