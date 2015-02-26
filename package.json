@@ -17,13 +17,11 @@
     "front-end",
     "community"
   ],
-  "authors": [
-    {
-      "name": "cloudcome",
-      "email": "cloudcome@163.com",
-      "url": "http://ydr.me"
-    }
-  ],
+  "author": {
+    "name": "cloudcome",
+    "email": "cloudcome@163.com",
+    "url": "http://ydr.me"
+  },
   "homepage": "https://FrontEndDev.org/",
   "repository": {
     "type": "git",
