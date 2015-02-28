@@ -198,7 +198,9 @@ module.exports = function (app) {
                 section: section.id,
                 uri: uri,
                 isDisplay: true
-            }, {populate: ['author', 'category', 'column']}, function (err, obje) {
+            }, {
+                populate: ['author', 'category', 'column']
+            }, function (err, obje) {
                 if (err) {
                     return next(err);
                 }
@@ -213,6 +215,7 @@ module.exports = function (app) {
 
                 var onend = function () {
                     object.increaseViewByCount({_id: obje.id}, 1, log.holdError);
+                    //res.json(obje);
                     res.render('front/object-' + section.uri + '.html', data);
                 };
 
