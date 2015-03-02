@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -49,8 +48,8 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20135364" vertical-offset="0" max-vertical-offset="1071">
-              <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.34517765" vertical-offset="0" max-vertical-offset="1071">
+              <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -525,13 +524,7 @@
       <workItem from="1424941312322" duration="79000" />
       <workItem from="1424942124535" duration="118000" />
       <workItem from="1424945573512" duration="1788000" />
-      <workItem from="1425138435722" duration="23000" />
-    </task>
-    <task id="LOCAL-00368" summary="beta18">
-      <created>1423753708535</created>
-      <option name="number" value="00368" />
-      <option name="project" value="LOCAL" />
-      <updated>1423753708535</updated>
+      <workItem from="1425138435722" duration="188000" />
     </task>
     <task id="LOCAL-00369" summary="beta19">
       <created>1423754596551</created>
@@ -821,11 +814,17 @@
       <option name="project" value="LOCAL" />
       <updated>1425138447933</updated>
     </task>
-    <option name="localTasksCounter" value="417" />
+    <task id="LOCAL-00417" summary="beta23">
+      <created>1425138462537</created>
+      <option name="number" value="00417" />
+      <option name="project" value="LOCAL" />
+      <updated>1425138462537</updated>
+    </task>
+    <option name="localTasksCounter" value="418" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144597000" />
+    <option name="totallyTimeSpent" value="144762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -905,7 +904,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="alpha 36" />
     <MESSAGE value="alpha 37" />
     <MESSAGE value="alpha 38" />
     <MESSAGE value="beta 2" />
@@ -930,7 +928,8 @@
     <MESSAGE value="beta20" />
     <MESSAGE value="beta21" />
     <MESSAGE value="beta22" />
-    <option name="LAST_COMMIT_MESSAGE" value="beta22" />
+    <MESSAGE value="beta23" />
+    <option name="LAST_COMMIT_MESSAGE" value="beta23" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1311,8 +1310,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20135364" vertical-offset="0" max-vertical-offset="1071">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.34517765" vertical-offset="0" max-vertical-offset="1071">
+          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
           <folding />
         </state>
       </provider>
