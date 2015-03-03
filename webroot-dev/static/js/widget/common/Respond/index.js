@@ -32,111 +32,105 @@ define(function (require, exports, module) {
         autoFocus: false,
         uploadCallback: null
     };
-    var Respond = ui.create({
-        /**
-         * 构造函数
-         * @param $parent
-         * @param options
-         */
-        constructor: function ($parent, options) {
-            var the = this;
+    var Respond = ui.create(function ($parent, options) {
+        var the = this;
 
-            the._$parent = selector.query($parent)[0];
-            the._options = dato.extend(true, {}, defaults, options);
-            the._init();
-        },
-
-        /**
-         * 初始化
-         * @private
-         */
-        _init: function () {
-            var the = this;
-
-            the._initNode();
-            the._initEvent();
-        },
-
-
-        /**
-         * 初始化节点
-         * @private
-         */
-        _initNode: function () {
-            var the = this;
-            var options = the._options;
-
-            the._$parent.innerHTML = tpl.render(options);
-
-            var nodes = selector.query('.j-flag', the._$parent);
-
-            the._$content = nodes[0];
-            the._$submit = nodes[1];
-            the._editor = new Editor(the._$content, options);
-        },
-
-
-        /**
-         * 初始化事件
-         * @private
-         */
-        _initEvent: function () {
-            var the = this;
-
-            event.on(the._$submit, 'click', function () {
-                var value = the._$content.value.trim();
-
-                if (value) {
-                    the.emit('submit', the._$content.value.trim());
-                }
-            });
-        },
-
-
-        /**
-         * 设置不可用
-         */
-        disable: function () {
-            var the = this;
-
-            the._$submit.disabled = true;
-            return the;
-        },
-
-
-        /**
-         * 设置可用
-         */
-        enable: function () {
-            var the = this;
-
-            the._$submit.disabled = false;
-            return the;
-        },
-
-
-        /**
-         * 重置
-         */
-        reset: function () {
-            var the = this;
-
-            the._editor.setContent('');
-            the._editor.clearStore();
-            return the;
-        },
-
-
-        /**
-         * 实例销毁
-         */
-        destroy: function () {
-            var the =  this;
-
-            event.un(the._$submit, 'click');
-            the._editor.destroy();
-        }
+        the._$parent = selector.query($parent)[0];
+        the._options = dato.extend(true, {}, defaults, options);
+        the._init();
     });
+
+
+    /**
+     * 初始化
+     * @private
+     */
+    Respond.fn._init = function () {
+        var the = this;
+
+        the._initNode();
+        the._initEvent();
+    };
+
+
+    /**
+     * 初始化节点
+     * @private
+     */
+    Respond.fn._initNode = function () {
+        var the = this;
+        var options = the._options;
+
+        the._$parent.innerHTML = tpl.render(options);
+
+        var nodes = selector.query('.j-flag', the._$parent);
+
+        the._$content = nodes[0];
+        the._$submit = nodes[1];
+        the._editor = new Editor(the._$content, options);
+    };
+
+
+    /**
+     * 初始化事件
+     * @private
+     */
+    Respond.fn._initEvent = function () {
+        var the = this;
+
+        event.on(the._$submit, 'click', function () {
+            var value = the._$content.value.trim();
+
+            if (value) {
+                the.emit('submit', the._$content.value.trim());
+            }
+        });
+    };
+
+
+    /**
+     * 设置不可用
+     */
+    Respond.fn.disable = function () {
+        var the = this;
+
+        the._$submit.disabled = true;
+        return the;
+    };
+
+
+    /**
+     * 设置可用
+     */
+    Respond.fn.enable = function () {
+        var the = this;
+
+        the._$submit.disabled = false;
+        return the;
+    };
+
+
+    /**
+     * 重置
+     */
+    Respond.fn.reset = function () {
+        var the = this;
+
+        the._editor.setContent('');
+        the._editor.clearStore();
+        return the;
+    };
+
+
+    /**
+     * 实例销毁
+     */
+    Respond.fn.destroy = function () {
+        var the = this;
+
+        event.un(the._$submit, 'click');
+        the._editor.destroy();
+    };
 
     modification.importStyle(style);
     module.exports = Respond;
