@@ -7,8 +7,6 @@
 
 define(function (require, exports, module) {
     /**
-     * Banner
-     *
      * @module ui/Banner/
      * @requires core/dom/selector
      * @requires core/dom/attribute
@@ -16,9 +14,9 @@ define(function (require, exports, module) {
      * @requires core/dom/animation
      * @requires core/event/touch
      * @requires ui/base
-     * @requires util/dato
-     * @requires util/typeis
-     * @requires util/controller
+     * @requires utils/dato
+     * @requires utils/typeis
+     * @requires utils/controller
      */
 
     "use strict";
@@ -29,9 +27,9 @@ define(function (require, exports, module) {
     var animation = require('../../core/dom/animation.js');
     var event = require('../../core/event/touch.js');
     var ui = require('../base.js');
-    var dato = require('../../util/dato.js');
-    var typeis = require('../../util/typeis.js');
-    var controller = require('../../util/controller.js');
+    var dato = require('../../utils/dato.js');
+    var typeis = require('../../utils/typeis.js');
+    var controller = require('../../utils/controller.js');
     var alienClass = 'alien-ui-banner';
     var alienIndex = 0;
     var defaults = {
@@ -48,33 +46,32 @@ define(function (require, exports, module) {
         isAutoPlay: true,
         isLoop: true,
         $navParent: null,
-        navGenerator: null
+        navGenerator: null,
+        activeClass: 'active'
     };
-    var Banner = ui.create({
-        STATIC: {},
-        constructor: function ($list, options) {
-            var the = this;
+    var Banner = ui.create(function ($list, options) {
+        var the = this;
 
-            the._options = dato.extend(true, {}, defaults, options);
-            the._$list = selector.query($list)[0];
-            the._$items = selector.query(the._options.itemSelector, the._$list);
-            the._itemLength = the._$items.length;
+        the._options = dato.extend(true, {}, defaults, options);
+        the._$list = selector.query($list)[0];
+        the._$items = selector.query(the._options.itemSelector, the._$list);
+        the._itemLength = the._$items.length;
 
-            if (the._itemLength <= 1) {
-                return the;
-            }
-
-            the._init();
+        if (the._itemLength <= 1) {
+            return the;
         }
+
+        the._init();
     });
-    var pro = Banner.prototype;
+
+    Banner.defaults = defaults;
 
 
     /**
      * 初始化
      * @private
      */
-    pro._init = function () {
+    Banner.fn._init = function () {
         var the = this;
         var options = the._options;
 
@@ -87,15 +84,20 @@ define(function (require, exports, module) {
         the._initEvent();
         the._autoPlay(true);
 
+        controller.nextTick(function () {
+            the.emit('change', the._showIndex);
+        });
+
         return the;
     };
 
 
     /**
      * 尺寸重置
-     * @param [size]
+     * @method resize
+     * @param [size] {{width:Number,height:Number}} 尺寸
      */
-    pro.resize = function (size) {
+    Banner.fn.resize = function (size) {
         var the = this;
         var optons = the._options;
 
@@ -123,6 +125,8 @@ define(function (require, exports, module) {
 
         the._translate = -(the._showIndex + 1) * (the._direction === 'X' ? optons.width : optons.height);
         attribute.css(the._$list, the._calTranslate(the._showIndex + 1));
+
+        return the;
     };
 
 
@@ -130,7 +134,7 @@ define(function (require, exports, module) {
      * 初始化节点
      * @private
      */
-    pro._initNode = function () {
+    Banner.fn._initNode = function () {
         var the = this;
         var $item0 = the._$items[0];
         var $item_ = the._$items[the._itemLength - 1];
@@ -154,7 +158,7 @@ define(function (require, exports, module) {
                 html += options.navGenerator.call(the, index, the._itemLength);
             });
             the._$navParent.innerHTML = html;
-            the.$navItems = selector.children(the._$navParent);
+            the._$navItems = selector.children(the._$navParent);
         }
     };
 
@@ -163,7 +167,7 @@ define(function (require, exports, module) {
      * 初始化事件
      * @private
      */
-    pro._initEvent = function () {
+    Banner.fn._initEvent = function () {
         var the = this;
         var options = the._options;
         var hasScroll = false;
@@ -230,8 +234,13 @@ define(function (require, exports, module) {
             }
         });
 
-        controller.nextTick(function () {
-            the.emit('change', the._showIndex);
+        the.on('change', function (index) {
+            if (the._$navItems) {
+                var $activeItem = the._$navItems[index];
+
+                attribute.removeClass(selector.siblings($activeItem), options.activeClass);
+                attribute.addClass($activeItem, options.activeClass);
+            }
         });
     };
 
@@ -241,7 +250,7 @@ define(function (require, exports, module) {
      * @param boolean
      * @private
      */
-    pro._autoPlay = function (boolean) {
+    Banner.fn._autoPlay = function (boolean) {
         var the = this;
 
         if (!the._options.isAutoPlay) {
@@ -262,7 +271,7 @@ define(function (require, exports, module) {
      * @returns {{}}
      * @private
      */
-    pro._calTranslate = function (realIndex) {
+    Banner.fn._calTranslate = function (realIndex) {
         var the = this;
         var options = the._options;
         var val = the._direction === 'X' ?
@@ -284,7 +293,7 @@ define(function (require, exports, module) {
      * @param [callback] {Function} 回调
      * @private
      */
-    pro._show = function (index, direction, callback) {
+    Banner.fn._show = function (index, direction, callback) {
         var the = this;
         var lastIndex = the._itemLength - 1;
         var options = the._options;
@@ -308,6 +317,12 @@ define(function (require, exports, module) {
             easing: options.easing
         }, function () {
             the._showIndex = index;
+
+            /**
+             * banner 索引变化之后
+             * @event change
+             * @param index {Number} 索引
+             */
             the.emit('change', index);
 
             if (typeis.function(callback)) {
@@ -319,11 +334,10 @@ define(function (require, exports, module) {
 
     /**
      * 边界索引
-     * @param index
      * @returns {*}
      * @private
      */
-    pro._boundIndex = function (index) {
+    Banner.fn._boundIndex = function (index) {
         var the = this;
 
         if (index < 0) {
@@ -338,9 +352,10 @@ define(function (require, exports, module) {
 
     /**
      * 上一张
+     * @method prev
      * @param [callback] {Function} 回调
      */
-    pro.prev = function (callback) {
+    Banner.fn.prev = function (callback) {
         var the = this;
         var willIndex = the._boundIndex(the._showIndex - the._increase);
 
@@ -352,9 +367,10 @@ define(function (require, exports, module) {
 
     /**
      * 下一张
+     * @method next
      * @param [callback] {Function} 回调
      */
-    pro.next = function (callback) {
+    Banner.fn.next = function (callback) {
         var the = this;
         var willIndex = the._boundIndex(the._showIndex + the._increase);
 
@@ -366,11 +382,11 @@ define(function (require, exports, module) {
 
     /**
      * 动画到某一张
-     * @param index
-     * @param callback
-     * @returns {Banner}
+     * @method index
+     * @param index {Number} 索引值
+     * @param callback {Function} 回调
      */
-    pro.index = function (index, callback) {
+    Banner.fn.index = function (index, callback) {
         var the = this;
         var direction = '';
         var lastIndex = the._itemLength - 1;
@@ -404,9 +420,9 @@ define(function (require, exports, module) {
 
     /**
      * 暂停播放
-     * @returns {Banner}
+     * @method pause
      */
-    pro.pause = function () {
+    Banner.fn.pause = function () {
         var the = this;
 
         if (the._playTimeID) {
@@ -419,9 +435,9 @@ define(function (require, exports, module) {
 
     /**
      * 开始播放
-     * @returns {Banner}
+     * @method play
      */
-    pro.play = function () {
+    Banner.fn.play = function () {
         var the = this;
 
         the._playTimeID = setTimeout(function () {
@@ -434,8 +450,9 @@ define(function (require, exports, module) {
 
     /**
      * 销毁实例
+     * @method destroy
      */
-    pro.destroy = function () {
+    Banner.fn.destroy = function () {
         var the = this;
 
         the.pause();
@@ -447,9 +464,9 @@ define(function (require, exports, module) {
 
 
     /**
-     * 构建一个 banner，标准的 DOM 结构为：<br>
-     *     <code>ul#banner1>li*N</code>
+     * 构建一个 banner，标准的 DOM 结构为：<code>ul#banner1>li*N</code>
      *
+     * @constructor
      * @param {HTMLElement|Node} $list banner 列表
      * @param {Object} [options] 配置
      * @param {Number} [options.width=700] banner 宽度，默认700
@@ -466,6 +483,7 @@ define(function (require, exports, module) {
      * @param {Boolean} [options.isLoop=true] banner 是否循环
      * @param {null|String|HTMLElement|Node} [options.$navParent=null] banner 导航父级
      * @param {null|Function} [options.navGenerator=null] banner 导航生成器
+     * @param {String} [options.activeClass="active"] banner 高亮的样式类
      */
     module.exports = Banner;
 });

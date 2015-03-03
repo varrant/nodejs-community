@@ -8,19 +8,19 @@
 define(function (require, exports, module) {
     /**
      * @module core/communication/jsonp
-     * @requires util/dato
-     * @requires util/class
+     * @requires utils/dato
+     * @requires utils/class
      * @requires libs/Emitter
-     * @requires util/querystring
+     * @requires utils/querystring
      * @requires core/dom/modification
      */
     'use strict';
 
-    var dato = require('../../util/dato.js');
-    var klass = require('../../util/class.js');
-    var random = require('../../util/random.js');
+    var dato = require('../../utils/dato.js');
+    var klass = require('../../utils/class.js');
+    var random = require('../../utils/random.js');
     var Emitter = require('../../libs/Emitter.js');
-    var qs = require('../../util/querystring.js');
+    var qs = require('../../utils/querystring.js');
     var modification = require('../../core/dom/modification.js');
     var defaults = {
         // 可选 var 和 function
@@ -35,57 +35,54 @@ define(function (require, exports, module) {
     var regQ = /\?$/;
     var index = 0;
     var $container = document.body || document.documentElement;
-    var JSONP = klass.create({
-        constructor: function (options) {
-            var the = this;
+    var JSONP = klass.create(function (options) {
+        var the = this;
 
-            Emitter.call(the);
-            options = dato.extend(!0, {}, defaults, options);
+        options = dato.extend(!0, {}, defaults, options);
 
-            options.url = String(options.url);
+        options.url = String(options.url);
 
-            if (!options.url || !regQ.test(options.url)) {
-                throw new Error('json url must be end of `?`');
-            }
+        if (!options.url || !regQ.test(options.url)) {
+            throw new Error('json url must be end of `?`');
+        }
 
-            options.query = options.query || {};
+        options.query = options.query || {};
 
-            if (!options.isCache) {
-                options.query._ = ++index;
-            }
+        if (!options.isCache) {
+            options.query._ = ++index;
+        }
 
-            var name = 'alienJSONP' + random.string(9, 'aA0_');
-            var qss = qs.stringify(options.query);
-            var script = modification.create('script', {
-                async: 'async',
-                src: options.url.replace(regQ, name) + (qss ? '&' + qss : '')
-            });
+        var name = 'alienJSONP' + random.string(9, 'aA0_');
+        var qss = qs.stringify(options.query);
+        var script = modification.create('script', {
+            async: 'async',
+            src: options.url.replace(regQ, name) + (qss ? '&' + qss : '')
+        });
 
-            if (options.type === 'function') {
-                window[name] = function (dt) {
-                    the.emit('success', dt);
-                    delete(window[name]);
-                    modification.remove(script);
-                };
-            } else {
-                window[name] = null;
-            }
-
-            script.onerror = function (err) {
-                the.emit('error', err);
+        if (options.type === 'function') {
+            window[name] = function (dt) {
+                the.emit('success', dt);
+                delete(window[name]);
                 modification.remove(script);
             };
-
-            script.onload = function () {
-                if (options.type === 'var') {
-                    the.emit('success', window[name]);
-                    window[name] = null;
-                    modification.remove(script);
-                }
-            };
-
-            modification.insert(script, $container, 'beforeend');
+        } else {
+            window[name] = null;
         }
+
+        script.onerror = function (err) {
+            the.emit('error', err);
+            modification.remove(script);
+        };
+
+        script.onload = function () {
+            if (options.type === 'var') {
+                the.emit('success', window[name]);
+                window[name] = null;
+                modification.remove(script);
+            }
+        };
+
+        modification.insert(script, $container, 'beforeend');
     }, Emitter);
 
     exports.defaults = defaults;

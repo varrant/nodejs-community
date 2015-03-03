@@ -8,14 +8,14 @@
 define(function (require, exports, module) {
     /**
      * @module core/dom/modification
-     * @requires util/dato
+     * @requires utils/dato
      * @requires core/dom/selector
      * @requires core/dom/attribute
      */
     'use strict';
 
-    var dato = require('../../util/dato.js');
-    var typeis = require('../../util/typeis.js');
+    var dato = require('../../utils/dato.js');
+    var typeis = require('../../utils/typeis.js');
     var domSelector = require('./selector.js');
     var attribute = require('./attribute.js');
     var regSpace = /\s+/g;

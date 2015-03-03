@@ -8,14 +8,14 @@
 define(function (require, exports, module) {
     /**
      * @module core/event/base
-     * @requires util/dato
-     * @requires util/typeis
+     * @requires utils/dato
+     * @requires utils/typeis
      * @requires core/dom/selector
      */
     'use strict';
 
-    var dato = require('../../util/dato.js');
-    var typeis = require('../../util/typeis.js');
+    var dato = require('../../utils/dato.js');
+    var typeis = require('../../utils/typeis.js');
     var domSelector = require('../dom/selector.js');
     var regSpace = /\s+/g;
     // 原始事件：用户传入的事件
