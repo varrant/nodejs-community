@@ -1,3 +1,3 @@
 coolie.config({
-    base: '../app/'
+    base: './app/'
 }).use();
