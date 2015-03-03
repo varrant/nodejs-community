@@ -14,8 +14,8 @@ define(function (require, exports, module) {
     var attribute = require('../../../alien/core/dom/attribute.js');
     var animation = require('../../../alien/core/dom/animation.js');
     var event = require('../../../alien/core/event/base.js');
-    var dato = require('../../../alien/util/dato.js');
-    var qs = require('../../../alien/util/querystring.js');
+    var dato = require('../../../alien/utils/dato.js');
+    var qs = require('../../../alien/utils/querystring.js');
     var ajax = require('../ajax.js');
     var alert = require('../alert.js');
     var confirm = require('../confirm.js');

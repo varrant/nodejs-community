@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var date = require('../../alien/util/date.js');
+    var date = require('../../alien/utils/date.js');
 
     Vue.filter('datefrom', function (val) {
         return date.from(val);

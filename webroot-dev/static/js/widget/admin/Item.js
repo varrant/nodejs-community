@@ -15,7 +15,7 @@ define(function (require, exports, module) {
     var selector = require('../../alien/core/dom/selector.js');
     var ui = require('../../alien/ui/base.js');
     var Editor = require('../../alien/ui/Editor/');
-    var dato = require('../../alien/util/dato.js');
+    var dato = require('../../alien/utils/dato.js');
     var defaults = {
         url: '/admin/api/object/',
         id: '',

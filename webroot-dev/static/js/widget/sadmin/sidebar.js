@@ -11,7 +11,7 @@ define(function (require, exports, module) {
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
     var Scrollbar = require('../../alien/ui/Scrollbar/');
-    var dato = require('../../alien/util/dato.js');
+    var dato = require('../../alien/utils/dato.js');
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
     var app = {};

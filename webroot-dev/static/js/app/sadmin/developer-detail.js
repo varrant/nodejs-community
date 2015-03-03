@@ -15,7 +15,7 @@ define(function (require, exports, module) {
     var ajax = require('../../widget/common/ajax.js');
     var alert = require('../../widget/common/alert.js');
     var confirm = require('../../widget/common/confirm.js');
-    var dato = require('../../alien/util/dato.js');
+    var dato = require('../../alien/utils/dato.js');
     var url = '/admin/api/developer/?id=' + window['-id-'];
     var app = {};
 

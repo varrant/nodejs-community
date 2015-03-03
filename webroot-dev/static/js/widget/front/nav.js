@@ -14,7 +14,7 @@ define(function (require, exports, module) {
     var see = require('../../alien/core/dom/see.js');
     //var compatible = require('../../alien/core/navigator/compatible.js');
     var event = require('../../alien/core/event/base.js');
-    var controller = require('../../alien/util/controller.js');
+    var controller = require('../../alien/utils/controller.js');
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
     var confirm = require('../common/confirm.js');

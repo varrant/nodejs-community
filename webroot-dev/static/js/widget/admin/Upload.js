@@ -11,7 +11,7 @@ define(function (require, exports, module) {
     var ui = require('../../alien/ui/base.js');
     var selector = require('../../alien/core/dom/selector.js');
     var modification = require('../../alien/core/dom/modification.js');
-    var dato = require('../../alien/util/dato.js');
+    var dato = require('../../alien/utils/dato.js');
     var ajax = require('../common/ajax.js');
     var Dialog = require('../../alien/ui/Dialog/');
     var defaults = {

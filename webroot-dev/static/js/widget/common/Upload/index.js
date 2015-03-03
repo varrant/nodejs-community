@@ -13,8 +13,8 @@ define(function (require, exports, module) {
     var selector = require('../../../alien/core/dom/selector.js');
     var modification = require('../../../alien/core/dom/modification.js');
     var event = require('../../../alien/core/event/base.js');
-    var dato = require('../../../alien/util/dato.js');
-    var canvas = require('../../../alien/util/canvas.js');
+    var dato = require('../../../alien/utils/dato.js');
+    var canvas = require('../../../alien/utils/canvas.js');
     var ajax = require('../../common/ajax.js');
     var alert = require('../../common/alert.js');
     var confirm = require('../../common/confirm.js');

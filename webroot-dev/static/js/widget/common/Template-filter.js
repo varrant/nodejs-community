@@ -6,7 +6,7 @@
 
 
 define(function (require, exports, module) {
-    var date = require('../../alien/util/date.js');
+    var date = require('../../alien/utils/date.js');
     var Template = require('../../alien/libs/Template.js');
 
     Template.addFilter('datefrom', function (val) {

@@ -13,8 +13,8 @@ define(function (require, exports, module) {
     var alert = require('../common/alert.js');
     var confirm = require('../common/confirm.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
-    var dato = require('../../alien/util/dato.js');
-    var qs = require('../../alien/util/querystring.js');
+    var dato = require('../../alien/utils/dato.js');
+    var qs = require('../../alien/utils/querystring.js');
     var Pagination = require('../../alien/ui/Pagination/index.js');
     var attribute = require('../../alien/core/dom/attribute.js');
     var defaults = {
