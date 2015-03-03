@@ -1,74 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="beta23">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/class.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Validator/readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Validator/style.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Banner/touch-slider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/class.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/allocation.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/allocation.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/calendar.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/calendar.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/canvas.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/canvas.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/controller.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/date.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/date.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/dato.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/dato.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/easing.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/easing.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/hashbang.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/hashbang.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/howdo.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/howdo.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/keyframes.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/keyframes.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/querystring.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/querystring.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/random.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/random.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/readme.md" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/readme.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/selection.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/selection.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/util/typeis.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/typeis.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Animation.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Animation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Emitter.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Emitter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Pagination.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Pagination.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Pjax.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Pjax.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Template.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Template.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Validator.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Validator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Weixin.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Weixin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/attribute.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/attribute.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/base.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/base.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/base.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/base.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/compatible.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/compatible.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/cookie.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/cookie.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/editor.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/editor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/hashbang.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/hashbang.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Autoheight/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Autoheight/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Banner/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Banner/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Datepicker/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Datepicker/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Dialog/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Dialog/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Imgclip/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Imgclip/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Imgview/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Imgview/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Mask/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Mask/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Msg/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Msg/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Pager/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Pager/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Pagination/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Pagination/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Prettify/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Prettify/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Resize/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Resize/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollbar/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Tab/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Tab/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Tooltip/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Tooltip/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Validator/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Validator/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Window/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Window/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/communication/jsonp.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/communication/jsonp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/modification.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/modification.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/querystring.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/querystring.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/readme.md" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/ready.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/ready.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/selector.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/selector.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/storage.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/storage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Dialog/style.css" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Dialog/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Msg/style.css" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Msg/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/touch.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/touch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/ua.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/ua.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/communication/upload.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/communication/upload.js" />
+    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/libs/coolie-config.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/libs/coolie.min.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/libs/coolie-config.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/coolie-config.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/libs/coolie.min.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/coolie.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/category.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/category.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/column.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/column.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/column.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/column.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/developer-detail.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/developer-detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/developer-home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/developer-list.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/developer-list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/developer-me.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/developer-me.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/home.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/home.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/home.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/list-article.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/list-article.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/list-help.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/list-help.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/list-link.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/list-link.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/list-question.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/list-question.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/notification.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/notification.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/oauth-callback.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/oauth-callback.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/object-article.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/object-article.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/object-help.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/object-help.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-item-article.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-item-article.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-item-help.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-item-help.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-item-link.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-item-link.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-item-question.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-item-question.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/object-link.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/object-link.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-article.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-article.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-help.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-help.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-link.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-link.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-question.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-question.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/object-question.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/object-question.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/section.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/section.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/sadmin/setting.html" afterPath="$PROJECT_DIR$/webroot-dev/views/sadmin/setting.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/communication/xhr.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/communication/xhr.js" />
     </list>
     <ignored path="nodejs-community.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -324,6 +292,60 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot-dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot-dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot-dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -356,6 +378,7 @@
       <recent name="$PROJECT_DIR$/webroot-dev/static/js/widget/admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/webroot-dev/static/js" />
       <recent name="$PROJECT_DIR$/webroot-dev/static/css/app" />
       <recent name="$PROJECT_DIR$/webroot-dev/static/css/libs" />
       <recent name="$PROJECT_DIR$/cli/0.0.1-beta112" />
@@ -482,13 +505,7 @@
       <workItem from="1424945573512" duration="1788000" />
       <workItem from="1425138435722" duration="294000" />
       <workItem from="1425351416324" duration="597000" />
-      <workItem from="1425385108658" duration="105000" />
-    </task>
-    <task id="LOCAL-00371" summary="beta19">
-      <created>1423754693178</created>
-      <option name="number" value="00371" />
-      <option name="project" value="LOCAL" />
-      <updated>1423754693179</updated>
+      <workItem from="1425385108658" duration="133000" />
     </task>
     <task id="LOCAL-00372" summary="beta19">
       <created>1423754733245</created>
@@ -778,11 +795,17 @@
       <option name="project" value="LOCAL" />
       <updated>1425385211304</updated>
     </task>
-    <option name="localTasksCounter" value="420" />
+    <task id="LOCAL-00420" summary="beta24">
+      <created>1425385217760</created>
+      <option name="number" value="00420" />
+      <option name="project" value="LOCAL" />
+      <updated>1425385217760</updated>
+    </task>
+    <option name="localTasksCounter" value="421" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145570000" />
+    <option name="totallyTimeSpent" value="145598000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -804,7 +827,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23990306" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23990306" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
