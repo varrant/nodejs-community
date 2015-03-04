@@ -1,4 +1,4 @@
-# nodejs-community@0.0.1-beta24
+# nodejs-community@0.0.1-beta25
 
 
 ## install
