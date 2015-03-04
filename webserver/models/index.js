@@ -161,7 +161,7 @@ dato.each(models, function (key, model) {
 
     /**
      * 创建一个
-     * @param conditions {Object} 查询条件
+     * @param data {Object} 数据
      * @param callback {Function} 回调
      */
     exports[key].createOne = function (data, callback) {
