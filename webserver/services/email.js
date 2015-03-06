@@ -18,16 +18,16 @@ var smtp = null;
 /**
  * 初始化一个 smtp
  * @param _smtp {Object} 邮件发送服务
- * @param [admin] {Object} 管理员
+ * @param [founder] {Object} 管理员
  */
-exports.init = function (_smtp, admin) {
+exports.init = function (_smtp, founder) {
     smtp = _smtp;
 
     var time = date.format('YYYY年MM月DD日 HH:mm:ss.SSS 星期e a');
 
-    if (configs.app.env === 'pro' && admin) {
-        exports.send(admin, '服务器启动', time);
-    }
+    //if (configs.app.env === 'pro' && founder) {
+        exports.send(founder, '服务器启动', time);
+    //}
 };
 
 

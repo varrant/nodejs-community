@@ -66,10 +66,10 @@ var schema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    // 被激活时间
-    activeByAt: {
-        type: Date
-    },
+    //// 被激活时间
+    //activeByAt: {
+    //    type: Date
+    //},
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证
     // 因此必须再写入的时候自行验证

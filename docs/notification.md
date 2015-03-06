@@ -12,7 +12,6 @@
 - `value` value
 - `hasActived` 是否已经激活了
 - `activeAt` 激活时间
-- `activeByAt` 被激活时间
 - `meta` 元信息
 
 
