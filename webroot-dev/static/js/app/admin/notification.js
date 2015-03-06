@@ -63,7 +63,7 @@ define(function (require, exports, module) {
 
     var type = hashbang.get('query', 'type') || 'unactive';
     var list = new List('#list', '#pagination', {
-        url: '/admin/api/notification/',
+        listURL: '/admin/api/notification/',
         query: {
             type: type,
             limit: 10
