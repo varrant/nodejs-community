@@ -596,6 +596,12 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
 };
 
 
+/**
+ * 删除 object
+ * @param operator
+ * @param conditions
+ * @param callback
+ */
 exports.findOneAndRemove = function (operator, conditions, callback) {
     howdo
         // 1. 检查权限
@@ -604,6 +610,12 @@ exports.findOneAndRemove = function (operator, conditions, callback) {
                 if (err) {
                     return next(err);
                 }
+
+                if (!doc) {
+                    err = new Error('待删除项目不存在');
+                    return next(err);
+                }
+
 
                 if (operator.id.toString() !== doc.author.toString()) {
                     err = new Error('您无权限删除该项目');
@@ -629,8 +641,10 @@ exports.findOneAndRemove = function (operator, conditions, callback) {
         })
         // 3. 异步串行
         .follow(function (err, doc) {
+            callback(err, doc);
+
             if (err) {
-                return callback(err);
+                return;
             }
 
             // 1. 文章所在版块的文章数量计数 -1
