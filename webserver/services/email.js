@@ -25,9 +25,9 @@ exports.init = function (_smtp, founder) {
 
     var time = date.format('YYYY年MM月DD日 HH:mm:ss.SSS 星期e a');
 
-    //if (configs.app.env === 'pro' && founder) {
+    if (configs.app.env === 'pro' && founder) {
         exports.send(founder, '服务器启动', time);
-    //}
+    }
 };
 
 
