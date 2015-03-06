@@ -58,8 +58,8 @@
       <file leaf-file-name="object.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5575365" vertical-offset="7748" max-vertical-offset="10013">
-              <caret line="599" column="12" selection-start-line="599" selection-start-column="12" selection-end-line="599" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.6401945" vertical-offset="7748" max-vertical-offset="10013">
+              <caret line="602" column="32" selection-start-line="602" selection-start-column="32" selection-end-line="602" selection-end-column="32" />
               <folding>
                 <element signature="e#14349#18410#0" expanded="false" />
               </folding>
@@ -792,13 +792,7 @@
       <workItem from="1425621839452" duration="454000" />
       <workItem from="1425625815508" duration="598000" />
       <workItem from="1425631372239" duration="2521000" />
-      <workItem from="1425645940378" duration="2531000" />
-    </task>
-    <task id="LOCAL-00406" summary="beta20">
-      <created>1424503754582</created>
-      <option name="number" value="00406" />
-      <option name="project" value="LOCAL" />
-      <updated>1424503754582</updated>
+      <workItem from="1425645940378" duration="2559000" />
     </task>
     <task id="LOCAL-00407" summary="beta20">
       <created>1424503911175</created>
@@ -1088,11 +1082,17 @@
       <option name="project" value="LOCAL" />
       <updated>1425648275795</updated>
     </task>
-    <option name="localTasksCounter" value="455" />
+    <task id="LOCAL-00455" summary="beta25">
+      <created>1425648492287</created>
+      <option name="number" value="00455" />
+      <option name="project" value="LOCAL" />
+      <updated>1425648492287</updated>
+    </task>
+    <option name="localTasksCounter" value="456" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156236000" />
+    <option name="totallyTimeSpent" value="156264000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1609,8 +1609,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5575365" vertical-offset="7748" max-vertical-offset="10013">
-          <caret line="599" column="12" selection-start-line="599" selection-start-column="12" selection-end-line="599" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.6401945" vertical-offset="7748" max-vertical-offset="10013">
+          <caret line="602" column="32" selection-start-line="602" selection-start-column="32" selection-end-line="602" selection-end-column="32" />
           <folding>
             <element signature="e#14349#18410#0" expanded="false" />
           </folding>

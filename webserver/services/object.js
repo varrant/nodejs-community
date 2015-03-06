@@ -598,9 +598,9 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
 
 /**
  * 删除 object
- * @param operator
- * @param conditions
- * @param callback
+ * @param operator {Object} 操作者
+ * @param conditions {Object} 查询条件
+ * @param callback {Function} 回调
  */
 exports.findOneAndRemove = function (operator, conditions, callback) {
     howdo
