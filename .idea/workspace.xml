@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/api/object.js" afterPath="$PROJECT_DIR$/webserver/controllers/api/object.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/object.js" afterPath="$PROJECT_DIR$/webserver/services/object.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -46,8 +46,8 @@
       <file leaf-file-name="List.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/List.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4764992" vertical-offset="2154" max-vertical-offset="2822">
-              <caret line="144" column="37" selection-start-line="144" selection-start-column="37" selection-end-line="144" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.5316045" vertical-offset="2154" max-vertical-offset="2822">
+              <caret line="146" column="23" selection-start-line="146" selection-start-column="23" selection-end-line="146" selection-end-column="23" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -108,12 +108,12 @@
         <option value="$PROJECT_DIR$/docs/notification.md" />
         <option value="$PROJECT_DIR$/webroot-pro/static/js/alien/ui/Dialog/template.html" />
         <option value="$PROJECT_DIR$/webserver/services/email.js" />
-        <option value="$PROJECT_DIR$/webserver/services/object.js" />
         <option value="$PROJECT_DIR$/webserver/models/index.js" />
         <option value="$PROJECT_DIR$/webserver/routers/api.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/List.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/api/object.js" />
+        <option value="$PROJECT_DIR$/webserver/services/object.js" />
       </list>
     </option>
   </component>
@@ -293,6 +293,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="webserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webserver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -762,13 +780,7 @@
       <workItem from="1425621839452" duration="454000" />
       <workItem from="1425625815508" duration="598000" />
       <workItem from="1425631372239" duration="2521000" />
-      <workItem from="1425645940378" duration="2214000" />
-    </task>
-    <task id="LOCAL-00403" summary="beta20">
-      <created>1424502919110</created>
-      <option name="number" value="00403" />
-      <option name="project" value="LOCAL" />
-      <updated>1424502919110</updated>
+      <workItem from="1425645940378" duration="2282000" />
     </task>
     <task id="LOCAL-00404" summary="beta20">
       <created>1424503028779</created>
@@ -1058,11 +1070,17 @@
       <option name="project" value="LOCAL" />
       <updated>1425648147769</updated>
     </task>
-    <option name="localTasksCounter" value="452" />
+    <task id="LOCAL-00452" summary="beta25">
+      <created>1425648174788</created>
+      <option name="number" value="00452" />
+      <option name="project" value="LOCAL" />
+      <updated>1425648174788</updated>
+    </task>
+    <option name="localTasksCounter" value="453" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155919000" />
+    <option name="totallyTimeSpent" value="155987000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1527,17 +1545,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6337115" vertical-offset="867" max-vertical-offset="9860">
-          <caret line="74" column="32" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#14349#18410#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/object-list-question.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.17258883" vertical-offset="102" max-vertical-offset="901">
@@ -1577,10 +1584,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50405186" vertical-offset="7900" max-vertical-offset="9775">
+          <caret line="606" column="0" selection-start-line="606" selection-start-column="0" selection-end-line="606" selection-end-column="0" />
+          <folding>
+            <element signature="e#14349#18410#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/List.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4764992" vertical-offset="2154" max-vertical-offset="2822">
-          <caret line="144" column="37" selection-start-line="144" selection-start-column="37" selection-end-line="144" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.5316045" vertical-offset="2154" max-vertical-offset="2822">
+          <caret line="146" column="23" selection-start-line="146" selection-start-column="23" selection-end-line="146" selection-end-column="23" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

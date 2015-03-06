@@ -605,7 +605,7 @@ exports.findOneAndRemove = function (operator, conditions, callback) {
                     return next(err);
                 }
 
-                if (operator.id.toString() !== doc.author.toString) {
+                if (operator.id.toString() !== doc.author.toString()) {
                     err = new Error('您无权限删除该项目');
                     return next(err);
                 }
