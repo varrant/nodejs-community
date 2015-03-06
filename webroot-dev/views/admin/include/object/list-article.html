@@ -6,16 +6,18 @@
             <th width="20%">专辑</th>
             <th width="*">标题</th>
             <th width="20%">评论/阅读</th>
+            <th width="8%">操作</th>
         </tr>
         </thead>
         <tbody>
         <tr v-if="list.length == 0">
-            <td colspan="4" class="table-empty-td">暂无相关文章。</td>
+            <td colspan="5" class="table-empty-td">暂无相关文章。</td>
         </tr>
         <tr v-repeat="object:list" v-class="success: object.acceptResponse">
             <td>\{{(query.page - 1) * query.limit + $index + 1}}</td>
             <td>
-                \{{columnsMap[object.column] && columnsMap[object.column].name || "未分配专辑"}}
+                <a v-if="columnsMap[object.column]" href="/column/\{{columnsMap[object.column].uri}}/">\{{columnsMap[object.column].name}}</a>
+                <span v-if="!columnsMap[object.column]" class="s-light">未分配专辑</span>
             </td>
             <td>
                 <a href="/admin/object/article/?id=\{{object._id}}">《\{{object.title}}》</a>
@@ -23,12 +25,18 @@
             <td>
                 \{{object.commentByCount}}/\{{object.viewByCount}}
             </td>
+            <td>
+                <!-- 没有专辑的、没有评论的 -->
+                <a v-if="!columnsMap[object.column] && !object.commentByCount" href="javascript:;" class="s-danger" v-on="click: onremove(object.id, $index)"><i class="i i-trash"></i>删除</a>
+            </td>
         </tr>
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="4" id="pagination"></td>
+            <td colspan="5" id="pagination"></td>
         </tr>
         </tfoot>
     </table>
+
+    <p class="s-muted">只有未分配专辑，并且没有被评论的项目才可以被删除。</p>
 </div>
