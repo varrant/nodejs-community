@@ -598,25 +598,28 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
 };
 
 
-
-exports.findOneAndRemove = function (conditions, callback) {
+exports.findOneAndRemove = function (operator, conditions, callback) {
     object.findOne(conditions, function (err, doc) {
-        if(err){
+        if (err) {
             return callback(err);
         }
 
-        if(doc.column){
-            err = new Error('该项目已被分配专辑，无法被删除');
-            return err;
+        if (operator.id.toString() !== doc.author.toString) {
+            err = new Error('您无权限删除该项目');
+            return callback(err);
         }
 
-        if(doc.column){
+        if (doc.column) {
             err = new Error('该项目已被分配专辑，无法被删除');
-            return err;
+            return callback(err);
+        }
+
+        if (doc.commentByCount) {
+            err = new Error('该项目已被他人评论，无法被删除');
+            return callback(err);
         }
     });
 };
-
 
 
 /**
