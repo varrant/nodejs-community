@@ -18,7 +18,8 @@ define(function (require, exports, module) {
     var Pagination = require('../../alien/ui/Pagination/index.js');
     var attribute = require('../../alien/core/dom/attribute.js');
     var defaults = {
-        url: '/admin/api/object/list/',
+        listURL: '/admin/api/object/list/',
+        itemURL: '/admin/api/object/',
         section: '',
         query: {
             page: 1,
@@ -72,7 +73,7 @@ define(function (require, exports, module) {
         var options = the._options;
 
         ajax({
-            url: options.url + '?' + qs.stringify(the.query)
+            url: options.listURL + '?' + qs.stringify(the.query)
         }).on('success', the._onsuccess.bind(the)).on('error', alert);
     };
 
@@ -116,7 +117,9 @@ define(function (require, exports, module) {
                     categoriesMap: categoriesMap,
                     columnsMap: columnsMap
                 }, the._options.data),
-                methods: the._options.methods
+                methods: dato.extend({
+                    onremove: the._onremove.bind(the)
+                }, the._options.methods)
             });
 
             the.vue.$el.classList.remove('f-none');
@@ -131,6 +134,27 @@ define(function (require, exports, module) {
                     attribute.scrollTop(window, 0);
                 });
         }
+    };
+
+    List.fn._onremove = function (id, index) {
+        var the = this;
+        var options = the._options;
+
+        confirm('确认要删除该项目吗？<br>删除操作不可逆，请仔细确认！', function () {
+            ajax({
+                url: options.itemURL,
+                method: 'delete',
+                data: {
+                    id: id
+                }
+            }).on('success', function (json) {
+                if (json.code !== 200) {
+                    return alert(json);
+                }
+
+                the.vue.$data.list.splice(index, 1);
+            });
+        });
     };
 
     module.exports = List;
