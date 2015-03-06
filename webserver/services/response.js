@@ -183,9 +183,19 @@ exports.createOne = function (author, data, meta, callback) {
                     ) {
                         // 增加主动用户回复积分
                         developer.increaseScore({_id: author.id}, scoreMap.reply, log.holdError);
-                        // 增加被动用户回复积分
+                    }
+
+                    if (
+                        author.id.toString() !== responseObject.author.toString()
+                    ) {
+                        // 增加被动回复文章的作者回复积分
                         developer.increaseScore({_id: responseObject.author.toString()}, scoreUtil.replyBy(author, responseObject.author.toString()), log.holdError);
-                        // 增加被动用户回复积分
+                    }
+
+                    if (
+                        author.id.toString() !== parentResponse.author.toString()
+                    ) {
+                        // 增加被评论的作者回复积分
                         developer.increaseScore({_id: parentResponse.author.toString()}, scoreUtil.replyBy(author, parentResponse.author.toString()), log.holdError);
                     }
                 }
