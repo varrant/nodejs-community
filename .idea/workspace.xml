@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/api/object.js" afterPath="$PROJECT_DIR$/webserver/controllers/api/object.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/object.js" afterPath="$PROJECT_DIR$/webserver/services/object.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -53,8 +52,8 @@
       <file leaf-file-name="object.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.50405186" vertical-offset="7917" max-vertical-offset="8772">
-              <caret line="602" column="0" selection-start-line="602" selection-start-column="0" selection-end-line="602" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.64181525" vertical-offset="7917" max-vertical-offset="9061">
+              <caret line="607" column="18" selection-start-line="607" selection-start-column="18" selection-end-line="607" selection-end-column="18" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#14434#18495#0" expanded="false" />
@@ -574,13 +573,7 @@
       <workItem from="1425621839452" duration="454000" />
       <workItem from="1425625815508" duration="598000" />
       <workItem from="1425631372239" duration="2521000" />
-      <workItem from="1425645940378" duration="302000" />
-    </task>
-    <task id="LOCAL-00395" summary="beta19">
-      <created>1423839755946</created>
-      <option name="number" value="00395" />
-      <option name="project" value="LOCAL" />
-      <updated>1423839755946</updated>
+      <workItem from="1425645940378" duration="451000" />
     </task>
     <task id="LOCAL-00396" summary="beta19">
       <created>1423841088324</created>
@@ -870,11 +863,17 @@
       <option name="project" value="LOCAL" />
       <updated>1425646135423</updated>
     </task>
-    <option name="localTasksCounter" value="444" />
+    <task id="LOCAL-00444" summary="beta25">
+      <created>1425646249880</created>
+      <option name="number" value="00444" />
+      <option name="project" value="LOCAL" />
+      <updated>1425646249880</updated>
+    </task>
+    <option name="localTasksCounter" value="445" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154007000" />
+    <option name="totallyTimeSpent" value="154156000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1254,6 +1253,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="299" max-vertical-offset="918">
           <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1376,8 +1378,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50405186" vertical-offset="7917" max-vertical-offset="8772">
-          <caret line="602" column="0" selection-start-line="602" selection-start-column="0" selection-end-line="602" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.64181525" vertical-offset="7917" max-vertical-offset="9061">
+          <caret line="607" column="18" selection-start-line="607" selection-start-column="18" selection-end-line="607" selection-end-column="18" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#14434#18495#0" expanded="false" />

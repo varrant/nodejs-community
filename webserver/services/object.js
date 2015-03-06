@@ -599,6 +599,23 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
 
 
 
+exports.findOneAndRemove = function (conditions, callback) {
+    object.findOne(conditions, function (err, doc) {
+        if(err){
+            return callback(err);
+        }
+
+        if(doc.column){
+            err = new Error('该项目已被分配专辑，无法被删除');
+            return err;
+        }
+
+        if(doc.column){
+            err = new Error('该项目已被分配专辑，无法被删除');
+            return err;
+        }
+    });
+};
 
 
 
