@@ -191,8 +191,6 @@ exports.createOne = function (author, data, callback) {
                 developer.increaseObjectCount({_id: doc.author.toString()}, 1, log.holdError);
 
                 // 发布积分
-                console.log(scoreMap);
-                console.log(objectInSection);
                 developer.increaseScore({_id: doc.author.toString()}, scoreMap[objectInSection.uri] || 0, log.holdError);
             }
         });
@@ -627,13 +625,42 @@ exports.findOneAndRemove = function (operator, conditions, callback) {
         })
         // 2. 删除
         .task(function (next, obj) {
-            obj.findOneAndRemove();
+            obj.findOneAndRemove(conditions, next);
         })
         // 3. 异步串行
-        .follow(function (err) {
+        .follow(function (err, doc) {
             if (err) {
                 return callback(err);
             }
+
+            // 1. 文章所在版块的文章数量计数 -1
+            section.increaseObjectCount({_id: doc.section}, -1, log.holdError);
+
+            // 2. 文章所在分类的文章数量计数 -1
+            category.increaseObjectCount({_id: doc.category}, -1, log.holdError);
+
+            // 3. 文章所在标签的文章数量计数 -1
+            doc.labels.forEach(function (name) {
+                label.increaseObjectCount({name: name}, -1, log.holdError);
+            });
+
+            // 4. 文章作者的文章数量计数 -1
+            developer.increaseObjectCount({_id: operator.id}, -1, log.holdError);
+
+            // 5. 文章作者的版块内的文章数量计数 -1
+            developer.increaseSectionStatistics({_id: operator.id}, doc.section, -1, log.holdError);
+
+            // 6. 文章作者的分类内的文章数量计数 -1
+            developer.increaseCategoryStatistics({_id: operator.id}, doc.category, -1, log.holdError);
+
+            // 7. 文章作者的积分 -分值
+            section.findOne({_id: doc.section}, function (err, objectInSection) {
+                if (err) {
+                    return log.holdError(err);
+                }
+
+                developer.increaseScore({_id: operator.id}, -scoreMap[objectInSection.uri] || 0, log.holdError);
+            });
         });
 
 };
