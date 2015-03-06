@@ -212,7 +212,17 @@ module.exports = function (app) {
     exports.remove = function (req, res, next) {
         var objectId = req.body.object;
 
+        object.findOneAndRemove(res.locals.$developer, {
+            _id: objectId
+        }, function (err) {
+            if (err) {
+                return next(err);
+            }
 
+            res.json({
+                code: 200
+            });
+        });
     };
 
     return exports;
