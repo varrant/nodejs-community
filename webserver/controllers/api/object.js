@@ -209,5 +209,11 @@ module.exports = function (app) {
     };
 
 
+    exports.remove = function (req, res, next) {
+        var objectId = req.body.object;
+
+
+    };
+
     return exports;
 };
