@@ -52,8 +52,8 @@
       <file leaf-file-name="object.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58670986" vertical-offset="8189" max-vertical-offset="9112">
-              <caret line="621" column="2" selection-start-line="621" selection-start-column="2" selection-end-line="621" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.50405186" vertical-offset="8376" max-vertical-offset="9401">
+              <caret line="629" column="33" selection-start-line="629" selection-start-column="33" selection-end-line="629" selection-end-column="33" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#14434#18495#0" expanded="false" />
@@ -573,13 +573,7 @@
       <workItem from="1425621839452" duration="454000" />
       <workItem from="1425625815508" duration="598000" />
       <workItem from="1425631372239" duration="2521000" />
-      <workItem from="1425645940378" duration="591000" />
-    </task>
-    <task id="LOCAL-00397" summary="beta19">
-      <created>1423841497500</created>
-      <option name="number" value="00397" />
-      <option name="project" value="LOCAL" />
-      <updated>1423841497500</updated>
+      <workItem from="1425645940378" duration="749000" />
     </task>
     <task id="LOCAL-00398" summary="beta19">
       <created>1423841943183</created>
@@ -869,11 +863,17 @@
       <option name="project" value="LOCAL" />
       <updated>1425646394988</updated>
     </task>
-    <option name="localTasksCounter" value="446" />
+    <task id="LOCAL-00446" summary="beta25">
+      <created>1425646535299</created>
+      <option name="number" value="00446" />
+      <option name="project" value="LOCAL" />
+      <updated>1425646535299</updated>
+    </task>
+    <option name="localTasksCounter" value="447" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154296000" />
+    <option name="totallyTimeSpent" value="154454000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1355,6 +1355,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/models/object.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31442463" vertical-offset="2577" max-vertical-offset="3876">
+          <caret line="167" column="18" selection-start-line="167" selection-start-column="4" selection-end-line="167" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/controllers/api/object.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1015" max-vertical-offset="1666">
@@ -1369,18 +1377,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/models/object.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31442463" vertical-offset="2577" max-vertical-offset="3876">
-          <caret line="167" column="18" selection-start-line="167" selection-start-column="4" selection-end-line="167" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58670986" vertical-offset="8189" max-vertical-offset="9112">
-          <caret line="621" column="2" selection-start-line="621" selection-start-column="2" selection-end-line="621" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.50405186" vertical-offset="8376" max-vertical-offset="9401">
+          <caret line="629" column="33" selection-start-line="629" selection-start-column="33" selection-end-line="629" selection-end-column="33" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#14434#18495#0" expanded="false" />

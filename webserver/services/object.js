@@ -599,26 +599,43 @@ exports.acceptByResponse = function (operator, conditions, responseId, callback)
 
 
 exports.findOneAndRemove = function (operator, conditions, callback) {
-    object.findOne(conditions, function (err, doc) {
-        if (err) {
-            return callback(err);
-        }
+    howdo
+        // 1. 检查权限
+        .task(function (next) {
+            object.findOne(conditions, function (err, doc) {
+                if (err) {
+                    return next(err);
+                }
 
-        if (operator.id.toString() !== doc.author.toString) {
-            err = new Error('您无权限删除该项目');
-            return callback(err);
-        }
+                if (operator.id.toString() !== doc.author.toString) {
+                    err = new Error('您无权限删除该项目');
+                    return next(err);
+                }
 
-        if (doc.column) {
-            err = new Error('该项目已被分配专辑，无法被删除');
-            return callback(err);
-        }
+                if (doc.column) {
+                    err = new Error('该项目已被分配专辑，无法被删除');
+                    return next(err);
+                }
 
-        if (doc.commentByCount) {
-            err = new Error('该项目已被他人评论，无法被删除');
-            return callback(err);
-        }
-    });
+                if (doc.commentByCount) {
+                    err = new Error('该项目已被他人评论，无法被删除');
+                    return next(err);
+                }
+
+                next(err, doc);
+            });
+        })
+        // 2. 删除
+        .task(function (next, obj) {
+            obj.findOneAndRemove();
+        })
+        // 3. 异步串行
+        .follow(function (err) {
+            if (err) {
+                return callback(err);
+            }
+        });
+
 };
 
 
