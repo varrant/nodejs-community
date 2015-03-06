@@ -210,10 +210,10 @@ module.exports = function (app) {
 
 
     exports.remove = function (req, res, next) {
-        var objectId = req.body.object;
+        var id = req.body.id;
 
         object.findOneAndRemove(res.locals.$developer, {
-            _id: objectId
+            _id: id
         }, function (err) {
             if (err) {
                 return next(err);
