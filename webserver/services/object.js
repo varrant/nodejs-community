@@ -625,7 +625,7 @@ exports.findOneAndRemove = function (operator, conditions, callback) {
         })
         // 2. 删除
         .task(function (next, obj) {
-            obj.findOneAndRemove(conditions, next);
+            object.findOneAndRemove(conditions, next);
         })
         // 3. 异步串行
         .follow(function (err, doc) {
