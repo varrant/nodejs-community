@@ -1,73 +1,227 @@
 /*!
  * base
  * @author ydr.me
- * @create 2014-12-04 18:19
- * @ref amazeui.css@2.0.0
+ * @create 2015-03-07 17:18:54
+ * @ref amazeui.css@2.2.1
  */
-
-kbd {
-    background-color: #fff;
-    border: 1px solid #e9e9e9;
-    border-radius: 3px;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
-    color: #222;
-    display: inline-block;
-    font-size: 0.857em;
-    line-height: 1.4;
-    margin: 0 .1em;
-    padding: .1em .6em;
+/* AMUI Base
+   ========================================================================== */
+/**
+ * `font-size` is set in `html` element to support the `rem` unit for font-sizes
+ * NOTE: IE9 & IE10 do not recognize `rem` units when used with the
+   `font` shorthand property.
+ */
+html {
+    font-size: 62.5%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
-/* Inline code */
-code {
-    padding: 2px 4px;
-    font-size: 1.3rem;
-    color: #c7254e;
-    background-color: #f8f8f8;
-    white-space: nowrap;
-    border-radius: 0;
-}
-
-/* Code block */
-pre {
-    display: block;
-    padding: 1rem;
-    margin: 1rem 0;
-    font-size: 1.3rem;
+body {
+    position: relative;
+    background: #ffffff;
+    font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+    font-weight: normal;
     line-height: 1.6;
-    word-break: break-all;
-    word-wrap: break-word;
-    color: #555555;
-    background-color: #f8f8f8;
-    border: 1px solid #dedede;
-    border-radius: 4px;
+    color: #333333;
+    font-size: 1.6rem;
 }
-
-pre code {
+/**
+ * 1. http://usabilitypost.com/2012/11/15/w-optimizelegibility-on-mobile-devices/
+ * 2. http://maxvoltar.com/archive/-webkit-font-smoothing
+ * NOTE: http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
+ * 3. http://maximilianhoffmann.com/posts/better-font-rendering-on-osx
+ *    http://jaydenseric.com/blog/css-font-smoothing-for-firefox-mac
+ */
+body,
+input,
+textarea,
+select,
+button {
+    text-rendering: optimizeLegibility;
+    /* 1 */
+    -webkit-font-smoothing: antialiased;
+    /* 2 */
+    -moz-osx-font-smoothing: grayscale;
+    /* 3 Default: auto */
+    -moz-font-feature-settings: "liga", "kern";
+}
+/*Only phones */
+@media only screen and (max-width: 640px) {
+    /**
+     * Break strings if their length exceeds the width of their container
+     */
+    body {
+        word-wrap: break-word;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        hyphens: auto;
+    }
+}
+/**
+ * links
+ */
+a {
+    color: #0e90d2;
+}
+a:hover,
+a:focus {
+    color: #095f8a;
+}
+a:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+/* Insert */
+ins {
+    background: #ffffaa;
+    color: #333333;
+}
+/**
+ * Mark
+ * Note: Addresses styling not present in IE 8/9.
+ */
+mark {
+    background: #ffffaa;
+    color: #333333;
+}
+/**
+ * Abbreviation and definition
+ */
+abbr[title],
+dfn[title] {
+    cursor: help;
+}
+dfn[title] {
+    border-bottom: 1px dotted;
+    font-style: normal;
+}
+/* Spacing for block elements */
+p,
+hr,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+address,
+fieldset,
+figure {
+    margin: 0 0 1.6rem 0;
+}
+* + p,
+* + hr,
+* + ul,
+* + ol,
+* + dl,
+* + blockquote,
+* + pre,
+* + address,
+* + fieldset,
+* + figure {
+    margin-top: 1.6rem;
+}
+/* Headings
+   ========================================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 1.6rem 0;
+    font-weight: 600;
+    font-size: 100%;
+}
+h1 {
+    font-size: 1.5em;
+}
+h2 {
+    font-size: 1.25em;
+}
+* + h1,
+* + h2,
+* + h3,
+* + h4,
+* + h5,
+* + h6 {
+    margin-top: 2em;
+}
+/* Ordered and unordered lists */
+ul,
+ol {
+    padding-left: 2em;
+}
+/* Reset margin for nested lists */
+ul > li > ul,
+ul > li > ol,
+ol > li > ol,
+ol > li > ul {
+    margin: 1em 0;
+}
+/* Description lists */
+dt {
+    font-weight: bold;
+}
+dt + dd {
+    margin-top: .5em;
+}
+dd {
+    margin-left: 0;
+}
+dd + dt {
+    margin-top: 1em;
+}
+/**
+ * Horizontal rule
+ * 1. Address differences between Firefox and other browsers.
+ */
+hr {
+    display: block;
     padding: 0;
-    font-size: inherit;
-    color: inherit;
-    white-space: pre-wrap;
-    background-color: transparent;
+    border: 0;
+    height: 0;
+    border-top: 1px solid #eeeeee;
+    /* 1 */
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box
+    /* 1 */
 }
-
-table {
-    max-width: 100%;
-    background-color: transparent;
-    empty-cells: show;
+/* Address */
+address {
+    font-style: normal;
 }
-
-caption {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    color: #777;
-    text-align: center;
+/* Quotes */
+blockquote {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    border-left: 4px solid #dddddd;
+    font-family: Georgia, "Times New Roman", Times, Kai, "Kaiti SC", KaiTi, BiauKai, "FontAwesome", serif
+    /* Small print for identifying the source */
+    /* Smaller margin if `small` follows */
 }
-
-table code {
-    white-space: normal;
+blockquote small {
+    display: block;
+    color: #999999;
+    font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+    text-align: right;
 }
-
-th {
-    text-align: left;
+blockquote p:last-of-type {
+    margin-bottom: 0;
+}
+/* iframe */
+iframe {
+    border: 0;
+}
+/* Forms
+   ========================================================================== */
+/**
+  * Vertical alignment
+  * Exclude `radio` and `checkbox` elements because the default `baseline` value aligns better with text
+  */
+button,
+input:not([type="radio"]):not([type="checkbox"]),
+select {
+    vertical-align: middle;
 }
