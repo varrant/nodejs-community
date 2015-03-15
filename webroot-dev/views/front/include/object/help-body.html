@@ -28,12 +28,12 @@
             {{/if}}
             <li>
                 <i class="fi fi-clock-o"></i>
-                <span class="text-sm">{{object.updateAt|datefrom}} &times; {{object.updateList.length}}</span>
+                <span>{{object.updateAt|datefrom}} &times; {{object.updateList.length}}</span>
             </li>
             {{if object.author.id === $developer.id}}
             <li>
                 <i class="fi fi-pencil"></i>
-                <a class="text-sm" href="/admin/object/help/?id={{object.id}}">重新编辑</a>
+                <a href="/admin/object/help/?id={{object.id}}">重新编辑</a>
             </li>
             {{/if}}
         </ul>
