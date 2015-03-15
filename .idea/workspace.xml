@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-author.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-author.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-body.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -40,8 +35,8 @@
       <file leaf-file-name="8skin.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/libs/8skin.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4132901" vertical-offset="0" max-vertical-offset="1003">
-              <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.4132901" vertical-offset="323" max-vertical-offset="1003">
+              <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -653,13 +648,7 @@
       <workItem from="1426051453258" duration="19000" />
       <workItem from="1426063733642" duration="40000" />
       <workItem from="1426153594346" duration="16000" />
-      <workItem from="1426397820305" duration="1632000" />
-    </task>
-    <task id="LOCAL-00454" summary="beta25">
-      <created>1425648275795</created>
-      <option name="number" value="00454" />
-      <option name="project" value="LOCAL" />
-      <updated>1425648275795</updated>
+      <workItem from="1426397820305" duration="1665000" />
     </task>
     <task id="LOCAL-00455" summary="beta25">
       <created>1425648492287</created>
@@ -949,11 +938,17 @@
       <option name="project" value="LOCAL" />
       <updated>1426399427542</updated>
     </task>
-    <option name="localTasksCounter" value="503" />
+    <task id="LOCAL-00503" summary="0.0.2">
+      <created>1426399457285</created>
+      <option name="number" value="00503" />
+      <option name="project" value="LOCAL" />
+      <updated>1426399457285</updated>
+    </task>
+    <option name="localTasksCounter" value="504" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164102000" />
+    <option name="totallyTimeSpent" value="164135000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -977,7 +972,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1898223" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1898223" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39534885" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1476,8 +1471,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/libs/8skin.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4132901" vertical-offset="0" max-vertical-offset="1003">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.4132901" vertical-offset="323" max-vertical-offset="1003">
+          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
           <folding />
         </state>
       </provider>
