@@ -2,34 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/article-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/article-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/column-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/column-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/column.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/column.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/help-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/help-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/home.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/link-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/link-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/link-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/link-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list-main-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list-main-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-accept-by.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-accept-by.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-accept.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-accept.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree-by.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree-by.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-agree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment-by.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment-by.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-comment.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-reply-by.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-reply-by.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-reply.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-reply.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/home/me.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/home/me.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-article.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-article.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-help.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-help.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-link.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-link.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-question.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/object-list-question.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-author.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-author.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-statistics.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-statistics.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/sub-statistics.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/sub-statistics.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -63,8 +40,8 @@
       <file leaf-file-name="8skin.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/libs/8skin.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19286872" vertical-offset="0" max-vertical-offset="1003">
-              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.4132901" vertical-offset="0" max-vertical-offset="1003">
+              <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -121,7 +98,6 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-article.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-help.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-link.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/client-error.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/footer.html" />
@@ -129,6 +105,7 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/article-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/column.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/home/me.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html" />
       </list>
     </option>
   </component>
@@ -676,13 +653,7 @@
       <workItem from="1426051453258" duration="19000" />
       <workItem from="1426063733642" duration="40000" />
       <workItem from="1426153594346" duration="16000" />
-      <workItem from="1426397820305" duration="1601000" />
-    </task>
-    <task id="LOCAL-00453" summary="beta25">
-      <created>1425648241825</created>
-      <option name="number" value="00453" />
-      <option name="project" value="LOCAL" />
-      <updated>1425648241825</updated>
+      <workItem from="1426397820305" duration="1632000" />
     </task>
     <task id="LOCAL-00454" summary="beta25">
       <created>1425648275795</created>
@@ -972,11 +943,17 @@
       <option name="project" value="LOCAL" />
       <updated>1426399388531</updated>
     </task>
-    <option name="localTasksCounter" value="502" />
+    <task id="LOCAL-00502" summary="0.0.2">
+      <created>1426399427542</created>
+      <option name="number" value="00502" />
+      <option name="project" value="LOCAL" />
+      <updated>1426399427542</updated>
+    </task>
+    <option name="localTasksCounter" value="503" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164071000" />
+    <option name="totallyTimeSpent" value="164102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1433,14 +1410,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8846154" vertical-offset="118" max-vertical-offset="850">
-          <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/client-error.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="408">
@@ -1497,10 +1466,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47715735" vertical-offset="211" max-vertical-offset="850">
+          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/libs/8skin.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19286872" vertical-offset="0" max-vertical-offset="1003">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.4132901" vertical-offset="0" max-vertical-offset="1003">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
           <folding />
         </state>
       </provider>
