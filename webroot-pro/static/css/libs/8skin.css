@@ -1,0 +1,94 @@
+/*!
+ * skin
+ * @author ydr.me
+ * @create 2014-12-04 22:20
+ */
+
+.s-light {
+    color: #bbb;
+}
+
+.s-muted {
+    color: #777;
+}
+
+.s-primary {
+    color: #428bca;
+}
+
+a.s-primary:hover {
+    color: #3071a9;
+}
+
+.s-success {
+    color: #3c763d;
+}
+
+a.s-success:hover {
+    color: #2b542c;
+}
+
+.s-info {
+    color: #31708f;
+}
+
+a.s-info:hover {
+    color: #245269;
+}
+
+.s-warning {
+    color: #8a6d3b;
+}
+
+a.s-warning:hover {
+    color: #66512c;
+}
+
+.s-danger {
+    color: #a94442;
+}
+
+a.s-danger:hover {
+    color: #843534;
+}
+
+.s-bg-primary {
+    color: #fff;
+    background-color: #428bca;
+}
+
+a.s-bg-primary:hover {
+    background-color: #3071a9;
+}
+
+.s-bg-success {
+    background-color: #dff0d8;
+}
+
+a.s-bg-success:hover {
+    background-color: #c1e2b3;
+}
+
+.s-bg-info {
+    background-color: #d9edf7;
+}
+
+a.s-bg-info:hover {
+    background-color: #afd9ee;
+}
+
+.s-bg-warning {
+    background-color: #fcf8e3;
+}
+
+a.s-bg-warning:hover {
+    background-color: #f7ecb5;
+}
+
+.s-bg-danger {
+    background-color: #f2dede;
+}
+
+a.s-bg-danger:hover {
+    background-color: #e4b9b9;
+}

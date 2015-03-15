@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+.alien-ui-respond {
+    margin: -20px -20px 20px;
+    background: #F9F9F9;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.alien-ui-respond .alien-ui-respond-body {
+    margin-left: 60px;
+    overflow: hidden;
+}
+
+.alien-ui-respond .alien-ui-respond-action {
+    margin-top: 15px;
+}
