@@ -19,7 +19,7 @@
                 <a v-if="columnsMap[object.column]" href="/column/\{{columnsMap[object.column].uri}}/">\{{columnsMap[object.column].name}}</a>
                 <span v-if="!columnsMap[object.column]" class="text-light">未分配专辑</span>
             </td>
-            <td>
+            <td class="text-left">
                 <a href="/admin/object/article/?id=\{{object._id}}">《\{{object.title}}》</a>
             </td>
             <td class="text-center">
@@ -38,5 +38,5 @@
         </tfoot>
     </table>
 
-    <p class="text-muted">只有未分配专辑，并且没有被评论的项目才可以被删除。</p>
+    <p class="text-muted"><i class="fi fi-info-circle"></i>只有未分配专辑，并且没有被评论的项目才可以被删除。</p>
 </div>
