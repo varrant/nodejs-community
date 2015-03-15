@@ -1,4 +1,4 @@
-<ul class="m-form f-none" id="form">
+<ul class="m-form none" id="form">
     <li>
         <div class="form-key">文章标题<span class="form-required">*</span></div>
         <div class="form-val">
@@ -77,7 +77,7 @@
             <i class="f-space"></i>
             <button class="btn btn-primary" v-on="click: save($event, object)"><i class="i i-save"></i>保存</button>
             <i class="f-space"></i>
-            <a class="btn btn-success" v-class="f-none: !object.isDisplay || !object.id" href="/article/\{{object.uri}}.html"><i class="i i-eye"></i>查看</a>
+            <a class="btn btn-success" v-class="none: !object.isDisplay || !object.id" href="/article/\{{object.uri}}.html"><i class="i i-eye"></i>查看</a>
         </div>
     </li>
 </ul>
