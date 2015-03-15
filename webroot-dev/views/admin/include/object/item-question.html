@@ -84,9 +84,9 @@
     <li>
         <div class="form-action text-center">
             <label for="draft"><input type="checkbox" name="draft" id="draft" v-model="object.isDisplay"/>对他人可见</label>
-            <i class="f-space"></i>
+            <i class="text-space"></i>
             <button class="btn btn-primary" v-on="click: save($event, object)"><i class="i i-save"></i>保存</button>
-            <i class="f-space"></i>
+            <i class="text-space"></i>
             <a class="btn btn-success" v-class="none: !object.isDisplay || !object.id" href="/question/\{{object.uri}}.html"><i class="i i-eye"></i>查看</a>
         </div>
     </li>
