@@ -3,7 +3,7 @@
         <div class="nav-bg j-flag"></div>
         <div class="nav-toggle j-flag"><i class="i i-bars"></i></div>
         <div class="clearfix">
-            <ul class="pull-left list-left nav-left m-nav j-flag f-transition">
+            <ul class="pull-left list-left nav-left m-nav j-flag transition">
                 <li class="nav-item-home"><a href="/"><i class="i i-home"></i>社区首页</a></li>
                 <li class="nav-item-article"><a href="/article/"><i class="i i-file-text"></i>文章</a></li>
                 <li class="nav-item-question"><a href="/question/"><i class="i i-cube"></i>问答</a></li>
@@ -15,14 +15,14 @@
         </div>
         <div class="nav-group j-flag" style="width:{{$developer.id ? '70':'100'}}px;">
             {{if $developer.id}}
-            <a href="javascript:;" class="nav-drop f-transition j-notification-wrap"><img src="{{=$developer.avatarM}}" alt=""/></a>
+            <a href="javascript:;" class="nav-drop transition j-notification-wrap"><img src="{{=$developer.avatarM}}" alt=""/></a>
             {{else}}
             <a href="javascript:;" class="nav-join j-login"><i class="i i-user"></i>加入</a>
             {{/if}}
         </div>
     </nav>
 
-    <ul class="nav-downlist j-flag f-transition" id="nav-downlist">
+    <ul class="nav-downlist j-flag transition" id="nav-downlist">
         <li><a href="/admin/me/"><i class="i i-user"></i>关于我</a></li>
         <li><a href="/admin/notification/" class="j-notification-wrap"><i class="i i-at"></i>我的通知</a></li>
         {{if $permission.column}}
