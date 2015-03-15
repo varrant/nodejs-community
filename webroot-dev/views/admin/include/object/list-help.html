@@ -23,7 +23,7 @@
             <td>\{{object.commentByCount}}</td>
             <td>
                 <!-- 没有专辑的、没有评论的 -->
-                <a v-if="!columnsMap[object.column] && !object.commentByCount" href="javascript:;" class="s-danger" v-on="click: onremove(object.id, $index)"><i class="i i-trash"></i>删除</a>
+                <a v-if="!columnsMap[object.column] && !object.commentByCount" href="javascript:;" class="s-danger" v-on="click: onremove(object.id, $index)"><i class="fi fi-trash"></i>删除</a>
             </td>
         </tr>
         </tbody>

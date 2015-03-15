@@ -1,9 +1,9 @@
 <div id="list" class="m-roles none">
     <div class="alert alert-warning alert-line">
-        <p><i class="i i-info-circle"></i>操作权限请控制在 <strong>[11-20]</strong> 之间。</p>
+        <p><i class="fi fi-info-circle"></i>操作权限请控制在 <strong>[11-20]</strong> 之间。</p>
     </div>
     <div class="alert alert-danger alert-line">
-        <p><i class="i i-exclamation-triangle"></i>除非你自己知道后果，否则不要轻易更改。</p>
+        <p><i class="fi fi-exclamation-triangle"></i>除非你自己知道后果，否则不要轻易更改。</p>
     </div>
     <table class="table">
         <thead>
@@ -22,7 +22,7 @@
             <td><input class="ipt" type="text" name="role" v-model="item.role" value="\{{item.role}}"/></td>
             <td><textarea class="ipt" rows="2" name="desc" v-model="item.desc">\{{item.desc}}</textarea></td>
             <td>
-                <button class="btn btn-danger btn-xs" v-on="click:onremove($index)"><i class="i i-remove i-striped"></i></button>
+                <button class="btn btn-danger btn-xs" v-on="click:onremove($index)"><i class="fi fi-remove i-striped"></i></button>
             </td>
         </tr>
         </tbody>

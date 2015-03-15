@@ -1,13 +1,13 @@
 <div class="m-card">
-    <h2 class="card-title"><i class="i i-user"></i>{{developer.nickname}}
-        {{if developer.hasCertificated}}<i class="i i-check-circle s-success" title="个人认证"></i>{{/if}}
-        {{if pageType !== "home"}}<span class="text-space s-light">/</span><i class="i i-home"></i><a href="/developer/{{=developer.githubLogin}}/">主页</a>{{/if}}
+    <h2 class="card-title"><i class="fi fi-user"></i>{{developer.nickname}}
+        {{if developer.hasCertificated}}<i class="fi fi-check-circle s-success" title="个人认证"></i>{{/if}}
+        {{if pageType !== "home"}}<span class="text-space s-light">/</span><i class="fi fi-home"></i><a href="/developer/{{=developer.githubLogin}}/">主页</a>{{/if}}
         <div class="card-endtitle">
             {{if developer.weibo}}
-            <a href="http://weibo.com/{{=developer.weibo}}/" class="s-danger"><i class="i i-weibo"></i></a>
+            <a href="http://weibo.com/{{=developer.weibo}}/" class="s-danger"><i class="fi fi-weibo"></i></a>
             {{/if}}
 
-            <a href="https://github.com/{{=developer.githubLogin}}" class="s-danger"><i class="i i-github"></i></a>
+            <a href="https://github.com/{{=developer.githubLogin}}" class="s-danger"><i class="fi fi-github"></i></a>
         </div>
     </h2>
     <div class="card-body">
@@ -19,9 +19,9 @@
                 </div>
                 <div class="usercard-body">
                     <ul class="m-simplelist">
-                        <li><i class="i i-map-marker"></i>{{developer.meta.location}}</li>
-                        <li><i class="i i-group"></i>{{developer.meta.company}}</li>
-                        <li><i class="i i-link"></i>{{if developer.meta.blog}}<a
+                        <li><i class="fi fi-map-marker"></i>{{developer.meta.location}}</li>
+                        <li><i class="fi fi-group"></i>{{developer.meta.company}}</li>
+                        <li><i class="fi fi-link"></i>{{if developer.meta.blog}}<a
                                 href="{{developer.meta.blog}}" target="_blank">{{developer.meta.blog}}</a>{{else}}unknow{{/if}}</li>
                     </ul>
                 </div>
@@ -31,18 +31,18 @@
 
             <div class="usercard-statistics s-muted text-sm">
                 <ul class="list-left">
-                    <li><i class="i i-circle"></i>{{developer.score|humanize}} 声望</li>
-                    <!--<li><i class="i i-star"></i>{{developer.followByCount|humanize}} 个关注</li>-->
-                    <li><i class="i i-check-square"></i><a href="/developer/{{=developer.githubLogin}}/accept-by/">被采纳 {{developer.acceptByCount|humanize}} 次</a></li>
-                    <li><i class="i i-thumbs-up"></i><a href="/developer/{{=developer.githubLogin}}/agree-by/">被赞同 {{developer.agreeByCount|humanize}} 次</a></li>
-                    <li><i class="i i-comment"></i><a href="/developer/{{=developer.githubLogin}}/comment-by/">被评论 {{developer.commentByCount|humanize}} 次</a></li>
-                    <li><i class="i i-reply"></i><a href="/developer/{{=developer.githubLogin}}/reply-by/">被回复 {{developer.replyByCount|humanize}} 次</a></li>
+                    <li><i class="fi fi-circle"></i>{{developer.score|humanize}} 声望</li>
+                    <!--<li><i class="fi fi-star"></i>{{developer.followByCount|humanize}} 个关注</li>-->
+                    <li><i class="fi fi-check-square"></i><a href="/developer/{{=developer.githubLogin}}/accept-by/">被采纳 {{developer.acceptByCount|humanize}} 次</a></li>
+                    <li><i class="fi fi-thumbs-up"></i><a href="/developer/{{=developer.githubLogin}}/agree-by/">被赞同 {{developer.agreeByCount|humanize}} 次</a></li>
+                    <li><i class="fi fi-comment"></i><a href="/developer/{{=developer.githubLogin}}/comment-by/">被评论 {{developer.commentByCount|humanize}} 次</a></li>
+                    <li><i class="fi fi-reply"></i><a href="/developer/{{=developer.githubLogin}}/reply-by/">被回复 {{developer.replyByCount|humanize}} 次</a></li>
                 </ul>
 
                 <ul class="list-left">
-                    <li><i class="i i-file-text"></i><a href="/article/by/{{=developer.githubLogin}}/">{{sectionStatistics.article}} 篇文章</a></li>
-                    <li><i class="i i-cube"></i><a href="/question/by/{{=developer.githubLogin}}/">{{sectionStatistics.question}} 次提问</a></li>
-                    <li><i class="i i-link"></i><a href="/link/by/{{=developer.githubLogin}}/">{{sectionStatistics.link}} 个链接</a></li>
+                    <li><i class="fi fi-file-text"></i><a href="/article/by/{{=developer.githubLogin}}/">{{sectionStatistics.article}} 篇文章</a></li>
+                    <li><i class="fi fi-cube"></i><a href="/question/by/{{=developer.githubLogin}}/">{{sectionStatistics.question}} 次提问</a></li>
+                    <li><i class="fi fi-link"></i><a href="/link/by/{{=developer.githubLogin}}/">{{sectionStatistics.link}} 个链接</a></li>
                 </ul>
             </div>
         </div>

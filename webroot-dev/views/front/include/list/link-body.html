@@ -1,9 +1,9 @@
 <div class="m-card">
     <h2 class="card-title">
-        <i class="i i-link"></i>{{section.name}}
+        <i class="fi fi-link"></i>{{section.name}}
         <small class="card-subtitle s-muted hidden-xs">——{{section.introduction}}</small>
         <div class="card-endtitle">
-            <span class="s-light text-sm hidden-xs"><i class="i i-file-o"></i>{{pager.count}}</span>
+            <span class="s-light text-sm hidden-xs"><i class="fi fi-file-o"></i>{{pager.count}}</span>
         </div>
     </h2>
 
@@ -21,11 +21,11 @@
         <!--列表-->
         <ul class="m-summarylist">
             <li class="summarylist-item text-center">
-                <a class="btn btn-warning" href="/admin/object/link/"><i class="i i-plus"></i>我想分享链接</a>
+                <a class="btn btn-warning" href="/admin/object/link/"><i class="fi fi-plus"></i>我想分享链接</a>
             </li>
             {{if !objects.length}}
                 <li>
-                    <div class="alert alert-warning"> <i class="i i-info-circle"></i>暂无相关内容。</div>
+                    <div class="alert alert-warning"> <i class="fi fi-info-circle"></i>暂无相关内容。</div>
                 </li>
             {{/if}}
             {{list objects as object}}
@@ -40,11 +40,11 @@
                     <div class="summarylist-meta s-light text-sm row">
                         <div class="col-sm-8">
                             <ul class="avg-xs-2 avg-md-4">
-                                <li><i class="i i-user i-striped"></i><a href="/developer/{{=object.author.githubLogin}}/">{{object.author.nickname}}</a></li>
-                                <li><i class="i i-eye"></i>{{object.viewByCount}}</li>
-                                <li><i class="i i-comments"></i>{{object.commentByCount}}</li>
+                                <li><i class="fi fi-user i-striped"></i><a href="/developer/{{=object.author.githubLogin}}/">{{object.author.nickname}}</a></li>
+                                <li><i class="fi fi-eye"></i>{{object.viewByCount}}</li>
+                                <li><i class="fi fi-comments"></i>{{object.commentByCount}}</li>
                                 {{if columnsMap[object.column]}}
-                                <li><i class="i i-book"></i><a href="/column/{{=columnsMap[object.column].uri}}">{{columnsMap[object.column].name}}</a></li>
+                                <li><i class="fi fi-book"></i><a href="/column/{{=columnsMap[object.column].uri}}">{{columnsMap[object.column].name}}</a></li>
                                 {{/if}}
                             </ul>
                         </div>

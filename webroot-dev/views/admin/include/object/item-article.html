@@ -63,7 +63,7 @@
                 <div class="col-xs-12">
                     <ul class="list-left form-opt m-labes">
                         <li v-repeat="object.labels">\{{$value}}
-                            <a href="javascript:;" class="i i-times s-danger" v-on="click: removelabel($index)"></a></li>
+                            <a href="javascript:;" class="fi fi-times s-danger" v-on="click: removelabel($index)"></a></li>
                     </ul>
                 </div>
             </div>
@@ -75,9 +75,9 @@
         <div class="form-action text-center">
             <label for="draft"><input type="checkbox" name="draft" id="draft" v-model="object.isDisplay"/>对他人可见</label>
             <i class="text-space"></i>
-            <button class="btn btn-primary" v-on="click: save($event, object)"><i class="i i-save"></i>保存</button>
+            <button class="btn btn-primary" v-on="click: save($event, object)"><i class="fi fi-save"></i>保存</button>
             <i class="text-space"></i>
-            <a class="btn btn-success" v-class="none: !object.isDisplay || !object.id" href="/article/\{{object.uri}}.html"><i class="i i-eye"></i>查看</a>
+            <a class="btn btn-success" v-class="none: !object.isDisplay || !object.id" href="/article/\{{object.uri}}.html"><i class="fi fi-eye"></i>查看</a>
         </div>
     </li>
 </ul>

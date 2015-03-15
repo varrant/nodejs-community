@@ -4,7 +4,7 @@
         <ul class="m-summarylist">
             {{if !objects.length}}
                 <li>
-                    <div class="alert alert-warning"> <i class="i i-info-circle"></i>暂无相关内容。</div>
+                    <div class="alert alert-warning"> <i class="fi fi-info-circle"></i>暂无相关内容。</div>
                 </li>
             {{/if}}
             {{list objects as object}}
@@ -19,9 +19,9 @@
                     <div class="summarylist-meta s-light text-sm row">
                         <div class="col-sm-8">
                             <ul class="avg-xs-2 avg-md-4">
-                                <li><i class="i i-user i-striped"></i><a href="/developer/{{=object.author.githubLogin}}/">{{object.author.nickname}}</a></li>
-                                <li class="hidden-xs"><i class="i i-eye"></i>{{object.viewByCount}}</li>
-                                <li class="hidden-xs"><i class="i i-comments"></i>{{object.commentByCount}}</li>
+                                <li><i class="fi fi-user i-striped"></i><a href="/developer/{{=object.author.githubLogin}}/">{{object.author.nickname}}</a></li>
+                                <li class="hidden-xs"><i class="fi fi-eye"></i>{{object.viewByCount}}</li>
+                                <li class="hidden-xs"><i class="fi fi-comments"></i>{{object.commentByCount}}</li>
                             </ul>
                         </div>
                         <div class="col-sm-4">

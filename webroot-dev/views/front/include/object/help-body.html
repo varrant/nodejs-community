@@ -1,7 +1,7 @@
 <!--内容-->
 <div class="m-card">
     <h2 class="card-title" id="object-title">
-        <i class="i i-question-circle"></i>
+        <i class="fi fi-question-circle"></i>
         {{object.title}}
     </h2>
 
@@ -10,29 +10,29 @@
         <ul class="postmain-meta s-light">
             {{if object.column}}
             <li>
-                <i class="i i-book"></i>
+                <i class="fi fi-book"></i>
                 <a href="/column/{{object.column.uri}}/" class="label label-default">{{object.column.name}}</a>
             </li>
             {{/if}}
             <li>
-                <i class="i i-folder"></i>
+                <i class="fi fi-folder"></i>
                 <a href="/question/in/{{object.category.uri}}/" class="label label-default">{{object.category.name}}</a>
             </li>
             {{if object.labels.length }}
             <li>
-                <i class="i i-tags"></i>
+                <i class="fi fi-tags"></i>
                 {{list object.labels as label}}
                 <a class="label label-light" href="/question/on/{{label}}/">{{label}}</a>
                 {{/list}}
             </li>
             {{/if}}
             <li>
-                <i class="i i-clock-o"></i>
+                <i class="fi fi-clock-o"></i>
                 <span class="text-sm">{{object.updateAt|datefrom}} &times; {{object.updateList.length}}</span>
             </li>
             {{if object.author.id === $developer.id}}
             <li>
-                <i class="i i-pencil"></i>
+                <i class="fi fi-pencil"></i>
                 <a class="text-sm" href="/admin/object/help/?id={{object.id}}">重新编辑</a>
             </li>
             {{/if}}

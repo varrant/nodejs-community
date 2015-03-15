@@ -29,7 +29,7 @@
                         {{if section[st.name]}}
                         <li class="home-{{=st.name}}">
                             <a href="/{{=st.name}}/">
-                                <div class="home-icon"><i class="i i-{{=st.icon}}"></i></div>
+                                <div class="home-icon"><i class="fi fi-{{=st.icon}}"></i></div>
                                 <div class="home-name">{{section[st.name].name}}<small>/{{section[st.name].objectCount|humanize}}</small></div>
                                 <div class="home-desc">{{section[st.name].introduction}}</div>
                             </a>
@@ -44,7 +44,7 @@
             <div class="col-md-3 g-sub">
                 <!--统计-->
                 <div class="m-card">
-                    <div class="card-title"><i class="i i-bar-chart"></i>统计</div>
+                    <div class="card-title"><i class="fi fi-bar-chart"></i>统计</div>
                     <div class="card-body">
                         <ul class="m-simplelist s-muted">
                             {{var bestList = [];}}
@@ -56,10 +56,10 @@
                             {{# bestList.push({type: '最神话', key: 'bestRespect'});}}
 
                             {{list bestList as best}}
-                                <li><i class="i i-user"></i>{{best.type}}：<a href="{{$configs.app.host}}/developer/{{=statistics[best.key].githubLogin}}/"><img src="{{statistics[best.key].email|gravatar:40}}" width="20" height="20">{{statistics[best.key].nickname}}</a></li>
+                                <li><i class="fi fi-user"></i>{{best.type}}：<a href="{{$configs.app.host}}/developer/{{=statistics[best.key].githubLogin}}/"><img src="{{statistics[best.key].email|gravatar:40}}" width="20" height="20">{{statistics[best.key].nickname}}</a></li>
                             {{/list}}
 
-                            <li><i class="i i-user"></i>总用户：{{statistics.engineers|humanize}}</li>
+                            <li><i class="fi fi-user"></i>总用户：{{statistics.engineers|humanize}}</li>
                         </ul>
                     </div>
                 </div>

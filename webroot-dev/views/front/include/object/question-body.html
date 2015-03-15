@@ -2,13 +2,13 @@
 <div class="m-card">
     <h2 class="card-title {{if object.acceptByResponse}}has-accepted{{else}}un-accepted{{/if}}" id="object-title">
         {{if object.hidden}}
-        <i class="i i-lock"></i>
+        <i class="fi fi-lock"></i>
         {{/if}}
-        <i class="i i-cube"></i>
+        <i class="fi fi-cube"></i>
         {{object.title}}
         <div class="card-endtitle">
-            <span class="text-sm s-success card-has-accepted"><i class="i i-check i-striped"></i>已解决</span>
-            <span class="text-sm s-danger card-un-accepted"><i class="i i-exclamation-circle i-striped"></i>待解决</span>
+            <span class="text-sm s-success card-has-accepted"><i class="fi fi-check i-striped"></i>已解决</span>
+            <span class="text-sm s-danger card-un-accepted"><i class="fi fi-exclamation-circle i-striped"></i>待解决</span>
         </div>
     </h2>
 
@@ -18,40 +18,40 @@
             {{if object.hidden}}
                 {{if hasResponsed}}
                     <div class="alert alert-success">
-                        <p><i class="i i-exclamation-triangle"></i><strong>隐藏内容：</strong></p>
+                        <p><i class="fi fi-exclamation-triangle"></i><strong>隐藏内容：</strong></p>
                         {{=object.hiddenHTML}}
                     </div>
                 {{else}}
-                    <div class="alert alert-danger" id="hidden"><i class="i i-exclamation-triangle"></i>此处有隐藏内容，需要评论/回复后才可见。</div>
+                    <div class="alert alert-danger" id="hidden"><i class="fi fi-exclamation-triangle"></i>此处有隐藏内容，需要评论/回复后才可见。</div>
                 {{/if}}
             {{/if}}
         </div>
         <ul class="postmain-meta s-light">
             {{if object.column}}
             <li>
-                <i class="i i-book"></i>
+                <i class="fi fi-book"></i>
                 <a href="/column/{{object.column.uri}}/" class="label label-default">{{object.column.name}}</a>
             </li>
             {{/if}}
             <li>
-                <i class="i i-folder"></i>
+                <i class="fi fi-folder"></i>
                 <a href="/question/in/{{object.category.uri}}/" class="label label-default">{{object.category.name}}</a>
             </li>
             {{if object.labels.length }}
             <li>
-                <i class="i i-tags"></i>
+                <i class="fi fi-tags"></i>
                 {{list object.labels as label}}
                 <a class="label label-light" href="/question/on/{{label}}/">{{label}}</a>
                 {{/list}}
             </li>
             {{/if}}
             <li>
-                <i class="i i-clock-o"></i>
+                <i class="fi fi-clock-o"></i>
                 <span class="text-sm">{{object.updateAt|datefrom}} &times; {{object.updateList.length}}</span>
             </li>
             {{if object.author.id === $developer.id}}
             <li>
-                <i class="i i-pencil"></i>
+                <i class="fi fi-pencil"></i>
                 <a class="text-sm" href="/admin/object/question/?id={{object.id}}">重新编辑</a>
             </li>
             {{/if}}

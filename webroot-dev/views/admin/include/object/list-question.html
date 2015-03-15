@@ -20,17 +20,17 @@
                 <span v-if="!columnsMap[object.column]" class="s-light">未分配专辑</span>
             </td>
             <td>
-                <i v-if="object.hidden" class="i i-lock i-striped"></i>
+                <i v-if="object.hidden" class="fi fi-lock i-striped"></i>
                 <a href="/admin/object/question/?id=\{{object._id}}" v-class="s-danger: !object.acceptByResponse">《\{{object.title}}》</a>
-                <i v-if="object.acceptByResponse" class="i i-check i-striped s-success"></i>
-                <i v-if="!object.acceptByResponse" class="i i-exclamation-circle i-striped s-danger"></i>
+                <i v-if="object.acceptByResponse" class="fi fi-check i-striped s-success"></i>
+                <i v-if="!object.acceptByResponse" class="fi fi-exclamation-circle i-striped s-danger"></i>
             </td>
             <td>
                 \{{object.commentByCount}}/\{{object.viewByCount}}
             </td>
             <td>
                 <!-- 没有专辑的、没有评论的 -->
-                <a v-if="!columnsMap[object.column] && !object.commentByCount" href="javascript:;" class="s-danger" v-on="click: onremove(object.id, $index)"><i class="i i-trash"></i>删除</a>
+                <a v-if="!columnsMap[object.column] && !object.commentByCount" href="javascript:;" class="s-danger" v-on="click: onremove(object.id, $index)"><i class="fi fi-trash"></i>删除</a>
             </td>
         </tr>
         </tbody>
