@@ -9,7 +9,7 @@
 
     <div class="card-body">
         <ul class="m-choose">
-            <li class="f-clearfix">
+            <li class="clearfix">
                 <strong class="choose-type">分类</strong>
                 <a class="{{if !choose.category}}active{{/if}}" href="/link/{{if choose.status}}as/{{choose.status}}/{{/if}}">所有分类</a>
                 {{list categories as category}}
@@ -29,7 +29,7 @@
                 </li>
             {{/if}}
             {{list objects as object}}
-            <li class="summarylist-item f-clearfix">
+            <li class="summarylist-item clearfix">
                 <div class="summarylist-avatar f-left">
                     <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50"/></a>
                 </div>

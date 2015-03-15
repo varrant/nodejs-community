@@ -11,97 +11,97 @@
 .row::after,
 [class*=avg-]::before,
 [class*=avg-]::after,
-.f-clearfix::before,
-.f-clearfix:after,
-.f-list-left::before,
-.f-list-left::after,
-.f-list-right::before,
-.f-list-right::after {
+.clearfix::before,
+.clearfix:after,
+.list-left::before,
+.list-left::after,
+.list-right::before,
+.list-right::after {
     display: table;
     content: " ";
 }
 
 .row::after,
 [class*=avg-]::after,
-.f-clearfix::after,
-.f-list-left::after,
-.f-list-right::after {
+.clearfix::after,
+.list-left::after,
+.list-right::after {
     clear: both;
 }
 
-.f-ellipsis {
+.ellipsis {
     overflow: hidden;
     word-wrap: normal;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.f-text-left {
+.text-left {
     text-align: left;
 }
 
-.f-text-center {
+.text-center {
     text-align: center;
 }
 
-.f-text-right {
+.text-right {
     text-align: right;
 }
 
-.f-none {
+.none {
     display: none !important;
 }
 
-.f-list-left,
-.f-list-right {
+.list-left,
+.list-right {
     list-style: none;
 }
 
-.f-left,
-.f-list-left > * {
+.left,
+.list-left > * {
     float: left !important;
 }
 
-.f-right,
-.f-list-right > * {
+.right,
+.list-right > * {
     float: right !important;
 }
 
-.f-visible {
+.visible {
     visibility: visible !important;
 }
 
-.f-hidden {
+.hidden {
     visibility: hidden !important;
 }
 
-.f-xlarge {
+.xlarge {
     font-size: 140%;
 }
 
-.f-large {
+.large {
     font-size: 120%;
 }
 
-.f-small {
+.small {
     font-size: 80%;
 }
 
-.f-xsmall {
+.xsmall {
     font-size: 60%;
 }
 
-.f-space {
+.space {
     display: inline;
     margin: 0 5px;
 }
 
-.f-transition {
+.transition {
     -webkit-transition: all .4s;
     transition: all .4s;
 }
 
-.f-loading {
+.loading {
     background: url(../../img/loading.gif) no-repeat 0 4px/16px;
     display: inline-block;
     padding-left: 20px;
