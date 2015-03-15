@@ -26,8 +26,7 @@
                 \{{object.commentByCount}}/\{{object.viewByCount}}
             </td>
             <td>
-                <!-- 没有专辑的、没有评论的 -->
-                <a v-if="!columnsMap[object.column] && !object.commentByCount" href="javascript:;" class="text-danger" v-on="click: onremove(object.id, $index)"><i class="fi fi-trash"></i>删除</a>
+                <a href="javascript:;" class="text-danger" v-on="click: onremove(object.id, $index)"><i class="fi fi-trash"></i>删除</a>
             </td>
         </tr>
         </tbody>
