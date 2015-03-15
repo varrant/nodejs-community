@@ -33,7 +33,7 @@ define(function (require, exports, module) {
     var tplList = new Template(templateList);
     var alienClass = 'alien-ui-response';
     var defaults = {
-        loading: '<div class="alien-ui-response-loading"><div class="f-loading">加载中……</div></div>',
+        loading: '<div class="alien-ui-response-loading"><div class="loading">加载中……</div></div>',
         url: {
             list: '/api/response/list/',
             post: '/admin/api/response/',
