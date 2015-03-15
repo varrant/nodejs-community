@@ -7,8 +7,8 @@
         <i class="i i-cube"></i>
         {{object.title}}
         <div class="card-endtitle">
-            <span class="f-small s-success card-has-accepted"><i class="i i-check i-striped"></i>已解决</span>
-            <span class="f-small s-danger card-un-accepted"><i class="i i-exclamation-circle i-striped"></i>待解决</span>
+            <span class="text-sm s-success card-has-accepted"><i class="i i-check i-striped"></i>已解决</span>
+            <span class="text-sm s-danger card-un-accepted"><i class="i i-exclamation-circle i-striped"></i>待解决</span>
         </div>
     </h2>
 
@@ -47,12 +47,12 @@
             {{/if}}
             <li>
                 <i class="i i-clock-o"></i>
-                <span class="f-small">{{object.updateAt|datefrom}} &times; {{object.updateList.length}}</span>
+                <span class="text-sm">{{object.updateAt|datefrom}} &times; {{object.updateList.length}}</span>
             </li>
             {{if object.author.id === $developer.id}}
             <li>
                 <i class="i i-pencil"></i>
-                <a class="f-small" href="/admin/object/question/?id={{object.id}}">重新编辑</a>
+                <a class="text-sm" href="/admin/object/question/?id={{object.id}}">重新编辑</a>
             </li>
             {{/if}}
         </ul>

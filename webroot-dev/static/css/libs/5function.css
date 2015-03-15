@@ -75,19 +75,19 @@
     visibility: hidden !important;
 }
 
-.xlarge {
+.text-lg {
     font-size: 140%;
 }
 
-.large {
+.text-md{
     font-size: 120%;
 }
 
-.small {
+.text-sm {
     font-size: 80%;
 }
 
-.xsmall {
+.text-xs {
     font-size: 60%;
 }
 
