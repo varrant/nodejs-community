@@ -51,11 +51,11 @@
                         {{if object.hidden}}
                         <i class="fi fi-lock" title="有隐藏内容"></i>
                         {{/if}}
-                        <a href="/question/{{object.uri}}.html" class="{{if !object.acceptByResponse}}s-danger{{/if}}">{{object.title}}</a>
+                        <a href="/question/{{object.uri}}.html" class="{{if !object.acceptByResponse}}text-danger{{/if}}">{{object.title}}</a>
                         {{if object.acceptByResponse}}
                         <i class="fi fi-check i-striped text-success"></i>
                         {{else}}
-                        <i class="fi fi-exclamation-circle i-striped s-danger"></i>
+                        <i class="fi fi-exclamation-circle i-striped text-danger"></i>
                         {{/if}}
                     </h2>
 
