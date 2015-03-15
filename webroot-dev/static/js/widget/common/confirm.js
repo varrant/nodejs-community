@@ -12,7 +12,7 @@ define(function (require, exports, module) {
 
     module.exports = function (content, onsure) {
         return new Msg({
-            title: '<i class="i i-question-circle i-small"></i>确认操作',
+            title: '<i class="fi fi-question-circle i-small"></i>确认操作',
             content: content,
             buttons: ['确定', '取消'],
             addClass: 'm-dialog-confirm'

@@ -844,7 +844,7 @@ define(function (require, exports, module) {
 
         attribute.removeClass($btn, 'btn-warning');
         attribute.addClass($btn, 'btn-success active');
-        $btn.innerHTML = '<i class="i i-check"></i>已被采纳';
+        $btn.innerHTML = '<i class="fi fi-check"></i>已被采纳';
 
         var $siblings = selector.siblings($item);
 

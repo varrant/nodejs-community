@@ -37,7 +37,7 @@ define(function (require) {
     // 通知
     app.notification = function () {
         var $span = selector.query('#notification')[0];
-        var html_1 = '<i class="i i-exclamation-triangle s-danger"></i>';
+        var html_1 = '<i class="fi fi-exclamation-triangle s-danger"></i>';
 
         ajax({
             url: '/admin/api/notification/count/'
@@ -45,7 +45,7 @@ define(function (require) {
             if (json.code === 200) {
                 $span.innerHTML = '<a class="badge badge-' +
                 (json.data === 0 ? 'default' : 'danger') +
-                '" href="/admin/notification/"><i class="i i-at"></i><span>' + json.data + '</span></a>';
+                '" href="/admin/notification/"><i class="fi fi-at"></i><span>' + json.data + '</span></a>';
             } else {
                 $span.innerHTML = html_1;
             }
