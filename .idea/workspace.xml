@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/List.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/List.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Setting.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Setting.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/app/sadmin/setting.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/app/sadmin/setting.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/loading.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/loading.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/sidebar.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/sidebar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/template.html" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/template.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -76,11 +75,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Setting.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Setting.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Setting.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45652175" vertical-offset="1341" max-vertical-offset="4522">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1341" max-vertical-offset="4522">
               <caret line="94" column="32" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sidebar.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/sidebar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="606" max-vertical-offset="1020">
+              <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loading.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/loading.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+              <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="template.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/template.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.61340207" vertical-offset="0" max-vertical-offset="388">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -94,9 +123,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/index.js" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Upload/index.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/List.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Setting.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list/article-body.html" />
@@ -145,6 +171,9 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/List.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Setting.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/sidebar.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/loading.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/template.html" />
       </list>
     </option>
   </component>
@@ -692,13 +721,7 @@
       <workItem from="1426051453258" duration="19000" />
       <workItem from="1426063733642" duration="40000" />
       <workItem from="1426153594346" duration="16000" />
-      <workItem from="1426397820305" duration="816000" />
-    </task>
-    <task id="LOCAL-00442" summary="beta25">
-      <created>1425645406962</created>
-      <option name="number" value="00442" />
-      <option name="project" value="LOCAL" />
-      <updated>1425645406962</updated>
+      <workItem from="1426397820305" duration="850000" />
     </task>
     <task id="LOCAL-00443" summary="beta25">
       <created>1425646135423</created>
@@ -988,11 +1011,17 @@
       <option name="project" value="LOCAL" />
       <updated>1426398599968</updated>
     </task>
-    <option name="localTasksCounter" value="491" />
+    <task id="LOCAL-00491" summary="0.0.2">
+      <created>1426398639586</created>
+      <option name="number" value="00491" />
+      <option name="project" value="LOCAL" />
+      <updated>1426398639586</updated>
+    </task>
+    <option name="localTasksCounter" value="492" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163286000" />
+    <option name="totallyTimeSpent" value="163320000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1117,27 +1146,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/object-list-question.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846" vertical-offset="153" max-vertical-offset="901">
-          <caret line="23" column="42" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/object-item-question.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385" vertical-offset="170" max-vertical-offset="969">
-          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/object-item-link.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075" vertical-offset="136" max-vertical-offset="952">
-          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/object-item-help.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.730769" vertical-offset="85" max-vertical-offset="986">
@@ -1490,8 +1498,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Setting.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45652175" vertical-offset="1341" max-vertical-offset="4522">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1341" max-vertical-offset="4522">
           <caret line="94" column="32" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/sidebar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="606" max-vertical-offset="1020">
+          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/loading.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61340207" vertical-offset="0" max-vertical-offset="388">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>

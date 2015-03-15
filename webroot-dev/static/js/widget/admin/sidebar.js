@@ -49,7 +49,7 @@ define(function (require, exports, module) {
             }
         });
 
-        vue.$el.classList.remove('f-none');
+        vue.$el.classList.remove('none');
         new Scrollbar('#nav', {
             isStandAlone: true
         });
