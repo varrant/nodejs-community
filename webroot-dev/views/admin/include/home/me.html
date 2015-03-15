@@ -18,7 +18,7 @@
 
     <blockquote class="me-bio">{{$developer.meta.bio}}</blockquote>
 
-    <ul class="me-get text-sm list-left s-muted">
+    <ul class="me-get text-sm list-left text-muted">
         <li><i class="fi fi-eye"></i><strong>{{$developer.viewByCount|humanize}}</strong>次被访问</li>
         <li><i class="fi fi-comment"></i><a href="/developer/{{$developer.githubLogin}}/comment/"><strong>{{$developer.commentByCount|humanize}}</strong>次被评论</a></li>
         <li><i class="fi fi-reply"></i><a href="/developer/{{$developer.githubLogin}}/reply-by/"><strong>{{$developer.replyByCount|humanize}}</strong>次被回复</a></li>

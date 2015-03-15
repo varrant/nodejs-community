@@ -1,7 +1,7 @@
 <div class="m-card">
     <h2 class="card-title"><i class="fi fi-user"></i>{{developer.nickname}}
         {{if developer.hasCertificated}}<i class="fi fi-check-circle s-success" title="个人认证"></i>{{/if}}
-        {{if pageType !== "home"}}<span class="text-space s-light">/</span><i class="fi fi-home"></i><a href="/developer/{{=developer.githubLogin}}/">主页</a>{{/if}}
+        {{if pageType !== "home"}}<span class="text-space text-light">/</span><i class="fi fi-home"></i><a href="/developer/{{=developer.githubLogin}}/">主页</a>{{/if}}
         <div class="card-endtitle">
             {{if developer.weibo}}
             <a href="http://weibo.com/{{=developer.weibo}}/" class="text-danger"><i class="fi fi-weibo"></i></a>
@@ -29,7 +29,7 @@
 
             <blockquote class="usercard-bio">{{developer.meta.bio}}</blockquote>
 
-            <div class="usercard-statistics s-muted text-sm">
+            <div class="usercard-statistics text-muted text-sm">
                 <ul class="list-left">
                     <li><i class="fi fi-circle"></i>{{developer.score|humanize}} 声望</li>
                     <!--<li><i class="fi fi-star"></i>{{developer.followByCount|humanize}} 个关注</li>-->
