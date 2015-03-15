@@ -30,7 +30,7 @@
             <blockquote class="usercard-bio">{{developer.meta.bio}}</blockquote>
 
             <div class="usercard-statistics s-muted f-small">
-                <ul class="f-list-left">
+                <ul class="list-left">
                     <li><i class="i i-circle"></i>{{developer.score|humanize}} 声望</li>
                     <!--<li><i class="i i-star"></i>{{developer.followByCount|humanize}} 个关注</li>-->
                     <li><i class="i i-check-square"></i><a href="/developer/{{=developer.githubLogin}}/accept-by/">被采纳 {{developer.acceptByCount|humanize}} 次</a></li>
@@ -39,7 +39,7 @@
                     <li><i class="i i-reply"></i><a href="/developer/{{=developer.githubLogin}}/reply-by/">被回复 {{developer.replyByCount|humanize}} 次</a></li>
                 </ul>
 
-                <ul class="f-list-left">
+                <ul class="list-left">
                     <li><i class="i i-file-text"></i><a href="/article/by/{{=developer.githubLogin}}/">{{sectionStatistics.article}} 篇文章</a></li>
                     <li><i class="i i-cube"></i><a href="/question/by/{{=developer.githubLogin}}/">{{sectionStatistics.question}} 次提问</a></li>
                     <li><i class="i i-link"></i><a href="/link/by/{{=developer.githubLogin}}/">{{sectionStatistics.link}} 个链接</a></li>
