@@ -57,12 +57,12 @@
     list-style: none;
 }
 
-.left,
+.pull-left,
 .list-left > * {
     float: left !important;
 }
 
-.right,
+.pull-right,
 .list-right > * {
     float: right !important;
 }
