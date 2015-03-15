@@ -93,7 +93,7 @@ define(function (require, exports, module) {
 
             $notification.forEach(function ($wrap) {
                 var $span = modification.create('span', {
-                    class: 'j-notification-count f-transition',
+                    class: 'j-notification-count transition',
                     'data-value': val
                 });
 
