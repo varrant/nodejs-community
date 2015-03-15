@@ -58,9 +58,9 @@ define(function (require, exports, module) {
         app.vue1 = vue1;
         app.vue2 = vue2;
         app.vue3 = vue3;
-        vue1.$el.classList.remove('f-none');
-        vue2.$el.classList.remove('f-none');
-        vue3.$el.classList.remove('f-none');
+        vue1.$el.classList.remove('none');
+        vue2.$el.classList.remove('none');
+        vue3.$el.classList.remove('none');
     };
 
 
