@@ -7,8 +7,8 @@
     data-id="{{item.id}}"
     data-author="{{item.author.id}}"
     data-parent="{{item.parentResponse}}">
-    <div class="f-clearfix alien-ui-response-main">
-        <div class="alien-ui-response-avatar f-left">
+    <div class="clearfix alien-ui-response-main">
+        <div class="alien-ui-response-avatar pull-left">
             <a href="/developer/{{=item.author.githubLogin}}/"><img src="{{item.author.avatar}}" alt="avatar" width="50" height="50"/></a>
 
             {{if !item.parentResponse}}
@@ -16,7 +16,7 @@
             {{/if}}
         </div>
         <div class="alien-ui-response-body">
-            <ul class="alien-ui-response-meta f-list-left">
+            <ul class="alien-ui-response-meta list-left">
                 <li><a href="/developer/{{=item.author.githubLogin}}/"><i
                         class="i i-user"></i>{{=item.author.nickname}}</a></li>
                 <li class="s-light"><i class="i i-clock-o"></i>{{item.publishAt|datefrom}}</li>
@@ -24,7 +24,7 @@
 
             <div class="alien-ui-response-content">{{=item.contentHTML}}</div>
 
-            <ul class="alien-ui-response-meta alien-ui-response-action s-light f-list-left">
+            <ul class="alien-ui-response-meta alien-ui-response-action s-light list-left">
                 {{if !item.parentResponse}}
                 <li>
                     <button class="btn btn-primary btn-xs alien-ui-response-reply"><i class="i i-reply"></i>回复<span
@@ -34,7 +34,7 @@
                 <li>
                     <button class="btn btn-default btn-xs alien-ui-response-agree"><i class="i i-thumbs-up"></i>赞同<span
                             class="alien-ui-response-number">{{item.agreeByCount}}</span></button>
-                    <span class="alien-ui-response-agreers f-list-left">
+                    <span class="alien-ui-response-agreers list-left">
                         {{list item.agreers as agreer}}
                         <a href="/developer/{{=agreer.githubLogin}}/"><img src="{{=agreer.avatarM}}"></a>
                         {{/list}}
@@ -61,8 +61,8 @@
     {{if !item.parentResponse}}
     <div class="alien-ui-response-children">
         <ul class="alien-ui-response-list j-flag"></ul>
-        <div class="j-flag f-text-center"></div>
-        <div class="j-flag f-text-center"></div>
+        <div class="j-flag text-center"></div>
+        <div class="j-flag text-center"></div>
     </div>
     {{/if}}
 </li>
