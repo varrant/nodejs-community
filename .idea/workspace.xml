@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-alert.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-badge.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-breadcrumb.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-form.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-label.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-table.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-text.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-grid.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-grid.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/1-base.scss" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/1-base.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/8skin.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/8skin.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/include/meta.html" afterPath="$PROJECT_DIR$/webroot-dev/views/include/meta.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -42,18 +32,7 @@
     <favorites_list name="nodejs-community" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="meta.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/views/include/meta.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4890017" vertical-offset="0" max-vertical-offset="595">
-              <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -102,7 +81,6 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-question.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/item-article.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/libs/8skin.css" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/include/meta.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/libs/1-base-text.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/libs/1-base-form.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/libs/1-base-table.scss" />
@@ -112,6 +90,7 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-label.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-breadcrumb.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/libs/1-base.scss" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/include/meta.html" />
       </list>
     </option>
   </component>
@@ -699,13 +678,7 @@
       <workItem from="1426051453258" duration="19000" />
       <workItem from="1426063733642" duration="40000" />
       <workItem from="1426153594346" duration="16000" />
-      <workItem from="1426397820305" duration="2279000" />
-    </task>
-    <task id="LOCAL-00457" summary="beta25">
-      <created>1425648587494</created>
-      <option name="number" value="00457" />
-      <option name="project" value="LOCAL" />
-      <updated>1425648587494</updated>
+      <workItem from="1426397820305" duration="2378000" />
     </task>
     <task id="LOCAL-00458" summary="beta25">
       <created>1425648787586</created>
@@ -995,15 +968,21 @@
       <option name="project" value="LOCAL" />
       <updated>1426399509097</updated>
     </task>
-    <option name="localTasksCounter" value="506" />
+    <task id="LOCAL-00506" summary="0.0.2">
+      <created>1426400106952</created>
+      <option name="number" value="00506" />
+      <option name="project" value="LOCAL" />
+      <updated>1426400106952</updated>
+    </task>
+    <option name="localTasksCounter" value="507" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164749000" />
+    <option name="totallyTimeSpent" value="164848000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.57231724" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1023,7 +1002,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1898223" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1898223" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39534885" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1444,14 +1423,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/libs/0-normalize.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39384118" vertical-offset="11011" max-vertical-offset="11628">
-          <caret line="662" column="0" selection-start-line="662" selection-start-column="0" selection-end-line="662" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/libs/1-base.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="1207">
@@ -1524,10 +1495,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/libs/0-normalize.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13776337" vertical-offset="0" max-vertical-offset="11628">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/include/meta.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4890017" vertical-offset="0" max-vertical-offset="595">
-          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.19458544" vertical-offset="106" max-vertical-offset="697">
+          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
           <folding />
         </state>
       </provider>
