@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/5function.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/5function.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/header.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/column/list.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/column/list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/article-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/article-body.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/column-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/column-body.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/help-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/help-body.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/link-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/link-body.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list-main-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list-main-body.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/developer/main-body.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/admin/include/home/me.html" afterPath="$PROJECT_DIR$/webroot-dev/views/admin/include/home/me.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/nav.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/nav.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/list/question-body.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -38,8 +44,8 @@
       <file leaf-file-name="5function.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/libs/5function.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28363046" vertical-offset="896" max-vertical-offset="1938">
-              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.36628848" vertical-offset="896" max-vertical-offset="1938">
+              <caret line="66" column="28" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -98,12 +104,12 @@
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/object/list-article.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/column/form.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/footer.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/home/me.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/list-main-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/oauth-callback.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/column.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/libs/5function.css" />
         <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/column/list.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/admin/include/home/me.html" />
       </list>
     </option>
   </component>
@@ -725,13 +731,7 @@
       <workItem from="1426051453258" duration="19000" />
       <workItem from="1426063733642" duration="40000" />
       <workItem from="1426153594346" duration="16000" />
-      <workItem from="1426397820305" duration="511000" />
-    </task>
-    <task id="LOCAL-00435" summary="beta24">
-      <created>1425388047650</created>
-      <option name="number" value="00435" />
-      <option name="project" value="LOCAL" />
-      <updated>1425388047650</updated>
+      <workItem from="1426397820305" duration="530000" />
     </task>
     <task id="LOCAL-00436" summary="beta24">
       <created>1425388301837</created>
@@ -1021,11 +1021,17 @@
       <option name="project" value="LOCAL" />
       <updated>1426398272001</updated>
     </task>
-    <option name="localTasksCounter" value="484" />
+    <task id="LOCAL-00484" summary="0.0.2">
+      <created>1426398333704</created>
+      <option name="number" value="00484" />
+      <option name="project" value="LOCAL" />
+      <updated>1426398333704</updated>
+    </task>
+    <option name="localTasksCounter" value="485" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162981000" />
+    <option name="totallyTimeSpent" value="163000000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1474,14 +1480,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/include/home/me.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43993232" vertical-offset="46" max-vertical-offset="663">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/list-main-body.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3468697" vertical-offset="288" max-vertical-offset="1632">
@@ -1514,10 +1512,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/include/home/me.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05752961" vertical-offset="0" max-vertical-offset="663">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/libs/5function.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28363046" vertical-offset="896" max-vertical-offset="1938">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.36628848" vertical-offset="896" max-vertical-offset="1938">
+          <caret line="66" column="28" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
           <folding />
         </state>
       </provider>
