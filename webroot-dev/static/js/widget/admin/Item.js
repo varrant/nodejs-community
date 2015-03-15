@@ -109,7 +109,7 @@ define(function (require, exports, module) {
                 save: the._onsave.bind(the)
             }, the._methods)
         });
-        the.vue.$el.classList.remove('f-none');
+        the.vue.$el.classList.remove('none');
 
         var editorUploadCallback = function (list, onprogress, ondone) {
             var fd = new FormData();

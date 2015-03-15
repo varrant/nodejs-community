@@ -89,7 +89,7 @@ define(function (require, exports, module) {
                     }
                 });
 
-                the.vue.$el.classList.remove('f-none');
+                the.vue.$el.classList.remove('none');
                 the._translate();
             })
             .on('error', alert);

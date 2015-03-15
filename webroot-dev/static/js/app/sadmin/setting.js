@@ -32,7 +32,7 @@ define(function (require, exports, module) {
                     }
                 });
 
-                app.vue.$el.classList.remove('f-none');
+                app.vue.$el.classList.remove('none');
             })
             .on('error', alert);
     };

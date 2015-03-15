@@ -122,7 +122,7 @@ define(function (require, exports, module) {
                 }, the._options.methods)
             });
 
-            the.vue.$el.classList.remove('f-none');
+            the.vue.$el.classList.remove('none');
             the._pagination = new Pagination(the._paginationSelector, {
                 page: the.query.page,
                 max: Math.ceil(data.count / the.query.limit)
