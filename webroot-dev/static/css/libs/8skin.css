@@ -4,50 +4,50 @@
  * @create 2014-12-04 22:20
  */
 
-.s-light {
+.text-light {
     color: #bbb;
 }
 
-.s-muted {
+.text-muted {
     color: #777;
 }
 
-.s-primary {
+.text-primary {
     color: #428bca;
 }
 
-a.s-primary:hover {
+a.text-primary:hover {
     color: #3071a9;
 }
 
-.s-success {
+.text-success {
     color: #3c763d;
 }
 
-a.s-success:hover {
+a.text-success:hover {
     color: #2b542c;
 }
 
-.s-info {
+.text-info {
     color: #31708f;
 }
 
-a.s-info:hover {
+a.text-info:hover {
     color: #245269;
 }
 
-.s-warning {
+.text-warning {
     color: #8a6d3b;
 }
 
-a.s-warning:hover {
+a.text-warning:hover {
     color: #66512c;
 }
 
-.s-danger {
+.text-danger {
     color: #a94442;
 }
 
-a.s-danger:hover {
+a.text-danger:hover {
     color: #843534;
 }

@@ -1,0 +1,36 @@
+
+
+/*breadcrumb*/
+.breadcrumb {
+  padding: .4em 0;
+  margin-bottom: 2rem;
+  list-style: none;
+  background-color: transparent;
+  border-radius: 0;
+  font-size: 85%;
+}
+
+.breadcrumb > li {
+  display: inline-block;
+}
+
+.breadcrumb > li [class*="i-"]:before {
+  color: #999999;
+  margin-right: 5px;
+}
+
+.breadcrumb > li + li:before {
+  content: "»\00a0";
+  padding: 0 8px;
+  color: #cccccc;
+}
+
+.breadcrumb > .am-active {
+  color: #999999;
+}
+
+.breadcrumb-slash > li + li:before {
+  content: "/\00a0";
+}
+
+
