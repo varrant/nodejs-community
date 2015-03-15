@@ -19,11 +19,11 @@
         </td>
         <td>
             <div><a href="#!/?id=\{{section.id}}" v-on="click: onchoose($index)"><strong>\{{section.name}}</strong>（\{{section.uri}}）</a></div>
-            <div class="s-muted">
+            <div class="text-muted">
                 <i class="fi fi-key"></i>\{{section.role}}
                 <i class="fi fi-file"></i>\{{section.objectCount}}
             </div>
-            <div class="s-light">\{{section.introduction}}</div>
+            <div class="text-light">\{{section.introduction}}</div>
         </td>
         <td>
             <button class="btn btn-danger" v-on="click: onremove($index)">删除</button>

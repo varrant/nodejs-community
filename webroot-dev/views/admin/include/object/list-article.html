@@ -17,7 +17,7 @@
             <td>\{{(query.page - 1) * query.limit + $index + 1}}</td>
             <td>
                 <a v-if="columnsMap[object.column]" href="/column/\{{columnsMap[object.column].uri}}/">\{{columnsMap[object.column].name}}</a>
-                <span v-if="!columnsMap[object.column]" class="s-light">未分配专辑</span>
+                <span v-if="!columnsMap[object.column]" class="text-light">未分配专辑</span>
             </td>
             <td>
                 <a href="/admin/object/article/?id=\{{object._id}}">《\{{object.title}}》</a>
@@ -27,7 +27,7 @@
             </td>
             <td>
                 <!-- 没有专辑的、没有评论的 -->
-                <a v-if="!columnsMap[object.column] && !object.commentByCount" href="javascript:;" class="s-danger" v-on="click: onremove(object.id, $index)"><i class="fi fi-trash"></i>删除</a>
+                <a v-if="!columnsMap[object.column] && !object.commentByCount" href="javascript:;" class="text-danger" v-on="click: onremove(object.id, $index)"><i class="fi fi-trash"></i>删除</a>
             </td>
         </tr>
         </tbody>
@@ -38,5 +38,5 @@
         </tfoot>
     </table>
 
-    <p class="s-muted">只有未分配专辑，并且没有被评论的项目才可以被删除。</p>
+    <p class="text-muted">只有未分配专辑，并且没有被评论的项目才可以被删除。</p>
 </div>

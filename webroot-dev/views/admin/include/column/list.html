@@ -23,10 +23,10 @@
                 <a href="/column/\{{column.uri}}/"><strong>\{{column.name}}</strong>（\{{column.uri}}）</a>
                 <a href="#!/?id=\{{column.id}}" v-on="click: onchoose($index)" class="fi fi-pencil pull-right">编辑</a>
             </div>
-            <div class="s-muted">
+            <div class="text-muted">
                 <i class="fi fi-file"></i>\{{column.objectCount}}
             </div>
-            <div class="s-light">\{{column.introduction}}</div>
+            <div class="text-light">\{{column.introduction}}</div>
         </td>
         <td>
             <button class="btn btn-danger" v-on="click: onremove($index)"><i class="fi fi-remove"></i>删除</button>
