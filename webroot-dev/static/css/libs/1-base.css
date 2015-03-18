@@ -1,6 +1,12 @@
 th, td {
   text-align: center; }
 
+pre {
+  background: #F6F6F6;
+  padding: 10px;
+  border: 1px solid #DDD;
+  border-radius: 6px; }
+
 .row::before, .row::after, [class*=avg-]::before, [class*=avg-]::after, .clearfix::before, .clearfix:after, .list-left::before, .list-left::after, .list-right::before, .list-right::after {
   display: table;
   content: " "; }
