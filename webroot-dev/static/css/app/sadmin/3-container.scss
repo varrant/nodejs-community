@@ -1,7 +1,7 @@
-@primary-bg-color: #128CC2;
-@primary-fg-color: lighten(@primary-bg-color, 90%);
-@border-color: #e6e6e6;
-@sidebar-width: 120px;
+$primary-bg-color: #128CC2;
+$primary-fg-color: lighten($primary-bg-color, 90%);
+$border-color: #e6e6e6;
+$sidebar-width: 120px;
 
 
 .m-main {
@@ -60,8 +60,8 @@
 
 .m-welcome {
   padding: 20px;
-  background: lighten(@border-color, 7%);
-  border-bottom: 1px solid @border-color;
+  background: lighten($border-color, 7%);
+  border-bottom: 1px solid $border-color;
 }
 
 
@@ -98,7 +98,7 @@
   }
 
   li {
-    border: 1px solid @border-color;
+    border: 1px solid $border-color;
 
     &:last-child {
       border-left: 0;
@@ -118,11 +118,11 @@
   padding: 0;
   margin: 0;
   list-style: none;
-  @width: 140px;
+  $width: 140px;
 
   > li {
     position: relative;
-    padding: 0 0 0 @width;
+    padding: 0 0 0 $width;
     margin-bottom: 20px;
     min-height: 36px;
   }
@@ -139,7 +139,7 @@
 
   .form-key {
     position: absolute;
-    width: @width;
+    width: $width;
     left: 0;
     top: 0;
     text-align: right;
