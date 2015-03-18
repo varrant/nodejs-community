@@ -47,8 +47,8 @@
     "ydr-log": "^2.0.1",
     "ydr-template": "^2.0.1",
     "ydr-translate": "^1.0.0",
-    "ydr-util": "^2.0.1",
-    "ydr-validator": "^2.0.1"
+    "ydr-util": "^2.1.2",
+    "ydr-validator": "^2.1.1"
   },
   "devDependencies": {
     "supervisor": "^0.6.0"

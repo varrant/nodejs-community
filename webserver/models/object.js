@@ -66,6 +66,11 @@ var schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    // markdown table of content 目录
+    contentTOC: {
+        type: String,
+        required: false
+    },
     // html 内容
     contentHTML: {
         type: String,
@@ -222,6 +227,5 @@ var schema = new mongoose.Schema({
 
 schema.set('toJSON', {getters: true, virtuals: true});
 schema.set('toObject', {getters: true, virtuals: true});
-
 
 module.exports = mongoose.model('object', schema);

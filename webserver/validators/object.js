@@ -65,6 +65,8 @@ validator.pushRule({
     }
 });
 
+var REG_TOC = /(.*?)<!--toc start-->([\s\S]*?)<!--toc end-->(.*?)/;
+
 validator.pushRule({
     name: 'content',
     type: 'string',
@@ -75,7 +77,17 @@ validator.pushRule({
     regexp: REG_CONTENT,
     onafter: function (val, data) {
         val = xss.mdSafe(val);
-        data.contentHTML = xss.mdRender(val, configs.safe);
+
+        var toc = xss.mdTOC(val);
+
+        //data.contentHTML = xss
+        //    .mdRender(toc + val, configs.safe)
+        //    .replace(REG_TOC, '$1<div class="toc"><h3>TOC</h3>$2</div>$3');
+
+        data.contentHTML = '<div class="toc"><h3>TOC</h3>' +
+        xss.mdRender(toc, configs.safe) + '</div>' +
+        xss.mdRender(val, configs.safe);
+
         return val;
     },
     msg: {
