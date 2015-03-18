@@ -236,7 +236,8 @@
   border-bottom: 0;
 }
 .toc {
-  width: 200px;
+  display: inline-block;
+  min-width: 200px;
   border: 1px solid #CCC;
   padding: 20px;
 }
