@@ -12,7 +12,7 @@ module.exports = function(app) {
     return {
         session: {
             // session 加密密钥
-            secret: app.env === 'pro' ? ydrUtil.random.string(5) : '12345',
+            secret: '12345',
             // csrf 的过期时间（单位毫秒），默认1个小时
             csrfAge: 1 * 60 * 60 * 1000
         },
@@ -25,7 +25,7 @@ module.exports = function(app) {
                 httpOnly: true
             },
             // cookie加密密钥
-            secret: app.env === 'pro' ? ydrUtil.random.string(5) : '12345',
+            secret: '12345',
 
             // 会员 cookie 名称
             userKey: 'fed-user',
