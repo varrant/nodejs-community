@@ -6,10 +6,10 @@ $border-color: #e6e6e6;
 // grid
 body {
   background: #f5f5f5;
+}
 
-  @media (max-width: 767px) {
-    padding-top: 0;
-  }
+.g-body{
+  margin-top: 50px;
 }
 
 
