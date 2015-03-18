@@ -28,12 +28,12 @@ module.exports = function(app) {
             secret: app.env === 'pro' ? ydrUtil.random.string(5) : '12345',
 
             // 会员 cookie 名称
-            userKey: 'f2ec-user',
+            userKey: 'fed-user',
             // cookie有效期（单位毫秒），默认7天
             userAge: 7 * 24 * 60 * 60 * 1000,
 
             // 访客 cookie 名称
-            visitorKey: 'f2ec-visitor',
+            visitorKey: 'fed-visitor',
             // cookie有效期（单位毫秒），默认7天
             visitorAge: 7 * 24 * 60 * 60 * 1000
         }

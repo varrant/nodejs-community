@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configs/secret.js" afterPath="$PROJECT_DIR$/configs/secret.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -39,7 +40,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Setting.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/sidebar.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/loading.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/template.html" />
@@ -90,6 +90,7 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/1header.less" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/libs/1-base.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/3module.less" />
+        <option value="$PROJECT_DIR$/configs/secret.js" />
       </list>
     </option>
   </component>
@@ -1004,13 +1005,7 @@
       <workItem from="1426397820305" duration="4008000" />
       <workItem from="1426655023986" duration="110000" />
       <workItem from="1426678061337" duration="25000" />
-      <workItem from="1426678282450" duration="5744000" />
-    </task>
-    <task id="LOCAL-00473" summary="0.0.2">
-      <created>1425739068792</created>
-      <option name="number" value="00473" />
-      <option name="project" value="LOCAL" />
-      <updated>1425739068792</updated>
+      <workItem from="1426678282450" duration="6121000" />
     </task>
     <task id="LOCAL-00474" summary="0.0.2">
       <created>1425863589631</created>
@@ -1300,11 +1295,17 @@
       <option name="project" value="LOCAL" />
       <updated>1426689893614</updated>
     </task>
-    <option name="localTasksCounter" value="522" />
+    <task id="LOCAL-00522" summary="0.0.2">
+      <created>1426689904917</created>
+      <option name="number" value="00522" />
+      <option name="project" value="LOCAL" />
+      <updated>1426689904917</updated>
+    </task>
+    <option name="localTasksCounter" value="523" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172357000" />
+    <option name="totallyTimeSpent" value="172734000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1429,13 +1430,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19448946" vertical-offset="390" max-vertical-offset="1411">
-          <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/admin/column.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.576923" vertical-offset="126" max-vertical-offset="952">
@@ -1660,16 +1654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/configs/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/models/developer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21880065" vertical-offset="3248" max-vertical-offset="3927">
@@ -1820,6 +1804,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46023688" vertical-offset="0" max-vertical-offset="1071">
           <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/secret.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28363046" vertical-offset="165" max-vertical-offset="799">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38573745" vertical-offset="0" max-vertical-offset="617">
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
           <folding />
         </state>
       </provider>
