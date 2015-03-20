@@ -34,7 +34,7 @@ define(function (require, exports, module) {
         // 请求 querystring
         query: {},
         // 请求数据
-        data: null,
+        body: null,
         // 请求头
         headers: null,
         // 是否异步
@@ -49,7 +49,9 @@ define(function (require, exports, module) {
         // 请求鉴权密码
         password: null,
         // 覆盖 MIME
-        mimeType: null
+        mimeType: null,
+        // 延时请求时间
+        delay: 0
     };
     var regProtocol = /^([\w-]+:)\/\//;
     var XHR = klass.create(function (options) {
@@ -77,15 +79,17 @@ define(function (require, exports, module) {
                 err.message = err.message || 'network error';
             }
 
-            the.emit('complete', err, ret);
+            setTimeout(function () {
+                the.emit('complete', err, ret);
 
-            if (err) {
-                the.emit('error', err);
-            } else {
-                the.emit('success', ret);
-            }
+                if (err) {
+                    the.emit('error', err);
+                } else {
+                    the.emit('success', ret);
+                }
 
-            the.emit('finish', err, ret);
+                the.emit('finish', err, ret);
+            }, options.delay);
         };
 
         xhr.onload = function () {
@@ -114,7 +118,7 @@ define(function (require, exports, module) {
                         oncallback(null, responseText);
                 }
             } else {
-                oncallback(new Error('response status is ' + xhr.status));
+                oncallback(new Error(xhr.statusText || 'response status is ' + xhr.status));
             }
         };
 
@@ -151,15 +155,15 @@ define(function (require, exports, module) {
             xhr.overrideMimeType(options.mimeType);
         }
 
-        // 当 data 为 formdata 时，删除 content-type header
-        if (options.data && options.data.constructor === FormData) {
+        // 当 body 为 FormData 时，删除 content-type header
+        if (options.body && options.body.constructor === FormData) {
             delete options.headers['content-type'];
         }
 
         dato.each(options.headers, function (key, val) {
             xhr.setRequestHeader(key, val);
         });
-        xhr.send(_buildData(options));
+        xhr.send(_buildBody(options));
 
         the.xhr = xhr;
         return the;
@@ -186,11 +190,13 @@ define(function (require, exports, module) {
      * @param {Object} [options.headers] 请求头
      * @param {String} [options.type=json] 数据类型，默认 json
      * @param {String|Object} [options.query] URL querstring
-     * @param {*} [options.data] 请求数据
+     * @param {*} [options.body] 请求数据
      * @param {Boolean} [options.isAsync] 是否异步，默认 true
      * @param {Boolean} [options.isCache] 是否保留缓存，默认 false
      * @param {String} [options.username] 请求鉴权用户名
      * @param {String} [options.password] 请求鉴权密码
+     * @param {String|null} [options.mimeType=null] 覆盖 MIME
+     * @param {Number} [options.delay=0] 请求延迟时间
      *
      * @example
      * xhr.ajax().on('success', fn).on('error', fn);
@@ -218,14 +224,14 @@ define(function (require, exports, module) {
     /**
      * ajax POST 请求
      * @param url {String} 请求地址
-     * @param data {String|Object} 请求数据
+     * @param body {String|Object} 请求数据
      * @returns {*}
      */
-    exports.post = function (url, data) {
+    exports.post = function (url, body) {
         return this.ajax({
             method: 'POST',
             url: url,
-            data: data
+            body: body
         });
     };
 
@@ -259,11 +265,11 @@ define(function (require, exports, module) {
      * @returns {*}
      * @private
      */
-    function _buildData(options) {
+    function _buildBody(options) {
         if (options.method === 'GET') {
             return null;
         }
 
-        return options.data;
+        return options.body;
     }
 });
