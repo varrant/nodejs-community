@@ -9,6 +9,10 @@
     {{include ../include/meta.html}}
     {{include ./include/meta.html}}
 
+    {{if page > 1}}
+    <meta name="robots" content="nofollow"/>
+    {{/if}}
+
     <script>window['-author-']={
         id: '{{object.author.id}}',
         nickname: '{{object.author.nickname}}',

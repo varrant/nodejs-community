@@ -192,8 +192,10 @@ module.exports = function (app) {
     exports.getObject = function (section) {
         return function (req, res, next) {
             var uri = req.params.uri;
+            var page = req.params.page;
             var data = {};
             var $developer = res.locals.$developer;
+
             object.findOne({
                 section: section.id,
                 uri: uri,
@@ -212,6 +214,7 @@ module.exports = function (app) {
                 data.hasResponsed = false;
                 data.title = obje.title;
                 data.object = obje;
+                data.page = page;
 
                 var onend = function () {
                     object.increaseViewByCount({_id: obje.id}, 1, log.holdError);
