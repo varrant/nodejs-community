@@ -152,8 +152,6 @@ define(function (require, exports, module) {
 
         the.editor = new Editor(the._contentSelector, {
             id: data.id,
-            // 更新的时候自动聚焦
-            autoFocus: !!data.id,
             uploadCallback: editorUploadCallback
         }).on('change', function (val) {
                 the.vue.$data.object.content = val;
@@ -164,8 +162,6 @@ define(function (require, exports, module) {
         if ($hidden) {
             the.editor2 = new Editor($hidden, {
                 id: data.id + '-hidden',
-                // 更新的时候自动聚焦
-                autoFocus: false,
                 uploadCallback: editorUploadCallback
             }).on('change', function (val) {
                     the.vue.$data.object.hidden = val;
