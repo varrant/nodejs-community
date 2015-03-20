@@ -4,6 +4,13 @@ $primary-bg-color: #00A2CA;
 $primary-fg-color: lighten($primary-bg-color, 90%);
 $border-color: #e6e6e6;
 
+header{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9;
+}
 
 /*nav*/
 nav {
