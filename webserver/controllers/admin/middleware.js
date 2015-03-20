@@ -20,7 +20,7 @@ module.exports = function (app) {
         var err;
 
         if (!req.session.$developer || !req.session.$developer.id) {
-            err = new Error('您尚未登录，或登录信息已过期。请重新登录后再继续刚才操作。');
+            err = new Error('请确认登录后再继续刚才操作。');
             err.redirect = '/developer/oauth/authorize/';
             err.code = 401;
             req.session.$redirect = req.originalUrl;
