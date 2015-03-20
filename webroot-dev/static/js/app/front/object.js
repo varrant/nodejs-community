@@ -10,6 +10,7 @@ define(function (require, exports, module) {
 
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
+    var animation = require('../../alien/core/dom/animation.js');
     var event = require('../../alien/core/event/base.js');
     var Response = require('../../widget/common/Response/');
     var Imgview = require('../../alien/ui/Imgview/');
@@ -30,6 +31,14 @@ define(function (require, exports, module) {
             if (!$target) {
                 return;
             }
+
+            var top = attribute.top($target);
+
+            animation.scrollTo(window, {
+                y: top - 70
+            }, {
+                duration: 123
+            });
         });
     };
 
