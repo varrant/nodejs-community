@@ -13,7 +13,7 @@ define(function (require, exports, module) {
     var modification = require('../../alien/core/dom/modification.js');
     var see = require('../../alien/core/dom/see.js');
     //var compatible = require('../../alien/core/navigator/compatible.js');
-    var event = require('../../alien/core/event/base.js');
+    var event = require('../../alien/core/event/touch.js');
     var controller = require('../../alien/utils/controller.js');
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
@@ -39,18 +39,18 @@ define(function (require, exports, module) {
 
         attribute.addClass($active, activeClass);
 
-        event.on($toggle, 'click tap', function () {
+        event.on($toggle, 'click', function () {
             attribute.addClass($nav, unfoldClass);
             return false;
         });
 
-        event.on($bg, 'click tap', function () {
+        event.on($bg, 'click', function () {
             attribute.removeClass($nav, unfoldClass);
             return false;
         });
 
         if (hasLogin) {
-            event.on($group, 'click tap', function () {
+            event.on($group, 'click', function () {
                 if (attribute.hasClass($header, activeClass)) {
                     attribute.removeClass($header, activeClass);
                 } else {
@@ -59,11 +59,11 @@ define(function (require, exports, module) {
                 return false;
             });
 
-            event.on($downlist, 'click tap', function (eve) {
+            event.on($downlist, 'click', function (eve) {
                 eve.stopPropagation();
             });
 
-            event.on(document, 'click tap', function () {
+            event.on(document, 'click', function () {
                 attribute.removeClass($header, activeClass);
             });
         }
