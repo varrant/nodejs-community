@@ -65,8 +65,6 @@ validator.pushRule({
     }
 });
 
-var REG_TOC = /(.*?)<!--toc start-->([\s\S]*?)<!--toc end-->(.*?)/;
-
 validator.pushRule({
     name: 'content',
     type: 'string',
@@ -80,9 +78,13 @@ validator.pushRule({
 
         var toc = xss.mdTOC(val);
 
-        data.contentHTML = '<div class="toc"><h3>TOC</h3>' +
-        xss.mdRender(toc, configs.safe) + '</div>' +
-        xss.mdRender(val, configs.safe);
+        data.contentHTML = '';
+
+        if (toc) {
+            data.contentHTML += '<div class="toc"><h3 class="toc-title">TOC</h3>' + xss.mdRender(toc, configs.safe) + '</div>';
+        }
+
+        data.contentHTML += xss.mdRender(val, configs.safe);
 
         return val;
     },
