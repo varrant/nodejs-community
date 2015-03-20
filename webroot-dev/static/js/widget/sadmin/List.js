@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var ui = require('../../alien/ui/base.js');
+    var ui = require('../../alien/ui/');
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
     var confirm = require('../common/confirm.js');
