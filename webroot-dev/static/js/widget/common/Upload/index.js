@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var ui = require('../../../alien/ui/base.js');
+    var ui = require('../../../alien/ui/');
     var compatible = require('../../../alien/core/navigator/compatible.js');
     var selector = require('../../../alien/core/dom/selector.js');
     var modification = require('../../../alien/core/dom/modification.js');
