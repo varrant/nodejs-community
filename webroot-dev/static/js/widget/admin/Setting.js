@@ -140,7 +140,7 @@ define(function (require, exports, module) {
         ajax({
             method: 'put',
             url: options.url,
-            data: vue.$data[itemKey]
+            body: vue.$data[itemKey]
         })
             .on('success', function (json) {
                 if (json.code !== 200) {

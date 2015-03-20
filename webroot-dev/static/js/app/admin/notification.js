@@ -31,7 +31,7 @@ define(function (require, exports, module) {
         ajax({
             method: item.hasActived ? 'put' : 'delete',
             url: '/admin/api/notification/',
-            data: {
+            body: {
                 id: item.id
             }
         }).on('success', function (json) {

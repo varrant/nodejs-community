@@ -144,7 +144,7 @@ define(function (require, exports, module) {
             ajax({
                 url: options.itemURL,
                 method: 'delete',
-                data: {
+                body: {
                     id: id
                 }
             }).on('success', function (json) {

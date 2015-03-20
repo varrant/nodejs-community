@@ -44,7 +44,7 @@ define(function (require, exports, module) {
         ajax({
             url: '/admin/api/setting/' + key + '/',
             method: 'put',
-            data: data
+            body: data
         })
             .on('success', function (json) {
                 if (json.code !== 200) {

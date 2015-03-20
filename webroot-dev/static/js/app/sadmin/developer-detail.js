@@ -139,7 +139,7 @@ define(function (require, exports, module) {
             ajax({
                 url: url,
                 method: 'post',
-                data: {
+                body: {
                     id: id,
                     roleArray: roleArray
                 }

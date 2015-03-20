@@ -121,7 +121,7 @@ define(function (require, exports, module) {
             ajax({
                 url: '/admin/api/oss/',
                 method: 'put',
-                data: fd
+                body: fd
             })
                 .on('progress', function (eve) {
                     onprogress(eve.alienDetail.percent);
@@ -221,7 +221,7 @@ define(function (require, exports, module) {
         ajax({
             url: the._options.url,
             method: data.id ? 'put' : 'post',
-            data: data
+            body: data
         }).on('success', function (json) {
             if (json.code !== 200) {
                 return alert(json);

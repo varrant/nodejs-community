@@ -25,7 +25,7 @@ define(function (require, exports, module) {
         options.headers['x-request-csrf'] = window['-csrf-'];
 
         if (!isFormData) {
-            options.data = JSON.stringify(options.data);
+            options.body = JSON.stringify(options.body);
         }
 
         return xhr.ajax(options)

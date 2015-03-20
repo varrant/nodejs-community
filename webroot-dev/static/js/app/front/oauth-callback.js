@@ -24,7 +24,7 @@ define(function (require) {
         ajax({
             url: '/api/developer/login/',
             method: 'post',
-            data: locals
+            body: locals
         }).on('success', function (json) {
             if (json.code !== 200) {
                 app.redirect = json.redirect;
