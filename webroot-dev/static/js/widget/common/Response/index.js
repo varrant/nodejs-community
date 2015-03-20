@@ -71,7 +71,7 @@ define(function (require, exports, module) {
                 ajax({
                     url: '/admin/api/oss/',
                     method: 'put',
-                    data: fd
+                    body: fd
                 })
                     .on('progress', function (eve) {
                         onprogress(eve.alienDetail.percent);
