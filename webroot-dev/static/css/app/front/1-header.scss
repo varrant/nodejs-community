@@ -9,16 +9,9 @@ $border-color: #e6e6e6;
 nav {
   position: relative;
   background: $primary-bg-color;
-  height: 51px;
+  height: 50px;
   line-height: 50px;
-  border-bottom: 1px solid darken($primary-bg-color, 5%);
   z-index: 9;
-
-  @media (max-width: 767px) {
-    position: relative;
-    margin-bottom: 2rem;
-    background: $primary-bg-color;
-  }
 
   .nav-bg {
     display: none;

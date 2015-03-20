@@ -2,15 +2,9 @@
 nav {
   position: relative;
   background: #00A2CA;
-  height: 51px;
+  height: 50px;
   line-height: 50px;
-  border-bottom: 1px solid #008eb1;
   z-index: 9; }
-  @media (max-width: 767px) {
-    nav {
-      position: relative;
-      margin-bottom: 2rem;
-      background: #00A2CA; } }
   nav .nav-bg {
     display: none;
     position: fixed;
