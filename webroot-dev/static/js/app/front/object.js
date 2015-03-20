@@ -15,17 +15,32 @@ define(function (require, exports, module) {
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var Imgview = require('../../alien/ui/Imgview/');
     var Prettify = require('../../alien/ui/Prettify/');
+    var dato = require('../../alien/utils/dato.js');
     var app = {};
+
+    // toc
+    app.toc = function () {
+        //var $content = selector.query('#content');
+
+        event.on(window, 'hashchange', function (neo) {
+            console.log(neo);
+        });
+    };
 
     // 评论
     app.response = function () {
         var $title = selector.query('#object-title')[0];
         var object = window['-object-'];
+        var location = window.location;
+        var matches = location.href.match(/^(.*\.html)(\/page\/(\d+)\/)?($|#)/);
+        var base = matches[1];
+        var page = dato.parseInt(matches[3], 1);
+        var history = window.history;
         var res = new Response('#response', {
             developer: window['-developer-'],
             id: object.id,
             query: {
-                page: hashbang.get('query', 'page') || 1,
+                page: page,
                 limit: 10,
                 object: object.id
             },
@@ -53,13 +68,13 @@ define(function (require, exports, module) {
         });
 
         res.on('page', function (page) {
-            hashbang.set('query', {
-                page: page
-            });
+            history.pushState({page: page}, null, base + '/page/' + page + '/' + location.hash);
         });
 
-        hashbang.on('query', 'page', function (eve, neo, old) {
-            res.changePage(neo.query.page);
+        event.on(window, 'popstate', function () {
+            var state = history.state;
+
+            res.changePage(state.page);
         });
     };
 
@@ -79,6 +94,7 @@ define(function (require, exports, module) {
         new Prettify('.postmain-content pre');
     };
 
+    app.toc();
     app.response();
     app.imgview();
     app.prettify();
