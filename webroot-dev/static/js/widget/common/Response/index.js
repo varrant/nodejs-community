@@ -433,7 +433,7 @@ define(function (require, exports, module) {
         ajax({
             url: options.url.post,
             method: 'post',
-            data: data
+            body: data
         })
             .on('success', function (json) {
                 if (json.code !== 200) {
@@ -763,7 +763,7 @@ define(function (require, exports, module) {
         ajax({
             url: the._options.url.agree,
             method: 'post',
-            data: {
+            body: {
                 id: id
             }
         })
@@ -799,7 +799,7 @@ define(function (require, exports, module) {
         ajax({
             url: options.url.accept,
             method: 'post',
-            data: {
+            body: {
                 response: id,
                 object: options.query.object
             }
