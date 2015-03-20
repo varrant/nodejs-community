@@ -139,6 +139,7 @@ module.exports = function (app, ctrl) {
 
         app.get('/object/', ctrl.object.redirect);
         app.get('/' + uri + '/' + ':uri.html', ctrl.object.getObject(section));
+        app.get('/' + uri + '/' + ':uri.html/page/:page/', ctrl.object.getObject(section));
     });
 
 

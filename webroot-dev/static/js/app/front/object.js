@@ -12,18 +12,24 @@ define(function (require, exports, module) {
     var attribute = require('../../alien/core/dom/attribute.js');
     var event = require('../../alien/core/event/base.js');
     var Response = require('../../widget/common/Response/');
-    var hashbang = require('../../alien/core/navigator/hashbang.js');
     var Imgview = require('../../alien/ui/Imgview/');
     var Prettify = require('../../alien/ui/Prettify/');
     var dato = require('../../alien/utils/dato.js');
+    var url = require('../../alien/utils/url.js');
     var app = {};
 
     // toc
     app.toc = function () {
         //var $content = selector.query('#content');
 
-        event.on(window, 'hashchange', function (neo) {
-            console.log(neo);
+        event.on(window, 'hashchange', function (eve) {
+            var u = url.parse(eve.newURL);
+            var hash = u.hash;
+            var $target = selector.query(hash)[0];
+
+            if (!$target) {
+                return;
+            }
         });
     };
 
@@ -72,9 +78,7 @@ define(function (require, exports, module) {
         });
 
         event.on(window, 'popstate', function () {
-            var state = history.state;
-
-            res.changePage(state.page);
+            res.changePage(history.state ? history.state.page : 1);
         });
     };
 
