@@ -210,6 +210,13 @@ module.exports = function (app) {
         next();
     };
 
+
+    // 读取当前 URL
+    exports.readURL = function (req, res, next) {
+        res.locals.$url =  URL.parse(req.originalUrl, true, true);
+        next();
+    };
+
     return exports;
 };
 
