@@ -13,7 +13,7 @@ define(function (require, exports, module) {
     var confirm = require('../common/confirm.js');
     var tip = require('../common/tip.js');
     var selector = require('../../alien/core/dom/selector.js');
-    var ui = require('../../alien/ui/base.js');
+    var ui = require('../../alien/ui/');
     var Editor = require('../../alien/ui/Editor/');
     var dato = require('../../alien/utils/dato.js');
     var defaults = {
