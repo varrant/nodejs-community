@@ -879,13 +879,7 @@
       <workItem from="1426758215099" duration="61000" />
       <workItem from="1426816487883" duration="237000" />
       <workItem from="1426834224452" duration="100000" />
-      <workItem from="1426858827532" duration="8783000" />
-    </task>
-    <task id="LOCAL-00530" summary="0.0.2">
-      <created>1426691174745</created>
-      <option name="number" value="00530" />
-      <option name="project" value="LOCAL" />
-      <updated>1426691174745</updated>
+      <workItem from="1426858827532" duration="9437000" />
     </task>
     <task id="LOCAL-00531" summary="0.0.2">
       <created>1426691195956</created>
@@ -1175,15 +1169,21 @@
       <option name="project" value="LOCAL" />
       <updated>1427014688299</updated>
     </task>
-    <option name="localTasksCounter" value="579" />
+    <task id="LOCAL-00579" summary="0.0.4">
+      <created>1427014702261</created>
+      <option name="number" value="00579" />
+      <option name="project" value="LOCAL" />
+      <updated>1427014702261</updated>
+    </task>
+    <option name="localTasksCounter" value="580" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183882000" />
+    <option name="totallyTimeSpent" value="184536000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.57231724" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
