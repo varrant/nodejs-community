@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/share.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/share.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/link-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/link-body.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-body.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -48,18 +48,48 @@
       <file leaf-file-name="article-body.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.884615" vertical-offset="293" max-vertical-offset="884">
-              <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
+            <state vertical-scroll-proportion="-16.192308" vertical-offset="293" max-vertical-offset="884">
+              <caret line="42" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="share.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="help-body.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-19.461538" vertical-offset="208" max-vertical-offset="884">
+              <caret line="42" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="link-body.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/link-body.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.961538" vertical-offset="272" max-vertical-offset="935">
+              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="question-body.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/question-body.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.28087986" vertical-offset="548" max-vertical-offset="1207">
+              <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="share.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/share.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64181525" vertical-offset="199" max-vertical-offset="833">
-              <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="833">
+              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -124,9 +154,6 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/0-grid.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/1-header.scss" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/object/link-body.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Pjax.js" />
         <option value="$PROJECT_DIR$/webserver/routers/front.js" />
         <option value="$PROJECT_DIR$/webserver/routers/middleware.js" />
@@ -139,6 +166,9 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/share.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/object/link-body.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/object/question-body.html" />
       </list>
     </option>
   </component>
@@ -910,13 +940,7 @@
       <workItem from="1426758215099" duration="61000" />
       <workItem from="1426816487883" duration="237000" />
       <workItem from="1426834224452" duration="100000" />
-      <workItem from="1426858827532" duration="7553000" />
-    </task>
-    <task id="LOCAL-00521" summary="0.0.2">
-      <created>1426689893613</created>
-      <option name="number" value="00521" />
-      <option name="project" value="LOCAL" />
-      <updated>1426689893614</updated>
+      <workItem from="1426858827532" duration="7600000" />
     </task>
     <task id="LOCAL-00522" summary="0.0.2">
       <created>1426689904917</created>
@@ -1206,11 +1230,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427013011145</updated>
     </task>
-    <option name="localTasksCounter" value="570" />
+    <task id="LOCAL-00570" summary="0.0.4">
+      <created>1427013468869</created>
+      <option name="number" value="00570" />
+      <option name="project" value="LOCAL" />
+      <updated>1427013468870</updated>
+    </task>
+    <option name="localTasksCounter" value="571" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="182652000" />
+    <option name="totallyTimeSpent" value="182699000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1539,30 +1569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/question-body.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20135364" vertical-offset="187" max-vertical-offset="1139">
-          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/link-body.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31641287" vertical-offset="0" max-vertical-offset="867">
-          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23011844" vertical-offset="0" max-vertical-offset="816">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/hashbang.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16531605" vertical-offset="0" max-vertical-offset="4403">
@@ -1760,6 +1766,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/share.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="833">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="182" max-vertical-offset="833">
@@ -1775,16 +1789,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.884615" vertical-offset="293" max-vertical-offset="884">
-          <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
+        <state vertical-scroll-proportion="-16.192308" vertical-offset="293" max-vertical-offset="884">
+          <caret line="42" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/share.js">
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64181525" vertical-offset="199" max-vertical-offset="833">
-          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+        <state vertical-scroll-proportion="-19.461538" vertical-offset="208" max-vertical-offset="884">
+          <caret line="42" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/link-body.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.961538" vertical-offset="272" max-vertical-offset="935">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/question-body.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28087986" vertical-offset="548" max-vertical-offset="1207">
+          <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
           <folding />
         </state>
       </provider>
