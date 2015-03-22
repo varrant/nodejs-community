@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/List.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/List.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Setting.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Setting.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -77,8 +76,8 @@
       <file leaf-file-name="Setting.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Setting.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61744964" vertical-offset="3522" max-vertical-offset="4267">
-              <caret line="222" column="18" selection-start-line="222" selection-start-column="18" selection-end-line="222" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.6577181" vertical-offset="3935" max-vertical-offset="4233">
+              <caret line="247" column="3" selection-start-line="247" selection-start-column="3" selection-end-line="247" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -932,13 +931,7 @@
       <workItem from="1426758215099" duration="61000" />
       <workItem from="1426816487883" duration="237000" />
       <workItem from="1426834224452" duration="100000" />
-      <workItem from="1426858827532" duration="8736000" />
-    </task>
-    <task id="LOCAL-00528" summary="0.0.2">
-      <created>1426691073059</created>
-      <option name="number" value="00528" />
-      <option name="project" value="LOCAL" />
-      <updated>1426691073059</updated>
+      <workItem from="1426858827532" duration="8768000" />
     </task>
     <task id="LOCAL-00529" summary="0.0.2">
       <created>1426691082170</created>
@@ -1228,11 +1221,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427014548232</updated>
     </task>
-    <option name="localTasksCounter" value="577" />
+    <task id="LOCAL-00577" summary="0.0.4">
+      <created>1427014656919</created>
+      <option name="number" value="00577" />
+      <option name="project" value="LOCAL" />
+      <updated>1427014656919</updated>
+    </task>
+    <option name="localTasksCounter" value="578" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183835000" />
+    <option name="totallyTimeSpent" value="183867000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1807,8 +1806,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Setting.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61744964" vertical-offset="3522" max-vertical-offset="4267">
-          <caret line="222" column="18" selection-start-line="222" selection-start-column="18" selection-end-line="222" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.6577181" vertical-offset="3935" max-vertical-offset="4233">
+          <caret line="247" column="3" selection-start-line="247" selection-start-column="3" selection-end-line="247" selection-end-column="3" />
           <folding />
         </state>
       </provider>

@@ -235,10 +235,8 @@ define(function (require, exports, module) {
         //    xhr = ajax({
         //        url: '/api/translate/?word=' + encodeURIComponent(word)
         //    })
-        //        .on('success', function (json) {
-        //            if (json.code === 200) {
-        //                vue.$data[itemKey].uri = json.data;
-        //            }
+        //        .on('success', function (data) {
+        //            vue.$data[itemKey].uri = data;
         //        })
         //        .on('complete', function () {
         //            xhr = null;
