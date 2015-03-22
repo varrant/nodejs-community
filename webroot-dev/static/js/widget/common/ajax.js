@@ -13,7 +13,7 @@ define(function (require, exports, module) {
     var alert = require('./alert.js');
     var Emitter = require('../../alien/libs/Emitter.js');
     var klass = require('../../alien/utils/class.js');
-    var Ajax = klass.create(function(options){
+    var Ajax = klass.create(function (options) {
         var the = this;
         var isFormData = options.body && options.body.constructor === FormData;
 
@@ -44,6 +44,12 @@ define(function (require, exports, module) {
                     case 401:
                         break;
                 }
+
+                if (json.code === 200) {
+                    return the.emit('success', json.data);
+                }
+
+                the.emit('error', new Error(json.message));
             })
             .on('error', function (err) {
                 the.emit('error', err);

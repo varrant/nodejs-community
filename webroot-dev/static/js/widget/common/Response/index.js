@@ -76,19 +76,13 @@ define(function (require, exports, module) {
                     .on('progress', function (eve) {
                         onprogress(eve.alienDetail.percent);
                     })
-                    .on('success', function (json) {
-                        if (json.code !== 200) {
-                            the.uploadDestroy();
-                            return alert(json);
-                        }
-
+                    .on('success', function (data) {
                         //cacheControl: "max-age=315360000"
                         //contentType: "image/png"
                         //encoding: "utf8"
                         //image: {type: "png", width: 200, height: 200}
                         //ourl: "http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f/i/20141228233411750487888485"
                         //surl: "http://s.ydr.me/f/i/20141228233411750487888485"
-                        var data = json.data;
                         ondone(null, [{
                             name: "img.png",
                             url: data.surl
@@ -296,13 +290,7 @@ define(function (require, exports, module) {
         ajax({
             url: url
         })
-            .on('success', function (json) {
-                if (json.code !== 200) {
-                    return alert(json);
-                }
-
-                var data = json.data;
-
+            .on('success', function (data) {
                 the._count.comment = data.count;
 
                 // 渲染分页
@@ -435,13 +423,7 @@ define(function (require, exports, module) {
             method: 'post',
             body: data
         })
-            .on('success', function (json) {
-                if (json.code !== 200) {
-                    callback(new Error(json.message));
-                    return alert(json);
-                }
-
-                var data = json.data;
+            .on('success', function (data) {
                 var resp = data.response;
                 var obje = data.object;
 
@@ -689,13 +671,7 @@ define(function (require, exports, module) {
         ajax({
             url: options.url.list + '?' + qs.stringify(query)
         })
-            .on('success', function (json) {
-                if (json.code !== 200) {
-                    return alert(json);
-                }
-
-                var data = json.data;
-
+            .on('success', function (data) {
                 the._renderReply($listParent, dato.extend({
                     list: data.list
                 }, options.list, {
@@ -767,13 +743,7 @@ define(function (require, exports, module) {
                 id: id
             }
         })
-            .on('success', function (json) {
-                if (json.code !== 200) {
-                    return alert(json);
-                }
-
-                var data = json.data;
-
+            .on('success', function (data) {
                 the._increaseHTML($ele, data.value);
                 the._renderAgreers($ele, data.agreers);
             })
@@ -804,11 +774,7 @@ define(function (require, exports, module) {
                 object: options.query.object
             }
         })
-            .on('success', function (json) {
-                if (json.code !== 200) {
-                    return alert(json);
-                }
-
+            .on('success', function (data) {
                 options.acceptByResponse = id;
                 options.list.object.acceptByResponse = id;
                 the._acceptItem(id);
