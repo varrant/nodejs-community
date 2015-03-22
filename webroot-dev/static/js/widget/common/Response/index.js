@@ -16,6 +16,7 @@ define(function (require, exports, module) {
     var event = require('../../../alien/core/event/base.js');
     var dato = require('../../../alien/utils/dato.js');
     var qs = require('../../../alien/utils/querystring.js');
+    var date = require('../../../alien/utils/date.js');
     var ajax = require('../ajax.js');
     var alert = require('../alert.js');
     var confirm = require('../confirm.js');
@@ -162,6 +163,7 @@ define(function (require, exports, module) {
         the._ajaxComment();
         the._initEvent();
         the._increaseCount();
+        the._updateTime();
     };
 
 
@@ -252,6 +254,29 @@ define(function (require, exports, module) {
             (acceptMyself ? '，其中采纳自己的回答不会提升任何威望' : '') +
             '。', the._accept.bind(the, eve));
         });
+    };
+
+
+    /**
+     * 定时更新时间
+     * @private
+     */
+    Response.fn._updateTime = function () {
+        var the = this;
+
+        setInterval(function () {
+            var $times = selector.query('time', the._$parent);
+
+            dato.each($times, function (index, $time) {
+                try {
+                    var time = attribute.attr($time, 'datetime');
+
+                    $time.innerHTML = date.from(time * 1);
+                } catch (err) {
+                    // ignore
+                }
+            });
+        }, 30000);
     };
 
 
@@ -820,6 +845,7 @@ define(function (require, exports, module) {
             modification.remove($li);
         });
     };
+
 
     require('../Template-filter.js');
     modification.importStyle(style);
