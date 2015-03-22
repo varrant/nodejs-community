@@ -21,12 +21,7 @@ define(function (require, exports, module) {
         }).on('success', app._onsuccess.bind(app)).on('error', alert);
     };
 
-    app._onsuccess = function (json) {
-        if (json.code !== 200) {
-            return alert(json);
-        }
-
-        var list = json.data;
+    app._onsuccess = function (list) {
         var find = 0;
 
         var regs = list.map(function (item) {

@@ -34,26 +34,24 @@ define(function (require, exports, module) {
             body: {
                 id: item.id
             }
-        }).on('success', function (json) {
-            if (json.code === 200) {
-                increse(item.hasActived ? 1 : -1);
-                item.hasActived = !item.hasActived;
+        }).on('success', function () {
+            increse(item.hasActived ? 1 : -1);
+            item.hasActived = !item.hasActived;
 
-                var hasActivedLength = 0;
-                var unActivedLength = 0;
-                var length = the.$data.list.length;
+            var hasActivedLength = 0;
+            var unActivedLength = 0;
+            var length = the.$data.list.length;
 
-                the.$data.list.forEach(function (item) {
-                    if (item.hasActived) {
-                        hasActivedLength++;
-                    } else {
-                        unActivedLength++;
-                    }
-                });
-
-                if ((hasActivedLength === length || unActivedLength === length) && the.$data.type !== 'all') {
-                    list.getList();
+            the.$data.list.forEach(function (item) {
+                if (item.hasActived) {
+                    hasActivedLength++;
+                } else {
+                    unActivedLength++;
                 }
+            });
+
+            if ((hasActivedLength === length || unActivedLength === length) && the.$data.type !== 'all') {
+                list.getList();
             }
         });
     };

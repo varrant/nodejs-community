@@ -70,9 +70,11 @@ module.exports = function (app) {
             req.session.$developer = res.locals.$developer = doc;
             res.json({
                 code: 200,
-                data: true,
-                message: '登录成功',
-                redirect: req.session.$redirect || '/'
+                data: {
+                    login: true,
+                    message: '登录成功',
+                    redirect: req.session.$redirect || '/'
+                }
             });
             req.session.$redirect = null;
         });

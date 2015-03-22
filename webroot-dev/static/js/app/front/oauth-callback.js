@@ -25,13 +25,8 @@ define(function (require) {
             url: '/api/developer/login/',
             method: 'post',
             body: locals
-        }).on('success', function (json) {
-            if (json.code !== 200) {
-                app.redirect = json.redirect;
-                return app._message('danger', json.message);
-            }
-
-            if (json.data) {
+        }).on('success', function (data) {
+            if (data.login) {
                 // 有打开源
                 if (window.opener) {
                     if (!window.opener['-norefresh-']) {
@@ -42,13 +37,13 @@ define(function (require) {
                         window.close();
                     }, 345);
                 }
-                // 当前页
+                // 跳转页
                 else {
-                    window.location.href = json.redirect;
+                    window.location.href = data.redirect;
                 }
             }
 
-            app._message('success', json.message);
+            app._message('success', data.message);
         }).on('error', function (err) {
             app._message('danger', err.message);
         });

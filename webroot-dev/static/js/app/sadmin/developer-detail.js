@@ -25,12 +25,7 @@ define(function (require, exports, module) {
         }).on('success', app._onsuccess).on('error', alert);
     };
 
-    app._onsuccess = function (json) {
-        if (json.code !== 200) {
-            return alert(json);
-        }
-
-        var data1 = json.data;
+    app._onsuccess = function (data1) {
         var data2 = app._calData(data1);
         var vue1 = new Vue({
             el: '#form',
@@ -143,12 +138,7 @@ define(function (require, exports, module) {
                     id: id,
                     roleArray: roleArray
                 }
-            }).on('success', function (json) {
-                if (json.code !== 200) {
-                    return alert(json);
-                }
-
-                var developer = json.data;
+            }).on('success', function (developer) {
                 app.vue1.$data.developer = developer;
                 the.$data.developer = developer;
                 app._calData(the.$data);

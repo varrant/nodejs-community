@@ -19,14 +19,10 @@ define(function (require, exports, module) {
         ajax({
             url: '/admin/api/setting/'
         })
-            .on('success', function (json) {
-                if (json.code !== 200) {
-                    return alert(json);
-                }
-
+            .on('success', function (data) {
                 app.vue = new Vue({
                     el: '#setting',
-                    data: json.data,
+                    data: data,
                     methods: {
                         onsave: app._onsave
                     }
@@ -46,12 +42,8 @@ define(function (require, exports, module) {
             method: 'put',
             body: data
         })
-            .on('success', function (json) {
-                if (json.code !== 200) {
-                    return alert(json);
-                }
-
-                the.$data[key] = json.data;
+            .on('success', function (data) {
+                the.$data[key] = data;
             })
             .on('error', alert);
     };
