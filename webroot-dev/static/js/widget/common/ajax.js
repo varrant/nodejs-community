@@ -31,7 +31,10 @@ define(function (require, exports, module) {
             options.body = JSON.stringify(options.body);
         }
 
-        the.loading = loading(options.loading);
+        if (options.loading !== false) {
+            the.loading = loading(options.loading);
+        }
+
         xhr.ajax(options)
             .on('success', function (json) {
                 switch (json.code) {
@@ -58,7 +61,10 @@ define(function (require, exports, module) {
             })
             .on('complete', function (err, json) {
                 the.emit('complete', err, json);
-                the.loading.destroy();
+
+                if (the.loading) {
+                    the.loading.destroy();
+                }
             })
             .on('finish', function (err, json) {
                 the.emit('finish', err, json);
