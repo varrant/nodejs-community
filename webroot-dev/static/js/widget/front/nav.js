@@ -83,12 +83,8 @@ define(function (require, exports, module) {
 
         ajax({
             url: '/admin/api/notification/count/'
-        }).on('success', function (json) {
-            if (json.code !== 200) {
-                return alert(json);
-            }
-
-            var val = json.data || 0;
+        }).on('success', function (data) {
+            var val = data || 0;
             var text = val > 9 ? 'N' : val;
 
             $notification.forEach(function ($wrap) {
@@ -112,10 +108,6 @@ define(function (require, exports, module) {
                 method: 'post',
                 url: '/api/developer/logout/'
             }).on('success', function (json) {
-                if (json.code !== 200) {
-                    return alert(json);
-                }
-
                 location.reload();
             }).on('error', alert);
         };
