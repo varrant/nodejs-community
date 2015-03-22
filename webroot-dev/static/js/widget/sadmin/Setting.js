@@ -55,17 +55,14 @@ define(function (require, exports, module) {
         ajax({
             url: options.url
         })
-            .on('success', function (json) {
-                if (json.code !== 200) {
-                    return alert(json);
-                }
+            .on('success', function (data) {
 
-                var data = dato.extend({}, options.emptyData);
+                var emptyData = dato.extend({}, options.emptyData);
 
                 if (id) {
-                    dato.each(json.data, function (i, item) {
+                    dato.each(data, function (i, item) {
                         if (item.id === id) {
-                            data = item;
+                            emptyData = item;
                             return false;
                         }
                     });
@@ -73,8 +70,8 @@ define(function (require, exports, module) {
 
                 var vueData = {};
 
-                vueData[listKey] = json.data;
-                vueData[itemKey] = data;
+                vueData[listKey] = data;
+                vueData[itemKey] = emptyData;
 
                 the.vue = new Vue({
                     el: the._selector,
@@ -141,16 +138,12 @@ define(function (require, exports, module) {
             url: options.url,
             body: vue.$data[itemKey]
         })
-            .on('success', function (json) {
-                if (json.code !== 200) {
-                    return alert(json);
-                }
-
+            .on('success', function (data) {
                 if (!hasId) {
-                    vue.$data[listKey].push(json.data);
+                    vue.$data[listKey].push(data);
                 }
 
-                vue.$data[itemKey] = json.data;
+                vue.$data[itemKey] = data;
             })
             .on('error', alert);
     };
@@ -197,11 +190,7 @@ define(function (require, exports, module) {
                     id: id
                 }
             })
-                .on('success', function (json) {
-                    if (json.code !== 200) {
-                        return alert(json);
-                    }
-
+                .on('success', function () {
                     vue.$data[listKey].splice(index, 1);
                 })
                 .on('error', alert);
@@ -229,10 +218,8 @@ define(function (require, exports, module) {
             xhr = ajax({
                 url: '/api/translate/?word=' + encodeURIComponent(this.value)
             })
-                .on('success', function (json) {
-                    if (json.code === 200) {
-                        vue.$data[itemKey].uri = json.data;
-                    }
+                .on('success', function (data) {
+                    vue.$data[itemKey].uri = data;
                 })
                 .on('complete', function () {
                     xhr = null;

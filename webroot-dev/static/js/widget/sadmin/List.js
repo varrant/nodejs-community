@@ -77,15 +77,8 @@ define(function (require, exports, module) {
     };
 
 
-    List.fn._onsuccess = function (json) {
+    List.fn._onsuccess = function (data) {
         var the = this;
-
-        if (json.code !== 200) {
-            return alert(json);
-        }
-
-        var data = json.data;
-
         var categoriesMap = {};
         var columnsMap = {};
 
