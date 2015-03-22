@@ -136,8 +136,8 @@ define(function (require, exports, module) {
         var options = the._options;
 
         confirm('确认要删除该项目吗？<br>删除操作不可逆，请仔细确认！', function () {
-            var ld = loading('删除中');
             ajax({
+                loading: '删除中',
                 url: options.itemURL,
                 method: 'delete',
                 body: {
@@ -147,10 +147,7 @@ define(function (require, exports, module) {
                 .on('success', function () {
                     the.vue.$data.list.splice(index, 1);
                 })
-                .on('error', alert)
-                .on('complete', function () {
-                    ld.destroy();
-                });
+                .on('error', alert);
         });
     };
 

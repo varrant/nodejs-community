@@ -11,6 +11,7 @@ define(function (require, exports, module) {
     var xhr = require('../../alien/core/communication/xhr.js');
     var json = 'application/json; charset=utf-8';
     var alert = require('./alert.js');
+    var loading = require('./loading.js');
     var Emitter = require('../../alien/libs/Emitter.js');
     var klass = require('../../alien/utils/class.js');
     var Ajax = klass.create(function (options) {
@@ -30,6 +31,7 @@ define(function (require, exports, module) {
             options.body = JSON.stringify(options.body);
         }
 
+        the.loading = loading(options.loading);
         xhr.ajax(options)
             .on('success', function (json) {
                 switch (json.code) {
@@ -56,6 +58,7 @@ define(function (require, exports, module) {
             })
             .on('complete', function (err, json) {
                 the.emit('complete', err, json);
+                the.loading.destroy();
             })
             .on('finish', function (err, json) {
                 the.emit('finish', err, json);
