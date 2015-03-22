@@ -215,7 +215,7 @@ define(function (require, exports, module) {
 
                     if (!err) {
                         respond.reset();
-                        the._appendItem($listParent, resp, obje);
+                        the._prependItem($listParent, resp, obje);
 
                         if ($replyNumberBtn) {
                             the._increaseHTML($replyNumberBtn, 1);
@@ -467,7 +467,7 @@ define(function (require, exports, module) {
     /**
      * 动态追加项目
      */
-    Response.fn._appendItem = function ($parent, data, obje) {
+    Response.fn._prependItem = function ($parent, data, obje) {
         var the = this;
         var html = tplList.render(dato.extend({
             list: [data]
@@ -479,7 +479,7 @@ define(function (require, exports, module) {
             $parent.innerHTML = '';
         }
 
-        modification.insert(node, $parent, 'beforeend');
+        modification.insert(node, $parent, 'afterbegin');
         the._scrollTo(node, function () {
             var msg = '感谢你的' + (data.parentResponse ? '回复' : '评论');
 

@@ -19,7 +19,7 @@
             <ul class="alien-ui-response-meta list-left">
                 <li><a href="/developer/{{=item.author.githubLogin}}/"><i
                         class="fi fi-user"></i>{{=item.author.nickname}}</a></li>
-                <li class="text-light"><i class="fi fi-clock-o"></i>{{item.publishAt|datefrom}}</li>
+                <li class="text-light"><i class="fi fi-clock-o"></i><time datetime="{{+new Date(item.publishAt)}}">{{item.publishAt|datefrom}}</time></li>
             </ul>
 
             <div class="alien-ui-response-content">{{=item.contentHTML}}</div>
