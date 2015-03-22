@@ -81,7 +81,9 @@ define(function (require, exports, module) {
             var value = the._$content.value.trim();
 
             if (value) {
-                the.emit('submit', the._$content.value.trim());
+                the.emit('submit', value.trim());
+            } else {
+                the.emit('empty');
             }
         });
     };
