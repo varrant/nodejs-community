@@ -35,7 +35,7 @@ define(function (require, exports, module) {
             the.loading = loading(options.loading);
         }
 
-        xhr.ajax(options)
+        the.xhr = xhr.ajax(options)
             .on('success', function (json) {
                 switch (json.code) {
                     // 认证不合法

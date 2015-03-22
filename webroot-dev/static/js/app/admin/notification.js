@@ -33,7 +33,8 @@ define(function (require, exports, module) {
             url: '/admin/api/notification/',
             body: {
                 id: item.id
-            }
+            },
+            loading: '标记中'
         }).on('success', function () {
             increse(item.hasActived ? 1 : -1);
             item.hasActived = !item.hasActived;

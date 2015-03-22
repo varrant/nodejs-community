@@ -177,7 +177,8 @@ define(function (require, exports, module) {
         ajax({
             url: '/admin/api/oss/',
             method: 'put',
-            body: fd
+            body: fd,
+            loading: '上传中'
         })
             .on('progress', function (eve) {
                 var percent = eve.alienDetail.percent;

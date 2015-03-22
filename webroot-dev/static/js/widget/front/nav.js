@@ -107,7 +107,8 @@ define(function (require, exports, module) {
         var logout = function () {
             ajax({
                 method: 'post',
-                url: '/api/developer/logout/'
+                url: '/api/developer/logout/',
+                loading: '注销中'
             }).on('success', function () {
                 location.reload();
             }).on('error', alert);

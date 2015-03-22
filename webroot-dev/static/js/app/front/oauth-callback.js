@@ -24,7 +24,8 @@ define(function (require) {
         ajax({
             url: '/api/developer/login/',
             method: 'post',
-            body: locals
+            body: locals,
+            loading: '登录中'
         }).on('success', function (data) {
             if (data.login) {
                 // 有打开源

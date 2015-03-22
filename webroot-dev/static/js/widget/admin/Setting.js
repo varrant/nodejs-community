@@ -136,7 +136,8 @@ define(function (require, exports, module) {
         ajax({
             method: 'put',
             url: options.url,
-            body: vue.$data[itemKey]
+            body: vue.$data[itemKey],
+            loading: '设置中'
         })
             .on('success', function (data) {
                 if (!hasId) {
@@ -189,7 +190,8 @@ define(function (require, exports, module) {
                 method: 'delete',
                 data: {
                     id: id
-                }
+                },
+                loading: '删除中'
             })
                 .on('success', function () {
                     vue.$data[listKey].splice(index, 1);
@@ -217,6 +219,7 @@ define(function (require, exports, module) {
             }
 
             xhr = ajax({
+                loading: false,
                 url: '/api/translate/?word=' + encodeURIComponent(this.value)
             })
                 .on('success', function (data) {

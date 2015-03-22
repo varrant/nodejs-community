@@ -40,7 +40,8 @@ define(function (require) {
         var html_1 = '<i class="fi fi-exclamation-triangle s-danger"></i>';
 
         ajax({
-            url: '/admin/api/notification/count/'
+            url: '/admin/api/notification/count/',
+            loading: false
         }).on('success', function (data) {
                 $span.innerHTML = '<a class="badge badge-' +
                 (data === 0 ? 'default' : 'danger') +
@@ -56,7 +57,8 @@ define(function (require) {
         var logout = function () {
             ajax({
                 method: 'post',
-                url: '/api/developer/logout/'
+                url: '/api/developer/logout/',
+                loading: '注销中'
             }).on('success', function () {
                 location.href = '/';
             }).on('error', alert);

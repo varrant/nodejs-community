@@ -16,6 +16,7 @@ define(function (require, exports, module) {
     var ui = require('../../alien/ui/');
     var Editor = require('../../alien/ui/Editor/');
     var dato = require('../../alien/utils/dato.js');
+    var controller = require('../../alien/utils/controller.js');
     var defaults = {
         url: '/admin/api/object/',
         id: '',
@@ -62,7 +63,7 @@ define(function (require, exports, module) {
 
     /**
      * 数据载入回调
-     * @param json
+     * @param data
      * @returns {*}
      * @private
      */
@@ -115,7 +116,8 @@ define(function (require, exports, module) {
             ajax({
                 url: '/admin/api/oss/',
                 method: 'put',
-                body: fd
+                body: fd,
+                loading: false
             })
                 .on('progress', function (eve) {
                     onprogress(eve.alienDetail.percent);
@@ -205,7 +207,8 @@ define(function (require, exports, module) {
         ajax({
             url: the._options.url,
             method: data.id ? 'put' : 'post',
-            body: data
+            body: data,
+            loading: '保存中'
         }).on('success', function (data) {
             // 属于创建，清除之前的缓存记录，换成新的
             if (!the._options.id) {
@@ -234,20 +237,20 @@ define(function (require, exports, module) {
         var the = this;
 
         // 实时翻译
-        the.vue.$watch('object.title', function (word) {
+        the.vue.$watch('object.title', controller.debounce(function (word) {
             if (xhr) {
                 xhr.abort();
             }
 
             xhr = ajax({
-                loading: '翻译中',
+                loading: false,
                 url: '/api/translate/?word=' + encodeURIComponent(word)
             }).on('success', function (data) {
                 the.vue.$data.object.uri = data;
             }).on('complete', function () {
                 xhr = null;
-            });
-        });
+            }).xhr;
+        }));
     };
 
     module.exports = Item;

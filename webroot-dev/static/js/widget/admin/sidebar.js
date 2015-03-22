@@ -17,7 +17,8 @@ define(function (require, exports, module) {
 
     app.init = function () {
         ajax({
-            url: '/admin/api/nav/'
+            url: '/admin/api/nav/',
+            loading: false
         }).on('success', app._onsuccess.bind(app)).on('error', alert);
     };
 

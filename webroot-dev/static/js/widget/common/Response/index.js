@@ -72,7 +72,8 @@ define(function (require, exports, module) {
                 ajax({
                     url: '/admin/api/oss/',
                     method: 'put',
-                    body: fd
+                    body: fd,
+                    loading: false
                 })
                     .on('progress', function (eve) {
                         onprogress(eve.alienDetail.percent);
@@ -446,7 +447,8 @@ define(function (require, exports, module) {
         ajax({
             url: options.url.post,
             method: 'post',
-            body: data
+            body: data,
+            loading: '评论中'
         })
             .on('success', function (data) {
                 var resp = data.response;
@@ -694,7 +696,8 @@ define(function (require, exports, module) {
         }, options.query, the._replyMap[id].query);
 
         ajax({
-            url: options.url.list + '?' + qs.stringify(query)
+            url: options.url.list + '?' + qs.stringify(query),
+            loading: '回复中'
         })
             .on('success', function (data) {
                 the._renderReply($listParent, dato.extend({
@@ -766,7 +769,8 @@ define(function (require, exports, module) {
             method: 'post',
             body: {
                 id: id
-            }
+            },
+            loading: '赞同中'
         })
             .on('success', function (data) {
                 the._increaseHTML($ele, data.value);
@@ -797,7 +801,8 @@ define(function (require, exports, module) {
             body: {
                 response: id,
                 object: options.query.object
-            }
+            },
+            loading: '采纳中'
         })
             .on('success', function (data) {
                 options.acceptByResponse = id;
