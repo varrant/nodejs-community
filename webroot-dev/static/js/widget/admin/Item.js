@@ -120,19 +120,13 @@ define(function (require, exports, module) {
                 .on('progress', function (eve) {
                     onprogress(eve.alienDetail.percent);
                 })
-                .on('success', function (json) {
-                    if (json.code !== 200) {
-                        the.uploadDestroy();
-                        return alert(json);
-                    }
-
+                .on('success', function (data) {
                     //cacheControl: "max-age=315360000"
                     //contentType: "image/png"
                     //encoding: "utf8"
                     //image: {type: "png", width: 200, height: 200}
                     //ourl: "http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f/i/20141228233411750487888485"
                     //surl: "http://s.ydr.me/f/i/20141228233411750487888485"
-                    var data = json.data;
                     ondone(null, [{
                         name: "img.png",
                         url: data.surl
@@ -212,20 +206,16 @@ define(function (require, exports, module) {
             url: the._options.url,
             method: data.id ? 'put' : 'post',
             body: data
-        }).on('success', function (json) {
-            if (json.code !== 200) {
-                return alert(json);
-            }
-
+        }).on('success', function (data) {
             // 属于创建，清除之前的缓存记录，换成新的
             if (!the._options.id) {
                 the.editor.clearStore();
-                the._options.id = json.data.id;
+                the._options.id = data.id;
                 the.editor.setOptions('id', the._options.id);
-                history.pushState('', null, location.pathname + '?id=' + json.data.id);
+                history.pushState('', null, location.pathname + '?id=' + data.id);
             }
 
-            vue.$data.object = json.data;
+            vue.$data.object = data;
             the.editor.resize();
             tip.success('保存成功');
         }).on('error', alert).on('finish', function () {
@@ -252,9 +242,7 @@ define(function (require, exports, module) {
             xhr = ajax({
                 url: '/api/translate/?word=' + encodeURIComponent(word)
             }).on('success', function (json) {
-                if (json.code === 200) {
-                    the.vue.$data.object.uri = json.data;
-                }
+                the.vue.$data.object.uri = data;
             }).on('complete', function () {
                 xhr = null;
             });

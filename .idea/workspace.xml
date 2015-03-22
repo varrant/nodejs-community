@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/header.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/header.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -47,8 +46,8 @@
       <file leaf-file-name="Item.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45756456" vertical-offset="998" max-vertical-offset="4522">
-              <caret line="70" column="8" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.7084871" vertical-offset="3939" max-vertical-offset="4318">
+              <caret line="247" column="15" selection-start-line="247" selection-start-column="15" selection-end-line="247" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -902,13 +901,7 @@
       <workItem from="1426758215099" duration="61000" />
       <workItem from="1426816487883" duration="237000" />
       <workItem from="1426834224452" duration="100000" />
-      <workItem from="1426858827532" duration="8523000" />
-    </task>
-    <task id="LOCAL-00525" summary="0.0.2">
-      <created>1426690821226</created>
-      <option name="number" value="00525" />
-      <option name="project" value="LOCAL" />
-      <updated>1426690821226</updated>
+      <workItem from="1426858827532" duration="8578000" />
     </task>
     <task id="LOCAL-00526" summary="0.0.2">
       <created>1426690884315</created>
@@ -1198,11 +1191,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427014382653</updated>
     </task>
-    <option name="localTasksCounter" value="574" />
+    <task id="LOCAL-00574" summary="0.0.4">
+      <created>1427014441705</created>
+      <option name="number" value="00574" />
+      <option name="project" value="LOCAL" />
+      <updated>1427014441705</updated>
+    </task>
+    <option name="localTasksCounter" value="575" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183622000" />
+    <option name="totallyTimeSpent" value="183677000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1777,8 +1776,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45756456" vertical-offset="998" max-vertical-offset="4522">
-          <caret line="70" column="8" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.7084871" vertical-offset="3939" max-vertical-offset="4318">
+          <caret line="247" column="15" selection-start-line="247" selection-start-column="15" selection-end-line="247" selection-end-column="15" />
           <folding />
         </state>
       </provider>
