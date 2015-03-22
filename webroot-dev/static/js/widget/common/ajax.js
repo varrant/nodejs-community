@@ -30,7 +30,7 @@ define(function (require, exports, module) {
             options.body = JSON.stringify(options.body);
         }
 
-        return xhr.ajax(options)
+        xhr.ajax(options)
             .on('success', function (json) {
                 switch (json.code) {
                     // 认证不合法

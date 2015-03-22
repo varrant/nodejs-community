@@ -114,6 +114,9 @@ module.exports = function (app) {
         }
 
         options.populate = ['author', 'agreers'];
+        options.sort = {
+            _id: -1
+        };
 
         howdo
             // 1. 查找 object

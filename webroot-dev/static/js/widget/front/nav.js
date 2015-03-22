@@ -107,7 +107,7 @@ define(function (require, exports, module) {
             ajax({
                 method: 'post',
                 url: '/api/developer/logout/'
-            }).on('success', function (json) {
+            }).on('success', function () {
                 location.reload();
             }).on('error', alert);
         };
