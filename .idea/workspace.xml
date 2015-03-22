@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.scss" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/share.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/share.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -49,8 +48,8 @@
       <file leaf-file-name="article-body.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.346154" vertical-offset="225" max-vertical-offset="952">
-              <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+            <state vertical-scroll-proportion="-14.884615" vertical-offset="293" max-vertical-offset="884">
+              <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -59,8 +58,8 @@
       <file leaf-file-name="share.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/share.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22042139" vertical-offset="0" max-vertical-offset="617">
-              <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.64181525" vertical-offset="199" max-vertical-offset="833">
+              <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -69,11 +68,13 @@
       <file leaf-file-name="object.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1938">
-              <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="182" max-vertical-offset="833">
+              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="e#2992#3280#0" expanded="false" />
+                <element signature="e#771#1272#0" expanded="false" />
+                <element signature="e#1316#2959#0" expanded="false" />
+                <element signature="e#3004#3292#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -134,10 +135,10 @@
         <option value="$PROJECT_DIR$/webserver/controllers/front/object.js" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/object-article.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/share.js" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.scss" />
+        <option value="$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html" />
       </list>
     </option>
   </component>
@@ -909,13 +910,7 @@
       <workItem from="1426758215099" duration="61000" />
       <workItem from="1426816487883" duration="237000" />
       <workItem from="1426834224452" duration="100000" />
-      <workItem from="1426858827532" duration="7122000" />
-    </task>
-    <task id="LOCAL-00520" summary="0.0.2">
-      <created>1426689498460</created>
-      <option name="number" value="00520" />
-      <option name="project" value="LOCAL" />
-      <updated>1426689498460</updated>
+      <workItem from="1426858827532" duration="7553000" />
     </task>
     <task id="LOCAL-00521" summary="0.0.2">
       <created>1426689893613</created>
@@ -1205,11 +1200,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427012801993</updated>
     </task>
-    <option name="localTasksCounter" value="569" />
+    <task id="LOCAL-00569" summary="0.0.4">
+      <created>1427013011145</created>
+      <option name="number" value="00569" />
+      <option name="project" value="LOCAL" />
+      <updated>1427013011145</updated>
+    </task>
+    <option name="localTasksCounter" value="570" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="182221000" />
+    <option name="totallyTimeSpent" value="182652000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1703,7 +1704,7 @@
         <state vertical-scroll-proportion="0.6556474" vertical-offset="3434" max-vertical-offset="4267">
           <caret line="216" column="32" selection-start-line="216" selection-start-column="32" selection-end-line="216" selection-end-column="32" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1743,25 +1744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.346154" vertical-offset="225" max-vertical-offset="952">
-          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1938">
-          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#2992#3280#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/modification.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2771475" vertical-offset="1206" max-vertical-offset="5882">
@@ -1778,10 +1760,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="182" max-vertical-offset="833">
+          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#771#1272#0" expanded="false" />
+            <element signature="e#1316#2959#0" expanded="false" />
+            <element signature="e#3004#3292#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.884615" vertical-offset="293" max-vertical-offset="884">
+          <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/share.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22042139" vertical-offset="0" max-vertical-offset="617">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.64181525" vertical-offset="199" max-vertical-offset="833">
+          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
           <folding />
         </state>
       </provider>

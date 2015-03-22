@@ -17,7 +17,7 @@ define(function (require, exports, module) {
     var Prettify = require('../../alien/ui/Prettify/');
     var dato = require('../../alien/utils/dato.js');
     var url = require('../../alien/utils/url.js');
-    require('../../widget/common/share.js');
+    var share = require('../../widget/common/share.js');
     var app = {};
 
     // toc
@@ -112,6 +112,7 @@ define(function (require, exports, module) {
     app.response();
     app.imgview();
     app.prettify();
+    share('#share');
     require('../../widget/front/login.js');
     require('../../widget/front/nav.js');
 });
