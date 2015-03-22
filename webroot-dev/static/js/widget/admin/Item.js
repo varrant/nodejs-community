@@ -240,8 +240,9 @@ define(function (require, exports, module) {
             }
 
             xhr = ajax({
+                loading: '翻译中',
                 url: '/api/translate/?word=' + encodeURIComponent(word)
-            }).on('success', function (json) {
+            }).on('success', function (data) {
                 the.vue.$data.object.uri = data;
             }).on('complete', function () {
                 xhr = null;

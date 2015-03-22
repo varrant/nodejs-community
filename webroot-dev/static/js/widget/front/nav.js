@@ -82,7 +82,8 @@ define(function (require, exports, module) {
         }
 
         ajax({
-            url: '/admin/api/notification/count/'
+            url: '/admin/api/notification/count/',
+            loading: false
         }).on('success', function (data) {
             var val = data || 0;
             var text = val > 9 ? 'N' : val;
