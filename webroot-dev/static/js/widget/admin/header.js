@@ -41,14 +41,10 @@ define(function (require) {
 
         ajax({
             url: '/admin/api/notification/count/'
-        }).on('success', function (json) {
-            if (json.code === 200) {
+        }).on('success', function (data) {
                 $span.innerHTML = '<a class="badge badge-' +
-                (json.data === 0 ? 'default' : 'danger') +
-                '" href="/admin/notification/"><i class="fi fi-at"></i><span>' + json.data + '</span></a>';
-            } else {
-                $span.innerHTML = html_1;
-            }
+                (data === 0 ? 'default' : 'danger') +
+                '" href="/admin/notification/"><i class="fi fi-at"></i><span>' + data + '</span></a>';
         }).on('error', function () {
             $span.innerHTML = html_1;
         });
@@ -61,11 +57,7 @@ define(function (require) {
             ajax({
                 method: 'post',
                 url: '/api/developer/logout/'
-            }).on('success', function (json) {
-                if (json.code !== 200) {
-                    return alert(json);
-                }
-
+            }).on('success', function () {
                 location.href = '/';
             }).on('error', alert);
         };

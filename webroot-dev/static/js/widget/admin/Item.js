@@ -66,14 +66,8 @@ define(function (require, exports, module) {
      * @returns {*}
      * @private
      */
-    Item.fn._onsuccess = function (json) {
+    Item.fn._onsuccess = function (data) {
         var the = this;
-
-        if (json.code !== 200) {
-            return alert(json);
-        }
-
-        var data = json.data;
 
         the.emit('success', data);
 
