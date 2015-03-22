@@ -210,6 +210,9 @@ define(function (require, exports, module) {
             }
 
             respond = new Respond($respondParent, respondOptions);
+            respond.on('empty', function () {
+                alert('说点什么吧');
+            });
             respond.on('submit', function (content) {
                 respond.disable();
 
@@ -696,8 +699,7 @@ define(function (require, exports, module) {
         }, options.query, the._replyMap[id].query);
 
         ajax({
-            url: options.url.list + '?' + qs.stringify(query),
-            loading: '回复中'
+            url: options.url.list + '?' + qs.stringify(query)
         })
             .on('success', function (data) {
                 the._renderReply($listParent, dato.extend({

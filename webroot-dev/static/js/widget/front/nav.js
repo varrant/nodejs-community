@@ -59,10 +59,6 @@ define(function (require, exports, module) {
                 return false;
             });
 
-            event.on($downlist, 'click', function (eve) {
-                eve.stopPropagation();
-            });
-
             event.on(document, 'click', function () {
                 attribute.removeClass($header, activeClass);
             });
