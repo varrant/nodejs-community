@@ -354,3 +354,7 @@
       border-radius: 6px; }
   .m-ptitle .ptitle-intro {
     margin-bottom: .3em; }
+
+.bdsharebuttonbox {
+  display: inline-block;
+  vertical-align: middle; }
