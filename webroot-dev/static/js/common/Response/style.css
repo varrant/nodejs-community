@@ -1,0 +1,228 @@
+@charset "utf-8";
+.alien-ui-response-loading {
+    padding: 20px;
+    text-align: center;
+}
+
+.alien-ui-response-title {
+    position: relative;
+    padding: 20px;
+    font-size: 20px;
+    border-bottom: 2px solid #e6e6e6;
+    margin: 0;
+    font-weight: normal;
+}
+
+.alien-ui-response-subtitle {
+    display: inline;
+    font-size: 40%;
+    margin-left: 10px;
+    line-height: 1;
+}
+
+.alien-ui-response-main {
+    padding: 20px;
+}
+
+.alien-ui-response-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.alien-ui-response-item {
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    -webkit-transition: background .5s;
+    transition: background .5s;
+    background: #fff;
+}
+
+.alien-ui-response-item:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.alien-ui-response-avatar {
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.alien-ui-response-body {
+    margin-left: 60px;
+    overflow: hidden;
+}
+
+.alien-ui-response-meta {
+    padding: 0;
+    margin: 0 0 5px 0;
+}
+
+.alien-ui-response-meta li {
+    margin-right: 10px;
+}
+
+.alien-ui-response-agreers {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.alien-ui-response-agreers a {
+    opacity: 0.5;
+    margin-left: 5px;
+}
+
+.alien-ui-response-agreers a:hover {
+    opacity: 1;
+}
+
+.alien-ui-response-meta img {
+    width: 18px;
+    height: 18px;
+}
+
+.alien-ui-response-content img {
+    max-width: 50%;
+    cursor: -webkit-zoom-in;
+    cursor: -moz-zoom-in;
+    cursor: zoom-in;
+}
+
+.alien-ui-response-content p > img:only-child {
+    display: block;
+    margin: 0 auto;
+}
+
+.alien-ui-response-content p {
+    white-space: pre-wrap;
+}
+
+.alien-ui-response-content p:last-child {
+    margin-bottom: 0;
+}
+
+.alien-ui-response-action {
+    margin-top: 20px;
+}
+
+.alien-ui-response-number {
+    margin-left: 10px;
+    font-weight: 900;
+}
+
+.alien-ui-response-item .alien-ui-response-flag {
+    display: none;
+}
+
+.alien-ui-response-item-accepted {
+}
+
+.alien-ui-response-item-accepted .alien-ui-response-flag {
+    display: block;
+    position: absolute;
+    top: 104%;
+    left: 50%;
+    margin-left: -14px;
+    font-size: 30px;
+    color: #449D44;
+}
+
+.alien-ui-response-item-accepted .alien-ui-response-accept {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.alien-ui-response-main .alien-ui-pager {
+    margin-top: 30px;
+}
+
+.alien-ui-response-active .alien-ui-response-children {
+    display: block;
+}
+
+.alien-ui-response-body .i {
+    margin: 0 2px;
+    min-width: 10px;
+}
+
+.alien-ui-response-respond {
+    margin: 20px -20px -20px;
+    border-bottom: 0;
+    border-top: 1px solid #eee;
+    border-radius: 0 0 4px 4px;
+}
+
+.alien-ui-response-children {
+    position: relative;
+    margin: -10px 20px 0 80px;
+    border-radius: 4px;
+    border: 1px solid #F0F0F0;
+    display: none;
+    background: #fff;
+}
+
+.alien-ui-response-children .alien-ui-response-body {
+    margin-left: 40px;
+    font-size: 14px;
+}
+
+.alien-ui-response-children::before,
+.alien-ui-response-children::after {
+    content: ' ';
+    position: absolute;
+    border: 10px solid transparent;
+    left: 20px;
+}
+
+.alien-ui-response-children::before {
+    border-bottom-color: #ddd;
+    top: -20px;
+}
+
+.alien-ui-response-children::after {
+    border-bottom-color: #fff;
+    top: -19px;
+}
+
+.alien-ui-response-children .alien-ui-response-item {
+    padding: 0;
+    margin: 0;
+}
+
+.alien-ui-response-children .alien-ui-response-avatar {
+    width: 30px;
+    height: 30px;
+}
+
+.alien-ui-response-children .alien-ui-respond {
+    margin: 20px 0 -1px;
+    border-top: 1px solid #eee;
+}
+
+.alien-ui-response-children .alien-ui-pager {
+    margin-top: 30px;
+}
+
+@media (max-width: 767px) {
+    .alien-ui-respond {
+        margin: -10px -10px 20px;
+        padding: 20px 10px;
+    }
+
+    .alien-ui-response-main {
+        padding: 10px;
+    }
+
+    .alien-ui-response-children {
+        margin: 0 10px 0 10px;
+    }
+
+    .alien-ui-response-children::before,
+    .alien-ui-response-children::after {
+        left: 80px;
+    }
+}

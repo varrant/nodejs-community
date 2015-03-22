@@ -3,5 +3,7 @@
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="file://$PROJECT_DIR$/webroot-dev/static/css/libs/0-normalize.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/webroot-dev/static/css/libs/1-base.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/webroot-dev/static/js/common/loading.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/webroot-dev/static/js/common/loading.js" charset="UTF-8" />
   </component>
 </project>

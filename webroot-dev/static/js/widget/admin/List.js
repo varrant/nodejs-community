@@ -11,6 +11,7 @@ define(function (require, exports, module) {
     var ui = require('../../alien/ui/');
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
+    var loading = require('../common/loading.js');
     var confirm = require('../common/confirm.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var dato = require('../../alien/utils/dato.js');
@@ -135,15 +136,21 @@ define(function (require, exports, module) {
         var options = the._options;
 
         confirm('确认要删除该项目吗？<br>删除操作不可逆，请仔细确认！', function () {
+            var ld = loading('删除中');
             ajax({
                 url: options.itemURL,
                 method: 'delete',
                 body: {
                     id: id
                 }
-            }).on('success', function (json) {
-                the.vue.$data.list.splice(index, 1);
-            });
+            })
+                .on('success', function () {
+                    the.vue.$data.list.splice(index, 1);
+                })
+                .on('error', alert)
+                .on('complete', function () {
+                    ld.destroy();
+                });
         });
     };
 
