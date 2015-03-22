@@ -21,7 +21,7 @@
         </tr>
         <tr v-repeat="notification:list" v-class="danger:!notification.hasActived">
             <td>\{{(query.page - 1) * query.limit + $index + 1}}</td>
-            <td>
+            <td class="text-left">
                 <div v-if="notification.type === 'commentObject'">
                     <a v-attr="href: '/' + sectionURIMap[notification.object.section] + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification)"><strong>\{{notification.source.nickname}}</strong> 在你的《\{{notification.object.title}}》上评论道：“\{{notification.response.content.slice(0, 140)}}”</a>
                 </div>

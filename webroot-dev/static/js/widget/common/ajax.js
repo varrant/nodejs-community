@@ -10,15 +10,17 @@ define(function (require, exports, module) {
 
     var xhr = require('../../alien/core/communication/xhr.js');
     var json = 'application/json; charset=utf-8';
-
-    module.exports = function (options) {
-        var isFormData = options.data && options.data.constructor === FormData;
+    var alert = require('./alert.js');
+    var Emitter = require('../../alien/libs/Emitter.js');
+    var klass = require('../../alien/utils/class.js');
+    var Ajax = klass.create(function(options){
+        var the = this;
+        var isFormData = options.body && options.body.constructor === FormData;
 
         options.headers = options.headers || {};
 
         if (!isFormData) {
             options.headers['content-type'] = options.headers['content-type'] || json;
-
         }
 
         options.headers['accept'] = json;
@@ -42,6 +44,19 @@ define(function (require, exports, module) {
                     case 401:
                         break;
                 }
+            })
+            .on('error', function (err) {
+                the.emit('error', err);
+            })
+            .on('complete', function (err, json) {
+                the.emit('complete', err, json);
+            })
+            .on('finish', function (err, json) {
+                the.emit('finish', err, json);
             });
+    }, Emitter);
+
+    module.exports = function (options) {
+        return new Ajax(options);
     };
 });
