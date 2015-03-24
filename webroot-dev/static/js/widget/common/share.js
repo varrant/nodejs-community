@@ -41,6 +41,11 @@ define(function (require, exports, module) {
 
     module.exports = function ($parent) {
         $parent = selector.query($parent)[0];
+
+        if (!$parent) {
+            return;
+        }
+
         $parent.innerHTML = html;
         attribute.addClass($parent, 'bdsharebuttonbox');
         modification.insert(script, document.body);

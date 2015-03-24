@@ -11,6 +11,7 @@ define(function (require, exports, module) {
 
     var Pjax = require('../../alien/libs/Pjax.js');
     var Pager = require('../../alien/ui/Pager/');
+    var share = require('../../widget/common/share.js');
     var pager = window['-pager-'];
     var app = {};
     var section = window['-section-'];
@@ -74,6 +75,7 @@ define(function (require, exports, module) {
     };
 
 
+    share('#share');
     app.getPath();
     app.buildPager();
 });
