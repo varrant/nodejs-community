@@ -17,6 +17,7 @@ define(function (require, exports, module) {
     var dato = require('../../../alien/utils/dato.js');
     var qs = require('../../../alien/utils/querystring.js');
     var date = require('../../../alien/utils/date.js');
+    var controller = require('../../../alien/utils/controller.js');
     var ajax = require('../ajax.js');
     var alert = require('../alert.js');
     var confirm = require('../confirm.js');
@@ -128,7 +129,40 @@ define(function (require, exports, module) {
         the._replyMap = {};
         $parent.innerHTML = html;
         the._$wrap = selector.children($parent)[0];
-        the._ajaxContainer();
+        the._initEvent();
+    };
+
+
+    /**
+     * 初始化事件
+     * @private
+     */
+    Response.fn._initEvent = function () {
+        var the = this;
+        var options = the._options;
+        var replyClass = '.' + alienClass + '-reply';
+        var agreeClass = '.' + alienClass + '-agree';
+        var acceptClass = '.' + alienClass + '-accept';
+        var $parent = the._$listParent;
+
+        event.on($parent, 'click', replyClass, the._reply.bind(the));
+        event.on($parent, 'click', agreeClass, the._agree.bind(the));
+        event.on($parent, 'click', acceptClass, function (eve) {
+            var $item = the._getItem(eve.target);
+            var author = attribute.data($item, 'author');
+            var acceptMyself = options.developer.id === author;
+
+            confirm('确定要采纳' + (acceptMyself ? '你自己的' : '该') + '回答为最佳答案吗？采纳后将无法取消或更改' +
+            (acceptMyself ? '，其中采纳自己的回答不会提升任何威望' : '') +
+            '。', the._accept.bind(the, eve));
+        });
+        event.on(window, 'scroll', the._onscroll = controller.debounce(function () {
+            if (!the._ready && attribute.scrollTop(window) > attribute.top(the._$parent) - attribute.height(top)) {
+                the._ajaxContainer();
+                the._ready = true;
+            }
+        }));
+        the._onscroll();
     };
 
 
@@ -162,7 +196,6 @@ define(function (require, exports, module) {
         the._$commentByCount = selector.query('.' + commentByCountClass);
         the._$replyByCount = selector.query('.' + replyByCountClass);
         the._ajaxComment();
-        the._initEvent();
         the._increaseCount();
         the._updateTime();
     };
@@ -232,32 +265,6 @@ define(function (require, exports, module) {
         }
 
         return respond;
-    };
-
-
-    /**
-     * 初始化事件
-     * @private
-     */
-    Response.fn._initEvent = function () {
-        var the = this;
-        var options = the._options;
-        var replyClass = '.' + alienClass + '-reply';
-        var agreeClass = '.' + alienClass + '-agree';
-        var acceptClass = '.' + alienClass + '-accept';
-        var $parent = the._$listParent;
-
-        event.on($parent, 'click', replyClass, the._reply.bind(the));
-        event.on($parent, 'click', agreeClass, the._agree.bind(the));
-        event.on($parent, 'click', acceptClass, function (eve) {
-            var $item = the._getItem(eve.target);
-            var author = attribute.data($item, 'author');
-            var acceptMyself = options.developer.id === author;
-
-            confirm('确定要采纳' + (acceptMyself ? '你自己的' : '该') + '回答为最佳答案吗？采纳后将无法取消或更改' +
-            (acceptMyself ? '，其中采纳自己的回答不会提升任何威望' : '') +
-            '。', the._accept.bind(the, eve));
-        });
     };
 
 
