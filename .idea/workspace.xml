@@ -2,40 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/front/0-layout.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/front/0-layout.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/sadmin/0-layout.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-alert.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-alert.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-badge.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-badge.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-breadcrumb.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-breadcrumb.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-form.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-form.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-grid.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-label.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-label.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-table.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-table.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-text.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-text.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/3-font-icon.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/4-front-layout.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/4-front-layout.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/0normalize.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/0-normalize.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/0-grid.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/0-grid.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/0-grid.scss" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/0-grid.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/0-normalize.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/0-normalize.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/1-base.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/1-base.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/1-base.scss" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/1-base.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-form.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-form.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-form.scss" afterPath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-form.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/meta.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/meta.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/nodejs-community.iml" afterPath="$PROJECT_DIR$/.idea/nodejs-community.iml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/0-normalize.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/1-base.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/1-base.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-alert.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-alert.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-badge.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-badge.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-breadcrumb.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-breadcrumb.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-form.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-form.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-grid.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-label.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-label.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-table.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-table.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-text.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/2-unit-text.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/3-font-icon.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/4-front-layout.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/css/libs/4-front-layout.scss" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -405,32 +392,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webroot-dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nodejs-community" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nodejs-community" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="configs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -637,13 +598,7 @@
       <workItem from="1426816487883" duration="237000" />
       <workItem from="1426834224452" duration="100000" />
       <workItem from="1426858827532" duration="16641000" />
-      <workItem from="1427210111582" duration="9660000" />
-    </task>
-    <task id="LOCAL-00563" summary="0.0.3">
-      <created>1426865907156</created>
-      <option name="number" value="00563" />
-      <option name="project" value="LOCAL" />
-      <updated>1426865907156</updated>
+      <workItem from="1427210111582" duration="9682000" />
     </task>
     <task id="LOCAL-00564" summary="0.0.3">
       <created>1426865932215</created>
@@ -933,11 +888,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427367537779</updated>
     </task>
-    <option name="localTasksCounter" value="612" />
+    <task id="LOCAL-00612" summary="0.0.8">
+      <created>1427377540309</created>
+      <option name="number" value="00612" />
+      <option name="project" value="LOCAL" />
+      <updated>1427377540309</updated>
+    </task>
+    <option name="localTasksCounter" value="613" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201400000" />
+    <option name="totallyTimeSpent" value="201422000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
