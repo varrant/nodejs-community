@@ -1,4 +1,4 @@
-# nodejs-community@0.0.5
+# nodejs-community@0.0.6
 
 
 ## install
