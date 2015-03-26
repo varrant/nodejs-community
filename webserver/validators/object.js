@@ -80,7 +80,7 @@ validator.pushRule({
 
         data.contentHTML = '';
 
-        if (toc) {
+        if (toc.trim()) {
             data.contentHTML += '<div class="toc"><h3 class="toc-title">TOC</h3>' + xss.mdRender(toc, configs.safe) + '</div>';
         }
 
