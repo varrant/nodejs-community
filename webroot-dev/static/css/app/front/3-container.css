@@ -355,6 +355,11 @@
   .m-ptitle .ptitle-intro {
     margin-bottom: .3em; }
 
+.m-labes li {
+  background: #EEE;
+  padding: 4px 10px;
+  margin-right: 10px; }
+
 .bdsharebuttonbox {
   display: inline-block;
   vertical-align: middle; }

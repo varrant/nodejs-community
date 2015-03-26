@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Upload/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Upload/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/0-grid.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/0-grid.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/0-grid.scss" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/0-grid.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.scss" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -57,7 +60,6 @@
         <option value="$PROJECT_DIR$/webserver/routers/index.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/object.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/object-article.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/app/front/object.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/include/object/help-body.html" />
@@ -84,13 +86,14 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/webroot-pro/views/include/meta.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/0-grid.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/app/front/list.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/share.js" />
         <option value="$PROJECT_DIR$/webroot-dev/views/front/column.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Upload/index.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/0-grid.scss" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.scss" />
       </list>
     </option>
   </component>
@@ -537,6 +540,10 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -783,13 +790,7 @@
       <workItem from="1426816487883" duration="237000" />
       <workItem from="1426834224452" duration="100000" />
       <workItem from="1426858827532" duration="16641000" />
-      <workItem from="1427210111582" duration="4658000" />
-    </task>
-    <task id="LOCAL-00553" summary="ˆ">
-      <created>1426862233000</created>
-      <option name="number" value="00553" />
-      <option name="project" value="LOCAL" />
-      <updated>1426862233000</updated>
+      <workItem from="1427210111582" duration="4869000" />
     </task>
     <task id="LOCAL-00554" summary="0.0.3">
       <created>1426862468346</created>
@@ -1079,11 +1080,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427331747880</updated>
     </task>
-    <option name="localTasksCounter" value="602" />
+    <task id="LOCAL-00602" summary="0.0.7">
+      <created>1427361547313</created>
+      <option name="number" value="00602" />
+      <option name="project" value="LOCAL" />
+      <updated>1427361547314</updated>
+    </task>
+    <option name="localTasksCounter" value="603" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196398000" />
+    <option name="totallyTimeSpent" value="196609000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1163,7 +1170,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="beta7" />
     <MESSAGE value="beta8" />
     <MESSAGE value="beta9" />
     <MESSAGE value="beta10" />
@@ -1188,7 +1194,8 @@
     <MESSAGE value="0.0.4" />
     <MESSAGE value="0.0.5" />
     <MESSAGE value="0.0.6" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.0.6" />
+    <MESSAGE value="0.0.7" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.0.7" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1208,21 +1215,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/object-article.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923" vertical-offset="493" max-vertical-offset="1122">
-          <caret line="36" column="62" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19458544" vertical-offset="9473" max-vertical-offset="10149">
-          <caret line="564" column="33" selection-start-line="564" selection-start-column="33" selection-end-line="564" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/views/front/include/object/article-body.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.192308" vertical-offset="293" max-vertical-offset="884">
@@ -1480,14 +1472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/front/0-grid.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08600337" vertical-offset="0" max-vertical-offset="1122">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/share.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36833602" vertical-offset="214" max-vertical-offset="918">
@@ -1599,6 +1583,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1879195" vertical-offset="2825" max-vertical-offset="3774">
           <caret line="191" column="14" selection-start-line="191" selection-start-column="14" selection-end-line="191" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/sadmin/3-container.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.70896786" vertical-offset="2539" max-vertical-offset="3587">
+          <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/front/3-container.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25211507" vertical-offset="9694" max-vertical-offset="10285">
+          <caret line="579" column="3" selection-start-line="579" selection-start-column="3" selection-end-line="579" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/front/0-grid.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71912014" vertical-offset="0" max-vertical-offset="1258">
+          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding />
         </state>
       </provider>

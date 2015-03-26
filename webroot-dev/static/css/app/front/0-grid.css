@@ -9,6 +9,13 @@ code {
   border-radius: 3px;
   color: #B63125; }
 
+pre code {
+  background: transparent;
+  margin: inherit;
+  padding: inherit;
+  border-radius: inherit;
+  color: inherit; }
+
 .g-container {
   background-color: #fff; }
   @media (max-width: 991px) {
