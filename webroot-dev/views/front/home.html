@@ -9,15 +9,15 @@
     {{include ../include/meta.html}}
     {{include ./include/meta.html}}
 </head>
-<body ontouchstart="" class="p-home">
+<body ontouchstart="" class="body-home">
 {{include ./include/nav.html}}
 
 
-<div class="g-body a-slide-down-fixed">
+<div class="layout a-slide-down-fixed">
     <div class="container">
-        <div class="row g-container">
+        <div class="row layout-container">
             <!--主-->
-            <div class="col-md-9 g-main">
+            <div class="col-md-9 layout-main">
                 <ul class="avg-xs-1 avg-sm-2 text-center m-home">
                     {{var sectionTypes = [];}}
                     {{# sectionTypes.push({name: 'article', icon: 'file-text'});}}
@@ -41,7 +41,7 @@
             <!--/主-->
 
             <!--副-->
-            <div class="col-md-3 g-sub">
+            <div class="col-md-3 layout-sub">
                 <!--统计-->
                 <div class="m-card">
                     <div class="card-title"><i class="fi fi-bar-chart"></i>统计</div>
