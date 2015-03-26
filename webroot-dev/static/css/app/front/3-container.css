@@ -363,3 +363,14 @@
 .bdsharebuttonbox {
   display: inline-block;
   vertical-align: middle; }
+
+.heading-link {
+  position: relative;
+  color: #222; }
+  .heading-link::before {
+    position: absolute;
+    left: -15px;
+    opacity: 0;
+    transition: opacity 200ms; }
+  .heading-link:hover::before {
+    opacity: 1; }
