@@ -188,7 +188,7 @@ define(function (require, exports, module) {
                 // the._$sure.innerHTML = '上传中 ' + percent;
             })
             .on('success', function (json) {
-                the.emit('success', json.data);
+                the.emit('success', json);
             })
             .on('error', alert)
             .on('finish', function () {
