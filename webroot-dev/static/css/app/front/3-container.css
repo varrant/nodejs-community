@@ -369,8 +369,11 @@
   color: #222; }
   .heading-link::before {
     position: absolute;
+    content: "#";
     left: -15px;
     opacity: 0;
     transition: opacity 200ms; }
-  .heading-link:hover::before {
-    opacity: 1; }
+  .heading-link:hover {
+    color: #222; }
+    .heading-link:hover::before {
+      opacity: 1; }

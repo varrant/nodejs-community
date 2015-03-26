@@ -604,12 +604,14 @@ $border-color: #e6e6e6;
 
   &::before{
     position: absolute;
+    content: "#";
     left: -15px;
     opacity: 0;
     transition: opacity 200ms;
   }
 
   &:hover{
+    color: #222;
     &::before{
       opacity: 1;
     }
