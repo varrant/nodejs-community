@@ -143,11 +143,10 @@ define(function (require, exports, module) {
         var replyClass = '.' + alienClass + '-reply';
         var agreeClass = '.' + alienClass + '-agree';
         var acceptClass = '.' + alienClass + '-accept';
-        var $parent = the._$listParent;
 
-        event.on($parent, 'click', replyClass, the._reply.bind(the));
-        event.on($parent, 'click', agreeClass, the._agree.bind(the));
-        event.on($parent, 'click', acceptClass, function (eve) {
+        event.on(the._$parent, 'click', replyClass, the._reply.bind(the));
+        event.on(the._$parent, 'click', agreeClass, the._agree.bind(the));
+        event.on(the._$parent, 'click', acceptClass, function (eve) {
             var $item = the._getItem(eve.target);
             var author = attribute.data($item, 'author');
             var acceptMyself = options.developer.id === author;
