@@ -22,10 +22,6 @@
   list-style: none;
   padding: 0;
   margin: 0; }
-  .summarylist ul, .summarylist li {
-    padding: 0;
-    margin: 0;
-    list-style: none; }
   .summarylist-item {
     border-bottom: 1px solid #f0f0f0;
     padding-bottom: 20px;

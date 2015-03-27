@@ -1,57 +1,59 @@
-.card-title, .card-tab {
-  position: relative;
-  border-bottom: 2px solid #e6e6e6;
-  margin: 0;
-  font-weight: normal; }
-.card-title {
-  padding: 20px;
-  font-size: 20px; }
-.card-has-accepted, .card-un-accepted {
-  display: none; }
-.card-title.has-accepted {
-  background: #E4F4DE;
-  border-color: #C3E0B7; }
-.card-title.has-accepted {
-  display: inline-block; }
-.card-title.un-accepted {
-  background: #FDE2E2;
-  border-color: #E7B7B7; }
-  .card-title.un-accepted-un-accepted {
+.card {
+  background: #fff; }
+  .card-title, .card-tab {
+    position: relative;
+    border-bottom: 2px solid #e6e6e6;
+    margin: 0;
+    font-weight: normal; }
+  .card-title {
+    padding: 20px;
+    font-size: 20px; }
+  .card-has-accepted, .card-un-accepted {
+    display: none; }
+  .card-title.has-accepted {
+    background: #E4F4DE;
+    border-color: #C3E0B7; }
+  .card-title.has-accepted {
     display: inline-block; }
-.card-subtitle {
-  display: inline;
-  font-size: 40%;
-  margin-left: 10px;
-  line-height: 1; }
-.card-endtitle {
-  position: absolute;
-  right: 10px;
-  bottom: 10px; }
-.card-tab {
-  height: 72px;
-  line-height: 70px; }
-  .card-tab li {
-    position: relative; }
-    .card-tab li::after {
-      content: ' ';
-      position: absolute;
-      right: 0;
-      bottom: -2px;
-      left: 0;
-      height: 2px;
-      background: transparent; }
-  .card-tab a {
-    display: block;
-    color: #aaa; }
-    .card-tab a:hover {
-      color: #666; }
-  .card-tab .active::after {
-    background: #00A2CA; }
-  .card-tab .active a {
-    color: #00A2CA; }
-.card-body {
-  padding: 20px; }
-.card-footer {
-  border-top: 1px solid #e6e6e6;
-  margin-top: 30px;
-  padding: 30px 20px; }
+  .card-title.un-accepted {
+    background: #FDE2E2;
+    border-color: #E7B7B7; }
+    .card-title.un-accepted-un-accepted {
+      display: inline-block; }
+  .card-subtitle {
+    display: inline;
+    font-size: 40%;
+    margin-left: 10px;
+    line-height: 1; }
+  .card-endtitle {
+    position: absolute;
+    right: 10px;
+    bottom: 10px; }
+  .card-tab {
+    height: 72px;
+    line-height: 70px; }
+    .card-tab li {
+      position: relative; }
+      .card-tab li::after {
+        content: ' ';
+        position: absolute;
+        right: 0;
+        bottom: -2px;
+        left: 0;
+        height: 2px;
+        background: transparent; }
+    .card-tab a {
+      display: block;
+      color: #aaa; }
+      .card-tab a:hover {
+        color: #666; }
+    .card-tab .active::after {
+      background: #00A2CA; }
+    .card-tab .active a {
+      color: #00A2CA; }
+  .card-body {
+    padding: 20px; }
+  .card-footer {
+    border-top: 1px solid #e6e6e6;
+    margin-top: 30px;
+    padding: 30px 20px; }
