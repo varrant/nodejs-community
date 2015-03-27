@@ -24,64 +24,6 @@
     max-width: none;
     margin: 20px; } }
 
-.m-card .card-title, .m-card .card-tab {
-  position: relative;
-  border-bottom: 2px solid #e6e6e6;
-  margin: 0;
-  font-weight: normal; }
-.m-card .card-title {
-  padding: 20px;
-  font-size: 20px; }
-.m-card .card-has-accepted, .m-card .card-un-accepted {
-  display: none; }
-.m-card .card-title.has-accepted {
-  background: #E4F4DE;
-  border-color: #C3E0B7; }
-  .m-card .card-title.has-accepted .card-has-accepted {
-    display: inline-block; }
-.m-card .card-title.un-accepted {
-  background: #FDE2E2;
-  border-color: #E7B7B7; }
-  .m-card .card-title.un-accepted .card-un-accepted {
-    display: inline-block; }
-.m-card .card-subtitle {
-  display: inline;
-  font-size: 40%;
-  margin-left: 10px;
-  line-height: 1; }
-.m-card .card-endtitle {
-  position: absolute;
-  right: 10px;
-  bottom: 10px; }
-.m-card .card-tab {
-  height: 72px;
-  line-height: 70px; }
-  .m-card .card-tab li {
-    position: relative; }
-    .m-card .card-tab li::after {
-      content: ' ';
-      position: absolute;
-      right: 0;
-      bottom: -2px;
-      left: 0;
-      height: 2px;
-      background: transparent; }
-  .m-card .card-tab a {
-    display: block;
-    color: #aaa; }
-    .m-card .card-tab a:hover {
-      color: #666; }
-  .m-card .card-tab .active::after {
-    background: #00A2CA; }
-  .m-card .card-tab .active a {
-    color: #00A2CA; }
-.m-card .card-body {
-  padding: 20px; }
-.m-card .card-footer {
-  border-top: 1px solid #e6e6e6;
-  margin-top: 30px;
-  padding: 30px 20px; }
-
 .m-choose {
   padding: 20px;
   margin: -20px -20px 20px;

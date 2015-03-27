@@ -1,0 +1,104 @@
+$primary-bg-color: #00A2CA;
+$primary-fg-color: lighten($primary-bg-color, 90%);
+$border-color: #e6e6e6;
+
+// card
+.m-card {
+  &-title,
+  &-tab {
+    position: relative;
+    border-bottom: 2px solid $border-color;
+    margin: 0;
+    font-weight: normal;
+  }
+
+  &-title {
+    padding: 20px;
+    font-size: 20px;
+  }
+
+  &-has-accepted,
+  &-un-accepted {
+    display: none;
+  }
+
+  &-title {
+    &.has-accepted {
+      background: #E4F4DE;
+      border-color: #C3E0B7;
+    }
+    &.has-accepted {
+      display: inline-block;
+    }
+  }
+
+  &-title.un-accepted {
+    background: #FDE2E2;
+    border-color: #E7B7B7;
+
+    &-un-accepted {
+      display: inline-block;
+    }
+  }
+
+  &-subtitle {
+    display: inline;
+    font-size: 40%;
+    margin-left: 10px;
+    line-height: 1;
+  }
+
+  &-endtitle {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  &-tab {
+    height: 72px;
+    line-height: 70px;
+
+    li {
+      position: relative;
+
+      &::after {
+        content: ' ';
+        position: absolute;
+        right: 0;
+        bottom: -2px;
+        left: 0;
+        height: 2px;
+        background: rgba(0, 0, 0, 0);
+      }
+    }
+
+    a {
+      display: block;
+      color: #aaa;
+
+      &:hover {
+        color: #666;
+      }
+    }
+
+    .active {
+      &::after {
+        background: $primary-bg-color;
+      }
+
+      a {
+        color: $primary-bg-color;
+      }
+    }
+  }
+
+  &-body {
+    padding: 20px;
+  }
+
+  &-footer {
+    border-top: 1px solid $border-color;
+    margin-top: 30px;
+    padding: 30px 20px;
+  }
+}
