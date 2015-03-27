@@ -83,20 +83,6 @@
       .m-summarylist .summarylist-contributors a:hover {
         opacity: 1; }
 
-.m-simplelist {
-  padding: 0;
-  margin: 0;
-  list-style: none; }
-  .m-simplelist > li {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 14px; }
-    .m-simplelist > li:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: 0; }
-
 .toc {
   display: inline-block;
   min-width: 200px;

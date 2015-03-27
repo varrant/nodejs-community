@@ -3,7 +3,7 @@ $primary-fg-color: lighten($primary-bg-color, 90%);
 $border-color: #e6e6e6;
 
 // card
-.m-card {
+.card {
   &-title,
   &-tab {
     position: relative;
