@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/components/front/0-layout.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/front/0-layout.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/components/front/0-layout.scss" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/front/0-layout.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/home.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/front/include/meta.html" afterPath="$PROJECT_DIR$/webroot-dev/views/front/include/meta.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/views/include/meta.html" afterPath="$PROJECT_DIR$/webroot-dev/views/include/meta.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/nodejs-community.iml" afterPath="$PROJECT_DIR$/.idea/nodejs-community.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -719,13 +713,7 @@
       <workItem from="1426816487883" duration="237000" />
       <workItem from="1426834224452" duration="100000" />
       <workItem from="1426858827532" duration="16641000" />
-      <workItem from="1427210111582" duration="10436000" />
-    </task>
-    <task id="LOCAL-00565" summary="0.0.3">
-      <created>1426865943104</created>
-      <option name="number" value="00565" />
-      <option name="project" value="LOCAL" />
-      <updated>1426865943105</updated>
+      <workItem from="1427210111582" duration="10482000" />
     </task>
     <task id="LOCAL-00566" summary="0.0.4">
       <created>1427002700315</created>
@@ -1015,11 +1003,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427377555862</updated>
     </task>
-    <option name="localTasksCounter" value="614" />
+    <task id="LOCAL-00614" summary="0.0.8">
+      <created>1427378515604</created>
+      <option name="number" value="00614" />
+      <option name="project" value="LOCAL" />
+      <updated>1427378515604</updated>
+    </task>
+    <option name="localTasksCounter" value="615" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202176000" />
+    <option name="totallyTimeSpent" value="202222000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
