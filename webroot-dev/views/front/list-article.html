@@ -8,6 +8,9 @@
 <head lang="zh-cn">
     {{include ../include/meta.html}}
     {{include ./include/meta.html}}
+    <!--coolie-->
+    <link rel="stylesheet" href="/static/css/app/front/list.css"/>
+    <!--/coolie-->
     <script>window['-section-']={uri:'article'};</script>
     <script>window['-pager-']={
         count: '{{pager.count}}',
@@ -20,12 +23,92 @@
 {{include ./include/nav.html}}
 
 
-<div class="g-body a-slide-down-fixed">
+<div class="grid-body a-slide-down-fixed">
     <div class="container">
-        <div class="row g-container">
+        <div class="row grid-container">
             <!--主-->
-            <div class="col-md-12 g-main">
-                {{include ./include/list/article-body.html}}
+            <div class="col-md-12 grid-main">
+                <div class="card">
+                    <h2 class="card-title">
+                        <i class="fi fi-file-text"></i>{{section.name}}
+                        <small class="card-subtitle text-muted hidden-xs">——{{section.introduction}}</small>
+                        <div class="card-endtitle">
+                            <span class="text-light text-sm hidden-xs"><i class="fi fi-file-o"></i>{{pager.count}}</span>
+                        </div>
+                    </h2>
+
+                    <div class="card-body">
+                        <ul class="choose">
+                            <li class="clearfix">
+                                <strong class="choose-type">分类</strong>
+                                <a class="{{if !choose.category}}active{{/if}}" href="/article/{{if choose.status}}as/{{choose.status}}/{{/if}}">所有分类</a>
+                                {{list categories as category}}
+                                <a class="{{if category.id == choose.category}}active{{/if}}" href="/article/in/{{=category.uri}}/{{if choose.status}}as/{{choose.status}}/{{/if}}">{{=category.name}}</a>
+                                {{/list}}
+                            </li>
+                            {{if choose.author}}
+                            <li class="clearfix">
+                                <strong class="choose-type">作者</strong>
+                                <a href="/article/">所有作者</a>
+                                <a class="active" href="/article/{{if choose.author}}by/{{choose.author}}/{{/if}}">{{=choose.authorNickname}}</a>
+                            </li>
+                            {{/if}}
+                        </ul>
+
+                        <!--列表-->
+                        <ul class="summarylist">
+                            <li class="summarylist-item text-center">
+                                <a class="btn btn-warning" href="/admin/object/article/"><i class="fi fi-plus"></i>我想写文章</a>
+                            </li>
+                            {{if !objects.length}}
+                            <li>
+                                <div class="alert alert-warning"> <i class="fi fi-info-circle"></i>暂无相关内容。</div>
+                            </li>
+                            {{/if}}
+                            {{list objects as object}}
+                            <li class="summarylist-item clearfix">
+                                <div class="summarylist-avatar pull-left">
+                                    <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50"/></a>
+                                </div>
+                                <div class="summarylist-body">
+                                    <h2 class="summarylist-name"><a
+                                            href="/article/{{object.uri}}.html">{{object.title}}</a></h2>
+
+                                    <div class="summarylist-meta text-light text-sm row">
+                                        <div class="col-sm-8">
+                                            <ul class="avg-xs-2 avg-md-4">
+                                                <li><i class="fi fi-user i-striped"></i><a href="/developer/{{=object.author.githubLogin}}/">{{object.author.nickname}}</a></li>
+                                                <li><i class="fi fi-eye"></i>{{object.viewByCount}}</li>
+                                                <li><i class="fi fi-comments"></i>{{object.commentByCount}}</li>
+                                                {{if columnsMap[object.column]}}
+                                                <li><i class="fi fi-book"></i><a href="/column/{{=columnsMap[object.column].uri}}">{{columnsMap[object.column].name}}</a></li>
+                                                {{/if}}
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4 hidden-xs">
+                                            <ul class="summarylist-contributors list-right">
+                                                {{list object.contributors as contributor}}
+                                                <li>
+                                                    <a href="/developer/{{contributor.githubLogin}}/" title="{{contributor.nickname}}">
+                                                        <img src="{{contributor.email|gravatar:40}}" width="20" height="20" alt="avatar"/>
+                                                    </a>
+                                                </li>
+                                                {{/list}}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            {{/list}}
+                        </ul>
+                        <!--/列表-->
+                    </div>
+                    <div class="card-footer text-center">
+                        <!--分页器-->
+                        <div id="pager"></div>
+                        <!--/分页器-->
+                    </div>
+                </div>
             </div>
             <!--/主-->
         </div>

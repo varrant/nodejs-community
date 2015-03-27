@@ -24,65 +24,6 @@
     max-width: none;
     margin: 20px; } }
 
-.m-choose {
-  padding: 20px;
-  margin: -20px -20px 20px;
-  list-style: none;
-  background: #F8FDFF;
-  line-height: 26px; }
-  .m-choose .choose-type {
-    margin-right: 10px; }
-  .m-choose li {
-    margin-bottom: 10px; }
-    .m-choose li > * {
-      float: left; }
-    .m-choose li > a {
-      padding: 0 10px; }
-      .m-choose li > a.active {
-        background: #0e90d2;
-        color: #fff; }
-    .m-choose li > a:last-child {
-      margin-right: 0; }
-
-.m-summarylist {
-  list-style: none;
-  padding: 0;
-  margin: 0; }
-  .m-summarylist ul, .m-summarylist li {
-    padding: 0;
-    margin: 0;
-    list-style: none; }
-  .m-summarylist .summarylist-item {
-    border-bottom: 1px solid #f0f0f0;
-    padding-bottom: 20px;
-    margin-bottom: 20px; }
-    .m-summarylist .summarylist-item:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-      margin-bottom: 0; }
-  .m-summarylist .summarylist-body {
-    margin-left: 60px;
-    overflow: hidden; }
-  .m-summarylist .summarylist-name {
-    padding: 0;
-    font-size: 18px;
-    margin: 0 0 10px;
-    font-weight: normal; }
-    @media (max-width: 767px) {
-      .m-summarylist .summarylist-name {
-        font-size: 16px; } }
-  .m-summarylist .summarylist-meta {
-    line-height: 20px; }
-  .m-summarylist .summarylist-contributors {
-    margin: 0;
-    padding: 0; }
-    .m-summarylist .summarylist-contributors > li {
-      margin-left: 5px; }
-    .m-summarylist .summarylist-contributors a {
-      opacity: .7; }
-      .m-summarylist .summarylist-contributors a:hover {
-        opacity: 1; }
-
 .toc {
   display: inline-block;
   min-width: 200px;
