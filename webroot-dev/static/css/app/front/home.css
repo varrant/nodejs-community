@@ -14,7 +14,8 @@
   padding: 20px;
   color: #666; }
   .home a:hover {
-    background: #F9F9F9; }
+    background: #F9F9F9;
+    text-decoration: none; }
 .home-icon {
   font-size: 80px;
   color: #ececec; }

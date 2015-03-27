@@ -1,14 +1,16 @@
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
 html {
   font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
   -webkit-tap-highlight-color: transparent; }
 
 html, input, textarea, select, button {
   text-rendering: optimizeLegibility;
-  /* 1 */
   -webkit-font-smoothing: antialiased;
-  /* 2 */
   -moz-osx-font-smoothing: grayscale;
-  /* 3 Default: auto */
   -moz-font-feature-settings: "liga", "kern"; }
 
 th, td {
