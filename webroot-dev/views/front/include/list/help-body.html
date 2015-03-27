@@ -1,4 +1,4 @@
-<div class="m-card">
+<div class="card">
     <h2 class="card-title">
         <i class="fi fi-question-circle"></i>{{section.name}}
         <small class="card-subtitle text-muted hidden-xs">——{{section.introduction}}</small>
@@ -8,7 +8,7 @@
     </h2>
 
     <div class="card-body">
-        <ul class="m-choose">
+        <ul class="choose">
             <li class="clearfix">
                 <strong class="choose-type">分类</strong>
                 <a class="{{if !choose.category}}active{{/if}}" href="/help/{{if choose.status}}as/{{choose.status}}/{{/if}}">所有分类</a>
@@ -19,7 +19,7 @@
         </ul>
 
         <!--列表-->
-        <ul class="m-summarylist">
+        <ul class="summarylist">
             {{if !objects.length}}
                 <li>
                     <div class="alert alert-warning"> <i class="fi fi-info-circle"></i>暂无相关内容。</div>
