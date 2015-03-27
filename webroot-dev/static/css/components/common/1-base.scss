@@ -1,4 +1,4 @@
-html{
+html {
   font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -19,13 +19,6 @@ button {
 
 th, td {
   text-align: center;
-}
-
-pre {
-  background: #F6F6F6;
-  padding: 10px;
-  border: 1px solid #DDD;
-  border-radius: 6px;
 }
 
 a {
@@ -53,12 +46,24 @@ code {
   color: #B63125;
 }
 
+pre {
+  background: #F6F6F6;
+  padding: 10px;
+  border: 1px solid #DDD;
+  border-radius: 6px;
+}
+
 pre code {
   background: transparent;
   margin: inherit;
   padding: inherit;
   border-radius: inherit;
   color: inherit;
+}
+
+img{
+  max-width: 100%;
+  vertical-align: top;
 }
 
 .row::before,

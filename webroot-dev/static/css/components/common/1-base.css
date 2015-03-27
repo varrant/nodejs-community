@@ -14,12 +14,6 @@ html, input, textarea, select, button {
 th, td {
   text-align: center; }
 
-pre {
-  background: #F6F6F6;
-  padding: 10px;
-  border: 1px solid #DDD;
-  border-radius: 6px; }
-
 a {
   color: #0e90d2;
   text-decoration: none; }
@@ -40,12 +34,22 @@ code {
   border-radius: 3px;
   color: #B63125; }
 
+pre {
+  background: #F6F6F6;
+  padding: 10px;
+  border: 1px solid #DDD;
+  border-radius: 6px; }
+
 pre code {
   background: transparent;
   margin: inherit;
   padding: inherit;
   border-radius: inherit;
   color: inherit; }
+
+img {
+  max-width: 100%;
+  vertical-align: top; }
 
 .row::before, .row::after, [class*=avg-]::before, [class*=avg-]::after, .clearfix::before, .clearfix:after, .list-left::before, .list-left::after, .list-right::before, .list-right::after {
   display: table;

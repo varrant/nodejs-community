@@ -1,29 +1,3 @@
-.m-home li {
-  line-height: 30px;
-  border-top: 1px solid #e6e6e6; }
-  .m-home li:nth-child(1) {
-    border-top: 0; }
-  @media (min-width: 767px) {
-    .m-home li:nth-child(2) {
-      border-top: 0; }
-    .m-home li:nth-child(2n+1) {
-      border-right: 1px solid #eee; } }
-.m-home a {
-  position: relative;
-  display: block;
-  padding: 20px;
-  color: #666; }
-  .m-home a:hover {
-    background: #F9F9F9; }
-.m-home .home-icon {
-  font-size: 80px;
-  color: #ececec; }
-.m-home .home-name {
-  font-size: 30px;
-  line-height: 60px; }
-.m-home .home-desc {
-  font-size: 14px; }
-
 .m-oauth {
   max-width: 500px;
   margin: 10rem auto;
