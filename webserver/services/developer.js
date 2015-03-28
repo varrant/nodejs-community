@@ -22,7 +22,8 @@ var howdo = require('howdo');
 var urls = {
     authorize: 'https://github.com/login/oauth/authorize',
     accessToken: 'https://github.com/login/oauth/access_token',
-    user: 'https://api.github.com/user'
+    user: 'https://api.github.com/user',
+    emails: 'https://api.github.com/user/emails'
 };
 var role20 = 1 << 20;
 
@@ -588,8 +589,8 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
             var params = {
                 access_token: json.access_token
             };
-            requestOptions.url = urls.user + '?' + qs.stringify(params);
 
+            requestOptions.url = urls.user + '?' + qs.stringify(params);
             request.get(requestOptions, function (err, data, res) {
                 if (err) {
                     return next(err);
@@ -613,6 +614,75 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                 }
 
                 next(err, json);
+            });
+        })
+        // 3. 获取 primary email
+        .task(function (next, infoJSON) {
+            requestOptions.url = urls.emails + '?' + qs.stringify({
+                access_token: infoJSON.accessToken
+            });
+            request.get(requestOptions, function (err, data, res) {
+                if (err) {
+                    return next(err);
+                }
+
+                var list;
+
+                try {
+                    list = JSON.parse(data);
+                } catch (err) {
+                    list = null;
+                }
+
+                if (!list) {
+                    return next(new Error('用户信息解析失败'));
+                }
+
+                if (res.statusCode !== 200) {
+                    return next(new Error(list.message || '请求认证失败'));
+                }
+
+                var hasFind = false;
+                var findEmail = '';
+
+                // [
+                //    {"email":"cloudcome@163.com","primary":true,"verified":true},
+                //    {"email":"ben.smith8@pcc.edu","primary":false,"verified":true}
+                // ]
+                dato.each(list, function (item) {
+                    if(item.verified && item.primary){
+                        hasFind = true;
+                        findEmail = item.email;
+                        return false;
+                    }
+                });
+
+                if(!hasFind){
+                    dato.each(list, function (item) {
+                        if(item.verified){
+                            hasFind = true;
+                            findEmail = item.email;
+                            return false;
+                        }
+                    });
+                }
+
+                if(!hasFind){
+                    dato.each(list, function (item) {
+                        if(item.primary){
+                            hasFind = true;
+                            findEmail = item.email;
+                            return false;
+                        }
+                    });
+                }
+
+                if(!hasFind && list.length){
+                    findEmail = list[0].email;
+                }
+
+                infoJSON.email = findEmail;
+                next(err, infoJSON);
             });
         })
         // 异步串行

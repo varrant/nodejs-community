@@ -126,46 +126,46 @@ module.exports = function (app) {
      * @param next
      */
     exports.readDeveloper = function (req, res, next) {
-        //if (!req.cookies) {
-        //    return next();
-        //}
-        //
-        //var userCookie = req.cookies[configs.secret.cookie.userKey];
-        //
-        //// 不存在 cookie
-        //if (!userCookie) {
-        //    cookie.logout(req, res);
-        //    return next();
-        //}
-        //
-        //var developerId = crypto.decode(userCookie, configs.secret.cookie.secret);
-        //
-        //// 解析错误
-        //if (!developerId) {
-        //    cookie.logout(req, res);
-        //    return next();
-        //}
-        //
-        //// 与 session 不匹配
-        //if (req.session.$developer && req.session.$developer.id !== developerId) {
-        //    cookie.logout(req, res);
-        //    return next();
-        //}
-        //
-        //// 与 session 匹配
-        //if (req.session.$developer && req.session.$developer.id === developerId) {
-        //    res.locals.$developer = req.session.$developer;
-        //
-        //    // 有当前用户的缓存
-        //    if (app.locals.$system.developer[developerId]) {
-        //        res.locals.$developer = req.session.$developer = app.locals.$system.developer[developerId];
-        //        delete(app.locals.$system.developer[developerId]);
-        //    }
-        //
-        //    return next();
-        //}
+        if (!req.cookies) {
+            return next();
+        }
 
-        var developerId = '54a4cb2777421233efe45af8';
+        var userCookie = req.cookies[configs.secret.cookie.userKey];
+
+        // 不存在 cookie
+        if (!userCookie) {
+            cookie.logout(req, res);
+            return next();
+        }
+
+        var developerId = crypto.decode(userCookie, configs.secret.cookie.secret);
+
+        // 解析错误
+        if (!developerId) {
+            cookie.logout(req, res);
+            return next();
+        }
+
+        // 与 session 不匹配
+        if (req.session.$developer && req.session.$developer.id !== developerId) {
+            cookie.logout(req, res);
+            return next();
+        }
+
+        // 与 session 匹配
+        if (req.session.$developer && req.session.$developer.id === developerId) {
+            res.locals.$developer = req.session.$developer;
+
+            // 有当前用户的缓存
+            if (app.locals.$system.developer[developerId]) {
+                res.locals.$developer = req.session.$developer = app.locals.$system.developer[developerId];
+                delete(app.locals.$system.developer[developerId]);
+            }
+
+            return next();
+        }
+
+        //var developerId = '54a4cb2777421233efe45af8';
 
         // 不存在则读取数据库
         developer.findOne({_id: developerId}, function (err, doc) {
