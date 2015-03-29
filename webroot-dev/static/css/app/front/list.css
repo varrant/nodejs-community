@@ -5,17 +5,22 @@
   background: -moz-linear-gradient(#00A2CA 0, #F5F5F5 100%);
   background: linear-gradient(#00A2CA 0, #F5F5F5 100%);
   padding-top: 30px; }
-  .ptitle .ptitle-cover {
+  .ptitle-cover {
     width: 101px;
     height: 101px;
     border-radius: 6px;
     border: 1px solid #fff; }
-  .ptitle .ptitle-name {
-    margin: 1em 0;
+  .ptitle-name {
+    margin: 20px 0 5px;
     padding: 0;
     font-weight: normal; }
-  .ptitle .ptitle-intro {
-    margin-bottom: 1em; }
+  .ptitle-intro {
+    margin-bottom: 2em;
+    color: #FFF;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 13px; }
 
 .bdsharebuttonbox {
   display: inline-block;

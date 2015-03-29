@@ -26,10 +26,10 @@
 <div class="layout-body a-slide-down-fixed">
     <div class="ptitle">
         <img class="ptitle-cover" src="{{$sectionUriMap.article.cover}}" alt="cover"/>
-        <h1 class="ptitle-name"><i class="fi fi-file-text"></i>{{$sectionUriMap.article.name}}</h1>
-        <div class="ptitle-intro text-muted">{{$sectionUriMap.article.introduction}}</div>
-        <div class="ptitle-desc text-muted">约 {{$sectionUriMap.article.objectCount}} 篇</div>
+        <h1 class="ptitle-name"><i class="fi fi-file-text"></i>{{$sectionUriMap.article.name}}<small>/{{$sectionUriMap.article.objectCount}}</small></h1>
         <div class="ptitle-desc text-light" id="share"></div>
+        <div class="ptitle-intro">{{$sectionUriMap.article.introduction}}</div>
+        <a class="btn btn-primary btn-lg btn-ghost" href="/admin/object/article/"><i class="fi fi-plus"></i>我想写文章</a>
     </div>
 
     <div class="container">
@@ -57,9 +57,6 @@
 
                         <!--列表-->
                         <ul class="summarylist">
-                            <li class="summarylist-item text-center">
-                                <a class="btn btn-default btn-lg btn-ghost" href="/admin/object/article/"><i class="fi fi-plus"></i>我想写文章</a>
-                            </li>
                             {{if !objects.length}}
                             <li>
                                 <div class="alert alert-warning"> <i class="fi fi-info-circle"></i>暂无相关内容。</div>
