@@ -27,6 +27,8 @@ module.exports = function (app) {
      */
     exports.getList = function (section) {
         return function (req, res, next) {
+            section = app.locals.$sectionIdMap[section.id];
+
             var category = req.params.category;
             var columnId = req.params.column;
             var label = req.params.label;
@@ -186,6 +188,8 @@ module.exports = function (app) {
      */
     exports.getObject = function (section) {
         return function (req, res, next) {
+            section = app.locals.$sectionIdMap[section.id];
+
             var uri = req.params.uri;
             var page = req.params.page;
             var data = {};

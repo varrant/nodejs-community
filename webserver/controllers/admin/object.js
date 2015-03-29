@@ -16,11 +16,13 @@ module.exports = function (app) {
 
     /**
      * 列出各个 type 下的 object
-     * @param type {String} object type
+     * @param section {String} object type
      * @returns {Function}
      */
     exports.list = function (section) {
         return function (req, res, next) {
+            section = app.locals.$sectionIdMap[section.id];
+
             var data = {
                 title: section.name + '管理',
                 section: section.id,
@@ -34,11 +36,13 @@ module.exports = function (app) {
 
     /**
      * 展示某个 id 的 object
-     * @param type
+     * @param section
      * @returns {Function}
      */
     exports.get = function (section) {
         return function (req, res, next) {
+            section = app.locals.$sectionIdMap[section.id];
+
             var data = {
                 title: section.name + (req.query.id ? '更新' : '创建'),
                 id: req.query.id || '',
