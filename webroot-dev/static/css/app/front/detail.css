@@ -15,7 +15,6 @@
   .postmain .postmain-content p {
     white-space: pre-wrap; }
   .postmain .postmain-content img {
-    max-width: 50%;
     cursor: -webkit-zoom-in;
     cursor: -moz-zoom-in;
     cursor: zoom-in; }
