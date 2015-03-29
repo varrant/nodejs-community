@@ -117,7 +117,7 @@ module.exports = function (app) {
 
             dato.each(app.locals.$section, function (index, section) {
                 if (section.id.toString() === doc.id.toString()) {
-                    app.locals.$section.splice(index, 1);
+                    app.locals.$sectionList.splice(index, 1);
                     return false;
                 }
             });

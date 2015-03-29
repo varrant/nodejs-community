@@ -33,7 +33,7 @@ module.exports = function (app) {
 
         var findSection = null;
 
-        dato.each(app.locals.$section, function (index, _section) {
+        dato.each(app.locals.$sectionList, function (index, _section) {
             if (_section.id.toString() === section) {
                 findSection = _section;
                 return false;
