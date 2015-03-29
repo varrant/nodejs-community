@@ -32,6 +32,8 @@ module.exports = function (app) {
             statistics: statistics
         };
 
+        return next(new Error('测试错误'));
+
         howdo
             // 注册用户数
             .task(function (done) {

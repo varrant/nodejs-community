@@ -23,13 +23,3 @@
   .m-oauth {
     max-width: none;
     margin: 20px; } }
-
-.m-404, .m-500 {
-  margin-top: 200px; }
-  .m-404 h1, .m-500 h1 {
-    font-size: 100px; }
-
-.m-labes li {
-  background: #EEE;
-  padding: 4px 10px;
-  margin-right: 10px; }
