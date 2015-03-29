@@ -5,42 +5,6 @@ $border-color: #e6e6e6;
 
 
 
-.m-oauth {
-  max-width: 500px;
-  margin: 10rem auto;
-  background: #fff;
-  padding: 50px 30px;
-  border: 1px solid #EFEFEF;
-  border-radius: 6px;
-
-  &-callback {
-    margin: 1rem auto;
-  }
-
-  .oauth-info {
-    list-style: none;
-
-    li {
-      position: relative;
-      padding-left: 80px;
-      line-height: 2;
-    }
-
-    strong {
-      position: absolute;
-      width: 70px;
-      left: 0;
-      text-align: right;
-    }
-  }
-}
-
-@media (max-width: 767px) {
-  .m-oauth {
-    max-width: none;
-    margin: 20px;
-  }
-}
 
 
 
