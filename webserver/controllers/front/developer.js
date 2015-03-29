@@ -186,7 +186,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$section.forEach(function (section) {
+                app.locals.$sectionList.forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -263,7 +263,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$section.forEach(function (section) {
+                app.locals.$sectionList.forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -340,7 +340,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$section.forEach(function (section) {
+                app.locals.$sectionList.forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -416,7 +416,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$section.forEach(function (section) {
+                app.locals.$sectionList.forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -493,7 +493,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$section.forEach(function (section) {
+                app.locals.$sectionList.forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -569,7 +569,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$section.forEach(function (section) {
+                app.locals.$sectionList.forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -645,7 +645,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$section.forEach(function (section) {
+                app.locals.$sectionList.forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -720,7 +720,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$section.forEach(function (section) {
+                app.locals.$sectionList.forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
