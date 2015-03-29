@@ -60,11 +60,9 @@ output {
 .ipt {
   display: block;
   width: 100%;
-  height: 34px;
-  padding: 6px 12px;
+  padding: 9px;
   font-size: 14px;
   line-height: normal;
-  color: #555;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -79,6 +77,13 @@ output {
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+  }
+
+  &:invalid{
+    border-color: #F86E6E;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(233, 102, 102, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(233, 102, 102, 0.6);
   }
 }
 
@@ -133,7 +138,7 @@ textarea.ipt {
 /*btn*/
 .btn {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 9px 18px;
   margin-bottom: 0;
   font-size: 14px;
   line-height: 14px;
@@ -523,7 +528,7 @@ textarea.ipt {
   }
 
   &-lg {
-    padding: 10px 26px;
+    padding: 12px 26px;
     font-size: 18px;
     line-height: 18px;
     border-radius: 6px;
@@ -533,13 +538,6 @@ textarea.ipt {
     padding: 5px 10px;
     font-size: 12px;
     line-height: 12px;
-    border-radius: 3px;
-  }
-
-  &-xs {
-    padding: 1px 5px;
-    font-size: 12px;
-    line-height: 1.5;
     border-radius: 3px;
   }
 

@@ -24,19 +24,19 @@
 
 
 <div class="layout-body a-slide-down-fixed">
+    <div class="ptitle">
+        <img class="ptitle-cover" src="{{$sectionUriMap.link.cover}}" alt="cover"/>
+        <h1 class="ptitle-name"><i class="fi fi-link"></i>{{$sectionUriMap.link.name}}</h1>
+        <div class="ptitle-intro text-muted">{{$sectionUriMap.link.introduction}}</div>
+        <div class="ptitle-desc text-muted">约 {{$sectionUriMap.link.objectCount}} 个</div>
+        <div class="ptitle-desc text-light" id="share"></div>
+    </div>
+
     <div class="container">
         <div class="row layout-container">
             <!--主-->
             <div class="col-md-12 layout-main">
                 <div class="card">
-                    <h2 class="card-title">
-                        <i class="fi fi-link"></i>{{section.name}}
-                        <small class="card-subtitle text-muted hidden-xs">——{{section.introduction}}</small>
-                        <div class="card-endtitle">
-                            <span class="text-light text-sm hidden-xs"><i class="fi fi-file-o"></i>{{pager.count}}</span>
-                        </div>
-                    </h2>
-
                     <div class="card-body">
                         <ul class="choose">
                             <li class="clearfix">

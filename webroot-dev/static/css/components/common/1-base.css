@@ -6,7 +6,11 @@
 html {
   font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
   font-size: 62.5%;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga", "kern"; }
 
 body {
   color: #333;
@@ -24,11 +28,8 @@ body {
     -moz-hyphens: auto;
     hyphens: auto; } }
 
-html, input, textarea, select, button {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -moz-font-feature-settings: "liga", "kern"; }
+button, input, optgroup, select, textarea {
+  font: initial; }
 
 p, hr, ul, ol, dl, blockquote, pre, address, fieldset, figure {
   margin: 0 0 1.6rem 0; }
