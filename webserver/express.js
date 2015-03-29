@@ -60,7 +60,7 @@ module.exports = function (next) {
     //////////////////////////////////////////////////////////////////////
     app.set('env', configs.app.env);
     app.set('port', configs.app.port);
-    app.set('views', path.join(configs.dir.webroot, './views/'));
+    app.set('views', path.join(configs.dir.webroot, './.views/'));
     app.engine('html', ydrTemplate.__express);
     app.set('view engine', 'html');
 

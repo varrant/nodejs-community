@@ -5,7 +5,7 @@
     "host": "/"
   },
   "html": [
-    "./views/**/*.html"
+    "./.views/**/*.html"
   ],
   "res": "./static/img/**/*.*",
   "dest": "../webroot-pro/",
