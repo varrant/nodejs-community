@@ -16,6 +16,9 @@
                 <!--<button class="btn btn-primary"><i class="fi fi-star"></i>关注</button>-->
             <!--</li>-->
             {{/if}}
+            <li><i class="fi fi-file-text"></i><a href="/article/by/{{=developer.githubLogin}}/">{{sectionStatistics.article}} 篇文章</a></li>
+            <li><i class="fi fi-cube"></i><a href="/question/by/{{=developer.githubLogin}}/">{{sectionStatistics.question}} 次提问</a></li>
+            <li><i class="fi fi-link"></i><a href="/link/by/{{=developer.githubLogin}}/">{{sectionStatistics.link}} 个链接</a></li>
         </ul>
     </div>
 </div>
