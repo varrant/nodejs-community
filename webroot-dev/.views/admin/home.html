@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
- - 文件描述
+ - me
  - @author ydr.me
  - @create 2014-12-14 13:08
  -->
@@ -8,16 +8,52 @@
 <head lang="zh-cn">
     {{include ../include/meta.html}}
     {{include ./include/meta.html}}
+    <!--coolie-->
+    <link rel="stylesheet" href="/static/css/app/admin/home.css"/>
+    <!--/coolie-->
 </head>
 <body ontouchstart="">
 
 {{include ../front/include/nav.html}}
 
-<div class="g-main">
+<div class="layout-main">
     <div class="m-main">
         <h1 class="main-title"><i class="fi fi-dashboard"></i>{{title}}</h1>
         <div class="main-body">
-            {{include ./include/home/me.html}}
+            <div class="me">
+                <div class="clearfix">
+                    <div class="me-avatar pull-left">
+                        <a href="/admin/me/"><img src="{{$developer.email|gravatar:200}}" alt="avatar" width="100" height="100"/></a>
+                    </div>
+                    <ul class="me-profile">
+                        <li><i class="fi fi-user"></i>
+                            <strong>{{$developer.nickname}}</strong>
+                            {{$developer.group ? '（' + $developer.group + '）' : ''}}
+                            第{{$developer.index+1}}位
+                            <span class="text-space"></span>
+                            <a href="{{$configs.app.host}}/developer/{{=$developer.githubLogin}}/"><i class="fi fi-home"></i>主页</a>
+                        </li>
+                        <li><i class="fi fi-location-arrow"></i>{{$developer.meta.location}}</li>
+                        <li><i class="fi fi-link"></i>{{$developer.meta.blog}}</li>
+                    </ul>
+                </div>
+
+                <blockquote class="me-bio">{{$developer.meta.bio}}</blockquote>
+
+                <ul class="me-get text-sm list-left text-muted">
+                    <li><i class="fi fi-eye"></i><strong>{{$developer.viewByCount|humanize}}</strong>次被访问</li>
+                    <li><i class="fi fi-comment"></i><a href="/developer/{{$developer.githubLogin}}/comment/"><strong>{{$developer.commentByCount|humanize}}</strong>次被评论</a></li>
+                    <li><i class="fi fi-reply"></i><a href="/developer/{{$developer.githubLogin}}/reply-by/"><strong>{{$developer.replyByCount|humanize}}</strong>次被回复</a></li>
+                    <li><i class="fi fi-thumbs-up"></i><a href="/developer/{{$developer.githubLogin}}/agree-by/"><strong>{{$developer.agreeByCount|humanize}}</strong>次被赞同</a></li>
+                    <li><i class="fi fi-check-square-o"></i><a href="/developer/{{$developer.githubLogin}}/accept-by/"><strong>{{$developer.acceptByCount|humanize}}</strong>次被采纳</a></li>
+                    <!--<li><i class="fi fi-star"></i>-->
+                    <!--<a href="/developer/{{$developer.github}}/follow/">已关注<strong>{{$developer.followCount|humanize}}</strong></a>/-->
+                    <!--<a href="/developer/{{$developer.github}}/followed/">被关注<strong>{{$developer.followByCount|humanize}}</strong></a>-->
+                    <!--</li>-->
+                </ul>
+
+                <a href="/admin/me/" class="btn btn-success btn-sm me-edit">更多</a>
+            </div>
         </div>
     </div>
     {{include ./include/footer.html}}

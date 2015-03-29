@@ -1,0 +1,89 @@
+
+.form {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  $width: 140px;
+
+  > li {
+    position: relative;
+    padding: 0 0 0 $width;
+    margin-bottom: 20px;
+    min-height: 36px;
+  }
+
+  & > &-striped {
+    margin-bottom: 0;
+  }
+
+  & > &-desc {
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  &-key {
+    position: absolute;
+    width: $width;
+    left: 0;
+    top: 0;
+    text-align: right;
+    color: #999;
+    line-height: 32px;
+    padding: 0;
+    margin: 0;
+  }
+
+  &-required {
+    color: #ff0025;
+    margin-left: 5px;
+  }
+
+  &-val {
+    padding: 0;
+    margin: 0 0 0 20px;
+  }
+
+  &-action {
+    padding: 20px;
+    margin-left: -100px;
+    margin-top: 40px;
+    border-top: 1px solid #ECECEC;
+  }
+
+  &-opt {
+    display: block;
+    margin: 0;
+    padding: 5px 0;
+  }
+
+  &-desc {
+    padding: 0;
+    margin: 10px 0 0;
+    color: #888;
+    font-size: 14px;
+    line-height: 20px;
+
+    code, strong, a {
+      margin: 0 5px;
+    }
+  }
+
+  &-vertical {
+    > li {
+      padding: 0;
+    }
+
+    &-key, &-val {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin: 0;
+      text-align: left;
+    }
+
+    &-action {
+      margin-left: 0;
+    }
+  }
+}
