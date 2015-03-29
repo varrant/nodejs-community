@@ -13,6 +13,10 @@
     <meta name="robots" content="nofollow"/>
     {{/if}}
 
+    <!--coolie-->
+    <link rel="stylesheet" href="/static/css/app/front/detail.css"/>
+    <!--/coolie-->
+
     <script>window['-author-']={
         id: '{{object.author.id}}',
         nickname: '{{object.author.nickname}}',
@@ -29,11 +33,11 @@
 <body ontouchstart="" class="p-object-article">
 {{include ./include/nav.html}}
 
-<div class="g-body a-slide-down-fixed">
+<div class="layout-body a-slide-down-fixed">
     <div class="container">
-        <div class="row g-container">
+        <div class="row layout-container">
             <!--主-->
-            <div class="col-md-9 g-main">
+            <div class="col-md-9 layout-main">
                 <!--内容-->
                 <div class="card">
                     <h2 class="card-title" id="object-title">
@@ -80,11 +84,12 @@
                     </div>
                 </div>
                 <!--/内容-->
+
                 <div id="response"></div>
             </div>
             <!--/主-->
             <!--副-->
-            <div class="col-md-3 g-sub">
+            <div class="col-md-3 layout-sub">
                 {{include ./include/object/sub-author.html}}
                 {{include ./include/object/sub-statistics.html}}
             </div>
