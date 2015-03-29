@@ -113,7 +113,7 @@ module.exports = function (app) {
             var sectionStatistics = {};
 
             doc.sectionStatistics = doc.sectionStatistics || {};
-            app.locals.$section.forEach(function (section) {
+            app.locals.$sectionList.forEach(function (section) {
                 var uri = section.uri;
                 var id = section.id;
 
