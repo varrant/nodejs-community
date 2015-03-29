@@ -15,7 +15,7 @@ define(function (require, exports, module) {
      * @requires core/event/base
      * @requires utils/dato
      * @requires utils/class
-     * @requires libs/Emitter
+     * @requires core/libs/Emitter
      */
     'use strict';
 

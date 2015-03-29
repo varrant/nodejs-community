@@ -2,17 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-animation.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/front/2-unit-form.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/admin/column.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/detail.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/admin/developer.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/developer.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/error.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/admin/home.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/admin/item.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/admin/list.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/oauth.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Router.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Dangke.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Animation.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Animation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Pjax.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/Pjax.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/animation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/date.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/date.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/hashbang.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/navigator/hashbang.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/hashbang.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/utils/hashbang.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Banner/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Banner/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollspy/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Scrollspy/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Stickly/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Stickly/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Tab/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Tab/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/communication/jsonp.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/communication/jsonp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/selector.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/dom/selector.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -56,8 +59,8 @@
       <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3475298" vertical-offset="0" max-vertical-offset="587">
-              <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.37649062" vertical-offset="0" max-vertical-offset="587">
+              <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -649,13 +652,7 @@
       <workItem from="1427210111582" duration="11082000" />
       <workItem from="1427451396790" duration="5000" />
       <workItem from="1427467037877" duration="4378000" />
-      <workItem from="1427552973888" duration="19599000" />
-    </task>
-    <task id="LOCAL-00621" summary="0.0.8">
-      <created>1427469062880</created>
-      <option name="number" value="00621" />
-      <option name="project" value="LOCAL" />
-      <updated>1427469062880</updated>
+      <workItem from="1427552973888" duration="19672000" />
     </task>
     <task id="LOCAL-00622" summary="0.0.8">
       <created>1427469073842</created>
@@ -945,11 +942,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427616899183</updated>
     </task>
-    <option name="localTasksCounter" value="670" />
+    <task id="LOCAL-00670" summary="0.0.50">
+      <created>1427617918381</created>
+      <option name="number" value="00670" />
+      <option name="project" value="LOCAL" />
+      <updated>1427617918381</updated>
+    </task>
+    <option name="localTasksCounter" value="671" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="226804000" />
+    <option name="totallyTimeSpent" value="226877000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -973,7 +976,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21728595" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21728595" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4604651" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1396,8 +1399,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3475298" vertical-offset="0" max-vertical-offset="587">
-          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.37649062" vertical-offset="0" max-vertical-offset="587">
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
           <folding />
         </state>
       </provider>
