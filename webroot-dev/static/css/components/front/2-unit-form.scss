@@ -28,7 +28,7 @@
     left: 0;
     top: 0;
     text-align: right;
-    color: #999;
+    color: #555;
     line-height: 32px;
     padding: 0;
     margin: 0;
@@ -74,7 +74,8 @@
       padding: 0;
     }
 
-    &-key, &-val {
+    .form-key,
+    .form-val {
       position: relative;
       display: block;
       width: 100%;
@@ -82,7 +83,7 @@
       text-align: left;
     }
 
-    &-action {
+    .form-action {
       margin-left: 0;
     }
   }

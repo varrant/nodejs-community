@@ -27,7 +27,7 @@ module.exports = function (app) {
                 introduction: section.introduction
             };
 
-            res.render('admin/object-list-' + section.uri + '.html', data);
+            res.render('admin/list-' + section.uri + '.html', data);
         };
     };
 
@@ -46,7 +46,7 @@ module.exports = function (app) {
                 introduction: section.introduction
             };
 
-            res.render('admin/object-item-' + section.uri + '.html', data);
+            res.render('admin/item-' + section.uri + '.html', data);
         };
     };
 
