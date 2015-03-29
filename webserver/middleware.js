@@ -10,6 +10,7 @@ var setting = require('./services/').setting;
 var section = require('./services/').section;
 var category = require('./services/').category;
 var developer = require('./services/').developer;
+var sync = require('./utils/').sync;
 var howdo = require('howdo');
 var configs = require('../configs/');
 var pkg = require('../package.json');
@@ -40,29 +41,21 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                app.locals.$section = docs || [];
-                app.locals.$sectionIdMap = {};
-                app.locals.$sectionUriMap = {};
-                docs.forEach(function (item) {
-                    app.locals.$sectionIdMap[item.id] = item;
-                    app.locals.$sectionUriMap[item.uri] = item;
-                });
-
+                sync.section(app, docs);
                 done();
             });
         })
-        // 初始化社区版块
+        // 初始化社区分类
         .task(function (done) {
             category.find({}, function (err, docs) {
                 if (err) {
                     return done(err);
                 }
 
-                app.locals.$category = docs || [];
+                sync.category(app, docs);
                 done();
             });
         })
-        // 初始化社区分类
         // 初始化网站管理员
         .task(function (done) {
             developer.findOne({

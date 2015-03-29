@@ -1,5 +1,5 @@
 /*!
- * 更新本地
+ * 同步本地变量
  * @author ydr.me
  * @create 2015-03-29 11:26
  */
@@ -8,7 +8,7 @@
 
 
 /**
- * 更新本地版块变量
+ * 同步本地版块变量
  * @param app
  * @param docs
  */
@@ -24,7 +24,7 @@ exports.section = function (app, docs) {
 
 
 /**
- * 更新本地分类变量
+ * 同步本地分类变量
  * @param app
  * @param docs
  */
