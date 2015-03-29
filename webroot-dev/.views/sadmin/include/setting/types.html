@@ -20,8 +20,8 @@
         <tbody>
         <tr v-repeat="item:list">
             <td>
-                <button class="btn btn-primary btn-xs types-up" v-on="click:onup(item, $index)"><i class="fi fi-long-arrow-up i-striped"></i></button>
-                <button class="btn btn-info btn-xs types-down" v-on="click:ondown(item, $index)"><i class="fi fi-long-arrow-down i-striped"></i></button>
+                <button class="btn btn-primary btn-sm types-up" v-on="click:onup(item, $index)"><i class="fi fi-long-arrow-up i-striped"></i></button>
+                <button class="btn btn-info btn-sm types-down" v-on="click:ondown(item, $index)"><i class="fi fi-long-arrow-down i-striped"></i></button>
             </td>
             <td>
                 <input class="ipt" type="text" v-model="item.title"/></td>
@@ -38,7 +38,7 @@
             <td>
                 <textarea name="desc" class="ipt" v-model="item.desc" rows="2">\{{item.desc}}</textarea></td>
             <td>
-                <button class="btn btn-danger btn-xs" v-on="click:onremove($index)"><i class="fi fi-remove i-striped"></i></button>
+                <button class="btn btn-danger btn-sm" v-on="click:onremove($index)"><i class="fi fi-remove i-striped"></i></button>
             </td>
         </tr>
         </tbody>

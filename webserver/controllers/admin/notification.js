@@ -12,13 +12,13 @@ module.exports = function (app) {
     exports.get = function (req, res, next) {
         var sectionURIMap = {};
 
-        app.locals.$section.forEach(function (section) {
+        app.locals.$sectionList.forEach(function (section) {
             sectionURIMap[section.id] = section.uri;
         });
 
         var data = {
             title: '提醒',
-            sectionURIMap: JSON.stringify(sectionURIMap)
+            sectionURIMap: sectionURIMap
         };
 
         res.render('admin/notification.html', data);
