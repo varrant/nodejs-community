@@ -258,7 +258,12 @@ textarea.ipt {
     background-color: #428bca;
     border-color: #357ebd;
 
-    &.btn-ghost{
+    &.btn-ghost,
+    &.btn-ghost:hover,
+    &.btn-ghost:focus,
+    &.btn-ghost.focus,
+    &.btn-ghost:active,
+    &.btn-ghost.active{
       color: #285e8e;
     }
 
@@ -267,6 +272,7 @@ textarea.ipt {
     &.focus,
     &:active,
     &.active {
+      color: #fff;
       background-color: #3071a9;
       border-color: #285e8e;
     }
@@ -309,7 +315,12 @@ textarea.ipt {
     background-color: #5cb85c;
     border-color: #4cae4c;
 
-    &.btn-ghost{
+    &.btn-ghost,
+    &.btn-ghost:hover,
+    &.btn-ghost:focus,
+    &.btn-ghost.focus,
+    &.btn-ghost:active,
+    &.btn-ghost.active{
       color: #398439;
     }
 
@@ -318,6 +329,7 @@ textarea.ipt {
     &.focus,
     &:active,
     &.active {
+      color: #fff;
       background-color: #449d44;
       border-color: #398439;
     }
@@ -360,7 +372,12 @@ textarea.ipt {
     background-color: #5bc0de;
     border-color: #46b8da;
 
-    &.btn-ghost{
+    &.btn-ghost,
+    &.btn-ghost:hover,
+    &.btn-ghost:focus,
+    &.btn-ghost.focus,
+    &.btn-ghost:active,
+    &.btn-ghost.active{
       color: #269abc;
     }
 
@@ -369,6 +386,7 @@ textarea.ipt {
     &.focus,
     &:active,
     &.active {
+      color: #fff;
       background-color: #31b0d5;
       border-color: #269abc;
     }
@@ -411,7 +429,12 @@ textarea.ipt {
     background-color: #f0ad4e;
     border-color: #eea236;
 
-    &.btn-ghost{
+    &.btn-ghost,
+    &.btn-ghost:hover,
+    &.btn-ghost:focus,
+    &.btn-ghost.focus,
+    &.btn-ghost:active,
+    &.btn-ghost.active{
       color: #d58512;
     }
 
@@ -420,6 +443,7 @@ textarea.ipt {
     &.focus,
     &:active,
     &.active {
+      color: #fff;
       background-color: #ec971f;
       border-color: #d58512;
     }
@@ -462,7 +486,12 @@ textarea.ipt {
     background-color: #d9534f;
     border-color: #d43f3a;
 
-    &.btn-ghost{
+    &.btn-ghost,
+    &.btn-ghost:hover,
+    &.btn-ghost:focus,
+    &.btn-ghost.focus,
+    &.btn-ghost:active,
+    &.btn-ghost.active{
       color: #ac2925;
     }
 
@@ -471,6 +500,7 @@ textarea.ipt {
     &.focus,
     &:active,
     &.active {
+      color: #fff;
       background-color: #c9302c;
       border-color: #ac2925;
     }

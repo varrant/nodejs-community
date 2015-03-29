@@ -27,12 +27,12 @@
             <ul class="alien-ui-response-meta alien-ui-response-action text-light list-left">
                 {{if !item.parentResponse}}
                 <li>
-                    <button class="btn btn-primary btn-xs alien-ui-response-reply"><i class="fi fi-reply"></i>回复<span
+                    <button class="btn btn-primary btn-sm alien-ui-response-reply"><i class="fi fi-reply"></i>回复<span
                             class="alien-ui-response-number">{{item.replyByCount}}</span></button>
                 </li>
                 {{/if}}
                 <li>
-                    <button class="btn btn-default btn-xs alien-ui-response-agree"><i class="fi fi-thumbs-up"></i>赞同<span
+                    <button class="btn btn-default btn-sm alien-ui-response-agree"><i class="fi fi-thumbs-up"></i>赞同<span
                             class="alien-ui-response-number">{{item.agreeByCount}}</span></button>
                     <span class="alien-ui-response-agreers list-left">
                         {{list item.agreers as agreer}}
@@ -43,13 +43,13 @@
                 {{if !item.parentResponse}}
                     {{if item.acceptByObject}}
                     <li class="alien-ui-response-accept-li">
-                        <button class="btn btn-success btn-xs active" readonly><i
+                        <button class="btn btn-success btn-sm active" readonly><i
                                 class="fi fi-check"></i>已被采纳</button>
                     </li>
                     {{/if}}
                     {{if canAccept && developer.id === author.id && !object.acceptByResponse}}
                     <li class="alien-ui-response-accept-li">
-                        <button class="btn btn-warning btn-xs alien-ui-response-accept"><i
+                        <button class="btn btn-warning btn-sm alien-ui-response-accept"><i
                                 class="fi fi-check"></i>采纳回答</button>
                     </li>
                     {{/if}}

@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/.views/front/list-article.html" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/list-article.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/.views/front/list-help.html" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/list-help.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/.views/front/list-link.html" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/list-link.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/.views/front/list-question.html" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/list-question.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/list.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/list.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/list.scss" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/list.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-form.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-form.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-form.scss" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-form.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/list.html" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -68,10 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list.scss" pinned="false" current-in-tab="true">
+      <file leaf-file-name="list.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/front/list.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13705584" vertical-offset="497" max-vertical-offset="2567">
+            <state vertical-scroll-proportion="-3.1153846" vertical-offset="497" max-vertical-offset="2567">
               <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
               <folding />
             </state>
@@ -88,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2-unit-form.scss" pinned="false" current-in-tab="false">
+      <file leaf-file-name="2-unit-form.scss" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-form.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.423077" vertical-offset="6098" max-vertical-offset="10251">
-              <caret line="367" column="12" selection-start-line="367" selection-start-column="12" selection-end-line="367" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.15228426" vertical-offset="5384" max-vertical-offset="10761">
+              <caret line="322" column="23" selection-start-line="322" selection-start-column="23" selection-end-line="322" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -116,7 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/components/front/1-header.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/components/front/2-unit-list.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/2-footer.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/components/front/2-unit-simplelist.scss" />
@@ -161,12 +157,13 @@
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/home.html" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/column.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-form.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-question.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-article.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-link.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-help.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/list.scss" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-form.scss" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/list.html" />
       </list>
     </option>
   </component>
@@ -1003,13 +1000,7 @@
       <workItem from="1427210111582" duration="11082000" />
       <workItem from="1427451396790" duration="5000" />
       <workItem from="1427467037877" duration="4378000" />
-      <workItem from="1427552973888" duration="10990000" />
-    </task>
-    <task id="LOCAL-00599" summary="0.0.5">
-      <created>1427211976230</created>
-      <option name="number" value="00599" />
-      <option name="project" value="LOCAL" />
-      <updated>1427211976231</updated>
+      <workItem from="1427552973888" duration="11178000" />
     </task>
     <task id="LOCAL-00600" summary="0.0.6">
       <created>1427331704555</created>
@@ -1299,11 +1290,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427604987969</updated>
     </task>
-    <option name="localTasksCounter" value="648" />
+    <task id="LOCAL-00648" summary="0.0.8">
+      <created>1427605453311</created>
+      <option name="number" value="00648" />
+      <option name="project" value="LOCAL" />
+      <updated>1427605453311</updated>
+    </task>
+    <option name="localTasksCounter" value="649" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="218195000" />
+    <option name="totallyTimeSpent" value="218383000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
@@ -1428,16 +1425,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webserver/controllers/readme.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/components/common/0-normalize.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33199194" vertical-offset="2963" max-vertical-offset="7361">
@@ -1806,14 +1793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-form.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.423077" vertical-offset="6098" max-vertical-offset="10251">
-          <caret line="367" column="12" selection-start-line="367" selection-start-column="12" selection-end-line="367" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/list-question.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.807693" vertical-offset="272" max-vertical-offset="2601">
@@ -1848,8 +1827,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/app/front/list.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13705584" vertical-offset="497" max-vertical-offset="2567">
+        <state vertical-scroll-proportion="-3.1153846" vertical-offset="497" max-vertical-offset="2567">
           <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12802768" vertical-offset="283" max-vertical-offset="1411">
+          <caret line="21" column="66" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-form.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15228426" vertical-offset="5384" max-vertical-offset="10761">
+          <caret line="322" column="23" selection-start-line="322" selection-start-column="23" selection-end-line="322" selection-end-column="23" />
           <folding />
         </state>
       </provider>
