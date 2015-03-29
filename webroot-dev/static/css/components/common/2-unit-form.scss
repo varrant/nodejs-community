@@ -206,12 +206,16 @@ textarea.ipt {
     background-color: #fff;
     border-color: #ddd;
 
+    &.btn-ghost{
+      border-color: #aaa;
+      color: #666;
+    }
+
     &:hover,
     &:focus,
     &.focus,
     &:active,
     &.active {
-      color: #333;
       background-color: #f5f5f5;
       border-color: #ccc;
     }
@@ -254,12 +258,15 @@ textarea.ipt {
     background-color: #428bca;
     border-color: #357ebd;
 
+    &.btn-ghost{
+      color: #285e8e;
+    }
+
     &:hover,
     &:focus,
     &.focus,
     &:active,
     &.active {
-      color: #fff;
       background-color: #3071a9;
       border-color: #285e8e;
     }
@@ -302,12 +309,15 @@ textarea.ipt {
     background-color: #5cb85c;
     border-color: #4cae4c;
 
+    &.btn-ghost{
+      color: #398439;
+    }
+
     &:hover,
     &:focus,
     &.focus,
     &:active,
     &.active {
-      color: #fff;
       background-color: #449d44;
       border-color: #398439;
     }
@@ -350,12 +360,15 @@ textarea.ipt {
     background-color: #5bc0de;
     border-color: #46b8da;
 
+    &.btn-ghost{
+      color: #269abc;
+    }
+
     &:hover,
     &:focus,
     &.focus,
     &:active,
     &.active {
-      color: #fff;
       background-color: #31b0d5;
       border-color: #269abc;
     }
@@ -398,12 +411,15 @@ textarea.ipt {
     background-color: #f0ad4e;
     border-color: #eea236;
 
+    &.btn-ghost{
+      color: #d58512;
+    }
+
     &:hover,
     &:focus,
     &.focus,
     &:active,
     &.active {
-      color: #fff;
       background-color: #ec971f;
       border-color: #d58512;
     }
@@ -446,12 +462,15 @@ textarea.ipt {
     background-color: #d9534f;
     border-color: #d43f3a;
 
+    &.btn-ghost{
+      color: #ac2925;
+    }
+
     &:hover,
     &:focus,
     &.focus,
     &:active,
     &.active {
-      color: #fff;
       background-color: #c9302c;
       border-color: #ac2925;
     }
@@ -499,7 +518,7 @@ textarea.ipt {
     &.active,
     &[disabled],
     fieldset[disabled] & {
-      background-color: transparent;
+      background-color: rgba(0,0,0,0);
       -webkit-box-shadow: none;
       box-shadow: none;
     }
@@ -508,7 +527,7 @@ textarea.ipt {
     &:hover,
     &:focus,
     &:active {
-      border-color: transparent;
+      border-color: rgba(0,0,0,0);
     }
 
     &:hover,
@@ -524,6 +543,15 @@ textarea.ipt {
     fieldset[disabled] &:focus {
       color: #777;
       text-decoration: none;
+    }
+  }
+
+  &-ghost{
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: rgba(0,0,0,0);
     }
   }
 
