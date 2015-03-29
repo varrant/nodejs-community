@@ -5,11 +5,11 @@
         <ul class="simplelist history">
             {{if list.length}}
             {{list list as item}}
-            <li>
+            <li class="clearfix">
+                <span class="pull-right text-light">{{item.interactiveAt|datefrom}}</span>
                 {{developer.nickname}}发表的<a href="/{{=sectionURIMap[item.object.section]}}/{{=item.object.uri}}.html">《{{item.object.title}}》</a>
                 被<a href="/developer/{{=item.source.githubLogin}}">{{item.source.nickname}}</a>评论道：
                 <blockquote>{{=item.response.contentHTML}}</blockquote>
-                <span class="history-time text-light">{{item.interactiveAt|datefrom}}</span>
             </li>
             {{/list}}
             {{else}}
