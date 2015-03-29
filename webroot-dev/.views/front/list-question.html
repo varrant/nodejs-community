@@ -26,10 +26,12 @@
 <div class="layout-body a-slide-down-fixed">
     <div class="ptitle">
         <img class="ptitle-cover" src="{{$sectionUriMap.question.cover}}" alt="cover"/>
-        <h1 class="ptitle-name"><i class="fi fi-cube"></i>{{$sectionUriMap.question.name}}</h1>
-        <div class="ptitle-intro text-muted">{{$sectionUriMap.question.introduction}}</div>
-        <div class="ptitle-desc text-muted">约 {{$sectionUriMap.question.objectCount}} 问</div>
+        <h1 class="ptitle-name"><i class="fi fi-cube"></i>{{$sectionUriMap.question.name}}<small>/{{$sectionUriMap.question.objectCount}}</small></h1>
         <div class="ptitle-desc text-light" id="share"></div>
+        <div class="ptitle-intro text-muted">{{$sectionUriMap.question.introduction}}</div>
+        <div class="ptitle-action">
+            <a class="btn btn-primary btn-lg btn-ghost" href="/admin/object/question/"><i class="fi fi-plus"></i>我想问个问题</a>
+        </div>
     </div>
 
     <div class="container">
@@ -63,9 +65,6 @@
 
                         <!--列表-->
                         <ul class="summarylist" id="list">
-                            <li class="summarylist-item text-center">
-                                <a class="btn btn-warning" href="/admin/object/question/"><i class="fi fi-plus"></i>我想问个问题</a>
-                            </li>
                             {{if !objects.length}}
                             <li>
                                 <div class="alert alert-warning"> <i class="fi fi-info-circle"></i>暂无相关内容。</div>

@@ -26,10 +26,12 @@
 <div class="layout-body a-slide-down-fixed">
     <div class="ptitle">
         <img class="ptitle-cover" src="{{$sectionUriMap.link.cover}}" alt="cover"/>
-        <h1 class="ptitle-name"><i class="fi fi-link"></i>{{$sectionUriMap.link.name}}</h1>
+        <h1 class="ptitle-name"><i class="fi fi-link"></i>{{$sectionUriMap.link.name}}<small>/{{$sectionUriMap.link.objectCount}}</small></h1>
+        <div class="ptitle-desc text-lighzt" id="share"></div>
         <div class="ptitle-intro text-muted">{{$sectionUriMap.link.introduction}}</div>
-        <div class="ptitle-desc text-muted">约 {{$sectionUriMap.link.objectCount}} 个</div>
-        <div class="ptitle-desc text-light" id="share"></div>
+        <div class="ptitle-action">
+            <a class="btn btn-primary btn-lg btn-ghost" href="/admin/object/link/"><i class="fi fi-plus"></i>我想分享链接</a>
+        </div>
     </div>
 
     <div class="container">
@@ -50,9 +52,6 @@
 
                         <!--列表-->
                         <ul class="summarylist">
-                            <li class="summarylist-item text-center">
-                                <a class="btn btn-warning" href="/admin/object/link/"><i class="fi fi-plus"></i>我想分享链接</a>
-                            </li>
                             {{if !objects.length}}
                             <li>
                                 <div class="alert alert-warning"> <i class="fi fi-info-circle"></i>暂无相关内容。</div>
