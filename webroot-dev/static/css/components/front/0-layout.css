@@ -1,7 +1,8 @@
 body {
-  background: #f5f5f5;
-  margin-top: 80px; }
+  background: #f5f5f5; }
 
+.layout-body {
+  margin-top: 100px; }
 .layout-container {
   background-color: #fff; }
   @media (max-width: 991px) {

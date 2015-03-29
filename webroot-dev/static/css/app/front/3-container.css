@@ -151,28 +151,6 @@
   .m-form-vertical .form-action {
     margin-left: 0; }
 
-.m-ptitle {
-  text-align: center;
-  margin-bottom: 2em; }
-  .m-ptitle .ptitle-cover {
-    width: 104px;
-    height: 104px;
-    border-radius: 100%;
-    border: 4px solid #FFF;
-    box-shadow: 0 0 15px #C3C2C2; }
-  .m-ptitle .ptitle-name {
-    margin: 1em 0;
-    padding: 0; }
-    .m-ptitle .ptitle-name span {
-      display: inline-block;
-      font-weight: normal;
-      padding: 3px 12px;
-      line-height: 1.5em;
-      border: 1px solid #CFCFCF;
-      border-radius: 6px; }
-  .m-ptitle .ptitle-intro {
-    margin-bottom: .3em; }
-
 .m-labes li {
   background: #EEE;
   padding: 4px 10px;

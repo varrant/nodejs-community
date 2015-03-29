@@ -9,7 +9,7 @@
     {{include ../include/meta.html}}
     {{include ./include/meta.html}}
     <!--coolie-->
-    <link rel="stylesheet" href="/static/css/app/front/column.css"/>
+    <link rel="stylesheet" href="/static/css/app/front/list.css"/>
     <!--/coolie-->
     <script>window['-section-']={uri:'column'};</script>
     <script>window['-pager-']={
@@ -24,21 +24,20 @@
 
 
 <div class="layout-body a-slide-down-fixed">
-    <div class="container">
 
-        <div class="m-ptitle">
-            <img class="ptitle-cover" src="{{column.cover}}" alt="cover"/>
-            <h1 class="ptitle-name"><span>{{column.name}}</span></h1>
-            <div class="ptitle-intro text-muted">{{column.introduction}}</div>
-            <div class="ptitle-desc text-light">
-                <i class="fi fi-user"></i><a href="/developer/{{column.author.githubLogin}}/">{{column.author.nickname}}</a>的专辑
-                <span class="text-space"></span>
-                <i class="fi fi-bar-chart"></i>{{column.objectCount}}
-            </div>
-            <div class="ptitle-desc text-light" id="share"></div>
+    <div class="ptitle">
+        <img class="ptitle-cover" src="{{column.cover}}" alt="cover"/>
+        <h1 class="ptitle-name">{{column.name}}</h1>
+        <div class="ptitle-intro text-muted">{{column.introduction}}</div>
+        <div class="ptitle-desc text-light">
+            <i class="fi fi-user"></i><a href="/developer/{{column.author.githubLogin}}/">{{column.author.nickname}}</a>的专辑
+            <span class="text-space"></span>
+            <i class="fi fi-bar-chart"></i>{{column.objectCount}}
         </div>
+        <div class="ptitle-desc text-light" id="share"></div>
+    </div>
 
-
+    <div class="container">
         <div class="row layout-container">
             <!--主-->
             <div class="col-md-12 layout-main">

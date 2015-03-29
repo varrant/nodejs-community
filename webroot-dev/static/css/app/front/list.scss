@@ -2,7 +2,41 @@ $primary-bg-color: #00A2CA;
 $primary-fg-color: lighten($primary-bg-color, 90%);
 $border-color: #e6e6e6;
 
+.layout-body{
+  margin-top: 50px;
+}
 
+// 页面标题
+.ptitle{
+  text-align: center;
+  margin-bottom: 2em;
+  background: -webkit-linear-gradient( #00A2CA 0, #F5F5F5 100%);
+  background: -moz-linear-gradient( #00A2CA 0, #F5F5F5 100%);
+  background: linear-gradient( #00A2CA 0, #F5F5F5 100%);
+  padding-top: 30px;
+
+  .ptitle-cover{
+    width: 101px;
+    height: 101px;
+    border-radius: 6px;
+    border: 1px solid #fff;
+  }
+
+  .ptitle-name{
+    margin: 1em 0;
+    padding: 0;
+    font-weight: normal;
+  }
+
+  .ptitle-intro{
+    margin-bottom: 1em;
+  }
+}
+
+.bdsharebuttonbox {
+  display: inline-block;
+  vertical-align: middle;
+}
 
 // choose
 .choose {
