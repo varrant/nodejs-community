@@ -283,10 +283,10 @@ textarea.ipt {
     line-height: 18px;
     border-radius: 6px; }
   .btn-sm {
-    padding: 5px 10px;
+    padding: 3px 6px;
     font-size: 12px;
     line-height: 12px;
-    border-radius: 3px; }
+    border-radius: 2px; }
   .btn-block {
     display: block;
     width: 100%; }
