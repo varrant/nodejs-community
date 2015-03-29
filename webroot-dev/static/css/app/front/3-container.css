@@ -24,31 +24,6 @@
     max-width: none;
     margin: 20px; } }
 
-.toc {
-  display: inline-block;
-  min-width: 200px;
-  border: 1px solid #CCC;
-  padding: 20px; }
-
-.m-postmain {
-  position: relative; }
-  .m-postmain .postmain-meta {
-    list-style: none;
-    padding: 0;
-    margin: 30px 0 0; }
-    .m-postmain .postmain-meta li {
-      line-height: 2; }
-  .m-postmain .postmain-content p {
-    white-space: pre-wrap; }
-  .m-postmain .postmain-content img {
-    max-width: 50%;
-    cursor: -webkit-zoom-in;
-    cursor: -moz-zoom-in;
-    cursor: zoom-in; }
-  .m-postmain .postmain-content p > img:only-child {
-    display: block;
-    margin: 0 auto; }
-
 .m-usercard .usercard-main {
   margin-bottom: 20px; }
 .m-usercard .usercard-avatar {
@@ -202,21 +177,3 @@
   background: #EEE;
   padding: 4px 10px;
   margin-right: 10px; }
-
-.bdsharebuttonbox {
-  display: inline-block;
-  vertical-align: middle; }
-
-.heading-link {
-  position: relative;
-  color: #222; }
-  .heading-link::before {
-    position: absolute;
-    content: "#";
-    left: -15px;
-    opacity: 0;
-    transition: opacity 200ms; }
-  .heading-link:hover {
-    color: #222; }
-    .heading-link:hover::before {
-      opacity: 1; }
