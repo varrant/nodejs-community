@@ -323,7 +323,8 @@ define(function (require, exports, module) {
 
         the._renderComment();
         ajax({
-            url: url
+            url: url,
+            loading: false
         })
             .on('success', function (data) {
                 the._count.comment = data.count;
