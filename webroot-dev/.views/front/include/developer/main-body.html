@@ -1,4 +1,4 @@
-<div class="m-card">
+<div class="card">
     <h2 class="card-title"><i class="fi fi-user"></i>{{developer.nickname}}
         {{if developer.hasCertificated}}<i class="fi fi-check-circle text-success" title="个人认证"></i>{{/if}}
         {{if pageType !== "home"}}<span class="text-space text-light">/</span><i class="fi fi-home"></i><a href="/developer/{{=developer.githubLogin}}/">主页</a>{{/if}}
@@ -11,14 +11,14 @@
         </div>
     </h2>
     <div class="card-body">
-        <div class="m-usercard">
+        <div class="usercard">
             <div class="usercard-main clearfix">
                 <div class="usercard-avatar pull-left">
                     <img src="{{developer.email|gravatar:200}}" alt="avatar" width="100"
                                      height="100"/>
                 </div>
                 <div class="usercard-body">
-                    <ul class="m-simplelist">
+                    <ul class="simplelist">
                         <li><i class="fi fi-map-marker"></i>{{developer.meta.location}}</li>
                         <li><i class="fi fi-group"></i>{{developer.meta.company}}</li>
                         <li><i class="fi fi-link"></i>{{if developer.meta.blog}}<a

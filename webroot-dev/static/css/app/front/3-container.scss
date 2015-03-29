@@ -46,41 +46,6 @@ $border-color: #e6e6e6;
 
 
 
-//m-usercard
-.m-usercard {
-  .usercard-main {
-    margin-bottom: 20px;
-  }
-
-  .usercard-avatar {
-    width: 100px;
-    height: 100px;
-  }
-
-  .usercard-body {
-    margin-left: 110px;
-  }
-
-  .usercard-bio {
-    margin-bottom: 20px;
-  }
-
-  .usercard-statistics {
-    background-color: #fcfcfc;
-    border-top: 1px solid #ddd;
-    box-shadow: 0 2px 2px #f0f0f0 inset;
-    margin: 0 -20px -20px -20px;
-    padding: 20px 0;
-
-    ul {
-      margin: 0 0 10px;
-    }
-
-    li {
-      margin-right: 20px;
-    }
-  }
-}
 
 // m-history
 .m-history {

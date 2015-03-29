@@ -8,6 +8,11 @@
 <head lang="zh-cn">
     {{include ../include/meta.html}}
     {{include ./include/meta.html}}
+
+    <!--coolie-->
+    <link rel="stylesheet" href="/static/css/app/front/developer.css"/>
+    <!--/coolie-->
+
     <script>window['-page-']={
         'limit': '{{skipLimit.limit}}',
         'page': '{{skipLimit.page}}',
@@ -18,11 +23,11 @@
 {{include ./include/nav.html}}
 
 
-<div class="g-body a-slide-down-fixed">
+<div class="layout-body a-slide-down-fixed">
     <div class="container">
-        <div class="row g-container">
+        <div class="row layout-container">
             <!--主-->
-            <div class="col-md-8 g-main">
+            <div class="col-md-8 layout-main">
                 {{include ./include/developer/main-body.html}}
                 {{if pageType === "accept-by"}}
                 {{include ./include/developer/main-accept-by.html}}
@@ -44,7 +49,7 @@
             </div>
             <!--/主-->
             <!--副-->
-            <div class="col-md-4 g-sub">
+            <div class="col-md-4 layout-sub">
                 {{include ./include/developer/sub-statistics.html}}
             </div>
             <!--/副-->

@@ -24,26 +24,6 @@
     max-width: none;
     margin: 20px; } }
 
-.m-usercard .usercard-main {
-  margin-bottom: 20px; }
-.m-usercard .usercard-avatar {
-  width: 100px;
-  height: 100px; }
-.m-usercard .usercard-body {
-  margin-left: 110px; }
-.m-usercard .usercard-bio {
-  margin-bottom: 20px; }
-.m-usercard .usercard-statistics {
-  background-color: #fcfcfc;
-  border-top: 1px solid #ddd;
-  box-shadow: 0 2px 2px #f0f0f0 inset;
-  margin: 0 -20px -20px -20px;
-  padding: 20px 0; }
-  .m-usercard .usercard-statistics ul {
-    margin: 0 0 10px; }
-  .m-usercard .usercard-statistics li {
-    margin-right: 20px; }
-
 .m-history li {
   position: relative; }
 .m-history .history-time {
