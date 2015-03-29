@@ -8,6 +8,7 @@
 
 var section = require('../../services/').section;
 var permission = require('../../services/').permission;
+var sync = require('../../utils/').sync;
 var dato = require('ydr-util').dato;
 
 module.exports = function (app) {
@@ -35,7 +36,7 @@ module.exports = function (app) {
                 code: 200,
                 data: docs
             });
-            app.locals.$section = docs;
+            sync.section(app, docs);
         });
     };
 
@@ -63,12 +64,14 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                dato.each(app.locals.$section, function (index, sec) {
+                dato.each(app.locals.$sectionList, function (index, sec) {
                     if (sec.id.toString() === doc.id.toString()) {
-                        app.locals.$section[index] = doc;
+                        app.locals.$sectionList[index] = doc;
                         return false;
                     }
                 });
+
+                sync.section(app, app.locals.$sectionList);
 
                 res.json({
                     code: 200,
@@ -82,7 +85,8 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            app.locals.$section.push(doc);
+            app.locals.$sectionList.push(doc);
+            sync.section(app, app.locals.$sectionList);
             res.json({
                 code: 200,
                 data: doc

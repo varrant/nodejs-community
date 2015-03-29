@@ -20,6 +20,8 @@ exports.section = function (app, docs) {
         app.locals.$sectionIdMap[item.id] = item;
         app.locals.$sectionUriMap[item.uri] = item;
     });
+
+    console.log(app.locals.$sectionUriMap);
 };
 
 

@@ -22,7 +22,7 @@ module.exports = function (app, ctrl) {
 
     // list + detail
     // in category at column on label as status by autho
-    app.locals.$section.forEach(function (section) {
+    app.locals.$sectionList.forEach(function (section) {
         var uri = section.uri;
 
         // ''

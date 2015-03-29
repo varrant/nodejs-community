@@ -20,7 +20,7 @@ module.exports = function (app, ctrl) {
 
 
     // list
-    app.locals.$section.forEach(function (section) {
+    app.locals.$sectionList.forEach(function (section) {
         app.get('/admin/object/' + section.uri + '/list/', ctrl.object.list(section));
         app.get('/admin/object/' + section.uri + '/', ctrl.object.get(section));
     });

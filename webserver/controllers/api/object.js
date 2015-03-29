@@ -14,11 +14,6 @@ var howdo = require('howdo');
 
 module.exports = function (app) {
     var exports = {};
-    var sectionMap = {};
-
-    app.locals.$section.forEach(function (section) {
-        sectionMap[section.uri] = section;
-    });
 
 
     /**
