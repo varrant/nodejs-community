@@ -1,0 +1,24 @@
+.a-slide-down-fixed{
+  -webkit-animation: slide-down-fixed 500ms;
+  -o-animation: slide-down-fixed 500ms;
+  animation: slide-down-fixed 500ms;
+}
+
+
+@-webkit-keyframes slide-down-fixed {
+  0%{
+    -webkit-transform: translateY(-50px);
+  }
+  100%{
+    -webkit-transform: translateY(0);
+  }
+}
+
+@keyframes slide-down-fixed {
+  0%{
+    transform: translateY(-50px);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
