@@ -29,12 +29,12 @@
                     {{# sectionTypes.push({name: 'help', icon: 'question-circle'});}}
 
                     {{list sectionTypes as st}}
-                        {{if section[st.name]}}
+                        {{if $sectionUriMap[st.name]}}
                         <li class="home-{{=st.name}}">
                             <a href="/{{=st.name}}/">
                                 <div class="home-icon"><i class="fi fi-{{=st.icon}}"></i></div>
-                                <div class="home-name">{{section[st.name].name}}<small>/{{section[st.name].objectCount|humanize}}</small></div>
-                                <div class="home-desc">{{section[st.name].introduction}}</div>
+                                <div class="home-name">{{$sectionUriMap[st.name].name}}<small>/{{$sectionUriMap[st.name].objectCount|humanize}}</small></div>
+                                <div class="home-desc">{{$sectionUriMap[st.name].introduction}}</div>
                             </a>
                         </li>
                         {{/if}}

@@ -19,7 +19,6 @@ module.exports = function (app) {
     exports.get = function (req, res, next) {
         var uri = req.params.uri;
         var listOptions = filter.skipLimit(req.params);
-        var sectionIdMap = app.locals.$sectionIdMap;
 
         howdo
             // 1. 查找专辑
@@ -73,7 +72,7 @@ module.exports = function (app) {
                     objectCount: objects.length
                 }, log.holdError);
 
-                res.render('front/column.html', data);
+                res.render('front/list-column.html', data);
             });
     };
 

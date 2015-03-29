@@ -30,22 +30,10 @@ module.exports = function (app) {
         var statistics = {};
         var data = {
             title: '主页',
-            statistics: statistics,
-            section: section
+            statistics: statistics
         };
 
         howdo
-            // 版块
-            .task(function (done) {
-                section.find({}, function (err, datas) {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    app.locals.$section = data.section = datas;
-                    done();
-                });
-            })
             // 注册用户数
             .task(function (done) {
                 developer.count({}, function (err, count) {
@@ -128,10 +116,6 @@ module.exports = function (app) {
                 if (err) {
                     return next(err);
                 }
-
-                app.locals.$section.forEach(function (sec) {
-                    data.section[sec.uri] = sec;
-                });
 
                 res.render('front/home.html', data);
             });
