@@ -13,7 +13,6 @@ var howdo = require('howdo');
 var object = require('../../services/').object;
 var developer = require('../../services/').developer;
 var column = require('../../services/').column;
-var section = require('../../services/').section;
 var filter = require('../../utils/').filter;
 var log = require('ydr-log');
 

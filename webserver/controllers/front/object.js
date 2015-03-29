@@ -174,12 +174,7 @@ module.exports = function (app) {
                 }
             }
 
-            var sectionMap = {};
-            app.locals.$section.forEach(function (sec) {
-                sectionMap[sec.id] = sec;
-            });
-
-            res.redirect('/' + sectionMap[doc.section].uri + '/' + doc.uri + '.html');
+            res.redirect('/' + app.locals.$sectionIdMap[doc.section].uri + '/' + doc.uri + '.html');
         });
     };
 
