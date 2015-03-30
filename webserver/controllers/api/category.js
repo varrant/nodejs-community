@@ -8,6 +8,7 @@
 
 var category = require('../../services/').category;
 var permission = require('../../services/').permission;
+var sync = require('../../utils/').sync;
 var dato = require('ydr-util').dato;
 
 module.exports = function (app) {
@@ -28,7 +29,7 @@ module.exports = function (app) {
 
         res.json({
             code: 200,
-            data: app.locals.$category
+            data: app.locals.$categoryList
         });
     };
 
@@ -56,9 +57,9 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                dato.each(app.locals.$category, function (index, category) {
+                dato.each(app.locals.$categoryList, function (index, category) {
                     if (category.id.toString() === doc.id.toString()) {
-                        app.locals.$category[index] = doc;
+                        app.locals.$categoryList[index] = doc;
                         return false;
                     }
                 });
@@ -75,7 +76,8 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            app.locals.$category.push(doc);
+            app.locals.$categoryList.push(doc);
+            sync.category(app, app.locals.$categoryList);
             res.json({
                 code: 200,
                 data: doc
@@ -98,9 +100,10 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            dato.each(app.locals.$category, function (index, section) {
+            dato.each(app.locals.$categoryList, function (index, section) {
                 if (section.id.toString() === doc.id.toString()) {
-                    app.locals.$category.splice(index, 1);
+                    app.locals.$categoryList.splice(index, 1);
+                    sync.category(app, app.locals.$categoryList);
                     return false;
                 }
             });

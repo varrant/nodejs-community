@@ -39,25 +39,19 @@ module.exports = function (app) {
                 section: section.id,
                 isDisplay: true
             };
-            var categoryMap = {};
+            //var categoryMap = {};
             var data = {
                 section: section,
                 title: section.name,
-                categories: app.locals.$category,
-                categoryMap: categoryMap,
+                //categories: app.locals.$categoryList,
+                //categoryMap: categoryMap,
                 choose: {}
             };
             //var isPjax = req.headers['x-request-as'] === 'pjax';
             var categoryId = 0;
-            dato.each(app.locals.$category, function (index, _category) {
-                if (_category.uri === category) {
-                    categoryId = _category.id;
-                }
 
-                categoryMap[_category.id] = _category;
-            });
-
-            if (categoryId) {
+            if (app.locals.$categoryUriMap[category]) {
+                categoryId = app.locals.$categoryUriMap[category].id;
                 data.choose.category = conditions.category = categoryId;
             }
 

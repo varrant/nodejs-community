@@ -44,7 +44,7 @@
                             <li class="clearfix">
                                 <strong class="choose-type">分类</strong>
                                 <a class="{{if !choose.category}}active{{/if}}" href="/link/{{if choose.status}}as/{{choose.status}}/{{/if}}">所有分类</a>
-                                {{list categories as category}}
+                                {{list $categoryList as category}}
                                 <a class="{{if category.id == choose.category}}active{{/if}}" href="/link/in/{{=category.uri}}/{{if choose.status}}as/{{choose.status}}/{{/if}}">{{=category.name}}</a>
                                 {{/list}}
                             </li>

@@ -20,7 +20,7 @@ module.exports = function (app) {
         var canColumn = permission.can($developer, 'column');
         var list = [];
         var developerRole = $developer.role;
-        var $section = app.locals.$section;
+        var $section = app.locals.$sectionList;
         var sectionMap = {};
 
         $section.forEach(function (section) {

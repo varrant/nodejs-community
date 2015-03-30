@@ -169,8 +169,8 @@ module.exports = function (app) {
                 code: 200,
                 data: {
                     developer: doc,
-                    section: app.locals.$section,
-                    category: app.locals.$category,
+                    section: app.locals.$sectionList,
+                    category: app.locals.$categoryList,
                     group: configs.group
                 }
             });

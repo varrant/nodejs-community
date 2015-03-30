@@ -65,7 +65,7 @@ module.exports = function (app) {
             })
             // 查找 category
             .task(function (done) {
-                done(null, app.locals.$category);
+                done(null, app.locals.$categoryList);
             })
             // 查找 columns
             .task(function (done) {
