@@ -44,7 +44,7 @@
                             <li class="clearfix">
                                 <strong class="choose-type">分类</strong>
                                 <a class="{{if !choose.category}}active{{/if}}" href="/question/{{if choose.status}}as/{{choose.status}}/{{/if}}{{if choose.author}}by/{{choose.author}}/{{/if}}">所有分类</a>
-                                {{list categories as category}}
+                                {{list $categoryList as category}}
                                 <a class="{{if category.id == choose.category}}active{{/if}}" href="/question/in/{{=category.uri}}/{{if choose.status}}as/{{choose.status}}/{{/if}}{{if choose.author}}by/{{choose.author}}/{{/if}}">{{=category.name}}</a>
                                 {{/list}}
                             </li>
