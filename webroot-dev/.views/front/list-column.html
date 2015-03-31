@@ -29,10 +29,12 @@
         <img class="ptitle-cover" src="{{column.cover}}" alt="cover"/>
         <h1 class="ptitle-name">{{column.name}}</h1>
         <div class="ptitle-intro text-muted">{{column.introduction}}</div>
-        <div class="ptitle-desc text-light">
+        <div class="ptitle-desc text-muted">
             <i class="fi fi-user"></i><a href="/developer/{{column.author.githubLogin}}/">{{column.author.nickname}}</a>的专辑
             <span class="text-space"></span>
             <i class="fi fi-bar-chart"></i>{{column.objectCount}}
+            <span class="text-space"></span>
+            <i class="fi fi-eye"></i>{{column.viewByCount}}
         </div>
         <div class="ptitle-desc text-light" id="share"></div>
     </div>

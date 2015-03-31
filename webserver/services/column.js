@@ -157,3 +157,14 @@ exports.updateOne = function (author, conditions, data, callback) {
 exports.increaseObjectCount = function (conditions, count, callback) {
     column.increase(conditions, 'objectCount', count, callback);
 };
+
+
+/**
+ * 增加 column 阅读数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 数量
+ * @param callback {Function} 回调
+ */
+exports.increaseViewByCount = function (conditions, count, callback) {
+    column.increase(conditions, 'viewByCount', count, callback);
+};

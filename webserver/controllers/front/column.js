@@ -72,6 +72,7 @@ module.exports = function (app) {
                     objectCount: objects.length
                 }, log.holdError);
 
+                column.increaseViewByCount({_id: col.id}, 1, log.holdError);
                 res.render('front/list-column.html', data);
             });
     };
