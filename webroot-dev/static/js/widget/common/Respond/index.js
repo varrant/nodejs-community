@@ -20,6 +20,7 @@ define(function (require, exports, module) {
     var tpl = new Template(template);
     var defaults = {
         id: '',
+        minHeight: 100,
         avatar: '/static/img/avatar.png',
         githubLogin: '#',
         markdownHelp: {

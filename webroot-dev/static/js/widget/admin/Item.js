@@ -220,7 +220,6 @@ define(function (require, exports, module) {
             }
 
             vue.$data.object = data;
-            the.editor.resize();
             tip.success('保存成功');
         }).on('error', alert).on('finish', function () {
             $btn.disabled = false;
