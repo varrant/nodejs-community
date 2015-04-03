@@ -142,7 +142,8 @@ define(function (require, exports, module) {
 
         the.editor = new Editor(the._contentSelector, {
             id: data.id,
-            uploadCallback: editorUploadCallback
+            uploadCallback: editorUploadCallback,
+            minHeight: 200
         }).on('change', function (val) {
                 the.vue.$data.object.content = val;
             });
