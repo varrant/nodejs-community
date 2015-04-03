@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/3rd/codemirror/lib/style.css" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/3rd/codemirror/lib/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -34,8 +35,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27457628">
-              <caret line="115" column="9" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.27876824">
+              <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -112,8 +113,8 @@
         <option value="$PROJECT_DIR$/webserver/controllers/front/index.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/main.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/index.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/index.js" />
       </list>
     </option>
   </component>
@@ -913,12 +914,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00636" summary="0.0.8">
-      <created>1427597030345</created>
-      <option name="number" value="00636" />
-      <option name="project" value="LOCAL" />
-      <updated>1427597030345</updated>
-    </task>
     <task id="LOCAL-00637" summary="0.0.8">
       <created>1427597108846</created>
       <option name="number" value="00637" />
@@ -1207,7 +1202,13 @@
       <option name="project" value="LOCAL" />
       <updated>1428072002010</updated>
     </task>
-    <option name="localTasksCounter" value="685" />
+    <task id="LOCAL-00685" summary="0.0.80">
+      <created>1428073372852</created>
+      <option name="number" value="00685" />
+      <option name="project" value="LOCAL" />
+      <updated>1428073372852</updated>
+    </task>
+    <option name="localTasksCounter" value="686" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1735,8 +1736,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27457628">
-          <caret line="115" column="9" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.27876824">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

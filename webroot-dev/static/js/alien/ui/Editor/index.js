@@ -98,6 +98,18 @@ define(function (require, exports, module) {
 
 
     /**
+     * 设置编辑器内容
+     * @param value {String} 设置内容
+     * @returns {Editor}
+     */
+    Editor.fn.setValue = function (value) {
+        this._editor.setValue(value);
+
+        return this;
+    };
+
+
+    /**
      * 初始化内容
      * @private
      */
@@ -124,7 +136,7 @@ define(function (require, exports, module) {
             })
                 .on('close', function (index) {
                     if (index === 0) {
-                        the._editor.setValue(storeVal);
+                        the.setValue(storeVal);
                         the._$ele.value = storeVal;
 
                         controller.nextTick(function () {
@@ -244,6 +256,8 @@ define(function (require, exports, module) {
 
         the._editor.focus();
         the._editor.replaceSelection(value);
+
+        return the;
     };
 
 
@@ -256,11 +270,16 @@ define(function (require, exports, module) {
 
         the._editor.focus();
 
+        var cursor = the._editor.getCursor();
         var raw = the._editor.getSelection();
 
-        if (raw) {
-            the._editor.replaceSelection(value + raw + value);
+        the._editor.replaceSelection(value + raw + value);
+
+        if (!raw) {
+            the._editor.setCursor(cursor.line, cursor.ch + value.length);
         }
+
+        return the;
     };
 
 
@@ -273,7 +292,13 @@ define(function (require, exports, module) {
 
         // `code`
         the._addKeyMap('`', function () {
-            the.wrap('`');
+            var raw = the._editor.getSelection();
+
+            if (raw) {
+                the.wrap('`');
+            } else {
+                the.replace('`');
+            }
         }, false);
 
 
@@ -495,6 +520,19 @@ define(function (require, exports, module) {
      */
     Editor.fn.getValue = function () {
         return this._editor.getValue();
+    };
+
+
+    /**
+     * 销毁实例
+     */
+    Editor.fn.destroy = function () {
+        var the = this;
+
+        event.un(the._$wrapper, 'input', the._oninput);
+        event.un(the._$wrapper, 'drop', the._ondrop);
+        event.un(the._$wrapper, 'paste', the._onpaste);
+        this._editor.toTextArea();
     };
 
 

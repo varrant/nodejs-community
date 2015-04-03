@@ -30,6 +30,7 @@ define(function (require, exports, module) {
         placeholder: '说点什么吧',
         submit: '提交',
         icon: 'comment',
+        autoFocus: false,
         uploadCallback: null
     };
     var Respond = ui.create(function ($parent, options) {
@@ -118,7 +119,7 @@ define(function (require, exports, module) {
     Respond.fn.reset = function () {
         var the = this;
 
-        the._editor.setContent('');
+        the._editor.setValue('');
         the._editor.clearStore();
         return the;
     };
