@@ -112,10 +112,10 @@ pre {
 
 pre code {
   background: transparent;
-  margin: inherit;
-  padding: inherit;
-  border-radius: inherit;
-  color: inherit; }
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  color: initial; }
 
 img {
   max-width: 100%;
