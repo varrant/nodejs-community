@@ -8,6 +8,7 @@
 define(function (require, exports, module) {
     /**
      * @module ui/Window/
+     * @requires utils/allocation
      * @requires utils/dato
      * @requires core/dom/selector
      * @requires core/dom/attribute
@@ -17,6 +18,7 @@ define(function (require, exports, module) {
      */
     'use strict';
 
+    var allocation = require('../../utils/allocation.js');
     var dato = require('../../utils/dato.js');
     var typeis = require('../../utils/typeis.js');
     var keyframes = require('../../utils/keyframes.js');
@@ -219,7 +221,7 @@ define(function (require, exports, module) {
             return the;
         }
 
-        var args = arguments;
+        var args = allocation.args(arguments);
 
         if (typeis.function(args[0])) {
             callback = args[0];

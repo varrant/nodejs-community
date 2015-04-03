@@ -16,18 +16,6 @@ body {
   color: #333;
   font-size: 16px; }
 
-/*Only phones */
-@media only screen and (max-width: 640px) {
-  /**
-   * Break strings if their length exceeds the width of their container
-   */
-  body {
-    word-wrap: break-word;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    hyphens: auto; } }
-
 button, input, optgroup, select, textarea {
   font: initial; }
 
