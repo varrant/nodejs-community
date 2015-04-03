@@ -42,6 +42,7 @@ define(function (require, exports, module) {
         // 最小检查同步本地的内容的相差长度
         checkLength: 3,
         autoFocus: true,
+        minHeight: 200,
         // 上传操作
         // uploadCallback 约定：
         // arg0: err 对象
@@ -62,7 +63,6 @@ define(function (require, exports, module) {
             theme: "monokai",
             autoCloseBrackets: true,
             autoCloseTags: true,
-            autofocus: the._options.autoFocus,
             dragDrop: false,
             foldGutter: false,
             indentWithTabs: true,
@@ -72,6 +72,7 @@ define(function (require, exports, module) {
             showTrailingSpace: true,
             styleActiveLine: true,
             styleSelectedText: true,
+            autofocus: the._options.autoFocus,
             tabSize: the._options.tabSize,
             extraKeys: {
                 'F11': function (cm) {
@@ -87,6 +88,7 @@ define(function (require, exports, module) {
 
         the._$wrapper = the._editor.getWrapperElement();
         attribute.addClass(the._$wrapper, the._options.addClass);
+        attribute.css(the._$wrapper, 'min-height', the._options.minHeight);
         the._initEvent();
 
         if (the._options.canBackup) {
