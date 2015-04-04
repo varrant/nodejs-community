@@ -12,5 +12,6 @@
     <orderEntry type="library" name="Node.js v0.10.35 Core Modules" level="application" />
     <orderEntry type="library" name="Node.js v0.10.32 Core Modules" level="application" />
     <orderEntry type="library" name="coolie.js" level="application" />
+    <orderEntry type="library" name="coolie.js" level="project" />
   </component>
 </module>

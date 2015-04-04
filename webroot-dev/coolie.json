@@ -1,22 +1,25 @@
 {
-  "js": "./static/js/app/**/*.js",
+  "js": {
+    "src": "./static/js/app/**/*.js",
+    "coolie.js": "./static/js/coolie.min.js",
+    "coolie-config.js": "./static/js/coolie-config.js"
+  },
   "css": {
-    "path": "./static/css/app/",
+    "dest": "./static/css/",
     "host": "/"
   },
   "html": {
-    "path": [
+    "src": [
       "./.views/**/*.html"
     ],
     "minify": true
   },
-  "img": "./static/img/**/*.*",
+  "resource": {
+    "src": "./static/img/**/*.*",
+    "dest": "./static/res/"
+  },
   "dest": "../webroot-pro/",
-  "coolie.js": "./static/js/coolie.min.js",
-  "coolie-config.js": "./static/js/coolie-config.js",
   "copy": [
-    "./.views/**/*.html",
-    "./static/js/coolie.min.js",
     "./static/js/libs/**/*.js",
     "./favicon.ico",
     "./robots.txt"
