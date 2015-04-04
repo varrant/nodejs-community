@@ -10,6 +10,7 @@ define(function (require, exports, module) {
 
     var xhr = require('../../alien/core/communication/xhr.js');
     var json = 'application/json; charset=utf-8';
+    var login = require('./login.js');
     var alert = require('./alert.js');
     var loading = require('./loading.js');
     var Emitter = require('../../alien/libs/Emitter.js');
@@ -47,7 +48,10 @@ define(function (require, exports, module) {
 
                     // 未登陆
                     case 401:
-                        break;
+                        alert(json.message).on('close', function () {
+                            login();
+                        });
+                        return;
                 }
 
                 if (json.code === 200) {
