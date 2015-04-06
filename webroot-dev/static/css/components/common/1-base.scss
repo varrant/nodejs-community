@@ -8,17 +8,32 @@ html {
   font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
   font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -moz-font-feature-settings: "liga", "kern";
+  //text-rendering: optimizeLegibility;
+  //-webkit-font-smoothing: antialiased;
+  //-moz-osx-font-smoothing: grayscale;
+  //-moz-font-feature-settings: "liga", "kern";
 }
+
 
 body{
   color: #333;
   font-size: 16px;
 }
 
+
+/*Only phones */
+@media only screen and (max-width: 640px) {
+  /**
+   * Break strings if their length exceeds the width of their container
+   */
+  body {
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+  }
+}
 
 button, input, optgroup, select, textarea{
   font: initial;
@@ -144,9 +159,9 @@ a:focus {
 }
 
 code {
-  background: #EEE;
+  background: #FFF4F4;
   margin: 0 2px;
-  padding: 2px 4px;
+  padding: 1px 4px;
   border-radius: 3px;
   color: #B63125;
 }
@@ -156,6 +171,7 @@ pre {
   padding: 10px;
   border: 1px solid #DDD;
   border-radius: 6px;
+  word-wrap: normal;
 }
 
 pre code {
