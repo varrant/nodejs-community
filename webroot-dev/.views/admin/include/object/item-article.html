@@ -35,7 +35,9 @@
         <div class="form-val">
             <select name="category" v-model="object.column" options="columns" class="ipt"></select>
 
-            <p class="form-desc">可以将文章分配到自己的专辑内（<a href="/admin/column/">新建专辑</a>）。</p>
+            <p class="form-desc">可以将文章分配到自己的专辑内（<a href="javascript:;"
+                                                   class="btn btn-sm btn-default"
+                                                   v-on="click: oncreatecolumn">新建专辑</a>）。</p>
         </div>
     </li>
 
