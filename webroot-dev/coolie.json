@@ -20,7 +20,6 @@
   },
   "dest": "../webroot-pro/",
   "copy": [
-    "./.views/**/*",
     "./static/js/libs/**/*.js",
     "./favicon.ico",
     "./robots.txt"

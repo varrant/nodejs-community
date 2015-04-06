@@ -258,7 +258,7 @@ define(function (require, exports, module) {
                         name: name,
                         uri: uri,
                         cover: window['-default.column-'],
-                        introduction: '专辑《' + name + '》创建于 ' + date.format('YYYY年M月D日 hh:mm:ss') + '。'
+                        introduction: '专辑《' + name + '》创建于 ' + date.format('YYYY年M月D日 HH:mm:ss') + '。'
                     }
                 }).on('success', function (data) {
                     the.vue.$data.columns.push({

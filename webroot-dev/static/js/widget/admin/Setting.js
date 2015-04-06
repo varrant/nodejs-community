@@ -188,7 +188,7 @@ define(function (require, exports, module) {
             ajax({
                 url: options.url,
                 method: 'delete',
-                data: {
+                body: {
                     id: id
                 },
                 loading: '删除中'
