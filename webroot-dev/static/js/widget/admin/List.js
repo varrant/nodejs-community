@@ -134,8 +134,7 @@ define(function (require, exports, module) {
     List.fn._onremove = function (id, index) {
         var the = this;
         var options = the._options;
-
-        confirm('确认要删除该项目吗？<br>删除操作不可逆，请仔细确认！', function () {
+        var onsure = function () {
             ajax({
                 loading: '删除中',
                 url: options.itemURL,
@@ -148,7 +147,9 @@ define(function (require, exports, module) {
                     the.vue.$data.list.splice(index, 1);
                 })
                 .on('error', alert);
-        });
+        };
+
+        confirm('确认要删除该项目吗？<br>删除操作不可逆，请仔细确认！').on('sure', onsure);
     };
 
     module.exports = List;

@@ -8,16 +8,12 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var Msg = require('../../alien/ui/Msg/index.js');
+    var alert = require('../../alien/widgets/alert.js');
     var login = require('./login.js');
 
     module.exports = function (content) {
-        return new Msg({
-            content: content && content.message ? content.message : String(content),
-            buttons: ['好'],
-            addClass: 'm-dialog-alert'
-        }).on('close', function (index) {
-                if(index === 0 && content && content.code === 401){
+        return alert(content).on('sure', function () {
+                if(content && content.code === 401){
                     login();
                 }
             });

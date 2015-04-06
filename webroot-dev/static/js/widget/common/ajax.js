@@ -48,17 +48,14 @@ define(function (require, exports, module) {
 
                     // 未登陆
                     case 401:
-                        alert(json.message).on('close', function () {
-                            login();
-                        });
-                        return;
+                        break;
                 }
 
                 if (json.code === 200) {
                     return the.emit('success', json.data);
                 }
 
-                the.emit('error', new Error(json.message));
+                the.emit('error', json);
             })
             .on('error', function (err) {
                 the.emit('error', err);

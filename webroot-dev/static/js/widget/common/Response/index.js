@@ -153,7 +153,7 @@ define(function (require, exports, module) {
 
             confirm('确定要采纳' + (acceptMyself ? '你自己的' : '该') + '回答为最佳答案吗？采纳后将无法取消或更改' +
             (acceptMyself ? '，其中采纳自己的回答不会提升任何威望' : '') +
-            '。', the._accept.bind(the, eve));
+            '。').on('sure', the._accept.bind(the, eve));
         });
         event.on(window, 'scroll', the._onscroll = controller.debounce(function () {
             if (!the._ready && attribute.scrollTop(window) > attribute.top(the._$parent) - attribute.height(top)) {

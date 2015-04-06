@@ -196,7 +196,7 @@ define(function (require, exports, module) {
                 .on('error', alert);
         };
 
-        confirm('确认要删除该' + type + '吗？', remove);
+        confirm('确认要删除该' + type + '吗？').on('sure', remove);
     };
 
 

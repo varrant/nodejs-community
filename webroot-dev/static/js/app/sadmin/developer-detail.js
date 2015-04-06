@@ -147,7 +147,7 @@ define(function (require, exports, module) {
             });
         };
 
-        confirm('确定要修改该用户的权限控制吗？', save);
+        confirm('确定要修改该用户的权限控制吗？').on('sure', save);
     };
 
     app.init();
