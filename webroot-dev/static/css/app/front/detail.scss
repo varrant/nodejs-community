@@ -1,9 +1,10 @@
 
 
 .toc{
-  display: inline-block;
+  float: left;
+  margin-right: 20px;
   min-width: 200px;
-  border: 1px solid #CCC;
+  border: 1px solid #ddd;
   padding: 20px;
 }
 
@@ -37,6 +38,8 @@
     p > img:only-child {
       display: block;
       margin: 0 auto;
+      border: 1px solid #EEE;
+      box-shadow: 0 4px 10px #E3E3E3;
     }
   }
 }
