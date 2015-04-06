@@ -6,7 +6,11 @@
 html {
   font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
   font-size: 62.5%;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga", "kern"; }
 
 body {
   color: #333;
@@ -110,7 +114,8 @@ code {
   margin: 0 2px;
   padding: 1px 4px;
   border-radius: 3px;
-  color: #B63125; }
+  color: #B63125;
+  font-family: Consolas, Monaco, courier, monospace; }
 
 pre {
   background: #F6F6F6;
