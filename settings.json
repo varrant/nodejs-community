@@ -43,5 +43,9 @@
     "service": "smtp_host",
     "port": "smtp_port",
     "secure": true
+  },
+  // 默认配置
+  "default": {
+    "column": "http://s.ydr.me/f/d/column-200.png"
   }
 }
