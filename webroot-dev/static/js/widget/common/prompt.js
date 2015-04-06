@@ -11,7 +11,7 @@ define(function (require, exports, module) {
     var prompt = require('../../alien/widgets/prompt.js');
 
     module.exports = function (tips, defaultValue) {
-        return prompt(tips, defaultValue, {
+        return prompt(tips, defaultValue || '', {
             input: {
                 className: 'ipt'
             }

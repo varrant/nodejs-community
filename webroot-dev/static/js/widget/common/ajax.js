@@ -55,7 +55,10 @@ define(function (require, exports, module) {
                     return the.emit('success', json.data);
                 }
 
-                the.emit('error', json);
+                var err = new Error(json.message);
+                err.code = json.code;
+
+                the.emit('error', err);
             })
             .on('error', function (err) {
                 the.emit('error', err);
@@ -63,15 +66,18 @@ define(function (require, exports, module) {
             .on('progress', function (eve) {
                 the.emit('progress', eve);
             })
-            .on('complete', function (err, json) {
-                the.emit('complete', err, json);
+            .on('complete finish', function (err, json) {
+                if (!err && json.code !== 200) {
+                    err = new Error(json.message);
+                    err.code = json.code;
+                }
 
+                the.emit(this.alienEvent.type, err, json && json.data);
+            })
+            .on('complete', function () {
                 if (the.loading) {
                     the.loading.destroy();
                 }
-            })
-            .on('finish', function (err, json) {
-                the.emit('finish', err, json);
             });
     }, Emitter);
 

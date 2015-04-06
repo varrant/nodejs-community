@@ -24,7 +24,11 @@
     <li>
         <div class="form-key">文章分类<span class="form-required">*</span></div>
         <div class="form-val">
-            <select name="category" v-model="object.category" options="categories" class="ipt"></select>
+            <div class="row">
+                <div class="col-md-4">
+                    <select name="category" v-model="object.category" options="categories" class="ipt"></select>
+                </div>
+            </div>
 
             <p class="form-desc">文章所在的分类。</p>
         </div>
@@ -33,11 +37,16 @@
     <li>
         <div class="form-key">所在专辑</div>
         <div class="form-val">
-            <select name="category" v-model="object.column" options="columns" class="ipt"></select>
+            <div class="row">
+                <div class="col-md-4">
+                    <select name="column" v-model="object.column" options="columns" class="ipt" id="objectColumn"></select>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-default" v-on="click: oncreatecolumn">新建专辑</button>
+                </div>
+            </div>
 
-            <p class="form-desc">可以将文章分配到自己的专辑内（<a href="javascript:;"
-                                                   class="btn btn-sm btn-default"
-                                                   v-on="click: oncreatecolumn">新建专辑</a>）。</p>
+            <p class="form-desc">可以将文章分配到自己的专辑内。</p>
         </div>
     </li>
 

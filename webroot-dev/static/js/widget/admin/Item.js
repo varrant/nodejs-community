@@ -19,6 +19,7 @@ define(function (require, exports, module) {
     var Editor = require('../../alien/ui/Editor/');
     var dato = require('../../alien/utils/dato.js');
     var controller = require('../../alien/utils/controller.js');
+    var date = require('../../alien/utils/date.js');
     var defaults = {
         url: '/admin/api/object/',
         id: '',
@@ -108,6 +109,7 @@ define(function (require, exports, module) {
             }, the._methods)
         });
         the.vue.$el.classList.remove('none');
+        the._$objectColumn = selector.query('#objectColumn')[0];
 
         var editorUploadCallback = function (list, onprogress, ondone) {
             var fd = new FormData();
@@ -238,17 +240,36 @@ define(function (require, exports, module) {
     Item.fn._oncreatecolumn = function () {
         var the = this;
 
-        prompt('请输入专辑名称').on('sure', function (value) {
+        prompt('请输入专辑名称').on('sure', function (name) {
             var ld = loading('正在翻译');
 
-            the._translate(value, function (err, value2) {
+            the._translate(name, function (err, uri) {
                 ld.destroy();
 
-                if(err){
+                if (err) {
                     return alert(err);
                 }
 
-
+                ajax({
+                    url: '/admin/api/column/',
+                    method: 'put',
+                    loading: '保存中',
+                    body: {
+                        name: name,
+                        uri: uri,
+                        cover: 'http://s.ydr.me/f/d/column-200.png',
+                        introduction: '专辑《' + name + '》创建于 ' + date.format('YYYY年M月D日 hh:mm:ss') + '。'
+                    }
+                }).on('success', function (data) {
+                    the.vue.$data.columns.push({
+                        text: data.name,
+                        value: data.id
+                    });
+                    the.vue.$data.object.column = data.id;
+                    setTimeout(function () {
+                        the._$objectColumn.value = data.id
+                    }, 100);
+                }).on('error', alert);
             });
         });
     };
@@ -269,11 +290,11 @@ define(function (require, exports, module) {
             }
 
             xhr = the._translate(word, function (err, word2) {
-                if(err){
+                if (err) {
                     return;
                 }
 
-                the.vue.$data.object.uri = data;
+                the.vue.$data.object.uri = word2;
             });
         }));
     };

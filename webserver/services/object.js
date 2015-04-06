@@ -67,7 +67,7 @@ exports.createOne = function (author, data, callback) {
                 }
 
                 if ((author.role & (1 << doc.role)) === 0) {
-                    err = new Error('在该板块暂无发布权限');
+                    err = new Error('在该板块暂无发布权限，请联系管理员');
                     err.code = 403;
                     return next(err);
                 }
