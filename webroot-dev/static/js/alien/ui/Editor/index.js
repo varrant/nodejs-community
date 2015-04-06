@@ -11,6 +11,8 @@ define(function (require, exports, module) {
     /**
      * @module ui/Editor/
      * @requires 3rd/codemirror/mode/gfm
+     * @requires 3rd/codemirror/addon/display/fullscreen
+     * @requires 3rd/codemirror/addon/display/placeholder
      * @requires ui/
      * @requires ui/Msg/
      * @requires ui/Dialog/
@@ -27,6 +29,7 @@ define(function (require, exports, module) {
 
     var CodeMirror = require('../../3rd/codemirror/mode/gfm.js');
     require('../../3rd/codemirror/addon/display/fullscreen.js');
+    require('../../3rd/codemirror/addon/display/placeholder.js');
     //require('../../3rd/codemirror/addon/selection/active-line.js');
     var ui = require('../');
     var Msg = require('../Msg/');

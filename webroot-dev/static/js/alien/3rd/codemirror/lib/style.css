@@ -424,6 +424,10 @@ span.CodeMirror-selectedtext {
     background: #000;
 }
 
+.cm-s-fed .CodeMirror-placeholder{
+    color: #888;
+}
+
 /*.cm-s-fed .cm-variable, .cm-s-fed .cm-variable-2, .cm-s-fed .cm-variable-3{*/
     /*color: #0F7F80;*/
 /*}*/
