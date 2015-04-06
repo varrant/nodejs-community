@@ -63,6 +63,9 @@ define(function (require, exports, module) {
             .on('error', function (err) {
                 the.emit('error', err);
             })
+            .on('progress', function (eve) {
+                the.emit('progress', eve);
+            })
             .on('complete', function (err, json) {
                 the.emit('complete', err, json);
 
