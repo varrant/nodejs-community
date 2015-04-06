@@ -11,7 +11,9 @@ define(function (require, exports, module) {
     var ajax = require('../common/ajax.js');
     var alert = require('../common/alert.js');
     var confirm = require('../common/confirm.js');
+    var prompt = require('../common/prompt.js');
     var tip = require('../common/tip.js');
+    var loading = require('../common/loading.js');
     var selector = require('../../alien/core/dom/selector.js');
     var ui = require('../../alien/ui/');
     var Editor = require('../../alien/ui/Editor/');
@@ -101,7 +103,8 @@ define(function (require, exports, module) {
             methods: dato.extend({
                 pushlabel: the._onpushlabel.bind(the),
                 removelabel: the._onremovelabel.bind(the),
-                save: the._onsave.bind(the)
+                save: the._onsave.bind(the),
+                oncreatecolumn: the._oncreatecolumn.bind(the)
             }, the._methods)
         });
         the.vue.$el.classList.remove('none');
@@ -160,7 +163,7 @@ define(function (require, exports, module) {
         }
 
         // 实时翻译
-        the._translate();
+        the._watchTranslate();
     };
 
 
@@ -229,10 +232,33 @@ define(function (require, exports, module) {
 
 
     /**
+     * 快速创建专辑
+     * @private
+     */
+    Item.fn._oncreatecolumn = function () {
+        var the = this;
+
+        prompt('请输入专辑名称').on('sure', function (value) {
+            var ld = loading('正在翻译');
+
+            the._translate(value, function (err, value2) {
+                ld.destroy();
+
+                if(err){
+                    return alert(err);
+                }
+
+
+            });
+        });
+    };
+
+
+    /**
      * 实时翻译
      * @private
      */
-    Item.fn._translate = function () {
+    Item.fn._watchTranslate = function () {
         var xhr = null;
         var the = this;
 
@@ -242,15 +268,34 @@ define(function (require, exports, module) {
                 xhr.abort();
             }
 
-            xhr = ajax({
-                loading: false,
-                url: '/api/translate/?word=' + encodeURIComponent(word)
-            }).on('success', function (data) {
+            xhr = the._translate(word, function (err, word2) {
+                if(err){
+                    return;
+                }
+
                 the.vue.$data.object.uri = data;
-            }).on('complete', function () {
-                xhr = null;
-            }).xhr;
+            });
         }));
+    };
+
+
+    /**
+     * 翻译
+     * @param word
+     * @param callback
+     * @returns {*}
+     * @private
+     */
+    Item.fn._translate = function (word, callback) {
+        var xhr = ajax({
+            loading: false,
+            url: '/api/translate/?word=' + encodeURIComponent(word)
+        }).on('complete', function (err, data) {
+            callback(err, data);
+            xhr = null
+        }).xhr;
+
+        return xhr;
     };
 
     module.exports = Item;

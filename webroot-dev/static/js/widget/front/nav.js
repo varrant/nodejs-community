@@ -112,7 +112,7 @@ define(function (require, exports, module) {
 
         event.on(document, 'click', '.j-logout', function (eve) {
             eve.preventDefault();
-            confirm('确定要登出吗？', logout);
+            confirm('确定要登出吗？').on('sure', logout);
         });
     };
 
