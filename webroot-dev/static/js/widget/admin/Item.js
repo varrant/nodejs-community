@@ -257,7 +257,7 @@ define(function (require, exports, module) {
                     body: {
                         name: name,
                         uri: uri,
-                        cover: 'http://s.ydr.me/f/d/column-200.png',
+                        cover: window['-default.column-'],
                         introduction: '专辑《' + name + '》创建于 ' + date.format('YYYY年M月D日 hh:mm:ss') + '。'
                     }
                 }).on('success', function (data) {
