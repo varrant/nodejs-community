@@ -7,7 +7,7 @@
 'use strict';
 
 var dato = require('ydr-utils').dato;
-var httpStatus = require('ydr-util').httpStatus;
+var httpStatus = require('ydr-utils').httpStatus;
 var REG_ACCEPT_JSON = /^application\/json;\s*charset=utf-8/i;
 
 
