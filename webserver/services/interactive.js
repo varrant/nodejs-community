@@ -20,7 +20,7 @@ exports.find = interactive.find;
 
 
 /**
- * 切换
+ * 切换赞同
  * @param conditions
  * @param boolean
  * @param callback

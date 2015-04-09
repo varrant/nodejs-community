@@ -235,8 +235,15 @@ dato.each(models, function (key, model) {
                 }
 
                 model.findOneAndUpdate(conditions, newData, function (err, newDoc) {
-                    callback(err, newDoc && newDoc.toJSON(), doc.toJSON());
+                    callback(err, newDoc.toJSON(), doc.toJSON());
                 });
+
+                //var oldDoc = dato.extend(true, {}, doc.toJSON());
+                //
+                //dato.extend(doc, newData);
+                //doc.save(function (err, newDoc) {
+                //    callback(err, newDoc.toJSON(), oldDoc);
+                //});
             });
         });
     };
