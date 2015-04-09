@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/developer.js" afterPath="$PROJECT_DIR$/webserver/services/developer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/main.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/object.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/object.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/api/oss.js" afterPath="$PROJECT_DIR$/webserver/controllers/api/oss.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/test.js" afterPath="$PROJECT_DIR$/webserver/controllers/test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/object.js" afterPath="$PROJECT_DIR$/webserver/validators/object.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/response.js" afterPath="$PROJECT_DIR$/webserver/validators/response.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -94,11 +92,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webserver/controllers/front/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46839547">
+            <state vertical-scroll-proportion="0.0">
               <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="developer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webserver/services/developer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="object.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webserver/validators/object.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.46839547">
+              <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -112,8 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webserver/services/column.js" />
-        <option value="$PROJECT_DIR$/webserver/controllers/front/column.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/list.scss" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-article.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-column.html" />
@@ -163,6 +179,8 @@
         <option value="$PROJECT_DIR$/webserver/controllers/test.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/api/oss.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/main.js" />
+        <option value="$PROJECT_DIR$/webserver/services/developer.js" />
+        <option value="$PROJECT_DIR$/webserver/validators/object.js" />
       </list>
     </option>
   </component>
@@ -554,12 +572,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00671" summary="0.0.50">
-      <created>1427617992161</created>
-      <option name="number" value="00671" />
-      <option name="project" value="LOCAL" />
-      <updated>1427617992161</updated>
-    </task>
     <task id="LOCAL-00672" summary="0.0.50">
       <created>1427618366495</created>
       <option name="number" value="00672" />
@@ -848,7 +860,13 @@
       <option name="project" value="LOCAL" />
       <updated>1428591489963</updated>
     </task>
-    <option name="localTasksCounter" value="720" />
+    <task id="LOCAL-00720" summary="ydr-util =&gt; ydr-utils">
+      <created>1428591548070</created>
+      <option name="number" value="00720" />
+      <option name="project" value="LOCAL" />
+      <updated>1428591548070</updated>
+    </task>
+    <option name="localTasksCounter" value="721" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1005,20 +1023,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35818475">
-          <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/prompt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49594814">
-          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/.views/include/meta.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4314721">
@@ -1372,8 +1376,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/controllers/front/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46839547">
+        <state vertical-scroll-proportion="0.0">
           <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/services/developer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/validators/object.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46839547">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
           <folding />
         </state>
       </provider>
