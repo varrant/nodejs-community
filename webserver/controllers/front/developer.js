@@ -14,7 +14,7 @@ var interactive = require('../../services/').interactive;
 var object = require('../../services/').object;
 var howdo = require('howdo');
 var configs = require('../../../configs/');
-var log = require('ydr-log');
+var log = require('ydr-utils').log;
 var dato = require('ydr-utils').dato;
 var filter = require('../../utils/').filter;
 

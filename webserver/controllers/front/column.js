@@ -10,7 +10,7 @@ var column = require('../../services/').column;
 var object = require('../../services/').object;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
-var log = require('ydr-log');
+var log = require('ydr-utils').log;
 
 
 module.exports = function (app) {

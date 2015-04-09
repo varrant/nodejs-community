@@ -8,7 +8,7 @@
 
 var nodemailer = require('nodemailer');
 var email = require('./services/email.js');
-var log = require('ydr-log');
+var log = require('ydr-utils').log;
 var configs = require('../configs/');
 
 module.exports = function (next, app) {

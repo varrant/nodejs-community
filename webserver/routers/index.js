@@ -8,7 +8,7 @@
 
 var controllers = require('../controllers/');
 var configs = require('../../configs/');
-var log = require('ydr-log');
+var log = require('ydr-utils').log;
 var express = require('express');
 // 更为详尽配置的静态服务器
 var staticOptions = {

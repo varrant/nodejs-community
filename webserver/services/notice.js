@@ -11,7 +11,7 @@
 var configs = require('../../configs/');
 var notification = require('./notification.js');
 var response = require('./response.js');
-var log = require('ydr-log');
+var log = require('ydr-utils').log;
 var email = require('./email.js');
 
 

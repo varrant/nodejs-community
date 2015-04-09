@@ -23,7 +23,7 @@ var notice = require('./notice.js');
 var howdo = require('howdo');
 var dato = require('ydr-utils').dato;
 var typeis = require('ydr-utils').typeis;
-var log = require('ydr-log');
+var log = require('ydr-utils').log;
 
 
 /**

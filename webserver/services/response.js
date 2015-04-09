@@ -19,7 +19,7 @@ var notice = require('./notice.js');
 var interactive = require('./interactive.js');
 var dato = require('ydr-utils').dato;
 var howdo = require('howdo');
-var log = require('ydr-log');
+var log = require('ydr-utils').log;
 
 
 /**

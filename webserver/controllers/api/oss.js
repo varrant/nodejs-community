@@ -6,7 +6,7 @@
 
 'use strict';
 
-var Oss = require('ydr-ali-oss');
+var AliOSS = require('ydr-utils').AliOSS;
 var random = require('ydr-utils').random;
 var REG_IMAGE = /^image\/.*$/;
 var configs = require('../../../configs/');
@@ -21,7 +21,7 @@ module.exports = function (app) {
 
         next();
     };
-    var oss = new Oss(settings);
+    var oss = new AliOSS(settings);
 
     /**
      * 上传图片到阿里云 OSS

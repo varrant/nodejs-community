@@ -17,7 +17,7 @@ var column = require('../../services/').column;
 var section = require('../../services/').section;
 var response = require('../../services/').response;
 var filter = require('../../utils/').filter;
-var log = require('ydr-log');
+var log = require('ydr-utils').log;
 
 module.exports = function (app) {
     var exports = {};
