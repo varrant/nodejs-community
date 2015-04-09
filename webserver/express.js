@@ -25,7 +25,7 @@ var bodyParser = require('body-parser');
 var compression = require('compression');
 
 // 模板引擎
-var ydrTemplate = require('ydr-template');
+var ydrTemplate = require('ydr-utils').Template;
 
 ydrTemplate.setDefaults({
     cache: 'pro' === configs.app.env,
