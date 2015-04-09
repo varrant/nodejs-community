@@ -8,7 +8,7 @@
 
 var configs = require('../../configs/');
 var xss = require('ydr-utils').xss;
-var Validator = require('ydr-utils').validator;
+var Validator = require('ydr-utils').Validator;
 var regexp = require('../utils/').regexp;
 var validator = new Validator();
 // 标题: 中英文、数字、空格、下划线、短横线、中英文逗号

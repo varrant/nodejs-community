@@ -6,8 +6,6 @@
 
 'use strict';
 
-var ydrUtil = require('ydr-util');
-
 module.exports = function(app) {
     return {
         session: {

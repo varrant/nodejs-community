@@ -6,7 +6,7 @@
 
 'use strict';
 
-var Template = require('ydr-template');
+var Template = require('ydr-utils').Template;
 var fs = require('fs');
 var path = require('path');
 

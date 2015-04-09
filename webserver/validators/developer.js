@@ -8,7 +8,7 @@
 'use strict';
 
 var configs = require('../../configs/');
-var Validator = require('ydr-utils').validator;
+var Validator = require('ydr-utils').Validator;
 var validator = new Validator();
 var groups = configs.group.map(function (gp) {
     return gp.name;

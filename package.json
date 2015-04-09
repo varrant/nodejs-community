@@ -31,7 +31,7 @@
     "url": "http://frontenddev.org/help/bug-feedback.html"
   },
   "dependencies": {
-    "body-parser": "^1.9.2",
+    "body-parser": "^1.12.2",
     "compression": "^1.2.0",
     "cookie-parser": "^1.3.3",
     "express": "^4.10.2",
@@ -43,13 +43,7 @@
     "mongoose": "^3.8.19",
     "nodemailer": "^1.3.0",
     "supervisor": "^0.6.0",
-    "ydr-ali-oss": "^2.0.1",
-    "ydr-log": "^2.0.1",
-    "ydr-template": "^2.0.1",
-    "ydr-translate": "^1.0.0",
-    "ydr-util": "^2.1.6",
-    "ydr-utils": "^16.1.0",
-    "ydr-validator": "^2.1.1"
+    "ydr-utils": "^16.1.0"
   },
   "devDependencies": {
     "supervisor": "^0.6.0"

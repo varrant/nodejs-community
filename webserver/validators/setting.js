@@ -6,7 +6,7 @@
 
 'use strict';
 
-var Validator = require('ydr-utils').validator;
+var Validator = require('ydr-utils').Validator;
 var validator = new Validator();
 
 module.exports = validator;
