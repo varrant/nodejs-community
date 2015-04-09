@@ -9,7 +9,7 @@
 
 var configs = require('../../configs/');
 var xss = require('ydr-utils').xss;
-var Validator = require('ydr-validator');
+var Validator = require('ydr-utils').validator;
 var validator = new Validator();
 var regexp = require('../utils/').regexp;
 var filter = require('../utils/').filter;

@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/express.js" afterPath="$PROJECT_DIR$/webserver/express.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/category.js" afterPath="$PROJECT_DIR$/webserver/validators/category.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/column.js" afterPath="$PROJECT_DIR$/webserver/validators/column.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/developer.js" afterPath="$PROJECT_DIR$/webserver/validators/developer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/interactive.js" afterPath="$PROJECT_DIR$/webserver/validators/interactive.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/label.js" afterPath="$PROJECT_DIR$/webserver/validators/label.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/notification.js" afterPath="$PROJECT_DIR$/webserver/validators/notification.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/object.js" afterPath="$PROJECT_DIR$/webserver/validators/object.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/response.js" afterPath="$PROJECT_DIR$/webserver/validators/response.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/search.js" afterPath="$PROJECT_DIR$/webserver/validators/search.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/section.js" afterPath="$PROJECT_DIR$/webserver/validators/section.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/validators/setting.js" afterPath="$PROJECT_DIR$/webserver/validators/setting.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/api/translate.js" afterPath="$PROJECT_DIR$/webserver/controllers/api/translate.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -29,7 +40,28 @@
     <favorites_list name="nodejs-community" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.269231">
+              <caret line="48" column="18" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="category.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webserver/validators/category.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.38573745">
+              <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,8 +69,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-help.html" />
-        <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-link.html" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/index.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/index.js" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/sadmin/setting.html" />
@@ -88,6 +118,8 @@
         <option value="$PROJECT_DIR$/webserver/controllers/api/oss.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/column.js" />
         <option value="$PROJECT_DIR$/webserver/express.js" />
+        <option value="$PROJECT_DIR$/webserver/controllers/api/translate.js" />
+        <option value="$PROJECT_DIR$/webserver/validators/category.js" />
       </list>
     </option>
   </component>
@@ -479,12 +511,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00678" summary="0.0.65">
-      <created>1427817170069</created>
-      <option name="number" value="00678" />
-      <option name="project" value="LOCAL" />
-      <updated>1427817170069</updated>
-    </task>
     <task id="LOCAL-00679" summary="0.0.65">
       <created>1427817244555</created>
       <option name="number" value="00679" />
@@ -773,7 +799,13 @@
       <option name="project" value="LOCAL" />
       <updated>1428596945657</updated>
     </task>
-    <option name="localTasksCounter" value="727" />
+    <task id="LOCAL-00727" summary="ydr-util =&gt; ydr-utils">
+      <created>1428597061237</created>
+      <option name="number" value="00727" />
+      <option name="project" value="LOCAL" />
+      <updated>1428597061237</updated>
+    </task>
+    <option name="localTasksCounter" value="728" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -781,15 +813,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30852714" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30852714" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21683876" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21683876" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4496124" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45736435" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -930,27 +962,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/admin/notification.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/front/oauth-callback.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/sadmin/developer-detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="133" column="12" selection-start-line="133" selection-start-column="12" selection-end-line="133" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/sadmin/setting.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1140,14 +1151,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28087986">
-          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/controllers/api/category.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5920398">
@@ -1314,6 +1317,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.284689">
           <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/api/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14593302">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/api/translate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20334928">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.269231">
+          <caret line="48" column="18" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/validators/category.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38573745">
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
           <folding />
         </state>
       </provider>

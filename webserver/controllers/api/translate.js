@@ -6,7 +6,7 @@
 
 'use strict';
 
-var translate = require('ydr-translate');
+var translate = require('ydr-utils').translate;
 
 module.exports = function (app) {
     var exports = {};

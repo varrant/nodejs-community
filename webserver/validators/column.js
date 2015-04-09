@@ -7,7 +7,7 @@
 'use strict';
 
 
-var Validator = require('ydr-validator');
+var Validator = require('ydr-utils').validator;
 var regexp = require('../utils/').regexp;
 var validator = new Validator();
 var REG_LINES = /[\n\t\v]/g;
