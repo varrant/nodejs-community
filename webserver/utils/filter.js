@@ -36,10 +36,10 @@ exports.skipLimit = function (parent, defaultPage, defaultLimit) {
         page = maxValue;
     }
 
-    if (limit < 1) {
-        limit = defaultLimit;
-    } else if (limit > maxValue) {
+    if (limit === -1 || limit > maxValue) {
         limit = maxValue;
+    } else if (limit < 1) {
+        limit = defaultLimit;
     }
 
     return {

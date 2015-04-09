@@ -604,10 +604,6 @@ define(function (require, exports, module) {
             if (item.respond) {
                 item.respond.destroy();
             }
-
-            if (item.pager) {
-                item.pager.destroy();
-            }
         });
 
         the._replyMap = {};
@@ -710,7 +706,7 @@ define(function (require, exports, module) {
         })
             .on('success', function (data) {
                 the._renderReply($listParent, dato.extend({
-                    list: 9999
+                    list: -1
                 }, options.list, {
                     type: 'reply'
                 }, data));
@@ -718,22 +714,10 @@ define(function (require, exports, module) {
                 the._increaseHTML($btn, data.count, true);
                 the._scrollTo($listParent);
 
-                //if (!the._replyMap[id].pager) {
-                //    the._replyMap[id].pager = new Pager($pagerParent, {
-                //        page: 1,
-                //        max: Math.ceil(data.count / options.query.limit)
-                //    }).on('change', function (page) {
-                //            the._scrollTo($listParent);
-                //            the._replyMap[id].query.page = page;
-                //            the._ajaxReply($btn, $li, id);
-                //            this.render({
-                //                page: page,
-                //                max: Math.ceil(data.count / options.query.limit)
-                //            });
-                //        });
-                //    the._replyMap[id].respond = the._initRespond($contentParent, $listParent, $btn) || {};
-                //    the._replyMap[id].respond._replyParentId = id;
-                //}
+                if (!the._replyMap[id].respond) {
+                    the._replyMap[id].respond = the._initRespond($contentParent, $listParent, $btn) || {};
+                    the._replyMap[id].respond._replyParentId = id;
+                }
             })
             .on('error', alert)
             .on('finish', the._ajaxFinish.bind(the));
