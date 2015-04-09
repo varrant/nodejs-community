@@ -10,7 +10,7 @@ var express = require('express');
 var configs = require('../configs/');
 var path = require('path');
 var dato = require('ydr-utils').dato;
-var date = require('ydr-util').date;
+var date = require('ydr-utils').date;
 
 // cookie 支持
 var cookieParser = require('cookie-parser');

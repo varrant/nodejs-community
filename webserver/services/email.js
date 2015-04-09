@@ -8,7 +8,7 @@
 
 var configs = require('../../configs/');
 var setting = require('./setting.js');
-var date = require('ydr-util').date;
+var date = require('ydr-utils').date;
 var log = require('ydr-log');
 var typeis = require('ydr-utils').typeis;
 var list = [];
