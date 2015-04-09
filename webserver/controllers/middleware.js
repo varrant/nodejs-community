@@ -7,7 +7,7 @@
 'use strict';
 
 var URL = require('url');
-var crypto = require('ydr-util').crypto;
+var crypto = require('ydr-utils').encryption;
 var dato = require('ydr-utils').dato;
 var configs = require('../../configs/');
 var developer = require('../services/').developer;

@@ -7,7 +7,7 @@
 'use strict';
 
 var secret = require('../../configs/').secret;
-var crypto = require('ydr-util').crypto;
+var crypto = require('ydr-utils').encryption;
 var dato = require('ydr-utils').dato;
 var defaults = secret.cookie.options;
 
