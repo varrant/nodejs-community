@@ -114,12 +114,14 @@ define(function (require, exports, module) {
         the._$parent = selector.query($parent)[0];
         the._init();
     });
+    
+    var pro = Response.fn;
 
     /**
      * 初始化
      * @private
      */
-    Response.fn._init = function () {
+    pro._init = function () {
         var the = this;
         var $parent = the._$parent;
         var html = tplWrap.render({
@@ -137,7 +139,7 @@ define(function (require, exports, module) {
      * 初始化事件
      * @private
      */
-    Response.fn._initEvent = function () {
+    pro._initEvent = function () {
         var the = this;
         var options = the._options;
         var replyClass = '.' + alienClass + '-reply';
@@ -169,7 +171,7 @@ define(function (require, exports, module) {
      * 初始化容器
      * @private
      */
-    Response.fn._ajaxContainer = function () {
+    pro._ajaxContainer = function () {
         var the = this;
         var options = the._options;
         var commentByCountClass = options.sync.commentByCountClass;
@@ -205,7 +207,7 @@ define(function (require, exports, module) {
      * @param [data]
      * @private
      */
-    Response.fn._renderContainer = function (data) {
+    pro._renderContainer = function (data) {
         var the = this;
         var html;
 
@@ -226,7 +228,7 @@ define(function (require, exports, module) {
      * @params [$replyNumberBtn] {Object} 回复数字按钮
      * @private
      */
-    Response.fn._initRespond = function ($respondParent, $listParent, $replyNumberBtn) {
+    pro._initRespond = function ($respondParent, $listParent, $replyNumberBtn) {
         var the = this;
         var options = the._options;
         var respond;
@@ -271,7 +273,7 @@ define(function (require, exports, module) {
      * 定时更新时间
      * @private
      */
-    Response.fn._updateTime = function () {
+    pro._updateTime = function () {
         var the = this;
 
         setInterval(function () {
@@ -293,9 +295,10 @@ define(function (require, exports, module) {
     /**
      * 定点滚动
      * @param $target
+     * @param callback
      * @private
      */
-    Response.fn._scrollTo = function ($target, callback) {
+    pro._scrollTo = function ($target, callback) {
         var top = attribute.top($target);
 
         animation.scrollTo(window, {
@@ -310,7 +313,7 @@ define(function (require, exports, module) {
      * 初始化主评论
      * @private
      */
-    Response.fn._ajaxComment = function () {
+    pro._ajaxComment = function () {
         var the = this;
         var options = the._options;
         var url = options.url.list + '?' + qs.stringify(options.query);
@@ -365,7 +368,7 @@ define(function (require, exports, module) {
      * 改变当前分页
      * @param page
      */
-    Response.fn.changePage = function (page) {
+    pro.changePage = function (page) {
         var the = this;
 
         page = dato.parseInt(page, 1);
@@ -380,7 +383,7 @@ define(function (require, exports, module) {
     };
 
 
-    Response.fn._ajaxFinish = function () {
+    pro._ajaxFinish = function () {
         this._isAjaxing = false;
     };
 
@@ -390,7 +393,7 @@ define(function (require, exports, module) {
      * @param [data]
      * @private
      */
-    Response.fn._renderComment = function (data) {
+    pro._renderComment = function (data) {
         var the = this;
         var html;
 
@@ -410,11 +413,8 @@ define(function (require, exports, module) {
      * @returns {*}
      * @private
      */
-    Response.fn._getItem = function ($node) {
-        var itemClass = '.' + alienClass + '-item';
-        var $item = selector.closest($node, itemClass)[0];
-
-        return $item;
+    pro._getItem = function ($node) {
+        return selector.closest($node,  '.' + alienClass + '-item')[0];
     };
 
 
@@ -424,7 +424,7 @@ define(function (require, exports, module) {
      * @returns {*}
      * @private
      */
-    Response.fn._getResponseId = function ($node) {
+    pro._getResponseId = function ($node) {
         return attribute.data(this._getItem($node), 'id');
     };
 
@@ -436,7 +436,7 @@ define(function (require, exports, module) {
      * @param callback
      * @private
      */
-    Response.fn._post = function (content, parentId, callback) {
+    pro._post = function (content, parentId, callback) {
         var the = this;
         var options = the._options;
         var data = {
@@ -487,7 +487,7 @@ define(function (require, exports, module) {
      * 改变评论数量显示
      * @private
      */
-    Response.fn._increaseCount = function () {
+    pro._increaseCount = function () {
         var the = this;
         var count = the._count;
 
@@ -504,7 +504,7 @@ define(function (require, exports, module) {
     /**
      * 动态追加项目
      */
-    Response.fn._prependItem = function ($parent, data, obje) {
+    pro._prependItem = function ($parent, data, obje) {
         var the = this;
         var html = tplList.render(dato.extend({
             list: [data]
@@ -547,7 +547,7 @@ define(function (require, exports, module) {
     /**
      * 高亮代码
      */
-    Response.fn.prettify = function () {
+    pro.prettify = function () {
         new Prettify('.' + alienClass + '-wrap pre');
     };
 
@@ -559,7 +559,7 @@ define(function (require, exports, module) {
      * @param [isToCount]
      * @private
      */
-    Response.fn._increaseHTML = function ($node, count, isToCount) {
+    pro._increaseHTML = function ($node, count, isToCount) {
         var $number = selector.query('.' + alienClass + '-number', $node)[0];
         var neo = 0;
 
@@ -579,7 +579,7 @@ define(function (require, exports, module) {
      * @param agreers
      * @private
      */
-    Response.fn._renderAgreers = function ($node, agreers) {
+    pro._renderAgreers = function ($node, agreers) {
         //var the = this;
         //var $item = the._getItem($node);
         //var id = attribute.data($item, 'id');
@@ -597,7 +597,7 @@ define(function (require, exports, module) {
      * 翻页之后销毁回复实例
      * @private
      */
-    Response.fn._destroyReply = function () {
+    pro._destroyReply = function () {
         var the = this;
 
         dato.each(the._replyMap, function (id, item) {
@@ -618,7 +618,7 @@ define(function (require, exports, module) {
      * 回复
      * @private
      */
-    Response.fn._reply = function (eve) {
+    pro._reply = function (eve) {
         var the = this;
         var id = the._getResponseId(eve.target);
         var $btn = selector.closest(eve.target, 'button')[0];
@@ -642,7 +642,7 @@ define(function (require, exports, module) {
      * @param boolean {Boolean} 是否展开
      * @private
      */
-    Response.fn._toggleReply = function ($btn, id, boolean) {
+    pro._toggleReply = function ($btn, id, boolean) {
         var the = this;
         var $li = selector.query('#response-' + id)[0];
 
@@ -669,7 +669,7 @@ define(function (require, exports, module) {
      * @param id
      * @private
      */
-    Response.fn._ajaxReply = function ($btn, $li, id) {
+    pro._ajaxReply = function ($btn, $li, id) {
         var the = this;
         var options = the._options;
         var $children = selector.query('.' + alienClass + '-children', $li)[0];
@@ -746,7 +746,7 @@ define(function (require, exports, module) {
      * @param [data]
      * @private
      */
-    Response.fn._renderReply = function ($children, data) {
+    pro._renderReply = function ($children, data) {
         var the = this;
         var html;
 
@@ -764,7 +764,7 @@ define(function (require, exports, module) {
      * 赞同
      * @private
      */
-    Response.fn._agree = function (eve) {
+    pro._agree = function (eve) {
         var the = this;
         var $ele = selector.closest(eve.target, 'button')[0];
         var id = the._getResponseId($ele);
@@ -795,7 +795,7 @@ define(function (require, exports, module) {
      * 采纳
      * @private
      */
-    Response.fn._accept = function (eve) {
+    pro._accept = function (eve) {
         var the = this;
         var options = the._options;
         var $ele = eve.target;
@@ -830,7 +830,7 @@ define(function (require, exports, module) {
      * @param itemId
      * @private
      */
-    Response.fn._acceptItem = function (itemId) {
+    pro._acceptItem = function (itemId) {
         var $item = selector.query('#response-' + itemId)[0];
 
         if (!$item) {
