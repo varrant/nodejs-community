@@ -8,7 +8,7 @@
 
 var webserver = require('./webserver/');
 var configs = require('./configs/');
-var random = require('ydr-util').random;
+var random = require('ydr-utils').random;
 
 
 webserver(function (err, app) {
