@@ -6,7 +6,7 @@
 
 'use strict';
 
-var random = require('ydr-util').random;
+var random = require('ydr-utils').random;
 var dato = require('ydr-utils').dato;
 var typeis = require('ydr-utils').typeis;
 var howdo = require('howdo');

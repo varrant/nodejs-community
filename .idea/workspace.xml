@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/error.js" afterPath="$PROJECT_DIR$/webserver/controllers/error.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/developer.js" afterPath="$PROJECT_DIR$/webserver/services/developer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/main.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/front/object.js" afterPath="$PROJECT_DIR$/webserver/controllers/front/object.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/api/oss.js" afterPath="$PROJECT_DIR$/webserver/controllers/api/oss.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/test.js" afterPath="$PROJECT_DIR$/webserver/controllers/test.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -60,11 +64,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="error.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="error.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webserver/controllers/error.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30307943">
+            <state vertical-scroll-proportion="0.0">
               <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webserver/controllers/test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="oss.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webserver/controllers/api/oss.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webserver/controllers/front/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.46839547">
+              <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -78,8 +112,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/cli/down-img.js" />
-        <option value="$PROJECT_DIR$/webserver/models/column.js" />
         <option value="$PROJECT_DIR$/webserver/services/column.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/column.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/list.scss" />
@@ -88,7 +120,6 @@
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-help.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-link.html" />
         <option value="$PROJECT_DIR$/webserver/controllers/front/index.js" />
-        <option value="$PROJECT_DIR$/webserver/controllers/front/main.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/index.js" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/sadmin/setting.html" />
         <option value="$PROJECT_DIR$/webserver/routers/api.js" />
@@ -129,6 +160,9 @@
         <option value="$PROJECT_DIR$/webserver/express.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/middleware.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/error.js" />
+        <option value="$PROJECT_DIR$/webserver/controllers/test.js" />
+        <option value="$PROJECT_DIR$/webserver/controllers/api/oss.js" />
+        <option value="$PROJECT_DIR$/webserver/controllers/front/main.js" />
       </list>
     </option>
   </component>
@@ -520,12 +554,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00670" summary="0.0.50">
-      <created>1427617918381</created>
-      <option name="number" value="00670" />
-      <option name="project" value="LOCAL" />
-      <updated>1427617918381</updated>
-    </task>
     <task id="LOCAL-00671" summary="0.0.50">
       <created>1427617992161</created>
       <option name="number" value="00671" />
@@ -814,7 +842,13 @@
       <option name="project" value="LOCAL" />
       <updated>1428591438943</updated>
     </task>
-    <option name="localTasksCounter" value="719" />
+    <task id="LOCAL-00719" summary="ydr-util =&gt; ydr-utils">
+      <created>1428591489963</created>
+      <option name="number" value="00719" />
+      <option name="project" value="LOCAL" />
+      <updated>1428591489963</updated>
+    </task>
+    <option name="localTasksCounter" value="720" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -971,27 +1005,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot-dev/.views/admin/include/object/item-link.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5177665">
-          <caret line="41" column="113" selection-start-line="41" selection-start-column="113" selection-end-line="41" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/.views/admin/include/object/item-help.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5465313">
-          <caret line="41" column="113" selection-start-line="41" selection-start-column="113" selection-end-line="41" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/.views/admin/include/object/item-article.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5076142">
-          <caret line="41" column="113" selection-start-line="41" selection-start-column="113" selection-end-line="41" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35818475">
@@ -1335,8 +1348,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/controllers/error.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30307943">
+        <state vertical-scroll-proportion="0.0">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/api/oss.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webserver/controllers/front/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46839547">
+          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
           <folding />
         </state>
       </provider>

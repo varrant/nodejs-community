@@ -8,7 +8,7 @@
 
 var configs = require('../../configs/');
 var setting = require('../services/').setting;
-var random = require('ydr-util').random;
+var random = require('ydr-utils').random;
 
 
 module.exports = function (app) {

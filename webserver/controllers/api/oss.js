@@ -7,7 +7,7 @@
 'use strict';
 
 var Oss = require('ydr-ali-oss');
-var random = require('ydr-util').random;
+var random = require('ydr-utils').random;
 var REG_IMAGE = /^image\/.*$/;
 var configs = require('../../../configs/');
 
