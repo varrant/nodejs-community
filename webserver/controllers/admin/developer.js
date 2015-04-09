@@ -7,7 +7,7 @@
 'use strict';
 
 var developer = require('../../models/').developer;
-var typeis = require('ydr-util').typeis;
+var typeis = require('ydr-utils').typeis;
 var role20 = 1 << 20;
 
 module.exports = function (app) {

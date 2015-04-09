@@ -14,7 +14,7 @@ var REG_LINES = /[\n\t\v]/g;
 var REG_NAME = regexp.title(1, 50);
 var REG_URI = regexp.uri(1, 50);
 var REG_INTRODUCTION = regexp.content(10, 1000);
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 
 
 validator.pushRule({

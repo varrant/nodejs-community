@@ -8,7 +8,7 @@
 
 var column = require('../models/').column;
 var developer = require('./developer.js');
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 var howdo = require('howdo');
 var log = require('ydr-log');
 

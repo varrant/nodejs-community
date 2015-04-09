@@ -8,7 +8,7 @@
 
 
 var label = require('../models/').label;
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 var keys = ['name'];
 
 

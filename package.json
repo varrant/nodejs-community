@@ -48,6 +48,7 @@
     "ydr-template": "^2.0.1",
     "ydr-translate": "^1.0.0",
     "ydr-util": "^2.1.6",
+    "ydr-utils": "^15.1.0",
     "ydr-validator": "^2.1.1"
   },
   "devDependencies": {

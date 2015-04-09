@@ -6,8 +6,8 @@
 
 'use strict';
 
-var dato = require('ydr-util').dato;
-var typeis = require('ydr-util').typeis;
+var dato = require('ydr-utils').dato;
+var typeis = require('ydr-utils').typeis;
 var maxValue = 1 << 53;
 
 

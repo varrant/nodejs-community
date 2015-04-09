@@ -7,8 +7,8 @@
 'use strict';
 
 var howdo = require('howdo');
-var dato = require('ydr-util').dato;
-var typeis = require('ydr-util').typeis;
+var dato = require('ydr-utils').dato;
+var typeis = require('ydr-utils').typeis;
 var validators = require('../validators/');
 var models = {
     // 分类

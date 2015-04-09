@@ -7,7 +7,7 @@
 'use strict';
 
 var category = require('../models/').category;
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 var keys = ['name', 'uri', 'cover', 'introduction'];
 
 

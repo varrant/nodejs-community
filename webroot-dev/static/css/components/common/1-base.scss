@@ -39,6 +39,11 @@ button, input, optgroup, select, textarea{
   font: initial;
 }
 
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
 p,
 hr,
 ul,
@@ -185,6 +190,7 @@ pre code {
 
 img{
   max-width: 100%;
+  height: auto;
   vertical-align: top;
 }
 

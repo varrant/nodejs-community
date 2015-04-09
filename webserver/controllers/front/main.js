@@ -7,8 +7,8 @@
 'use strict';
 
 var random = require('ydr-util').random;
-var dato = require('ydr-util').dato;
-var typeis = require('ydr-util').typeis;
+var dato = require('ydr-utils').dato;
+var typeis = require('ydr-utils').typeis;
 var howdo = require('howdo');
 var object = require('../../services/').object;
 var developer = require('../../services/').developer;

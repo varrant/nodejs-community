@@ -8,7 +8,7 @@
 
 var URL = require('url');
 var crypto = require('ydr-util').crypto;
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 var configs = require('../../configs/');
 var developer = require('../services/').developer;
 var cookie = require('../utils/').cookie;

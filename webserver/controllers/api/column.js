@@ -8,7 +8,7 @@
 
 var column = require('../../services/').column;
 var permission = require('../../services/').permission;
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 
 module.exports = function (app) {
     var exports = {};

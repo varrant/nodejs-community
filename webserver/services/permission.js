@@ -7,7 +7,7 @@
 'use strict';
 
 var permission = require('../../configs/').permission;
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 
 
 /**

@@ -31,6 +31,10 @@ body {
 button, input, optgroup, select, textarea {
   font: initial; }
 
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
 p, hr, ul, ol, dl, blockquote, pre, address, fieldset, figure {
   margin: 0 0 1.6rem 0; }
 
@@ -133,6 +137,7 @@ pre code {
 
 img {
   max-width: 100%;
+  height: auto;
   vertical-align: top; }
 
 .row::before, .row::after, [class*=avg-]::before, [class*=avg-]::after, .clearfix::before, .clearfix:after, .list-left::before, .list-left::after, .list-right::before, .list-right::after {

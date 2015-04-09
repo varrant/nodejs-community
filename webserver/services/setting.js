@@ -7,8 +7,8 @@
 'use strict';
 
 var setting = require('../models/').setting;
-var typeis = require('ydr-util').typeis;
-var dato = require('ydr-util').dato;
+var typeis = require('ydr-utils').typeis;
+var dato = require('ydr-utils').dato;
 var howdo = require('howdo');
 
 

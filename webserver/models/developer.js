@@ -6,7 +6,7 @@
 
 'use strict';
 
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 var mongoose = require('mongoose');
 var schema = new mongoose.Schema({
     // 邮箱，由 github 过来

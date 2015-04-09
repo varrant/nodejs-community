@@ -6,7 +6,7 @@
 
 'use strict';
 
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 var configs = require('../../configs/');
 var scoreMap = configs.score;
 

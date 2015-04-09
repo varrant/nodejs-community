@@ -9,7 +9,7 @@
 var section = require('../../services/').section;
 var permission = require('../../services/').permission;
 var sync = require('../../utils/').sync;
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 
 module.exports = function (app) {
     var exports = {};

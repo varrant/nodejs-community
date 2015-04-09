@@ -7,7 +7,7 @@
 'use strict';
 
 var section = require('../models/').section;
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 var keys = ['name', 'role', 'uri', 'cover', 'introduction'];
 
 

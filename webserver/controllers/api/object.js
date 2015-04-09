@@ -8,7 +8,7 @@
 
 var object = require('../../services/').object;
 var column = require('../../services/').column;
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
 

@@ -10,7 +10,7 @@ var response = require('../../services/').response;
 var object = require('../../services/').object;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 
 module.exports = function (app) {
     var exports = {};

@@ -8,7 +8,7 @@
 
 var filter = require('../../utils/').filter;
 var object = require('../../services/').object;
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 
 module.exports = function (app) {
     var exports = {};

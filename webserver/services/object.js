@@ -21,8 +21,8 @@ var developer = require('./developer.js');
 var response = require('./response.js');
 var notice = require('./notice.js');
 var howdo = require('howdo');
-var dato = require('ydr-util').dato;
-var typeis = require('ydr-util').typeis;
+var dato = require('ydr-utils').dato;
+var typeis = require('ydr-utils').typeis;
 var log = require('ydr-log');
 
 

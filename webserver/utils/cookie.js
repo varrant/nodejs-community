@@ -8,7 +8,7 @@
 
 var secret = require('../../configs/').secret;
 var crypto = require('ydr-util').crypto;
-var dato = require('ydr-util').dato;
+var dato = require('ydr-utils').dato;
 var defaults = secret.cookie.options;
 
 
