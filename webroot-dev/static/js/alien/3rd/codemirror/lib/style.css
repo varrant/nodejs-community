@@ -435,7 +435,6 @@ span.CodeMirror-selectedtext {
 .cm-s-fed .cm-comment{
     color: #B63125;
     font-family: Consolas, Monaco, courier, monospace;
-    font-style: italic;
 }
 
 .cm-s-fed .cm-quote{
