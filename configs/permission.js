@@ -12,6 +12,6 @@ module.exports = function (app) {
         section: ['founder'],
         category: ['founder', 'admin'],
         column: [],
-        sadmin: ['founder', 'admin']
+        sadmin: ['founder']
     };
 };

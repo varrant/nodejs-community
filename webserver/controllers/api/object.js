@@ -11,6 +11,8 @@ var column = require('../../services/').column;
 var dato = require('ydr-utils').dato;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
+var role20 = 1 << 20;
+var role19 = 1 << 19;
 
 module.exports = function (app) {
     var exports = {};
@@ -23,7 +25,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.list = function (req, res, next) {
-        var conditions = dato.pick(req.query, ['section']);
+        var conditions = dato.pick(req.query, ['section', 'author']);
         var options = filter.skipLimit(req.query);
         var section = conditions.section;
 
@@ -52,7 +54,17 @@ module.exports = function (app) {
             return next(err);
         }
 
-        conditions.author = res.locals.$developer.id;
+        var operator = res.locals.$developer;
+
+
+        // 有权限管理他人列表：管理员+
+        if ((operator.role & role19) !== 0) {
+            console.log(conditions.author);
+            conditions.author = conditions.author || operator.id;
+        } else {
+            conditions.author = operator.id;
+        }
+
         howdo
             // 统计总数
             .task(function (done) {

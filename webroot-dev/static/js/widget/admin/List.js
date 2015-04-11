@@ -42,7 +42,7 @@ define(function (require, exports, module) {
             page: dato.parseInt(hashbang.get('query', 'page'), the._options.query.page),
             limit: dato.parseInt(hashbang.get('query', 'limit'), the._options.query.limit),
             type: hashbang.get('query', 'type') || the._options.query.type,
-            author: the._options.query.author,
+            author: hashbang.get('query', 'author') || '',
             section: the._options.query.section
         };
 
