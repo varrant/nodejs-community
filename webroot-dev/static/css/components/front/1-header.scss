@@ -104,13 +104,16 @@ header {
       padding: 0 20px;
 
       &:hover {
-        background: darken($primary-bg-color, 2%);
+        background: #01809F;
+        background: -webkit-linear-gradient(#01809F 0, #00A2CA 100%);
+        background: linear-gradient(#01809F 0, #00A2CA 100%);
       }
     }
 
     .active a {
-      background: darken($primary-bg-color, 5%);
-      box-shadow: inset 1px 1px 10px darken($primary-bg-color, 10%);
+      background: #01809F;
+      background: -webkit-linear-gradient(#01809F 0, #00A2CA 100%);
+      background: linear-gradient(#01809F 0, #00A2CA 100%);
     }
 
     .label {

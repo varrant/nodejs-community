@@ -73,10 +73,13 @@ header {
       color: #fff;
       padding: 0 20px; }
       .nav-list a:hover {
-        background: #009ac0; }
+        background: #01809F;
+        background: -webkit-linear-gradient(#01809F 0, #00A2CA 100%);
+        background: linear-gradient(#01809F 0, #00A2CA 100%); }
     .nav-list .active a {
-      background: #008eb1;
-      box-shadow: inset 1px 1px 10px #007997; }
+      background: #01809F;
+      background: -webkit-linear-gradient(#01809F 0, #00A2CA 100%);
+      background: linear-gradient(#01809F 0, #00A2CA 100%); }
     .nav-list .label {
       position: relative;
       font-size: 100%;
