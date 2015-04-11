@@ -24,6 +24,7 @@ var howdo = require('howdo');
 var dato = require('ydr-utils').dato;
 var typeis = require('ydr-utils').typeis;
 var log = require('ydr-utils').log;
+var role19 = 1 << 19;
 
 
 /**
@@ -221,7 +222,11 @@ exports.updateOne = function (author, conditions, data, callback) {
                     return next(err);
                 }
 
-                if (doc.author.toString() !== author.id.toString()) {
+                // !(是管理员 || 是作者)
+                if (
+                    !((author.role & role19) !== 0 ||
+                    doc.author.toString() === author.id.toString())
+                ) {
                     err = new Error('不允许修改他人的 object');
                     err.code = 403;
                     return next(err);
