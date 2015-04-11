@@ -70,7 +70,8 @@
                                 <i class="fi fi-clock-o"></i>
                                 <span>{{object.updateAt|datefrom}} &times; {{object.updateList.length}}</span>
                             </li>
-                            {{if object.author.id === $developer.id}}
+                            {{ var role19 = 2<<19; }}
+                            {{if ($developer.role & role19)!== 0 ||  object.author.id === $developer.id}}
                             <li>
                                 <i class="fi fi-pencil"></i>
                                 <a href="/admin/object/article/?id={{object.id}}">重新编辑</a>
