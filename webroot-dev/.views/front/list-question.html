@@ -25,7 +25,7 @@
 
 <div class="layout-body a-slide-down-fixed">
     <div class="ptitle">
-        <img class="ptitle-cover" src="{{$sectionUriMap.question.cover}}" alt="cover"/>
+        <img class="ptitle-cover" src="{{$sectionUriMap.question.cover}}" alt="cover" coolieignore/>
         <h1 class="ptitle-name"><i class="fi fi-cube"></i>{{$sectionUriMap.question.name}}<small>/{{$sectionUriMap.question.objectCount}}</small></h1>
         <div class="ptitle-desc text-light" id="share"></div>
         <div class="ptitle-intro text-muted">{{$sectionUriMap.question.introduction}}</div>
@@ -73,7 +73,7 @@
                             {{list objects as object}}
                             <li class="summarylist-item clearfix">
                                 <div class="summarylist-avatar pull-left">
-                                    <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50"/></a>
+                                    <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50" coolieignore/></a>
                                 </div>
                                 <div class="summarylist-body">
                                     <h2 class="summarylist-name">
@@ -104,7 +104,7 @@
                                                 {{list object.contributors as contributor}}
                                                 <li>
                                                     <a href="/developer/{{contributor.githubLogin}}/" title="{{contributor.nickname}}">
-                                                        <img src="{{contributor.email|gravatar:40}}" width="20" height="20" alt="avatar"/>
+                                                        <img src="{{contributor.email|gravatar:40}}" width="20" height="20" alt="avatar" coolieignore/>
                                                     </a>
                                                 </li>
                                                 {{/list}}

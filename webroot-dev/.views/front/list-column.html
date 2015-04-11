@@ -55,7 +55,7 @@
                             {{list objects as object}}
                             <li class="summarylist-item clearfix">
                                 <div class="summarylist-avatar pull-left">
-                                    <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50"/></a>
+                                    <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:100}}" alt="avatar" width="50" height="50" coolieignore/></a>
                                 </div>
                                 <div class="summarylist-body">
                                     <h2 class="summarylist-name"><span class="badge badge-default">{{$sectionIdMap[object.section].name}}</span><i class="text-space"></i><a
@@ -74,7 +74,7 @@
                                                 {{list object.contributors as contributor}}
                                                 <li>
                                                     <a href="/developer/{{contributor.githubLogin}}/" title="{{contributor.nickname}}">
-                                                        <img src="{{contributor.email|gravatar:40}}" width="20" height="20" alt="avatar"/>
+                                                        <img src="{{contributor.email|gravatar:40}}" width="20" height="20" alt="avatar" coolieignore/>
                                                     </a>
                                                 </li>
                                                 {{/list}}
