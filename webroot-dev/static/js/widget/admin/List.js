@@ -25,8 +25,9 @@ define(function (require, exports, module) {
         query: {
             page: 1,
             limit: 20,
+            type: null,
             section: null,
-            type: null
+            author: null
         },
         data: null,
         methods: null
@@ -41,6 +42,7 @@ define(function (require, exports, module) {
             page: dato.parseInt(hashbang.get('query', 'page'), the._options.query.page),
             limit: dato.parseInt(hashbang.get('query', 'limit'), the._options.query.limit),
             type: hashbang.get('query', 'type') || the._options.query.type,
+            author: the._options.query.author,
             section: the._options.query.section
         };
 
