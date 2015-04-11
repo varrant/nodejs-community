@@ -1,5 +1,5 @@
 <div class="card">
-    <h2 class="card-title"><i class="fi fi-user"></i>{{developer.nickname}}
+    <h2 class="card-title"><i class="fi fi-user"></i>{{developer.nickname}}（第{{developer.index+1}}位前端开发者）
         {{if developer.hasCertificated}}<i class="fi fi-check-circle text-success" title="个人认证"></i>{{/if}}
         {{if pageType !== "home"}}<span class="text-space text-light">/</span><i class="fi fi-home"></i><a href="/developer/{{=developer.githubLogin}}/">主页</a>{{/if}}
         <div class="card-endtitle">
