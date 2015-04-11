@@ -126,6 +126,9 @@ module.exports = function (app) {
                 })
                 // 2. 分页
                 .task(function (done) {
+                    options.sort = {
+                        index: 1
+                    };
                     developer.find({}, options, done);
                 })
                 .together(function (err, count, docs) {

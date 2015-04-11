@@ -6,20 +6,22 @@
         <thead>
         <tr>
             <th width="8%">序号</th>
+            <th width="10%">github</th>
             <th width="20%">邮箱</th>
             <th width="*">昵称</th>
         </tr>
         </thead>
         <tbody>
-        <tr v-repeat="developer:list" v-class="danger:developer.isBlock">
-            <td>\{{(query.page - 1) * query.limit + $index + 1}}</td>
-            <td>\{{developer.email}}</td>
-            <td><a href="/sadmin/developer/?id=\{{developer._id}}">\{{developer.nickname}}</a></td>
+        <tr v-repeat="item: list" v-class="danger:developer.isBlock">
+            <td>\{{item.index + 1}}</td>
+            <td>\{{item.githubLogin}}</td>
+            <td>\{{item.email}}</td>
+            <td><a href="/sadmin/developer/?id=\{{item.id}}">\{{item.nickname}}</a></td>
         </tr>
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="3" id="pagination"></td>
+            <td colspan="4" id="pagination"></td>
         </tr>
         </tfoot>
     </table>

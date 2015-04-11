@@ -22,7 +22,7 @@ define(function (require, exports, module) {
         section: '',
         query: {
             page: 1,
-            limit: 20,
+            limit: 10,
             section: null,
             type: null
         },
@@ -60,9 +60,14 @@ define(function (require, exports, module) {
         var the = this;
 
         hashbang.on('query', 'page', function (eve, neo) {
-            the.query.page = neo.query.page || 1;
-            the.query.limit = neo.query.limit || 20;
-            the.getList();
+            var page = neo.query.page || 1;
+            var limit = neo.query.limit || 20;
+
+            if (the.query.page !== page || the.query.limit !== limit) {
+                the.query.page = page;
+                the.query.limit = limit;
+                the.getList();
+            }
         });
     };
 
