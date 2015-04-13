@@ -147,3 +147,32 @@ $border-color: #e6e6e6;
     }
   }
 }
+
+.thumblist {
+  li {
+    list-style: none;
+  }
+
+  &-item {
+    position: relative;
+    text-align: center;
+  }
+
+  &-cover {
+    border-radius: 6px;
+  }
+
+  &-name {
+    height: 16px;
+    line-height: 16px;
+    overflow: hidden;
+  }
+
+  &-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}

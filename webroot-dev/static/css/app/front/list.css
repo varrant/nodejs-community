@@ -82,3 +82,21 @@
       opacity: .7; }
       .summarylist-contributors a:hover {
         opacity: 1; }
+
+.thumblist li {
+  list-style: none; }
+.thumblist-item {
+  position: relative;
+  text-align: center; }
+.thumblist-cover {
+  border-radius: 6px; }
+.thumblist-name {
+  height: 16px;
+  line-height: 16px;
+  overflow: hidden; }
+.thumblist-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }

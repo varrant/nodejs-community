@@ -1,15 +1,17 @@
-<ul class="thumblist">
+<ul class="thumblist row">
     {{if !list.length}}
-    <li>
+    <li class="col-xs-12">
         <div class="alert alert-warning"><i class="fi fi-info-circle"></i>暂无相关内容。</div>
     </li>
     {{/if}}
     {{list list as item}}
-    <li class="thumblist-item">
-        <p class="thumblist-cover"><img src="{{=item.cover}}" alt="{{item.name}}"/></p>
+    <li class="thumblist-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <img src="{{=item.cover}}" alt="{{item.name}}" class="thumblist-cover" width="100" height="100"/>
 
         <p class="thumblist-name">{{item.name}}</p>
-        <a href="/column/{{=item.uri}}/"></a>
+
+        <p class="thumblist-count text-light">{{item.objectCount}}</p>
+        <a class="thumblist-link" href="/column/{{=item.uri}}/"></a>
     </li>
     {{/list}}
 </ul>
