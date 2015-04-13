@@ -24,8 +24,11 @@
     display: none;
     right: 0;
     left: 50%;
-    margin-left: 30px;
+    margin-left: 20px;
     overflow: hidden;
+    padding: 10px;
+    background: #f9f9f9;
+    border-left: 1px solid #ccc;
 }
 
 .alien-ui-editor-fullscreen .alien-ui-editor-preview {

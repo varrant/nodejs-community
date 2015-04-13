@@ -112,7 +112,7 @@ define(function (require, exports, module) {
         the._noPreview = true;
         modification.insert(the._$preview, the._$editor);
         attribute.addClass(the._$editor, alienClass + ' ' + the._options.addClass);
-        attribute.css(the._$wrapper, 'min-height', the._options.minHeight);
+        attribute.css(the._$scroller, 'min-height', the._options.minHeight);
         the._initEvent();
 
         if (the._options.canBackup) {
