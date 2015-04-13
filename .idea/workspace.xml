@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="0.1.8 fn =&gt; implement">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/coolie.min.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/coolie.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/style.css" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/style.css" />
+    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="0.1.9 update coolie">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/3rd/marked.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/3rd/prettify.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -351,7 +350,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../aliyun/qianduanblog.com" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../xiaomaolv/lvguanjia-web" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="recentsLimit" value="5" />
@@ -548,12 +547,6 @@
       <workItem from="1427784263709" duration="635000" />
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
-    </task>
-    <task id="LOCAL-00713" summary="0.0.98 - 首次安装配置">
-      <created>1428327384483</created>
-      <option name="number" value="00713" />
-      <option name="project" value="LOCAL" />
-      <updated>1428327384483</updated>
     </task>
     <task id="LOCAL-00714" summary="0.0.99 - code 字体">
       <created>1428330239914</created>
@@ -843,7 +836,13 @@
       <option name="project" value="LOCAL" />
       <updated>1428929628701</updated>
     </task>
-    <option name="localTasksCounter" value="762" />
+    <task id="LOCAL-00762" summary="0.1.9 update coolie">
+      <created>1428931556340</created>
+      <option name="number" value="00762" />
+      <option name="project" value="LOCAL" />
+      <updated>1428931556340</updated>
+    </task>
+    <option name="localTasksCounter" value="763" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -854,7 +853,7 @@
     <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33333334" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42015505" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -924,7 +923,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="0.0.89" />
     <MESSAGE value="0.0.90" />
     <MESSAGE value="0.0.91" />
     <MESSAGE value="0.0.92" />
@@ -949,7 +947,8 @@
     <MESSAGE value="0.1.6 style" />
     <MESSAGE value="0.1.7 update alien" />
     <MESSAGE value="0.1.8 fn =&gt; implement" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.1.8 fn =&gt; implement" />
+    <MESSAGE value="0.1.9 update coolie" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.1.9 update coolie" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="VssConfiguration">
@@ -1420,7 +1419,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
