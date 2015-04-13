@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="0.1.13 模板分离">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/include/list/link.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/include/list/question.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/.views/front/list-link.html" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/list-link.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/.views/front/list-question.html" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/list-question.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -82,7 +80,6 @@
         <option value="$PROJECT_DIR$/webserver/controllers/front/column.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-grid.css" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/list.scss" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/include/list/all-column.html" />
@@ -94,6 +91,7 @@
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-link.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/include/list/question.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-question.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss" />
       </list>
     </option>
   </component>
@@ -723,12 +721,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00727" summary="ydr-util =&gt; ydr-utils">
-      <created>1428597061237</created>
-      <option name="number" value="00727" />
-      <option name="project" value="LOCAL" />
-      <updated>1428597061237</updated>
-    </task>
     <task id="LOCAL-00728" summary="ydr-util =&gt; ydr-utils">
       <created>1428597169085</created>
       <option name="number" value="00728" />
@@ -1017,7 +1009,13 @@
       <option name="project" value="LOCAL" />
       <updated>1428943577850</updated>
     </task>
-    <option name="localTasksCounter" value="776" />
+    <task id="LOCAL-00776" summary="0.1.13 模板分离">
+      <created>1428943662146</created>
+      <option name="number" value="00776" />
+      <option name="project" value="LOCAL" />
+      <updated>1428943662146</updated>
+    </task>
+    <option name="localTasksCounter" value="777" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1505,14 +1503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31641287">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
@@ -1608,6 +1598,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26395938">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20135364">
+          <caret line="7" column="64" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
           <folding />
         </state>
       </provider>
