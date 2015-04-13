@@ -15,10 +15,7 @@ define(function (require, exports, module) {
     var pager = window['-pager-'];
     var app = {};
     var section = window['-section-'];
-    var paths = [{
-        uri: 'in',
-        value: null
-    }, {}];
+
 
     /**
      * 获取当前 path 信息
@@ -47,16 +44,20 @@ define(function (require, exports, module) {
      * 根据信息构建 path
      */
     app.buildPath = function () {
-        var array1 = ['in', 'at', 'on', 'as', 'by', 'page'];
-        var array2 = [section.uri];
+        var filterArr = ['in', 'at', 'on', 'as', 'by', 'page'];
+        var pathArr = [];
 
-        array1.forEach(function (item) {
+        if (section && section.uri) {
+            pathArr.push(section.uri);
+        }
+
+        filterArr.forEach(function (item) {
             if (app.options[item]) {
-                array2.push(item + '/' + app.options[item]);
+                pathArr.push(item + '/' + app.options[item]);
             }
         });
 
-        return '/' + array2.join('/') + '/';
+        return '/' + pathArr.join('/') + '/';
     };
 
 

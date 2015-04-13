@@ -20,7 +20,6 @@ module.exports = function (app) {
     // 所有专辑
     exports.getAllList = function (req, res, next) {
         var listOptions = filter.skipLimit(req.params);
-        listOptions.limit = 3;
 
         howdo
             // 统计数量
