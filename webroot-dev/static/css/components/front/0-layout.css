@@ -12,8 +12,6 @@ body {
 .layout-main, .layout-sub {
   padding-left: 0;
   padding-right: 0; }
-.layout-main.col-md-12 {
-  border-right: 0; }
 .layout-main:after {
   content: " ";
   position: absolute;
@@ -22,8 +20,14 @@ body {
   bottom: 0;
   width: 1px;
   background: #e6e6e6; }
-.layout-main:only-child {
-  border-right: 0; }
+
+.layout-main:only-child:after {
+  background: none;
+}
+
+.layout-main.col-md-12:after {
+  background: none;
+}
 .layout-sub:before {
   content: " ";
   position: absolute;
@@ -33,6 +37,7 @@ body {
   width: 1px;
   background: #e6e6e6; }
 @media (max-width: 991px) {
-  .layout-sub {
-    border-left: 0;
-    margin-left: 0; } }
+  .layout-sub:before {
+    background: none;
+  }
+}

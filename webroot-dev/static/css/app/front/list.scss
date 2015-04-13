@@ -6,6 +6,10 @@ $border-color: #e6e6e6;
   margin-top: 50px;
 }
 
+.page-all-column .layout-body {
+  margin-top: 100px;
+}
+
 // 页面标题
 .ptitle{
   text-align: center;
@@ -160,6 +164,7 @@ $border-color: #e6e6e6;
 
   &-cover {
     border-radius: 6px;
+    height: 100px;
   }
 
   &-name {
