@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+ - column
+ - @author ydr.me
+ - @create 2014-12-04 16:18
+ -->
+<html>
+<head lang="zh-cn">
+    {{include ../include/meta.html}}
+    {{include ./include/meta.html}}
+    <!--coolie-->
+    <link rel="stylesheet" href="/static/css/app/front/list.css"/>
+    <!--/coolie-->
+    <script>window['-pager-']={
+        count: '{{pager.count}}',
+        page: '{{pager.page}}',
+        max: '{{Math.ceil(pager.count/pager.limit)}}',
+        limit: '{{pager.limit}}'
+    };</script>
+</head>
+<body ontouchstart="" class="p-list-article">
+{{include ./include/nav.html}}
+
+
+<div class="layout-body a-slide-down-fixed">
+    <div class="container">
+        <div class="row layout-container">
+            <!--主-->
+            <div class="col-md-12 layout-main">
+                <div class="card">
+                    <div class="card-body">
+                        <!--列表-->
+                        {{include ./include/list/all-column.html}}
+                        <!--/列表-->
+                    </div>
+                    <div class="card-footer text-center">
+                        <!--分页器-->
+                        <div id="pager"></div>
+                        <!--/分页器-->
+                    </div>
+                </div>
+            </div>
+            <!--/主-->
+        </div>
+    </div>
+    {{include ./include/footer.html}}
+</div>
+
+
+
+<script src="/static/js/coolie.min.js"
+        data-config="./coolie-config.js"
+        data-main="./front/list.js"></script>
+
+</body>
+</html>

@@ -17,7 +17,9 @@ module.exports = function (app, ctrl) {
     app.get('/', ctrl.main.getHome);
 
 
-    app.get('/column/:uri/', ctrl.column.get);
+    app.get('/column/', ctrl.column.getAllList);
+    app.get('/column/page/:page/', ctrl.column.getAllList);
+    app.get('/column/:uri/', ctrl.column.getOneList);
 
 
     // list + detail

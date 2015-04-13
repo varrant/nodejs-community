@@ -1,0 +1,15 @@
+<ul class="thumblist">
+    {{if !list.length}}
+    <li>
+        <div class="alert alert-warning"><i class="fi fi-info-circle"></i>暂无相关内容。</div>
+    </li>
+    {{/if}}
+    {{list list as item}}
+    <li class="thumblist-item">
+        <p class="thumblist-cover"><img src="{{=item.cover}}" alt="{{item.name}}"/></p>
+
+        <p class="thumblist-name">{{item.name}}</p>
+        <a href="/column/{{=item.uri}}/"></a>
+    </li>
+    {{/list}}
+</ul>

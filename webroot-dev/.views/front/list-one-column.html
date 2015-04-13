@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+ - column
+ - @author ydr.me
+ - @create 2014-12-04 16:18
+ -->
+<html>
+<head lang="zh-cn">
+    {{include ../include/meta.html}}
+    {{include ./include/meta.html}}
+    <!--coolie-->
+    <link rel="stylesheet" href="/static/css/app/front/list.css"/>
+    <!--/coolie-->
+    <script>window['-section-'] = {uri: 'column'};</script>
+    <script>window['-pager-'] = {
+        count: '{{pager.count}}',
+        page: '{{pager.page}}',
+        max: '{{Math.ceil(pager.count/pager.limit)}}',
+        limit: '{{pager.limit}}'
+    };</script>
+</head>
+<body ontouchstart="" class="p-list-article">
+{{include ./include/nav.html}}
+
+
+<div class="layout-body a-slide-down-fixed">
+
+    <div class="ptitle">
+        <img class="ptitle-cover" src="{{column.cover}}" alt="cover" coolieignore/>
+
+        <h1 class="ptitle-name">{{column.name}}</h1>
+
+        <div class="ptitle-desc text-light" id="share"></div>
+        <div class="ptitle-intro text-muted">{{column.introduction}}</div>
+        <div class="ptitle-desc text-muted">
+            <i class="fi fi-user"></i><a href="/developer/{{column.author.githubLogin}}/">{{column.author.nickname}}</a>的专辑
+            <span class="text-space"></span>
+            <i class="fi fi-bar-chart"></i>{{column.objectCount}}
+            <span class="text-space"></span>
+            <i class="fi fi-eye"></i>{{column.viewByCount}}
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row layout-container">
+            <!--主-->
+            <div class="col-md-12 layout-main">
+                <div class="card">
+                    <div class="card-body">
+                        <!--列表-->
+                        {{include ./include/list/one-column.html}}
+                        <!--/列表-->
+                    </div>
+                    <div class="card-footer text-center">
+                        <!--分页器-->
+                        <div id="pager"></div>
+                        <!--/分页器-->
+                    </div>
+                </div>
+            </div>
+            <!--/主-->
+        </div>
+    </div>
+    {{include ./include/footer.html}}
+</div>
+
+
+<script src="/static/js/coolie.min.js"
+        data-config="./coolie-config.js"
+        data-main="./front/list.js"></script>
+
+</body>
+</html>

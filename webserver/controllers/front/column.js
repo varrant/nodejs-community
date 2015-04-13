@@ -16,7 +16,45 @@ var log = require('ydr-utils').log;
 module.exports = function (app) {
     var exports = {};
 
-    exports.get = function (req, res, next) {
+
+    // 所有专辑
+    exports.getAllList = function (req, res, next) {
+        var listOptions = filter.skipLimit(req.params);
+        listOptions.limit = 3;
+
+        howdo
+            // 统计数量
+            .task(function (done) {
+                column.count({}, done);
+            })
+            // 查询列表
+            .task(function (done) {
+                column.find({}, listOptions, done);
+            })
+            // 异步并行
+            .together(function (err, count, list) {
+                if (err) {
+                    return next(err);
+                }
+
+                var data = {
+                    title: '所有专辑',
+                    list: list,
+                    pager: {
+                        page: listOptions.page,
+                        limit: listOptions.limit,
+                        count: count
+                    }
+                };
+
+                console.log(data);
+                res.render('front/list-all-column.html', data);
+            });
+    };
+
+
+    // 单个专辑内的 object
+    exports.getOneList = function (req, res, next) {
         var uri = req.params.uri;
         var listOptions = filter.skipLimit(req.params);
 
@@ -73,7 +111,7 @@ module.exports = function (app) {
                 }, log.holdError);
 
                 column.increaseViewByCount({_id: col.id}, 1, log.holdError);
-                res.render('front/list-column.html', data);
+                res.render('front/list-one-column.html', data);
             });
     };
 

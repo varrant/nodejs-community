@@ -1,0 +1,43 @@
+<ul class="summarylist">
+    {{if !objects.length}}
+    <li>
+        <div class="alert alert-warning"><i class="fi fi-info-circle"></i>暂无相关内容。</div>
+    </li>
+    {{/if}}
+    {{list objects as object}}
+    <li class="summarylist-item clearfix">
+        <div class="summarylist-avatar pull-left">
+            <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:100}}"
+                                                                      alt="avatar" width="50" height="50" coolieignore/></a>
+        </div>
+        <div class="summarylist-body">
+            <h2 class="summarylist-name"><span class="badge badge-default">{{$sectionIdMap[object.section].name}}</span><i
+                    class="text-space"></i><a
+                    href="/{{$sectionIdMap[object.section].uri}}/{{object.uri}}.html">{{object.title}}</a></h2>
+
+            <div class="summarylist-meta text-light text-sm row">
+                <div class="col-sm-8">
+                    <ul class="avg-xs-2 avg-md-4">
+                        <li><i class="fi fi-user i-striped"></i><a href="/developer/{{=object.author.githubLogin}}/">{{object.author.nickname}}</a>
+                        </li>
+                        <li class="hidden-xs"><i class="fi fi-eye"></i>{{object.viewByCount}}</li>
+                        <li class="hidden-xs"><i class="fi fi-comments"></i>{{object.commentByCount}}</li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <ul class="summarylist-contributors list-right">
+                        {{list object.contributors as contributor}}
+                        <li>
+                            <a href="/developer/{{contributor.githubLogin}}/" title="{{contributor.nickname}}">
+                                <img src="{{contributor.email|gravatar:40}}" width="20" height="20" alt="avatar"
+                                     coolieignore/>
+                            </a>
+                        </li>
+                        {{/list}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/list}}
+</ul>

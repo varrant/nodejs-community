@@ -23,6 +23,7 @@ exports.findOne = column.findOne;
  * 查找
  */
 exports.find = column.find;
+exports.count = column.count;
 
 
 exports.findOneAndUpdate = column.findOneAndUpdate;
