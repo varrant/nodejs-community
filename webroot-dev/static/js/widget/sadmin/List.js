@@ -45,91 +45,92 @@ define(function (require, exports, module) {
         the._init();
     });
 
+    List.implement({
+        _init: function () {
+            var the = this;
 
-    List.fn._init = function () {
-        var the = this;
+            the.getList();
+            the._initEvent();
 
-        the.getList();
-        the._initEvent();
-
-        return the;
-    };
-
-
-    List.fn._initEvent = function () {
-        var the = this;
-
-        hashbang.on('query', 'page', function (eve, neo) {
-            var page = neo.query.page || 1;
-            var limit = neo.query.limit || 20;
-
-            if (the.query.page !== page || the.query.limit !== limit) {
-                the.query.page = page;
-                the.query.limit = limit;
-                the.getList();
-            }
-        });
-    };
+            return the;
+        },
 
 
-    List.fn.getList = function () {
-        var the = this;
-        var options = the._options;
+        _initEvent: function () {
+            var the = this;
 
-        ajax({
-            url: options.url + '?' + qs.stringify(the.query)
-        }).on('success', the._onsuccess.bind(the)).on('error', alert);
-    };
+            hashbang.on('query', 'page', function (eve, neo) {
+                var page = neo.query.page || 1;
+                var limit = neo.query.limit || 20;
 
-
-    List.fn._onsuccess = function (data) {
-        var the = this;
-        var categoriesMap = {};
-        var columnsMap = {};
-
-        if (data.categories) {
-            data.categories.forEach(function (item) {
-                categoriesMap[item.id] = item;
+                if (the.query.page !== page || the.query.limit !== limit) {
+                    the.query.page = page;
+                    the.query.limit = limit;
+                    the.getList();
+                }
             });
-        }
+        },
 
-        if (data.columns) {
-            data.columns.forEach(function (item) {
-                columnsMap[item.id] = item;
-            });
-        }
 
-        if (the.vue) {
-            the.vue.$data.list = data.list;
-            the._pagination.render({
-                page: the.query.page,
-                max: Math.ceil(data.count / the.query.limit)
-            });
-        } else {
-            the.vue = new Vue({
-                el: the._listSelector,
-                data: dato.extend({
-                    list: data.list,
-                    query: the.query,
-                    categoriesMap: categoriesMap,
-                    columnsMap: columnsMap
-                }, the._options.data),
-                methods: the._options.methods
-            });
+        getList: function () {
+            var the = this;
+            var options = the._options;
 
-            the.vue.$el.classList.remove('none');
-            the._pagination = new Pagination(the._paginationSelector, {
-                page: the.query.page,
-                max: Math.ceil(data.count / the.query.limit)
-            }).on('change', function (_page) {
-                    hashbang.set('query', {
-                        page: _page,
-                        limit: the.query.limit
-                    });
-                    attribute.scrollTop(window, 0);
+            ajax({
+                url: options.url + '?' + qs.stringify(the.query)
+            }).on('success', the._onsuccess.bind(the)).on('error', alert);
+        },
+
+
+        _onsuccess: function (data) {
+            var the = this;
+            var categoriesMap = {};
+            var columnsMap = {};
+
+            if (data.categories) {
+                data.categories.forEach(function (item) {
+                    categoriesMap[item.id] = item;
                 });
+            }
+
+            if (data.columns) {
+                data.columns.forEach(function (item) {
+                    columnsMap[item.id] = item;
+                });
+            }
+
+            if (the.vue) {
+                the.vue.$data.list = data.list;
+                the._pagination.render({
+                    page: the.query.page,
+                    max: Math.ceil(data.count / the.query.limit)
+                });
+            } else {
+                the.vue = new Vue({
+                    el: the._listSelector,
+                    data: dato.extend({
+                        list: data.list,
+                        query: the.query,
+                        categoriesMap: categoriesMap,
+                        columnsMap: columnsMap
+                    }, the._options.data),
+                    methods: the._options.methods
+                });
+
+                the.vue.$el.classList.remove('none');
+                the._pagination = new Pagination(the._paginationSelector, {
+                    page: the.query.page,
+                    max: Math.ceil(data.count / the.query.limit)
+                }).on('change', function (_page) {
+                        hashbang.set('query', {
+                            page: _page,
+                            limit: the.query.limit
+                        });
+                        attribute.scrollTop(window, 0);
+                    });
+            }
         }
-    };
+    });
 
     module.exports = List;
 });

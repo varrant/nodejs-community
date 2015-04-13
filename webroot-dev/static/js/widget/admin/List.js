@@ -50,109 +50,112 @@ define(function (require, exports, module) {
     });
 
 
-    List.fn._init = function () {
-        var the = this;
+    List.implement({
+        _init: function () {
+            var the = this;
 
-        the.getList();
-        the._initEvent();
-
-        return the;
-    };
-
-
-    List.fn._initEvent = function () {
-        var the = this;
-
-        hashbang.on('query', 'page', function (eve, neo) {
-            the.query.page = neo.query.page || 1;
-            the.query.limit = neo.query.limit || 20;
             the.getList();
-        });
-    };
+            the._initEvent();
+
+            return the;
+        },
 
 
-    List.fn.getList = function () {
-        var the = this;
-        var options = the._options;
+        _initEvent: function () {
+            var the = this;
 
-        ajax({
-            url: options.listURL + '?' + qs.stringify(the.query)
-        }).on('success', the._onsuccess.bind(the)).on('error', alert);
-    };
-
-
-    List.fn._onsuccess = function (data) {
-        var the = this;
-
-        var categoriesMap = {};
-        var columnsMap = {};
-
-        if (data.categories) {
-            data.categories.forEach(function (item) {
-                categoriesMap[item.id] = item;
+            hashbang.on('query', 'page', function (eve, neo) {
+                the.query.page = neo.query.page || 1;
+                the.query.limit = neo.query.limit || 20;
+                the.getList();
             });
-        }
+        },
 
-        if (data.columns) {
-            data.columns.forEach(function (item) {
-                columnsMap[item.id] = item;
-            });
-        }
 
-        if (the.vue) {
-            the.vue.$data.list = data.list;
-            the._pagination.render({
-                page: the.query.page,
-                max: Math.ceil(data.count / the.query.limit)
-            });
-        } else {
-            the.vue = new Vue({
-                el: the._listSelector,
-                data: dato.extend({
-                    list: data.list,
-                    query: the.query,
-                    categoriesMap: categoriesMap,
-                    columnsMap: columnsMap
-                }, the._options.data),
-                methods: dato.extend({
-                    onremove: the._onremove.bind(the)
-                }, the._options.methods)
-            });
+        getList: function () {
+            var the = this;
+            var options = the._options;
 
-            the.vue.$el.classList.remove('none');
-            the._pagination = new Pagination(the._paginationSelector, {
-                page: the.query.page,
-                max: Math.ceil(data.count / the.query.limit)
-            }).on('change', function (_page) {
-                    hashbang.set('query', {
-                        page: _page,
-                        limit: the.query.limit
-                    });
-                    attribute.scrollTop(window, 0);
-                });
-        }
-    };
-
-    List.fn._onremove = function (id, index) {
-        var the = this;
-        var options = the._options;
-        var onsure = function () {
             ajax({
-                loading: '删除中',
-                url: options.itemURL,
-                method: 'delete',
-                body: {
-                    id: id
-                }
-            })
-                .on('success', function () {
-                    the.vue.$data.list.splice(index, 1);
-                })
-                .on('error', alert);
-        };
+                url: options.listURL + '?' + qs.stringify(the.query)
+            }).on('success', the._onsuccess.bind(the)).on('error', alert);
+        },
 
-        confirm('确认要删除该项目吗？<br>删除操作不可逆，请仔细确认！').on('sure', onsure);
-    };
+
+        _onsuccess: function (data) {
+            var the = this;
+
+            var categoriesMap = {};
+            var columnsMap = {};
+
+            if (data.categories) {
+                data.categories.forEach(function (item) {
+                    categoriesMap[item.id] = item;
+                });
+            }
+
+            if (data.columns) {
+                data.columns.forEach(function (item) {
+                    columnsMap[item.id] = item;
+                });
+            }
+
+            if (the.vue) {
+                the.vue.$data.list = data.list;
+                the._pagination.render({
+                    page: the.query.page,
+                    max: Math.ceil(data.count / the.query.limit)
+                });
+            } else {
+                the.vue = new Vue({
+                    el: the._listSelector,
+                    data: dato.extend({
+                        list: data.list,
+                        query: the.query,
+                        categoriesMap: categoriesMap,
+                        columnsMap: columnsMap
+                    }, the._options.data),
+                    methods: dato.extend({
+                        onremove: the._onremove.bind(the)
+                    }, the._options.methods)
+                });
+
+                the.vue.$el.classList.remove('none');
+                the._pagination = new Pagination(the._paginationSelector, {
+                    page: the.query.page,
+                    max: Math.ceil(data.count / the.query.limit)
+                }).on('change', function (_page) {
+                        hashbang.set('query', {
+                            page: _page,
+                            limit: the.query.limit
+                        });
+                        attribute.scrollTop(window, 0);
+                    });
+            }
+        },
+
+
+        _onremove: function (id, index) {
+            var the = this;
+            var options = the._options;
+            var onsure = function () {
+                ajax({
+                    loading: '删除中',
+                    url: options.itemURL,
+                    method: 'delete',
+                    body: {
+                        id: id
+                    }
+                })
+                    .on('success', function () {
+                        the.vue.$data.list.splice(index, 1);
+                    })
+                    .on('error', alert);
+            };
+
+            confirm('确认要删除该项目吗？<br>删除操作不可逆，请仔细确认！').on('sure', onsure);
+        }
+    });
 
     module.exports = List;
 });

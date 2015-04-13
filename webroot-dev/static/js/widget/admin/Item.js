@@ -37,287 +37,289 @@ define(function (require, exports, module) {
     });
 
 
-    /**
-     * 初始化
-     * @returns {Item}
-     * @private
-     */
-    Item.fn._init = function () {
-        var the = this;
-
-        the._initData();
-
-        return the;
-    };
-
-
-    /**
-     * 初始化数据
-     * @private
-     */
-    Item.fn._initData = function () {
-        var the = this;
-
-        ajax({
-            url: the._options.url + (the._options.id ? '?id=' + the._options.id : '')
-        }).on('success', the._onsuccess.bind(the)).on('error', alert);
-    };
-
-
-    /**
-     * 数据载入回调
-     * @param data
-     * @returns {*}
-     * @private
-     */
-    Item.fn._onsuccess = function (data) {
-        var the = this;
-
-        the.emit('success', data);
-
-        data.object = data.object || {
-            content: '',
-            uri: '',
-            labels: [],
-            section: the._options.section,
-            isDisplay: true
-        };
-        data.categories.forEach(function (item) {
-            item.text = item.name;
-            item.value = item.id;
-
-            if (item.uri === 'default' && !data.object.category) {
-                data.object.category = item.id;
-            }
-        });
-        data.columns.forEach(function (item) {
-            item.text = item.name;
-            item.value = item.id;
-
-            //if (item.uri === 'default' && !data.object.category) {
-            //    data.object.category = item.id;
-            //}
-        });
-        the.vue = new Vue({
-            el: the._formSelector,
-            data: data,
-            methods: dato.extend({
-                pushlabel: the._onpushlabel.bind(the),
-                removelabel: the._onremovelabel.bind(the),
-                save: the._onsave.bind(the),
-                oncreatecolumn: the._oncreatecolumn.bind(the)
-            }, the._methods)
-        });
-        the.vue.$el.classList.remove('none');
-        the._$objectColumn = selector.query('#objectColumn')[0];
-
-        var editorUploadCallback = function (list, onprogress, ondone) {
-            var fd = new FormData();
+    Item.implement({
+        /**
+         * 初始化
+         * @returns {Item}
+         * @private
+         */
+        _init: function () {
             var the = this;
 
-            // key, val, name
-            fd.append('img', list[0].file, 'img.png');
+            the._initData();
+
+            return the;
+        },
+
+
+        /**
+         * 初始化数据
+         * @private
+         */
+        _initData: function () {
+            var the = this;
 
             ajax({
-                url: '/admin/api/oss/',
-                method: 'put',
-                body: fd,
-                loading: false
-            })
-                .on('progress', function (eve) {
-                    onprogress(eve.alienDetail.percent);
-                })
-                .on('success', function (data) {
-                    //cacheControl: "max-age=315360000"
-                    //contentType: "image/png"
-                    //encoding: "utf8"
-                    //image: {type: "png", width: 200, height: 200}
-                    //ourl: "http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f/i/20141228233411750487888485"
-                    //surl: "http://s.ydr.me/f/i/20141228233411750487888485"
-                    ondone(null, [{
-                        name: "img.png",
-                        url: data.surl
-                    }]);
-                })
-                .on('error', function (err) {
-                    the.uploadDestroy();
-                    alert(err);
-                });
-        };
-
-        the.editor = new Editor(the._contentSelector, {
-            id: data.id,
-            uploadCallback: editorUploadCallback,
-            minHeight: 200
-        }).on('change', function (val) {
-                the.vue.$data.object.content = val;
-            });
-
-        var $hidden = selector.query(the._options.hiddenSelector)[0];
-
-        if ($hidden) {
-            the.editor2 = new Editor($hidden, {
-                id: data.id + '-hidden',
-                uploadCallback: editorUploadCallback
-            }).on('change', function (val) {
-                    the.vue.$data.object.hidden = val;
-                });
-        }
-
-        // 实时翻译
-        the._watchTranslate();
-    };
+                url: the._options.url + (the._options.id ? '?id=' + the._options.id : '')
+            }).on('success', the._onsuccess.bind(the)).on('error', alert);
+        },
 
 
-    /**
-     * 添加标签
-     * @private
-     */
-    Item.fn._onpushlabel = function () {
-        var vue = this.vue;
-        var object = vue.$data.object;
-        var label = object.label.toLowerCase().trim();
+        /**
+         * 数据载入回调
+         * @param data
+         * @returns {*}
+         * @private
+         */
+        _onsuccess: function (data) {
+            var the = this;
 
-        // 最多 5 个 labels
-        if (label && object.labels.indexOf(label) === -1 && object.labels.length < 5) {
-            object.labels.push(label);
-            object.label = '';
-        }
-    };
+            the.emit('success', data);
 
+            data.object = data.object || {
+                content: '',
+                uri: '',
+                labels: [],
+                section: the._options.section,
+                isDisplay: true
+            };
+            data.categories.forEach(function (item) {
+                item.text = item.name;
+                item.value = item.id;
 
-    /**
-     * 移除标签
-     * @param index
-     * @private
-     */
-    Item.fn._onremovelabel = function (index) {
-        this.vue.$data.object.labels.splice(index, 1);
-    };
-
-
-    /**
-     * 保存
-     * @param eve
-     * @param data
-     * @private
-     */
-    Item.fn._onsave = function (eve, data) {
-        var the = this;
-        var vue = the.vue;
-        var $btn = selector.closest(eve.target, '.btn')[0];
-
-        $btn.disabled = true;
-        $btn.innerHTML = '保存中……';
-
-        ajax({
-            url: the._options.url,
-            method: data.id ? 'put' : 'post',
-            body: data,
-            loading: '保存中'
-        }).on('success', function (data) {
-            // 属于创建，清除之前的缓存记录，换成新的
-            if (!the._options.id) {
-                the.editor.clearStore();
-                the._options.id = data.id;
-                the.editor.setOptions('id', the._options.id);
-                history.pushState('', null, location.pathname + '?id=' + data.id);
-            }
-
-            vue.$data.object = data;
-            tip.success('保存成功');
-        }).on('error', alert).on('finish', function () {
-            $btn.disabled = false;
-            $btn.innerHTML = '保存';
-        });
-    };
-
-
-    /**
-     * 快速创建专辑
-     * @private
-     */
-    Item.fn._oncreatecolumn = function () {
-        var the = this;
-
-        prompt('请输入专辑名称').on('sure', function (name) {
-            var ld = loading('正在翻译');
-
-            the._translate(name, function (err, uri) {
-                ld.destroy();
-
-                if (err) {
-                    return alert(err);
+                if (item.uri === 'default' && !data.object.category) {
+                    data.object.category = item.id;
                 }
+            });
+            data.columns.forEach(function (item) {
+                item.text = item.name;
+                item.value = item.id;
+
+                //if (item.uri === 'default' && !data.object.category) {
+                //    data.object.category = item.id;
+                //}
+            });
+            the.vue = new Vue({
+                el: the._formSelector,
+                data: data,
+                methods: dato.extend({
+                    pushlabel: the._onpushlabel.bind(the),
+                    removelabel: the._onremovelabel.bind(the),
+                    save: the._onsave.bind(the),
+                    oncreatecolumn: the._oncreatecolumn.bind(the)
+                }, the._methods)
+            });
+            the.vue.$el.classList.remove('none');
+            the._$objectColumn = selector.query('#objectColumn')[0];
+
+            var editorUploadCallback = function (list, onprogress, ondone) {
+                var fd = new FormData();
+                var the = this;
+
+                // key, val, name
+                fd.append('img', list[0].file, 'img.png');
 
                 ajax({
-                    url: '/admin/api/column/',
+                    url: '/admin/api/oss/',
                     method: 'put',
-                    loading: '保存中',
-                    body: {
-                        name: name,
-                        uri: uri,
-                        cover: window['-default.column-'],
-                        introduction: '专辑《' + name + '》创建于 ' + date.format('YYYY年M月D日 HH:mm:ss') + '。'
-                    }
-                }).on('success', function (data) {
-                    the.vue.$data.columns.push({
-                        text: data.name,
-                        value: data.id
+                    body: fd,
+                    loading: false
+                })
+                    .on('progress', function (eve) {
+                        onprogress(eve.alienDetail.percent);
+                    })
+                    .on('success', function (data) {
+                        //cacheControl: "max-age=315360000"
+                        //contentType: "image/png"
+                        //encoding: "utf8"
+                        //image: {type: "png", width: 200, height: 200}
+                        //ourl: "http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f/i/20141228233411750487888485"
+                        //surl: "http://s.ydr.me/f/i/20141228233411750487888485"
+                        ondone(null, [{
+                            name: "img.png",
+                            url: data.surl
+                        }]);
+                    })
+                    .on('error', function (err) {
+                        the.uploadDestroy();
+                        alert(err);
                     });
-                    the.vue.$data.object.column = data.id;
-                    setTimeout(function () {
-                        the._$objectColumn.value = data.id
-                    }, 100);
-                }).on('error', alert);
-            });
-        });
-    };
+            };
 
+            the.editor = new Editor(the._contentSelector, {
+                id: data.id,
+                uploadCallback: editorUploadCallback,
+                minHeight: 200
+            }).on('change', function (val) {
+                    the.vue.$data.object.content = val;
+                });
 
-    /**
-     * 实时翻译
-     * @private
-     */
-    Item.fn._watchTranslate = function () {
-        var xhr = null;
-        var the = this;
+            var $hidden = selector.query(the._options.hiddenSelector)[0];
 
-        // 实时翻译
-        the.vue.$watch('object.title', controller.debounce(function (word) {
-            if (xhr) {
-                xhr.abort();
+            if ($hidden) {
+                the.editor2 = new Editor($hidden, {
+                    id: data.id + '-hidden',
+                    uploadCallback: editorUploadCallback
+                }).on('change', function (val) {
+                        the.vue.$data.object.hidden = val;
+                    });
             }
 
-            xhr = the._translate(word, function (err, word2) {
-                if (err) {
-                    return;
+            // 实时翻译
+            the._watchTranslate();
+        },
+
+
+        /**
+         * 添加标签
+         * @private
+         */
+        _onpushlabel: function () {
+            var vue = this.vue;
+            var object = vue.$data.object;
+            var label = object.label.toLowerCase().trim();
+
+            // 最多 5 个 labels
+            if (label && object.labels.indexOf(label) === -1 && object.labels.length < 5) {
+                object.labels.push(label);
+                object.label = '';
+            }
+        },
+
+
+        /**
+         * 移除标签
+         * @param index
+         * @private
+         */
+        _onremovelabel: function (index) {
+            this.vue.$data.object.labels.splice(index, 1);
+        },
+
+
+        /**
+         * 保存
+         * @param eve
+         * @param data
+         * @private
+         */
+        _onsave: function (eve, data) {
+            var the = this;
+            var vue = the.vue;
+            var $btn = selector.closest(eve.target, '.btn')[0];
+
+            $btn.disabled = true;
+            $btn.innerHTML = '保存中……';
+
+            ajax({
+                url: the._options.url,
+                method: data.id ? 'put' : 'post',
+                body: data,
+                loading: '保存中'
+            }).on('success', function (data) {
+                // 属于创建，清除之前的缓存记录，换成新的
+                if (!the._options.id) {
+                    the.editor.clearStore();
+                    the._options.id = data.id;
+                    the.editor.setOptions('id', the._options.id);
+                    history.pushState('', null, location.pathname + '?id=' + data.id);
                 }
 
-                the.vue.$data.object.uri = word2;
+                vue.$data.object = data;
+                tip.success('保存成功');
+            }).on('error', alert).on('finish', function () {
+                $btn.disabled = false;
+                $btn.innerHTML = '保存';
             });
-        }));
-    };
+        },
 
 
-    /**
-     * 翻译
-     * @param word
-     * @param callback
-     * @returns {*}
-     * @private
-     */
-    Item.fn._translate = function (word, callback) {
-        var xhr = ajax({
-            loading: false,
-            url: '/api/translate/?word=' + encodeURIComponent(word)
-        }).on('complete', function (err, data) {
-            callback(err, data);
-            xhr = null
-        }).xhr;
+        /**
+         * 快速创建专辑
+         * @private
+         */
+        _oncreatecolumn: function () {
+            var the = this;
 
-        return xhr;
-    };
+            prompt('请输入专辑名称').on('sure', function (name) {
+                var ld = loading('正在翻译');
+
+                the._translate(name, function (err, uri) {
+                    ld.destroy();
+
+                    if (err) {
+                        return alert(err);
+                    }
+
+                    ajax({
+                        url: '/admin/api/column/',
+                        method: 'put',
+                        loading: '保存中',
+                        body: {
+                            name: name,
+                            uri: uri,
+                            cover: window['-default.column-'],
+                            introduction: '专辑《' + name + '》创建于 ' + date.format('YYYY年M月D日 HH:mm:ss') + '。'
+                        }
+                    }).on('success', function (data) {
+                        the.vue.$data.columns.push({
+                            text: data.name,
+                            value: data.id
+                        });
+                        the.vue.$data.object.column = data.id;
+                        setTimeout(function () {
+                            the._$objectColumn.value = data.id
+                        }, 100);
+                    }).on('error', alert);
+                });
+            });
+        },
+
+
+        /**
+         * 实时翻译
+         * @private
+         */
+        _watchTranslate: function () {
+            var xhr = null;
+            var the = this;
+
+            // 实时翻译
+            the.vue.$watch('object.title', controller.debounce(function (word) {
+                if (xhr) {
+                    xhr.abort();
+                }
+
+                xhr = the._translate(word, function (err, word2) {
+                    if (err) {
+                        return;
+                    }
+
+                    the.vue.$data.object.uri = word2;
+                });
+            }));
+        },
+
+
+        /**
+         * 翻译
+         * @param word
+         * @param callback
+         * @returns {*}
+         * @private
+         */
+        _translate: function (word, callback) {
+            var xhr = ajax({
+                loading: false,
+                url: '/api/translate/?word=' + encodeURIComponent(word)
+            }).on('complete', function (err, data) {
+                callback(err, data);
+                xhr = null
+            }).xhr;
+
+            return xhr;
+        }
+    });
 
     module.exports = Item;
 });
