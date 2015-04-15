@@ -11,13 +11,18 @@ define(function (require, exports, module) {
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
     var animation = require('../../alien/core/dom/animation.js');
-    var event = require('../../alien/core/event/base.js');
+    var event = require('../../alien/core/event/touch.js');
     var Response = require('../../widget/common/Response/');
     var Imgview = require('../../alien/ui/Imgview/');
     var Prettify = require('../../alien/ui/Prettify/');
     var dato = require('../../alien/utils/dato.js');
     var url = require('../../alien/utils/url.js');
     var share = require('../../widget/common/share.js');
+    var win = window;
+    var winObject = win['-object-'];
+    var winSection = win['-section-'];
+    var winDeveloper = win['-developer-'];
+    var winAuthor = win['-author-'];
     var app = {};
 
     // toc
@@ -35,7 +40,7 @@ define(function (require, exports, module) {
 
             var top = attribute.top($target);
 
-            animation.scrollTo(window, {
+            animation.scrollTo(win, {
                 y: top - 70
             }, {
                 duration: 123
@@ -43,17 +48,36 @@ define(function (require, exports, module) {
         });
     };
 
+
+    app.link = function () {
+        var $linkSource = selector.query('#linkSource')[0];
+
+        if (!$linkSource) {
+            return;
+        }
+
+        event.on($linkSource, 'click', function () {
+            ajax({
+                url: '/object/link-by-count',
+                query: {
+                    id: winObject.id
+                }
+            });
+        });
+    };
+
+
     // 评论
     app.response = function () {
         var $title = selector.query('#object-title')[0];
-        var object = window['-object-'];
+        var object = winObject;
         var location = window.location;
         var matches = location.href.match(/^(.*\.html)(\/page\/(\d+)\/)?($|#)/);
         var base = matches[1];
         var page = dato.parseInt(matches[3], 1);
         var history = window.history;
         var res = new Response('#response', {
-            developer: window['-developer-'],
+            developer: winDeveloper,
             id: object.id,
             query: {
                 page: page,
@@ -61,19 +85,19 @@ define(function (require, exports, module) {
                 object: object.id
             },
             list: {
-                developer: window['-developer-'],
-                author: window['-author-'],
+                developer: winDeveloper,
+                author: winAuthor,
                 object: object,
-                canAccept: window['-section-'].uri === 'question'
+                canAccept: winSection.uri === 'question'
             },
             count: {
                 comment: object.commentByCount,
                 reply: object.replyByCount
             },
             respond: {
-                githubLogin: window['-developer-'].githubLogin,
+                githubLogin: winDeveloper.githubLogin,
                 id: object.id,
-                avatar: window['-developer-'].avatar
+                avatar: winDeveloper.avatar
             },
             acceptByResponse: object.acceptByResponse
         });

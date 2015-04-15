@@ -176,6 +176,22 @@ module.exports = function (app) {
 
 
     /**
+     * 增加访问次数
+     * @param req
+     * @param res
+     * @param next
+     */
+    exports.linkByCount = function (req, res, next) {
+        var id = req.query.id;
+
+        object.increaseLinkByCount({_id: id}, 1, log.holdError);
+        res.send({
+            code: 200
+        });
+    };
+
+
+    /**
      * post 页
      * @param section
      * @returns {Function}(req, res, next)

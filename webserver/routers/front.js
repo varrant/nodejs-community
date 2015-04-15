@@ -140,6 +140,7 @@ module.exports = function (app, ctrl) {
         app.get('/' + uri + '/' + 'in/:category/at/:column/on/:label/as/:status/by/:author/page/:page/', ctrl.object.getList(section));
 
         app.get('/object/', ctrl.object.redirect);
+        app.get('/object/link-by-count/', ctrl.object.linkByCount);
         app.get('/' + uri + '/' + ':uri.html', ctrl.object.getObject(section));
         app.get('/' + uri + '/' + ':uri.html/page/:page/', ctrl.object.getObject(section));
     });

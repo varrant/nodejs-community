@@ -408,6 +408,17 @@ exports.increaseScore = function (operator, id, count, callback) {
 
 
 /**
+ * 增加 object link 访问数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 数量
+ * @param callback {Function} 回调
+ */
+exports.increaseLinkByCount = function (conditions, count, callback) {
+    object.increase(conditions, 'linkByCount', count, callback);
+};
+
+
+/**
  * 增加 object 阅读数量
  * @param conditions {Object} 查询条件
  * @param count {Number} 数量
