@@ -4,8 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/webserver/controllers/front/column.js" description="        var uri = req.params.uri;&#10;        var list..." line="58" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="0.1.14 字体">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/models/object.js" afterPath="$PROJECT_DIR$/webserver/models/object.js" />
+    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="0.1.15 增加链接访问次数">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cli/0.1.15/0-link-view-by-count.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -46,11 +46,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14333895">
-              <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+            <state vertical-scroll-proportion="-1.3076923">
+              <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="0-link-view-by-count.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cli/0.1.15/0-link-view-by-count.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.38573745">
+              <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -64,7 +74,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/.views/admin/include/developer/me.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/oauth-callback.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/include/object/sub-author.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/sadmin/include/header.html" />
@@ -115,6 +124,7 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss" />
         <option value="$PROJECT_DIR$/webserver/models/object.js" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/cli/0.1.15/0-link-view-by-count.js" />
       </list>
     </option>
   </component>
@@ -347,6 +357,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cli" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="0.1.15" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-community" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cli" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="0.0.1-beta13" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -551,12 +597,6 @@
       <workItem from="1427784263709" duration="635000" />
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
-    </task>
-    <task id="LOCAL-00729" summary="ydr-util =&gt; ydr-utils">
-      <created>1428597648095</created>
-      <option name="number" value="00729" />
-      <option name="project" value="LOCAL" />
-      <updated>1428597648095</updated>
     </task>
     <task id="LOCAL-00730" summary="ydr-util =&gt; ydr-utils">
       <created>1428598300015</created>
@@ -846,7 +886,13 @@
       <option name="project" value="LOCAL" />
       <updated>1428943962074</updated>
     </task>
-    <option name="localTasksCounter" value="778" />
+    <task id="LOCAL-00778" summary="0.1.15 增加链接访问次数">
+      <created>1429082274554</created>
+      <option name="number" value="00778" />
+      <option name="project" value="LOCAL" />
+      <updated>1429082274558</updated>
+    </task>
+    <option name="localTasksCounter" value="779" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -856,6 +902,7 @@
     <frame x="0" y="23" width="1280" height="737" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -877,7 +924,6 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42015505" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -927,7 +973,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="0.0.97 - 新的编辑器与样式" />
     <MESSAGE value="0.0.98 - 首次安装配置" />
     <MESSAGE value="0.0.99 - code 字体" />
     <MESSAGE value="0.0.101 - 详情页图片、TOC样式" />
@@ -952,7 +997,8 @@
     <MESSAGE value="0.1.12 样式" />
     <MESSAGE value="0.1.13 模板分离" />
     <MESSAGE value="0.1.14 字体" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.1.14 字体" />
+    <MESSAGE value="0.1.15 增加链接访问次数" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.1.15 增加链接访问次数" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="VssConfiguration">
@@ -999,27 +1045,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webserver/controllers/api/object.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38573745">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="232" column="17" selection-start-line="232" selection-start-column="17" selection-end-line="232" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-article.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28764805">
-          <caret line="74" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-help.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5177665">
@@ -1363,8 +1388,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14333895">
-          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/down-img.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/0.0.1-beta13/0-interactive-obejct.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46839547">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/0.1.15/0-link-view-by-count.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38573745">
+          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
           <folding />
         </state>
       </provider>
