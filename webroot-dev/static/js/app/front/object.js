@@ -61,7 +61,8 @@ define(function (require, exports, module) {
         event.on($linkSource, 'click', function () {
             ajax({
                 url: '/object/link-by-count',
-                query: {
+                method: 'put',
+                body: {
                     id: winObject.id
                 }
             });

@@ -182,7 +182,8 @@ module.exports = function (app) {
      * @param next
      */
     exports.linkByCount = function (req, res, next) {
-        var id = req.query.id;
+        var body = req.body || {};
+        var id = body.id;
 
         object.increaseLinkByCount({_id: id}, 1, log.holdError);
         res.send({
