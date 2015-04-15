@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="0.1.17 版权&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/app/front/detail.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/app/front/detail.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/.views/front/object-article.html" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/object-article.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/.views/front/object-help.html" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/object-help.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/.views/front/object-link.html" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/object-link.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/.views/front/object-question.html" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/object-question.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -41,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-link.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-14.153846">
-              <caret line="99" column="134" selection-start-line="99" selection-start-column="108" selection-end-line="99" selection-end-column="134" />
+              <caret line="100" column="59" selection-start-line="99" selection-start-column="108" selection-end-line="100" selection-end-column="59" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
@@ -53,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-article.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-12.923077">
-              <caret line="101" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+              <caret line="106" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -63,17 +60,40 @@
         <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-help.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-15.692307">
-              <caret line="103" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+              <caret line="107" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="object-question.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="object-question.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-question.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5397631">
-              <caret line="113" column="21" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
+            <state vertical-scroll-proportion="-15.538462">
+              <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.3076923">
+              <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.20238096">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -136,7 +156,6 @@
         <option value="$PROJECT_DIR$/webserver/controllers/front/column.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-grid.css" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/app/front/list.scss" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/include/list/all-column.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/include/list/article.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-article.html" />
@@ -147,7 +166,6 @@
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/include/list/question.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/list-question.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/cli/0.1.15/0-link-view-by-count.js" />
         <option value="$PROJECT_DIR$/cli/0.1.16/0-link-view-by-count.js" />
         <option value="$PROJECT_DIR$/webserver/models/object.js" />
@@ -158,6 +176,8 @@
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/object-article.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/object-help.html" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/object-question.html" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -765,12 +785,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00733" summary="ydr-util =&gt; ydr-utils">
-      <created>1428600236747</created>
-      <option name="number" value="00733" />
-      <option name="project" value="LOCAL" />
-      <updated>1428600236747</updated>
-    </task>
     <task id="LOCAL-00734" summary="ydr-util =&gt; ydr-utils">
       <created>1428600249738</created>
       <option name="number" value="00734" />
@@ -1059,7 +1073,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429084926659</updated>
     </task>
-    <option name="localTasksCounter" value="782" />
+    <task id="LOCAL-00782" summary="0.1.17 版权&#10;">
+      <created>1429085132941</created>
+      <option name="number" value="00782" />
+      <option name="project" value="LOCAL" />
+      <updated>1429085132941</updated>
+    </task>
+    <option name="localTasksCounter" value="783" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1406,16 +1426,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14455782">
-          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/include/list/all-column.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5177665">
@@ -1513,14 +1523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05752961">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-badge.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4314721">
@@ -1574,7 +1576,7 @@
     <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-link.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.153846">
-          <caret line="99" column="134" selection-start-line="99" selection-start-column="108" selection-end-line="99" selection-end-column="134" />
+          <caret line="100" column="59" selection-start-line="99" selection-start-column="108" selection-end-line="100" selection-end-column="59" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
@@ -1584,7 +1586,7 @@
     <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-article.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.923077">
-          <caret line="101" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <caret line="106" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1592,15 +1594,34 @@
     <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-help.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.692307">
-          <caret line="103" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+          <caret line="107" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-question.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5397631">
-          <caret line="113" column="21" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
+        <state vertical-scroll-proportion="-15.538462">
+          <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20238096">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
         </state>
       </provider>
