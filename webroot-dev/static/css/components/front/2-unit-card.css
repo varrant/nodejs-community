@@ -1,12 +1,14 @@
 .card {
-  background: #fff; }
+  background: #fff;
+  margin-bottom: 50px; }
+  .card:last-child {
+    margin-bottom: 0; }
   .card-title, .card-tab {
     position: relative;
     border-bottom: 2px solid #e6e6e6;
     margin: 0;
     font-weight: normal;
-    height: 70px;
-  }
+    height: 70px; }
   .card-title {
     padding: 20px;
     font-size: 20px; }

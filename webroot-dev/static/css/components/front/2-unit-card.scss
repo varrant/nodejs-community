@@ -5,6 +5,11 @@ $border-color: #e6e6e6;
 // card
 .card {
   background: #fff;
+  margin-bottom: 50px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   &-title,
   &-tab {

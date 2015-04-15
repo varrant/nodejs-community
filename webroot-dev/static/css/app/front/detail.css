@@ -25,6 +25,10 @@
     border: 1px solid #EEE;
     box-shadow: 0 4px 10px #E3E3E3; }
 
+.copyright .label {
+  margin-left: 10px;
+}
+
 .bdsharebuttonbox {
   display: inline-block;
   vertical-align: middle; }

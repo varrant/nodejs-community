@@ -46,9 +46,6 @@
                     </h2>
 
                     <div class="card-body postmain">
-                        <div class="postmain-link">
-                            <a href="{{=object.link}}" target="_blank">{{=object.link}}</a><span class="badge">{{object.linkByCount}}</span>
-                        </div>
                         <div class="postmain-content" id="content">{{=object.contentHTML}}</div>
                         <ul class="postmain-meta text-light">
                             {{if object.column}}
@@ -88,6 +85,26 @@
                     </div>
                 </div>
                 <!--/内容-->
+
+                <!-- 版权 -->
+                <div class="card copyright">
+                    <h2 class="card-title"><i class="fi fi-copyright"></i>版权信息</h2>
+
+                    <div class="card-body">
+                        <ul class="simplelist">
+                            <li>来源地址：<a href="{{=object.link}}" target="_blank">{{=object.link}}</a><span
+                                    class="text-light text-space"><i class="fi fi-external-link"></i>{{object.linkByCount}}</span>
+                            </li>
+                            <li>链接标题：<a href="{{=$configs.app.host}}/link/{{=object.uri}}.html">链接《{{=title}}》</a><span
+                                    class="text-light text-space">by</span><a
+                                    href="{{=$configs.app.host}}/developer/{{=object.author.githubLogin}}/">{{=object.author.nickname}}</a>
+                            </li>
+                            <li>链接地址：<a href="{{=$configs.app.host}}/link/{{=object.uri}}.html">{{=$configs.app.host}}/link/{{=object.uri}}.html</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /版权 -->
 
                 <div id="response"></div>
             </div>
