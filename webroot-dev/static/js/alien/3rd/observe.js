@@ -185,7 +185,6 @@ if (!Object.observe) {
               values[setter.info.idx] = value;
             }
           }
-
           getter.info = setter.info = {
             idx: idx
           };
