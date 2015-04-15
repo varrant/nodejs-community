@@ -46,6 +46,9 @@
                     </h2>
 
                     <div class="card-body postmain">
+                        <div class="postmain-link">
+                            <a href="{{=object.link}}" target="_blank">{{=object.link}}</a><span class="badge">{{object.linkByCount}}</span>
+                        </div>
                         <div class="postmain-content" id="content">{{=object.contentHTML}}</div>
                         <ul class="postmain-meta text-light">
                             {{if object.column}}

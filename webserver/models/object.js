@@ -90,7 +90,7 @@ var schema = new mongoose.Schema({
         required: false
     },
     // 链接查看次数
-    linkViewByCount: {
+    linkByCount: {
         type: Number,
         default: 1
     },
