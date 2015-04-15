@@ -573,7 +573,7 @@ define(function (require, exports, module) {
 
                     _img.src = img.url;
                     html.push('![' + img.name + '](' + img.url +
-                    (typeis.undefined(img.width) ? '' : ' =' + img.width + 'x' + img.height + ')'));
+                    (typeis.undefined(img.width) ? '' : ' =' + img.width + 'x' + img.height) + ')');
                 });
 
                 the.replace(html.join(' '));

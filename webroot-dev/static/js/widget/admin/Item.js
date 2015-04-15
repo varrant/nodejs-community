@@ -129,6 +129,7 @@ define(function (require, exports, module) {
                         onprogress(eve.alienDetail.percent);
                     })
                     .on('success', function (data) {
+                        var image = data.image || {};
                         //cacheControl: "max-age=315360000"
                         //contentType: "image/png"
                         //encoding: "utf8"
@@ -137,7 +138,9 @@ define(function (require, exports, module) {
                         //surl: "http://s.ydr.me/f/i/20141228233411750487888485"
                         ondone(null, [{
                             name: "img.png",
-                            url: data.surl
+                            url: data.surl,
+                            width: image.width,
+                            height: image.height
                         }]);
                     })
                     .on('error', function (err) {
