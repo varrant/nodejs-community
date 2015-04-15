@@ -18,6 +18,7 @@ define(function (require, exports, module) {
     var dato = require('../../alien/utils/dato.js');
     var url = require('../../alien/utils/url.js');
     var share = require('../../widget/common/share.js');
+    var ajax = require('../../widget/common/ajax.js');
     var win = window;
     var winObject = win['-object-'];
     var winSection = win['-section-'];
@@ -51,6 +52,7 @@ define(function (require, exports, module) {
 
     app.link = function () {
         var $linkSource = selector.query('#linkSource')[0];
+        var $linkByCount = selector.query('#linkByCount')[0];
 
         if (!$linkSource) {
             return;
@@ -63,6 +65,7 @@ define(function (require, exports, module) {
                     id: winObject.id
                 }
             });
+            $linkByCount.innerHTML = dato.parseInt($linkByCount.innerHTML, 1) + 1;
         });
     };
 
@@ -133,6 +136,7 @@ define(function (require, exports, module) {
     };
 
     app.toc();
+    app.link();
     app.response();
     app.imgview();
     app.prettify();
