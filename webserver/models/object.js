@@ -89,6 +89,11 @@ var schema = new mongoose.Schema({
         type: String,
         required: false
     },
+    // 链接查看次数
+    linkViewByCount: {
+        type: Number,
+        default: 1
+    },
     // 发布时间
     publishAt: {
         type: Date,
