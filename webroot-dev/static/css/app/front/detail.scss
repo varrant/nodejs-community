@@ -13,6 +13,14 @@ $border-color: #e6e6e6;
   position: relative;
 
   &-content {
+    a {
+      border-bottom: 1px dotted;
+
+      &:hover {
+        border-bottom: 0;
+      }
+    }
+
     img{
       cursor: -webkit-zoom-in;
       cursor: -moz-zoom-in;
