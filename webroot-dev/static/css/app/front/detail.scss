@@ -8,7 +8,7 @@
   padding: 20px;
 }
 
-.pos {
+.post {
   position: relative;
 
   &-content {
@@ -28,6 +28,40 @@
 
   &-separator {
     position: relative;
+    margin-top: 50px;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 1px;
+      background: -webkit-linear-gradient(90deg, #FFF 0, #CCC 30%, #CCC 100%);
+      background: linear-gradient(90deg, #FFF 0, #CCC 30%, #CCC 100%);
+    }
+
+    &:before {
+      left: 0;
+    }
+
+    &:after {
+      right: 0;
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+
+    span {
+      position: absolute;
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      left: 50%;
+      top: -50%;
+      background: #EEE;
+      padding: 4px 10px;
+      z-index: 1;
+      color: #888;
+    }
   }
 }
 

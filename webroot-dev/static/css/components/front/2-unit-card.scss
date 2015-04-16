@@ -17,7 +17,7 @@ $border-color: #e6e6e6;
     border-bottom: 2px solid $border-color;
     margin: 0;
     font-weight: normal;
-    height: 70px;
+    min-height: 70px;
   }
 
   &-title {

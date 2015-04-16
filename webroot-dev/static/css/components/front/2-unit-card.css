@@ -8,7 +8,8 @@
     border-bottom: 2px solid #e6e6e6;
     margin: 0;
     font-weight: normal;
-    height: 70px; }
+    min-height: 70px;
+  }
   .card-title {
     padding: 20px;
     font-size: 20px; }
