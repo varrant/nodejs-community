@@ -62,7 +62,6 @@ define(function (require, exports, module) {
                 link: '/help/markdown.html',
                 text: 'markdown 编辑器使用帮助'
             },
-            avatar: '/static/img/avatar.png',
             uploadCallback: function (list, onprogress, ondone) {
                 var fd = new FormData();
                 var the = this;

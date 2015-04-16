@@ -21,7 +21,7 @@ define(function (require, exports, module) {
     var defaults = {
         id: '',
         minHeight: 100,
-        avatar: '/static/img/avatar.png',
+        avatar: 'http://s.ydr.me/p/i/avatar.png',
         githubLogin: '#',
         markdownHelp: {
             link: '#',
