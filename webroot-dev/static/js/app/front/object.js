@@ -123,6 +123,7 @@ define(function (require, exports, module) {
         });
     };
 
+
     // 图片预览
     app.imgview = function () {
         var imgview = new Imgview();
@@ -141,6 +142,7 @@ define(function (require, exports, module) {
             imgview.open(postImgList, index);
         });
     };
+
 
     // 代码高亮
     app.prettify = function () {

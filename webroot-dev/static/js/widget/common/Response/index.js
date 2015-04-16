@@ -86,9 +86,13 @@ define(function (require, exports, module) {
                         //image: {type: "png", width: 200, height: 200}
                         //ourl: "http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f/i/20141228233411750487888485"
                         //surl: "http://s.ydr.me/f/i/20141228233411750487888485"
+                        var image = data.image || {};
+
                         ondone(null, [{
                             name: "img.png",
-                            url: data.surl
+                            url: data.surl,
+                            width: image.width,
+                            height: image.height
                         }]);
                     })
                     .on('error', function (err) {
