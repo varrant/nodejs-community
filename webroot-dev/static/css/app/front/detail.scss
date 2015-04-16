@@ -8,27 +8,10 @@
   padding: 20px;
 }
 
-
-
-//m-postmain
-.postmain {
+.pos {
   position: relative;
 
-  .postmain-meta {
-    list-style: none;
-    padding: 0;
-    margin: 30px 0 0;
-
-    li {
-      line-height: 2;
-    }
-  }
-
-  .postmain-content {
-    p {
-      white-space: pre-wrap;
-    }
-
+  &-content {
     img{
       cursor: -webkit-zoom-in;
       cursor: -moz-zoom-in;
@@ -41,6 +24,10 @@
       border: 1px solid #EEE;
       box-shadow: 0 4px 10px #E3E3E3;
     }
+  }
+
+  &-separator {
+    position: relative;
   }
 }
 

@@ -5,25 +5,23 @@
   border: 1px solid #ddd;
   padding: 20px; }
 
-.postmain {
+.pos {
   position: relative; }
-  .postmain .postmain-meta {
-    list-style: none;
-    padding: 0;
-    margin: 30px 0 0; }
-    .postmain .postmain-meta li {
-      line-height: 2; }
-  .postmain .postmain-content p {
-    white-space: pre-wrap; }
-  .postmain .postmain-content img {
+
+.pos-content img {
     cursor: -webkit-zoom-in;
     cursor: -moz-zoom-in;
     cursor: zoom-in; }
-  .postmain .postmain-content p > img:only-child {
+
+.pos-content p > img:only-child {
     display: block;
     margin: 0 auto;
     border: 1px solid #EEE;
     box-shadow: 0 4px 10px #E3E3E3; }
+
+.pos-separator {
+  position: relative;
+}
 
 .copyright .label {
   margin-left: 10px;
