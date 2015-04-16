@@ -47,44 +47,11 @@
 
                     <div class="card-body postmain">
                         <div class="postmain-content" id="content">{{=object.contentHTML}}</div>
-                        <ul class="postmain-meta text-light">
-                            {{if object.column}}
-                            <li>
-                                <i class="fi fi-book"></i>
-                                <a href="/column/{{object.column.uri}}/" class="label label-default">{{object.column.name}}</a>
-                            </li>
-                            {{/if}}
-                            <li>
-                                <i class="fi fi-folder"></i>
-                                <a href="/article/in/{{object.category.uri}}/" class="label label-default">{{object.category.name}}</a>
-                            </li>
-                            {{if object.labels.length }}
-                            <li>
-                                <i class="fi fi-tags"></i>
-                                {{list object.labels as label}}
-                                <a class="label label-light" href="/article/on/{{label}}/">{{label}}</a>
-                                {{/list}}
-                            </li>
-                            {{/if}}
-                            <li>
-                                <i class="fi fi-clock-o"></i>
-                                <span>{{object.updateAt|datefrom}} &times; {{object.updateList.length}}</span>
-                            </li>
-                            {{ var role19 = 2<<19; }}
-                            {{if ($developer.role & role19)!== 0 ||  object.author.id === $developer.id}}
-                            <li>
-                                <i class="fi fi-pencil"></i>
-                                <a href="/admin/object/link/?id={{object.id}}">重新编辑</a>
-                            </li>
-                            {{/if}}
-                            <li>
-                                <i class="fi fi-share"></i>
-                                <div id="share"></div>
-                            </li>
-                        </ul>
                     </div>
                 </div>
                 <!--/内容-->
+
+                <div class="eof card"><span>EOF</span></div>
 
                 <!-- 版权 -->
                 <div class="card copyright">

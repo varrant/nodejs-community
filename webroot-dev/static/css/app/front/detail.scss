@@ -30,7 +30,7 @@ $border-color: #e6e6e6;
 
 .eof {
   position: relative;
-  height: 30px;
+  height: 1px;
 
   &:before,
   &:after {
@@ -64,7 +64,7 @@ $border-color: #e6e6e6;
     z-index: 1;
     color: #BEBEBE;
     border: 1px solid #DDD;
-    order-radius: 4px;
+    border-radius: 4px;
     font-size: 12px;
     font-style: italic;
   }

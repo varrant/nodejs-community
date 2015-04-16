@@ -19,7 +19,7 @@
 
 .eof {
   position: relative;
-  height: 30px;
+  height: 1px;
 }
 
 .eof:before, .eof:after {
@@ -53,7 +53,7 @@
   z-index: 1;
   color: #BEBEBE;
   border: 1px solid #DDD;
-  order-radius: 4px;
+  border-radius: 4px;
   font-size: 12px;
   font-style: italic;
 }
