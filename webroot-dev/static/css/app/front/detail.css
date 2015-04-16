@@ -8,14 +8,22 @@
 .post {
   position: relative; }
   .post-content a {
-    border-bottom: 1px dotted; }
+    border-bottom: 1px dotted;
+    margin: 0 4px;
+  }
     .post-content a:hover {
       border-bottom: 0; }
+
+.post-content h1 a, .post-content h2 a, .post-content h3 a, .post-content h4 a, .post-content h5 a, .post-content h6 a, .post-content .toc a {
+  border-bottom: 0;
+  margin: 0;
+}
   .post-content img {
     cursor: -webkit-zoom-in;
     cursor: -moz-zoom-in;
     cursor: zoom-in; }
-  .post-content p > img:only-child {
+
+.post-content p > img {
     display: block;
     margin: 0 auto;
     border: 1px solid #EEE;

@@ -15,9 +15,17 @@ $border-color: #e6e6e6;
   &-content {
     a {
       border-bottom: 1px dotted;
+      margin: 0 4px;
 
       &:hover {
         border-bottom: 0;
+      }
+    }
+
+    h1, h2, h3, h4, h5, h6, .toc {
+      a {
+        border-bottom: 0;
+        margin: 0;
       }
     }
 
@@ -27,7 +35,7 @@ $border-color: #e6e6e6;
       cursor: zoom-in;
     }
 
-    p > img:only-child {
+    p > img {
       display: block;
       margin: 0 auto;
       border: 1px solid #EEE;
