@@ -29,6 +29,9 @@ module.exports = function (app) {
             // 查询列表
             .task(function (done) {
                 listOptions.populate = ['author'];
+                listOptions.sort = {
+                    objectCount: -1
+                };
                 column.find({}, listOptions, done);
             })
             // 异步并行
