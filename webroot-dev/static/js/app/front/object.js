@@ -26,6 +26,9 @@ define(function (require, exports, module) {
     var winAuthor = win['-author-'];
     var app = {};
 
+    winObject.hasHidden = winObject.hasHidden === 'true' ? true : false;
+    winObject.hasResponsed = winObject.hasResponsed === 'true' ? true : false;
+
     // toc
     app.toc = function () {
         //var $content = selector.query('#content');
