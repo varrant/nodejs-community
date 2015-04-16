@@ -13,6 +13,27 @@
                 <!--<button class="btn btn-success"><i class="fi fi-comment"></i>回答</button>-->
                 <!--<button class="btn btn-primary"><i class="fi fi-star"></i>关注</button>-->
             <!--</li>-->
+            <li>
+                <i class="fi fi-folder"></i>
+                <a href="/article/in/{{object.category.uri}}/">{{object.category.name}}</a>
+            </li>
+            {{if object.labels.length }}
+            <li>
+                <i class="fi fi-tags"></i>
+                {{list object.labels as label}}
+                <a class="label label-light" href="/article/on/{{label}}/">{{label}}</a>
+                {{/list}}
+            </li>
+            {{/if}}
+            <li>
+                <i class="fi fi-clock-o"></i>
+                <span>{{object.updateAt|datefrom}} &times; {{object.updateList.length}}</span>
+            </li>
+            <li>
+                <i class="fi fi-share"></i>
+
+                <div id="share"></div>
+            </li>
         </ul>
     </div>
 </div>
