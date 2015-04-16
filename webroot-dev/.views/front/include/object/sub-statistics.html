@@ -15,13 +15,13 @@
             <!--</li>-->
             <li>
                 <i class="fi fi-folder"></i>
-                <a href="/article/in/{{object.category.uri}}/">{{object.category.name}}</a>
+                <a href="/{{=section.uri}}/in/{{=object.category.uri}}/">{{object.category.name}}</a>
             </li>
             {{if object.labels.length }}
             <li>
                 <i class="fi fi-tags"></i>
                 {{list object.labels as label}}
-                <a class="label label-light" href="/article/on/{{label}}/">{{label}}</a>
+                <a class="label label-light" href="/{{=section.uri}}/on/{{=label}}/">{{label}}</a>
                 {{/list}}
             </li>
             {{/if}}

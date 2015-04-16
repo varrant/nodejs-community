@@ -228,6 +228,7 @@ module.exports = function (app) {
 
                 var onend = function () {
                     object.increaseViewByCount({_id: obje.id}, 1, log.holdError);
+                    data.section = section;
                     //res.json(obje);
                     res.render('front/object-' + section.uri + '.html', data);
                 };
