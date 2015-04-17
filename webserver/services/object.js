@@ -276,6 +276,7 @@ exports.updateOne = function (author, conditions, data, callback) {
         // 4. 检查 column 是否存在，以及发布权限
         .task(function (next, objectInSection) {
             if (!data.column) {
+                data.column = null;
                 return next(null, objectInSection);
             }
 
@@ -364,11 +365,13 @@ exports.updateOne = function (author, conditions, data, callback) {
                 }
 
                 if (oldDoc.column) {
-                    developer.increaseCategoryStatistics({_id: author.id}, oldDoc.column, -1, log.holdError);
+                    developer.increaseColumnStatistics({_id: author.id}, oldDoc.column, -1, log.holdError);
+                    column.increaseObjectCount({_id: oldDoc.column}, -1, log.holdError);
                 }
 
                 if (doc.column) {
-                    developer.increaseCategoryStatistics({_id: author.id}, doc.column, 1, log.holdError);
+                    developer.increaseColumnStatistics({_id: author.id}, doc.column, 1, log.holdError);
+                    column.increaseObjectCount({_id: doc.column}, 1, log.holdError);
                 }
             }
         });

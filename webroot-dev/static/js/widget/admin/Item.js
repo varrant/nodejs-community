@@ -94,10 +94,10 @@ define(function (require, exports, module) {
             data.columns.forEach(function (item) {
                 item.text = item.name;
                 item.value = item.id;
-
-                //if (item.uri === 'default' && !data.object.category) {
-                //    data.object.category = item.id;
-                //}
+            });
+            data.columns.push({
+                text: '=不分配专辑=',
+                value: ''
             });
             the.vue = new Vue({
                 el: the._formSelector,
