@@ -146,7 +146,7 @@ define(function (require, exports, module) {
 
     // 代码高亮
     app.prettify = function () {
-        new Prettify('.postmain-content pre');
+        new Prettify('.post-content pre');
     };
 
     app.toc();
