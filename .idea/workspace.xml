@@ -4,10 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/webserver/controllers/front/column.js" description="        var uri = req.params.uri;&#10;        var list..." line="61" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="0.1.27 code preview">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/models/index.js" afterPath="$PROJECT_DIR$/webserver/models/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/services/object.js" afterPath="$PROJECT_DIR$/webserver/services/object.js" />
+    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="0.1.28 set column null">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/List.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/List.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -35,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="object-item.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/admin/object-item.js">
+      <file leaf-file-name="object-list.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/admin/object-list.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -47,43 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Item.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js">
+      <file leaf-file-name="List.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/List.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="99" column="24" selection-start-line="99" selection-start-column="24" selection-end-line="99" selection-end-column="24" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webserver/models/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="235" column="0" selection-start-line="235" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="object.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36466774">
-              <caret line="285" column="17" selection-start-line="285" selection-start-column="17" selection-end-line="285" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="column.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webserver/services/column.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="157" column="27" selection-start-line="157" selection-start-column="8" selection-end-line="157" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.39384118">
+              <caret line="144" column="41" selection-start-line="144" selection-start-column="41" selection-end-line="144" selection-end-column="41" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -99,7 +65,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Upload/index.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/List.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/sadmin/Setting.js" />
         <option value="$PROJECT_DIR$/webroot-dev/readme.md" />
@@ -150,6 +115,7 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/Item.js" />
         <option value="$PROJECT_DIR$/webserver/models/index.js" />
         <option value="$PROJECT_DIR$/webserver/services/object.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/admin/List.js" />
       </list>
     </option>
   </component>
@@ -863,12 +829,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00766" summary="0.1.11 add all-column page">
-      <created>1428936781698</created>
-      <option name="number" value="00766" />
-      <option name="project" value="LOCAL" />
-      <updated>1428936781698</updated>
-    </task>
     <task id="LOCAL-00767" summary="0.1.11 add all-column page">
       <created>1428937274696</created>
       <option name="number" value="00767" />
@@ -1157,7 +1117,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429237445769</updated>
     </task>
-    <option name="localTasksCounter" value="815" />
+    <task id="LOCAL-00815" summary="0.1.28 set column null">
+      <created>1429239027004</created>
+      <option name="number" value="00815" />
+      <option name="project" value="LOCAL" />
+      <updated>1429239027004</updated>
+    </task>
+    <option name="localTasksCounter" value="816" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1211,7 +1177,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="0.1.4 管理员 object 管理" />
     <MESSAGE value="0.1.5 管理员 object 管理" />
     <MESSAGE value="0.1.6 style" />
     <MESSAGE value="0.1.7 update alien" />
@@ -1236,7 +1201,8 @@
     <MESSAGE value="0.1.25 respond upload" />
     <MESSAGE value="0.1.26 detault avatar" />
     <MESSAGE value="0.1.27 code preview" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.1.27 code preview" />
+    <MESSAGE value="0.1.28 set column null" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.1.28 set column null" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="VssConfiguration">
@@ -1283,20 +1249,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/list-link.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16582064">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/list-question.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20135364">
-          <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/list-all-column.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09813875">
@@ -1653,7 +1605,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/services/column.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.4489465">
           <caret line="157" column="27" selection-start-line="157" selection-start-column="8" selection-end-line="157" selection-end-column="27" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -1679,9 +1631,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/services/object.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36466774">
-          <caret line="285" column="17" selection-start-line="285" selection-start-column="17" selection-end-line="285" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.25445706">
+          <caret line="281" column="0" selection-start-line="281" selection-start-column="0" selection-end-line="281" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/admin/object-list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/admin/List.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39384118">
+          <caret line="144" column="41" selection-start-line="144" selection-start-column="41" selection-end-line="144" selection-end-column="41" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

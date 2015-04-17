@@ -138,6 +138,7 @@ define(function (require, exports, module) {
         _onremove: function (id, index) {
             var the = this;
             var options = the._options;
+            var list = the.vue.$data.list;
             var onsure = function () {
                 ajax({
                     loading: '删除中',
@@ -148,12 +149,13 @@ define(function (require, exports, module) {
                     }
                 })
                     .on('success', function () {
-                        the.vue.$data.list.splice(index, 1);
+                        alert('《' + list[index].title + '》已被删除');
+                        list.splice(index, 1);
                     })
                     .on('error', alert);
             };
 
-            confirm('确认要删除该项目吗？<br>删除操作不可逆，请仔细确认！').on('sure', onsure);
+            confirm('确认要删除《' + list[index].title + '》吗？<br>删除操作不可逆，请仔细确认！').on('sure', onsure);
         }
     });
 
