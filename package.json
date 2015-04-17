@@ -1,6 +1,6 @@
 {
   "name": "nodejs-community",
-  "version": "0.1.26",
+  "version": "0.1.27",
   "private": true,
   "description": "前端开发社区",
   "scripts": {
