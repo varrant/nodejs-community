@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/core/event/hotkey.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/libs/jplus.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/js/alien/ui/Editor/marked-render-table.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -979,12 +980,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00795" summary="0.1.21 reformat detail page">
-      <created>1429154903375</created>
-      <option name="number" value="00795" />
-      <option name="project" value="LOCAL" />
-      <updated>1429154903375</updated>
-    </task>
     <task id="LOCAL-00796" summary="0.1.21 reformat detail page">
       <created>1429155041355</created>
       <option name="number" value="00796" />
@@ -1273,7 +1268,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429350199551</updated>
     </task>
-    <option name="localTasksCounter" value="844" />
+    <task id="LOCAL-00844" summary="0.1.38 update alien">
+      <created>1429350254113</created>
+      <option name="number" value="00844" />
+      <option name="project" value="LOCAL" />
+      <updated>1429350254113</updated>
+    </task>
+    <option name="localTasksCounter" value="845" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
