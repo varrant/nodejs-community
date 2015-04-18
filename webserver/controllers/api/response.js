@@ -188,6 +188,7 @@ module.exports = function (app) {
 
                         list.forEach(function (item) {
                             item.author = dato.pick(item.author, ['id', 'nickname', 'githubLogin', 'githubId', 'score', 'avatar']);
+                            item.agreers = item.agreers || [];
                             item.agreers = item.agreers.map(function (agreer) {
                                 return dato.pick(agreer, ['id', 'nickname', 'githubLogin', 'avatarM']);
                             });
