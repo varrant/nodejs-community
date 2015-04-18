@@ -7,8 +7,15 @@ footer {
 .gotop {
   position: fixed;
   opacity: 0;
-  width: 30px;
-  height: 30px;
-  font-size: 30px; }
+  font-size: 30px;
+  right: 20px;
+  bottom: 30px;
+  color: #888;
+  text-align: center;
+  background: #FFF;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
   .gotop.active {
     opacity: 1; }
