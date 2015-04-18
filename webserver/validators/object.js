@@ -15,7 +15,7 @@ var validator = new Validator();
 var REG_TITLE = regexp.title(5, 100);
 var REG_URI = regexp.uri(5, 200);
 var REG_LABEL = /^[\u4e00-\u9fa5a-z\d _\-]{2,20}$/i;
-var REG_INTRODUCTION = regexp.content(0, 200);
+var REG_INTRODUCTION = regexp.content(0, 1000);
 var REG_CONTENT = regexp.content(10, 50000);
 
 validator.pushRule({

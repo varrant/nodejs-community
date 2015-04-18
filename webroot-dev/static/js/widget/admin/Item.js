@@ -151,7 +151,7 @@ define(function (require, exports, module) {
                     });
             };
 
-            the.editor = new Editor(the._contentSelector, {
+            the._editor1 = new Editor(the._contentSelector, {
                 id: data.id,
                 uploadCallback: the.editorUploadCallback,
                 minHeight: 200
@@ -214,9 +214,9 @@ define(function (require, exports, module) {
             }).on('success', function (data) {
                 // 属于创建，清除之前的缓存记录，换成新的
                 if (!the._options.id) {
-                    the.editor.clearStore();
+                    the._editor1.clearStore();
                     the._options.id = data.id;
-                    the.editor.setOptions('id', the._options.id);
+                    the._editor1.setOptions('id', the._options.id);
                     history.pushState('', null, location.pathname + '?id=' + data.id);
                 }
 
@@ -289,20 +289,19 @@ define(function (require, exports, module) {
         _watchAddHidden: function () {
             var the = this;
             var data = the.vue.$data;
-            var hasDispatch = false;
             var toggle = function (boolean) {
-                //if(boolean && the.editor2){
+                //if(boolean && the._editor2){
                 //    the.editor2.focus();
                 //}
 
-                if (!boolean || hasDispatch) {
+                if (!boolean || the._editor2) {
                     return;
                 }
 
                 var $hidden = selector.query(the._options.hiddenSelector)[0];
 
                 if ($hidden) {
-                    the.editor2 = new Editor($hidden, {
+                    the._editor2 = new Editor($hidden, {
                         id: data.id + '-hidden',
                         autoFocus: false,
                         uploadCallback: the.editorUploadCallback
