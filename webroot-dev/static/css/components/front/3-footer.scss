@@ -8,3 +8,15 @@ footer {
     margin: 0;
   }
 }
+
+.gotop {
+  position: fixed;
+  opacity: 0;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+
+  &.active {
+    opacity: 1;
+  }
+}

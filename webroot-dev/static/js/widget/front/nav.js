@@ -11,6 +11,7 @@ define(function (require, exports, module) {
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
     var modification = require('../../alien/core/dom/modification.js');
+    var animation = require('../../alien/core/dom/animation.js');
     var see = require('../../alien/core/dom/see.js');
     //var compatible = require('../../alien/core/navigator/compatible.js');
     var event = require('../../alien/core/event/touch.js');
@@ -21,7 +22,38 @@ define(function (require, exports, module) {
     var app = {};
     var activeClass = 'active';
     var unfoldClass = 'unfolded';
-    var hasLogin = !!window['-developer-'].id;
+    var win = window;
+    var hasLogin = !!win['-developer-'].id;
+
+    app.gotop = function () {
+        var $gotop = selector.query('#gotop')[0];
+        var isGoing = false;
+        var animationOptions = {durtaion: 567};
+
+        event.on(win, 'scroll', controller.debounce(function () {
+            var st = attribute.scrollTop(window);
+
+            attribute[(st > 20 ? 'add' : 'remove') + 'Class']($gotop, 'active');
+        }));
+
+        event.on($gotop, 'click', function () {
+            if (isGoing) {
+                return;
+            }
+
+            isGoing = true;
+            animation.scrollTo(win, {
+                y: 0
+            }, animationOptions);
+
+            animation.animate($gotop, {
+                bottom: '100%'
+            }, animationOptions, function () {
+                isGoing = false;
+                attribute.css($gotop, 'bottom', '');
+            });
+        });
+    };
 
     // 导航切换
     app.toggle = function () {
@@ -32,9 +64,8 @@ define(function (require, exports, module) {
         var $toggle = nodes[1];
         var $menu = nodes[2];
         var $group = nodes[3];
-        var $downlist = nodes[4];
         //var $downlist = nodes[4];
-        var section = window['-section-'] && window['-section-'].uri || 'home';
+        var section = win['-section-'] && win['-section-'].uri || 'home';
         var $active = selector.query('.nav-item-' + section, $menu)[0];
 
         attribute.addClass($active, activeClass);
@@ -116,6 +147,7 @@ define(function (require, exports, module) {
         });
     };
 
+    app.gotop();
     app.toggle();
     app.notification();
     app.logout();

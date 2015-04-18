@@ -3,3 +3,12 @@ footer {
   margin-top: 100px; }
   footer h3, footer p {
     margin: 0; }
+
+.gotop {
+  position: fixed;
+  opacity: 0;
+  width: 30px;
+  height: 30px;
+  font-size: 30px; }
+  .gotop.active {
+    opacity: 1; }
