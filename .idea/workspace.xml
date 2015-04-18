@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cli/0.1.38/0-response.js" afterPath="$PROJECT_DIR$/cli/0.1.38/0-response.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -36,8 +35,8 @@
       <file leaf-file-name="0-response.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cli/0.1.38/0-response.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5591572">
-              <caret line="130" column="37" selection-start-line="130" selection-start-column="37" selection-end-line="130" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.5316045">
+              <caret line="129" column="38" selection-start-line="129" selection-start-column="38" selection-end-line="129" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -923,12 +922,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00806" summary="0.1.24 微样式">
-      <created>1429194837612</created>
-      <option name="number" value="00806" />
-      <option name="project" value="LOCAL" />
-      <updated>1429194837617</updated>
-    </task>
     <task id="LOCAL-00807" summary="0.1.25 respond upload">
       <created>1429195028729</created>
       <option name="number" value="00807" />
@@ -1217,7 +1210,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429377106490</updated>
     </task>
-    <option name="localTasksCounter" value="855" />
+    <task id="LOCAL-00855" summary="0.1.39 fix response list bug">
+      <created>1429377144739</created>
+      <option name="number" value="00855" />
+      <option name="project" value="LOCAL" />
+      <updated>1429377144739</updated>
+    </task>
+    <option name="localTasksCounter" value="856" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1762,8 +1761,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cli/0.1.38/0-response.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5591572">
-          <caret line="130" column="37" selection-start-line="130" selection-start-column="37" selection-end-line="130" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.5316045">
+          <caret line="129" column="38" selection-start-line="129" selection-start-column="38" selection-end-line="129" selection-end-column="38" />
           <folding />
         </state>
       </provider>
