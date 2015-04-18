@@ -75,17 +75,17 @@
                                     </td>
                                     <td>
                                         <button v-if="type==='unactive'" class="btn btn-success btn-sm"
-                                                v-on="click: toggle(notification, true)"
+                                                v-on="click: toggle(notification)"
                                                 v-attr="disabled: notification.hasActived">
                                             \{{notification.hasActived?"已读":"标记已读"}}
                                         </button>
                                         <button v-if="type==='active'" class="btn btn-success btn-sm"
-                                                v-on="click: toggle(notification, true)"
+                                                v-on="click: toggle(notification)"
                                                 v-attr="disabled: !notification.hasActived">
                                             \{{!notification.hasActived?"未读":"标记未读"}}
                                         </button>
                                         <button v-if="type==='all'" class="btn btn-success btn-sm"
-                                                v-on="click: toggle(notification, true)">
+                                                v-on="click: toggle(notification)">
                                             \{{notification.hasActived?"标记未读":"标记已读"}}
                                         </button>
                                     </td>

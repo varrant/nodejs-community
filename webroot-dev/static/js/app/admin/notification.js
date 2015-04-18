@@ -25,8 +25,12 @@ define(function (require, exports, module) {
 
 
     // 标记已读
-    methods.toggle = function (item) {
+    methods.toggle = function (item, isLink) {
         var the = this;
+
+        if(isLink){
+
+        }
 
         ajax({
             method: item.hasActived ? 'put' : 'delete',
