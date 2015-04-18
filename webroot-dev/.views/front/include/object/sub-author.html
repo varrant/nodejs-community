@@ -26,7 +26,7 @@
             {{if ($developer.role & role19)!== 0 || object.author.id === $developer.id}}
             <li>
                 <i class="fi fi-pencil"></i>
-                <a href="/admin/object/article/?id={{object.id}}">重新编辑</a>
+                <a href="/admin/object/{{=section.uri}}/?id={{object.id}}">重新编辑</a>
             </li>
             {{/if}}
         </ul>
