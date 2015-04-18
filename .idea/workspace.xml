@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cli/0.1.38/0-response.js" afterPath="$PROJECT_DIR$/cli/0.1.38/0-response.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/controllers/api/response.js" afterPath="$PROJECT_DIR$/webserver/controllers/api/response.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -34,20 +33,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="0-response.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="0-response.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cli/0.1.38/0-response.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5591572">
+              <caret line="130" column="37" selection-start-line="130" selection-start-column="37" selection-end-line="130" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="response.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="response.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webserver/controllers/api/response.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5235008">
+            <state vertical-scroll-proportion="0.0">
               <caret line="193" column="31" selection-start-line="193" selection-start-column="31" selection-end-line="193" selection-end-column="31" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -113,8 +112,8 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/css/components/common/2-unit-grid.css" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/cli/0.1.38/0-response.js" />
         <option value="$PROJECT_DIR$/webserver/controllers/api/response.js" />
+        <option value="$PROJECT_DIR$/cli/0.1.38/0-response.js" />
       </list>
     </option>
   </component>
@@ -924,12 +923,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00805" summary="0.1.24 微样式">
-      <created>1429168377776</created>
-      <option name="number" value="00805" />
-      <option name="project" value="LOCAL" />
-      <updated>1429168377776</updated>
-    </task>
     <task id="LOCAL-00806" summary="0.1.24 微样式">
       <created>1429194837612</created>
       <option name="number" value="00806" />
@@ -1218,7 +1211,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429376916816</updated>
     </task>
-    <option name="localTasksCounter" value="854" />
+    <task id="LOCAL-00854" summary="0.1.39 fix response list bug">
+      <created>1429377106490</created>
+      <option name="number" value="00854" />
+      <option name="project" value="LOCAL" />
+      <updated>1429377106490</updated>
+    </task>
+    <option name="localTasksCounter" value="855" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1272,7 +1271,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="0.1.16 链接访问次数&#10;" />
     <MESSAGE value="0.1.17 版权&#10;" />
     <MESSAGE value="0.1.18 统计访问次数&#10;" />
     <MESSAGE value="0.1.19 合法字符范围" />
@@ -1297,7 +1295,8 @@
     <MESSAGE value="0.1.38 update alien" />
     <MESSAGE value="0.1.38 update xss" />
     <MESSAGE value="0.1.38 cli" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.1.38 cli" />
+    <MESSAGE value="0.1.39 fix response list bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.1.39 fix response list bug" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1751,21 +1750,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cli/0.1.38/0-response.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webserver/controllers/api/response.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5235008">
+        <state vertical-scroll-proportion="0.0">
           <caret line="193" column="31" selection-start-line="193" selection-start-column="31" selection-end-line="193" selection-end-column="31" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/0.1.38/0-response.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5591572">
+          <caret line="130" column="37" selection-start-line="130" selection-start-column="37" selection-end-line="130" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>

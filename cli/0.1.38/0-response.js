@@ -128,6 +128,7 @@ mongoose(function (err) {
 
                     console.log(count);
                     console.log(list);
+                    console.log('..ok');
 
                     //res.json({
                     //    code: 200,
