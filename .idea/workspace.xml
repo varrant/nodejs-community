@@ -4,7 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/webserver/controllers/front/column.js" description="        var uri = req.params.uri;&#10;        var list..." line="61" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="0.1.35 notification">
+    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/.views/admin/notification.html" afterPath="$PROJECT_DIR$/webroot-dev/.views/admin/notification.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/app/admin/notification.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/app/admin/notification.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -56,21 +56,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notification.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="notification.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/.views/admin/notification.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2429078">
-              <caret line="57" column="120" selection-start-line="57" selection-start-column="120" selection-end-line="57" selection-end-column="120" />
+            <state vertical-scroll-proportion="-7.716981">
+              <caret line="72" column="191" selection-start-line="72" selection-start-column="191" selection-end-line="72" selection-end-column="191" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notification.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="notification.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/admin/notification.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.33387357">
+              <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -143,8 +143,8 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/include/footer.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/components/front/3-footer.scss" />
-        <option value="$PROJECT_DIR$/webroot-dev/static/js/app/admin/notification.js" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/admin/notification.html" />
+        <option value="$PROJECT_DIR$/webroot-dev/static/js/app/admin/notification.js" />
       </list>
     </option>
   </component>
@@ -924,12 +924,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00788" summary="0.1.18 统计访问次数&#10;">
-      <created>1429086513192</created>
-      <option name="number" value="00788" />
-      <option name="project" value="LOCAL" />
-      <updated>1429086513192</updated>
-    </task>
     <task id="LOCAL-00789" summary="0.1.19 合法字符范围">
       <created>1429088832601</created>
       <option name="number" value="00789" />
@@ -1218,7 +1212,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429345766167</updated>
     </task>
-    <option name="localTasksCounter" value="837" />
+    <task id="LOCAL-00837" summary="0.1.35 notification">
+      <created>1429345826339</created>
+      <option name="number" value="00837" />
+      <option name="project" value="LOCAL" />
+      <updated>1429345826339</updated>
+    </task>
+    <option name="localTasksCounter" value="838" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1298,7 +1298,6 @@
     <MESSAGE value="0.1.34 gotop" />
     <MESSAGE value="0.1.35 notification" />
     <option name="LAST_COMMIT_MESSAGE" value="0.1.35 notification" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1743,18 +1742,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/admin/notification.js">
+    <entry file="file://$PROJECT_DIR$/webroot-dev/.views/admin/notification.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+        <state vertical-scroll-proportion="-7.716981">
+          <caret line="72" column="191" selection-start-line="72" selection-start-column="191" selection-end-line="72" selection-end-column="191" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/.views/admin/notification.html">
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/app/admin/notification.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2429078">
-          <caret line="57" column="120" selection-start-line="57" selection-start-column="120" selection-end-line="57" selection-end-column="120" />
+        <state vertical-scroll-proportion="0.33387357">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
           <folding />
         </state>
       </provider>

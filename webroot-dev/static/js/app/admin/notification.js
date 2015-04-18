@@ -28,8 +28,8 @@ define(function (require, exports, module) {
     methods.toggle = function (item, isLink) {
         var the = this;
 
-        if(isLink){
-
+        if (isLink && item.hasActived) {
+            return;
         }
 
         ajax({
