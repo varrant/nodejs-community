@@ -91,7 +91,7 @@
             <button class="btn btn-primary" v-on="click: save($event, object)"><i class="fi fi-save"></i>保存</button>
             <i class="text-space"></i>
             <a class="btn btn-success" v-class="none: !object.isDisplay || !object.id" href="/question/\{{object.uri}}.html"><i class="fi fi-eye"></i>查看</a>
-            <button class="btn btn-warning" v-on="click: onaddhidden">添加隐藏内容</button>
+            <button class="btn btn-warning" v-on="click: ontogglehidden">添加/移除隐藏内容</button>
         </div>
     </li>
 

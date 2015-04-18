@@ -81,9 +81,9 @@ define(function (require, exports, module) {
                 uri: '',
                 labels: [],
                 section: the._options.section,
-                isDisplay: true,
-                addHidden: false
+                isDisplay: true
             };
+            data.addHidden = data.object.hidden ? true : false;
             data.categories.forEach(function (item) {
                 item.text = item.name;
                 item.value = item.id;
@@ -108,7 +108,7 @@ define(function (require, exports, module) {
                     removelabel: the._onremovelabel.bind(the),
                     save: the._onsave.bind(the),
                     oncreatecolumn: the._oncreatecolumn.bind(the),
-                    onaddhidden: the._onaddhidden.bind(the)
+                    ontogglehidden: the._ontogglehidden.bind(the)
                 }, the._methods)
             });
             the.vue.$el.classList.remove('none');
@@ -160,6 +160,7 @@ define(function (require, exports, module) {
                 });
 
             // 实时翻译
+            the._watchAddHidden();
             the._watchTranslate();
         },
 
@@ -271,28 +272,51 @@ define(function (require, exports, module) {
 
 
         /**
-         * 添加隐藏内容
+         * 切换隐藏内容
          * @private
          */
-        _onaddhidden: function () {
+        _ontogglehidden: function () {
+            var data = this.vue.$data;
+
+            data.addHidden = !data.addHidden;
+        },
+
+
+        /**
+         * 监听是否显示隐藏内容
+         * @private
+         */
+        _watchAddHidden: function () {
             var the = this;
             var data = the.vue.$data;
+            var hasDispatch = false;
+            var toggle = function (boolean) {
+                //if(boolean && the.editor2){
+                //    the.editor2.focus();
+                //}
+
+                if (!boolean || hasDispatch) {
+                    return;
+                }
+
+                var $hidden = selector.query(the._options.hiddenSelector)[0];
+
+                if ($hidden) {
+                    the.editor2 = new Editor($hidden, {
+                        id: data.id + '-hidden',
+                        autoFocus: false,
+                        uploadCallback: the.editorUploadCallback
+                    }).on('change', function (val) {
+                            data.object.hidden = val;
+                        });
+                }
+            };
 
             if (data.addHidden) {
-                return;
+                toggle(true);
             }
 
-            data.addHidden = true;
-            var $hidden = selector.query(the._options.hiddenSelector)[0];
-
-            if ($hidden) {
-                the.editor2 = new Editor($hidden, {
-                    id: data.id + '-hidden',
-                    uploadCallback: the.editorUploadCallback
-                }).on('change', function (val) {
-                        data.object.hidden = val;
-                    });
-            }
+            the.vue.$watch('addHidden', toggle);
         },
 
 
