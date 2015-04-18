@@ -63,7 +63,7 @@ mongoose(function (err) {
                 //1. count
                 .task(function (done) {
                     response.count(conditions, function (err, count) {
-                        console.log('count');
+                        console.log(arguments);
                         done(err, count);
                     });
                 })
@@ -85,14 +85,14 @@ mongoose(function (err) {
                             }
 
                             response.findOne({_id: acceptResponseId}, {populate: ['author', 'agreers']}, function (err, resp) {
-                                console.log('best');
+                                console.log(arguments);
                                 done(err, resp);
                             });
                         })
                         // 列表
                         .task(function (done) {
                             response.find(conditions, options, function (err, list) {
-                                console.log('list');
+                                console.log(arguments);
                                 done(err, list);
                             });
                         })
@@ -117,6 +117,7 @@ mongoose(function (err) {
                         return next(err);
                     }
 
+                    list = list || [];
                     list.forEach(function (item) {
                         item.author = dato.pick(item.author, ['id', 'nickname', 'githubLogin', 'githubId', 'score', 'avatar']);
                         item.agreers = item.agreers.map(function (agreer) {
