@@ -51,12 +51,11 @@
                         <div class="post-content" id="content">{{=object.contentHTML}}
                             {{if object.hidden}}
                             {{if hasResponsed}}
-                            <div class="alert alert-success">
-                                <p><i class="fi fi-exclamation-triangle"></i><strong>隐藏内容：</strong></p>
+                            <div class="post-hidden">
                                 {{=object.hiddenHTML}}
                             </div>
                             {{else}}
-                            <div class="alert alert-danger" id="hidden">
+                            <div class="post-hidden" id="hidden">
                                 <i class="fi fi-exclamation-triangle"></i>此处有隐藏内容，需要评论/回复后才可见。
                             </div>
                             {{/if}}

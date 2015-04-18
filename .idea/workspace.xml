@@ -4,7 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/webserver/controllers/front/column.js" description="        var uri = req.params.uri;&#10;        var list..." line="61" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="0.1.32 coolieignore">
+    <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="0.1.33 hidden">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" afterPath="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/.views/front/object-question.html" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/object-question.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -44,21 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="object-question.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="object-question.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-question.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.461538">
-              <caret line="57" column="36" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49918962">
-              <caret line="530" column="0" selection-start-line="530" selection-start-column="0" selection-end-line="530" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.37394246">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -890,12 +880,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00777" summary="0.1.14 字体">
-      <created>1428943962074</created>
-      <option name="number" value="00777" />
-      <option name="project" value="LOCAL" />
-      <updated>1428943962074</updated>
-    </task>
     <task id="LOCAL-00778" summary="0.1.15 增加链接访问次数">
       <created>1429082274554</created>
       <option name="number" value="00778" />
@@ -1184,7 +1168,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429335588836</updated>
     </task>
-    <option name="localTasksCounter" value="826" />
+    <task id="LOCAL-00826" summary="0.1.33 hidden">
+      <created>1429336859398</created>
+      <option name="number" value="00826" />
+      <option name="project" value="LOCAL" />
+      <updated>1429336859398</updated>
+    </task>
+    <option name="localTasksCounter" value="827" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1238,7 +1228,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="0.1.9 update coolie" />
     <MESSAGE value="0.1.10 update alien" />
     <MESSAGE value="0.1.11 add all-column page" />
     <MESSAGE value="0.1.12 样式" />
@@ -1263,7 +1252,8 @@
     <MESSAGE value="0.1.30 版权描述" />
     <MESSAGE value="0.1.31 隐藏内容" />
     <MESSAGE value="0.1.32 coolieignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.1.32 coolieignore" />
+    <MESSAGE value="0.1.33 hidden" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.1.33 hidden" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="VssConfiguration">
@@ -1703,18 +1693,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-question.html">
+    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538">
-          <caret line="57" column="36" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.3873582">
+          <caret line="531" column="30" selection-start-line="531" selection-start-column="30" selection-end-line="531" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/static/js/widget/common/Response/index.js">
+    <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-question.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49918962">
-          <caret line="530" column="0" selection-start-line="530" selection-start-column="0" selection-end-line="530" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.37394246">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
         </state>
       </provider>

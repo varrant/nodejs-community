@@ -530,10 +530,9 @@ define(function (require, exports, module) {
                 var $hidden = the._options.$hidden;
 
                 if ($hidden) {
-                    $hidden.innerHTML = '<p><i class="fi fi-exclamation-triangle"></i><strong>隐藏内容：</strong></p>' +
-                    obje.hiddenHTML;
-                    attribute.removeClass($hidden, 'alert-danger');
-                    attribute.addClass($hidden, 'alert-success');
+                    $hidden.innerHTML = obje.hiddenHTML;
+                    //attribute.removeClass($hidden, 'alert-danger');
+                    //attribute.addClass($hidden, 'alert-success');
                 }
 
                 tip.success(msg);
