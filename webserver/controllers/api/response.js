@@ -215,7 +215,7 @@ module.exports = function (app) {
     exports.post = function (req, res, next) {
         var meta = {
             ua: req.headers['user-agent'],
-            ip: req.ip
+            ip: req.headers['x-forwarded-for'] || req.ip
         };
 
         response.createOne(res.locals.$developer, req.body, meta, function (err, resp, obje) {
