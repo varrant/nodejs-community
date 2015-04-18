@@ -57,6 +57,7 @@ mongoose(function (err) {
 
             var acceptResponseId = responseByObject.acceptByResponse;
 
+            console.log('..ok');
             return;
 
             howdo
