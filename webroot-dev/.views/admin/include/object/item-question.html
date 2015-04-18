@@ -82,15 +82,7 @@
         </div>
     </li>
 
-    <li>
-        <div class="form-key">隐藏内容</div>
-        <div class="form-val">
-            <textarea name="hidden" rows="5" v-model="object.hidden" class="ipt"
-                      id="hidden">\{{object.hidden ? object.hidden : ''}}</textarea>
 
-            <p class="form-desc">使用<code>markdown</code>语法添加隐藏内容（需要评论或回复后才能浏览），不能使用任何标签，详细阅读<a href="/help/markdown.html">《前端开发者社区 markdown 语法约定》</a>。</p>
-        </div>
-    </li>
 
     <li>
         <div class="form-action text-center">
@@ -99,6 +91,19 @@
             <button class="btn btn-primary" v-on="click: save($event, object)"><i class="fi fi-save"></i>保存</button>
             <i class="text-space"></i>
             <a class="btn btn-success" v-class="none: !object.isDisplay || !object.id" href="/question/\{{object.uri}}.html"><i class="fi fi-eye"></i>查看</a>
+            <button class="btn btn-warning" v-on="click: onaddhidden">添加隐藏内容</button>
+        </div>
+    </li>
+
+
+    <li class="hidden" v-class="hidden: addHidden">
+        <div class="form-key">隐藏内容</div>
+        <div class="form-val">
+            <textarea name="hidden" rows="5" v-model="object.hidden" class="ipt"
+                      id="hidden">\{{object.hidden ? object.hidden : ''}}</textarea>
+
+            <p class="form-desc">使用<code>markdown</code>语法添加隐藏内容（需要评论或回复后才能浏览），不能使用任何标签，详细阅读<a
+                    href="/help/markdown.html">《前端开发者社区 markdown 语法约定》</a>。</p>
         </div>
     </li>
 </ul>

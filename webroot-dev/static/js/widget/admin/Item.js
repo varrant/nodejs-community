@@ -81,7 +81,8 @@ define(function (require, exports, module) {
                 uri: '',
                 labels: [],
                 section: the._options.section,
-                isDisplay: true
+                isDisplay: true,
+                addHidden: false
             };
             data.categories.forEach(function (item) {
                 item.text = item.name;
@@ -106,13 +107,14 @@ define(function (require, exports, module) {
                     pushlabel: the._onpushlabel.bind(the),
                     removelabel: the._onremovelabel.bind(the),
                     save: the._onsave.bind(the),
-                    oncreatecolumn: the._oncreatecolumn.bind(the)
+                    oncreatecolumn: the._oncreatecolumn.bind(the),
+                    onaddhidden: the._onaddhidden.bind(the)
                 }, the._methods)
             });
             the.vue.$el.classList.remove('none');
             the._$objectColumn = selector.query('#objectColumn')[0];
 
-            var editorUploadCallback = function (list, onprogress, ondone) {
+            the.editorUploadCallback = function (list, onprogress, ondone) {
                 var fd = new FormData();
                 var the = this;
 
@@ -151,22 +153,11 @@ define(function (require, exports, module) {
 
             the.editor = new Editor(the._contentSelector, {
                 id: data.id,
-                uploadCallback: editorUploadCallback,
+                uploadCallback: the.editorUploadCallback,
                 minHeight: 200
             }).on('change', function (val) {
-                    the.vue.$data.object.content = val;
+                    data.object.content = val;
                 });
-
-            var $hidden = selector.query(the._options.hiddenSelector)[0];
-
-            if ($hidden) {
-                the.editor2 = new Editor($hidden, {
-                    id: data.id + '-hidden',
-                    uploadCallback: editorUploadCallback
-                }).on('change', function (val) {
-                        the.vue.$data.object.hidden = val;
-                    });
-            }
 
             // 实时翻译
             the._watchTranslate();
@@ -276,6 +267,32 @@ define(function (require, exports, module) {
                     }).on('error', alert);
                 });
             });
+        },
+
+
+        /**
+         * 添加隐藏内容
+         * @private
+         */
+        _onaddhidden: function () {
+            var the = this;
+            var data = the.vue.$data;
+
+            if (data.addHidden) {
+                return;
+            }
+
+            data.addHidden = true;
+            var $hidden = selector.query(the._options.hiddenSelector)[0];
+
+            if ($hidden) {
+                the.editor2 = new Editor($hidden, {
+                    id: data.id + '-hidden',
+                    uploadCallback: the.editorUploadCallback
+                }).on('change', function (val) {
+                        data.object.hidden = val;
+                    });
+            }
         },
 
 
