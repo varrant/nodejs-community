@@ -531,6 +531,7 @@ define(function (require, exports, module) {
 
                 if ($hidden) {
                     $hidden.innerHTML = obje.hiddenHTML;
+                    the.prettify();
                     //attribute.removeClass($hidden, 'alert-danger');
                     //attribute.addClass($hidden, 'alert-success');
                 }
