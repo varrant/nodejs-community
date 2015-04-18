@@ -5,6 +5,7 @@ var object = require('../../webserver/models/index').object;
 var response = require('../../webserver/models/index').response;
 var howdo = require('howdo');
 var random = require('ydr-utils').random;
+var dato = require('ydr-utils').dato;
 
 mongoose(function (err) {
     if (err) {
