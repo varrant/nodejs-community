@@ -69,7 +69,7 @@ define(function (require, exports, module) {
         },
         data: {
             type: type,
-            sectionURIMap: window['-section-uri-map-']
+            sectionURIMap: JSON.parse(window['-section-uri-map-'])
         },
         methods: methods
     });
