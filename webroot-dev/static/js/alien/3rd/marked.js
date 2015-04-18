@@ -1281,6 +1281,4 @@
     } else {
         this.marked = marked;
     }
-}).call(function () {
-        return this || (typeof window !== 'undefined' ? window : global);
-    }());
+}).call(function () {return this || (typeof window !== 'undefined' ? window : global);}());

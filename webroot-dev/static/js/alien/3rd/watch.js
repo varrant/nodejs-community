@@ -311,6 +311,7 @@
 
     var timeouts = [],
         timerID = null;
+
     function clearTimerID() {
         timerID = null;
         for (var i = 0; i < timeouts.length; i++) {

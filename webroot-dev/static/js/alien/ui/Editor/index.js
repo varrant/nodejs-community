@@ -644,6 +644,7 @@ define(function (require, exports, module) {
     });
 
     markedRender.image = require('./marked-render-image.js');
+    markedRender.table = require('./marked-render-table.js');
     modification.importStyle(style);
     module.exports = Editor;
 });
