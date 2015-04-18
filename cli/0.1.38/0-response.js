@@ -57,13 +57,14 @@ mongoose(function (err) {
 
             var acceptResponseId = responseByObject.acceptByResponse;
 
-            console.log('..ok');
-            return;
 
             howdo
                 //1. count
                 .task(function (done) {
-                    response.count(conditions, done);
+                    response.count(conditions, function (err, count) {
+                        console.log('count');
+                        done(err, count);
+                    });
                 })
                 //2. list
                 .task(function (done) {
@@ -82,11 +83,17 @@ mongoose(function (err) {
                                 return done(null, null);
                             }
 
-                            response.findOne({_id: acceptResponseId}, {populate: ['author', 'agreers']}, done);
+                            response.findOne({_id: acceptResponseId}, {populate: ['author', 'agreers']}, function (err, resp) {
+                                console.log('best');
+                                done(err, resp);
+                            });
                         })
                         // 列表
                         .task(function (done) {
-                            response.find(conditions, options, done);
+                            response.find(conditions, options, function (err, list) {
+                                console.log('list');
+                                done(err, list);
+                            });
                         })
                         // 合并
                         .together(function (err, acceptByResponse, responseList) {
@@ -116,13 +123,16 @@ mongoose(function (err) {
                         });
                     });
 
-                    res.json({
-                        code: 200,
-                        data: {
-                            count: count,
-                            list: list
-                        }
-                    });
+                    console.log(count);
+                    console.log(list);
+
+                    //res.json({
+                    //    code: 200,
+                    //    data: {
+                    //        count: count,
+                    //        list: list
+                    //    }
+                    //});
                 });
         });
 });
