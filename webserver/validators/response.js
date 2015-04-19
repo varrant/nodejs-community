@@ -14,6 +14,8 @@ var validator = new Validator();
 var regexp = require('../utils/').regexp;
 var filter = require('../utils/').filter;
 var REG_CONTENT = regexp.content(5, 5000);
+var REG_TAG = /<[^>]*?>/g;
+
 
 validator.pushRule({
     name: 'content',
@@ -26,10 +28,15 @@ validator.pushRule({
     onafter: function (val, data) {
         val = xss.mdSafe(val);
         data.contentHTML = xss.mdRender(val, configs.safe);
+
+        if(!data.contentHTML.replace(REG_TAG, '').trim()){
+            return new Error('评论内容不能为空');
+        }
+
         return val;
     },
     msg: {
-        regexp: '内容仅支持中英文、数字，以及常用符号'
+        regexp: '评论内容仅支持中英文、数字，以及常用符号'
     }
 });
 

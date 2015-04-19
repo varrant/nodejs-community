@@ -15,7 +15,7 @@ define(function (require, exports, module) {
     module.exports = function (content) {
         var $div = modification.create('div');
 
-        $div.innerHTML = content && content.message ? content : String(content);
+        $div.innerHTML = content && content.message ? content.message : String(content);
         content = $div.innerText;
 
         return alert(content).on('sure', function () {

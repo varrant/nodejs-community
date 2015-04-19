@@ -17,6 +17,8 @@ var REG_URI = regexp.uri(5, 200);
 var REG_LABEL = /^[\u4e00-\u9fa5a-z\d _\-]{2,20}$/i;
 var REG_INTRODUCTION = regexp.content(0, 1000);
 var REG_CONTENT = regexp.content(10, 50000);
+var REG_TAG = /<[^>]*?>/g;
+
 
 validator.pushRule({
     name: 'title',
@@ -85,6 +87,10 @@ validator.pushRule({
         }
 
         data.contentHTML += xss.mdRender(val, configs.safe);
+
+        if (!data.contentHTML.replace(REG_TAG, '').trim()) {
+            return new Error('内容不能为空');
+        }
 
         return val;
     },
