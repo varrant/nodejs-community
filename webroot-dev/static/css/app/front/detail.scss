@@ -1,24 +1,21 @@
 $border-color: #e6e6e6;
 
 
-.toc{
-  display: inline-block;
-  margin-right: 20px;
-  min-width: 200px;
-  border: 1px solid #ddd;
-  padding: 20px;
-}
+
 
 .post {
   position: relative;
 
   &-content {
+    font: 400 18px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+
     a {
       border-bottom: 1px dotted;
+      text-decoration: none;
       margin: 0 4px;
 
       &:hover {
-        border-bottom: 0;
+        border-bottom-style: solid;
       }
     }
 
@@ -62,6 +59,18 @@ $border-color: #e6e6e6;
   }
 }
 
+.toc{
+  display: inline-block;
+  margin-right: 20px;
+  min-width: 200px;
+  border: 1px solid #ddd;
+  padding: 20px;
+
+  li,ul{
+    margin: 0;
+  }
+}
+
 .eof {
   position: relative;
   height: 1px;
@@ -93,10 +102,10 @@ $border-color: #e6e6e6;
     transform: translateX(-50%) translateY(-50%);
     left: 50%;
     top: -50%;
-    background: #EEE;
+    background: #f9f9f9;
     padding: 3px 6px;
     z-index: 1;
-    color: #BEBEBE;
+    color: #ccc;
     border: 1px solid #DDD;
     border-radius: 4px;
     font-size: 12px;

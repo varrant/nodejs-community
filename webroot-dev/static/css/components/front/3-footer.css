@@ -9,13 +9,13 @@ footer {
   opacity: 0;
   font-size: 30px;
   right: 20px;
-  bottom: 30px;
-  color: #888;
+  bottom: 40px;
+  color: #00A2CA;
   text-align: center;
-  background: #FFF;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-}
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 0;
+  font-weight: 900; }
   .gotop.active {
     opacity: 1; }
