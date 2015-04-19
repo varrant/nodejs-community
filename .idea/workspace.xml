@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot-dev/static/html/test.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver/utils/regexp.js" afterPath="$PROJECT_DIR$/webserver/utils/regexp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -44,14 +44,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider editor-type-id="MarkdownPreviewEditor">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.034483">
-              <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -67,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="regexp.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="regexp.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webserver/utils/regexp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44084278">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -139,10 +139,10 @@
         <option value="$PROJECT_DIR$/webserver/validators/object.js" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/front/nav.js" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/front/include/footer.html" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/webroot-dev/static/html/test.html" />
         <option value="$PROJECT_DIR$/webserver/utils/regexp.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -1036,12 +1036,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00815" summary="0.1.28 set column null">
-      <created>1429239027004</created>
-      <option name="number" value="00815" />
-      <option name="project" value="LOCAL" />
-      <updated>1429239027004</updated>
-    </task>
     <task id="LOCAL-00816" summary="0.1.29 delete info">
       <created>1429240925149</created>
       <option name="number" value="00816" />
@@ -1330,7 +1324,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429420679303</updated>
     </task>
-    <option name="localTasksCounter" value="864" />
+    <task id="LOCAL-00864" summary="0.1.44 regexp">
+      <created>1429465047681</created>
+      <option name="number" value="00864" />
+      <option name="project" value="LOCAL" />
+      <updated>1429465047681</updated>
+    </task>
+    <option name="localTasksCounter" value="865" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1384,7 +1384,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="0.1.21 reformat detail page" />
     <MESSAGE value="0.1.22 column sort" />
     <MESSAGE value="0.1.23 fix script" />
     <MESSAGE value="0.1.24 微样式" />
@@ -1409,7 +1408,8 @@
     <MESSAGE value="0.1.41 content validator" />
     <MESSAGE value="0.1.42 fix gotop" />
     <MESSAGE value="0.1.43 qq group" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.1.43 qq group" />
+    <MESSAGE value="0.1.44 regexp" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.1.44 regexp" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1838,29 +1838,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-question.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.034483">
-          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -1875,8 +1856,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webserver/utils/regexp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44084278">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
           <folding />
         </state>
       </provider>
