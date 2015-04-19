@@ -29,11 +29,12 @@ define(function (require, exports, module) {
         var $gotop = selector.query('#gotop')[0];
         var isGoing = false;
         var animationOptions = {durtaion: 567};
+        var activeClass = 'active';
 
         event.on(win, 'scroll', controller.debounce(function () {
             var st = attribute.scrollTop(window);
 
-            attribute[(st > 20 ? 'add' : 'remove') + 'Class']($gotop, 'active');
+            attribute[(st > 20 ? 'add' : 'remove') + 'Class']($gotop, activeClass);
         }));
 
         event.on($gotop, 'click', function () {
@@ -44,14 +45,15 @@ define(function (require, exports, module) {
             isGoing = true;
             animation.scrollTo(win, {
                 y: 0
-            }, animationOptions);
+            }, animationOptions, function () {
+                isGoing = false;
+                attribute.removeClass($gotop, activeClass);
+                attribute.css($gotop, 'bottom', '');
+            });
 
             animation.animate($gotop, {
                 bottom: '100%'
-            }, animationOptions, function () {
-                isGoing = false;
-                attribute.css($gotop, 'bottom', '');
-            });
+            }, animationOptions);
         });
     };
 
