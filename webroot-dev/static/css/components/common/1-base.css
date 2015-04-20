@@ -140,10 +140,10 @@ img {
   height: auto;
   vertical-align: top; }
   img.favicon {
-    width: 20px;
-    height: 20px;
-    max-width: none;
-    max-height: none;
+    width: 16px !important;
+    height: 16px !important;
+    max-width: none !important;
+    max-height: none !important;
     vertical-align: middle; }
 
 .row::before, .row::after, [class*=avg-]::before, [class*=avg-]::after, .clearfix::before, .clearfix:after, .list-left::before, .list-left::after, .list-right::before, .list-right::after {

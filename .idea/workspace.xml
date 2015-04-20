@@ -7,7 +7,6 @@
     <list default="true" id="56089276-562b-4887-98e7-ff415cfc2c0d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.css" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss" afterPath="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot-dev/.views/front/object-link.html" afterPath="$PROJECT_DIR$/webroot-dev/.views/front/object-link.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-community.iws" />
@@ -35,11 +34,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="object-link.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.3076923">
+              <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.551724">
+              <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1-base.scss" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.46700507">
+              <caret line="187" column="17" selection-start-line="187" selection-start-column="17" selection-end-line="187" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="object-link.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-link.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6040609">
-              <caret line="83" column="21" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
+            <state vertical-scroll-proportion="-6.5384617">
+              <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -107,9 +139,9 @@
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/ajax.js" />
         <option value="$PROJECT_DIR$/webroot-dev/.views/include/meta.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/js/widget/common/Respond/index.js" />
+        <option value="$PROJECT_DIR$/webroot-dev/.views/front/object-link.html" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/webroot-dev/.views/front/object-link.html" />
         <option value="$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss" />
       </list>
     </option>
@@ -778,24 +810,6 @@
       <workItem from="1427788689605" duration="8498000" />
       <workItem from="1427942129006" duration="455000" />
     </task>
-    <task id="LOCAL-00829" summary="0.1.33 hidden">
-      <created>1429337528780</created>
-      <option name="number" value="00829" />
-      <option name="project" value="LOCAL" />
-      <updated>1429337528780</updated>
-    </task>
-    <task id="LOCAL-00830" summary="0.1.33 hidden">
-      <created>1429337637117</created>
-      <option name="number" value="00830" />
-      <option name="project" value="LOCAL" />
-      <updated>1429337637117</updated>
-    </task>
-    <task id="LOCAL-00831" summary="0.1.33 hidden">
-      <created>1429338135587</created>
-      <option name="number" value="00831" />
-      <option name="project" value="LOCAL" />
-      <updated>1429338135587</updated>
-    </task>
     <task id="LOCAL-00832" summary="0.1.33 hidden">
       <created>1429338218320</created>
       <option name="number" value="00832" />
@@ -1072,7 +1086,25 @@
       <option name="project" value="LOCAL" />
       <updated>1429540210187</updated>
     </task>
-    <option name="localTasksCounter" value="878" />
+    <task id="LOCAL-00878" summary="0.1.51 favicon">
+      <created>1429558190351</created>
+      <option name="number" value="00878" />
+      <option name="project" value="LOCAL" />
+      <updated>1429558190351</updated>
+    </task>
+    <task id="LOCAL-00879" summary="0.1.52 update package">
+      <created>1429558225457</created>
+      <option name="number" value="00879" />
+      <option name="project" value="LOCAL" />
+      <updated>1429558225457</updated>
+    </task>
+    <task id="LOCAL-00880" summary="0.1.52 update package">
+      <created>1429558239276</created>
+      <option name="number" value="00880" />
+      <option name="project" value="LOCAL" />
+      <updated>1429558239276</updated>
+    </task>
+    <option name="localTasksCounter" value="881" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1126,8 +1158,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="0.1.28 set column null" />
-    <MESSAGE value="0.1.29 delete info" />
     <MESSAGE value="0.1.30 版权描述" />
     <MESSAGE value="0.1.31 隐藏内容" />
     <MESSAGE value="0.1.32 coolieignore" />
@@ -1151,7 +1181,9 @@
     <MESSAGE value="0.1.48 update alien" />
     <MESSAGE value="0.1.49 fix create object column" />
     <MESSAGE value="0.1.50 csrf" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.1.50 csrf" />
+    <MESSAGE value="0.1.51 favicon" />
+    <MESSAGE value="0.1.52 update package" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.1.52 update package" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1569,18 +1601,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-link.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.5384617">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28764805">
-          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37585035">
-          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+        <state vertical-scroll-proportion="-10.551724">
+          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -1590,16 +1630,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webroot-dev/static/css/components/common/1-base.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80541456">
-          <caret line="200" column="27" selection-start-line="200" selection-start-column="27" selection-end-line="200" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot-dev/.views/front/object-link.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6040609">
-          <caret line="83" column="21" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.46700507">
+          <caret line="187" column="17" selection-start-line="187" selection-start-column="17" selection-end-line="187" selection-end-column="17" />
           <folding />
         </state>
       </provider>
