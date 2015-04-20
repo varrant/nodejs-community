@@ -95,6 +95,7 @@ exports.createOne = function (author, data, callback) {
         // 3. 检查 column 是否存在，以及发布权限
         .task(function (next, objectInSection, objectOnCategory) {
             if (!data.column) {
+                data.column = null;
                 return next(null, objectInSection, objectOnCategory);
             }
 
