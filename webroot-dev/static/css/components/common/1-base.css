@@ -139,6 +139,12 @@ img {
   max-width: 100%;
   height: auto;
   vertical-align: top; }
+  img.favicon {
+    width: 20px;
+    height: 20px;
+    max-width: none;
+    max-height: none;
+    vertical-align: middle; }
 
 .row::before, .row::after, [class*=avg-]::before, [class*=avg-]::after, .clearfix::before, .clearfix:after, .list-left::before, .list-left::after, .list-right::before, .list-right::after {
   display: table;
