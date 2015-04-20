@@ -11,7 +11,7 @@
 <meta name="keywords" content="{{$setting.website.keywords}}">
 <meta name="description" content="{{$setting.website.description}}">
 {{=$setting.website.meta}}
-<script>window['-csrf-']='{{$csrf}}';</script>
+<script>window['-csrf-']='{{$csrf.token}}';</script>
 <script>window['-developer-']={
     id: '{{$developer.id ?$developer.id : ""}}',
     nickname: '{{$developer.nickname || ""}}',

@@ -38,7 +38,6 @@ define(function (require, exports, module) {
 
         the._$parent = selector.query($parent)[0];
         the._options = dato.extend(true, {}, defaults, options);
-        console.log(the._options);
         the._init();
     });
 
