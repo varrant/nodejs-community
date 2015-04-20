@@ -41,9 +41,6 @@ define(function (require, exports, module) {
                 switch (json.code) {
                     // 认证不合法
                     case 400:
-                    // 认证不正确
-                    case 406:
-                        window['-csrf-'] = json.data || '';
                         break;
 
                     // 未登陆
@@ -56,8 +53,8 @@ define(function (require, exports, module) {
                 }
 
                 var err = new Error(json.message);
-                err.code = json.code;
 
+                err.code = json.code;
                 the.emit('error', err);
             })
             .on('error', function (err) {

@@ -15,6 +15,7 @@ var howdo = require('howdo');
 var configs = require('../configs/');
 var pkg = require('../package.json');
 
+
 module.exports = function (next, app) {
     howdo
         // 初始化启动配置

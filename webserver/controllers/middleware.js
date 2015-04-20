@@ -16,7 +16,12 @@ var REG_ENDXIE = /(\/|\.[^\.\/]+)$/;
 var REG_ACCEPT = /^application\/json;\s*charset=utf-8/i;
 var REG_SCHEMA = /^https?:\/\/$/i;
 var permission = require('../services/').permission;
+var csrf = require('ydr-utils').csrf;
 
+csrf.config({
+    key: configs.secret.session.secret,
+    expires: configs.secret.session.csrfAge
+});
 
 module.exports = function (app) {
     var exports = {};
@@ -79,9 +84,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.createCsrf = function (req, res, next) {
-        var csrf = _generatorCsrf();
-
-        req.session.$csrf = res.locals.$csrf = csrf;
+        req.session.$csrf = res.locals.$csrf = csrf.create();
         next();
     };
 
@@ -100,21 +103,20 @@ module.exports = function (app) {
         if (REG_ACCEPT.test(headers.accept) &&
             headers['x-request-with'] === 'XMLHttpRequest' &&
             req.session && req.session.$csrf &&
-            headersCsrf === req.session.$csrf
+            csrf.validate(req.session.$csrf, headersCsrf)
         ) {
             return next();
         }
 
-        if (req.session.$csrf && req.session.$csrf !== headersCsrf) {
-            err = new Error('当前会话信息不正确，请稍后再试');
-            err.code = 406;
-            err.data = req.session.$csrf;
-            return next(err);
-        }
+        //if (req.session.$csrf && req.session.$csrf !== headersCsrf) {
+        //    err = new Error('当前会话信息不正确，请稍后再试');
+        //    err.code = 406;
+        //    err.data = req.session.$csrf;
+        //    return next(err);
+        //}
 
-        err = new Error('当前会话信息不合法，请稍后再试');
+        err = new Error('当前会话信息已过期，请稍后再试');
         err.code = 400;
-        err.data = req.session.$csrf;
         next(err);
     };
 
