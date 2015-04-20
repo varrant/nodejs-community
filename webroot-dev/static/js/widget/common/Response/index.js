@@ -88,7 +88,7 @@ define(function (require, exports, module) {
                         var image = data.image || {};
 
                         ondone(null, [{
-                            name: "img.png",
+                            name: "",
                             url: data.surl,
                             width: image.width,
                             height: image.height
