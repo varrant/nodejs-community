@@ -59,7 +59,6 @@ module.exports = function (app) {
                 data.choose.label = conditions.labels = label;
             }
 
-
             var countOptions = {};
             if (status === 'resolved') {
                 data.choose.status = 'resolved';
