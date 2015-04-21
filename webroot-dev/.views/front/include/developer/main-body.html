@@ -22,7 +22,13 @@
                         <li><i class="fi fi-map-marker"></i>{{developer.meta.location}}</li>
                         <li><i class="fi fi-group"></i>{{developer.meta.company}}</li>
                         <li><i class="fi fi-link"></i>{{if developer.meta.blog}}<a
-                                href="{{developer.meta.blog}}" target="_blank">{{developer.meta.blog}}</a>{{else}}unknow{{/if}}</li>
+                                href="{{developer.meta.blog}}"
+                                target="_blank"><img
+                                src="http://f.ydr.me/{{developer.meta.blog}}"
+                                width="16"
+                                height="16"
+                                alt="f"
+                                class="favicon">{{developer.meta.blog}}</a>{{else}}unknow{{/if}}</li>
                     </ul>
                 </div>
             </div>
