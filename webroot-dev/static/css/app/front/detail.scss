@@ -26,7 +26,7 @@ $border-color: #e6e6e6;
       }
     }
 
-    img{
+    img:not(.favicon){
       cursor: -webkit-zoom-in;
       cursor: -moz-zoom-in;
       cursor: zoom-in;

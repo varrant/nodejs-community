@@ -127,15 +127,15 @@ define(function (require, exports, module) {
     // 图片预览
     app.imgview = function () {
         var imgview = new Imgview();
-        var postImgList = selector.query('.post-content img').map(function ($img) {
+        var postImgList = selector.query('.post-content img:not(.favicon)').map(function ($img) {
             return $img.src;
         });
 
-        event.on(document.body, 'click', '.alien-ui-response-content img', function () {
+        event.on(document.body, 'click', '.alien-ui-response-content img:not(.favicon)', function () {
             imgview.open([this.src]);
         });
 
-        event.on(document.body, 'click', '.post-content img', function () {
+        event.on(document.body, 'click', '.post-content img:not(.favicon)', function () {
             var src = this.src;
             var index = postImgList.indexOf(src);
 

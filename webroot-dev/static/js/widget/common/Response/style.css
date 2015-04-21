@@ -85,7 +85,7 @@
     height: 18px;
 }
 
-.alien-ui-response-content img {
+.alien-ui-response-content img:not(.favicon) {
     max-width: 50%;
     cursor: -webkit-zoom-in;
     cursor: -moz-zoom-in;

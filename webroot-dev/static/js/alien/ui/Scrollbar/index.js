@@ -251,8 +251,7 @@ define(function (require, exports, module) {
                 attribute.css($trackX, 'display', 'block');
 
                 if (the._trigger) {
-                    animation.stop($thumbX);
-                    animation.animate($thumbX, thumbXSize, the._cssAnimateOptions);
+                    animation.transition($thumbX, thumbXSize, the._cssAnimateOptions);
                 } else {
                     attribute.css($thumbX, thumbXSize);
                 }
@@ -268,8 +267,7 @@ define(function (require, exports, module) {
                 attribute.css($trackY, 'display', 'block');
 
                 if (the._trigger) {
-                    animation.stop($thumbY);
-                    animation.animate($thumbY, thumbYSize, the._cssAnimateOptions);
+                    animation.transition($thumbY, thumbYSize, the._cssAnimateOptions);
                 } else {
                     attribute.css($thumbY, thumbYSize);
                 }
