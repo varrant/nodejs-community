@@ -16,13 +16,13 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <title>test.html</title>
     <style>
-        button{
+        button {
             padding: 0;
             height: 28px;
             border: 1px solid #0040D0;
         }
 
-        input[type="button"]{
+        input[type="button"] {
             padding: 0;
             height: 28px;
             border: 1px solid #0040D0;
@@ -31,11 +31,21 @@
 </head>
 <body ontouchstart="">
 
-<img src="http://f.ydr.me/http://www.xiumu.org/note/sublime-text-3.shtml" alt="d"/>
 
-<button>button</button>
+<script>
 
-<input type="button" value="button"/>
+    var i = 1;
+    var j = 10;
+    var html = '';
+
+    for (; i < j; i++) {
+        html += '<img src="http://f.ydr.me/?url=' + i + '">';
+    }
+
+    document.write(html);
+
+</script>
+
 
 </body>
 </html>

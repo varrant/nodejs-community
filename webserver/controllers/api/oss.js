@@ -11,9 +11,11 @@ var random = require('ydr-utils').random;
 var REG_IMAGE = /^image\/.*$/;
 var configs = require('../../../configs/');
 
+
 module.exports = function (app) {
     var exports = {};
     var settings = app.locals.$setting.alioss;
+
     settings.onbeforeput = function (fileStream, next) {
         if (!REG_IMAGE.test(fileStream.contentType)) {
             return next(new Error('只能上传图片文件'));
@@ -21,6 +23,7 @@ module.exports = function (app) {
 
         next();
     };
+
     var oss = new AliOSS(settings);
 
     /**
@@ -30,11 +33,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        oss.setOptions('accessKeyId', app.locals.$setting.alioss.accessKeyId);
-        oss.setOptions('accessKeySecret', app.locals.$setting.alioss.accessKeySecret);
-        oss.setOptions('domain', app.locals.$setting.alioss.domain);
-        oss.setOptions('bucket', app.locals.$setting.alioss.bucket);
-        oss.setOptions('host', app.locals.$setting.alioss.host);
+        oss.setOptions(app.locals.$setting.alioss);
         oss.put(req, {
             object: configs.dir.upload + random.guid()
         }, function (err, ret) {
