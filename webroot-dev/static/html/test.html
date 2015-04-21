@@ -38,7 +38,13 @@
     var j = 10;
     var html = '';
 
-    for (; i < j; i++) {
+    for (i = 1; i < j; i++) {
+        html += '<img src="http://112.124.114.165:18081/?url=' + i + '">';
+    }
+
+    html += '<hr>';
+
+    for (i = 1; i < j; i++) {
         html += '<img src="http://f.ydr.me/?url=' + i + '">';
     }
 
