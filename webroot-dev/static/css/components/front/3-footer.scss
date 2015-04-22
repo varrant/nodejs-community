@@ -1,10 +1,9 @@
-
 //footer
 footer {
   padding: 20px 0;
   margin-top: 100px;
 
-  h3,p{
+  h3, p {
     margin: 0;
   }
 }
@@ -28,26 +27,26 @@ footer {
   }
 }
 
-.progress{
+.progress {
   position: fixed;
   z-index: 99;
   left: 0;
   width: 0;
   height: 2px;
   border-radius: 0 1px 1px 0;
+  -webkit-transition: all 300ms;
+  transition: all 500ms;
 
-  &-top{
+  &-top {
+    top: 0;
     background: #fff;
     box-shadow: 0 0 10px #fff;
-    top: 0;
-    -webkit-transition: all 300ms;
-    transition: all 500ms;
   }
 
-  &-bottom{
-    background: #00A2CA;
-    box-shadow: 0 0 10px #00A2CA;
-    bottom: 0;
+  &-bottom {
+    top: 50px;
+    background: #D53666;
+    box-shadow: 0 0 10px #D53666;
   }
 }
 

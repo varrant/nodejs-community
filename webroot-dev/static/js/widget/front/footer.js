@@ -35,7 +35,7 @@ define(function (require, exports, module) {
             }, 500);
         };
         var timeid = setInterval(function () {
-            if (REG_LOADED.test(document.readyState)) {
+            if (REG_LOADED.test(document.readyState) || win.loaded) {
                 return onload();
             }
 
