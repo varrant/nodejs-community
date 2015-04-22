@@ -9,4 +9,5 @@ define(function (require, exports, module) {
     'use strict';
 
     require('../../widget/front/nav.js');
+    require('../../widget/front/footer.js');
 });

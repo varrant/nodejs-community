@@ -8,6 +8,9 @@
 define(function (require, exports, module) {
     'use strict';
 
+
+    require('../../widget/front/nav.js');
+    require('../../widget/front/footer.js');
     var List = require('../../widget/admin/List.js');
     var ajax = require('../../widget/common/ajax.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
@@ -61,8 +64,6 @@ define(function (require, exports, module) {
         });
     };
 
-
-    require('../../widget/front/nav.js');
 
     var type = hashbang.get('query', 'type') || 'unactive';
     var list = new List('#list', '#pagination', {

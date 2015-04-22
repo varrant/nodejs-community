@@ -30,7 +30,7 @@ validator.pushRule({
         data.contentHTML = xss.mdRender(val);
 
         if(!data.contentHTML.replace(REG_TAG, '').trim()){
-            return new Error('评论内容不能为空');
+            return new Error('文字内容不能为空');
         }
 
         return val;

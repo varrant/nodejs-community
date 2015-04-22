@@ -11,6 +11,7 @@ define(function (require, exports, module) {
     var List = require('../../widget/admin/List.js');
 
     require('../../widget/front/nav.js');
+    require('../../widget/front/footer.js');
 
     new List('#list', '#pagination', {
         query: {

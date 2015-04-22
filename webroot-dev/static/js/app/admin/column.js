@@ -10,6 +10,7 @@ define(function (require, exports, module) {
 
 
     require('../../widget/front/nav.js');
+    require('../../widget/front/footer.js');
 
     var Setting = require('../../widget/admin/Setting.js');
     new Setting('#column', {

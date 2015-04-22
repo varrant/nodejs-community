@@ -77,12 +77,12 @@ define(function (require, exports, module) {
             the.emit('success', data);
 
             data.object = data.object || {
-                content: '',
-                uri: '',
-                labels: [],
-                section: the._options.section,
-                isDisplay: true
-            };
+                    content: '',
+                    uri: '',
+                    labels: [],
+                    section: the._options.section,
+                    isDisplay: true
+                };
             data.addHidden = data.object.hidden ? true : false;
             data.categories.forEach(function (item) {
                 item.text = item.name;
@@ -222,6 +222,11 @@ define(function (require, exports, module) {
 
                 vue.$data.object = data;
                 tip.success('保存成功');
+                the._editor1.setValue(data.content);
+
+                if (the._editor2) {
+                    the._editor2.setValue(data.hidden);
+                }
             }).on('error', alert).on('finish', function () {
                 $btn.disabled = false;
                 $btn.innerHTML = '保存';

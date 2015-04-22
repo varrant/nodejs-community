@@ -25,6 +25,7 @@ define(function (require, exports, module) {
     };
 
     require('../../widget/front/nav.js');
+    require('../../widget/front/footer.js');
 
 
     app.object();
