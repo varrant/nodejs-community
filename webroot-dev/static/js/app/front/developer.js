@@ -14,7 +14,23 @@ define(function (require, exports, module) {
     var app = {};
     var Pager = require('../../alien/ui/Pager/');
     var selector = require('../../alien/core/dom/selector.js');
+    var win = window;
+    var winPage = win['-page-'];
+    var winTa = win['-ta-'];
+    var jsonp = require('../../alien/core/communication/jsonp.js');
 
+    // github repos
+    app.repos = function () {
+        var url = 'https://api.github.com/users/'+winTa.githubLogin+'/repos?callback=?';
+
+        jsonp({
+            url: url
+        }).on('success', function () {
+
+        });
+    };
+
+    // 分页
     app.page = function () {
         var $pager = selector.query('#pager')[0];
 
@@ -23,10 +39,9 @@ define(function (require, exports, module) {
         }
 
         var path = location.pathname.replace(/page\/.*$/, '');
-        var pageI = window['-page-'];
         var pager = new Pager($pager, {
-            page: pageI.page,
-            max: Math.ceil(pageI.count / pageI.limit)
+            page: winPage.page,
+            max: Math.ceil(winPage.count / winPage.limit)
         });
 
         pager.on('change', function (page) {
