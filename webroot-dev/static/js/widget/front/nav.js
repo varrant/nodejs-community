@@ -25,37 +25,7 @@ define(function (require, exports, module) {
     var win = window;
     var hasLogin = !!win['-developer-'].id;
 
-    app.gotop = function () {
-        var $gotop = selector.query('#gotop')[0];
-        var isGoing = false;
-        var animationOptions = {durtaion: 567};
-        var activeClass = 'active';
 
-        event.on(win, 'scroll', controller.debounce(function () {
-            var st = attribute.scrollTop(window);
-
-            attribute[(st > 20 ? 'add' : 'remove') + 'Class']($gotop, activeClass);
-        }));
-
-        event.on($gotop, 'click', function () {
-            if (isGoing) {
-                return;
-            }
-
-            isGoing = true;
-            animation.scrollTo(win, {
-                y: 0
-            }, animationOptions, function () {
-                isGoing = false;
-                attribute.removeClass($gotop, activeClass);
-                attribute.css($gotop, 'bottom', '');
-            });
-
-            animation.animate($gotop, {
-                bottom: '100%'
-            }, animationOptions);
-        });
-    };
 
     // 导航切换
     app.toggle = function () {
@@ -149,7 +119,6 @@ define(function (require, exports, module) {
         });
     };
 
-    app.gotop();
     app.toggle();
     app.notification();
     app.logout();

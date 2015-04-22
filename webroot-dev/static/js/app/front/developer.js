@@ -10,6 +10,7 @@ define(function (require, exports, module) {
 
     require('../../widget/front/login.js');
     require('../../widget/front/nav.js');
+    require('../../widget/front/footer.js');
 
     var app = {};
     var Pager = require('../../alien/ui/Pager/');

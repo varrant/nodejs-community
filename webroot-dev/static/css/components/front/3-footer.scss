@@ -27,3 +27,27 @@ footer {
     opacity: 1;
   }
 }
+
+.progress{
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 0 1px 1px 0;
+
+  &-top{
+    background: #fff;
+    box-shadow: 0 0 10px #fff;
+    top: 0;
+    -webkit-transition: all 300ms;
+    transition: all 300ms;
+  }
+
+  &-bottom{
+    background: #00A2CA;
+    box-shadow: 0 0 10px #00A2CA;
+    bottom: 0;
+  }
+}
+
