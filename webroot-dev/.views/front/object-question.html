@@ -42,9 +42,16 @@
             <div class="col-md-9 layout-main">
                 <!--内容-->
                 <div class="card">
-                    <h2 class="card-title" id="object-title">
-                        <i class="fi fi-file-text"></i>
+                    <h2 class="card-title {{if object.acceptByResponse}}has-accepted{{else}}un-accepted{{/if}}" id="object-title">
+                        {{if object.hidden}}
+                        <i class="fi fi-lock"></i>
+                        {{/if}}
+                        <i class="fi fi-cube"></i>
                         {{object.title}}
+                        <div class="card-endtitle">
+                            <span class="text-sm text-success card-has-accepted"><i class="fi fi-check i-striped"></i>已解决</span>
+                            <span class="text-sm text-danger card-un-accepted"><i class="fi fi-exclamation-circle i-striped"></i>待解决</span>
+                        </div>
                     </h2>
 
                     <div class="card-body post">

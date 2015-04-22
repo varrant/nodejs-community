@@ -35,18 +35,21 @@ $border-color: #e6e6e6;
     &.has-accepted {
       background: #E4F4DE;
       border-color: #C3E0B7;
-    }
-    &.has-accepted {
-      display: block;
+
+      .card-has-accepted {
+        display: block;
+      }
     }
   }
 
-  &-title.un-accepted {
-    background: #FDE2E2;
-    border-color: #E7B7B7;
+  &-title{
+    &.un-accepted {
+      background: #FDE2E2;
+      border-color: #E7B7B7;
 
-    &-un-accepted {
-      display: block;
+      .card-un-accepted {
+        display: block;
+      }
     }
   }
 
