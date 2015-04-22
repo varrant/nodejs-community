@@ -25,14 +25,14 @@ define(function (require, exports, module) {
     app.loadProgress = function () {
         var REG_LOADED = /loaded|complete/;
         var $progress = selector.query('#loadProgress')[0];
-        var percent = 70;
+        var percent = 50;
         var onload = function () {
             clearInterval(timeid);
             attribute.css($progress, 'width', '100%');
 
             setTimeout(function () {
                 attribute.css($progress, 'opacity', 0);
-            }, 1000);
+            }, 500);
         };
         var timeid = setInterval(function () {
             if (REG_LOADED.test(document.readyState)) {
@@ -46,7 +46,7 @@ define(function (require, exports, module) {
             }
 
             attribute.css($progress, 'width', percent + '%');
-        }, 300);
+        }, 200);
 
         event.on(win, 'load', onload);
     };
