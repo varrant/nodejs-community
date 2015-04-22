@@ -32,9 +32,9 @@ define(function (require, exports, module) {
         }).on('success', function (json) {
             var list = json && json.data || [];
 
-            dato.each(list, function (index, item) {
-                html+='<li></li>';
-            });
+            $container.innerHTML = tpl.render(list);
+        }).on('error', function () {
+            $container.innerHTML = tpl.render([]);
         });
     };
 });
