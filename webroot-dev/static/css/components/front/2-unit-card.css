@@ -19,12 +19,12 @@
     background: #E4F4DE;
     border-color: #C3E0B7; }
   .card-title.has-accepted {
-    display: inline-block; }
+    display: block; }
   .card-title.un-accepted {
     background: #FDE2E2;
     border-color: #E7B7B7; }
     .card-title.un-accepted-un-accepted {
-      display: inline-block; }
+      display: block; }
   .card-subtitle {
     display: inline;
     font-size: 40%;

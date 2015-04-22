@@ -37,7 +37,7 @@ $border-color: #e6e6e6;
       border-color: #C3E0B7;
     }
     &.has-accepted {
-      display: inline-block;
+      display: block;
     }
   }
 
@@ -46,7 +46,7 @@ $border-color: #e6e6e6;
     border-color: #E7B7B7;
 
     &-un-accepted {
-      display: inline-block;
+      display: block;
     }
   }
 
