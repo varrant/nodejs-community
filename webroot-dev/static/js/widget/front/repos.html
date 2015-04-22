@@ -1,13 +1,31 @@
-<ul class="simplelist history">
-    {{if list.length}}
-    {{list list as item}}
-    <li class="clearfix">
+<div class="card" id="list">
+    <h2 class="card-title"><i class="fi fi-github"></i>github 项目{{list.length ? '（'+list.length+'）':''}}
+    </h2>
+    <div class="card-body" id="githubRepos">
+        <ul class="simplelist history">
+            {{if list.length}}
+            {{list list as item}}
+            <li class="clearfix">
+                <span class="pull-right text-light"><i class="fi fi-clock-o"></i>{{item.updatedFrom}}</span>
 
-    </li>
-    {{/list}}
-    {{else}}
-    <li class="text-center text-muted">
-        <i class="fi fi-info-circle"></i>暂无 github 项目。
-    </li>
-    {{/if}}
-</ul>
+                <strong><a
+                        target="_blank"
+                        href="{{=item.homepage || item.html_url}}"><img
+                        src="http://f.ydr.me/{{= item.homepage || item.html_url}}"
+                        width="16" height="16"
+                        alt="f"/>{{item.name}}</a></strong><i
+                        class="text-space"></i><span class="text-muted"><i
+                        class="fi fi-star"></i>{{item.stargazers_count}}</span>
+
+                <blockquote>{{item.description||"暂无描述。"}}</blockquote>
+            </li>
+            {{/list}}
+            {{else}}
+            <li class="text-center text-muted">
+                <i class="fi fi-info-circle"></i>暂无 github 项目。
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+</div>
+

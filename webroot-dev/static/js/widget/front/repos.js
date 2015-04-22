@@ -15,6 +15,7 @@ define(function (require, exports, module) {
     var selector = require('../../alien/core/dom/selector.js');
     var Template = require('../../alien/libs/Template.js');
     var dato = require('../../alien/utils/dato.js');
+    var date = require('../../alien/utils/date.js');
     var template = require('html!./repos.html');
     var tpl = new Template(template);
 
@@ -32,9 +33,21 @@ define(function (require, exports, module) {
         }).on('success', function (json) {
             var list = json && json.data || [];
 
-            $container.innerHTML = tpl.render(list);
+            list.forEach(function (item) {
+                item.updatedFrom = date.from(new Date(item.updated_at));
+            });
+
+            list.sort(function (a, b) {
+                return b.stargazers_count - a.stargazers_count;
+            });
+
+            $container.innerHTML = tpl.render({
+                list: list
+            });
         }).on('error', function () {
-            $container.innerHTML = tpl.render([]);
+            $container.innerHTML = tpl.render({
+                list: []
+            });
         });
     };
 });
