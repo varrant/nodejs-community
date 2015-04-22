@@ -30,7 +30,6 @@ define(function (require, exports, module) {
         placeholder: '说点什么吧',
         submit: '提交',
         icon: 'comment',
-        autoFocus: false,
         uploadCallback: null
     };
     var Respond = ui.create(function ($parent, options) {

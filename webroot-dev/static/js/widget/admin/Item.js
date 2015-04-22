@@ -303,7 +303,6 @@ define(function (require, exports, module) {
                 if ($hidden) {
                     the._editor2 = new Editor($hidden, {
                         id: data.id + '-hidden',
-                        autoFocus: false,
                         uploadCallback: the.editorUploadCallback
                     }).on('change', function (val) {
                             data.object.hidden = val;
