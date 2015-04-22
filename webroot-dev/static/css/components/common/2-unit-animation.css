@@ -1,18 +1,15 @@
-.a-slide-down-fixed {
-  -webkit-animation: slide-down-fixed 500ms;
-  -o-animation: slide-down-fixed 500ms;
-  animation: slide-down-fixed 500ms; }
+.a-fade-in {
+  -webkit-animation: fade-in 1500ms;
+  -o-animation: fade-in 1500ms;
+  animation: fade-in 1500ms; }
 
-@-webkit-keyframes slide-down-fixed {
+@-webkit-keyframes fade-in {
   0% {
-    -webkit-transform: translateY(-50px); }
+    opacity: 0;
+    -webkit-transform: translateX(-50px);
+    transform: translateX(-50px); }
 
   100% {
-    -webkit-transform: translateY(0); } }
-
-@keyframes slide-down-fixed {
-  0% {
-    transform: translateY(-50px); }
-
-  100% {
-    transform: translateY(0); } }
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }

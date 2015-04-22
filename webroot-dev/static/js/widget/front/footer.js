@@ -32,7 +32,7 @@ define(function (require, exports, module) {
 
             setTimeout(function () {
                 attribute.css($progress, 'opacity', 0);
-            }, 300);
+            }, 1000);
         };
         var timeid = setInterval(function () {
             if (REG_LOADED.test(document.readyState)) {
