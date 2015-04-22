@@ -2,5 +2,28 @@
     <div class="gotop fi fi-long-arrow-up" id="gotop"></div>
     <div id="loadProgress" class="progress progress-top"></div>
     <div id="scrollProgress" class="progress progress-bottom"></div>
-    <style>.progress-top{width: 50%}</style>
+    <style>.progress-top{width: 2%;}</style>
+    <script>
+        (function () {
+            var $loadProgress = document.querySelector('#loadProgress');
+            var progress = 2;
+            var timeid = setInterval(function () {
+                if(window.loaded){
+                    clearInterval(timeid);
+                    progress = 100;
+                    setTimeout(function () {
+                        $loadProgress.classList.add('done');
+                    }, 500);
+                }else{
+                    progress+=5;
+
+                    if(progress > 90){
+                        progress = 90;
+                    }
+                }
+
+                $loadProgress.style.width = progress + '%';
+            });
+        })();
+    </script>
 </div>

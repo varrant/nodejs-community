@@ -22,36 +22,6 @@ define(function (require, exports, module) {
     var app = {};
 
 
-    app.loadProgress = function () {
-        var REG_LOADED = /loaded|complete/;
-        var $progress = selector.query('#loadProgress')[0];
-        var percent = 50;
-        var onload = function () {
-            clearInterval(timeid);
-            attribute.css($progress, 'width', '100%');
-
-            setTimeout(function () {
-                attribute.css($progress, 'opacity', 0);
-            }, 500);
-        };
-        var timeid = setInterval(function () {
-            if (REG_LOADED.test(document.readyState) || win.loaded) {
-                return onload();
-            }
-
-            percent += 5;
-
-            if (percent >= 90) {
-                percent = 90;
-            }
-
-            attribute.css($progress, 'width', percent + '%');
-        }, 200);
-
-        event.on(win, 'load', onload);
-    };
-
-
     app.scrollProgress = function () {
         var $progress = selector.query('#scrollProgress')[0];
         var scroll = new Scroll(win);
@@ -97,7 +67,6 @@ define(function (require, exports, module) {
         });
     };
 
-    app.loadProgress();
     app.scrollProgress();
     app.gotop();
 });
