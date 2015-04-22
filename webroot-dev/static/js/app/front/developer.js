@@ -17,17 +17,14 @@ define(function (require, exports, module) {
     var win = window;
     var winPage = win['-page-'];
     var winTa = win['-ta-'];
-    var jsonp = require('../../alien/core/communication/jsonp.js');
+    var repos = require('../../widget/front/repos.js');
+
 
     // github repos
     app.repos = function () {
-        var url = 'https://api.github.com/users/'+winTa.githubLogin+'/repos?callback=?';
 
-        jsonp({
-            url: url
-        }).on('success', function () {
 
-        });
+        repos(winTa, '#githubRepos');
     };
 
     // 分页
@@ -49,5 +46,6 @@ define(function (require, exports, module) {
         });
     };
 
+    app.repos();
     app.page();
 });
