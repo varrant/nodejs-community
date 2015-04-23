@@ -36,8 +36,6 @@ define(function (require, exports, module) {
             the.loading = loading(options.loading);
         }
 
-        options.url = 'http://localhost:18082' + options.url;
-
         the.xhr = xhr.ajax(options)
             .on('success', function (json) {
                 switch (json.code) {

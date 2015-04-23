@@ -27,8 +27,8 @@ footer {
   width: 0;
   height: 2px;
   border-radius: 0 1px 1px 0;
-  -webkit-transition: all 500ms;
-  transition: all 500ms; }
+  -webkit-transition: all 1000ms;
+  transition: all 1000ms; }
   .progress-top {
     top: 0;
     background: #fff;

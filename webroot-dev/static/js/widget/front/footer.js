@@ -6,9 +6,6 @@
 
 
 define(function (require, exports, module) {
-    /**
-     * @module parent/footer
-     */
     'use strict';
 
     var selector = require('../../alien/core/dom/selector.js');
@@ -22,6 +19,7 @@ define(function (require, exports, module) {
     var app = {};
 
 
+    // 滚动进度条
     app.scrollProgress = function () {
         var $progress = selector.query('#scrollProgress')[0];
         var scroll = new Scroll(win);
@@ -35,6 +33,8 @@ define(function (require, exports, module) {
         });
     };
 
+
+    // 回到顶部
     app.gotop = function () {
         var $gotop = selector.query('#gotop')[0];
         var isGoing = false;
@@ -66,6 +66,7 @@ define(function (require, exports, module) {
             }, animationOptions);
         });
     };
+
 
     app.scrollProgress();
     app.gotop();

@@ -1,3 +1,36 @@
+<div id="loadProgress" class="progress progress-top"></div>
+<style>.progress-top{width: 1%;}</style>
+<script>
+    (function () {
+        var $loadProgress = document.querySelector('#loadProgress');
+        var progress = 1;
+        var onprogress = function () {
+            var timeout = progress * 10;
+
+            setTimeout(function () {
+                if(window.loaded){
+                    $loadProgress.style.width = '100%';
+                    setTimeout(function () {
+                        $loadProgress.classList.add('done');
+                    }, 500);
+
+                    return;
+                }
+
+                progress += 20;
+
+                if(progress > 99){
+                    progress = 90;
+                }
+
+                $loadProgress.style.width = progress + '%';
+                onprogress();
+            }, timeout);
+        };
+
+        onprogress();
+    })();
+</script>
 <header id="header">
     <nav role="navigation" class="nav" id="nav">
         <div class="nav-bg j-flag"></div>
