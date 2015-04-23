@@ -14,6 +14,23 @@ html {
   -moz-font-feature-settings: "liga", "kern";
 }
 
+// @link http://mux.alimama.com/posts/1423
+@media only screen and (min-width: 481px) {
+  html{
+    font-size: 94% !important;
+  }
+}
+@media only screen and (min-width: 561px) {
+  html{
+    font-size: 109% !important;
+  }
+}
+@media only screen and (min-width: 641px) {
+  html{
+    font-size: 125% !important;
+  }
+}
+
 
 body{
   color: #333;

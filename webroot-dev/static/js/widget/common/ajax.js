@@ -25,7 +25,7 @@ define(function (require, exports, module) {
             options.headers['content-type'] = options.headers['content-type'] || json;
         }
 
-        options.headers['accept'] = json;
+        options.headers.accept = json;
         options.headers['x-request-csrf'] = window['-csrf-'];
 
         if (!isFormData) {
@@ -35,6 +35,8 @@ define(function (require, exports, module) {
         if (options.loading !== false) {
             the.loading = loading(options.loading);
         }
+
+        options.url = 'http://localhost:18082' + options.url;
 
         the.xhr = xhr.ajax(options)
             .on('success', function (json) {

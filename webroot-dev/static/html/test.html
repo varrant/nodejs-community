@@ -32,24 +32,28 @@
 <body ontouchstart="">
 
 
+<h1 id="h1">...</h1>
+
 <script>
 
-    var i = 1;
-    var j = 10;
-    var html = '';
+    var xhr = new XMLHttpRequest();
 
-    for (i = 1; i < j; i++) {
-        html += '<img src="http://112.124.114.165:18081/?url=' + i + '">';
-    }
+    xhr.open('get', 'http://sb.com:18083/a/b/c');
 
-    html += '<hr>';
+    xhr.setRequestHeader('X-Request-With1', 'XMLHttpRequest');
+    xhr.setRequestHeader('x-request-with2', 'XMLHttpRequest');
+    xhr.withCredentials = true;
 
-    for (i = 1; i < j; i++) {
-        html += '<img src="http://f.ydr.me/?url=' + i + '">';
-    }
+    xhr.send();
 
-    document.write(html);
 
+    xhr.onload = function () {
+        document.getElementById('h1').innerHTML = xhr.responseText;
+    };
+
+    xhr.onerror = function (err) {
+        document.getElementById('h1').innerHTML = err.message;
+    };
 </script>
 
 

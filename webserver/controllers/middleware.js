@@ -26,6 +26,14 @@ csrf.config({
 module.exports = function (app) {
     var exports = {};
 
+    // 跨域支持
+    exports.crossOrigin = function (req, res, next) {
+        //res.set('access-control-allow-origin', '*');
+        //res.set('access-control-allow-methods', 'get,post');
+        //res.set('access-control-allow-headers', 'x-request-with');
+        next();
+    };
+
     /**
      * 严格路由
      * @param req
@@ -215,7 +223,7 @@ module.exports = function (app) {
 
     // 读取当前 URL
     exports.readURL = function (req, res, next) {
-        res.locals.$url =  URL.parse(req.originalUrl, true, true);
+        res.locals.$url = URL.parse(req.originalUrl, true, true);
         next();
     };
 
