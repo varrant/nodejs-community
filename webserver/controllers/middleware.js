@@ -34,6 +34,7 @@ module.exports = function (app) {
         next();
     };
 
+
     /**
      * 严格路由
      * @param req
@@ -48,6 +49,7 @@ module.exports = function (app) {
 
         res.set('x-frame-options', 'sameorigin');
         res.set('x-website-author', 'ydr.me');
+        res.set('x-ua-compatible', 'IE=Edge,chrome=1');
 
         if (!REG_ENDXIE.test(pathname)) {
             return res.redirect(pathname + '/' + (search ? search : ''));
