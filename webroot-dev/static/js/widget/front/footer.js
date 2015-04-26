@@ -26,7 +26,7 @@ define(function (require, exports, module) {
 
         scroll.on('y', function (ret) {
             animation.transition($progress, {
-                width: ret.ratio * 100 + '%'
+                width: ret.ratioY * 100 + '%'
             }, {
                 duration: 100
             });
