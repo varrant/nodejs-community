@@ -1,61 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head lang="zh-cn">
+<!doctype html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0,minimal-ui">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-touch-fullscreen" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="author" content="云淡然;http://ydr.me">
-    <meta name="keywords" content="关键词1,关键词2">
-    <meta name="description" content="描述语句">
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-    <title>test.html</title>
-    <style>
-        button {
-            padding: 0;
-            height: 28px;
-            border: 1px solid #0040D0;
-        }
-
-        input[type="button"] {
-            padding: 0;
-            height: 28px;
-            border: 1px solid #0040D0;
-        }
-    </style>
+    <title>Document</title>
 </head>
-<body ontouchstart="">
+<body>
 
 
-<h1 id="h1">...</h1>
 
+
+<!--图片资源文件-->
+<img src="/static/img/abc1.png" alt="abc"/>
+
+<img src="/static/img/abc2.png" alt="abc"/>
+
+<img src="/static/img/abc3.png" alt="abc"/>
+
+<!--预格式内容-->
+<pre>
+    var a = 1;
+    var b = 2;
+</pre>
+
+
+<!--预格式内容-->
+<textarea>
+    var a = 1;
+    var b = 2;
+</textarea>
+
+
+<!--脚本资源文件-->
 <script>
-
-    var xhr = new XMLHttpRequest();
-
-    xhr.open('get', 'http://sb.com:18083/a/b/c');
-
-    xhr.setRequestHeader('X-Request-With1', 'XMLHttpRequest');
-    xhr.setRequestHeader('x-request-with2', 'XMLHttpRequest');
-    xhr.withCredentials = true;
-
-    xhr.send();
-
-
-    xhr.onload = function () {
-        document.getElementById('h1').innerHTML = xhr.responseText;
-    };
-
-    xhr.onerror = function (err) {
-        document.getElementById('h1').innerHTML = err.message;
-    };
+    var a = 1;
+    var b = 2;
 </script>
-
 
 </body>
 </html>
