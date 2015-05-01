@@ -86,7 +86,7 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            cache.push('app.sectionList', doc);
+            cache.get('app.sectionList').push(doc);
             sync.section(cache.get('app.sectionList'));
             res.json({
                 code: 200,
@@ -130,4 +130,4 @@ module.exports = function (app) {
     };
 
     return exports;
-}
+};

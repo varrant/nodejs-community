@@ -232,7 +232,7 @@ module.exports = function (app) {
                     code: 200,
                     data: doc
                 });
-                cache.addProp('modify.developers', doc.id, doc);
+                cache.get('modify.developers')[doc.id] = doc;
             });
     };
 

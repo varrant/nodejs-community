@@ -77,7 +77,7 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            cache.push('app.categoryList', doc);
+            cache.get('app.categoryList').push(doc);
             sync.category(cache.get('app.categoryList'));
             res.json({
                 code: 200,
