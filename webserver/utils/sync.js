@@ -6,6 +6,8 @@
 
 'use strict';
 
+var cache = require('ydr-utils').cache;
+
 
 /**
  * 同步本地版块变量
@@ -13,13 +15,16 @@
  * @param docs
  */
 exports.section = function (app, docs) {
-    app.locals.$sectionList = docs || [];
-    app.locals.$sectionIdMap = {};
-    app.locals.$sectionUriMap = {};
-    app.locals.$sectionList.forEach(function (item) {
-        app.locals.$sectionIdMap[item.id] = item;
-        app.locals.$sectionUriMap[item.uri] = item;
+    var sectionList = docs || [];
+    var sectionIDMap = {};
+    var sectionURIMap = {};
+
+    sectionList.forEach(function (item) {
+        sectionIDMap[item.id] = item;
+        sectionURIMap[item.uri] = item;
     });
+
+    cache.set('app.sectionList', sectionList);
 };
 
 

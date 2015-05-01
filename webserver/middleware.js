@@ -14,6 +14,7 @@ var sync = require('./utils/').sync;
 var howdo = require('howdo');
 var configs = require('../configs/');
 var pkg = require('../package.json');
+var cache = require('ydr-utils').cache;
 
 
 module.exports = function (next, app) {
@@ -22,6 +23,7 @@ module.exports = function (next, app) {
         .task(function (done) {
             configs.package = pkg;
             app.locals.$configs = configs;
+            cache.set('app.configs', configs);
             done();
         })
         // 初始化 web 设置
@@ -32,6 +34,7 @@ module.exports = function (next, app) {
                 }
 
                 app.locals.$setting = docs;
+                cache.set('app.settings', docs);
                 done();
             });
         })
@@ -76,6 +79,7 @@ module.exports = function (next, app) {
                 }
 
                 app.locals.$founder = doc;
+                cache.set('app.founder', doc);
                 done();
             });
         })
@@ -87,6 +91,7 @@ module.exports = function (next, app) {
                 }
 
                 app.locals.$autoIndex = count;
+                cache.set('app.autoIndex', count);
                 done();
             });
         })
