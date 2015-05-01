@@ -6,6 +6,7 @@
 
 'use strict';
 
+var cache = require('ydr-utils').cache;
 
 module.exports = function (app, ctrl) {
     // user
@@ -24,7 +25,7 @@ module.exports = function (app, ctrl) {
 
     // list + detail
     // in category at column on label as status by autho
-    app.locals.$sectionList.forEach(function (section) {
+    cache.get('app.sectionList').forEach(function (section) {
         var uri = section.uri;
 
         // ''
