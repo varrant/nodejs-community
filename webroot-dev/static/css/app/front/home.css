@@ -1,26 +1,28 @@
-.home li {
-  line-height: 30px;
-  border-top: 1px solid #e6e6e6; }
-  .home li:nth-child(1) {
-    border-top: 0; }
-  @media (min-width: 767px) {
-    .home li:nth-child(2) {
+.home {
+  margin: 0; }
+  .home li {
+    line-height: 30px;
+    border-top: 1px solid #e6e6e6; }
+    .home li:nth-child(1) {
       border-top: 0; }
-    .home li:nth-child(2n+1) {
-      border-right: 1px solid #eee; } }
-.home a {
-  position: relative;
-  display: block;
-  padding: 20px;
-  color: #666; }
-  .home a:hover {
-    background: #F9F9F9;
-    text-decoration: none; }
-.home-icon {
-  font-size: 80px;
-  color: #ececec; }
-.home-name {
-  font-size: 30px;
-  line-height: 60px; }
-.home-desc {
-  font-size: 14px; }
+    @media (min-width: 767px) {
+      .home li:nth-child(2) {
+        border-top: 0; }
+      .home li:nth-child(2n+1) {
+        border-right: 1px solid #eee; } }
+  .home a {
+    position: relative;
+    display: block;
+    padding: 20px;
+    color: #666; }
+    .home a:hover {
+      background: #F9F9F9;
+      text-decoration: none; }
+  .home-icon {
+    font-size: 80px;
+    color: #ececec; }
+  .home-name {
+    font-size: 30px;
+    line-height: 60px; }
+  .home-desc {
+    font-size: 14px; }

@@ -16,6 +16,7 @@ var crypto = require('ydr-utils').encryption;
 var request = require('ydr-utils').request;
 var typeis = require('ydr-utils').typeis;
 var log = require('ydr-utils').log;
+var cache = require('ydr-utils').cache;
 var configs = require('../../configs/');
 var qs = require('querystring');
 var howdo = require('howdo');
@@ -572,6 +573,8 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                 } catch (err) {
                     json = null;
                 }
+
+                console.log(data);
 
                 if (!json) {
                     return next(new Error('认证信息解析失败'));

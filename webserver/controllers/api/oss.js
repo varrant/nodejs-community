@@ -8,13 +8,14 @@
 
 var AliOSS = require('ydr-utils').AliOSS;
 var random = require('ydr-utils').random;
+var cache = require('ydr-utils').cache;
 var REG_IMAGE = /^image\/.*$/;
 var configs = require('../../../configs/');
 
 
 module.exports = function (app) {
     var exports = {};
-    var settings = app.locals.$setting.alioss;
+    var settings = cache.get('app.settings').alioss;
 
     settings.onbeforeput = function (fileStream, next) {
         if (!REG_IMAGE.test(fileStream.contentType)) {
@@ -33,7 +34,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        oss.setOptions(app.locals.$setting.alioss);
+        oss.setOptions(cache.get('app.settings').alioss);
         oss.put(req, {
             object: configs.dir.upload + random.guid()
         }, function (err, ret) {

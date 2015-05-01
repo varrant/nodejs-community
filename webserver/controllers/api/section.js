@@ -10,6 +10,7 @@ var section = require('../../services/').section;
 var permission = require('../../services/').permission;
 var sync = require('../../utils/').sync;
 var dato = require('ydr-utils').dato;
+var cache = require('ydr-utils').cache;
 
 module.exports = function (app) {
     var exports = {};
@@ -36,7 +37,7 @@ module.exports = function (app) {
                 code: 200,
                 data: docs
             });
-            sync.section(app, docs);
+            sync.section(docs);
         });
     };
 
@@ -64,14 +65,14 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                dato.each(app.locals.$sectionList, function (index, sec) {
+                dato.each(cache.get('app.sectionList'), function (index, sec) {
                     if (sec.id.toString() === doc.id.toString()) {
-                        app.locals.$sectionList[index] = doc;
+                        cache.get('app.sectionList')[index] = doc;
                         return false;
                     }
                 });
 
-                sync.section(app, app.locals.$sectionList);
+                sync.section(cache.get('app.sectionList'));
 
                 res.json({
                     code: 200,
@@ -85,8 +86,8 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            app.locals.$sectionList.push(doc);
-            sync.section(app, app.locals.$sectionList);
+            cache.get('app.sectionList').push(doc);
+            sync.section(cache.get('app.sectionList'));
             res.json({
                 code: 200,
                 data: doc
@@ -115,9 +116,9 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            dato.each(app.locals.$sectionList, function (index, section) {
+            dato.each(cache.get('app.sectionList'), function (index, section) {
                 if (section.id.toString() === doc.id.toString()) {
-                    app.locals.$sectionList.splice(index, 1);
+                    cache.get('app.sectionList').splice(index, 1);
                     return false;
                 }
             });
@@ -129,4 +130,4 @@ module.exports = function (app) {
     };
 
     return exports;
-}
+};

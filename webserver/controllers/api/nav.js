@@ -7,6 +7,7 @@
 'use strict';
 
 var permission = require('../../services/').permission;
+var cache = require('ydr-utils').cache;
 var role20 = 1 << 20;
 
 module.exports = function (app) {
@@ -20,17 +21,11 @@ module.exports = function (app) {
         var canColumn = permission.can($developer, 'column');
         var list = [];
         var developerRole = $developer.role;
-        var $section = app.locals.$sectionList;
-        var sectionMap = {};
-
-        $section.forEach(function (section) {
-            sectionMap[section.uri] = section;
-        });
+        var sectionMap = cache.get('app.sectionURIMap');
         var articleRole = sectionMap.article ? sectionMap.article.role : 20;
         var questionRole = sectionMap.question ? sectionMap.question.role : 20;
         var linkRole = sectionMap.link ? sectionMap.link.role : 20;
         var helpRole = sectionMap.help ? sectionMap.help.role : 20;
-
 
         list.push({
             href: '/',

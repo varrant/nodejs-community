@@ -9,6 +9,8 @@
 var filter = require('../../utils/').filter;
 var object = require('../../services/').object;
 var dato = require('ydr-utils').dato;
+var cache = require('ydr-utils').cache;
+
 
 module.exports = function (app) {
     var exports = {};
@@ -21,7 +23,7 @@ module.exports = function (app) {
      */
     exports.list = function (section) {
         return function (req, res, next) {
-            section = app.locals.$sectionIdMap[section.id];
+            section = cache.get('app.sectionIDMap')[section.id];
 
             var data = {
                 title: section.name + '管理',
@@ -41,7 +43,7 @@ module.exports = function (app) {
      */
     exports.get = function (section) {
         return function (req, res, next) {
-            section = app.locals.$sectionIdMap[section.id];
+            section = cache.get('app.sectionIDMap')[section.id];
 
             var data = {
                 title: section.name + (req.query.id ? '更新' : '创建'),
@@ -55,4 +57,4 @@ module.exports = function (app) {
     };
 
     return exports;
-}
+};

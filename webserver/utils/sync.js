@@ -6,34 +6,44 @@
 
 'use strict';
 
+var cache = require('ydr-utils').cache;
+
 
 /**
  * 同步本地版块变量
- * @param app
  * @param docs
  */
-exports.section = function (app, docs) {
-    app.locals.$sectionList = docs || [];
-    app.locals.$sectionIdMap = {};
-    app.locals.$sectionUriMap = {};
-    app.locals.$sectionList.forEach(function (item) {
-        app.locals.$sectionIdMap[item.id] = item;
-        app.locals.$sectionUriMap[item.uri] = item;
+exports.section = function (docs) {
+    var sectionList = docs || [];
+    var sectionIDMap = {};
+    var sectionURIMap = {};
+
+    sectionList.forEach(function (item) {
+        sectionIDMap[item.id] = item;
+        sectionURIMap[item.uri] = item;
     });
+
+    cache.set('app.sectionList', sectionList);
+    cache.set('app.sectionIDMap', sectionIDMap);
+    cache.set('app.sectionURIMap', sectionURIMap);
 };
 
 
 /**
  * 同步本地分类变量
- * @param app
  * @param docs
  */
-exports.category = function (app, docs) {
-    app.locals.$categoryList = docs || [];
-    app.locals.$categoryIdMap = {};
-    app.locals.$categoryUriMap = {};
-    app.locals.$categoryList.forEach(function (item) {
-        app.locals.$categoryIdMap[item.id] = item;
-        app.locals.$categoryUriMap[item.uri] = item;
+exports.category = function (docs) {
+    var categoryList = docs || [];
+    var categoryIDMap = {};
+    var categoryURIMap = {};
+
+    categoryList.forEach(function (item) {
+        categoryIDMap[item.id] = item;
+        categoryURIMap[item.uri] = item;
     });
+
+    cache.set('app.categoryList', categoryList);
+    cache.set('app.categoryIDMap', categoryIDMap);
+    cache.set('app.categoryURIMap', categoryURIMap);
 };

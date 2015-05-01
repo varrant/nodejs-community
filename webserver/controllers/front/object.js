@@ -10,6 +10,7 @@
 var random = require('ydr-utils').random;
 var dato = require('ydr-utils').dato;
 var typeis = require('ydr-utils').typeis;
+var cache = require('ydr-utils').cache;
 var howdo = require('howdo');
 var object = require('../../services/').object;
 var developer = require('../../services/').developer;
@@ -27,7 +28,7 @@ module.exports = function (app) {
      */
     exports.getList = function (section) {
         return function (req, res, next) {
-            section = app.locals.$sectionIdMap[section.id];
+            section = cache.get('app.sectionIDMap')[section.id];
 
             var category = req.params.category;
             var columnId = req.params.column;
@@ -43,15 +44,13 @@ module.exports = function (app) {
             var data = {
                 section: section,
                 title: section.name,
-                //categories: app.locals.$categoryList,
-                //categoryMap: categoryMap,
                 choose: {}
             };
             //var isPjax = req.headers['x-request-as'] === 'pjax';
             var categoryId = 0;
 
-            if (app.locals.$categoryUriMap[category]) {
-                categoryId = app.locals.$categoryUriMap[category].id;
+            if (cache.get('app.sectionURIMap')[category]) {
+                categoryId = cache.get('app.sectionURIMap')[category].id;
                 data.choose.category = conditions.category = categoryId;
             }
 
@@ -169,7 +168,7 @@ module.exports = function (app) {
                 }
             }
 
-            res.redirect('/' + app.locals.$sectionIdMap[doc.section].uri + '/' + doc.uri + '.html');
+            res.redirect('/' + cache.get('app.sectionIDMap')[doc.section].uri + '/' + doc.uri + '.html');
         });
     };
 
@@ -198,7 +197,7 @@ module.exports = function (app) {
      */
     exports.getObject = function (section) {
         return function (req, res, next) {
-            section = app.locals.$sectionIdMap[section.id];
+            section = cache.get('app.sectionIDMap')[section.id];
 
             var uri = req.params.uri;
             var page = req.params.page;

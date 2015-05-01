@@ -16,12 +16,13 @@ var howdo = require('howdo');
 var configs = require('../../../configs/');
 var log = require('ydr-utils').log;
 var dato = require('ydr-utils').dato;
+var cache = require('ydr-utils').cache;
 var filter = require('../../utils/').filter;
 
 
 module.exports = function (app) {
     var exports = {};
-    var oauthSettings = app.locals.$setting.oauth;
+    var oauthSettings = cache.get('app.settings').oauth;
 
     // 授权页面
     exports.oauthAuthorize = function (req, res, next) {
@@ -113,7 +114,7 @@ module.exports = function (app) {
             var sectionStatistics = {};
 
             doc.sectionStatistics = doc.sectionStatistics || {};
-            app.locals.$sectionList.forEach(function (section) {
+            cache.get('app.sectionList').forEach(function (section) {
                 var uri = section.uri;
                 var id = section.id;
 
@@ -186,7 +187,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -263,7 +264,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -340,7 +341,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -416,7 +417,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -493,7 +494,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -569,7 +570,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -645,7 +646,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -720,7 +721,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 

@@ -9,6 +9,7 @@
 var object = require('../../services/').object;
 var column = require('../../services/').column;
 var dato = require('ydr-utils').dato;
+var cache = require('ydr-utils').cache;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
 var role20 = 1 << 20;
@@ -35,7 +36,7 @@ module.exports = function (app) {
 
         var findSection = null;
 
-        dato.each(app.locals.$sectionList, function (index, _section) {
+        dato.each(cache.get('app.sectionList'), function (index, _section) {
             if (_section.id.toString() === section) {
                 findSection = _section;
                 return false;
@@ -77,7 +78,7 @@ module.exports = function (app) {
             })
             // 查找 category
             .task(function (done) {
-                done(null, app.locals.$categoryList);
+                done(null, cache.get('app.categoryList'));
             })
             // 查找 columns
             .task(function (done) {
@@ -116,10 +117,6 @@ module.exports = function (app) {
         var id = req.query.id;
 
         howdo
-            // 查找 category
-            .task(function (done) {
-                done(null, app.locals.$categoryList);
-            })
             // 查找 columns
             .task(function (done) {
                 column.find({
@@ -134,15 +131,16 @@ module.exports = function (app) {
 
                 object.findOne({_id: id}, {populate: ['author']}, done);
             })
-            .together(function (err, categories, columns, object) {
+            .together(function (err, columns, object) {
                 if (err) {
                     return next(err);
                 }
 
+                console.log(cache.get('app.categoryList'));
                 res.json({
                     code: 200,
                     data: {
-                        categories: categories,
+                        categories: cache.get('app.categoryList'),
                         columns: columns,
                         object: object
                     }

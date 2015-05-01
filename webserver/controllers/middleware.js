@@ -6,9 +6,10 @@
 
 'use strict';
 
-var URL = require('url');
+var urlHelper = require('url');
 var crypto = require('ydr-utils').encryption;
 var dato = require('ydr-utils').dato;
+var cache = require('ydr-utils').cache;
 var configs = require('../../configs/');
 var developer = require('../services/').developer;
 var cookie = require('../utils/').cookie;
@@ -43,7 +44,7 @@ module.exports = function (app) {
      * @returns {*}
      */
     exports.strictRouting = function (req, res, next) {
-        var urlParser = URL.parse(req.originalUrl);
+        var urlParser = urlHelper.parse(req.originalUrl);
         var pathname = urlParser.pathname;
         var search = urlParser.search;
 
@@ -79,7 +80,7 @@ module.exports = function (app) {
             return next();
         }
 
-        var urlParser = URL.parse(req.originalUrl);
+        var urlParser = urlHelper.parse(req.originalUrl);
         var pathname = urlParser.pathname;
         var search = urlParser.search;
 
@@ -168,10 +169,11 @@ module.exports = function (app) {
         if (req.session.$developer && req.session.$developer.id === developerId) {
             res.locals.$developer = req.session.$developer;
 
-            // 有当前用户的缓存
-            if (app.locals.$system.developer[developerId]) {
-                res.locals.$developer = req.session.$developer = app.locals.$system.developer[developerId];
-                delete(app.locals.$system.developer[developerId]);
+            var modifyDevelopers = cache.get('modify.developers');
+
+            if (modifyDevelopers[developerId]) {
+                res.locals.$developer = req.session.$developer = modifyDevelopers[developerId];
+                delete(cache.get('modify.developers')[developerId]);
             }
 
             return next();
@@ -201,11 +203,18 @@ module.exports = function (app) {
     };
 
 
-    // 版块
-    exports.readSection = function (req, res, next) {
-        res.locals.$sectionList = app.locals.$sectionList;
-        res.locals.$sectionIdMap = app.locals.$sectionIdMap;
-        res.locals.$sectionUriMap = app.locals.$sectionUriMap;
+    // 读取缓存
+    exports.readCache = function (req, res, next) {
+        res.locals.$sectionList = cache.get('app.sectionList');
+        res.locals.$sectionIDMap = cache.get('app.sectionIDMap');
+        res.locals.$sectionURIMap = cache.get('app.sectionURIMap');
+        res.locals.$categoryList = cache.get('app.categoryList');
+        res.locals.$categoryIDMap = cache.get('app.categoryIDMap');
+        res.locals.$categoryURIMap = cache.get('app.categoryURIMap');
+        res.locals.$url = urlHelper.parse(req.originalUrl, true, true);
+        res.locals.$configs = cache.get('app.configs');
+        res.locals.$settings = cache.get('app.settings');
+        res.locals.$count = cache.get('app.count');
         next();
     };
 
@@ -213,33 +222,14 @@ module.exports = function (app) {
     // 读取权限
     exports.readPermission = function (req, res, next) {
         var $developer = res.locals.$developer;
-        var $sectionUriMap = app.locals.$sectionUriMap;
+        var $sectionURIMap = cache.get('app.sectionURIMap');
 
         res.locals.$permission = {
             column: permission.can($developer, 'column'),
-            help: ($developer.role & $sectionUriMap.help.role) !== 0
+            help: ($developer.role & $sectionURIMap.help.role) !== 0
         };
-        next();
-    };
-
-
-    // 读取当前 URL
-    exports.readURL = function (req, res, next) {
-        res.locals.$url = URL.parse(req.originalUrl, true, true);
         next();
     };
 
     return exports;
 };
-
-
-/**
- * 生成 csrf
- * @retunrs {String}
- * @private
- */
-function _generatorCsrf() {
-    var timeString = dato.parseInt(Date.now() / configs.secret.session.csrfAge, 0) + '';
-
-    return crypto.encode(timeString, configs.secret.session.secret);
-}

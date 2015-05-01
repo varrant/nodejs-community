@@ -15,6 +15,7 @@ var filter = require('../../utils/').filter;
 var howdo = require('howdo');
 var dato = require('ydr-utils').dato;
 var typeis = require('ydr-utils').typeis;
+var cache = require('ydr-utils').cache;
 var role20 = 1 << 20;
 
 
@@ -48,13 +49,14 @@ module.exports = function (app) {
 
         // 创建之前
         options.onbeforecreate = function (data) {
-            data.index = app.locals.$autoIndex;
+            data.index = cache.get('app.autoIndex');
             return data;
         };
 
         // 创建之后
         options.onaftercreate = function (data) {
-            app.locals.$autoIndex++;
+            cache.increase('app.autoIndex', 1);
+            cache.increase('app.count').developers += 1;
         };
 
         developer.login({
@@ -172,8 +174,8 @@ module.exports = function (app) {
                 code: 200,
                 data: {
                     developer: doc,
-                    section: app.locals.$sectionList,
-                    category: app.locals.$categoryList,
+                    section: cache.get('app.sectionList'),
+                    category: cache.get('app.categoryList'),
                     group: configs.group
                 }
             });
@@ -227,11 +229,11 @@ module.exports = function (app) {
                 }
 
                 // 记录下被修改者的信息，以便下次访问时更新
-                app.locals.$system.developer[doc.id] = doc;
                 res.json({
                     code: 200,
                     data: doc
                 });
+                cache.get('modify.developers')[doc.id] = doc;
             });
     };
 

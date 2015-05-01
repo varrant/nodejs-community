@@ -6,23 +6,19 @@
 
 'use strict';
 
+var cache = require('ydr-utils').cache;
+
 module.exports = function (app) {
     var exports = {};
 
     exports.get = function (req, res, next) {
-        var sectionURIMap = {};
-
-        app.locals.$sectionList.forEach(function (section) {
-            sectionURIMap[section.id] = section.uri;
-        });
-
         var data = {
             title: '提醒',
-            sectionURIMap: sectionURIMap
+            sectionURIMap: cache.get('app.sectionURIMap')
         };
 
         res.render('admin/notification.html', data);
     };
 
     return exports;
-}
+};

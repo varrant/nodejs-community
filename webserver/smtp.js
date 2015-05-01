@@ -9,10 +9,11 @@
 var nodemailer = require('nodemailer');
 var email = require('./services/email.js');
 var log = require('ydr-utils').log;
+var cache = require('ydr-utils').cache;
 var configs = require('../configs/');
 
 module.exports = function (next, app) {
-    var options = app.locals.$setting.smtp;
+    var options = cache.get('app.settings').smtp;
 
     options.auth = {
         user: options.user,
@@ -21,12 +22,12 @@ module.exports = function (next, app) {
 
     var smtp = nodemailer.createTransport(options);
 
-    email.init(smtp, app.locals.$founder);
+    email.init(smtp, cache.get('app.founder'));
 
     if('pro' === configs.app.env){
         log.initEmail({
             from: configs.smtp.from,
-            email: app.locals.$founder.email
+            email: cache.get('app.founder').email
         });
         log.initSmtp(smtp);
     }

@@ -14,14 +14,16 @@ var sync = require('./utils/').sync;
 var howdo = require('howdo');
 var configs = require('../configs/');
 var pkg = require('../package.json');
+var cache = require('ydr-utils').cache;
 
+cache.set('app.count', {});
 
 module.exports = function (next, app) {
     howdo
         // 初始化启动配置
         .task(function (done) {
             configs.package = pkg;
-            app.locals.$configs = configs;
+            cache.set('app.configs', configs);
             done();
         })
         // 初始化 web 设置
@@ -31,7 +33,7 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                app.locals.$setting = docs;
+                cache.set('app.settings', docs);
                 done();
             });
         })
@@ -42,7 +44,7 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                sync.section(app, docs);
+                sync.section(docs);
                 done();
             });
         })
@@ -53,7 +55,18 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                sync.category(app, docs);
+                sync.category(docs);
+                done();
+            });
+        })
+        // 初始化注册人数
+        .task(function (done) {
+            developer.count({}, function (err, count) {
+                if (err) {
+                    return done(err);
+                }
+
+                cache.get('app.count').developers = count;
                 done();
             });
         })
@@ -75,7 +88,7 @@ module.exports = function (next, app) {
                     return process.exit();
                 }
 
-                app.locals.$founder = doc;
+                cache.set('app.founder', doc);
                 done();
             });
         })
@@ -86,7 +99,7 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                app.locals.$autoIndex = count;
+                cache.set('app.autoIndex', count);
                 done();
             });
         })
