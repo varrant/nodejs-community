@@ -203,11 +203,13 @@ module.exports = function (app) {
     };
 
 
-    // 版块
-    exports.readSection = function (req, res, next) {
+    exports.readCache = function (req, res, next) {
         res.locals.$sectionList = cache.get('app.sectionList');
         res.locals.$sectionIDMap = cache.get('app.sectionIDMap');
         res.locals.$sectionURIMap = cache.get('app.sectionURIMap');
+        res.locals.$url = urlHelper.parse(req.originalUrl, true, true);
+        res.locals.$configs = cache.get('app.configs');
+        res.locals.$settings = cache.get('app.settings');
         next();
     };
 
@@ -221,20 +223,6 @@ module.exports = function (app) {
             column: permission.can($developer, 'column'),
             help: ($developer.role & $sectionURIMap.help.role) !== 0
         };
-        next();
-    };
-
-
-    // 读取当前 url
-    exports.readURL = function (req, res, next) {
-        res.locals.$url = urlHelper.parse(req.originalUrl, true, true);
-        next();
-    };
-
-
-    // 读取社区配置
-    exports.readSettings = function (req, res, next) {
-        res.locals.$settings = cache.get('app.settings');
         next();
     };
 

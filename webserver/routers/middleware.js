@@ -13,10 +13,8 @@ module.exports = function (app, ctrl) {
     app.use(ctrl.strictRouting);
     // 严格Host
     app.use(ctrl.strictHost);
-    // 读取 URL
-    app.use(ctrl.readURL);
-    // 读取 URL
-    app.use(ctrl.readSettings);
+    // 读取 cache
+    app.use(ctrl.readCache);
 
 
 
@@ -29,9 +27,6 @@ module.exports = function (app, ctrl) {
 
     // 读取用户
     app.use(ctrl.readDeveloper);
-
-    // 读取版块
-    app.use(ctrl.readSection);
 
     // 读取权限
     app.use(ctrl.readPermission);

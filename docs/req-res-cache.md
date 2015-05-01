@@ -12,6 +12,7 @@
 - $permission 当前用户的权限
 - $url 当前 url parse 之后的信息
 - $settings 社区配置
+- $configs 启动配置
 
 
 
