@@ -66,7 +66,7 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                cache.set('app.count').developers = count;
+                cache.get('app.count').developers = count;
                 done();
             });
         })
