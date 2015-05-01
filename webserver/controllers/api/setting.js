@@ -6,6 +6,7 @@
 
 'use strict';
 
+var cache = require('ydr-utils').cache;
 var setting = require('../../services/').setting;
 var permission = require('../../services/').permission;
 
@@ -13,7 +14,7 @@ module.exports = function (app) {
     var exports = {};
 
     /**
-     * 列出权限
+     * 列出配置
      * @param req
      * @param res
      * @param next
@@ -26,7 +27,7 @@ module.exports = function (app) {
         }
         res.json({
             code: 200,
-            data: app.locals.$setting
+            data: cache.get('app.settings')
         });
     };
 
@@ -48,10 +49,10 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                app.locals.$setting[key] = doc.val;
+                cache.get('app.settings')[key] = doc.val;
                 res.json({
                     code: 200,
-                    data: app.locals.$setting[key]
+                    data: cache.get('app.settings')[key]
                 });
             });
         };
