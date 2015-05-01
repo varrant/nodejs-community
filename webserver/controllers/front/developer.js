@@ -114,7 +114,7 @@ module.exports = function (app) {
             var sectionStatistics = {};
 
             doc.sectionStatistics = doc.sectionStatistics || {};
-            app.locals.$sectionList.forEach(function (section) {
+            cache.get('app.sectionList').forEach(function (section) {
                 var uri = section.uri;
                 var id = section.id;
 
@@ -187,7 +187,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -264,7 +264,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -341,7 +341,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -417,7 +417,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -494,7 +494,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -570,7 +570,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -646,7 +646,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
@@ -721,7 +721,7 @@ module.exports = function (app) {
 
                 de.sectionStatistics = de.sectionStatistics || {};
                 var sectionURIMap = {};
-                app.locals.$sectionList.forEach(function (section) {
+                cache.get('app.sectionList').forEach(function (section) {
                     var uri = section.uri;
                     var id = section.id;
 
