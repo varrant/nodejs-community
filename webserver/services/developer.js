@@ -573,6 +573,8 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                     json = null;
                 }
 
+                console.log(data);
+
                 if (!json) {
                     return next(new Error('认证信息解析失败'));
                 }
