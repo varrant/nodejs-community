@@ -217,6 +217,8 @@ module.exports = function (app) {
         var $developer = res.locals.$developer;
         var $sectionURIMap = cache.get('app.sectionURIMap');
 
+        console.log($sectionURIMap);
+
         res.locals.$permission = {
             column: permission.can($developer, 'column'),
             help: ($developer.role & $sectionURIMap.help.role) !== 0

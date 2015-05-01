@@ -13,7 +13,7 @@ var cache = require('ydr-utils').cache;
  * 同步本地版块变量
  * @param docs
  */
-exports.section = function (app, docs) {
+exports.section = function (docs) {
     var sectionList = docs || [];
     var sectionIDMap = {};
     var sectionURIMap = {};
