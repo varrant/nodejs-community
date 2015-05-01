@@ -233,15 +233,3 @@ module.exports = function (app) {
 
     return exports;
 };
-
-
-/**
- * 生成 csrf
- * @retunrs {String}
- * @private
- */
-function _generatorCsrf() {
-    var timeString = dato.parseInt(Date.now() / configs.secret.session.csrfAge, 0) + '';
-
-    return crypto.encode(timeString, configs.secret.session.secret);
-}
