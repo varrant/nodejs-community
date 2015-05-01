@@ -214,6 +214,7 @@ module.exports = function (app) {
         res.locals.$url = urlHelper.parse(req.originalUrl, true, true);
         res.locals.$configs = cache.get('app.configs');
         res.locals.$settings = cache.get('app.settings');
+        res.locals.$count = cache.get('app.count');
         next();
     };
 

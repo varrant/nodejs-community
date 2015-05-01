@@ -16,6 +16,7 @@ var configs = require('../configs/');
 var pkg = require('../package.json');
 var cache = require('ydr-utils').cache;
 
+cache.set('app.count', {});
 
 module.exports = function (next, app) {
     howdo
@@ -65,7 +66,7 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                cache.set('count.developers', count);
+                cache.set('app.count').developers = count;
                 done();
             });
         })
