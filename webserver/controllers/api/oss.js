@@ -34,7 +34,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.put = function (req, res, next) {
-        oss.setOptions(app.locals.$setting.alioss);
+        oss.setOptions(cache.get('app.settings').alioss);
         oss.put(req, {
             object: configs.dir.upload + random.guid()
         }, function (err, ret) {

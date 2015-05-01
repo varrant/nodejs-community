@@ -64,7 +64,7 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                dato.each(app.locals.$sectionList, function (index, sec) {
+                dato.each(cache.get('app.sectionList'), function (index, sec) {
                     if (sec.id.toString() === doc.id.toString()) {
                         app.locals.$sectionList[index] = doc;
                         return false;
