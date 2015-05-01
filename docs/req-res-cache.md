@@ -1,4 +1,5 @@
 # res.x
+- req.session.
 
 
 
@@ -31,6 +32,6 @@
 
 
 ## modify.x
-- modify.developers
+- modify.developers 被管理员修改过的开发者
 
 
