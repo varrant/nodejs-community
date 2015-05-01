@@ -37,7 +37,7 @@ module.exports = function (app) {
                 code: 200,
                 data: docs
             });
-            sync.section(app, docs);
+            sync.section(docs);
         });
     };
 

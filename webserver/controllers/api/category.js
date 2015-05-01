@@ -103,7 +103,7 @@ module.exports = function (app) {
 
             dato.each(cache.get('app.categoryList'), function (index, section) {
                 if (section.id.toString() === doc.id.toString()) {
-                    cache.splice('app.categoryList', index, 1);
+                    cache.get('app.categoryList').splice(index, 1);
                     sync.category(cache.get('app.categoryList'));
                     return false;
                 }

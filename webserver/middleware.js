@@ -43,7 +43,7 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                sync.section(app, docs);
+                sync.section(docs);
                 done();
             });
         })
@@ -54,7 +54,7 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                sync.category(app, docs);
+                sync.category(docs);
                 done();
             });
         })
