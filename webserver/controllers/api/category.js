@@ -10,6 +10,7 @@ var category = require('../../services/').category;
 var permission = require('../../services/').permission;
 var sync = require('../../utils/').sync;
 var dato = require('ydr-utils').dato;
+var cache = require('ydr-utils').cache;
 
 module.exports = function (app) {
     var exports = {};
@@ -29,7 +30,7 @@ module.exports = function (app) {
 
         res.json({
             code: 200,
-            data: app.locals.$categoryList
+            data: cache.get('app.categoryList')
         });
     };
 
@@ -57,9 +58,9 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                dato.each(app.locals.$categoryList, function (index, category) {
+                dato.each(cache.get('app.categoryList'), function (index, category) {
                     if (category.id.toString() === doc.id.toString()) {
-                        app.locals.$categoryList[index] = doc;
+                        cache.get('app.categoryList')[index] = doc;
                         return false;
                     }
                 });
@@ -76,8 +77,8 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            app.locals.$categoryList.push(doc);
-            sync.category(app, app.locals.$categoryList);
+            cache.push('app.categoryList', doc);
+            sync.category(cache.get('app.categoryList'));
             res.json({
                 code: 200,
                 data: doc
@@ -100,10 +101,10 @@ module.exports = function (app) {
                 return next(err);
             }
 
-            dato.each(app.locals.$categoryList, function (index, section) {
+            dato.each(cache.get('app.categoryList'), function (index, section) {
                 if (section.id.toString() === doc.id.toString()) {
-                    app.locals.$categoryList.splice(index, 1);
-                    sync.category(app, app.locals.$categoryList);
+                    cache.splice('app.categoryList', index, 1);
+                    sync.category(cache.get('app.categoryList'));
                     return false;
                 }
             });

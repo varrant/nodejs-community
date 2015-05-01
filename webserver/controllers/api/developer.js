@@ -49,7 +49,7 @@ module.exports = function (app) {
 
         // 创建之前
         options.onbeforecreate = function (data) {
-            data.index = app.locals.$autoIndex;
+            data.index = cache.get();
             return data;
         };
 
