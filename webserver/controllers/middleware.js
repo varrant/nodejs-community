@@ -6,9 +6,10 @@
 
 'use strict';
 
-var URL = require('url');
+var urlHelper = require('url');
 var crypto = require('ydr-utils').encryption;
 var dato = require('ydr-utils').dato;
+var cache = require('ydr-utils').cache;
 var configs = require('../../configs/');
 var developer = require('../services/').developer;
 var cookie = require('../utils/').cookie;
@@ -43,7 +44,7 @@ module.exports = function (app) {
      * @returns {*}
      */
     exports.strictRouting = function (req, res, next) {
-        var urlParser = URL.parse(req.originalUrl);
+        var urlParser = urlHelper.parse(req.originalUrl);
         var pathname = urlParser.pathname;
         var search = urlParser.search;
 
@@ -79,7 +80,7 @@ module.exports = function (app) {
             return next();
         }
 
-        var urlParser = URL.parse(req.originalUrl);
+        var urlParser = urlHelper.parse(req.originalUrl);
         var pathname = urlParser.pathname;
         var search = urlParser.search;
 
@@ -168,10 +169,11 @@ module.exports = function (app) {
         if (req.session.$developer && req.session.$developer.id === developerId) {
             res.locals.$developer = req.session.$developer;
 
-            // 有当前用户的缓存
-            if (app.locals.$system.developer[developerId]) {
-                res.locals.$developer = req.session.$developer = app.locals.$system.developer[developerId];
-                delete(app.locals.$system.developer[developerId]);
+            var modifyDevelopers = cache.get('modify.developers');
+
+            if (modifyDevelopers[developerId]) {
+                res.locals.$developer = req.session.$developer = modifyDevelopers[developerId];
+                cache.removeProp('modify.developers', developerId);
             }
 
             return next();
@@ -223,9 +225,9 @@ module.exports = function (app) {
     };
 
 
-    // 读取当前 URL
+    // 读取当前 urlHelper
     exports.readURL = function (req, res, next) {
-        res.locals.$url = URL.parse(req.originalUrl, true, true);
+        res.locals.$url = urlHelper.parse(req.originalUrl, true, true);
         next();
     };
 

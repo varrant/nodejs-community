@@ -15,6 +15,7 @@ var filter = require('../../utils/').filter;
 var howdo = require('howdo');
 var dato = require('ydr-utils').dato;
 var typeis = require('ydr-utils').typeis;
+var cache = require('ydr-utils').cache;
 var role20 = 1 << 20;
 
 
@@ -227,11 +228,11 @@ module.exports = function (app) {
                 }
 
                 // 记录下被修改者的信息，以便下次访问时更新
-                app.locals.$system.developer[doc.id] = doc;
                 res.json({
                     code: 200,
                     data: doc
                 });
+                cache.addProp('modify.developers', doc.id, doc);
             });
     };
 
