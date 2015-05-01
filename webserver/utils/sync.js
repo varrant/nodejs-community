@@ -43,7 +43,7 @@ exports.category = function (docs) {
         categoryURIMap[item.uri] = item;
     });
 
-    cache.set('app.sectionList', categoryList);
-    cache.set('app.sectionIDMap', categoryIDMap);
-    cache.set('app.sectionURIMap', categoryURIMap);
+    cache.set('app.categoryList', categoryList);
+    cache.set('app.categoryIDMap', categoryIDMap);
+    cache.set('app.categoryURIMap', categoryURIMap);
 };

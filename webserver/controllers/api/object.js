@@ -117,10 +117,6 @@ module.exports = function (app) {
         var id = req.query.id;
 
         howdo
-            // 查找 category
-            .task(function (done) {
-                done(null, cache.get('app.categoryList'));
-            })
             // 查找 columns
             .task(function (done) {
                 column.find({
@@ -135,15 +131,16 @@ module.exports = function (app) {
 
                 object.findOne({_id: id}, {populate: ['author']}, done);
             })
-            .together(function (err, categories, columns, object) {
+            .together(function (err, columns, object) {
                 if (err) {
                     return next(err);
                 }
 
+                console.log(cache.get('app.categoryList'));
                 res.json({
                     code: 200,
                     data: {
-                        categories: categories,
+                        categories: cache.get('app.categoryList'),
                         columns: columns,
                         object: object
                     }
