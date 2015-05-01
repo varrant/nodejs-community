@@ -6,6 +6,10 @@
 
 'use strict';
 
+var cache = require('ydr-utils').cache;
+
+
+
 module.exports = function (app, ctrl) {
     // 中间件
     app.use(/^\/admin\/.*$/i, ctrl.middleware.login);
@@ -20,7 +24,7 @@ module.exports = function (app, ctrl) {
 
 
     // list
-    app.locals.$sectionList.forEach(function (section) {
+    cache.get('app.sectionList').forEach(function (section) {
         app.get('/admin/object/' + section.uri + '/list/', ctrl.object.list(section));
         app.get('/admin/object/' + section.uri + '/', ctrl.object.get(section));
     });
