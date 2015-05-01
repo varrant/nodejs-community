@@ -49,13 +49,13 @@ module.exports = function (app) {
 
         // 创建之前
         options.onbeforecreate = function (data) {
-            data.index = cache.get();
+            data.index = cache.get('app.autoIndex');
             return data;
         };
 
         // 创建之后
         options.onaftercreate = function (data) {
-            app.locals.$autoIndex++;
+            cache.increase('app.autoIndex', 1);
         };
 
         developer.login({
@@ -173,8 +173,8 @@ module.exports = function (app) {
                 code: 200,
                 data: {
                     developer: doc,
-                    section: app.locals.$sectionList,
-                    category: app.locals.$categoryList,
+                    section: cache.get('app.sectionList'),
+                    category: cache.get('app.categoryList'),
                     group: configs.group
                 }
             });
