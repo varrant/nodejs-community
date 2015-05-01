@@ -58,6 +58,17 @@ module.exports = function (next, app) {
                 done();
             });
         })
+        // 初始化注册人数
+        .task(function (done) {
+            developer.count({}, function (err, count) {
+                if (err) {
+                    return done(err);
+                }
+
+                cache.set('count.developers', count);
+                done();
+            });
+        })
         // 初始化网站管理员
         .task(function (done) {
             developer.findOne({

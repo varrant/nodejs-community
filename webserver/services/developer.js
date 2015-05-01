@@ -16,6 +16,7 @@ var crypto = require('ydr-utils').encryption;
 var request = require('ydr-utils').request;
 var typeis = require('ydr-utils').typeis;
 var log = require('ydr-utils').log;
+var cache = require('ydr-utils').cache;
 var configs = require('../../configs/');
 var qs = require('querystring');
 var howdo = require('howdo');

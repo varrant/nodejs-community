@@ -31,6 +31,10 @@
 - app.categoryURIMap 分类 URI MAP
 
 
+## count.x
+- count.developers 注册人数
+
+
 
 ## modify.x
 - modify.developers 被管理员修改过的开发者
