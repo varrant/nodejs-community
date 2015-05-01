@@ -173,7 +173,7 @@ module.exports = function (app) {
 
             if (modifyDevelopers[developerId]) {
                 res.locals.$developer = req.session.$developer = modifyDevelopers[developerId];
-                cache.removeProp('modify.developers', developerId);
+                delete(cache.get('modify.developers')[developerId]);
             }
 
             return next();

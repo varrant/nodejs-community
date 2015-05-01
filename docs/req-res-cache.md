@@ -3,6 +3,9 @@
 
 
 # res.locals
+- $csrf csrf 令牌
+- $developer 当前开发者
+
 
 
 
