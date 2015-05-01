@@ -225,9 +225,16 @@ module.exports = function (app) {
     };
 
 
-    // 读取当前 urlHelper
+    // 读取当前 url
     exports.readURL = function (req, res, next) {
         res.locals.$url = urlHelper.parse(req.originalUrl, true, true);
+        next();
+    };
+
+
+    // 读取当前 url
+    exports.readSettings = function (req, res, next) {
+        res.locals.$settings = cache.get('app.settings');
         next();
     };
 

@@ -9,17 +9,15 @@
 module.exports = function (app, ctrl) {
     // 跨域支持
     app.use(ctrl.crossOrigin);
-
-
     // 严格路由
     app.use(ctrl.strictRouting);
-
-
     // 严格Host
     app.use(ctrl.strictHost);
-
     // 读取 URL
     app.use(ctrl.readURL);
+    // 读取 URL
+    app.use(ctrl.readSettings);
+
 
 
     // POST|PUT|DELETE 安全性检测
