@@ -203,10 +203,14 @@ module.exports = function (app) {
     };
 
 
+    // 读取缓存
     exports.readCache = function (req, res, next) {
         res.locals.$sectionList = cache.get('app.sectionList');
         res.locals.$sectionIDMap = cache.get('app.sectionIDMap');
         res.locals.$sectionURIMap = cache.get('app.sectionURIMap');
+        res.locals.$categoryList = cache.get('app.categoryList');
+        res.locals.$categoryIDMap = cache.get('app.categoryIDMap');
+        res.locals.$categoryURIMap = cache.get('app.categoryURIMap');
         res.locals.$url = urlHelper.parse(req.originalUrl, true, true);
         res.locals.$configs = cache.get('app.configs');
         res.locals.$settings = cache.get('app.settings');
