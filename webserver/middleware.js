@@ -22,7 +22,6 @@ module.exports = function (next, app) {
         // 初始化启动配置
         .task(function (done) {
             configs.package = pkg;
-            app.locals.$configs = configs;
             cache.set('app.configs', configs);
             done();
         })
@@ -33,7 +32,6 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                app.locals.$setting = docs;
                 cache.set('app.settings', docs);
                 done();
             });
@@ -78,7 +76,6 @@ module.exports = function (next, app) {
                     return process.exit();
                 }
 
-                app.locals.$founder = doc;
                 cache.set('app.founder', doc);
                 done();
             });
@@ -90,7 +87,6 @@ module.exports = function (next, app) {
                     return done(err);
                 }
 
-                app.locals.$autoIndex = count;
                 cache.set('app.autoIndex', count);
                 done();
             });

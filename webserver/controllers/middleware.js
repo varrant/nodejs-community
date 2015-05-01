@@ -205,9 +205,9 @@ module.exports = function (app) {
 
     // 版块
     exports.readSection = function (req, res, next) {
-        res.locals.$sectionList = app.locals.$sectionList;
-        res.locals.$sectionIdMap = app.locals.$sectionIdMap;
-        res.locals.$sectionUriMap = app.locals.$sectionUriMap;
+        res.locals.$sectionList = cache.get('app.sectionList');
+        res.locals.$sectionIDMap = cache.get('app.sectionIDMap');
+        res.locals.$sectionURIMap = cache.get('app.sectionURIMap');
         next();
     };
 
@@ -215,11 +215,11 @@ module.exports = function (app) {
     // 读取权限
     exports.readPermission = function (req, res, next) {
         var $developer = res.locals.$developer;
-        var $sectionUriMap = app.locals.$sectionUriMap;
+        var $sectionURIMap = cache.get('app.sectionURIMap');
 
         res.locals.$permission = {
             column: permission.can($developer, 'column'),
-            help: ($developer.role & $sectionUriMap.help.role) !== 0
+            help: ($developer.role & $sectionURIMap.help.role) !== 0
         };
         next();
     };

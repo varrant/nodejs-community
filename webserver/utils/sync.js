@@ -11,7 +11,6 @@ var cache = require('ydr-utils').cache;
 
 /**
  * 同步本地版块变量
- * @param app
  * @param docs
  */
 exports.section = function (app, docs) {
@@ -25,20 +24,26 @@ exports.section = function (app, docs) {
     });
 
     cache.set('app.sectionList', sectionList);
+    cache.set('app.sectionIDMap', sectionIDMap);
+    cache.set('app.sectionURIMap', sectionURIMap);
 };
 
 
 /**
  * 同步本地分类变量
- * @param app
  * @param docs
  */
-exports.category = function (app, docs) {
-    app.locals.$categoryList = docs || [];
-    app.locals.$categoryIdMap = {};
-    app.locals.$categoryUriMap = {};
-    app.locals.$categoryList.forEach(function (item) {
-        app.locals.$categoryIdMap[item.id] = item;
-        app.locals.$categoryUriMap[item.uri] = item;
+exports.category = function (docs) {
+    var categoryList = docs || [];
+    var categoryIDMap = {};
+    var categoryURIMap = {};
+
+    categoryList.forEach(function (item) {
+        categoryIDMap[item.id] = item;
+        categoryURIMap[item.uri] = item;
     });
+
+    cache.set('app.sectionList', categoryList);
+    cache.set('app.sectionIDMap', categoryIDMap);
+    cache.set('app.sectionURIMap', categoryURIMap);
 };
