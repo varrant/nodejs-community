@@ -5,7 +5,12 @@
 # res.locals
 - $csrf csrf 令牌
 - $developer 当前开发者
-
+- $sectionList 版块列表
+- $sectionIDMap
+- $sectionURIMap
+- $permission 当前用户的权限
+- $url 当前 url parse 之后的信息
+- $settings 社区配置
 
 
 

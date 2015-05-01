@@ -232,7 +232,7 @@ module.exports = function (app) {
     };
 
 
-    // 读取当前 url
+    // 读取社区配置
     exports.readSettings = function (req, res, next) {
         res.locals.$settings = cache.get('app.settings');
         next();
