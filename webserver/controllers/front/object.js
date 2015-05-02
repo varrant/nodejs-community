@@ -122,6 +122,7 @@ module.exports = function (app) {
                         });
 
                         data.categoryList = cache.get('app.categoryList');
+                        data.categoryIDMap = cache.get('app.categoryIDMap');
 
                         if (isAJAX) {
                             return res.json({

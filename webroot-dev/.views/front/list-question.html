@@ -39,7 +39,7 @@
             <!--主-->
             <div class="col-md-12 layout-main">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" id="body">
                         {{include ./include/list/question.html}}
                     </div>
                     <div class="card-footer text-center">
@@ -61,6 +61,10 @@
     {{include ./include/footer.html}}
 </div>
 
+
+{{ignore}}
+<script type="text/html" id="template">{{include ./include/list/question.html}}</script>
+{{/ignore}}
 
 
 
