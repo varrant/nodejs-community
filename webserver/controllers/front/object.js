@@ -125,12 +125,12 @@ module.exports = function (app) {
                             });
                         });
 
-                        //if(isPjax){
-                        return res.json({
-                            code: 200,
-                            data: data
-                        });
-                        //}
+                        if (isPjax) {
+                            return res.json({
+                                code: 200,
+                                data: data
+                            });
+                        }
 
                         res.render('front/list-' + section.uri + '.html', data);
                     });
