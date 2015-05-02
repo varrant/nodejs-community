@@ -16,6 +16,7 @@ define(function (require, exports, module) {
     var Pager = require('../../alien/ui/Pager/');
     var selector = require('../../alien/core/dom/selector.js');
     var animation = require('../../alien/core/dom/animation.js');
+    var dato = require('../../alien/utils/dato.js');
     var event = require('../../alien/core/event/touch.js');
     var share = require('../../widget/common/share.js');
     var ajax = require('../../widget/common/ajax.js');
@@ -77,9 +78,9 @@ define(function (require, exports, module) {
      */
     app.buildPager = function () {
         if (pager.max) {
-            var pg = new Pager('#pager', pager);
+            app.page = new Pager('#pager', pager);
 
-            pg.on('change', function (page) {
+            app.page.on('change', function (page) {
                 app.options.page = page;
                 app.pjax(app.buildPath());
             });
@@ -92,10 +93,19 @@ define(function (require, exports, module) {
         ajax({
             url: url
         }).on('success', function (data) {
+            dato.extend(pager, data.pager);
+            pager.max = Math.ceil(data.count/data.limit);
+            app.options.page = data.pager.page;
             $body.innerHTML = tpl.render(data);
+            app.page.render({
+                page: pager.page
+            });
             history.pushState({
                 url: url
             }, data.title, url);
+            animation.scrollTo(window, {
+                y: $body
+            });
         });
     };
 
