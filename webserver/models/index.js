@@ -115,7 +115,7 @@ dato.each(models, function (key, model) {
         var query = model.find(conditions);
 
         dato.each(options, function (key, val) {
-            if (query[key] && typeis(query[key]) === 'function') {
+            if (query[key] && typeis.function(query[key])) {
                 query = query[key](val);
             }
         });

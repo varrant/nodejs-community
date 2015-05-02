@@ -40,13 +40,12 @@ module.exports = function (app) {
                 section: section.id,
                 isDisplay: true
             };
-            //var categoryMap = {};
             var data = {
                 section: section,
                 title: section.name,
                 choose: {}
             };
-            //var isPjax = req.headers['x-request-as'] === 'pjax';
+            var isPjax = req.headers['x-request-as'] === 'pjax';
             var categoryId = 0;
 
             if (cache.get('app.sectionURIMap')[category]) {
@@ -78,6 +77,9 @@ module.exports = function (app) {
                     .task(function (done) {
                         listOptions.populate = ['author', 'contributors'];
                         listOptions.sort = {publishAt: -1};
+                        listOptions.select = {
+                            content: -1
+                        };
                         object.find(conditions, listOptions, done);
                     })
                     // 查找 columns
@@ -109,11 +111,12 @@ module.exports = function (app) {
                         //    max: Math.ceil(count / 20),
                         //    url: '/' + section.uri + '/page/:page/'
                         //});
+
                         //if(isPjax){
-                        //    return res.json({
-                        //        code: 200,
-                        //        data: data
-                        //    });
+                            return res.json({
+                                code: 200,
+                                data: data
+                            });
                         //}
 
                         res.render('front/list-' + section.uri + '.html', data);
