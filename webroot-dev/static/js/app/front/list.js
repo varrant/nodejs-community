@@ -16,6 +16,7 @@ define(function (require, exports, module) {
     var Pager = require('../../alien/ui/Pager/');
     var selector = require('../../alien/core/dom/selector.js');
     var animation = require('../../alien/core/dom/animation.js');
+    var attribute = require('../../alien/core/dom/attribute.js');
     var dato = require('../../alien/utils/dato.js');
     var event = require('../../alien/core/event/touch.js');
     var share = require('../../widget/common/share.js');
@@ -28,6 +29,9 @@ define(function (require, exports, module) {
     var tpl = new Template(template);
     var beginURL = location.href;
 
+    //Template.config({
+    //    debug: true
+    //});
 
     /**
      * 获取当前 path 信息
@@ -114,7 +118,7 @@ define(function (require, exports, module) {
 
             app.getPath();
             animation.scrollTo(window, {
-                y: $body
+                y: attribute.top($body) - 60
             });
         });
     };

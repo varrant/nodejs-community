@@ -38,6 +38,7 @@ define(function (require, exports, module) {
         var $group = nodes[3];
         //var $downlist = nodes[4];
         var section = win['-section-'] && win['-section-'].uri || 'home';
+        section = section.replace(/\/.*$/, '');
         var $active = selector.query('.nav-item-' + section, $menu)[0];
 
         attribute.addClass($active, activeClass);
