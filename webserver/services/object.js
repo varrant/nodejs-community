@@ -24,6 +24,8 @@ var howdo = require('howdo');
 var dato = require('ydr-utils').dato;
 var typeis = require('ydr-utils').typeis;
 var log = require('ydr-utils').log;
+var cache = require('ydr-utils').cache;
+var request = require('ydr-utils').request;
 var role19 = 1 << 19;
 
 
@@ -194,6 +196,18 @@ exports.createOne = function (author, data, callback) {
 
                 // 发布积分
                 developer.increaseScore({_id: doc.author.toString()}, scoreMap[objectInSection.uri] || 0, log.holdError);
+
+                var appEnv = cache.get('app.configs').app.env;
+                var baiduZZ = cache.get('app.settings').website.baiduZZ;
+                if(appEnv === 'pro' && baiduZZ){
+                    request.post({
+                        url: baiduZZ,
+                        body: 'http://frontenddev.org/',
+                        headers: {
+                            'content-type': 'text/plain'
+                        }
+                    }, log.holdError);
+                }
             }
         });
 };

@@ -7,10 +7,11 @@
 'use strict';
 
 var isAliYun = process.env && process.env.HOSTNAME === 'AY140601002820618982Z';
+var env = isAliYun ? 'pro' : 'dev';
 
 module.exports = {
     // 可选环境: dev/pro
-    env: isAliYun ? 'pro' : 'dev',
+    env: env,
     // 端口
     port: 18082,
     // 主机
