@@ -8,6 +8,7 @@
 
 var notification = require('../../services/').notification;
 var dato = require('ydr-utils').dato;
+var cache = require('ydr-utils').cache;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
 
@@ -123,7 +124,8 @@ module.exports = function (app) {
                     code: 200,
                     data: {
                         count: count,
-                        list: list
+                        list: list,
+                        sectionURIMap: cache.get('app.sectionURIMap')
                     }
                 });
             });
