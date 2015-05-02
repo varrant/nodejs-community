@@ -2,7 +2,7 @@
     <li class="clearfix">
         <strong class="choose-type">分类</strong>
         <a class="{{if !choose.category}}active{{/if}}" href="/link/{{if choose.status}}as/{{choose.status}}/{{/if}}">所有分类</a>
-        {{list $categoryList as category}}
+        {{list categoryList as category}}
         <a class="{{if category.id == choose.category}}active{{/if}}"
            href="/link/in/{{=category.uri}}/{{if choose.status}}as/{{choose.status}}/{{/if}}">{{=category.name}}</a>
         {{/list}}
@@ -19,7 +19,7 @@
     {{list objects as object}}
     <li class="summarylist-item clearfix">
         <div class="summarylist-avatar pull-left">
-            <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.email|gravatar:100}}"
+            <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.avatar}}"
                                                                       alt="avatar" width="50" height="50" coolieignore/></a>
         </div>
         <div class="summarylist-body">
@@ -44,7 +44,7 @@
                         {{list object.contributors as contributor}}
                         <li>
                             <a href="/developer/{{contributor.githubLogin}}/" title="{{contributor.nickname}}">
-                                <img src="{{contributor.email|gravatar:40}}" width="20" height="20" alt="avatar"
+                                <img src="{{contributor.avatarM}}" width="20" height="20" alt="avatar"
                                      coolieignore/>
                             </a>
                         </li>
