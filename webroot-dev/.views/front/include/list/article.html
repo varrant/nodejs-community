@@ -3,7 +3,7 @@
         <strong class="choose-type">分类</strong>
         <a class="{{if !choose.category}}active{{/if}}"
            href="/article/{{if choose.status}}as/{{choose.status}}/{{/if}}">所有分类</a>
-        {{list $categoryList as category}}
+        {{list categoryList as category}}
         <a class="{{if category.id == choose.category}}active{{/if}}"
            href="/article/in/{{=category.uri}}/{{if choose.status}}as/{{choose.status}}/{{/if}}">{{=category.name}}</a>
         {{/list}}

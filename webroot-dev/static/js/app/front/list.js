@@ -15,12 +15,17 @@ define(function (require, exports, module) {
     var Template = require('../../alien/libs/Template.js');
     var Pager = require('../../alien/ui/Pager/');
     var selector = require('../../alien/core/dom/selector.js');
+    var animation = require('../../alien/core/dom/animation.js');
     var event = require('../../alien/core/event/touch.js');
     var share = require('../../widget/common/share.js');
     var ajax = require('../../widget/common/ajax.js');
     var pager = window['-pager-'];
     var app = {};
     var section = window['-section-'];
+    var $body = selector.query('#body')[0];
+    var template = selector.query('#template')[0].innerHTML;
+    var tpl = new Template(template);
+    var beginURL = location.href;
 
 
     /**
@@ -84,26 +89,29 @@ define(function (require, exports, module) {
 
     // pjax
     app.pjax = function (url) {
-        if(url === location.href){
-            return;
-        }
-
         ajax({
             url: url
+        }).on('success', function (data) {
+            $body.innerHTML = tpl.render(data);
+            history.pushState({
+                url: url
+            }, data.title, url);
         });
     };
 
 
     // 构建 pjax
     app.buildPjax = function () {
-        var $body = selector.query('#body')[0];
-        var template = selector.query('#template')[0].innerHTML;
-        var tpl = new Template(template);
-
         event.on($body, 'click', '.choose a', function () {
             app.pjax(this.href);
 
             return false;
+        });
+
+        event.on(window, 'popstate', function () {
+            var state = history.state;
+
+            app.pjax(state && state.url || beginURL);
         });
     };
 

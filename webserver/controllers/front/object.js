@@ -45,11 +45,11 @@ module.exports = function (app) {
                 title: section.name,
                 choose: {}
             };
-            var isPjax = req.headers['x-request-as'] === 'pjax';
+            var isAJAX = req.headers['x-request-with'] === 'XMLHttpRequest';
             var categoryId = 0;
 
-            if (cache.get('app.sectionURIMap')[category]) {
-                categoryId = cache.get('app.sectionURIMap')[category].id;
+            if (cache.get('app.categoryURIMap')[category]) {
+                categoryId = cache.get('app.categoryURIMap')[category].id;
                 data.choose.category = conditions.category = categoryId;
             }
 
@@ -121,7 +121,9 @@ module.exports = function (app) {
                             });
                         });
 
-                        if (isPjax) {
+                        data.categoryList = cache.get('app.categoryList');
+
+                        if (isAJAX) {
                             return res.json({
                                 code: 200,
                                 data: data

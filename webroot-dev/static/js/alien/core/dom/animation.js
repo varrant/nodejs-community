@@ -316,15 +316,15 @@ define(function (require, exports, module) {
 
 
     // 平滑滚动
-    var scrollTop = function ($ele, to, options) {
+    var scrollTo = function ($ele, to, options) {
         return function (next) {
             var from = {
                 x: attribute.scrollLeft($ele),
                 y: attribute.scrollTop($ele)
             };
 
-            to.x = dato.parseFloat(to.x, from.x);
-            to.y = dato.parseFloat(to.y, from.y);
+            to.x = typeis.element(to.x) ? attribute.top(to.x) : dato.parseFloat(to.x, from.x);
+            to.y = typeis.element(to.y) ? attribute.top(to.y) : dato.parseFloat(to.y, from.y);
 
             var totalDistance = {
                 x: to.x - from.x,
@@ -444,7 +444,7 @@ define(function (require, exports, module) {
          * 之前的任务出栈，永远保证只有一个任务在运行
          */
         queue.shift();
-        queue.push(scrollTop($ele, to, options), callback);
+        queue.push(scrollTo($ele, to, options), callback);
         queue.begin();
     };
 });
