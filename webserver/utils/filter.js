@@ -25,7 +25,7 @@ exports.skipLimit = function (parent, defaultPage, defaultLimit) {
     var limit = parent.limit;
 
     defaultPage = defaultPage || 1;
-    defaultLimit = defaultLimit || 3;
+    defaultLimit = defaultLimit || 10;
 
     page = dato.parseInt(page, defaultPage);
     limit = dato.parseInt(limit, defaultLimit);
