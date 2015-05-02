@@ -105,6 +105,7 @@ module.exports = function (app) {
                 object.find({
                     column: col.id
                 }, {
+                    sort: {publishAt: -1},
                     populate: ['author', 'contributors']
                 }, function (err, docs) {
                     next(err, col, docs);
