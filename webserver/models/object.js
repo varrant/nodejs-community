@@ -98,7 +98,8 @@ var schema = new mongoose.Schema({
     publishAt: {
         type: Date,
         required: false,
-        default: Date.now
+        default: Date.now,
+        index: true
     },
     // 最近更新时间
     updateAt: {
