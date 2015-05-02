@@ -27,9 +27,11 @@ var compression = require('compression');
 // 模板引擎
 var ydrTemplate = require('ydr-utils').Template;
 
-ydrTemplate.setDefaults({
+// 模板引擎配置
+ydrTemplate.config({
     cache: 'pro' === configs.app.env,
-    compress: 'pro' === configs.app.env
+    compress: 'pro' === configs.app.env,
+    debug: 'dev' === configs.app.env
 });
 
 ydrTemplate.addFilter('gravatar', function (val, size) {
