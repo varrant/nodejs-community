@@ -11,6 +11,7 @@ var object = require('../../services/').object;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
 var log = require('ydr-utils').log;
+var cache = require('ydr-utils').cache;
 
 
 module.exports = function (app) {
@@ -74,6 +75,7 @@ module.exports = function (app) {
     exports.getOneList = function (req, res, next) {
         var uri = req.params.uri;
         var listOptions = filter.skipLimit(req.params);
+        var isAJAX = req.headers['x-request-with'] === 'XMLHttpRequest';
 
         howdo
             // 1. 查找专辑
@@ -81,7 +83,10 @@ module.exports = function (app) {
                 column.findOne({
                     uri: uri
                 }, {
-                    populate: ['author']
+                    populate: {
+                        path: 'author',
+                        select: 'nickname githubLogin email'
+                    }
                 }, function (err, doc) {
                     if (err) {
                         return next(err);
@@ -114,12 +119,14 @@ module.exports = function (app) {
                     title: col.name + ':' + col.author.nickname + '的专辑',
                     column: col,
                     objects: objects,
+                    sectionIDMap: cache.get('app.sectionIDMap'),
                     pager: {
                         page: listOptions.page,
                         limit: listOptions.limit,
                         count: col.objectCount
                     }
                 };
+
 
                 column.findOneAndUpdate({
                     _id: col.id
@@ -128,6 +135,14 @@ module.exports = function (app) {
                 }, log.holdError);
 
                 column.increaseViewByCount({_id: col.id}, 1, log.holdError);
+
+                if (isAJAX) {
+                    return res.json({
+                        code: 200,
+                        data: data
+                    });
+                }
+
                 res.render('front/list-one-column.html', data);
             });
     };

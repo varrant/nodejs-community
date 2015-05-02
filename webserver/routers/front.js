@@ -21,6 +21,7 @@ module.exports = function (app, ctrl) {
     app.get('/column/', ctrl.column.getAllList);
     app.get('/column/page/:page/', ctrl.column.getAllList);
     app.get('/column/:uri/', ctrl.column.getOneList);
+    app.get('/column/:uri/page/:page/', ctrl.column.getOneList);
 
 
     // list + detail
