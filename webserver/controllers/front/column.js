@@ -28,7 +28,10 @@ module.exports = function (app) {
             })
             // 查询列表
             .task(function (done) {
-                listOptions.populate = ['author'];
+                listOptions.populate = {
+                    path: 'author',
+                    select: 'nickname email githubLogin'
+                };
                 listOptions.sort = {
                     objectCount: -1
                 };
@@ -50,8 +53,15 @@ module.exports = function (app) {
                     }
                 };
 
-                console.log(data);
-                res.render('front/list-all-column.html', data);
+                data.list.forEach(function (item) {
+                    item.author.email = null;
+                });
+
+                res.json({
+                    code: 200,
+                    data: data
+                });
+                //res.render('front/list-all-column.html', data);
             });
     };
 
