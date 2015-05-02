@@ -85,7 +85,7 @@ module.exports = function (app) {
                         }];
                         listOptions.sort = {publishAt: -1};
                         listOptions.select = 'id title uri category column author ' +
-                            'contributors commentByCount viewByCount updateAt publishAt';
+                            'contributors commentByCount viewByCount updateAt publishAt acceptByResponse';
                         object.find(conditions, listOptions, done);
                     })
                     // 查找 columns
