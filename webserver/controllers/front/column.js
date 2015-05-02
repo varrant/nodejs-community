@@ -20,6 +20,7 @@ module.exports = function (app) {
     // 所有专辑
     exports.getAllList = function (req, res, next) {
         var listOptions = filter.skipLimit(req.params);
+        var isAJAX = req.headers['x-request-with'] === 'XMLHttpRequest';
 
         howdo
             // 统计数量
@@ -57,11 +58,14 @@ module.exports = function (app) {
                     item.author.email = null;
                 });
 
-                res.json({
-                    code: 200,
-                    data: data
-                });
-                //res.render('front/list-all-column.html', data);
+                if (isAJAX) {
+                    return res.json({
+                        code: 200,
+                        data: data
+                    });
+                }
+
+                res.render('front/list-all-column.html', data);
             });
     };
 
