@@ -93,16 +93,17 @@ define(function (require, exports, module) {
         ajax({
             url: url
         }).on('success', function (data) {
+            $body.innerHTML = tpl.render(data);
             dato.extend(pager, data.pager);
             pager.max = Math.ceil(data.count/data.limit);
             app.options.page = data.pager.page;
-            $body.innerHTML = tpl.render(data);
             app.page.render({
                 page: pager.page
             });
             history.pushState({
                 url: url
             }, data.title, url);
+            app.getPath();
             animation.scrollTo(window, {
                 y: $body
             });
