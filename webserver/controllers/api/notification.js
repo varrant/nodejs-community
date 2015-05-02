@@ -125,7 +125,7 @@ module.exports = function (app) {
                     data: {
                         count: count,
                         list: list,
-                        sectionURIMap: cache.get('app.sectionURIMap')
+                        sectionIDMap: cache.get('app.sectionIDMap')
                     }
                 });
             });

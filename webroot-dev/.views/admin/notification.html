@@ -11,7 +11,7 @@
     <!--coolie-->
     <link rel="stylesheet" href="/static/css/app/admin/developer.css"/>
     <!--/coolie-->
-    <script coolieignore>window['-section-uri-map-'] = '{{= JSON.stringify(sectionURIMap)}}';</script>
+    <script coolieignore>window['-section-uri-map-'] = '{{= JSON.stringify($sectionURIMap)}}';</script>
 </head>
 <body ontouchstart="">
 
@@ -52,25 +52,25 @@
                                     <td>\{{(query.page - 1) * query.limit + $index + 1}}</td>
                                     <td class="text-left">
                                         <div v-if="notification.type === 'commentObject'">
-                                            <a v-attr="href: '/' + sectionURIMap[notification.object.section] + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)"><strong>\{{notification.source.nickname}}</strong> 在你的《\{{notification.object.title}}》上评论道：“\{{notification.response.content.slice(0, 140)}}”</a>
+                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)"><strong>\{{notification.source.nickname}}</strong> 在你的《\{{notification.object.title}}》上评论道：“\{{notification.response.content.slice(0, 140)}}”</a>
                                         </div>
                                         <div v-if="notification.type === 'replyObject'">
-                                            <a v-attr="href: '/' + sectionURIMap[notification.object.section] + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)"><strong>\{{notification.source.nickname}}</strong> 在你的《\{{notification.object.title}}》上回复道：“\{{notification.response.content.slice(0, 140)}}”</a>
+                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)"><strong>\{{notification.source.nickname}}</strong> 在你的《\{{notification.object.title}}》上回复道：“\{{notification.response.content.slice(0, 140)}}”</a>
                                         </div>
                                         <div v-if="notification.type === 'reply'">
-                                            <a v-attr="href: '/' + sectionURIMap[notification.object.section] + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)"><strong>\{{notification.source.nickname}}</strong> 在您的评论上回复道：“\{{notification.response.content.slice(0, 140)}}”</a>
+                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)"><strong>\{{notification.source.nickname}}</strong> 在您的评论上回复道：“\{{notification.response.content.slice(0, 140)}}”</a>
                                         </div>
                                         <div v-if="notification.type === 'role'">
                                             <strong>\{{notification.source.nickname}}</strong> 修改了你的权限为“\{{notification.value}}”
                                         </div>
                                         <div v-if="notification.type === 'accept'">
-                                            <a v-attr="href: '/' + sectionURIMap[notification.object.section] + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)"><strong>\{{notification.source.nickname}}</strong> 采纳了你在《\{{notification.object.title}}》上的回答：“\{{notification.response.content.slice(0, 140)}}”。</a>
+                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)"><strong>\{{notification.source.nickname}}</strong> 采纳了你在《\{{notification.object.title}}》上的回答：“\{{notification.response.content.slice(0, 140)}}”。</a>
                                         </div>
                                         <div v-if="notification.type === 'agreeComment'">
-                                            <a v-attr="href: '/' + sectionURIMap[notification.object.section] + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)"><strong>\{{notification.source.nickname}}</strong> 赞同了你在《\{{notification.object.title}}》上的评论：“\{{notification.response.content.slice(0, 140)}}”。</a>
+                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)"><strong>\{{notification.source.nickname}}</strong> 赞同了你在《\{{notification.object.title}}》上的评论：“\{{notification.response.content.slice(0, 140)}}”。</a>
                                         </div>
                                         <div v-if="notification.type === 'agreeReply'">
-                                            <a v-attr="href: '/' + sectionURIMap[notification.object.section] + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)"><strong>\{{notification.source.nickname}}</strong> 赞同了你在《\{{notification.object.title}}》上的回复：“\{{notification.response.content.slice(0, 140)}}”。</a>
+                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)"><strong>\{{notification.source.nickname}}</strong> 赞同了你在《\{{notification.object.title}}》上的回复：“\{{notification.response.content.slice(0, 140)}}”。</a>
                                         </div>
                                     </td>
                                     <td>

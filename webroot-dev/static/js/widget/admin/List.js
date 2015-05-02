@@ -113,7 +113,8 @@ define(function (require, exports, module) {
                         list: data.list,
                         query: the.query,
                         categoriesMap: categoriesMap,
-                        columnsMap: columnsMap
+                        columnsMap: columnsMap,
+                        sectionIDMap: data.sectionIDMap
                     }, the._options.data),
                     methods: dato.extend({
                         onremove: the._onremove.bind(the)
