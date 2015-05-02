@@ -89,20 +89,29 @@ define(function (require, exports, module) {
 
 
     // pjax
-    app.pjax = function (url) {
+    /**
+     * pjax
+     * @param url {String} 打开的 url
+     * @param [isNotChangeURL=false] {Boolean} 是否改变 url
+     */
+    app.pjax = function (url, isNotChangeURL) {
         ajax({
             url: url
         }).on('success', function (data) {
             $body.innerHTML = tpl.render(data);
             dato.extend(pager, data.pager);
-            pager.max = Math.ceil(data.count/data.limit);
+            pager.max = Math.ceil(pager.count / pager.limit);
             app.options.page = data.pager.page;
             app.page.render({
                 page: pager.page
             });
-            history.pushState({
-                url: url
-            }, data.title, url);
+
+            if (!isNotChangeURL) {
+                history.pushState({
+                    url: url
+                }, data.title, url);
+            }
+
             app.getPath();
             animation.scrollTo(window, {
                 y: $body
@@ -122,7 +131,7 @@ define(function (require, exports, module) {
         event.on(window, 'popstate', function () {
             var state = history.state;
 
-            app.pjax(state && state.url || beginURL);
+            app.pjax(state && state.url || beginURL, true);
         });
     };
 
