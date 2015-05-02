@@ -199,10 +199,12 @@ exports.createOne = function (author, data, callback) {
 
                 var appEnv = cache.get('app.configs').app.env;
                 var baiduZZ = cache.get('app.settings').website.baiduZZ;
-                if(appEnv === 'pro' && baiduZZ){
+
+                // 百度站长链接推送
+                if (appEnv === 'pro' && baiduZZ) {
                     request.post({
                         url: baiduZZ,
-                        body: 'http://frontenddev.org/',
+                        body: cache.get('app.configs').app.host + '/' + objectInSection.uri + '/' + doc.uri + '.html',
                         headers: {
                             'content-type': 'text/plain'
                         }
