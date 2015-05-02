@@ -32,92 +32,94 @@ module.exports = function (app) {
             statistics: statistics
         };
 
-        howdo
-            // 注册用户数
-            .task(function (done) {
-                developer.count({}, function (err, count) {
-                    if (err) {
-                        return done(err);
-                    }
+        res.render('front/home.html', data);
 
-                    statistics.engineers = count;
-                    done();
-                });
-            })
-            // objectCount 最活跃的用户
-            .task(function (done) {
-                developer.findOne({}, {sort: '-objectCount'}, function (err, dp) {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    statistics.bestActive = dp;
-                    done();
-                });
-            })
-            // viewByCount 最大人气的用户
-            .task(function (done) {
-                developer.findOne({}, {sort: '-viewByCount'}, function (err, dp) {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    statistics.bestPopularity = dp;
-                    done();
-                });
-            })
-            // commentCount 最积极的用户
-            .task(function (done) {
-                developer.findOne({}, {sort: '-commentCount'}, function (err, dp) {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    statistics.bestInitiative = dp;
-                    done();
-                });
-            })
-            // commentByCount 最热门的用户
-            .task(function (done) {
-                developer.findOne({}, {sort: '-commentByCount'}, function (err, dp) {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    statistics.bestHot = dp;
-                    done();
-                });
-            })
-            // agreeByCount 最受欢迎的用户
-            .task(function (done) {
-                developer.findOne({}, {sort: '-agreeByCount'}, function (err, dp) {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    statistics.bestWelcome = dp;
-                    done();
-                });
-            })
-            // acceptByCount 最受崇敬的用户
-            .task(function (done) {
-                developer.findOne({}, {sort: '-acceptByCount'}, function (err, dp) {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    statistics.bestRespect = dp;
-                    done();
-                });
-            })
-            // 异步顺序并行
-            .together(function (err) {
-                if (err) {
-                    return next(err);
-                }
-
-                res.render('front/home.html', data);
-            });
+        //howdo
+        //    // 注册用户数
+        //    .task(function (done) {
+        //        developer.count({}, function (err, count) {
+        //            if (err) {
+        //                return done(err);
+        //            }
+        //
+        //            statistics.engineers = count;
+        //            done();
+        //        });
+        //    })
+        //    // objectCount 最活跃的用户
+        //    .task(function (done) {
+        //        developer.findOne({}, {sort: '-objectCount'}, function (err, dp) {
+        //            if (err) {
+        //                return done(err);
+        //            }
+        //
+        //            statistics.bestActive = dp;
+        //            done();
+        //        });
+        //    })
+        //    // viewByCount 最大人气的用户
+        //    .task(function (done) {
+        //        developer.findOne({}, {sort: '-viewByCount'}, function (err, dp) {
+        //            if (err) {
+        //                return done(err);
+        //            }
+        //
+        //            statistics.bestPopularity = dp;
+        //            done();
+        //        });
+        //    })
+        //    // commentCount 最积极的用户
+        //    .task(function (done) {
+        //        developer.findOne({}, {sort: '-commentCount'}, function (err, dp) {
+        //            if (err) {
+        //                return done(err);
+        //            }
+        //
+        //            statistics.bestInitiative = dp;
+        //            done();
+        //        });
+        //    })
+        //    // commentByCount 最热门的用户
+        //    .task(function (done) {
+        //        developer.findOne({}, {sort: '-commentByCount'}, function (err, dp) {
+        //            if (err) {
+        //                return done(err);
+        //            }
+        //
+        //            statistics.bestHot = dp;
+        //            done();
+        //        });
+        //    })
+        //    // agreeByCount 最受欢迎的用户
+        //    .task(function (done) {
+        //        developer.findOne({}, {sort: '-agreeByCount'}, function (err, dp) {
+        //            if (err) {
+        //                return done(err);
+        //            }
+        //
+        //            statistics.bestWelcome = dp;
+        //            done();
+        //        });
+        //    })
+        //    // acceptByCount 最受崇敬的用户
+        //    .task(function (done) {
+        //        developer.findOne({}, {sort: '-acceptByCount'}, function (err, dp) {
+        //            if (err) {
+        //                return done(err);
+        //            }
+        //
+        //            statistics.bestRespect = dp;
+        //            done();
+        //        });
+        //    })
+        //    // 异步顺序并行
+        //    .together(function (err) {
+        //        if (err) {
+        //            return next(err);
+        //        }
+        //
+        //        res.render('front/home.html', data);
+        //    });
     };
 
     return exports;
