@@ -112,12 +112,8 @@ module.exports = function (app) {
                             limit: listOptions.limit,
                             count: count
                         };
-                        //data.pagination = pagi.pagination({
-                        //    page: listOptions.page,
-                        //    max: Math.ceil(count / 20),
-                        //    url: '/' + section.uri + '/page/:page/'
-                        //});
 
+                        // clean email
                         data.objects.forEach(function (item) {
                             item.author.email = null;
                             item.contributors.forEach(function (item) {
