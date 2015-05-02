@@ -36,7 +36,7 @@
             <!--主-->
             <div class="col-md-12 layout-main">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" id="body">
                         {{include ./include/list/help.html}}
                     </div>
                     <div class="card-footer text-center">
@@ -58,7 +58,9 @@
 </div>
 
 
-
+{{ignore}}
+<script type="text/html" id="template">{{include ./include/list/help.html}}</script>
+{{/ignore}}
 
 {{include ./include/bottom.html}}
 <script src="/static/js/coolie.min.js"

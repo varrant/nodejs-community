@@ -29,7 +29,7 @@
             <!--主-->
             <div class="col-md-12 layout-main">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" id="body">
                         <!--列表-->
                         {{include ./include/list/all-column.html}}
                         <!--/列表-->
@@ -47,6 +47,10 @@
     {{include ./include/footer.html}}
 </div>
 
+
+{{ignore}}
+<script type="text/html" id="template">{{include ./include/list/all-column.html}}</script>
+{{/ignore}}
 
 
 {{include ./include/bottom.html}}
