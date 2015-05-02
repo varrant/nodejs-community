@@ -191,22 +191,22 @@ schema.set('toObject', {getters: true, virtuals: true});
 
 
 schema.virtual('avatarL').get(function () {
-    return dato.gravatar(this.email, {
+    return this.email ? dato.gravatar(this.email, {
         size: 200
-    });
+    }) : '';
 });
 
 
 schema.virtual('avatar').get(function () {
-    return dato.gravatar(this.email, {
+    return this.email ? dato.gravatar(this.email, {
         size: 100
-    });
+    }) : '';
 });
 
 schema.virtual('avatarM').get(function () {
-    return dato.gravatar(this.email, {
+    return this.email ? dato.gravatar(this.email, {
         size: 40
-    });
+    }) : '';
 });
 
 

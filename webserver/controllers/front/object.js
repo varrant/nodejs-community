@@ -75,11 +75,12 @@ module.exports = function (app) {
                     })
                     // 列表
                     .task(function (done) {
-                        listOptions.populate = ['author', 'contributors'];
+                        listOptions.populate = [{
+                            path:'author', select:'nickname'
+                        }, 'contributors'];
                         listOptions.sort = {publishAt: -1};
-                        listOptions.select = {
-                            content: -1
-                        };
+                        listOptions.select = 'id title uri category column author ' +
+                            'contributors commentByCount viewByCount updateAt publishAt';
                         object.find(conditions, listOptions, done);
                     })
                     // 查找 columns
