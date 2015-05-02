@@ -75,9 +75,14 @@ module.exports = function (app) {
                     })
                     // 列表
                     .task(function (done) {
+                        var developerSelect = 'nickname githubLogin email';
                         listOptions.populate = [{
-                            path:'author', select:'nickname'
-                        }, 'contributors'];
+                            path: 'author',
+                            select: developerSelect
+                        }, {
+                            path: 'contributors',
+                            select: developerSelect
+                        }];
                         listOptions.sort = {publishAt: -1};
                         listOptions.select = 'id title uri category column author ' +
                             'contributors commentByCount viewByCount updateAt publishAt';
@@ -113,11 +118,18 @@ module.exports = function (app) {
                         //    url: '/' + section.uri + '/page/:page/'
                         //});
 
-                        //if(isPjax){
-                            return res.json({
-                                code: 200,
-                                data: data
+                        data.objects.forEach(function (item) {
+                            item.author.email = null;
+                            item.contributors.forEach(function (item) {
+                                item.email = null;
                             });
+                        });
+
+                        //if(isPjax){
+                        return res.json({
+                            code: 200,
+                            data: data
+                        });
                         //}
 
                         res.render('front/list-' + section.uri + '.html', data);

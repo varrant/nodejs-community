@@ -1,3 +1,23 @@
+<ul class="choose">
+    <li class="clearfix">
+        <strong class="choose-type">分类</strong>
+        <a class="{{if !choose.category}}active{{/if}}"
+           href="/article/{{if choose.status}}as/{{choose.status}}/{{/if}}">所有分类</a>
+        {{list $categoryList as category}}
+        <a class="{{if category.id == choose.category}}active{{/if}}"
+           href="/article/in/{{=category.uri}}/{{if choose.status}}as/{{choose.status}}/{{/if}}">{{=category.name}}</a>
+        {{/list}}
+    </li>
+    {{if choose.author}}
+    <li class="clearfix">
+        <strong class="choose-type">作者</strong>
+        <a href="/article/">所有作者</a>
+        <a class="active"
+           href="/article/{{if choose.author}}by/{{choose.author}}/{{/if}}">{{=choose.authorNickname}}</a>
+    </li>
+    {{/if}}
+</ul>
+
 <ul class="summarylist">
     {{if !objects.length}}
     <li>
