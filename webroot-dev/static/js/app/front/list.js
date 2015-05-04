@@ -83,6 +83,12 @@ define(function (require, exports, module) {
      */
     app.buildPager = function () {
         if (pager.max) {
+            var $pager = selector.query('#pager')[0];
+
+            if (!$pager) {
+                return;
+            }
+
             app.page = new Pager('#pager', pager);
 
             app.page.on('change', function (page) {
