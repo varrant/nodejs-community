@@ -123,7 +123,10 @@ header {
       vertical-align: middle; }
     .active .nav-drop {
       background: #008eb1; }
-  .nav-join, .nav-join:hover, .nav-join:active, .nav-join:visited {
+  .nav-join,
+  .nav-join:hover,
+  .nav-join:active,
+  .nav-join:visited {
     display: block;
     text-align: center;
     color: #fff;
@@ -172,4 +175,3 @@ header {
       right: 10px;
       top: 9px; }
 
-/*# sourceMappingURL=1-header.css.map */

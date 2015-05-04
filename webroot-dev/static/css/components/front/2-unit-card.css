@@ -3,7 +3,8 @@
   margin-bottom: 50px; }
   .card:last-child {
     margin-bottom: 0; }
-  .card-title, .card-tab {
+  .card-title,
+  .card-tab {
     position: relative;
     border-bottom: 2px solid #e6e6e6;
     margin: 0;
@@ -13,7 +14,8 @@
     padding: 20px;
     font-size: 20px;
     font-weight: 900; }
-  .card-has-accepted, .card-un-accepted {
+  .card-has-accepted,
+  .card-un-accepted {
     display: none; }
   .card-title.has-accepted {
     background: #E4F4DE;
@@ -63,4 +65,3 @@
     margin-top: 30px;
     padding: 30px 20px; }
 
-/*# sourceMappingURL=2-unit-card.css.map */

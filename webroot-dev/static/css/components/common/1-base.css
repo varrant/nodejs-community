@@ -15,12 +15,15 @@ html {
 @media only screen and (min-width: 481px) {
   html {
     font-size: 94% !important; } }
+
 @media only screen and (min-width: 561px) {
   html {
     font-size: 109% !important; } }
+
 @media only screen and (min-width: 641px) {
   html {
     font-size: 125% !important; } }
+
 body {
   color: #333;
   font-size: 16px; }
@@ -36,6 +39,7 @@ body {
     -ms-hyphens: auto;
     -moz-hyphens: auto;
     hyphens: auto; } }
+
 button, input, optgroup, select, textarea {
   font: initial; }
 
@@ -214,8 +218,8 @@ img {
   visibility: hidden !important; }
 
 .transition {
-  -webkit-transition: all .4s;
-  transition: all .4s; }
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s; }
 
 .loading {
   background: url("http://s.ydr.me/p/i/loading-32.gif") no-repeat 0/16px;
@@ -235,4 +239,3 @@ img {
 .list-right > * {
   float: right !important; }
 
-/*# sourceMappingURL=1-base.css.map */

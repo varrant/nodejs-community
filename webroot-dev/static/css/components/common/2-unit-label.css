@@ -1,7 +1,7 @@
 /*label*/
 .label {
   display: inline;
-  padding: .3em .6em;
+  padding: 0.3em 0.6em;
   line-height: 1;
   color: #fff;
   text-align: center;
@@ -80,4 +80,3 @@ a.label:focus {
 .label-light[href]:focus {
   color: #666; }
 
-/*# sourceMappingURL=2-unit-label.css.map */
