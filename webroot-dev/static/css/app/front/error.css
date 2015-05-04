@@ -1,4 +1,8 @@
-.clienterror, .servererror {
+.clienterror,
+.servererror {
   margin-top: 200px; }
-  .clienterror h1, .servererror h1 {
+  .clienterror h1,
+  .servererror h1 {
     font-size: 100px; }
+
+/*# sourceMappingURL=error.css.map */

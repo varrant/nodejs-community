@@ -6,11 +6,11 @@
 
 .ptitle {
   text-align: center;
-  margin-bottom: 2em;
   background: -webkit-linear-gradient(#00A2CA 0, #F5F5F5 100%);
   background: -moz-linear-gradient(#00A2CA 0, #F5F5F5 100%);
   background: linear-gradient(#00A2CA 0, #F5F5F5 100%);
-  padding-top: 30px; }
+  padding-top: 30px;
+  padding-bottom: 30px; }
   .ptitle-cover {
     width: 101px;
     height: 101px;
@@ -111,3 +111,5 @@
     right: 0;
     bottom: 0;
     left: 0; }
+
+/*# sourceMappingURL=list.css.map */

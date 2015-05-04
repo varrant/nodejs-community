@@ -1,8 +1,10 @@
-.m-main .main-title, .m-main .main-subtitle {
+.m-main .main-title,
+.m-main .main-subtitle {
   font-weight: normal;
   padding: 20px;
   margin: 0; }
-  .m-main .main-title .i, .m-main .main-subtitle .i {
+  .m-main .main-title .i,
+  .m-main .main-subtitle .i {
     margin-left: 0; }
 .m-main .main-title {
   color: #000; }
@@ -119,3 +121,5 @@
     text-align: left; }
   .m-form-vertical .form-action {
     margin-left: 0; }
+
+/*# sourceMappingURL=3-container.css.map */

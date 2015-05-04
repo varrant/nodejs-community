@@ -23,7 +23,10 @@
   top: 0;
   padding: 1px 5px; }
 
-a.badge:hover, a.badge:focus {
+a.badge:hover,
+a.badge:focus {
   color: #fff;
   text-decoration: none;
   cursor: pointer; }
+
+/*# sourceMappingURL=2-unit-badge.css.map */

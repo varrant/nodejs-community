@@ -20,14 +20,10 @@ body {
   bottom: 0;
   width: 1px;
   background: #e6e6e6; }
-
 .layout-main:only-child:after {
-  background: none;
-}
-
+  background: none; }
 .layout-main.col-md-12:after {
-  background: none;
-}
+  background: none; }
 .layout-sub:before {
   content: " ";
   position: absolute;
@@ -38,6 +34,6 @@ body {
   background: #e6e6e6; }
 @media (max-width: 991px) {
   .layout-sub:before {
-    background: none;
-  }
-}
+    background: none; } }
+
+/*# sourceMappingURL=0-layout.css.map */

@@ -18,7 +18,8 @@
 .alert .alert-link {
   font-weight: bold; }
 
-.alert > p, .alert > ul {
+.alert > p,
+.alert > ul {
   margin-bottom: 0; }
 
 .alert > p + p {
@@ -95,3 +96,5 @@
 
 .alert-danger .alert-link {
   color: #843534; }
+
+/*# sourceMappingURL=2-unit-alert.css.map */

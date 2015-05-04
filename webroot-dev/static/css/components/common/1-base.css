@@ -15,15 +15,12 @@ html {
 @media only screen and (min-width: 481px) {
   html {
     font-size: 94% !important; } }
-
 @media only screen and (min-width: 561px) {
   html {
     font-size: 109% !important; } }
-
 @media only screen and (min-width: 641px) {
   html {
     font-size: 125% !important; } }
-
 body {
   color: #333;
   font-size: 16px; }
@@ -39,7 +36,6 @@ body {
     -ms-hyphens: auto;
     -moz-hyphens: auto;
     hyphens: auto; } }
-
 button, input, optgroup, select, textarea {
   font: initial; }
 
@@ -47,13 +43,36 @@ button::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
-p, hr, ul, ol, dl, blockquote, pre, address, fieldset, figure {
+p,
+hr,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+address,
+fieldset,
+figure {
   margin: 0 0 1.6rem 0; }
 
-* + p, * + hr, * + ul, * + ol, * + dl, * + blockquote, * + pre, * + address, * + fieldset, * + figure {
+* + p,
+* + hr,
+* + ul,
+* + ol,
+* + dl,
+* + blockquote,
+* + pre,
+* + address,
+* + fieldset,
+* + figure {
   margin-top: 1.6rem; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0 0 1.6rem 0;
   font-weight: 600;
   font-size: 100%; }
@@ -64,15 +83,24 @@ h1 {
 h2 {
   font-size: 1.25em; }
 
-* + h1, * + h2, * + h3, * + h4, * + h5, * + h6 {
+* + h1,
+* + h2,
+* + h3,
+* + h4,
+* + h5,
+* + h6 {
   margin-top: 2em; }
 
 /* Ordered and unordered lists */
-ul, ol {
+ul,
+ol {
   padding-left: 2em; }
 
 /* Reset margin for nested lists */
-ul > li > ul, ul > li > ol, ol > li > ol, ol > li > ul {
+ul > li > ul,
+ul > li > ol,
+ol > li > ol,
+ol > li > ul {
   margin: 1em 0; }
 
 /**
@@ -87,8 +115,7 @@ hr {
   border-top: 1px solid #eeeeee;
   /* 1 */
   -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-  /* 1 */ }
+  box-sizing: content-box; }
 
 /* Quotes */
 blockquote {
@@ -96,9 +123,7 @@ blockquote {
   padding-bottom: 5px;
   padding-left: 15px;
   border-left: 4px solid #dddddd;
-  font-family: Georgia, "Times New Roman", Times, Kai, "Kaiti SC", KaiTi, BiauKai, "FontAwesome", serif;
-  /* Small print for identifying the source */
-  /* Smaller margin if `small` follows */ }
+  font-family: Georgia, "Times New Roman", Times, Kai, "Kaiti SC", KaiTi, BiauKai, "FontAwesome", serif; }
 
 blockquote small {
   display: block;
@@ -116,7 +141,8 @@ a {
   color: #0e90d2;
   text-decoration: none; }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
   color: #095f8a;
   text-decoration: underline; }
 
@@ -158,11 +184,24 @@ img {
     max-height: none !important;
     vertical-align: middle; }
 
-.row::before, .row::after, [class*=avg-]::before, [class*=avg-]::after, .clearfix::before, .clearfix:after, .list-left::before, .list-left::after, .list-right::before, .list-right::after {
+.row::before,
+.row::after,
+[class*=avg-]::before,
+[class*=avg-]::after,
+.clearfix::before,
+.clearfix:after,
+.list-left::before,
+.list-left::after,
+.list-right::before,
+.list-right::after {
   display: table;
   content: " "; }
 
-.row::after, [class*=avg-]::after, .clearfix::after, .list-left::after, .list-right::after {
+.row::after,
+[class*=avg-]::after,
+.clearfix::after,
+.list-left::after,
+.list-right::after {
   clear: both; }
 
 .none {
@@ -184,11 +223,16 @@ img {
   padding-left: 20px;
   color: #888; }
 
-.list-left, .list-right {
+.list-left,
+.list-right {
   list-style: none; }
 
-.pull-left, .list-left > * {
+.pull-left,
+.list-left > * {
   float: left !important; }
 
-.pull-right, .list-right > * {
+.pull-right,
+.list-right > * {
   float: right !important; }
+
+/*# sourceMappingURL=1-base.css.map */

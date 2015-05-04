@@ -4,7 +4,10 @@ header {
   right: 0;
   left: 0;
   z-index: 9; }
-  header a, header a:hover, header a:active, header a:visited {
+  header a,
+  header a:hover,
+  header a:active,
+  header a:visited {
     text-decoration: none; }
 
 /*nav*/
@@ -168,3 +171,5 @@ header {
       left: auto;
       right: 10px;
       top: 9px; }
+
+/*# sourceMappingURL=1-header.css.map */
