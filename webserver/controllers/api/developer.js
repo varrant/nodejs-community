@@ -56,7 +56,7 @@ module.exports = function (app) {
         // 创建之后
         options.onaftercreate = function (data) {
             cache.increase('app.autoIndex', 1);
-            cache.increase('app.count').developers += 1;
+            cache.get('app.count').developers += 1;
         };
 
         developer.login({
