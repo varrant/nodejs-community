@@ -1,12 +1,16 @@
 .usercard-main {
   margin-bottom: 20px; }
+
 .usercard-avatar {
   width: 100px;
   height: 100px; }
+
 .usercard-body {
   margin-left: 110px; }
+
 .usercard-bio {
   margin-bottom: 20px; }
+
 .usercard-statistics {
   background-color: #fcfcfc;
   border-top: 1px solid #ddd;
@@ -18,4 +22,3 @@
   .usercard-statistics li {
     margin-right: 20px; }
 
-/*# sourceMappingURL=developer.css.map */

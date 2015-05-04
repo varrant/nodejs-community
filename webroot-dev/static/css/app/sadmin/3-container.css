@@ -6,10 +6,13 @@
   .m-main .main-title .i,
   .m-main .main-subtitle .i {
     margin-left: 0; }
+
 .m-main .main-title {
   color: #000; }
+
 .m-main .main-subtitle {
   color: #555; }
+
 .m-main .main-tab {
   padding: 0;
   margin: 0;
@@ -29,6 +32,7 @@
     cursor: default;
     background: #fff;
     pointer-events: none; }
+
 .m-main .main-body {
   padding: 20px; }
 
@@ -39,6 +43,7 @@
 
 .m-types tr:first-child .types-up {
   display: none; }
+
 .m-types tr:last-child .types-down {
   display: none; }
 
@@ -56,7 +61,8 @@
     border: 1px solid #e6e6e6; }
     .m-pager li:last-child {
       border-left: 0; }
-    .m-pager li.disabled a, .m-pager li.disabled a:hover {
+    .m-pager li.disabled a,
+    .m-pager li.disabled a:hover {
       color: #ccc;
       cursor: not-allowed;
       background: transparent;
@@ -122,4 +128,3 @@
   .m-form-vertical .form-action {
     margin-left: 0; }
 
-/*# sourceMappingURL=3-container.css.map */
