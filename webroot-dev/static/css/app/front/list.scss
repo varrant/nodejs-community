@@ -19,6 +19,9 @@ $border-color: #e6e6e6;
   padding-bottom: 30px;
   -webkit-transition: background 500ms;
   transition: background 500ms;
+  min-height: 200px;
+  color: #fff;
+
 
   &.active{
     background: rgba(255, 255, 255, 0.4);
@@ -66,6 +69,10 @@ $border-color: #e6e6e6;
     margin-left: auto;
     margin-right: auto;
     font-size: 13px;
+  }
+
+  &-action{
+    margin-top: 40px;
   }
 }
 

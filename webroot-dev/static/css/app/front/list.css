@@ -8,7 +8,9 @@
   padding-top: 30px;
   padding-bottom: 30px;
   -webkit-transition: background 500ms;
-  transition: background 500ms; }
+  transition: background 500ms;
+  min-height: 200px;
+  color: #fff; }
   .ptitle.active {
     background: rgba(255, 255, 255, 0.4); }
   .ptitle-bg {
@@ -33,6 +35,8 @@
     margin-left: auto;
     margin-right: auto;
     font-size: 13px; }
+  .ptitle-action {
+    margin-top: 40px; }
 
 .bdsharebuttonbox {
   display: inline-block;
