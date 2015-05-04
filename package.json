@@ -39,7 +39,7 @@
     "howdo": "^1.1.4",
     "mongoose": "^3.8.26",
     "nodemailer": "^1.3.2",
-    "ydr-utils": "^18.14.0"
+    "ydr-utils": "^18.15.0"
   },
   "devDependencies": {},
   "licenses": "MIT"
