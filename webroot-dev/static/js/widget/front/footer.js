@@ -14,6 +14,7 @@ define(function (require, exports, module) {
     var animation = require('../../alien/core/dom/animation.js');
     var event = require('../../alien/core/event/base.js');
     var controller = require('../../alien/utils/controller.js');
+    var random = require('../../alien/utils/random.js');
     var Scroll = require('../../alien/ui/Scroll/');
     var win = window;
     var app = {};
@@ -66,7 +67,6 @@ define(function (require, exports, module) {
             }, animationOptions);
         });
     };
-
 
     app.scrollProgress();
     app.gotop();

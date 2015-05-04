@@ -25,30 +25,30 @@ var bodyParser = require('body-parser');
 var compression = require('compression');
 
 // 模板引擎
-var ydrTemplate = require('ydr-utils').Template;
+var Template = require('ydr-utils').Template;
 
 // 模板引擎配置
-ydrTemplate.config({
+Template.config({
     cache: 'pro' === configs.app.env,
     compress: 'pro' === configs.app.env,
     debug: 'dev' === configs.app.env
 });
 
-ydrTemplate.addFilter('gravatar', function (val, size) {
+Template.addFilter('gravatar', function (val, size) {
     return dato.gravatar(val, {
         size: size || 100
     });
 });
 
-ydrTemplate.addFilter('humanize', function (val) {
+Template.addFilter('humanize', function (val) {
     return dato.humanize(val);
 });
 
-ydrTemplate.addFilter('datefrom', function (val) {
+Template.addFilter('datefrom', function (val) {
     return date.from(val);
 });
 
-ydrTemplate.addFilter('datetime', function (val) {
+Template.addFilter('datetime', function (val) {
     return date.format('YYYY-MM-DD HH:mm:ss 星期e', val);
 });
 
@@ -63,7 +63,7 @@ module.exports = function (next) {
     app.set('env', configs.app.env);
     app.set('port', configs.app.port);
     app.set('views', path.join(configs.dir.webroot, './.views/'));
-    app.engine('html', ydrTemplate.__express);
+    app.engine('html', Template.__express);
     app.set('view engine', 'html');
 
     // 路由区分大小写，默认 disabled

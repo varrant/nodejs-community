@@ -140,8 +140,25 @@ define(function (require, exports, module) {
     };
 
 
+    app.cover = function () {
+        var $cover = selector.query('#cover')[0];
+
+        if (!$cover) {
+            return;
+        }
+
+        var url = 'http://img.infinitynewtab.com/randomBlur/' + (random.number(1, 4050)) + '.jpg';
+        var img = new Image();
+
+        img.src = url;
+        img.onload = function () {
+            attribute.css($cover, 'background', 'url("' + url + '") center/cover no-repeat');
+        };
+    };
+
     share('#share');
     app.getPath();
     app.buildPager();
     app.buildPjax();
+    app.cover();
 });
