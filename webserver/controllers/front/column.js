@@ -77,6 +77,7 @@ module.exports = function (app) {
         var listOptions = filter.skipLimit(req.params);
         var isAJAX = req.headers['x-request-with'] === 'XMLHttpRequest';
 
+        listOptions.limit = 9999;
         howdo
             // 1. 查找专辑
             .task(function (next) {
