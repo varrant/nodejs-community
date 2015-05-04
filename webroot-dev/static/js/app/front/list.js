@@ -148,12 +148,13 @@ define(function (require, exports, module) {
             return;
         }
 
-        var url = 'http://img.infinitynewtab.com/randomBlur/' + (random.number(1, 4050)) + '.jpg';
+        var url = 'http://img.infinitynewtab.com/randomBlur/' + random.number(1, 4050) + '.jpg';
         var img = new Image();
 
         img.src = url;
         img.onload = function () {
-            attribute.css($cover, 'background', 'rgba(0,0,0,.5) url("' + url + '") center/cover no-repeat');
+            attribute.css($cover, 'background', 'url("' + url + '") center/cover no-repeat');
+            attribute.addClass($cover.parentNode, 'active');
         };
     };
 

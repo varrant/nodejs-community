@@ -1,16 +1,23 @@
 .layout-body {
   margin-top: 50px; }
 
-.page-all-column .layout-body {
-  margin-top: 100px; }
-
 .ptitle {
+  position: relative;
   text-align: center;
-  background: -webkit-linear-gradient(#00A2CA 0, #F5F5F5 100%);
-  background: -moz-linear-gradient(#00A2CA 0, #F5F5F5 100%);
-  background: linear-gradient(#00A2CA 0, #F5F5F5 100%);
+  background: #00A2CA;
   padding-top: 30px;
-  padding-bottom: 30px; }
+  padding-bottom: 30px;
+  -webkit-transition: background 500ms;
+  transition: background 500ms; }
+  .ptitle.active {
+    background: rgba(255, 255, 255, 0.4); }
+  .ptitle-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1; }
   .ptitle-cover {
     width: 101px;
     height: 101px;
