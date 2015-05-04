@@ -142,7 +142,9 @@ define(function (require, exports, module) {
         event.on(window, 'popstate', function () {
             var state = history.state;
 
-            app.pjax(state && state.url || beginURL, true);
+            if(state){
+                app.pjax(state.url, true);
+            }
         });
     };
 
