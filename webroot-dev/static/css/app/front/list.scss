@@ -24,7 +24,7 @@ $border-color: #e6e6e6;
 
 
   &.active{
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.4);
   }
 
   &-bg{
@@ -58,7 +58,7 @@ $border-color: #e6e6e6;
 //  }
 
   &-name{
-    margin: 20px 0 5px;
+    margin: 20px 0;
     padding: 0;
     font-weight: normal;
   }
