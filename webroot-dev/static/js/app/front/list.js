@@ -18,6 +18,7 @@ define(function (require, exports, module) {
     var animation = require('../../alien/core/dom/animation.js');
     var attribute = require('../../alien/core/dom/attribute.js');
     var dato = require('../../alien/utils/dato.js');
+    var random = require('../../alien/utils/random.js');
     var event = require('../../alien/core/event/touch.js');
     var share = require('../../widget/common/share.js');
     var ajax = require('../../widget/common/ajax.js');
@@ -152,7 +153,7 @@ define(function (require, exports, module) {
 
         img.src = url;
         img.onload = function () {
-            attribute.css($cover, 'background', 'url("' + url + '") center/cover no-repeat');
+            attribute.css($cover, 'background', 'rgba(0,0,0,.5) url("' + url + '") center/cover no-repeat');
         };
     };
 
