@@ -463,6 +463,32 @@ select.ipt {
     fieldset[disabled] .btn-link:focus {
       color: #777;
       text-decoration: none; }
+  .btn-blank {
+    font-weight: normal;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.5); }
+    .btn-blank:active,
+    .btn-blank.active,
+    .btn-blank[disabled],
+    fieldset[disabled] .btn-blank {
+      background-color: transparent;
+      border-color: #fff; }
+    .btn-blank:hover,
+    .btn-blank:focus,
+    .btn-blank:active {
+      border-color: transparent; }
+    .btn-blank:hover,
+    .btn-blank:focus {
+      color: #fff;
+      background-color: transparent;
+      border-color: #fff; }
+    .btn-blank[disabled]:hover,
+    fieldset[disabled] .btn-blank:hover,
+    .btn-blank[disabled]:focus,
+    fieldset[disabled] .btn-blank:focus {
+      color: #777;
+      text-decoration: none;
+      border-color: #fff; }
   .btn-ghost,
   .btn-ghost:hover,
   .btn-ghost:focus,

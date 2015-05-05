@@ -580,6 +580,43 @@ select.ipt{
     }
   }
 
+  &-blank {
+    font-weight: normal;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.5);
+
+    &:active,
+    &.active,
+    &[disabled],
+    fieldset[disabled] & {
+      background-color: rgba(0,0,0,0);
+      border-color: #fff;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: rgba(0,0,0,0);
+    }
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      background-color: transparent;
+      border-color: #fff;
+    }
+
+    &[disabled]:hover,
+    fieldset[disabled] &:hover,
+    &[disabled]:focus,
+    fieldset[disabled] &:focus {
+      color: #777;
+      text-decoration: none;
+      border-color: #fff;
+    }
+  }
+
+
   &-ghost{
     &,
     &:hover,
