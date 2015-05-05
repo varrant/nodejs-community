@@ -45,6 +45,15 @@ validator.pushRule({
 });
 
 validator.pushRule({
+    name: 'background',
+    alias: '版块背景图',
+    type: 'url',
+    required: true,
+    minLength: 10,
+    maxLength: 255
+});
+
+validator.pushRule({
     name: 'role',
     alias: '权限值',
     onbefore: function (val) {

@@ -97,12 +97,14 @@ define(function (require, exports, module) {
          * 上传并裁剪图片
          * @private
          */
-        _onupload: function () {
+        _onupload: function (isClip, key) {
             var the = this;
             var itemKey = the._options.itemKey;
 
+            key = key || 'cover';
+            the._upload.setOptions('isClip', isClip);
             the._upload.open().on('success', function (data) {
-                the.vue.$data[itemKey].cover = data.surl;
+                the.vue.$data[itemKey][key] = data.surl;
                 this.close();
             });
         },

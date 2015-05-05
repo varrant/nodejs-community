@@ -26,6 +26,7 @@ define(function (require, exports, module) {
     var tpl = new Template(template);
     var URL = window[compatible.html5('URL', window)];
     var defaults = {
+        isClip: true,
         minWidth: 200,
         minHeight: 200,
         ratio: 1
@@ -46,8 +47,8 @@ define(function (require, exports, module) {
         _init: function () {
             var the = this;
 
-            the._dialogTitle = '裁剪并上传图片';
             the._initNode();
+            the._changeType();
             the._initEvent();
         },
 
@@ -64,7 +65,6 @@ define(function (require, exports, module) {
             modification.insert($dialog, document.body, 'beforeend');
             the._$dialog = $dialog;
             the._dialog = new Dialog(the._$dialog, {
-                title: the._dialogTitle,
                 width: 'auto'
             });
 
@@ -76,12 +76,25 @@ define(function (require, exports, module) {
         },
 
 
+        _changeType: function () {
+            var the = this;
+
+            the._dialogTitle = (the._options.isClip ? '裁剪并' : '') + '上传图片';
+            the._dialog.setTitle(the._dialogTitle);
+            the._$sure.innerHTML = (the._options.isClip ? '裁剪并' : '确认') + '上传图片';
+        },
+
         /**
          * 初始化事件
          * @private
          */
         _initEvent: function () {
             var the = this;
+            var options = the._options;
+
+            the.on('setoptions', function () {
+                the._changeType();
+            });
 
             /**
              * 选择图片
@@ -105,15 +118,20 @@ define(function (require, exports, module) {
              */
             event.on(the._$sure, 'click', function () {
                 the._$sure.disabled = true;
-                the._toBlob(function (blob) {
-                    the._toUpload(blob);
-                });
+
+                if (options.isClip) {
+                    the._toBlob(function (blob) {
+                        the._toUpload(blob);
+                    });
+                } else {
+                    the._toUpload(the._file);
+                }
             });
         },
 
 
         /**
-         * 渲染裁剪
+         * 渲染图片
          * @param file
          * @private
          */
@@ -123,6 +141,7 @@ define(function (require, exports, module) {
             var $img = modification.create('img', {
                 src: src
             });
+            var options = the._options;
 
             the._$container.innerHTML = '';
             modification.insert($img, the._$container, 'beforeend');
@@ -132,13 +151,19 @@ define(function (require, exports, module) {
                 the._$sure.disabled = true;
             }
 
+            if (options.isClip) {
+                the._imgclip = new Imgclip($img, the._options)
+                    .on('clipend', function (seletion) {
+                        the._selection = seletion;
+                        the._$sure.disabled = false;
+                    })
+                    .on('error', alert);
+            } else {
+                the._$sure.disabled = false;
+            }
+
+            the._file = file;
             the._$img = $img;
-            the._imgclip = new Imgclip($img, the._options)
-                .on('clipend', function (seletion) {
-                    the._selection = seletion;
-                    the._$sure.disabled = false;
-                })
-                .on('error', alert);
         },
 
 

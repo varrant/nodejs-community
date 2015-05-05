@@ -18,10 +18,21 @@
     <li>
         <div class="form-key">cover（200*200px）<strong class="form-required">*</strong></div>
         <div class="form-val">
-            <button class="btn btn-default btn-file" v-on="click: onupload">选择图片文件并裁剪上传</button>
+            <button class="btn btn-default btn-file" v-on="click: onupload(true, 'cover')">选择图片文件并裁剪上传</button>
             <input class="ipt" type="hidden" v-model="section.cover"/>
             <div class="form-opt text-center" v-class="none: !section.cover">
                 <img v-attr="src: section.cover" alt="cover" width="100" height="100"/>
+            </div>
+        </div>
+    </li>
+
+    <li>
+        <div class="form-key">background（1600*400px）<strong class="form-required">*</strong></div>
+        <div class="form-val">
+            <button class="btn btn-default btn-file" v-on="click: onupload(false, 'background')">选择图片文件上传</button>
+            <input class="ipt" type="hidden" v-model="section.background"/>
+            <div class="form-opt text-center" v-class="none: !section.background">
+                <img v-attr="src: section.background" alt="cover" width="400" height="100"/>
             </div>
         </div>
     </li>

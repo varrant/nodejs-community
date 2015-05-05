@@ -32,6 +32,11 @@ var schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    // 封面
+    background: {
+        type: String,
+        required: true
+    },
     // 简介
     introduction: {
         type: String,
