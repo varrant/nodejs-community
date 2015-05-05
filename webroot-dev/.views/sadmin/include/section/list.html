@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table">
     <thead>
     <tr>
         <th width="10%">序号</th>
@@ -12,7 +12,7 @@
             暂无版块信息。
         </td>
     </tr>
-    <tr v-repeat="section:sections">
+    <tr v-repeat="section:sections" style="background: url(\{{section.background}}) 0/cover">
         <td>\{{$index + 1}}</td>
         <td>
             <img v-attr="src: section.cover" alt="cover" width="100" height="100"/>

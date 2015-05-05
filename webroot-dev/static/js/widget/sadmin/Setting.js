@@ -45,6 +45,10 @@ define(function (require, exports, module) {
 
             the._initData();
             the._upload = new Upload();
+            the._upload.on('success', function (data) {
+                the.vue.$data[the._options.itemKey][the._imgKey] = data.surl;
+                this.close();
+            });
         },
 
 
@@ -99,12 +103,9 @@ define(function (require, exports, module) {
             var the = this;
             var itemKey = the._options.itemKey;
 
-            key = key || 'cover';
             the._upload.setOptions('isClip', isClip);
-            the._upload.open().on('success', function (data) {
-                the.vue.$data[itemKey][key] = data.surl;
-                this.close();
-            });
+            the._upload.open();
+            the._imgKey = key || 'cover';
         },
 
 
