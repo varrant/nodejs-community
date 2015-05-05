@@ -17,12 +17,17 @@ body {
   }
 
   &-container {
-
+    border: 1px solid #eee;
+    border-top: 0;
+    background: #fff;
+    
     @media (max-width: 991px) {
+      .layout-main:after {
+        width: 0;
+      }
 
-      .g-sub {
-        border-left: 0;
-        margin-left: 0;
+      .layout-sub:before {
+        width: 0;
       }
     }
   }
