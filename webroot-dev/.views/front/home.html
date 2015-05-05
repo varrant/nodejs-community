@@ -23,14 +23,14 @@
             <div class="col-md-12 layout-main">
                 <ul class="avg-xs-1 avg-sm-2 text-center home">
                     {{var sectionTypes = [];}}
-                    {{# sectionTypes.push({name: 'article', icon: 'file-text'});}}
-                    {{# sectionTypes.push({name: 'question', icon: 'cube'});}}
-                    {{# sectionTypes.push({name: 'link', icon: 'link'});}}
-                    {{# sectionTypes.push({name: 'help', icon: 'question-circle'});}}
+                    {{# sectionTypes.push({name: 'article', icon: 'file-text', bg: 'http://wiki.jikexueyuan.com/project/c/cover/background.jpg'});}}
+                    {{# sectionTypes.push({name: 'question', icon: 'cube', bg: 'http://wiki.jikexueyuan.com/project/c/cover/background.jpg'});}}
+                    {{# sectionTypes.push({name: 'link', icon: 'link', bg: 'http://wiki.jikexueyuan.com/project/c/cover/background.jpg'});}}
+                    {{# sectionTypes.push({name: 'help', icon: 'question-circle', bg: 'http://wiki.jikexueyuan.com/project/c/cover/background.jpg'});}}
 
                     {{list sectionTypes as st}}
                         {{if $sectionURIMap[st.name]}}
-                        <li class="home-{{=st.name}}">
+                        <li class="home-{{=st.name}}" style="background: url('{{=st.bg}}') 0/cover">
                             <a href="/{{=st.name}}/">
                                 <div class="home-icon"><i class="fi fi-{{=st.icon}}"></i></div>
                                 <div class="home-name">{{$sectionURIMap[st.name].name}}<small>/{{$sectionURIMap[st.name].objectCount|humanize}}</small></div>
