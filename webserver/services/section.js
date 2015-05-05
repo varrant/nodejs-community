@@ -8,7 +8,7 @@
 
 var section = require('../models/').section;
 var dato = require('ydr-utils').dato;
-var keys = ['name', 'role', 'uri', 'cover', 'introduction'];
+var keys = ['name', 'role', 'uri', 'cover', 'background', 'introduction'];
 
 
 /**

@@ -58,22 +58,19 @@ define(function (require, exports, module) {
                 url: options.url
             })
                 .on('success', function (data) {
-
-                    var emptyData = dato.extend({}, options.emptyData);
+                    var vueData = {};
 
                     if (id) {
                         dato.each(data, function (i, item) {
                             if (item.id === id) {
-                                emptyData = item;
+                                vueData[itemKey] = dato.extend({}, options.emptyData, item);
                                 return false;
                             }
                         });
                     }
 
-                    var vueData = {};
 
                     vueData[listKey] = data;
-                    vueData[itemKey] = emptyData;
 
                     the.vue = new Vue({
                         el: the._selector,
