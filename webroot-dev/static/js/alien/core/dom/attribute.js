@@ -155,11 +155,20 @@ define(function (require, exports, module) {
      * @returns {{key: String, val: *}}
      *
      * @example
-     * attribute.fixCss('marginTop', 10);
-     * // => {
+     * attribute.fixCss('translateX', 10);
+     * // =>
+     * // {
+     * //    key: 'transform',
+     * //    val: 'translateX(10px)',
+     * //    imp: false
+     * // }
+     *
+     * attribute.fixCss('marginTop', '10px !important');
+     * // =>
+     * // {
      * //    key: 'margin-top',
      * //    val: '10px',
-     * //    imp: false
+     * //    imp: true
      * // }
      */
     exports.fixCss = function (key, val) {
@@ -523,8 +532,7 @@ define(function (require, exports, module) {
 
     /**
      * 获取、设置元素的占位宽度
-     * content-box: cssWidth + padding + border
-     * border-box:  cssWidth
+     * content + padding + border
      * @param {HTMLElement|Node} $ele
      * @param {Number} [val] 宽度值
      * @returns {Number|undefined|*}
@@ -541,21 +549,48 @@ define(function (require, exports, module) {
     };
 
 
-    exports.innerWidth = function () {
+    /**
+     * 获取、设置元素的占位宽度
+     * content + padding
+     * @param {HTMLElement|Node} $ele
+     * @param {Number} [val] 宽度值
+     * @returns {Number|undefined|*}
+     *
+     * @example
+     * // set
+     * position.width($ele, 100);
+     *
+     * // get
+     * position.width($ele);
+     */
+    exports.innerWidth = function ($ele, val) {
         return _middleware('width', arguments, innerWidth);
     };
 
 
-    exports.width = function () {
+    /**
+     * 获取、设置元素的占位宽度
+     * content
+     * @param {HTMLElement|Node} $ele
+     * @param {Number} [val] 宽度值
+     * @returns {Number|undefined|*}
+     *
+     * @example
+     * // set
+     * position.width($ele, 100);
+     *
+     * // get
+     * position.width($ele);
+     */
+    exports.width = function ($ele, val) {
         return _middleware('width', arguments, width);
     };
 
 
     /**
      * 获取、设置元素的占位高度
-     * content-box: cssHeight + padding + border
-     * border-box:  cssHeight
-     * @param {HTMLElement|Node} ele
+     * content + padding + border
+     * @param {HTMLElement|Node} $ele
      * @param {Number} [val] 高度值
      * @returns {Number|undefined|*}
      *
@@ -566,17 +601,45 @@ define(function (require, exports, module) {
      * // get
      * position.height(ele);
      */
-    exports.outerHeight = function () {
+    exports.outerHeight = function ($ele, val) {
         return _middleware('height', arguments);
     };
 
 
-    exports.innerHeight = function () {
+    /**
+     * 获取、设置元素的占位高度
+     * content + padding
+     * @param {HTMLElement|Node} $ele
+     * @param {Number} [val] 高度值
+     * @returns {Number|undefined|*}
+     *
+     * @example
+     * // set
+     * position.height(ele, 100);
+     *
+     * // get
+     * position.height(ele);
+     */
+    exports.innerHeight = function ($ele, val) {
         return _middleware('height', arguments, innerHeight);
     };
 
 
-    exports.height = function () {
+    /**
+     * 获取、设置元素的占位高度
+     * content
+     * @param {HTMLElement|Node} $ele
+     * @param {Number} [val] 高度值
+     * @returns {Number|undefined|*}
+     *
+     * @example
+     * // set
+     * position.height(ele, 100);
+     *
+     * // get
+     * position.height(ele);
+     */
+    exports.height = function ($ele, val) {
         return _middleware('height', arguments, height);
     };
 
@@ -615,6 +678,7 @@ define(function (require, exports, module) {
             return $1.toUpperCase();
         });
     }
+
 
     /**
      * 转换驼峰为分隔字符串

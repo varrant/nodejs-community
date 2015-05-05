@@ -73,6 +73,7 @@ define(function (require, exports, module) {
             the._$file = nodes[0];
             the._$sure = nodes[1];
             the._$container = nodes[2];
+            the._containerHTML = the._$container.innerHTML;
         },
 
 
@@ -92,9 +93,8 @@ define(function (require, exports, module) {
             var the = this;
             var options = the._options;
 
-            the.on('setoptions', function () {
-                the._changeType();
-            });
+            the.on('setoptions', the._changeType.bind(the));
+            the._dialog.on('close', the._onclose.bind(the));
 
             /**
              * 选择图片
@@ -234,12 +234,27 @@ define(function (require, exports, module) {
         },
 
 
+        _onclose: function(){
+            var the = this;
+
+            if (the._imgclip) {
+                the._imgclip.destroy();
+                the._$sure.disabled = true;
+            }
+
+            the._$container.innerHTML = the._containerHTML;
+        },
+
+
         /**
          * 关闭上传的对话框
          */
         close: function () {
-            this._dialog.close();
-            return this;
+            var the = this;
+
+            the._dialog.close();
+
+            return the;
         }
     });
 

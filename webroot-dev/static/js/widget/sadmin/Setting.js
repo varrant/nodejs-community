@@ -23,6 +23,7 @@ define(function (require, exports, module) {
             name: '',
             uri: '',
             cover: '',
+            background: '',
             introduction: ''
         },
         url: '',
