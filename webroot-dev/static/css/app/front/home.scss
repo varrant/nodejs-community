@@ -15,7 +15,8 @@ $border-color: #e6e6e6;
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center bottom;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
+    display: none;
   }
 
   a {
@@ -33,7 +34,7 @@ $border-color: #e6e6e6;
     img{
       width: 101px;
       height: 101px;
-      border-radius: 10px;
+      border-radius: 100%;
       border: 1px solid #fff;
     }
   }

@@ -25,7 +25,7 @@
   .ptitle-cover {
     width: 101px;
     height: 101px;
-    border-radius: 10px;
+    border-radius: 100%;
     border: 1px solid #fff; }
   .ptitle-name {
     margin: 20px 0;
