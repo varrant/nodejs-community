@@ -4,8 +4,11 @@
     (function () {
         var $loadProgress = document.querySelector('#loadProgress');
         var progress = 1;
+        var random = function(min, max){
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        };
         var onprogress = function () {
-            var timeout = progress * 10;
+            var timeout = random(10, 100);
 
             setTimeout(function () {
                 if(window.loaded){
@@ -17,7 +20,7 @@
                     return;
                 }
 
-                progress += 10;
+                progress += random(1, 10);
 
                 if(progress > 98){
                     progress = 98;
