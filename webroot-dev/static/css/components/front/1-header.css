@@ -76,13 +76,9 @@ header {
       color: #fff;
       padding: 0 20px; }
       .nav-list a:hover {
-        background: #01809F;
-        background: -webkit-linear-gradient(#01809F 0, #00A2CA 100%);
-        background: linear-gradient(#01809F 0, #00A2CA 100%); }
+        background: #0298BD; }
     .nav-list .active a {
-      background: #01809F;
-      background: -webkit-linear-gradient(#01809F 0, #00A2CA 100%);
-      background: linear-gradient(#01809F 0, #00A2CA 100%); }
+      background: #0491b4; }
     .nav-list .label {
       position: relative;
       font-size: 100%;
