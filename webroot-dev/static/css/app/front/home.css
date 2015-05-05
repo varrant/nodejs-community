@@ -1,26 +1,26 @@
 .home {
   margin: 0; }
   .home li {
-    line-height: 30px;
-    border-top: 1px solid #e6e6e6; }
+    line-height: 30px; }
     .home li:nth-child(1) {
-      border-top: 0; }
-    @media (min-width: 767px) {
-      .home li:nth-child(2) {
-        border-top: 0; }
-      .home li:nth-child(2n+1) {
-        border-right: 1px solid #eee; } }
+      background: #000; }
   .home a {
     position: relative;
     display: block;
     padding: 20px;
-    color: #666; }
+    color: #fff; }
     .home a:hover {
-      background: #F9F9F9;
       text-decoration: none; }
   .home-icon {
     font-size: 80px;
-    color: #ececec; }
+    color: #fff; }
+    .home-icon .fi {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 100%;
+      width: 140px;
+      height: 140px;
+      line-height: 100px; }
   .home-name {
     font-size: 30px;
     line-height: 60px; }
