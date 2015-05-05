@@ -5,8 +5,7 @@
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center bottom;
-    margin-bottom: 60px;
-    display: none; }
+    margin-bottom: 60px; }
   .home a {
     position: relative;
     display: block;
@@ -15,8 +14,8 @@
     .home a:hover {
       text-decoration: none; }
   .home-icon img {
-    width: 101px;
-    height: 101px;
+    width: 102px;
+    height: 102px;
     border-radius: 100%;
     border: 1px solid #fff; }
   .home-name {

@@ -16,7 +16,6 @@ $border-color: #e6e6e6;
     background-size: cover;
     background-position: center bottom;
     margin-bottom: 60px;
-    display: none;
   }
 
   a {
@@ -32,8 +31,8 @@ $border-color: #e6e6e6;
 
   &-icon {
     img{
-      width: 101px;
-      height: 101px;
+      width: 102px;
+      height: 102px;
       border-radius: 100%;
       border: 1px solid #fff;
     }

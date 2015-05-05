@@ -23,8 +23,8 @@
     background-size: cover;
     background-position: center bottom; }
   .ptitle-cover {
-    width: 101px;
-    height: 101px;
+    width: 102px;
+    height: 102px;
     border-radius: 100%;
     border: 1px solid #fff; }
   .ptitle-name {
@@ -108,14 +108,15 @@
     text-align: center;
     margin-bottom: 50px; }
   .thumblist-cover {
-    border-radius: 6px;
-    height: 100px;
-    margin-bottom: 20px; }
+    width: 102px;
+    height: 102px;
+    border-radius: 100%;
+    border: 1px solid #00A2CA; }
   .thumblist-name {
     height: 16px;
     line-height: 16px;
     overflow: hidden;
-    margin-bottom: 10px; }
+    margin: 10px 0; }
   .thumblist-author {
     margin-bottom: 10px; }
   .thumblist-link {
