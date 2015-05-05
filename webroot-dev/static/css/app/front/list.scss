@@ -21,11 +21,7 @@ $border-color: #e6e6e6;
   transition: background 500ms;
   min-height: 200px;
   color: #fff;
-
-
-  &.active{
-    background: rgba(0, 0, 0, 0.4);
-  }
+  background: rgba(0, 0, 0, 0.4);
 
   &-bg{
     position: absolute;
@@ -34,12 +30,15 @@ $border-color: #e6e6e6;
     bottom: 0;
     left: 0;
     z-index: -1;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center bottom;
   }
 
   &-cover{
     width: 101px;
     height: 101px;
-    border-radius: 6px;
+    border-radius: 10px;
     border: 1px solid #fff;
   }
 

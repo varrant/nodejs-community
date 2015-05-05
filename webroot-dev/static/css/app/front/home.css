@@ -1,9 +1,11 @@
 .home {
   margin: 0; }
   .home li {
-    line-height: 30px; }
-    .home li:nth-child(1) {
-      background: #000; }
+    line-height: 30px;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center bottom;
+    margin-bottom: 30px; }
   .home a {
     position: relative;
     display: block;
@@ -11,18 +13,13 @@
     color: #fff; }
     .home a:hover {
       text-decoration: none; }
-  .home-icon {
-    font-size: 80px;
-    color: #fff; }
-    .home-icon .fi {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 20px;
-      border-radius: 100%;
-      width: 140px;
-      height: 140px;
-      line-height: 100px; }
+  .home-icon img {
+    width: 101px;
+    height: 101px;
+    border-radius: 10px;
+    border: 1px solid #fff; }
   .home-name {
-    font-size: 30px;
+    font-size: 20px;
     line-height: 60px; }
   .home-desc {
     font-size: 14px; }

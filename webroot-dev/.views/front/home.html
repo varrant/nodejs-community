@@ -21,7 +21,7 @@
         <div class="row layout-container">
             <!--主-->
             <div class="col-md-12 layout-main">
-                <ul class="avg-xs-1 avg-sm-2 text-center home">
+                <ul class="avg-xs-1 text-center home">
                     {{var sectionTypes = [];}}
                     {{# sectionTypes.push({name: 'article', icon: 'file-text'});}}
                     {{# sectionTypes.push({name: 'question', icon: 'cube'});}}
@@ -30,11 +30,10 @@
 
                     {{list sectionTypes as st}}
                         {{if $sectionURIMap[st.name]}}
-                        <li class="home-{{=st.name}}">
+                        <li class="home-{{=st.name}}" style="background-image: url('{{=$sectionURIMap[st.name].background}}');" coolieignore>
                             <a href="/{{=st.name}}/">
                                 <div class="home-icon"><img src="{{$sectionURIMap[st.name].cover}}" alt="cover" coolieignore/></div>
                                 <div class="home-name">{{$sectionURIMap[st.name].name}}<small>/{{$sectionURIMap[st.name].objectCount|humanize}}</small></div>
-                                <div class="home-desc">{{$sectionURIMap[st.name].introduction}}</div>
                             </a>
                         </li>
                         {{/if}}
