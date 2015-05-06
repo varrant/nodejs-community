@@ -35,6 +35,7 @@ define(function (require, exports, module) {
                 url: '/admin/api/oss/',
                 method: 'put',
                 headers: {
+                    accept: 'application/json; charset=utf-8',
                     'x-request-csrf': window['-csrf-']
                 }
             }

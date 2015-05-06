@@ -385,7 +385,7 @@ define(function (require, exports, module) {
 
             xhr.ajax(ajaxOptions)
                 .on('progress', function (eve) {
-                    the._$submit.innerHTML = '正在上传 ' + eve.alienDetail.percent + '%';
+                    the._$submit.innerHTML = '正在上传 <b>' + eve.alienDetail.percent + '</b>';
                 })
                 .on('success', function (json) {
                     the.emit('success', json);
