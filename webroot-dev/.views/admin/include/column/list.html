@@ -20,7 +20,7 @@
             <li>
                 <div class="form-key">专辑封面（200*200px）<strong class="form-required">*</strong></div>
                 <div class="form-val">
-                    <button class="btn btn-default btn-file" v-on="click: onupload">选择图片文件并裁剪上传</button>
+                    <button class="btn btn-default btn-file" v-on="click: onupload(true, 'cover')">选择图片文件并裁剪上传</button>
                     <input class="ipt" type="hidden" v-model="column.cover"/>
                     <div class="form-opt text-center" v-class="none: !column.cover">
                         <img v-attr="src: column.cover" alt="cover" width="100" height="100"/>

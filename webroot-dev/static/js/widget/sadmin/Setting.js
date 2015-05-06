@@ -60,8 +60,12 @@ define(function (require, exports, module) {
 
             the._initData();
             the._upload = new Upload(options.uploadOptions);
-            the._upload.on('success', function (data) {
-                the.vue.$data[the._options.itemKey][the._imgKey] = data.surl;
+            the._upload.on('success', function (json) {
+                if (json.code !== 200) {
+                    return alert(json);
+                }
+
+                the.vue.$data[the._options.itemKey][the._imgKey] = json.data.surl;
                 this.close();
             }).on('error', alert);
         },
@@ -78,11 +82,12 @@ define(function (require, exports, module) {
             })
                 .on('success', function (data) {
                     var vueData = {};
+                    var itemData = dato.extend({}, options.emptyData);
 
                     if (id) {
                         dato.each(data, function (i, item) {
                             if (item.id === id) {
-                                vueData[itemKey] = dato.extend({}, options.emptyData, item);
+                                dato.extend(itemData, item);
                                 return false;
                             }
                         });
@@ -90,6 +95,7 @@ define(function (require, exports, module) {
 
 
                     vueData[listKey] = data;
+                    vueData[itemKey] = itemData;
 
                     the.vue = new Vue({
                         el: the._selector,
@@ -112,6 +118,8 @@ define(function (require, exports, module) {
 
         /**
          * 上传并裁剪图片
+         * @param isClip
+         * @param key
          * @private
          */
         _onupload: function (isClip, key) {

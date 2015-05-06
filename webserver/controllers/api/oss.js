@@ -39,6 +39,9 @@ module.exports = function (app) {
             object: configs.dir.upload + random.guid()
         }, function (err, ret) {
             if (err) {
+                req.socket.destroy();
+                console.log('upload error', err);
+                console.log('upload developer', req.session.$developer.id);
                 return next(err);
             }
 

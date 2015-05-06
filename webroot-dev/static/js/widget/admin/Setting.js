@@ -18,13 +18,28 @@ define(function (require, exports, module) {
     var event = require('../../alien/core/event/base.js');
     var id = hashbang.get('query', 'id');
     var dato = require('../../alien/utils/dato.js');
-    var Upload = require('../common/Upload/');
+    var Upload = require('../../alien/ui/Upload/');
     var defaults = {
         emptyData: {
             name: '',
             uri: '',
+            background: '',
             cover: '',
             introduction: ''
+        },
+        uploadOptions: {
+            isClip: true,
+            minWidth: 200,
+            minHeight: 200,
+            ratio: 1,
+            ajax: {
+                url: '/admin/api/oss/',
+                method: 'put',
+                headers: {
+                    accept: 'application/json; charset=utf-8',
+                    'x-request-csrf': window['-csrf-']
+                }
+            }
         },
         url: '',
         itemKey: '',
@@ -42,9 +57,18 @@ define(function (require, exports, module) {
     Setting.implement({
         _init: function () {
             var the = this;
+            var options = the._options;
 
             the._initData();
-            the._upload = new Upload();
+            the._upload = new Upload(options.uploadOptions);
+            the._upload.on('success', function (json) {
+                if (json.code !== 200) {
+                    return alert(json);
+                }
+
+                the.vue.$data[the._options.itemKey][the._imgKey] = json.data.surl;
+                this.close();
+            }).on('error', alert);
         },
 
 
@@ -95,16 +119,15 @@ define(function (require, exports, module) {
 
         /**
          * 上传并裁剪图片
+         * @param isClip
+         * @param key
          * @private
          */
-        _onupload: function () {
+        _onupload: function (isClip, key) {
             var the = this;
-            var itemKey = the._options.itemKey;
 
-            the._upload.open().on('success', function (data) {
-                the.vue.$data[itemKey].cover = data.surl;
-                this.close();
-            });
+            the._upload.setOptions('isClip', isClip).open();
+            the._imgKey = key || 'cover';
         },
 
 
