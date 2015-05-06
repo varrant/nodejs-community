@@ -30,7 +30,6 @@
     -moz-osx-font-smoothing: grayscale;
     transform: translate(0, 0);
     margin-right: .3em;
-    min-width: 0.8em;
 }
 
 .btn > .i:first-child {
