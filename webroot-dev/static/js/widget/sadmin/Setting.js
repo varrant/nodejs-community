@@ -17,7 +17,7 @@ define(function (require, exports, module) {
     var event = require('../../alien/core/event/base.js');
     var id = hashbang.get('query', 'id');
     var dato = require('../../alien/utils/dato.js');
-    var Upload = require('../common/Upload/');
+    var Upload = require('../../alien/ui/Upload/');
     var defaults = {
         emptyData: {
             name: '',
@@ -25,6 +25,19 @@ define(function (require, exports, module) {
             cover: '',
             background: '',
             introduction: ''
+        },
+        uploadOptions: {
+            isClip: true,
+            minWidth: 200,
+            minHeight: 200,
+            ratio: 1,
+            ajax: {
+                url: '/admin/api/oss/',
+                method: 'put',
+                headers: {
+                    'x-request-csrf': window['-csrf-']
+                }
+            }
         },
         url: '',
         itemKey: '',
@@ -42,13 +55,14 @@ define(function (require, exports, module) {
     Setting.implement({
         _init: function () {
             var the = this;
+            var options = the._options;
 
             the._initData();
-            the._upload = new Upload();
+            the._upload = new Upload(options.uploadOptions);
             the._upload.on('success', function (data) {
                 the.vue.$data[the._options.itemKey][the._imgKey] = data.surl;
                 this.close();
-            });
+            }).on('error', alert);
         },
 
 
@@ -101,10 +115,8 @@ define(function (require, exports, module) {
          */
         _onupload: function (isClip, key) {
             var the = this;
-            var itemKey = the._options.itemKey;
 
-            the._upload.setOptions('isClip', isClip);
-            the._upload.open();
+            the._upload.setOptions('isClip', isClip).open();
             the._imgKey = key || 'cover';
         },
 
