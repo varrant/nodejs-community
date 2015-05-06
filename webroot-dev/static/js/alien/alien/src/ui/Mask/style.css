@@ -1,9 +1,0 @@
-@charset "utf-8";
-
-.alien-ui-mask{
-    display: none;
-}
-
-.alien-ui-mask-overflow{
-    overflow: hidden !important;
-}
