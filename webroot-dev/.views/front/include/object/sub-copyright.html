@@ -4,6 +4,13 @@
 
     <div class="card-body">
         <ul class="simplelist">
+            {{if section.uri == 'link'}}
+            <li>来源地址：<a href="{{=object.link}}" target="_blank"
+                        id="linkSource"><img class="favicon" src="http://f.ydr.me/{{=object.link}}" alt="f" width="16" height="16"/>{{=object.link}}</a><span
+                    class="text-light text-space"><i class="fi fi-external-link"></i><span
+                    id="linkByCount">{{object.linkByCount}}</span></span>
+            </li>
+            {{/if}}
             <li>{{section.name}}标题：<a href="{{=url}}">《{{=title}}》</a></li>
             <li>{{section.name}}地址：<a href="{{=url}}">{{=url}}</a></li>
         </ul>

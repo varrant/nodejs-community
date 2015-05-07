@@ -67,35 +67,13 @@
 
                 <div class="eof card"><span>EOF</span></div>
 
-                <!-- 版权 -->
-                <div class="card copyright">
-                    <h2 class="card-title"><i class="fi fi-copyright"></i>版权信息</h2>
-
-                    <div class="card-body">
-                        <ul class="simplelist">
-                            <li>来源地址：<a href="{{=object.link}}" target="_blank"
-                                        id="linkSource"><img class="favicon" src="http://f.ydr.me/{{=object.link}}" alt="f" width="16" height="16"/>{{=object.link}}</a><span
-                                    class="text-light text-space"><i class="fi fi-external-link"></i><span
-                                    id="linkByCount">{{object.linkByCount}}</span></span>
-                            </li>
-                            <li>链接标题：<a href="{{=$configs.app.host}}/link/{{=object.uri}}.html">《{{=title}}》</a><span
-                                    class="text-light text-space">by</span><a
-                                    href="{{=$configs.app.host}}/developer/{{=object.author.githubLogin}}/"><i
-                                    class="fi fi-user"></i>{{=object.author.nickname}}</a>
-                            </li>
-                            <li>链接地址：<a href="{{=$configs.app.host}}/link/{{=object.uri}}.html">{{=$configs.app.host}}/link/{{=object.uri}}.html</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /版权 -->
-
                 <div id="response"></div>
             </div>
             <!--/主-->
             <!--副-->
             <div class="col-md-3 layout-sub">
                 {{include ./include/object/sub-author.html}}
+                {{include ./include/object/sub-copyright.html}}
                 {{include ./include/object/sub-statistics.html}}
             </div>
             <!--/副-->
