@@ -15,8 +15,8 @@ define(function (require, exports, module) {
     var open = function (url) {
         var screenW = window.screen.width;
         var screenH = window.screen.height;
-        var winW = 400;
-        var winH = 600;
+        var winW = 650;
+        var winH = 400;
         var left = (screenW - winW) / 2;
         var top = (screenH - winH) / 3;
 
@@ -31,7 +31,7 @@ define(function (require, exports, module) {
     var e = encodeURIComponent;
 
 
-    event.on(document, 'click', '.share-sina', function () {
+    event.on(document, 'click', '.share-weibo', function () {
         var url = 'http://v.t.sina.com.cn/share/share.php?';
         //http://service.weibo.com/share/share.php
         // ?url=http://sb.com:18082/article/
