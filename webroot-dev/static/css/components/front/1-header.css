@@ -13,7 +13,7 @@ header {
 /*nav*/
 .nav {
   position: relative;
-  background: #00A2CA;
+  background: #4b9cdb;
   height: 50px;
   line-height: 50px;
   z-index: 9; }
@@ -54,7 +54,7 @@ header {
       bottom: 0;
       width: 30%;
       z-index: 9;
-      background: #00A2CA;
+      background: #4b9cdb;
       min-width: 140px;
       -webkit-transform: translateX(-100%);
       transform: translateX(-100%);
@@ -76,9 +76,9 @@ header {
       color: #fff;
       padding: 0 20px; }
       .nav-list a:hover {
-        background: #0298BD; }
+        background: #4895d1; }
     .nav-list .active a {
-      background: #0491b4; }
+      background: #4289c1; }
     .nav-list .label {
       position: relative;
       font-size: 100%;
@@ -112,13 +112,16 @@ header {
     position: relative;
     display: block;
     text-align: center;
-    background: #00A2CA;
+    background: #4b9cdb;
     z-index: 4; }
     .nav-drop img {
-      width: 30px;
-      vertical-align: middle; }
+      width: 34px;
+      height: 34px;
+      vertical-align: middle;
+      border-radius: 100%;
+      border: 2px solid #FFF; }
     .active .nav-drop {
-      background: #008eb1; }
+      background: #3690d7; }
   .nav-join,
   .nav-join:hover,
   .nav-join:active,
@@ -130,11 +133,11 @@ header {
   .nav-downlist {
     position: absolute;
     width: 140px;
-    background: #008eb1;
+    background: #3690d7;
     z-index: 3;
     list-style: none;
     padding: 0;
-    border: 1px solid #008eb1;
+    border: 1px solid #3690d7;
     border-top: 0;
     top: 18px;
     right: 0;
@@ -149,7 +152,7 @@ header {
       color: #fff;
       padding: 10px 16px; }
       .nav-downlist a:hover {
-        background: #009ac0; }
+        background: #4297d9; }
     .active .nav-downlist {
       -webkit-transform: translateY(0);
       transform: translateY(0); }

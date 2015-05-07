@@ -1,6 +1,6 @@
 // header
 
-$primary-bg-color: #00A2CA;
+$primary-bg-color: #4b9cdb;
 $primary-fg-color: lighten($primary-bg-color, 90%);
 $border-color: #e6e6e6;
 
@@ -105,12 +105,12 @@ header {
       padding: 0 20px;
 
       &:hover {
-        background: #0298BD;
+        background: #4895d1;
       }
     }
 
     .active a {
-      background: #0491b4;
+      background: #4289c1;
     }
 
     .label {
@@ -169,8 +169,11 @@ header {
     z-index: 4;
 
     img {
-      width: 30px;
+      width: 34px;
+      height: 34px;
       vertical-align: middle;
+      border-radius: 100%;
+      border: 2px solid #FFF;
     }
 
     .active & {
