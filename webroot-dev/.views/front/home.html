@@ -32,7 +32,7 @@
                         {{if $sectionURIMap[st.name]}}
                         <li class="home-{{=st.name}}" style="background-image: url('{{=$sectionURIMap[st.name].background}}');" coolieignore>
                             <a href="/{{=st.name}}/">
-                                <div class="home-icon"><img src="{{$sectionURIMap[st.name].cover}}" alt="cover" coolieignore/></div>
+                                <div class="home-icon"><img class="img-rounder img-border-blank" src="{{$sectionURIMap[st.name].cover}}" alt="cover" coolieignore/></div>
                                 <div class="home-name">{{$sectionURIMap[st.name].name}}<small>/{{$sectionURIMap[st.name].objectCount|humanize}}</small></div>
                             </a>
                         </li>

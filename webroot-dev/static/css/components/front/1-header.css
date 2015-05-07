@@ -117,9 +117,7 @@ header {
     .nav-drop img {
       width: 34px;
       height: 34px;
-      vertical-align: middle;
-      border-radius: 100%;
-      border: 2px solid #FFF; }
+      vertical-align: middle; }
     .active .nav-drop {
       background: #3690d7; }
   .nav-join,

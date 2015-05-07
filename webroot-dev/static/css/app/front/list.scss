@@ -35,12 +35,6 @@ $border-color: #e6e6e6;
     background-position: center bottom;
   }
 
-  &-cover{
-    width: 102px;
-    height: 102px;
-    border-radius: 100%;
-    border: 1px solid #fff;
-  }
 
 //  &-count{
 //    position: absolute;
@@ -183,13 +177,6 @@ $border-color: #e6e6e6;
     position: relative;
     text-align: center;
     margin-bottom: 50px;
-  }
-
-  &-cover {
-    width: 102px;
-    height: 102px;
-    border-radius: 100%;
-    border: 1px solid #ccc;
   }
 
   &-name {

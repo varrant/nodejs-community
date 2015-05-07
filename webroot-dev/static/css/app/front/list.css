@@ -22,11 +22,6 @@
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center bottom; }
-  .ptitle-cover {
-    width: 102px;
-    height: 102px;
-    border-radius: 100%;
-    border: 1px solid #fff; }
   .ptitle-name {
     margin: 20px 0;
     padding: 0;
@@ -107,11 +102,6 @@
     position: relative;
     text-align: center;
     margin-bottom: 50px; }
-  .thumblist-cover {
-    width: 102px;
-    height: 102px;
-    border-radius: 100%;
-    border: 1px solid #ccc; }
   .thumblist-name {
     height: 16px;
     line-height: 16px;
