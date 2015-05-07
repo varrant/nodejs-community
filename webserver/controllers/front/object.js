@@ -218,6 +218,7 @@ module.exports = function (app) {
             var page = req.params.page;
             var data = {};
             var $developer = res.locals.$developer;
+            var configs = cache.get('app.configs');
 
             object.findOne({
                 section: section.id,
@@ -238,6 +239,8 @@ module.exports = function (app) {
                 data.title = obje.title;
                 data.object = obje;
                 data.page = page;
+                data.section = section;
+                data.url = configs.app.host + '/' + section.uri + '/' + obje.uri + '.html';
 
                 var onend = function () {
                     object.increaseViewByCount({_id: obje.id}, 1, log.holdError);
