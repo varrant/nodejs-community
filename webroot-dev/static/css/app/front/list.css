@@ -72,8 +72,8 @@
       padding-bottom: 0;
       margin-bottom: 0; }
   .summarylist-avatar img {
-    width: 54px;
-    height: 54px; }
+    width: 50px;
+    height: 50px; }
   .summarylist-body {
     margin-left: 80px;
     overflow: hidden; }
@@ -90,6 +90,9 @@
   .summarylist-contributors {
     margin: 0;
     padding: 0; }
+    .summarylist-contributors img {
+      width: 20px;
+      height: 20px; }
     .summarylist-contributors > li {
       margin-left: 5px; }
     .summarylist-contributors a {

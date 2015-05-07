@@ -130,8 +130,8 @@ $border-color: #e6e6e6;
 
   &-avatar{
     img{
-      width: 54px;
-      height: 54px;
+      width: 50px;
+      height: 50px;
     }
   }
 
@@ -158,6 +158,11 @@ $border-color: #e6e6e6;
   &-contributors {
     margin: 0;
     padding: 0;
+
+    img{
+      width: 20px;
+      height: 20px;
+    }
 
     & > li {
       margin-left: 5px;
