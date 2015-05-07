@@ -128,8 +128,15 @@ $border-color: #e6e6e6;
     }
   }
 
+  &-avatar{
+    img{
+      width: 54px;
+      height: 54px;
+    }
+  }
+
   &-body {
-    margin-left: 60px;
+    margin-left: 80px;
     overflow: hidden;
   }
 

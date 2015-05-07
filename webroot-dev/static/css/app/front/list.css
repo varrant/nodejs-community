@@ -71,8 +71,11 @@
       border-bottom: 0;
       padding-bottom: 0;
       margin-bottom: 0; }
+  .summarylist-avatar img {
+    width: 54px;
+    height: 54px; }
   .summarylist-body {
-    margin-left: 60px;
+    margin-left: 80px;
     overflow: hidden; }
   .summarylist-name {
     padding: 0;
