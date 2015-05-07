@@ -41,7 +41,7 @@ define(function (require, exports, module) {
         var qs = [];
 
         qs.push('url=' + e(location.href));
-        qs.push('title=' + e(document.title));
+        qs.push('title=' + e('写的不错，分享一下啦。《' + document.title + '》【链接】' + location.href));
         qs.push('appkey=' + e('3801039502'));
         qs.push('searchPic=' + e('true'));
 
