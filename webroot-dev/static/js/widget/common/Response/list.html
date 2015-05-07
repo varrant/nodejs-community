@@ -9,7 +9,9 @@
     data-parent="{{item.parentResponse}}">
     <div class="clearfix alien-ui-response-main">
         <div class="alien-ui-response-avatar pull-left">
-            <a href="/developer/{{=item.author.githubLogin}}/"><img src="{{item.author.avatar}}" alt="avatar" width="50" height="50"/></a>
+            <a href="/developer/{{=item.author.githubLogin}}/"><img src="{{item.author.avatar}}"
+                                                                    class="img-rounder"
+                                                                    alt="avatar" width="50" height="50"/></a>
 
             {{if !item.parentResponse}}
             <i class="fi fi-check alien-ui-response-flag"></i>
@@ -36,7 +38,7 @@
                             class="alien-ui-response-number">{{item.agreeByCount}}</span></button>
                     <span class="alien-ui-response-agreers list-left">
                         {{list item.agreers as agreer}}
-                        <a href="/developer/{{=agreer.githubLogin}}/"><img src="{{=agreer.avatarM}}"></a>
+                        <a href="/developer/{{=agreer.githubLogin}}/"><img class="img-rounder" src="{{=agreer.avatarM}}"></a>
                         {{/list}}
                     </span>
                 </li>
