@@ -23,8 +23,6 @@ define(function (require, exports, module) {
 
     // github repos
     app.repos = function () {
-
-
         repos(winTa, '#githubRepos');
     };
 

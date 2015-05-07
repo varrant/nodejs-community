@@ -11,6 +11,7 @@ define(function (require, exports, module) {
     require('../../widget/front/login.js');
     require('../../widget/front/nav.js');
     require('../../widget/front/footer.js');
+    require('../../widget/common/share.js');
 
     var Template = require('../../alien/libs/Template.js');
     var Pager = require('../../alien/ui/Pager/');
@@ -20,7 +21,6 @@ define(function (require, exports, module) {
     var dato = require('../../alien/utils/dato.js');
     var random = require('../../alien/utils/random.js');
     var event = require('../../alien/core/event/touch.js');
-    var share = require('../../widget/common/share.js');
     var ajax = require('../../widget/common/ajax.js');
     var pager = window['-pager-'];
     var app = {};
@@ -28,7 +28,7 @@ define(function (require, exports, module) {
     var $body = selector.query('#body')[0];
     var template = selector.query('#template')[0].innerHTML;
     var tpl = new Template(template);
-    var beginURL = location.href;
+    //var beginURL = location.href;
 
     //Template.config({
     //    debug: true
@@ -166,7 +166,6 @@ define(function (require, exports, module) {
     //    };
     //};
 
-    share('#share');
     app.getPath();
     app.buildPager();
     app.buildPjax();

@@ -70,31 +70,13 @@
 
                 <div class="eof card"><span>EOF</span></div>
 
-
-                <!-- 版权 -->
-                <div class="card copyright">
-                    <h2 class="card-title"><i class="fi fi-copyright"></i>版权信息</h2>
-
-                    <div class="card-body">
-                        <ul class="simplelist">
-                            <li>帮助标题：<a href="{{=$configs.app.host}}/help/{{=object.uri}}.html">《{{=title}}》</a><span
-                                    class="text-light text-space">by</span><a
-                                    href="{{=$configs.app.host}}/developer/{{=object.author.githubLogin}}/"><i
-                                    class="fi fi-user"></i>{{=object.author.nickname}}</a></li>
-                            <li>帮助地址：<a href="{{=$configs.app.host}}/help/{{=object.uri}}.html">{{=$configs.app.host}}/help/{{=object.uri}}.html</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /版权 -->
-
-
                 <div id="response"></div>
             </div>
             <!--/主-->
             <!--副-->
             <div class="col-md-3 layout-sub">
                 {{include ./include/object/sub-author.html}}
+                {{include ./include/object/sub-copyright.html}}
                 {{include ./include/object/sub-statistics.html}}
             </div>
             <!--/副-->

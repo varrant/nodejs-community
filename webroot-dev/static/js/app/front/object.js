@@ -8,6 +8,11 @@
 define(function (require, exports, module) {
     'use strict';
 
+    require('../../widget/front/login.js');
+    require('../../widget/front/nav.js');
+    require('../../widget/front/footer.js');
+    require('../../widget/common/share.js');
+
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
     var animation = require('../../alien/core/dom/animation.js');
@@ -17,7 +22,6 @@ define(function (require, exports, module) {
     var Prettify = require('../../alien/ui/Prettify/');
     var dato = require('../../alien/utils/dato.js');
     var url = require('../../alien/utils/url.js');
-    var share = require('../../widget/common/share.js');
     var ajax = require('../../widget/common/ajax.js');
     var win = window;
     var winObject = win['-object-'];
@@ -154,8 +158,4 @@ define(function (require, exports, module) {
     app.response();
     app.imgview();
     app.prettify();
-    share('#share');
-    require('../../widget/front/login.js');
-    require('../../widget/front/nav.js');
-    require('../../widget/front/footer.js');
 });
