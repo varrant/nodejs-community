@@ -20,6 +20,7 @@
     <li class="summarylist-item clearfix">
         <div class="summarylist-avatar pull-left">
             <a href="/developer/{{=object.author.githubLogin}}/"><img src="{{object.author.avatar}}"
+                                                                      class="img-rounder"
                                                                       alt="avatar" width="50" height="50" coolieignore/></a>
         </div>
         <div class="summarylist-body">
@@ -44,7 +45,9 @@
                         {{list object.contributors as contributor}}
                         <li>
                             <a href="/developer/{{contributor.githubLogin}}/" title="{{contributor.nickname}}">
-                                <img src="{{contributor.avatarM}}" width="20" height="20" alt="avatar"
+                                <img src="{{contributor.avatarM}}"
+                                     class="img-rounder"
+                                     width="20" height="20" alt="avatar"
                                      coolieignore/>
                             </a>
                         </li>
