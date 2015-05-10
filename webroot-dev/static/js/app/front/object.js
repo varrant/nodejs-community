@@ -57,27 +57,6 @@ define(function (require, exports, module) {
     };
 
 
-    app.link = function () {
-        var $linkSource = selector.query('#linkSource')[0];
-        var $linkByCount = selector.query('#linkByCount')[0];
-
-        if (!$linkSource) {
-            return;
-        }
-
-        event.on($linkSource, 'click', function () {
-            ajax({
-                url: '/object/link-by-count',
-                method: 'put',
-                body: {
-                    id: winObject.id
-                }
-            });
-            $linkByCount.innerHTML = dato.parseInt($linkByCount.innerHTML, 1) + 1;
-        });
-    };
-
-
     // 评论
     app.response = function () {
         var $title = selector.query('#object-title')[0];
@@ -154,7 +133,6 @@ define(function (require, exports, module) {
     };
 
     app.toc();
-    app.link();
     app.response();
     app.imgview();
     app.prettify();
