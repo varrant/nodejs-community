@@ -591,7 +591,7 @@ define(function (require, exports, module) {
             var html = '';
 
             dato.each(agreers, function (index, agreer) {
-                html += '<a href="/developer/' + agreer.githubLogin + '/"><img src="' + agreer.avatarM + '"></a>';
+                html += '<a href="/developer/' + agreer.githubLogin + '/"><img class="img-rounder" src="' + agreer.avatarM + '"></a>';
             });
             $agreesParent.innerHTML = html;
         },

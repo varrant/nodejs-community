@@ -79,13 +79,13 @@ var schema = new mongoose.Schema({
         type: String,
         required: false
     },
-    // 链接地址
-    link: {
+    // 引用地址
+    reference: {
         type: String,
         required: false
     },
-    // 链接查看次数
-    linkByCount: {
+    // 引用链接查看次数
+    referenceByCount: {
         type: Number,
         default: 1
     },
