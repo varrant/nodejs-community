@@ -8,36 +8,43 @@
 define(function (require, exports, module) {
     'use strict';
 
+    var win = window;
+    var selector = require('../../alien/core/dom/selector.js');
     var event = require('../../alien/core/event/base.js');
     var open = function (url) {
-        var screenW = window.screen.width;
-        var screenH = window.screen.height;
+        var screenW = win.screen.width;
+        var screenH = win.screen.height;
         var winW = 650;
         var winH = 400;
         var left = (screenW - winW) / 2;
         var top = (screenH - winH) / 3;
 
         if (screenW > 1080) {
-            window.open(url, '',
+            win.open(url, '',
                 'width=' + winW + ',height=' + winH + ',top=' + top + ',left=' + left + ',' +
                 'scrollbars=no,resizable=no,menubar=no');
         } else {
-            window.location.href = url;
+            win.location.href = url;
         }
     };
     var e = encodeURIComponent;
+    var shareData = win.shareData || {};
+    var title = e(shareData.title || '写的不错，分享一下啦。《' + document.title + '》');
+    var link = e(shareData.link || location.href);
+    var $imgs = selector.query('img:not(.favicon)');
 
     event.on(document, 'click', '.share-weibo', function () {
         var url = 'http://v.t.sina.com.cn/share/share.php?';
         //http://service.weibo.com/share/share.php
         // ?url=http://sb.com:18082/article/
         // &title=%E6%96%87%E7%AB%A0%20-%20%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%A4%BE%E5%8C%BA
-        // &appkey=1343713053
+        // &appkey=...
         // &searchPic=true
+        // &pic=...
         var qs = [];
 
-        qs.push('url=' + e(location.href));
-        qs.push('title=' + e('写的不错，分享一下啦。《' + document.title + '》'));
+        qs.push('url=' + link);
+        qs.push('title=' + title);
         qs.push('appkey=' + e('3801039502'));
         qs.push('searchPic=' + e('true'));
         open(url + qs.join('&'));
@@ -53,14 +60,12 @@ define(function (require, exports, module) {
         var url = 'http://v.t.sina.com.cn/share/share.php?';
         var qs = [];
 
-        qs.push('url=' + e(location.href));
-        qs.push('title=' + e('写的不错，分享一下啦。《' + document.title + '》'));
+        qs.push('url=' + link);
+        qs.push('title=' + title);
         qs.push('appkey=' + e('3801039502'));
         qs.push('searchPic=' + e('true'));
         open(url + qs.join('&'));
     });
-
-
 
 
     // http://tieba.baidu.com/f/commit/share/openShareApi
