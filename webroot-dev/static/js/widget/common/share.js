@@ -45,7 +45,7 @@ define(function (require, exports, module) {
         qs.push('appkey=' + e('3801039502'));
         qs.push('searchPic=' + e('true'));
 
-        open(url + qs.join('&'));
+        open('分享到新浪微博', url + qs.join('&'));
     });
 
 

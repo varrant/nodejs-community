@@ -31,7 +31,8 @@
   .ptitle-info {
     display: inline-block; }
   .ptitle-info {
-    margin-left: 20px; }
+    margin-left: 20px;
+    text-align: left; }
   .ptitle-name {
     margin: 20px 0;
     padding: 0;
