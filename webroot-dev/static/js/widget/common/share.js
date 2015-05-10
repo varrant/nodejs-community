@@ -36,9 +36,10 @@ define(function (require, exports, module) {
     var link = e(shareData.link || location.href);
     var $imgs = selector.query('img:not(.favicon)');
     var img = '';
+    var REG_AVATAR = /\/avatar\//i;
 
     dato.each($imgs, function (index, $img) {
-        if (!$img.alt || $img.alt !== 'avatar') {
+        if (!$img.alt || !REG_AVATAR.test($img.src)) {
             img = e($img.src);
             return false;
         }
@@ -90,7 +91,7 @@ define(function (require, exports, module) {
 
 
     // 分享到百度
-    event.on(document, 'click', '.share-qq', function () {
+    event.on(document, 'click', '.share-baidu', function () {
         // http://tieba.baidu.com/f/commit/share/openShareApi
         // ?url=http://c.youku.com/2015mother
         // &title=%E5%A6%88%EF%BC%8C%E8%BF%99%E9%83%A8%E5%89%A7%E9%87%8C%E7%9A%84%E5%A5%B9%E5%83%8F%E6%82%A8%EF%BC%81
