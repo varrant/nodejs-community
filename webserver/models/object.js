@@ -51,8 +51,8 @@ var schema = new mongoose.Schema({
         type: [String],
         required: false
     },
-    // markdown 简要描述，用于网站 meta
-    description: {
+    // markdown 简介，用于 meta description
+    introduction: {
         type: String,
         required: false
     },

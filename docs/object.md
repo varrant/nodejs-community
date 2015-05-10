@@ -11,7 +11,7 @@
 - `category` 分类
 - `column` 专栏
 - `labels` 标签
-- `description` meta description
+- `introduction` markdown 简介，用于 meta description
 - `content` markdown 内容
 - `contentHTML` html 内容
 - `publishAt` 发布时间
