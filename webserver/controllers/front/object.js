@@ -237,6 +237,8 @@ module.exports = function (app) {
 
                 data.hasResponsed = false;
                 data.title = obje.title;
+                data.keywords = obje.labels.join('，');
+                data.description = obje.content.slice(0, 140);
                 data.object = obje;
                 data.page = page;
                 data.section = section;

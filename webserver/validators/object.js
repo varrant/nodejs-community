@@ -49,23 +49,6 @@ validator.pushRule({
     }
 });
 
-validator.pushRule({
-    name: 'introduction',
-    type: 'string',
-    alias: '简介',
-    trim: true,
-    exist: true,
-    maxLength: 1000,
-    regexp: REG_INTRODUCTION,
-    onafter: function (val, data) {
-        val = xss.mdSafe(val || '');
-        data.introductionHTML = xss.mdRender(val);
-        return val;
-    },
-    msg: {
-        regexp: '简介仅支持中英文、数字，以及常用符号'
-    }
-});
 
 validator.pushRule({
     name: 'content',
@@ -120,7 +103,7 @@ validator.pushRule({
 validator.pushRule({
     name: 'labels',
     type: 'array',
-    alias: '标注',
+    alias: '标签',
     exist: true,
     onafter: function (labels) {
         var ret = [];
