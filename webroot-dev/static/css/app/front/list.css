@@ -1,7 +1,7 @@
 .layout-body {
   margin-top: 50px; }
 
-.ptitle {
+.banner {
   position: relative;
   text-align: center;
   background: rgba(75, 156, 219, 0.2);
@@ -11,7 +11,7 @@
   transition: background 500ms;
   min-height: 300px;
   color: #fff; }
-  .ptitle-bg {
+  .banner-bg {
     position: absolute;
     top: 0;
     right: 0;
@@ -21,33 +21,33 @@
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center bottom; }
-  .ptitle-center {
+  .banner-center {
     display: table;
     width: 100%; }
-  .ptitle-inner {
+  .banner-inner {
     display: table-cell;
     vertical-align: middle; }
-  .ptitle-cover,
-  .ptitle-info {
+  .banner-cover,
+  .banner-info {
     display: inline-block;
     vertical-align: middle; }
-  .ptitle-info {
+  .banner-info {
     margin-left: 20px;
     text-align: left; }
-  .ptitle-name {
+  .banner-name {
     margin: 0 0 20px;
     padding: 0;
     font-weight: normal; }
-  .ptitle-intro,
-  .ptitle-desc {
+  .banner-intro,
+  .banner-desc {
     max-width: 400px;
     font-size: 13px;
     color: #EAF5FF; }
-  .ptitle-desc {
+  .banner-desc {
     padding-top: 10px; }
-  .ptitle-action {
+  .banner-action {
     margin-top: 40px; }
-  .ptitle-share {
+  .banner-share {
     position: absolute;
     right: 10px;
     bottom: 10px; }
