@@ -26,12 +26,24 @@
 <div class="layout-body a-fade-in">
     <div class="ptitle">
         <div class="ptitle-bg" id="cover" style="background-image: url('{{=$sectionURIMap.article.background}}')" coolieignore></div>
-        <img class="ptitle-cover img-rounder img-border-blank" src="{{=$sectionURIMap.article.cover}}" alt="cover" coolieignore/>
-        <h1 class="ptitle-name"><i class="fi fi-file-text"></i>{{$sectionURIMap.article.name}}<small>/{{$sectionURIMap.article.objectCount}}</small></h1>
-        <div class="ptitle-intro text-light">{{$sectionURIMap.article.introduction}}</div>
+
+        <div class="ptitle-center clearfix">
+            <div class="ptitle-inner">
+                <img class="ptitle-cover img-rounder img-border-blank pull-left" src="{{=$sectionURIMap.article.cover}}" alt="cover" coolieignore/>
+                <div class="ptitle-info">
+                    <h1 class="ptitle-name"><i class="fi fi-file-text"></i>{{$sectionURIMap.article.name}}<small>/{{$sectionURIMap.article.objectCount}}</small></h1>
+                    <div class="ptitle-intro text-light">{{$sectionURIMap.article.introduction}}</div>
+                </div>
+            </div>
+        </div>
+
         <div class="ptitle-action">
             <a class="btn btn-blank btn-lg btn-ghost" href="/admin/object/article/"><i class="fi fi-pencil"></i>写文章</a>
-            <button class="btn btn-default share-weibo"><i class="fi fi-weibo"></i>分享</button>
+        </div>
+        <div class="ptitle-action">
+            <button class="btn btn-default share-weibo btn-primary"><i class="fi fi-weibo"></i>分享到微博</button>
+            <button class="btn btn-default share-qqzone btn-warning"><i class="fi fi-star-half-o"></i>分享到QQ空间</button>
+            <button class="btn btn-default share-baidu btn-info"><i class="fi fi-paw"></i>分享到百度</button>
         </div>
     </div>
 
