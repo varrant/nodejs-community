@@ -11,7 +11,7 @@ $border-color: #e6e6e6;
 .ptitle{
   position: relative;
   text-align: center;
-  background: #4B9CDB;
+  background: rgba(75, 156, 219, 0.2);
   //background: -webkit-linear-gradient( #00A2CA 0, #F5F5F5 100%);
   //background: -moz-linear-gradient( #00A2CA 0, #F5F5F5 100%);
   //background: linear-gradient( #00A2CA 0, #F5F5F5 100%);
@@ -65,7 +65,7 @@ $border-color: #e6e6e6;
   &-desc{
     max-width: 400px;
     font-size: 13px;
-    color: #06518B;
+    color: #EAF5FF;
   }
 
   &-desc{

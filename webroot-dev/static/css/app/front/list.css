@@ -4,7 +4,7 @@
 .ptitle {
   position: relative;
   text-align: center;
-  background: #4B9CDB;
+  background: rgba(75, 156, 219, 0.2);
   padding-top: 30px;
   padding-bottom: 30px;
   -webkit-transition: background 500ms;
@@ -42,7 +42,7 @@
   .ptitle-desc {
     max-width: 400px;
     font-size: 13px;
-    color: #06518B; }
+    color: #EAF5FF; }
   .ptitle-desc {
     padding-top: 10px; }
   .ptitle-action {
