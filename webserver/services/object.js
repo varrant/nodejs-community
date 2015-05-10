@@ -125,7 +125,7 @@ exports.createOne = function (author, data, callback) {
         .task(function (next, objectInSection, objectOnCategory, objectAtColumn) {
             var date = new Date();
             var data2 = dato.pick(data, ['section', 'title', 'uri', 'type', 'category', 'labels',
-                'column', 'link', 'content', 'hidden', 'isDisplay']);
+                'column', 'reference', 'content', 'hidden', 'isDisplay']);
             var data3 = {
                 author: author.id.toString(),
                 publishAt: date,
@@ -321,7 +321,7 @@ exports.updateOne = function (author, conditions, data, callback) {
         .task(function (next, objectInSection) {
             var date = new Date();
             var data2 = dato.pick(data, ['category', 'column', 'labels',
-                'link', 'content', 'hidden', 'isDisplay']);
+                'reference', 'content', 'hidden', 'isDisplay']);
             var err;
 
             data2.updateAt = date;
