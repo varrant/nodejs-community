@@ -7,4 +7,4 @@
 <!--/coolie-->
 <title>{{title ? title + ' - ':''}}{{$settings.website.title}}</title>
 <meta name="keywords" content="{{$settings.website.keywords + (typeof(keywords)==='undefined' ? '' : '，' + keywords)}}">
-<meta name="description" content="{{$settings.website.description + (typeof(description)==='undefined' ? '' : '，' + description)}}">
+<meta name="description" content="{{description || $settings.website.description}}">
