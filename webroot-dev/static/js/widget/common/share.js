@@ -36,10 +36,9 @@ define(function (require, exports, module) {
     var link = e(shareData.link || location.href);
     var $imgs = selector.query('img:not(.favicon)');
     var img = '';
-    var REG_AVATAR = /\/avatar\//i;
 
     dato.each($imgs, function (index, $img) {
-        if (!$img.alt || !REG_AVATAR.test($img.src)) {
+        if ($img.width > 99 && $img.height > 99) {
             img = e($img.src);
             return false;
         }

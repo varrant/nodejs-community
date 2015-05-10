@@ -521,6 +521,8 @@ select.ipt {
       cursor: pointer;
       opacity: 0; }
   .btn-group {
+    display: inline-block;
+    vertical-align: middle;
     overflow: hidden; }
     .btn-group .btn {
       border-radius: 0;

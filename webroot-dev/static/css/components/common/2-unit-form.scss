@@ -665,6 +665,8 @@ select.ipt{
   }
 
   &-group{
+    display: inline-block;
+    vertical-align: middle;
     overflow: hidden;
 
     .btn{
