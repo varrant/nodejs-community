@@ -139,17 +139,17 @@ exports.createOne = function (author, data, callback) {
             var err;
 
             if (objectInSection.uri === 'link') {
-                if (!data4.link) {
+                if (!data4.reference) {
                     err = new Error('链接地址不能为空');
                     return next(err);
                 }
 
-                if (!typeis.url(data4.link)) {
+                if (!typeis.url(data4.reference)) {
                     err = new Error('链接地址不合法');
                     return next(err);
                 }
 
-                if (data4.link.length > 255) {
+                if (data4.reference.length > 255) {
                     err = new Error('链接地址过长');
                     return next(err);
                 }
@@ -333,17 +333,17 @@ exports.updateOne = function (author, conditions, data, callback) {
             };
 
             if (objectInSection.uri === 'link') {
-                if (!data2.link) {
+                if (!data2.reference) {
                     err = new Error('链接地址不能为空');
                     return next(err);
                 }
 
-                if (!typeis.url(data2.link)) {
+                if (!typeis.url(data2.reference)) {
                     err = new Error('链接地址不合法');
                     return next(err);
                 }
 
-                if (data2.link.length > 255) {
+                if (data2.reference.length > 255) {
                     err = new Error('链接地址过长');
                     return next(err);
                 }
