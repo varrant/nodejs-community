@@ -7,6 +7,9 @@
     background-position: center bottom;
     margin-bottom: 60px;
     border-radius: 6px; }
+    @media (max-width: 767px) {
+      .home li {
+        border-radius: 0; } }
   .home a {
     position: relative;
     display: block;

@@ -17,6 +17,10 @@ $border-color: #e6e6e6;
     background-position: center bottom;
     margin-bottom: 60px;
     border-radius: 6px;
+
+    @media (max-width: 767px){
+      border-radius: 0;
+    }
   }
 
   a {
