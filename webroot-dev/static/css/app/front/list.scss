@@ -35,20 +35,23 @@ $border-color: #e6e6e6;
     background-position: center bottom;
   }
 
+  &-center{
+    display: table;
+    width: 100%;
+  }
 
-//  &-count{
-//    position: absolute;
-//    background: #fff;
-//    color: #015A70;
-//    top: -14px;
-//    border-radius: 14px;
-//    transform: translateX(50%);
-//    line-height: 26px;
-//    height: 26px;
-//    right: 0;
-//    min-width: 26px;
-//    padding: 0 8px;
-//  }
+  &-inner{
+    display: table-cell;
+  }
+
+  &-cover,
+  &-info{
+    display: inline-block;
+  }
+
+  &-info{
+    margin-left: 20px;
+  }
 
   &-name{
     margin: 20px 0;
@@ -67,19 +70,22 @@ $border-color: #e6e6e6;
   &-action{
     margin-top: 40px;
   }
+
+  &-share{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
 }
 
-.bdsharebuttonbox {
-  display: inline-block;
-  vertical-align: middle;
-}
+
 
 // choose
 .choose {
   padding: 20px;
   margin: -20px -20px 20px;
   list-style: none;
-  background: #F8FDFF;
+  background: #eee;
   line-height: 26px;
 
   &-type {

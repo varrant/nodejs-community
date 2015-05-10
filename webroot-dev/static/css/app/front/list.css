@@ -22,6 +22,16 @@
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center bottom; }
+  .ptitle-center {
+    display: table;
+    width: 100%; }
+  .ptitle-inner {
+    display: table-cell; }
+  .ptitle-cover,
+  .ptitle-info {
+    display: inline-block; }
+  .ptitle-info {
+    margin-left: 20px; }
   .ptitle-name {
     margin: 20px 0;
     padding: 0;
@@ -34,16 +44,16 @@
     font-size: 13px; }
   .ptitle-action {
     margin-top: 40px; }
-
-.bdsharebuttonbox {
-  display: inline-block;
-  vertical-align: middle; }
+  .ptitle-share {
+    position: absolute;
+    right: 10px;
+    bottom: 10px; }
 
 .choose {
   padding: 20px;
   margin: -20px -20px 20px;
   list-style: none;
-  background: #F8FDFF;
+  background: #eee;
   line-height: 26px; }
   .choose-type {
     margin-right: 10px; }
