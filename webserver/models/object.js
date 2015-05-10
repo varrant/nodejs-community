@@ -84,11 +84,6 @@ var schema = new mongoose.Schema({
         type: String,
         required: false
     },
-    // 引用链接查看次数
-    referenceByCount: {
-        type: Number,
-        default: 1
-    },
     // 发布时间
     publishAt: {
         type: Date,
