@@ -45,39 +45,6 @@
   .toc li, .toc ul {
     margin: 0; }
 
-.eof {
-  position: relative;
-  height: 1px; }
-  .eof:before,
-  .eof:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 1px;
-    background: -webkit-linear-gradient(90deg, #FFF 0, #ddd 30%, #ddd 100%);
-    background: linear-gradient(90deg, #FFF 0, #ddd 30%, #ddd 100%); }
-  .eof:before {
-    left: 0; }
-  .eof:after {
-    right: 0;
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg); }
-  .eof span {
-    position: absolute;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    left: 50%;
-    top: -50%;
-    background: #f9f9f9;
-    padding: 3px 6px;
-    z-index: 1;
-    color: #ccc;
-    border: 1px solid #DDD;
-    border-radius: 4px;
-    font-size: 12px;
-    font-style: italic; }
-
 .copyright .label {
   margin-left: 10px; }
 
