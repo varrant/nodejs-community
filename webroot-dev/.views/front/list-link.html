@@ -26,9 +26,16 @@
 <div class="layout-body a-fade-in">
     <div class="ptitle">
         <div class="ptitle-bg" id="cover" style="background-image: url('{{=$sectionURIMap.link.background}}')" coolieignore></div>
-        <img class="ptitle-cover img-rounder img-border-blank" src="{{$sectionURIMap.link.cover}}" alt="cover" coolieignore/>
-        <h1 class="ptitle-name"><i class="fi fi-link"></i>{{$sectionURIMap.link.name}}<small>/{{$sectionURIMap.link.objectCount}}</small></h1>
-        <div class="ptitle-intro text-light">{{$sectionURIMap.link.introduction}}</div>
+
+        <div class="ptitle-center">
+            <div class="ptitle-inner">
+                <img class="ptitle-cover img-rounder img-border-blank" src="{{$sectionURIMap.link.cover}}" alt="cover" coolieignore/>
+                <div class="ptitle-info">
+                    <h1 class="ptitle-name"><i class="fi fi-link"></i>{{$sectionURIMap.link.name}}<small>/{{$sectionURIMap.link.objectCount}}</small></h1>
+                    <div class="ptitle-intro text-light">{{$sectionURIMap.link.introduction}}</div>
+                </div>
+            </div>
+        </div>
 
         <div class="ptitle-action">
             <a class="btn btn-blank btn-lg btn-ghost" href="/admin/object/link/"><i class="fi fi-share"></i>分享链接</a>

@@ -27,17 +27,22 @@
 
     <div class="ptitle">
         <div class="ptitle-bg" id="cover"></div>
-        <img class="ptitle-cover img-rounder img-border-blank" src="{{column.cover}}" alt="cover" coolieignore/>
 
-        <h1 class="ptitle-name">{{column.name}}</h1>
-
-        <div class="ptitle-intro text-light">{{column.introduction}}</div>
-        <div class="ptitle-desc text-light">
-            <i class="fi fi-user"></i><a href="/developer/{{column.author.githubLogin}}/">{{column.author.nickname}}</a>的专辑
-            <span class="text-space"></span>
-            <i class="fi fi-bar-chart"></i>{{column.objectCount}}
-            <span class="text-space"></span>
-            <i class="fi fi-eye"></i>{{column.viewByCount}}
+        <div class="ptitle-center">
+            <div class="ptitle-inner">
+                <img class="ptitle-cover img-rounder img-border-blank" src="{{column.cover}}" alt="cover" coolieignore/>
+                <div class="ptitle-info">
+                    <h1 class="ptitle-name">{{column.name}}</h1>
+                    <div class="ptitle-intro text-light">{{column.introduction}}</div>
+                    <div class="ptitle-desc text-light">
+                        <i class="fi fi-user"></i><a href="/developer/{{column.author.githubLogin}}/">{{column.author.nickname}}</a>的专辑
+                        <span class="text-space"></span>
+                        <i class="fi fi-bar-chart"></i>{{column.objectCount}}
+                        <span class="text-space"></span>
+                        <i class="fi fi-eye"></i>{{column.viewByCount}}
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="ptitle-share btn-group">
