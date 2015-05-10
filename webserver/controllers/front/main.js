@@ -23,12 +23,12 @@ module.exports = function (app) {
      * home 页
      * @param req
      * @param res
-     * @param next
+     w* @param next
      */
     exports.getHome = function (req, res, next) {
         var statistics = {};
         var data = {
-            title: '主页',
+            title: '',
             statistics: statistics
         };
 
