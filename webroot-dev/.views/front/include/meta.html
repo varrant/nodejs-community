@@ -6,3 +6,5 @@
 <link rel="stylesheet" href="/static/css/components/front/3-footer.css"/>
 <!--/coolie-->
 <title>{{title ? title + ' - ':''}}{{$settings.website.title}}</title>
+<meta name="keywords" content="{{$settings.website.keywords + (typeof(keywords)==='undefined' ? '' : '，' + keywords)}}">
+<meta name="description" content="{{$settings.website.description + (typeof(description)==='undefined' ? '' : '，' + description)}}">
