@@ -17,7 +17,7 @@ var dato = require('ydr-utils').dato;
  * @returns {RegExp}
  */
 exports.title = function (minLength, maxLength) {
-    var title = '[\\u4e00-\\u9fa5\\w\\d \\-，,.?？!！、\\\\:：/（）—－–+]';
+    var title = '[\\u4e00-\\u9fa5\\w\\d \\-，,.?？!！、\\\\:：/（）—－–+\\[\\]]';
 
     return new RegExp('^' + title + '{' + minLength + ',' + maxLength + '}$');
 };
