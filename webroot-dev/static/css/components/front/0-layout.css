@@ -5,8 +5,8 @@ body {
   margin-top: 100px; }
 
 .layout-container {
-  border: 1px solid #eee;
-  background: #fff; }
+  background: #fff;
+  box-shadow: 0 0 15px #ddd; }
   @media (max-width: 991px) {
     .layout-container .layout-main:after {
       width: 0; }

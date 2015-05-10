@@ -4,14 +4,13 @@
 .ptitle {
   position: relative;
   text-align: center;
-  background: #00A2CA;
+  background: #4B9CDB;
   padding-top: 30px;
   padding-bottom: 30px;
   -webkit-transition: background 500ms;
   transition: background 500ms;
-  min-height: 200px;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.4); }
+  min-height: 300px;
+  color: #fff; }
   .ptitle-bg {
     position: absolute;
     top: 0;
@@ -26,10 +25,12 @@
     display: table;
     width: 100%; }
   .ptitle-inner {
-    display: table-cell; }
+    display: table-cell;
+    vertical-align: middle; }
   .ptitle-cover,
   .ptitle-info {
-    display: inline-block; }
+    display: inline-block;
+    vertical-align: middle; }
   .ptitle-info {
     margin-left: 20px;
     text-align: left; }
@@ -37,12 +38,13 @@
     margin: 0 0 20px;
     padding: 0;
     font-weight: normal; }
-  .ptitle-intro {
-    margin-bottom: 2em;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 13px; }
+  .ptitle-intro,
+  .ptitle-desc {
+    max-width: 400px;
+    font-size: 13px;
+    color: #06518B; }
+  .ptitle-desc {
+    padding-top: 10px; }
   .ptitle-action {
     margin-top: 40px; }
   .ptitle-share {

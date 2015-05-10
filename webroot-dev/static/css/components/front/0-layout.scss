@@ -17,8 +17,8 @@ body {
   }
 
   &-container {
-    border: 1px solid #eee;
     background: #fff;
+    box-shadow: 0 0 15px #ddd;
     
     @media (max-width: 991px) {
       .layout-main:after {
