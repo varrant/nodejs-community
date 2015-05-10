@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * 分享
  * @author ydr.me
  * @create 2015-03-22 16:24
  */
@@ -8,11 +8,8 @@
 define(function (require, exports, module) {
     'use strict';
 
-    //var modification = require('../../alien/core/dom/modification.js');
-    //var selector = require('../../alien/core/dom/selector.js');
     var event = require('../../alien/core/event/base.js');
-    //var attribute = require('../../alien/core/dom/attribute.js');
-    var open = function (url) {
+    var open = function (title, url) {
         var screenW = window.screen.width;
         var screenH = window.screen.height;
         var winW = 650;
@@ -21,7 +18,7 @@ define(function (require, exports, module) {
         var top = (screenH - winH) / 3;
 
         if (screenW > 1080) {
-            window.open(url, '授权 github 登录',
+            window.open(url, title,
                 'width=' + winW + ',height=' + winH + ',top=' + top + ',left=' + left + ',' +
                 'scrollbars=no,resizable=no,menubar=no');
         } else {
@@ -30,8 +27,11 @@ define(function (require, exports, module) {
     };
     var e = encodeURIComponent;
 
-
     event.on(document, 'click', '.share-weibo', function () {
+        // http://service.weibo.com/share/share.php
+        // ?title=%E5%A6%88%EF%BC%8C%E8%BF%99%E9%83%A8%E5%89%A7%E9%87%8C%E7%9A%84%E5%A5%B9%E5%83%8F%E6%82%A8%EF%BC%81
+        // &pic=http://u2.tdimg.com/1/166/196/124753886610095098114070284388517334621.jpg
+        // &url=http://c.youku.com/2015mother
         var url = 'http://v.t.sina.com.cn/share/share.php?';
         //http://service.weibo.com/share/share.php
         // ?url=http://sb.com:18082/article/
@@ -48,41 +48,18 @@ define(function (require, exports, module) {
         open(url + qs.join('&'));
     });
 
-    //window._bd_share_config = {
-    //    "common": {
-    //        "bdSnsKey": {},
-    //        "bdText": "",
-    //        "bdMini": "2",
-    //        "bdMiniList": false,
-    //        "bdPic": "",
-    //        "bdStyle": "1",
-    //        "bdSize": "16"
-    //    },
-    //    "share": {}
-    //};
-    //
-    //var src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5);
-    //var script = modification.create('script', {
-    //    src: src,
-    //    async: true,
-    //    defer: true
-    //});
-    //var html = '<a class="fi fi-weibo" data-cmd="tsina"></a>' +
-    //    '<a class="fi fi-weixin" data-cmd="weixin"></a>' +
-    //    '<a class="fi fi-qq" data-cmd="sqq"></a>' +
-    //    '<a class="fi fi-star" data-cmd="qzone"></a>' +
-    //    '<a class="fi fi-envelope" data-cmd="mail"></a>' +
-    //    '<span data-cmd="count"></span>';
 
-    //module.exports = function ($parent) {
-    //    $parent = selector.query($parent)[0];
-    //
-    //    if (!$parent) {
-    //        return;
-    //    }
-    //
-    //    $parent.innerHTML = html;
-    //    attribute.addClass($parent, 'bdsharebuttonbox');
-    //    modification.insert(script, document.body);
-    //};
+    // http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey
+    // ?desc=%E5%A6%88%EF%BC%8C%E8%BF%99%E9%83%A8%E5%89%A7%E9%87%8C%E7%9A%84%E5%A5%B9%E5%83%8F%E6%82%A8%EF%BC%81
+    // &url=http://c.youku.com/2015mother
+    // &imageUrl=http://u2.tdimg.com/1/166/196/124753886610095098114070284388517334621.jpg
+    // &summary=%E9%99%8C%E7%94%9F%E7%9A%84%E5%9F%8E%E5%B8%82%EF%BC%8C%E7%96%8F%E8%BF%9C%E7%9A%84%E4%BA%B2%E6%83%85%EF%BC%8C%E8%BF%9C%E5%88%B0%E5%87%A0%E4%B9%8E%E6%97%A0%E6%B3%95%E5%8B%BE%E5%8B%92%E6%9C%80%E8%BF%91%E4%B8%80%E6%AC%A1%E7%9B%B8%E8%81%9A%E7%9A%84%E6%83%85%E6%99%AF%EF%BC%8C%E4%BD%86%E6%88%91%E4%BB%AC%E9%83%BD%E7%9F%A5%E9%81%93%EF%BC%8C%E5%A5%B9%E6%83%B3%E8%A6%81%E7%9A%84%E7%9C%9F%E7%9A%84%E4%B8%8D%E5%A4%9A%EF%BC%8C%E7%BA%B5%E4%BD%BF%E4%B8%80%E7%A2%97%E7%B2%97%E8%8C%B6%EF%BC%8C%E4%B9%9F%E8%83%BD%E6%BF%80%E8%B5%B7%E4%B8%80%E7%89%87%E6%B6%9F%E6%BC%AA%E3%80%82
+    // &desc=%E9%99%8C%E7%94%9F%E7%9A%84%E5%9F%8E%E5%B8%82%EF%BC%8C%E7%96%8F%E8%BF%9C%E7%9A%84%E4%BA%B2%E6%83%85%EF%BC%8C%E8%BF%9C%E5%88%B0%E5%87%A0%E4%B9%8E%E6%97%A0%E6%B3%95%E5%8B%BE%E5%8B%92%E6%9C%80%E8%BF%91%E4%B8%80%E6%AC%A1%E7%9B%B8%E8%81%9A%E7%9A%84%E6%83%85%E6%99%AF%EF%BC%8C%E4%BD%86%E6%88%91%E4%BB%AC%E9%83%BD%E7%9F%A5%E9%81%93%EF%BC%8C%E5%A5%B9%E6%83%B3%E8%A6%81%E7%9A%84%E7%9C%9F%E7%9A%84%E4%B8%8D%E5%A4%9A%EF%BC%8C%E7%BA%B5%E4%BD%BF%E4%B8%80%E7%A2%97%E7%B2%97%E8%8C%B6%EF%BC%8C%E4%B9%9F%E8%83%BD%E6%BF%80%E8%B5%B7%E4%B8%80%E7%89%87%E6%B6%9F%E6%BC%AA%E3%80%82
+
+
+    // http://tieba.baidu.com/f/commit/share/openShareApi
+    // ?url=http://c.youku.com/2015mother
+    // &title=%E5%A6%88%EF%BC%8C%E8%BF%99%E9%83%A8%E5%89%A7%E9%87%8C%E7%9A%84%E5%A5%B9%E5%83%8F%E6%82%A8%EF%BC%81
+    // &pic=http://u2.tdimg.com/1/166/196/124753886610095098114070284388517334621.jpg
+    // &desc=%E9%99%8C%E7%94%9F%E7%9A%84%E5%9F%8E%E5%B8%82%EF%BC%8C%E7%96%8F%E8%BF%9C%E7%9A%84%E4%BA%B2%E6%83%85%EF%BC%8C%E8%BF%9C%E5%88%B0%E5%87%A0%E4%B9%8E%E6%97%A0%E6%B3%95%E5%8B%BE%E5%8B%92%E6%9C%80%E8%BF%91%E4%B8%80%E6%AC%A1%E7%9B%B8%E8%81%9A%E7%9A%84%E6%83%85%E6%99%AF%EF%BC%8C%E4%BD%86%E6%88%91%E4%BB%AC%E9%83%BD%E7%9F%A5%E9%81%93%EF%BC%8C%E5%A5%B9%E6%83%B3%E8%A6%81%E7%9A%84%E7%9C%9F%E7%9A%84%E4%B8%8D%E5%A4%9A%EF%BC%8C%E7%BA%B5%E4%BD%BF%E4%B8%80%E7%A2%97%E7%B2%97%E8%8C%B6%EF%BC%8C%E4%B9%9F%E8%83%BD%E6%BF%80%E8%B5%B7%E4%B8%80%E7%89%87%E6%B6%9F%E6%BC%AA%E3%80%82
 });
