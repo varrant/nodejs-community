@@ -61,6 +61,8 @@ validator.pushRule({
     onafter: function (val, data) {
         val = xss.mdSafe(val);
 
+        data.introduction = xss.mdIntroduction(val);
+
         var toc = xss.mdTOC(val);
 
         data.contentHTML = '';
