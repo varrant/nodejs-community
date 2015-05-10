@@ -26,15 +26,15 @@
 <div class="layout-body a-fade-in">
 
     <div class="ptitle">
-        <div class="ptitle-bg" id="cover" style="background-image: url('{{=column.background || $settings.default.banner}}')"></div>
+        <div class="banner-bg" id="cover" style="background-image: url('{{=column.background || $settings.default.banner}}')"></div>
 
-        <div class="ptitle-center">
-            <div class="ptitle-inner">
-                <img class="ptitle-cover img-rounder img-border-blank" src="{{column.cover}}" alt="cover" coolieignore/>
-                <div class="ptitle-info">
-                    <h1 class="ptitle-name">{{column.name}}</h1>
-                    <div class="ptitle-intro">{{column.introduction}}</div>
-                    <div class="ptitle-desc">
+        <div class="banner-center">
+            <div class="banner-inner">
+                <img class="banner-cover img-rounder img-border-blank" src="{{column.cover}}" alt="cover" coolieignore/>
+                <div class="banner-info">
+                    <h1 class="banner-name">{{column.name}}</h1>
+                    <div class="banner-intro">{{column.introduction}}</div>
+                    <div class="banner-desc">
                         <i class="fi fi-user"></i><a href="/developer/{{column.author.githubLogin}}/">{{column.author.nickname}}</a>的专辑
                         <span class="text-space"></span>
                         <i class="fi fi-bar-chart"></i>{{column.objectCount}}
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div class="ptitle-share btn-group">
+        <div class="banner-share btn-group">
             <button class="btn btn-default share-weibo btn-primary"><i class="fi fi-weibo"></i><span class="hidden-xs hidden-sm">分享到新浪微博</span></button>
             <button class="btn btn-default share-qq btn-warning"><i class="fi fi-star-half-o"></i><span class="hidden-xs hidden-sm">分享到QQ空间</span></button>
             <button class="btn btn-default share-baidu btn-info"><i class="fi fi-paw"></i><span class="hidden-xs hidden-sm">分享到百度贴吧</span></button>
