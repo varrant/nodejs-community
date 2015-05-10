@@ -86,8 +86,9 @@ $border-color: #e6e6e6;
   padding: 20px;
   margin: -20px -20px 20px;
   list-style: none;
-  background: #eee;
+  //background: #D5EAFD;
   line-height: 26px;
+  border-bottom: 2px solid #eee;
 
   &-type {
     margin-right: 10px;
@@ -104,8 +105,9 @@ $border-color: #e6e6e6;
       padding: 0 10px;
 
       &.active {
-        background: #0e90d2;
+        background: #4289C1;
         color: #fff;
+        border-radius: 3px;
       }
     }
 
