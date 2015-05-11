@@ -114,7 +114,7 @@ module.exports = function (app) {
         if (REG_ACCEPT.test(headers.accept) &&
             headers['x-request-with'] === 'XMLHttpRequest' &&
             req.session && req.session.$csrf &&
-            csrf.validate(req.session.$csrf, headersCsrf)
+            csrf.validate(headersCsrf)
         ) {
             return next();
         }

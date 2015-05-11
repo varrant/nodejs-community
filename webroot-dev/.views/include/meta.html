@@ -10,7 +10,7 @@
 {{=$settings.website.meta}}
 <link rel="dns-prefetch" href="//s.ydr.me">
 <link rel="dns-prefetch" href="//f.ydr.me">
-<script>window['-csrf-']='{{$csrf.token}}';</script>
+<script>window['-csrf-']='{{$csrf}}';</script>
 <script>window['-developer-']={
     id: '{{$developer.id ?$developer.id : ""}}',
     nickname: '{{$developer.nickname || ""}}',
