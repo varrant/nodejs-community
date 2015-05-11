@@ -10,6 +10,7 @@ var express = require('express');
 var configs = require('../configs/');
 var path = require('path');
 var dato = require('ydr-utils').dato;
+var number = require('ydr-utils').number;
 var date = require('ydr-utils').date;
 
 // cookie 支持
@@ -41,7 +42,7 @@ Template.addFilter('gravatar', function (val, size) {
 });
 
 Template.addFilter('humanize', function (val) {
-    return dato.humanize(val);
+    return number.format(val);
 });
 
 Template.addFilter('datefrom', function (val) {
