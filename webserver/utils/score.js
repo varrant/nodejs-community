@@ -7,6 +7,7 @@
 'use strict';
 
 var dato = require('ydr-utils').dato;
+var number = require('ydr-utils').number;
 var configs = require('../../configs/');
 var scoreMap = configs.score;
 
@@ -64,7 +65,7 @@ exports.agreeBy = function (sourceDevloper, targetDevloper) {
  * @private
  */
 function _increase(S, A, B) {
-    return dato.parseInt(Math.round(S + log10(A.score + B.score)), S);
+    return number.parseInt(Math.round(S + log10(A.score + B.score)), S);
 }
 
 

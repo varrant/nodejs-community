@@ -7,6 +7,7 @@
 'use strict';
 
 var dato = require('ydr-utils').dato;
+var number = require('ydr-utils').number;
 var typeis = require('ydr-utils').typeis;
 var maxValue = 1 << 53;
 
@@ -27,8 +28,8 @@ exports.skipLimit = function (parent, defaultPage, defaultLimit) {
     defaultPage = defaultPage || 1;
     defaultLimit = defaultLimit || 10;
 
-    page = dato.parseInt(page, defaultPage);
-    limit = dato.parseInt(limit, defaultLimit);
+    page = number.parseInt(page, defaultPage);
+    limit = number.parseInt(limit, defaultLimit);
 
     if (page < 1) {
         page = defaultPage;

@@ -12,6 +12,7 @@ var interactive = require('./interactive.js');
 var notice = require('./notice.js');
 var random = require('ydr-utils').random;
 var dato = require('ydr-utils').dato;
+var number = require('ydr-utils').number;
 var crypto = require('ydr-utils').encryption;
 var request = require('ydr-utils').request;
 var typeis = require('ydr-utils').typeis;
@@ -353,8 +354,8 @@ exports.increaseSectionStatistics = function (conditions, sectionId, count, call
             doc.sectionStatistics = {};
         }
 
-        var one = dato.parseInt(doc.sectionStatistics[sectionId], 0) + count;
-        var all = dato.parseInt(doc.sectionStatistics['0'], 0) + count;
+        var one = number.parseInt(doc.sectionStatistics[sectionId], 0) + count;
+        var all = number.parseInt(doc.sectionStatistics['0'], 0) + count;
         var data = {};
 
         data[sectionId] = one;
@@ -390,8 +391,8 @@ exports.increaseCategoryStatistics = function (conditions, categoryId, count, ca
             doc.categoryStatistics = {};
         }
 
-        var one = dato.parseInt(doc.categoryStatistics[categoryId], 0) + count;
-        var all = dato.parseInt(doc.categoryStatistics['0'], 0) + count;
+        var one = number.parseInt(doc.categoryStatistics[categoryId], 0) + count;
+        var all = number.parseInt(doc.categoryStatistics['0'], 0) + count;
         var data = {};
 
         data[categoryId] = one;
@@ -427,8 +428,8 @@ exports.increaseColumnStatistics = function (conditions, columnId, count, callba
             doc.columnStatistics = {};
         }
 
-        var one = dato.parseInt(doc.columnStatistics[columnId], 0) + count;
-        var all = dato.parseInt(doc.columnStatistics['0'], 0) + count;
+        var one = number.parseInt(doc.columnStatistics[columnId], 0) + count;
+        var all = number.parseInt(doc.columnStatistics['0'], 0) + count;
         var data = {};
 
         data[columnId] = one;
@@ -528,9 +529,9 @@ exports.isSafeOauthState = function (state) {
         return false;
     }
 
-    var num1 = dato.parseInt(arr[0], 1);
-    var num2 = dato.parseInt(arr[1], 1);
-    var num3 = dato.parseInt(arr[2], 1);
+    var num1 = number.parseInt(arr[0], 1);
+    var num2 = number.parseInt(arr[1], 1);
+    var num3 = number.parseInt(arr[2], 1);
 
     return num1 + num2 === num3;
 };
