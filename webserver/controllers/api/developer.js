@@ -14,6 +14,7 @@ var cookie = require('../../utils/').cookie;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
 var dato = require('ydr-utils').dato;
+var number = require('ydr-utils').number;
 var typeis = require('ydr-utils').typeis;
 var cache = require('ydr-utils').cache;
 var role20 = 1 << 20;
@@ -202,7 +203,7 @@ module.exports = function (app) {
         var roleArray2 = [];
 
         roleArray.forEach(function (role) {
-            role = dato.parseInt(role, 0);
+            role = number.parseInt(role, 0);
 
             if (roleArray2.indexOf(role) === -1) {
                 roleArray2.push(role);

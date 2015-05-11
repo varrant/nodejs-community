@@ -8,6 +8,7 @@
 
 var howdo = require('howdo');
 var dato = require('ydr-utils').dato;
+var number = require('ydr-utils').number;
 var typeis = require('ydr-utils').typeis;
 var validators = require('../validators/');
 var models = {
@@ -438,13 +439,13 @@ dato.each(models, function (key, model) {
                 return callback(err);
             }
 
-            count = dato.parseInt(count, 0);
+            count = number.parseInt(count, 0);
 
             if (count === 0) {
                 return callback(err, doc);
             }
 
-            var old = dato.parseInt(doc[path], 0);
+            var old = number.parseInt(doc[path], 0);
             var data = {};
 
             data[path] = old + count;
@@ -480,13 +481,13 @@ dato.each(models, function (key, model) {
                 return exports[key].createOne(conditions, callback);
             }
 
-            count = dato.parseInt(count, 0);
+            count = number.parseInt(count, 0);
 
             if (count === 0) {
                 return callback(err, doc);
             }
 
-            var old = dato.parseInt(doc[path], 0);
+            var old = number.parseInt(doc[path], 0);
             var data = {};
 
             data[path] = old + count;
