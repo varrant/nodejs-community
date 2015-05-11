@@ -41,7 +41,7 @@ Template.addFilter('gravatar', function (val, size) {
     });
 });
 
-Template.addFilter('humanize', function (val) {
+Template.addFilter('format', function (val) {
     return number.format(val);
 });
 
