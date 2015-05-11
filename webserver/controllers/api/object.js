@@ -26,7 +26,7 @@ module.exports = function (app) {
      * @param next
      */
     exports.list = function (req, res, next) {
-        var conditions = dato.pick(req.query, ['section', 'author']);
+        var conditions = dato.select(req.query, ['section', 'author']);
         var options = filter.skipLimit(req.query);
         var section = conditions.section;
 

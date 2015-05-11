@@ -124,7 +124,7 @@ exports.createOne = function (author, data, callback) {
         // 4. 新建数据
         .task(function (next, objectInSection, objectOnCategory, objectAtColumn) {
             var date = new Date();
-            var data2 = dato.pick(data, ['section', 'title', 'uri', 'type', 'category', 'labels',
+            var data2 = dato.select(data, ['section', 'title', 'uri', 'type', 'category', 'labels',
                 'column', 'reference', 'content', 'hidden', 'isDisplay']);
             var data3 = {
                 author: author.id.toString(),
@@ -320,7 +320,7 @@ exports.updateOne = function (author, conditions, data, callback) {
         // 5. 更新
         .task(function (next, objectInSection) {
             var date = new Date();
-            var data2 = dato.pick(data, ['category', 'column', 'labels',
+            var data2 = dato.select(data, ['category', 'column', 'labels',
                 'reference', 'content', 'hidden', 'isDisplay']);
             var err;
 

@@ -76,7 +76,7 @@ exports.removeOne = function (author, conditions, callback) {
  * @param callback {Function} 回调
  */
 exports.createOne = function (author, data, callback) {
-    var data2 = dato.pick(data, ['name', 'uri', 'cover', 'introduction']);
+    var data2 = dato.select(data, ['name', 'uri', 'cover', 'introduction']);
 
     data2.author = author.id;
     column.createOne(data2, function (err, doc) {
@@ -141,7 +141,7 @@ exports.updateOne = function (author, conditions, data, callback) {
         })
         // 2. 更新
         .task(function (next) {
-            var data2 = dato.pick(data, ['name', 'uri', 'cover', 'introduction']);
+            var data2 = dato.select(data, ['name', 'uri', 'cover', 'introduction']);
             column.findOneAndUpdate(conditions, data2, next);
         })
         // 异步串行

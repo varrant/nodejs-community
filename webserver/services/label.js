@@ -24,7 +24,7 @@ exports.findOne = label.findOne;
  * @param callback {Function} 回调
  */
 exports.createOne = function (data, callback) {
-    var data2 = dato.pick(data, keys);
+    var data2 = dato.select(data, keys);
 
     label.createOne(data2, callback);
 };
@@ -37,7 +37,7 @@ exports.createOne = function (data, callback) {
  * @param callback {Function} 回调
  */
 exports.updateOne = function (conditions, data, callback) {
-    var data2 = dato.pick(data, keys);
+    var data2 = dato.select(data, keys);
 
     label.findOneAndUpdate(conditions, data2, callback);
 };

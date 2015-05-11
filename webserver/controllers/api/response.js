@@ -187,10 +187,10 @@ module.exports = function (app) {
                         }
 
                         list.forEach(function (item) {
-                            item.author = dato.pick(item.author, ['id', 'nickname', 'githubLogin', 'githubId', 'score', 'avatar']);
+                            item.author = dato.select(item.author, ['id', 'nickname', 'githubLogin', 'githubId', 'score', 'avatar']);
                             item.agreers = item.agreers || [];
                             item.agreers = item.agreers.map(function (agreer) {
-                                return dato.pick(agreer, ['id', 'nickname', 'githubLogin', 'avatarM']);
+                                return dato.select(agreer, ['id', 'nickname', 'githubLogin', 'avatarM']);
                             });
                         });
 
@@ -252,7 +252,7 @@ module.exports = function (app) {
             }
 
             agreers = agreers.map(function (agreer) {
-                return dato.pick(agreer, ['id', 'nickname', 'avatarM', 'githubLogin']);
+                return dato.select(agreer, ['id', 'nickname', 'avatarM', 'githubLogin']);
             });
 
             return res.json({

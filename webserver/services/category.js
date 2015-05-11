@@ -35,7 +35,7 @@ exports.findOneAndRemove = category.findOneAndRemove;
  * @param callback {Function} 回调
  */
 exports.createOne = function (data, callback) {
-    var data2 = dato.pick(data, keys);
+    var data2 = dato.select(data, keys);
 
     category.createOne(data2, callback);
 };
@@ -48,7 +48,7 @@ exports.createOne = function (data, callback) {
  * @param callback {Function} 回调
  */
 exports.findOneAndUpdate = function (conditions, data, callback) {
-    var data2 = dato.pick(data, keys);
+    var data2 = dato.select(data, keys);
 
     category.findOneAndUpdate(conditions, data2, callback);
 };
@@ -61,7 +61,7 @@ exports.findOneAndUpdate = function (conditions, data, callback) {
  * @param callback {Function} 回调
  */
 exports.existOne = function (conditions, data, callback) {
-    var data2 = dato.pick(data, keys);
+    var data2 = dato.select(data, keys);
 
     category.existOne(conditions, data2, callback);
 };
