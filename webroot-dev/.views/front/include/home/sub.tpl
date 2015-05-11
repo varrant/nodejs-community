@@ -17,7 +17,7 @@
                     <li><i class="fi fi-user"></i>{{best.type}}：<a href="{{$configs.app.host}}/developer/{{=statistics[best.key].githubLogin}}/"><img src="{{statistics[best.key].email|gravatar:40}}" width="20" height="20" coolieignore>{{statistics[best.key].nickname}}</a></li>
                 {{/list}}
 
-                <li><i class="fi fi-user"></i>总用户：{{statistics.engineers|humanize}}</li>
+                <li><i class="fi fi-user"></i>总用户：{{statistics.engineers|format}}</li>
             </ul>
         </div>
     </div>

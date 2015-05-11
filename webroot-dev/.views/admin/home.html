@@ -41,14 +41,14 @@
                 <blockquote class="me-bio">{{$developer.meta.bio}}</blockquote>
 
                 <ul class="me-get text-sm list-left text-muted">
-                    <li><i class="fi fi-eye"></i><strong>{{$developer.viewByCount|humanize}}</strong>次被访问</li>
-                    <li><i class="fi fi-comment"></i><a href="/developer/{{$developer.githubLogin}}/comment/"><strong>{{$developer.commentByCount|humanize}}</strong>次被评论</a></li>
-                    <li><i class="fi fi-reply"></i><a href="/developer/{{$developer.githubLogin}}/reply-by/"><strong>{{$developer.replyByCount|humanize}}</strong>次被回复</a></li>
-                    <li><i class="fi fi-thumbs-up"></i><a href="/developer/{{$developer.githubLogin}}/agree-by/"><strong>{{$developer.agreeByCount|humanize}}</strong>次被赞同</a></li>
-                    <li><i class="fi fi-check-square-o"></i><a href="/developer/{{$developer.githubLogin}}/accept-by/"><strong>{{$developer.acceptByCount|humanize}}</strong>次被采纳</a></li>
+                    <li><i class="fi fi-eye"></i><strong>{{$developer.viewByCount|format}}</strong>次被访问</li>
+                    <li><i class="fi fi-comment"></i><a href="/developer/{{$developer.githubLogin}}/comment/"><strong>{{$developer.commentByCount|format}}</strong>次被评论</a></li>
+                    <li><i class="fi fi-reply"></i><a href="/developer/{{$developer.githubLogin}}/reply-by/"><strong>{{$developer.replyByCount|format}}</strong>次被回复</a></li>
+                    <li><i class="fi fi-thumbs-up"></i><a href="/developer/{{$developer.githubLogin}}/agree-by/"><strong>{{$developer.agreeByCount|format}}</strong>次被赞同</a></li>
+                    <li><i class="fi fi-check-square-o"></i><a href="/developer/{{$developer.githubLogin}}/accept-by/"><strong>{{$developer.acceptByCount|format}}</strong>次被采纳</a></li>
                     <!--<li><i class="fi fi-star"></i>-->
-                    <!--<a href="/developer/{{$developer.github}}/follow/">已关注<strong>{{$developer.followCount|humanize}}</strong></a>/-->
-                    <!--<a href="/developer/{{$developer.github}}/followed/">被关注<strong>{{$developer.followByCount|humanize}}</strong></a>-->
+                    <!--<a href="/developer/{{$developer.github}}/follow/">已关注<strong>{{$developer.followCount|format}}</strong></a>/-->
+                    <!--<a href="/developer/{{$developer.github}}/followed/">被关注<strong>{{$developer.followByCount|format}}</strong></a>-->
                     <!--</li>-->
                 </ul>
 
