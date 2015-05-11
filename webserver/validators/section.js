@@ -8,13 +8,14 @@
 
 
 var Validator = require('ydr-utils').Validator;
+var dato = require('ydr-utils').dato;
+var number = require('ydr-utils').number;
 var regexp = require('../utils/').regexp;
 var validator = new Validator();
 var REG_LINES = /[\n\t\v]/g;
 var REG_NAME = regexp.title(1, 50);
 var REG_URI = regexp.uri(1, 50);
 var REG_INTRODUCTION = regexp.content(10, 1000);
-var dato = require('ydr-utils').dato;
 
 
 validator.pushRule({
@@ -57,7 +58,7 @@ validator.pushRule({
     name: 'role',
     alias: '权限值',
     onbefore: function (val) {
-        return dato.parseInt(val, 0);
+        return number.parseInt(val, 0);
     },
     type: 'number',
     min: 0,
