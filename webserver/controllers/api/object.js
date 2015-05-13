@@ -118,6 +118,8 @@ module.exports = function (app) {
         var id = req.query.id;
         var sectionId = req.query.section;
         var author = req.session.$developer;
+        var configs = cache.get('app.configs');
+        var link = 'mailto:' + configs.smtp.founder + '?subject=申请发布文章权限【github账号】&body=申请发布文章权限【github账号】';
 
         howdo
             // 1. 检查 section 是否存在，以及发布权限
@@ -134,7 +136,7 @@ module.exports = function (app) {
                     }
 
                     if ((author.role & (1 << doc.role)) === 0) {
-                        err = new Error('在该板块暂无发布权限，请联系管理员');
+                        err = new Error('在该板块暂无发布权限<br><a href="' + link + '">点击这里联系管理员</a>');
                         err.code = 403;
                         return next(err);
                     }
