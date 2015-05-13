@@ -9,7 +9,7 @@ define(function (require) {
     'use strict';
 
     var ajax = require('../../widget/common/ajax.js');
-    var alert = require('../../widget/common/alert.js');
+    var alert = require('../../alien/widgets/alert.js');
     var selector = require('../../alien/core/dom/selector.js');
     var app = {};
     var locals = window.locals || {};

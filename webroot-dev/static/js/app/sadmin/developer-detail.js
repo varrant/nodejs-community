@@ -13,7 +13,7 @@ define(function (require, exports, module) {
     require('../../widget/common/vue-filter.js');
 
     var ajax = require('../../widget/common/ajax.js');
-    var alert = require('../../widget/common/alert.js');
+    var alert = require('../../alien/widgets/alert.js');
     var confirm = require('../../widget/common/confirm.js');
     var dato = require('../../alien/utils/dato.js');
     var url = '/admin/api/developer/?id=' + window['-id-'];

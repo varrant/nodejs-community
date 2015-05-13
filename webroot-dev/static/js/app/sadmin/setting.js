@@ -11,7 +11,7 @@ define(function (require, exports, module) {
     require('../../widget/sadmin/header.js');
     require('../../widget/sadmin/sidebar.js');
 
-    var alert = require('../../widget/common/alert.js');
+    var alert = require('../../alien/widgets/alert.js');
     var ajax = require('../../widget/common/ajax.js');
     var app = {};
 

@@ -11,7 +11,7 @@ define(function (require, exports, module) {
     var xhr = require('../../alien/core/communication/xhr.js');
     var json = 'application/json; charset=utf-8';
     var login = require('./login.js');
-    var alert = require('./alert.js');
+    var alert = require('../../alien/widgets/alert.js');
     var loading = require('./loading.js');
     var Emitter = require('../../alien/libs/Emitter.js');
     var klass = require('../../alien/utils/class.js');
