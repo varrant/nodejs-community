@@ -8,6 +8,7 @@
 
 var object = require('../../services/').object;
 var column = require('../../services/').column;
+var section = require('../../services/').section;
 var dato = require('ydr-utils').dato;
 var cache = require('ydr-utils').cache;
 var filter = require('../../utils/').filter;
@@ -115,28 +116,51 @@ module.exports = function (app) {
      */
     exports.get = function (req, res, next) {
         var id = req.query.id;
+        var sectionId = req.query.section;
+        var author = req.session.$developer;
 
         howdo
-            // 查找 columns
-            .task(function (done) {
+            // 1. 检查 section 是否存在，以及发布权限
+            .task(function (next) {
+                section.findOne({_id: sectionId}, function (err, doc) {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    if (!doc) {
+                        err = new Error('该板块不存在');
+                        err.code = 404;
+                        return next(err);
+                    }
+
+                    if ((author.role & (1 << doc.role)) === 0) {
+                        err = new Error('在该板块暂无发布权限，请联系管理员');
+                        err.code = 403;
+                        return next(err);
+                    }
+
+                    next(null, doc);
+                });
+            })
+            // 2、查找 columns
+            .task(function (next) {
                 column.find({
                     author: res.locals.$developer.id
-                }, done);
+                }, next);
             })
-            // 查找 object
-            .task(function (done) {
+            // 3、查找 object
+            .task(function (next) {
                 if (!req.query.id) {
                     return done();
                 }
 
-                object.findOne({_id: id}, {populate: ['author']}, done);
+                object.findOne({_id: id}, {populate: ['author']}, next);
             })
-            .together(function (err, columns, object) {
+            .follow(function (err, columns, object) {
                 if (err) {
                     return next(err);
                 }
 
-                console.log(cache.get('app.categoryList'));
                 res.json({
                     code: 200,
                     data: {

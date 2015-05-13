@@ -20,8 +20,9 @@ define(function (require, exports, module) {
     var dato = require('../../alien/utils/dato.js');
     var controller = require('../../alien/utils/controller.js');
     var date = require('../../alien/utils/date.js');
+    var qs = require('../../alien/utils/querystring.js');
     var defaults = {
-        url: '/admin/api/object/',
+        url: '/admin/api/object/?',
         id: '',
         section: '',
         hiddenSelector: '#hidden'
@@ -58,9 +59,13 @@ define(function (require, exports, module) {
          */
         _initData: function () {
             var the = this;
+            var options = the._options;
 
             ajax({
-                url: the._options.url + (the._options.id ? '?id=' + the._options.id : '')
+                url: the._options.url + qs.stringify({
+                    id: options.id,
+                    section: options.section
+                }),
             }).on('success', the._onsuccess.bind(the)).on('error', alert);
         },
 
