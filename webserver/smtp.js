@@ -27,6 +27,7 @@ module.exports = function (next, app) {
     if('pro' === configs.app.env){
         log.initEmail({
             from: configs.smtp.from,
+            to: configs.smtp.from,
             email: cache.get('app.founder').email
         });
         log.initSmtp(smtp);
