@@ -119,7 +119,7 @@ module.exports = function (app) {
         var sectionId = req.query.section;
         var author = req.session.$developer;
         var configs = cache.get('app.configs');
-        var link = 'mailto:' + configs.smtp.founder + '?subject=申请发布文章权限【github账号】&body=申请发布文章权限【github账号】';
+        var link = 'mailto:' + cache.get('app.founder').email + '?subject=申请发布文章权限【github账号】&body=申请发布文章权限【github账号】';
         var data = {
             categories: cache.get('app.categoryList')
         };

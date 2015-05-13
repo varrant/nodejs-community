@@ -49,7 +49,7 @@ module.exports = function (app) {
         // 运行环境，默认为开发
         env: configs.app.env,
         // 存放路径
-        path: configs.dir.log,
+        //path: configs.dir.log,
         // YYYY年MM月DD日 HH:mm:ss.SSS 星期e a
         name: './YYYY/MM/YYYY-MM-DD'
     }));

@@ -8,7 +8,6 @@
 
 module.exports = function (app) {
     return {
-        from: '前端开发社区<admin@FrontEndDev.org>',
-        founder: 'admin@FrontEndDev.org'
+        from: '前端开发社区<admin@FrontEndDev.org>'
     };
 };
