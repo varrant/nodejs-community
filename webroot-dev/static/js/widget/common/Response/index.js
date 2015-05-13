@@ -15,6 +15,7 @@ define(function (require, exports, module) {
     var animation = require('../../../alien/core/dom/animation.js');
     var event = require('../../../alien/core/event/base.js');
     var dato = require('../../../alien/utils/dato.js');
+    var number = require('../../../alien/utils/number.js');
     var qs = require('../../../alien/utils/querystring.js');
     var date = require('../../../alien/utils/date.js');
     var controller = require('../../../alien/utils/controller.js');
@@ -374,7 +375,7 @@ define(function (require, exports, module) {
         changePage: function (page) {
             var the = this;
 
-            page = dato.parseInt(page, 1);
+            page = number.parseInt(page, 1);
 
             if (the._options.query.page === page) {
                 return;
@@ -570,7 +571,7 @@ define(function (require, exports, module) {
             if (isToCount) {
                 neo = count;
             } else {
-                neo = dato.parseInt($number.innerHTML, 0) + count;
+                neo = number.parseInt($number.innerHTML, 0) + count;
             }
 
             $number.innerHTML = neo;

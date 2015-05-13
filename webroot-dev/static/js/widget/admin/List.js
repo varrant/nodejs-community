@@ -15,6 +15,7 @@ define(function (require, exports, module) {
     var confirm = require('../../alien/widgets/confirm.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var dato = require('../../alien/utils/dato.js');
+    var number = require('../../alien/utils/number.js');
     var qs = require('../../alien/utils/querystring.js');
     var Pagination = require('../../alien/ui/Pagination/index.js');
     var attribute = require('../../alien/core/dom/attribute.js');
@@ -39,8 +40,8 @@ define(function (require, exports, module) {
         the._paginationSelector = paginationSelector;
         the._options = dato.extend(true, {}, defaults, options);
         the.query = {
-            page: dato.parseInt(hashbang.get('query', 'page'), the._options.query.page),
-            limit: dato.parseInt(hashbang.get('query', 'limit'), the._options.query.limit),
+            page: number.parseInt(hashbang.get('query', 'page'), the._options.query.page),
+            limit: number.parseInt(hashbang.get('query', 'limit'), the._options.query.limit),
             type: hashbang.get('query', 'type') || the._options.query.type,
             author: hashbang.get('query', 'author') || '',
             section: the._options.query.section
