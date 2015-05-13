@@ -535,8 +535,8 @@ module.exports = function (app) {
                     }
 
                     if (!de) {
-                        err.code = 404;
                         err = new Error('该开发者不存在');
+                        err.code = 404;
                         return next(err);
                     }
 
