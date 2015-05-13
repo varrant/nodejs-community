@@ -19,8 +19,8 @@ define(function (require, exports, module) {
     var date = require('../../../alien/utils/date.js');
     var controller = require('../../../alien/utils/controller.js');
     var ajax = require('../ajax.js');
-    var alert = require('../alert.js');
-    var confirm = require('../confirm.js');
+    var alert = require('../../../alien/widgets/alert.js');
+    var confirm = require('../../../alien/widgets/confirm.js');
     var tip = require('../tip.js');
     var Pager = require('../../../alien/ui/Pager/');
     var Respond = require('../Respond/index');
