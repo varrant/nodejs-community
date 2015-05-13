@@ -17,14 +17,14 @@ define(function (require, exports, module) {
     var event = require('../../alien/core/event/touch.js');
     var controller = require('../../alien/utils/controller.js');
     var ajax = require('../common/ajax.js');
-    var alert = require('../common/alert.js');
-    var confirm = require('../common/confirm.js');
+    var alert = require('../../alien/widgets/alert.js');
+    var confirm = require('../../alien/widgets/confirm.js');
     var app = {};
     var activeClass = 'active';
     var unfoldClass = 'unfolded';
     var win = window;
-    var hasLogin = !!win['-developer-'].id;
-
+    var developer = win['-developer-'];
+    var hasLogin = !!developer.id;
 
 
     // 导航切换
@@ -116,7 +116,7 @@ define(function (require, exports, module) {
 
         event.on(document, 'click', '.j-logout', function (eve) {
             eve.preventDefault();
-            confirm('确定要登出吗？').on('sure', logout);
+            confirm('亲爱的<b>' + developer.nickname + '</b>：<br>确定要登出吗？').on('sure', logout);
         });
     };
 

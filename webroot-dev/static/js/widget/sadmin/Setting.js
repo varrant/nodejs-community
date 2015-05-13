@@ -10,8 +10,8 @@ define(function (require, exports, module) {
 
     var ui = require('../../alien/ui/');
     var ajax = require('../common/ajax.js');
-    var alert = require('../common/alert.js');
-    var confirm = require('../common/confirm.js');
+    var alert = require('../../alien/widgets/alert.js');
+    var confirm = require('../../alien/widgets/confirm.js');
     var selector = require('../../alien/core/dom/selector.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var event = require('../../alien/core/event/base.js');

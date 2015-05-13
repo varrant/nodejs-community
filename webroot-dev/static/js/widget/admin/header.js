@@ -9,8 +9,8 @@ define(function (require) {
     'use strict';
 
     var ajax = require('../common/ajax.js');
-    var alert = require('../common/alert.js');
-    var confirm = require('../common/confirm.js');
+    var alert = require('../../alien/widgets/alert.js');
+    var confirm = require('../../alien/widgets/confirm.js');
     var selector = require('../../alien/core/dom/selector.js');
     var animation = require('../../alien/core/dom/animation.js');
     var event = require('../../alien/core/event/base.js');

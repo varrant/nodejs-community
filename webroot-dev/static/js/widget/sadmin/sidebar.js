@@ -9,7 +9,7 @@ define(function (require, exports, module) {
     'use strict';
 
     var ajax = require('../common/ajax.js');
-    var alert = require('../common/alert.js');
+    var alert = require('../../alien/widgets/alert.js');
     var Scrollbar = require('../../alien/ui/Scrollbar/');
     var dato = require('../../alien/utils/dato.js');
     var selector = require('../../alien/core/dom/selector.js');

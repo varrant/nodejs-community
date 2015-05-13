@@ -16,8 +16,8 @@ define(function (require, exports, module) {
     var dato = require('../../../alien/utils/dato.js');
     var canvas = require('../../../alien/utils/canvas.js');
     var ajax = require('../../common/ajax.js');
-    var alert = require('../../common/alert.js');
-    var confirm = require('../../common/confirm.js');
+    var alert = require('../../../alien/widgets/alert.js');
+    var confirm = require('../../../alien/widgets/confirm.js');
     var Dialog = require('../../../alien/ui/Dialog/');
     var Imgclip = require('../../../alien/ui/Imgclip/');
     var Template = require('../../../alien/libs/Template.js');

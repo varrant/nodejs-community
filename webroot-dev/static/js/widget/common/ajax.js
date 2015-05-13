@@ -52,6 +52,10 @@ define(function (require, exports, module) {
                     return the.emit('success', json.data);
                 }
 
+                if(json.code === 401){
+                    return alert(json).on('close', login);
+                }
+
                 var err = new Error(json.message);
 
                 err.code = json.code;
