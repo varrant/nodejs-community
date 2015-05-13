@@ -120,6 +120,9 @@ module.exports = function (app) {
         var author = req.session.$developer;
         var configs = cache.get('app.configs');
         var link = 'mailto:' + configs.smtp.founder + '?subject=申请发布文章权限【github账号】&body=申请发布文章权限【github账号】';
+        var data = {
+            categories: cache.get('app.categoryList')
+        };
 
         howdo
             // 1. 检查 section 是否存在，以及发布权限
@@ -148,28 +151,38 @@ module.exports = function (app) {
             .task(function (next) {
                 column.find({
                     author: res.locals.$developer.id
-                }, next);
+                }, function (err, docs) {
+                    if(err){
+                        return next(err);
+                    }
+
+                    data.columns = docs;
+                    next();
+                });
             })
             // 3、查找 object
             .task(function (next) {
                 if (!req.query.id) {
-                    return done();
+                    return next();
                 }
 
-                object.findOne({_id: id}, {populate: ['author']}, next);
+                object.findOne({_id: id}, {populate: ['author']}, function (err, doc) {
+                    if(err){
+                        return next(err);
+                    }
+
+                    data.object = doc;
+                    next();
+                });
             })
-            .follow(function (err, columns, object) {
+            .follow(function (err) {
                 if (err) {
                     return next(err);
                 }
 
                 res.json({
                     code: 200,
-                    data: {
-                        categories: cache.get('app.categoryList'),
-                        columns: columns,
-                        object: object
-                    }
+                    data: data
                 });
             });
     };
