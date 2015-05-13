@@ -45,16 +45,19 @@ define(function (require, exports, module) {
 
                     // 未登陆
                     case 401:
-                        break;
+                        return alert(json).on('close', login);
+
+                    // 不被接受，返回首页
+                    case 406:
+                        return alert(json).on('close', function () {
+                            location.replace('/');
+                        });
                 }
 
                 if (json.code === 200) {
                     return the.emit('success', json.data);
                 }
 
-                if(json.code === 401){
-                    return alert(json).on('close', login);
-                }
 
                 var err = new Error(json.message);
 

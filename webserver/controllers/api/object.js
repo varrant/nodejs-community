@@ -137,7 +137,7 @@ module.exports = function (app) {
 
                     if ((author.role & (1 << doc.role)) === 0) {
                         err = new Error('在该板块暂无发布权限<br><a href="' + link + '">点击这里联系管理员</a>');
-                        err.code = 403;
+                        err.code = 406;
                         return next(err);
                     }
 
