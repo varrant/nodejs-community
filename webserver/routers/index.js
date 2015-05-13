@@ -11,13 +11,18 @@ var configs = require('../../configs/');
 var log = require('ydr-utils').log;
 var express = require('express');
 // 更为详尽配置的静态服务器
+var expiresDate = new Date(2025, 1, 1);
 var staticOptions = {
     dotfiles: 'ignore',
-    etag: true,
-    extensions: ['html'],
+    etag: false,
+    extensions: false,
     index: false,
-    maxAge: '30d',
-    redirect: true
+    lastModified: false,
+    maxAge: '10y',
+    redirect: false,
+    setHeaders: function (res, path, stat) {
+        res.set('expires', expiresDate.toGMTString());
+    }
 };
 
 module.exports = function (app) {

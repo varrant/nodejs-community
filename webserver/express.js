@@ -22,9 +22,6 @@ var sessionParser = require('express-session');
 // POST 支持
 var bodyParser = require('body-parser');
 
-// gzip 支持
-var compression = require('compression');
-
 // 模板引擎
 var Template = require('ydr-utils').Template;
 
@@ -80,9 +77,7 @@ module.exports = function (next) {
     ////////////////////////////////////////////////////////////////////
     /////////////////////////[ middleware ]/////////////////////////////
     ////////////////////////////////////////////////////////////////////
-    if ('pro' === configs.app.env) {
-        app.use(compression());
-    }
+
 
     // strict - only parse objects and arrays. (default: true)
     // limit - maximum request body size. (default: <100kb>)

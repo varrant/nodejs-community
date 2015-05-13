@@ -231,5 +231,24 @@ module.exports = function (app) {
         next();
     };
 
+
+    //// 缓存控制
+    //var REG_STATIC = /^\/static\//i;
+    //// 缓存 10 年
+    //var cacheControl = 10 * 365 * 24 * 60 * 60;
+    //// 10 年后
+    //var expiresDate = new Date(2099, 1, 1);
+    //exports.cacheControl = function (req, res, next) {
+    //    // Cache-Control: max-age=秒
+    //
+    //    if (REG_STATIC.test(req.originalUrl)) {
+    //        res.set('cache-control', cacheControl);
+    //        res.set('expires', expiresDate.toGMTString());
+    //        res.set('etag', null);
+    //    }
+    //
+    //    next();
+    //};
+
     return exports;
 };
