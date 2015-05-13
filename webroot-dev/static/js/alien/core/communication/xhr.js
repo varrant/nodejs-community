@@ -10,6 +10,7 @@ define(function (require, exports, module) {
      * @module core/communication/xhr
      * @requires utils/typeis
      * @requires utils/dato
+     * @requires utils/number
      * @requires utils/class
      * @requires utils/querystring
      * @requires libs/Emitter
@@ -18,6 +19,7 @@ define(function (require, exports, module) {
 
     var typeis = require('../../utils/typeis.js');
     var dato = require('../../utils/dato.js');
+    var number = require('../../utils/number.js');
     var klass = require('../../utils/class.js');
     var qs = require('../../utils/querystring.js');
     var Emitter = require('../../libs/Emitter.js');
@@ -56,6 +58,10 @@ define(function (require, exports, module) {
         timeout: 150000
     };
     var regProtocol = /^([\w-]+:)\/\//;
+    /**
+     * @extends {libs/Emitter}
+     * @type {Constructor}
+     */
     var XHR = klass.create(function (options) {
         var the = this;
 
@@ -82,6 +88,12 @@ define(function (require, exports, module) {
             }
 
             setTimeout(function () {
+                if (lastProgressEvent) {
+                    lastProgressEvent.alienDetail.complete = 1;
+                    lastProgressEvent.alienDetail.percent = '100%';
+                    the.emit('progress', lastProgressEvent);
+                }
+
                 the.emit('complete', err, ret);
 
                 if (err) {
@@ -140,22 +152,32 @@ define(function (require, exports, module) {
 
         xhr.onerror = oncallback;
 
+        var lastProgressEvent;
+
         xhr.upload.onprogress = function (eve) {
             eve.alienDetail = eve.alienDetail || {};
             eve.alienDetail.complete = 0;
             eve.alienDetail.percent = '0%';
 
             if (eve.lengthComputable) {
+                eve.alienDetail.loaded = eve.loaded;
+                eve.alienDetail.total = eve.total;
                 eve.alienDetail.complete = eve.loaded / eve.total;
 
                 var percent = eve.alienDetail.complete * 100;
 
+                if (percent >= 100) {
+                    eve.alienDetail.complete = 0.99;
+                    percent = 99;
+                }
+
                 // 最多小数点2位
-                percent = dato.parseFloat((percent >= 100 ? 99 : percent).toFixed(2));
+                percent = number.parseFloat(percent).toFixed(2);
                 eve.alienDetail.percent = percent + '%';
             }
 
-            the.emit(xhr, 'progress', eve);
+            the.emit('progress', eve);
+            lastProgressEvent = eve;
         };
 
         xhr.open(options.method, _buildURL(options), options.isAsync, options.username, options.password);
@@ -207,6 +229,30 @@ define(function (require, exports, module) {
 
 
     /**
+     * 异步请求
+     * @param {Object} [options] 配置参数
+     * @param {String} [options.url] 请求地址
+     * @param {String} [options.method] 请求方法，默认 GET
+     * @param {Object} [options.headers] 请求头
+     * @param {String} [options.type=json] 数据类型，默认 json
+     * @param {String|Object} [options.query] URL querstring
+     * @param {*} [options.body] 请求数据
+     * @param {Boolean} [options.isAsync] 是否异步，默认 true
+     * @param {Boolean} [options.isCache] 是否保留缓存，默认 false
+     * @param {String} [options.username] 请求鉴权用户名
+     * @param {String} [options.password] 请求鉴权密码
+     * @param {String|null} [options.mimeType=null] 覆盖 MIME
+     * @param {Number} [options.delay=0] 请求延迟时间
+     *
+     * @example
+     * xhr().on('success', fn).on('error', fn);
+     */
+    module.exports = function(options){
+        return new XHR(options);
+    };
+
+
+    /**
      * ajax 请求
      * @param {Object} [options] 配置参数
      * @param {String} [options.url] 请求地址
@@ -225,7 +271,7 @@ define(function (require, exports, module) {
      * @example
      * xhr.ajax().on('success', fn).on('error', fn);
      */
-    exports.ajax = function (options) {
+    module.exports.ajax = function (options) {
         return new XHR(options);
     };
 
@@ -236,7 +282,7 @@ define(function (require, exports, module) {
      * @param query {String|Object} 请求参数
      * @returns {*}
      */
-    exports.get = function (url, query) {
+    module.exports.get = function (url, query) {
         return this.ajax({
             method: 'GET',
             url: url,
@@ -251,7 +297,7 @@ define(function (require, exports, module) {
      * @param body {String|Object} 请求数据
      * @returns {*}
      */
-    exports.post = function (url, body) {
+    module.exports.post = function (url, body) {
         return this.ajax({
             method: 'POST',
             url: url,

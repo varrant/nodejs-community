@@ -13,6 +13,9 @@ define(function (require, exports, module) {
      * @requires core/dom/modification
      * @requires core/event/touch
      * @requires utils/typeis
+     * @requires utils/dato
+     * @requires utils/number
+     * @requires utils/string
      * @requires libs/Validator
      */
     'use strict';
@@ -21,10 +24,12 @@ define(function (require, exports, module) {
     var selector = require('../../core/dom/selector.js');
     var attribute = require('../../core/dom/attribute.js');
     var modification = require('../../core/dom/modification.js');
-    var style = require('css!./style.css');
+    var style = require('./style.css', 'css');
     var event = require('../../core/event/touch.js');
-    var dato = require('../../utils/dato.js');
     var typeis = require('../../utils/typeis.js');
+    var dato = require('../../utils/dato.js');
+    var number = require('../../utils/number.js');
+    var string = require('../../utils/string.js');
     var Vldor = require('../../libs/Validator.js');
     var alienIndex = 0;
     var alienClass = 'alien-ui-validator';
@@ -118,9 +123,9 @@ define(function (require, exports, module) {
                     name: name,
                     msg: msg,
                     maxLength: $input.maxLength === -1 ? Math.pow(2, 53) : $input.maxLength,
-                    min: dato.parseInt($input.min, udf),
-                    max: dato.parseInt($input.max, udf),
-                    step: dato.parseInt($input.step, udf),
+                    min: number.parseInt($input.min, udf),
+                    max: number.parseInt($input.max, udf),
+                    step: number.parseInt($input.step, udf),
                     required: $input.required,
                     type: typeArray.indexOf(type) > -1 ? type : 'string'
                 };
@@ -191,19 +196,19 @@ define(function (require, exports, module) {
                     attribute.addClass($item, 'has-warning');
                 }
 
-                the.emit(this.alienEvent.type, the._nameInputMap[name]);
+                the.emit(this.alienEmitter.type, the._nameInputMap[name]);
             });
 
             the._validator.on('validateend', function (name, data) {
-                the.emit(this.alienEvent.type, the._nameInputMap[name], data);
+                the.emit(this.alienEmitter.type, the._nameInputMap[name], data);
             });
 
             the._validator.on('validateonestart', function (name) {
-                the.emit(this.alienEvent.type, the._nameItemMap[name]);
+                the.emit(this.alienEmitter.type, the._nameItemMap[name]);
             });
 
             the._validator.on('validateoneend', function (name, err) {
-                the.emit(this.alienEvent.type, the._nameItemMap[name], err);
+                the.emit(this.alienEmitter.type, the._nameItemMap[name], err);
             });
 
             the._validator.on('validateallstart', function () {
@@ -211,11 +216,11 @@ define(function (require, exports, module) {
                     attribute.removeClass($item, formItemStatusClass);
                 });
 
-                the.emit(this.alienEvent.type, the._$form);
+                the.emit(this.alienEmitter.type, the._$form);
             });
 
             the._validator.on('validateallend', function (errs) {
-                the.emit(this.alienEvent.type, the._$form, errs);
+                the.emit(this.alienEmitter.type, the._$form, errs);
             });
         },
 
@@ -574,7 +579,7 @@ define(function (require, exports, module) {
     }, function (suffix, val, next) {
         var sf = (val.match(/\.[^.]*$/) || [''])[0];
         var reg = new RegExp('(' + suffix.map(function (sf) {
-            return dato.fixRegExp(sf);
+            return string.escapeRegExp(sf);
         }).join('|') + ')$', 'i');
 
         next(reg.test(sf) ? null : new Error(this.alias + '的后缀必须为“' +

@@ -76,7 +76,7 @@ define(function (require, exports, module) {
                     err.code = json.code;
                 }
 
-                the.emit(this.alienEvent.type, err, json && json.data);
+                the.emit(this.alienEmitter.type, err, json && json.data);
             })
             .on('complete', function () {
                 if (the.loading) {

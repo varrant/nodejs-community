@@ -17,6 +17,7 @@ define(function (require, exports, module) {
 
     var klass = require('../utils/class.js');
     var dato = require('../utils/dato.js');
+    var string = require('../utils/string.js');
     var typeis = require('../utils/typeis.js');
     var howdo = require('../utils/howdo.js');
     var Emitter = require('./Emitter.js');
@@ -695,21 +696,13 @@ define(function (require, exports, module) {
         switch (type) {
             case 'string':
                 ret.stringLength = data.length;
-                ret.stringBytes = dato.bytes(data);
+                ret.stringBytes = string.bytes(data);
                 break;
 
             case 'number':
                 ret.number = data;
                 break;
-            //
-            //case 'array':
-            //    ret.arrayLength = dato.length;
-            //    break;
-            //
-            //case 'object':
-            //    ret.objectLength = Object.keys(data).length;
-            //    break;
-            //
+
             case 'boolean':
                 ret.booleanLength = 1;
                 break;

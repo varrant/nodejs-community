@@ -55,6 +55,10 @@ define(function (require, exports, module) {
             dato.each(properties, function (key, val) {
                 var fix = attribute.fixCss(key, val);
 
+                if (!fix.key) {
+                    return;
+                }
+
                 if (fix.key.indexOf('transform') > -1) {
                     transformKey = fix.key;
                     transformVal.push(fix.val + (fix.imp ? ' !important' : ''));
@@ -72,7 +76,7 @@ define(function (require, exports, module) {
             style += '@' + prefix + 'keyframes ' + name + '{' + mainStyle + '}';
         });
 
-        keyframesMap[name] = modification.importStyle(style);
+        keyframesMap[name] = modification.importStyle(style, keyframesMap[name]);
 
         return name;
     };
@@ -80,12 +84,28 @@ define(function (require, exports, module) {
 
     /**
      * 从 DOM 中移除某个帧动画样式
-     * @param name
+     * @param name {String} 帧动画名称
      */
     exports.remove = function (name) {
         var $style = keyframesMap[name];
 
         modification.remove($style);
         keyframesMap[name] = null;
+    };
+
+
+    /**
+     * 获取帧动画的样式
+     * @param name {String} 帧动画名称
+     * @returns {String}
+     */
+    exports.getStyle = function (name) {
+        var $style = keyframesMap[name];
+
+        if (!$style) {
+            return '';
+        }
+
+        return $style.innerHTML;
     };
 });
