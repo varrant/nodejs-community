@@ -21,6 +21,7 @@ define(function (require, exports, module) {
     var Imgview = require('../../alien/ui/Imgview/');
     var Prettify = require('../../alien/ui/Prettify/');
     var dato = require('../../alien/utils/dato.js');
+    var number = require('../../alien/utils/number.js');
     var url = require('../../alien/utils/url.js');
     var ajax = require('../../widget/common/ajax.js');
     var win = window;
@@ -30,8 +31,8 @@ define(function (require, exports, module) {
     var winAuthor = win['-author-'];
     var app = {};
 
-    winObject.hasHidden = winObject.hasHidden === 'true' ? true : false;
-    winObject.hasResponsed = winObject.hasResponsed === 'true' ? true : false;
+    winObject.hasHidden = winObject.hasHidden === 'true';
+    winObject.hasResponsed = winObject.hasResponsed === 'true';
 
     // toc
     app.toc = function () {
@@ -64,7 +65,7 @@ define(function (require, exports, module) {
         var location = window.location;
         var matches = location.href.match(/^(.*\.html)(\/page\/(\d+)\/)?($|#)/);
         var base = matches[1];
-        var page = dato.parseInt(matches[3], 1);
+        var page = number.parseInt(matches[3], 1);
         var history = window.history;
         var res = new Response('#response', {
             developer: winDeveloper,
