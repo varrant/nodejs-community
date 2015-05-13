@@ -117,9 +117,12 @@ module.exports = function (app) {
     exports.get = function (req, res, next) {
         var id = req.query.id;
         var sectionId = req.query.section;
+        var founder = cache.get('app.founder');
         var author = req.session.$developer;
         var configs = cache.get('app.configs');
-        var link = 'mailto:' + cache.get('app.founder').email + '?subject=申请发布文章权限【github账号】&body=申请发布文章权限【github账号】';
+        var subject = '申请发布文章权限【' + author.githubLogin + '】';
+        var body = founder.nickname + '你好，我是' + author.nickname + '，我想申请发布文章权限，我的 github 账号是：' + author.githubLogin;
+        var link = 'mailto:' + founder.email + '?subject=' + subject + '&body=' + body;
         var data = {
             categories: cache.get('app.categoryList')
         };
@@ -152,7 +155,7 @@ module.exports = function (app) {
                 column.find({
                     author: res.locals.$developer.id
                 }, function (err, docs) {
-                    if(err){
+                    if (err) {
                         return next(err);
                     }
 
@@ -167,7 +170,7 @@ module.exports = function (app) {
                 }
 
                 object.findOne({_id: id}, {populate: ['author']}, function (err, doc) {
-                    if(err){
+                    if (err) {
                         return next(err);
                     }
 
