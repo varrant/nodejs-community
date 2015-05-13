@@ -104,7 +104,8 @@ module.exports = function (app) {
             // 2. 查找 object 列表
             .task(function (next, col) {
                 object.find({
-                    column: col.id
+                    column: col.id,
+                    isDisplay: true
                 }, {
                     sort: {publishAt: 1},
                     populate: ['author', 'contributors']
