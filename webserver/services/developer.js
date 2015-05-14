@@ -90,13 +90,25 @@ exports.getMeta = function (conditions, metaKey, callback) {
 /**
  * 设置meta
  */
-exports.setMeta = developer.setMeta;
+exports.setMeta = function (conditions, metaKey, metaVal, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
+    return developer.setMeta(conditions, metaKey, metaVal, callback);
+};
 
 
 /**
  * count
  */
-exports.count = developer.count;
+exports.count = function (conditions, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
+    return developer.count(conditions, callback);
+};
 
 
 /**
@@ -109,6 +121,10 @@ exports.count = developer.count;
  */
 exports.modifyRole = function (operator, developerBy, roleArray, callback) {
     var err;
+
+    if (developerBy && typeis.string(developerBy.githubLogin)) {
+        developerBy.githubLogin = developerBy.githubLogin.toLowerCase();
+    }
 
     if (
         // 只有 founder 才有权限修改他人权限
@@ -184,6 +200,10 @@ exports.modifyRole = function (operator, developerBy, roleArray, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseScore = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.increase(conditions, 'score', count, callback);
 };
 
@@ -195,6 +215,10 @@ exports.increaseScore = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseObjectCount = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.increase(conditions, 'objectCount', count, callback);
 };
 
@@ -206,6 +230,10 @@ exports.increaseObjectCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseViewByCount = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.increase(conditions, 'viewByCount', count, callback);
 };
 
@@ -217,6 +245,10 @@ exports.increaseViewByCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseCommentCount = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.increase(conditions, 'commentCount', count, callback);
 };
 
@@ -228,6 +260,10 @@ exports.increaseCommentCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseCommentByCount = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.increase(conditions, 'commentByCount', count, callback);
 };
 
@@ -239,6 +275,10 @@ exports.increaseCommentByCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseReplyCount = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.increase(conditions, 'replyCount', count, callback);
 };
 
@@ -250,6 +290,10 @@ exports.increaseReplyCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseReplyByCount = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.increase(conditions, 'replyByCount', count, callback);
 };
 
@@ -261,6 +305,10 @@ exports.increaseReplyByCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseAgreeCount = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.increase(conditions, 'agreeCount', count, callback);
 };
 
@@ -272,6 +320,10 @@ exports.increaseAgreeCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseAgreeByCount = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.increase(conditions, 'agreeByCount', count, callback);
 };
 
@@ -283,6 +335,10 @@ exports.increaseAgreeByCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseAcceptCount = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.increase(conditions, 'acceptCount', count, callback);
 };
 
@@ -294,6 +350,10 @@ exports.increaseAcceptCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseAcceptByCount = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.increase(conditions, 'acceptByCount', count, callback);
 };
 
@@ -305,6 +365,10 @@ exports.increaseAcceptByCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseColumnCount = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.increase(conditions, 'columnCount', count, callback);
 };
 
@@ -363,6 +427,10 @@ exports.unfollow = function (operatorId, userId, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseSectionStatistics = function (conditions, sectionId, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.findOne(conditions, function (err, doc) {
         if (err) {
             return callback(err);
@@ -400,6 +468,10 @@ exports.increaseSectionStatistics = function (conditions, sectionId, count, call
  * @param callback {Function} 回调
  */
 exports.increaseCategoryStatistics = function (conditions, categoryId, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.findOne(conditions, function (err, doc) {
         if (err) {
             return callback(err);
@@ -437,6 +509,10 @@ exports.increaseCategoryStatistics = function (conditions, categoryId, count, ca
  * @param callback {Function} 回调
  */
 exports.increaseColumnStatistics = function (conditions, columnId, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.findOne(conditions, function (err, doc) {
         if (err) {
             return callback(err);
@@ -472,6 +548,10 @@ exports.increaseColumnStatistics = function (conditions, columnId, count, callba
  * @param callback {Function} 回调
  */
 exports.setBlock = function (conditions, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.toggle(conditions, 'isBlock', true, callback);
 };
 
@@ -481,6 +561,10 @@ exports.setBlock = function (conditions, callback) {
  * @param callback {Function} 回调
  */
 exports.cancelBlock = function (conditions, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     developer.toggle(conditions, 'isBlock', false, callback);
 };
 
@@ -492,6 +576,10 @@ exports.cancelBlock = function (conditions, callback) {
  * @param callback {Function} 回调
  */
 exports.joinOrganization = function (conditions, organizationId, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
     object.findOne({
         _id: organizationId
     }, function (err, doc) {
