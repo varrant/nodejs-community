@@ -27,18 +27,16 @@ define(function (require, exports, module) {
         section: '',
         hiddenSelector: '#hidden'
     };
-    var Item = ui.create(function (formSelector, contentSelector, options, methods) {
-        var the = this;
+    var Item = ui.create({
+        constructor: function (formSelector, contentSelector, options, methods) {
+            var the = this;
 
-        the._formSelector = formSelector;
-        the._contentSelector = contentSelector;
-        the._methods = methods;
-        the._options = dato.extend({}, defaults, options);
-        the._init();
-    });
-
-
-    Item.implement({
+            the._formSelector = formSelector;
+            the._contentSelector = contentSelector;
+            the._methods = methods;
+            the._options = dato.extend({}, defaults, options);
+            the._init();
+        },
         /**
          * 初始化
          * @returns {Item}
@@ -373,5 +371,6 @@ define(function (require, exports, module) {
         }
     });
 
+    Item.defaults = defaults;
     module.exports = Item;
 });

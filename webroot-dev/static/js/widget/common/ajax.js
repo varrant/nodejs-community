@@ -15,7 +15,7 @@ define(function (require, exports, module) {
     var loading = require('./loading.js');
     var Emitter = require('../../alien/libs/Emitter.js');
     var klass = require('../../alien/utils/class.js');
-    var Ajax = klass.create(function (options) {
+    var Ajax = klass.extends(Emitter).create(function (options) {
         var the = this;
         var isFormData = options.body && options.body.constructor === FormData;
 
@@ -83,7 +83,7 @@ define(function (require, exports, module) {
                     the.loading.destroy();
                 }
             });
-    }, Emitter);
+    });
 
     module.exports = function (options) {
         return new Ajax(options);
