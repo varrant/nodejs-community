@@ -621,8 +621,8 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
         // 3. 获取 primary email
         .task(function (next, infoJSON) {
             requestOptions.url = urls.emails + '?' + qs.stringify({
-                access_token: infoJSON.accessToken
-            });
+                    access_token: infoJSON.accessToken
+                });
             request.get(requestOptions, function (err, data, res) {
                 if (err) {
                     return next(err);
@@ -652,16 +652,16 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                 //    {"email":"ben.smith8@pcc.edu","primary":false,"verified":true}
                 // ]
                 dato.each(list, function (item) {
-                    if(item.verified && item.primary){
+                    if (item.verified && item.primary) {
                         hasFind = true;
                         findEmail = item.email;
                         return false;
                     }
                 });
 
-                if(!hasFind){
+                if (!hasFind) {
                     dato.each(list, function (item) {
-                        if(item.verified){
+                        if (item.verified) {
                             hasFind = true;
                             findEmail = item.email;
                             return false;
@@ -669,9 +669,9 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                     });
                 }
 
-                if(!hasFind){
+                if (!hasFind) {
                     dato.each(list, function (item) {
-                        if(item.primary){
+                        if (item.primary) {
                             hasFind = true;
                             findEmail = item.email;
                             return false;
@@ -679,7 +679,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                     });
                 }
 
-                if(!hasFind && list.length){
+                if (!hasFind && list.length) {
                     findEmail = list[0].email;
                 }
 
@@ -726,17 +726,18 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
             //    updated_at: '2014-11-22T16:26:16Z'
             // }
 
+            var githubLogin = json.login.toLowerCase();
             var ret = {
                 accessToken: json.accessToken,
-                githubLogin: json.login,
+                githubLogin: githubLogin,
                 githubId: String(json.id),
-                email: json.email || json.login + '@github.com',
-                nickname: json.name || json.login,
+                email: json.email || githubLogin + '@github.com',
+                nickname: json.name || githubLogin,
                 meta: {
                     bio: json.bio || 'unknown',
                     location: json.location || 'unknown',
                     company: json.company || 'unknown',
-                    blog: json.blog || ''
+                    blog: json.blog || 'TA 什么也没说'
                 }
             };
 
