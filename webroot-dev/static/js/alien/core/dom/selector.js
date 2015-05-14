@@ -27,7 +27,7 @@ define(function (require, exports, module) {
     /**
      * 在上下文中查找DOM元素，永远返回一个数组
      * @param {String|HTMLElement|NodeList}  selector  选择器
-     * @param {Object} [context] 上下文
+     * @param {Object} [context=document] 上下文
      * @return {Array}
      *
      * @example
@@ -287,7 +287,7 @@ define(function (require, exports, module) {
 
     /**
      * 过滤节点集合
-     * @param {Node} nodeList   节点集合
+     * @param {Array|NodeList} nodeList 节点集合
      * @param {Function} filter 过滤方法，返回true选择该节点
      * @returns {Array} 过滤后的节点集合
      *
@@ -301,7 +301,7 @@ define(function (require, exports, module) {
         var ret = [];
 
         dato.each(nodeList, function (index, node) {
-            if (filter.call(node)) {
+            if (filter.call(node, index, node) === true) {
                 ret.push(node);
             }
         });
