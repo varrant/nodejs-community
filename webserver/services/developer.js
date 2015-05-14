@@ -42,25 +42,49 @@ exports.login = developer.existOne;
 /**
  * 查找一个
  */
-exports.findOne = developer.findOne;
+exports.findOne = function (conditions, options, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
+    return developer.findOne(conditions, options, callback);
+};
 
 
 /**
  * 查找
  */
-exports.find = developer.find;
+exports.find = function (conditions, options, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
+    return developer.find(conditions, options, callback);
+};
 
 
 /**
  * 查找更新
  */
-exports.findOneAndUpdate = developer.findOneAndUpdate;
+exports.findOneAndUpdate = function (conditions, data, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
+    return developer.findOneAndUpdate(conditions, data, callback);
+};
 
 
 /**
  * 获取meta
  */
-exports.getMeta = developer.getMeta;
+exports.getMeta = function (conditions, metaKey, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
+    return developer.getMeta(conditions, metaKey, callback);
+};
 
 
 /**
