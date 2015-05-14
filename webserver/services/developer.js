@@ -734,10 +734,10 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                 email: json.email || githubLogin + '@github.com',
                 nickname: json.name || githubLogin,
                 meta: {
-                    bio: json.bio || 'unknown',
-                    location: json.location || 'unknown',
-                    company: json.company || 'unknown',
-                    blog: json.blog || 'TA 什么也没说'
+                    bio: json.bio || 'TA 什么也没说',
+                    location: json.location || '未知地方',
+                    company: json.company || '未知公司',
+                    blog: json.blog || ''
                 }
             };
 
