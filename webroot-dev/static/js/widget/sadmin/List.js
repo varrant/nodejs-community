@@ -30,9 +30,7 @@ define(function (require, exports, module) {
         data: null,
         methods: null
     };
-    var List = ui.create();
-
-    List.implement({
+    var List = ui.create({
         constructor: function (listSelector, paginationSelector, options) {
             var the = this;
 
@@ -134,5 +132,6 @@ define(function (require, exports, module) {
         }
     });
 
+    List.defaults = defaults;
     module.exports = List;
 });

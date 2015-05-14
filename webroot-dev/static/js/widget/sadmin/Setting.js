@@ -45,15 +45,14 @@ define(function (require, exports, module) {
         listKey: '',
         type: ''
     };
-    var Setting = ui.create(function (selector, options) {
-        var the = this;
+    var Setting = ui.create({
+        constructor: function (selector, options) {
+            var the = this;
 
-        the._selector = selector;
-        the._options = dato.extend(true, {}, defaults, options);
-        the._init();
-    });
-
-    Setting.implement({
+            the._selector = selector;
+            the._options = dato.extend(true, {}, defaults, options);
+            the._init();
+        },
         _init: function () {
             var the = this;
             var options = the._options;
@@ -268,5 +267,6 @@ define(function (require, exports, module) {
         }
     });
 
+    Setting.defaults = defaults;
     module.exports = Setting;
 });
