@@ -33,25 +33,23 @@ define(function (require, exports, module) {
         data: null,
         methods: null
     };
-    var List = ui.create(function (listSelector, paginationSelector, options) {
-        var the = this;
+    var List = ui.create({
+        constructor: function (listSelector, paginationSelector, options) {
+            var the = this;
 
-        the._listSelector = listSelector;
-        the._paginationSelector = paginationSelector;
-        the._options = dato.extend(true, {}, defaults, options);
-        the.query = {
-            page: number.parseInt(hashbang.get('query', 'page'), the._options.query.page),
-            limit: number.parseInt(hashbang.get('query', 'limit'), the._options.query.limit),
-            type: hashbang.get('query', 'type') || the._options.query.type,
-            author: hashbang.get('query', 'author') || '',
-            section: the._options.query.section
-        };
+            the._listSelector = listSelector;
+            the._paginationSelector = paginationSelector;
+            the._options = dato.extend(true, {}, defaults, options);
+            the.query = {
+                page: number.parseInt(hashbang.get('query', 'page'), the._options.query.page),
+                limit: number.parseInt(hashbang.get('query', 'limit'), the._options.query.limit),
+                type: hashbang.get('query', 'type') || the._options.query.type,
+                author: hashbang.get('query', 'author') || '',
+                section: the._options.query.section
+            };
 
-        the._init();
-    });
-
-
-    List.implement({
+            the._init();
+        },
         _init: function () {
             var the = this;
 
@@ -161,5 +159,6 @@ define(function (require, exports, module) {
         }
     });
 
+    List.defaults = defaults;
     module.exports = List;
 });

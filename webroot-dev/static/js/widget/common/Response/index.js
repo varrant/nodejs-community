@@ -111,16 +111,14 @@ define(function (require, exports, module) {
         },
         $hidden: selector.query('#hidden')[0]
     };
-    var Response = ui.create(function ($parent, options) {
-        var the = this;
+    var Response = ui.create({
+        constructor: function ($parent, options) {
+            var the = this;
 
-        the._options = dato.extend(true, {}, defaults, options);
-        the._$parent = selector.query($parent)[0];
-        the._init();
-    });
-
-
-    Response.implement({
+            the._options = dato.extend(true, {}, defaults, options);
+            the._$parent = selector.query($parent)[0];
+            the._init();
+        },
         /**
          * 初始化
          * @private
@@ -854,5 +852,6 @@ define(function (require, exports, module) {
 
     require('../Template-filter.js');
     modification.importStyle(style);
+    Response.defaults = defaults;
     module.exports = Response;
 });

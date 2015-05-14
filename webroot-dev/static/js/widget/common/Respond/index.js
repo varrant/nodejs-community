@@ -32,16 +32,14 @@ define(function (require, exports, module) {
         icon: 'comment',
         uploadCallback: null
     };
-    var Respond = ui.create(function ($parent, options) {
-        var the = this;
+    var Respond = ui.create({
+        constructor: function ($parent, options) {
+            var the = this;
 
-        the._$parent = selector.query($parent)[0];
-        the._options = dato.extend(true, {}, defaults, options);
-        the._init();
-    });
-
-
-    Respond.implement({
+            the._$parent = selector.query($parent)[0];
+            the._options = dato.extend(true, {}, defaults, options);
+            the._init();
+        },
         /**
          * 初始化
          * @private
@@ -137,5 +135,6 @@ define(function (require, exports, module) {
     });
 
     modification.importStyle(style);
+    Respond.defaults = defaults;
     module.exports = Respond;
 });
