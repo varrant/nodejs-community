@@ -7,6 +7,7 @@
 'use strict';
 
 var howdo = require('howdo');
+var allocation = require('ydr-utils').allocation;
 var dato = require('ydr-utils').dato;
 var number = require('ydr-utils').number;
 var typeis = require('ydr-utils').typeis;
@@ -75,8 +76,10 @@ dato.each(models, function (key, model) {
      * @param callback {Function} 回调
      */
     exports[key].findOne = function (conditions, options, callback) {
-        if (arguments.length === 2) {
-            callback = arguments[1];
+        var args = allocation.args(arguments);
+
+        if (args.length === 2) {
+            callback = args[1];
             options = {};
         }
 
@@ -104,8 +107,10 @@ dato.each(models, function (key, model) {
      * @param callback {Function} 回调
      */
     exports[key].find = function (conditions, options, callback) {
-        if (arguments.length === 2) {
-            callback = arguments[1];
+        var args = allocation.args(arguments);
+
+        if (args.length === 2) {
+            callback = args[1];
             options = {};
         }
 
@@ -136,11 +141,14 @@ dato.each(models, function (key, model) {
     /**
      * 计算数量
      * @param conditions {Object} 查询条件
+     * @param options {Object} 查询条件
      * @param callback {Function} 回调
      */
     exports[key].count = function (conditions, options, callback) {
-        if (arguments.length === 2) {
-            callback = arguments[1];
+        var args = allocation.args(arguments);
+
+        if (args.length === 2) {
+            callback = args[1];
             options = {};
         }
 
@@ -294,8 +302,10 @@ dato.each(models, function (key, model) {
 
         data = _toPureData(data, ['_id']);
 
-        if (arguments.length === 3) {
-            callback = arguments[2];
+        var args = allocation.args(arguments);
+
+        if (args.length === 3) {
+            callback = args[2];
             options = {};
         }
 
@@ -347,8 +357,10 @@ dato.each(models, function (key, model) {
      * @param callback {Function} 回调
      */
     exports[key].getMeta = function (conditions, metaKey, callback) {
-        if (typeis(metaKey) === 'function') {
-            callback = metaKey;
+        var args = allocation.args(arguments);
+
+        if (args.length === 2) {
+            callback = args[1];
             metaKey = null;
         }
 
@@ -514,8 +526,10 @@ dato.each(models, function (key, model) {
             return callback(new Error('the id of conditions is invalid'));
         }
 
-        if (arguments.length === 4) {
-            callback = arguments[3];
+        var args = allocation.args(arguments);
+
+        if (args.length === 4) {
+            callback = args[3];
             maxLength = null;
         }
 
@@ -604,8 +618,10 @@ dato.each(models, function (key, model) {
      * @param callback {Function} 回调
      */
     exports[key].toggle = function (conditions, path, boolean, callback) {
-        if (arguments.length === 3) {
-            callback = arguments[2];
+        var args = allocation.args(arguments);
+
+        if (args.length === 3) {
+            callback = args[2];
             boolean = null;
         }
 
