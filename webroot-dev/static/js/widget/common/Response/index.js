@@ -694,12 +694,12 @@ define(function (require, exports, module) {
 
             var $listParent;
             var $contentParent;
-            var $pagerParent;
+            //var $pagerParent;
 
             // 第 2+ 次加载
             if (the._replyMap[id].$listParent) {
                 $listParent = the._replyMap[id].$listParent;
-                $pagerParent = the._replyMap[id].$pagerParent;
+                //$pagerParent = the._replyMap[id].$pagerParent;
                 $contentParent = the._replyMap[id].$contentParent;
             }
             // 首次加载
@@ -709,7 +709,7 @@ define(function (require, exports, module) {
                     page: 1
                 };
                 $listParent = the._replyMap[id].$listParent = nodes[0];
-                $pagerParent = the._replyMap[id].$pagerParent = nodes[1];
+                //$pagerParent = the._replyMap[id].$pagerParent = nodes[1];
                 $contentParent = the._replyMap[id].$contentParent = nodes[2];
             }
 
