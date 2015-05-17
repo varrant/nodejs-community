@@ -165,7 +165,7 @@ define(function (require, exports, module) {
             });
 
             var imgSelector = 'img:not(.favicon)';
-            event.on(the._$parent, 'click', imgSelector, function () {
+            event.on(the._$parent, 'click', contentClass + ' ' + imgSelector, function () {
                 var $content = selector.closest(this, contentClass)[0];
                 var list = selector.query(imgSelector, $content).map(function (img) {
                     return img.src;

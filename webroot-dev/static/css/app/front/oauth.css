@@ -5,6 +5,9 @@
   padding: 50px 30px;
   border: 1px solid #EFEFEF;
   border-radius: 6px; }
+  .oauth h1 {
+    font-size: 24px;
+    margin-bottom: 2rem; }
   .oauth-callback {
     margin: 1rem auto; }
   .oauth .oauth-info {
