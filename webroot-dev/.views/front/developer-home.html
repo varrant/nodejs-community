@@ -32,15 +32,22 @@
 <div class="layout-body a-fade-in">
     <div class="banner">
         <div class="banner-bg" id="cover" style="background-image: url('{{=$settings.default.banner}}')"></div>
-        <h1 class="banner-name">
-            <img src="{{developer.email|gravatar:200}}"
-                 class="img-rounder"
-                 alt="avatar" width="100" height="100" coolieignore/>
-            <p>{{developer.nickname}}</p>
-        </h1>
+
+        <div class="banner-center">
+            <div class="banner-inner">
+                <img src="{{developer.email|gravatar:200}}"
+                     class="img-rounder img-border-blank"
+                     alt="avatar" width="100" height="100" coolieignore/>
+                <div class="banner-info">
+                    <h1 class="banner-name">{{developer.nickname}}</h1>
+                    <p class="banner-intro"><i class="fi fi-fw fi-map-marker"></i>{{developer.meta.location}}</p>
+                    <p class="banner-intro"><i class="fi fi-fw fi-group"></i>{{developer.meta.company}}</p>
+                </div>
+            </div>
+        </div>
 
         <div class="banner-action">
-            <a class="btn btn-blank btn-lg btn-ghost" href="/admin/column/"><i class="fi fi-heart-o"></i>关注</a>
+            <button class="btn btn-blank btn-lg btn-ghost"><i class="fi fi-heart-o"></i>关注 TA</button>
         </div>
         <div class="banner-share btn-group">
             <button class="btn btn-default share-weibo btn-primary"><i class="fi fi-weibo"></i><span class="hidden-xs hidden-sm">分享到新浪微博</span></button>
