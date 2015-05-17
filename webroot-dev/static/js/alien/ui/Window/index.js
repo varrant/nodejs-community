@@ -45,7 +45,7 @@ define(function (require, exports, module) {
         right: null,
         bottom: null,
         left: 'center',
-        duration: 345,
+        duration: 234,
         easing: {
             open: 'ease-out-back',
             close: 'ease-in-back',
@@ -122,12 +122,15 @@ define(function (require, exports, module) {
             var hasMask = selector.closest(the._$window, '.' + alienBaseClass + '-mask')[0];
 
             attribute.css(the._$window, {
+                display: 'block',
                 width: options.width,
                 height: options.height,
-                position: hasMask ? 'absolute' : 'fixed'
+                position: hasMask ? 'absolute' : 'fixed',
+                scale: 1
             });
             pos.width = attribute.outerWidth(the._$window);
             pos.height = attribute.outerHeight(the._$window);
+            attribute.css(the._$window);
 
             if (options.width === 'height' && options.height === 'width') {
                 pos.width = pos.height = Math.max(pos.width, pos.height);
@@ -200,15 +203,19 @@ define(function (require, exports, module) {
             };
             var to = the._getPos();
 
+            dato.extend(to, {
+                opacity: 0,
+                zIndex: ui.getZindex(),
+                scale: 0.9,
+                translateY: '6%'
+            });
+
             the.visible = true;
-            to.display = 'block';
-            to.opacity = 0;
-            to.zIndex = ui.getZindex();
-            to.scale = 0;
             attribute.css(the._$window, to);
             animation.transition(the._$window, {
                 scale: 1,
-                opacity: 1
+                opacity: 1,
+                translateY: 0
             }, {
                 duration: options.duration,
                 easing: options.easing.open
@@ -280,8 +287,8 @@ define(function (require, exports, module) {
                 the.emit('close');
 
                 attribute.css(the._$window, {
-                    transform: '',
-                    display: 'none'
+                    display: 'none',
+                    translateY: 0
                 });
 
                 callback.call(the);
@@ -289,8 +296,9 @@ define(function (require, exports, module) {
 
             the.visible = false;
             animation.transition(the._$window, {
-                scale: 0,
-                opacity: 0
+                scale: 0.9,
+                opacity: 0,
+                translateY: '-6%'
             }, {
                 direction: 'reverse',
                 duration: options.duration,

@@ -8,6 +8,7 @@
 define(function (require, exports, module) {
     /**
      * @module core/dom/attribute
+     * @requires utils/matrix
      * @requires utils/dato
      * @requires utils/number
      * @requires utils/typeis
@@ -21,6 +22,7 @@ define(function (require, exports, module) {
     var regSep = /^-+|-+$/g;
     var regSplit = /[A-Z]/g;
     var regSpace = /\s+/;
+    var matrix = require('../../utils/matrix.js');
     var dato = require('../../utils/dato.js');
     var number = require('../../utils/number.js');
     var string = require('../../utils/string.js');
@@ -31,8 +33,10 @@ define(function (require, exports, module) {
     var allocation = require('../../utils/allocation.js');
     var REG_PX = /margin|width|height|padding|top|right|bottom|left|translate/i;
     var REG_DEG = /rotate|skew/i;
-    var REG_TRANSFORM = /translate|scale|skew|rotate|matrix|perspective/i;
+    var REG_TRANSFORM_WORD = /translate|scale|skew|rotate|matrix|perspective/i;
     var REG_IMPORTANT = /\s!important$/i;
+    var REG_TRANSFORM_KEY = /transform/i;
+    var REG_PERCENT = /%/;
     // +123.456
     // -123.456
     var regNum = /^[+\-]?\d+(\.\d*)?$/;
@@ -41,7 +45,7 @@ define(function (require, exports, module) {
     var width = innerWidth.concat(['paddingLeft', 'paddingRight']);
     var innerHeight = ['borderTopWidth', 'borderBottomWidth'];
     var height = innerHeight.concat(['paddingTop', 'paddingBottom']);
-    //var alienKey = '-alien-core-dom-attribute-';
+    var alienKey = '-alien-core-dom-attribute-';
     var win = window;
     var doc = win.document;
     var html = doc.documentElement;
@@ -199,7 +203,7 @@ define(function (require, exports, module) {
         var fixkey = key;
         var fixVal = _toCssVal(key, val);
 
-        if (REG_TRANSFORM.test(key)) {
+        if (REG_TRANSFORM_WORD.test(key)) {
             fixkey = 'transform';
             fixVal = key + '(' + fixVal + ')';
         }
@@ -236,7 +240,6 @@ define(function (require, exports, module) {
      */
     exports.css = exports.style = function (ele, key, val) {
         var transformKey = '';
-        var transformVal = [];
         var important = '';
 
         return _getSet(arguments, {
@@ -249,6 +252,11 @@ define(function (require, exports, module) {
                 var pseudo = temp.length === 1 ? null : temp[temp.length - 1];
 
                 key = temp[0];
+
+                if (key && REG_TRANSFORM_WORD.test(key)) {
+                    return _toCssVal(key, _getEleTransform(ele, key));
+                }
+
                 pseudo = pseudo ? pseudo : null;
                 return getComputedStyle(ele, pseudo).getPropertyValue(_toSepString(key));
             },
@@ -261,9 +269,9 @@ define(function (require, exports, module) {
 
                 var fix = exports.fixCss(key, val);
 
-                if (fix.key && fix.key.indexOf('transform') > -1) {
+                if (fix.key && REG_TRANSFORM_KEY.test(fix.key)) {
                     transformKey = fix.key;
-                    transformVal.push(fix.val);
+                    _setEleTransform(ele, key, val);
 
                     if (!important && fix.imp) {
                         important = fix.imp;
@@ -275,8 +283,8 @@ define(function (require, exports, module) {
                 }
             },
             onset: function () {
-                if (transformVal.length) {
-                    ele.style.setProperty(transformKey, transformVal.join(' '), important);
+                if (transformKey) {
+                    ele.style.setProperty(transformKey, _calEleTransform(ele), important);
                 }
             }
         });
@@ -738,11 +746,11 @@ define(function (require, exports, module) {
      * @private
      */
     function _toCssVal(key, val) {
+        val += '';
+
         if (!REG_PX.test(key) && !REG_DEG.test(key)) {
             return val;
         }
-
-        val += '';
 
         if (regNum.test(val)) {
             return val.replace(regEndPoint, '') +
@@ -976,5 +984,72 @@ define(function (require, exports, module) {
         // Test with a point larger than the viewport. If it returns an element,
         // then that means elementFromPoint takes page coordinates.
         return !doc.elementFromPoint(x, y);
+    }
+
+
+    /**
+     * 存储元素的 transform 特征
+     * @param ele
+     * @param key
+     * @param val
+     * @private
+     */
+    function _setEleTransform(ele, key, val) {
+        var val2 = val;
+        var isPercent = REG_PERCENT.test(val);
+        var base;
+
+        // 计算百分比的 translate
+        switch (key) {
+            case 'translateX':
+                base = exports.outerWidth(ele);
+                val2 = number.parseFloat(val, 0);
+                val2 = isPercent ? base * val2 / 100 : val2;
+                break;
+
+            case 'translateY':
+                base = exports.outerHeight(ele);
+                val2 = number.parseFloat(val, 0);
+                val2 = isPercent ? base * val2 / 100 : val2;
+                break;
+
+            case 'translate':
+                _setEleTransform(ele, 'translateX', val);
+                _setEleTransform(ele, 'translateY', val);
+                return;
+
+            case 'scale':
+                // scale 到 0 的时候，会出现矩阵计算错误
+                val2 = number.parseFloat(val2, 0);
+                val2 = val === 0 ? 0.01 : val2;
+                break;
+        }
+
+        ele[alienKey + 'transform'] = ele[alienKey + 'transform'] || {};
+        ele[alienKey + 'transform'][key] = val2;
+    }
+
+
+    /**
+     * 获取元素的 transform 特征
+     * @param ele
+     * @param key
+     * @private
+     */
+    function _getEleTransform(ele, key) {
+        ele[alienKey + 'transform'] = ele[alienKey + 'transform'] || {};
+        return ele[alienKey + 'transform'][key];
+    }
+
+
+    /**
+     * 综合计算元素的 transform 2d 变换矩阵
+     * @param ele
+     * @private
+     */
+    function _calEleTransform(ele) {
+        var trans = ele[alienKey + 'transform'] = ele[alienKey + 'transform'] || {};
+
+        return matrix(trans);
     }
 });

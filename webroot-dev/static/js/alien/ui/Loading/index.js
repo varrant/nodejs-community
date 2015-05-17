@@ -1,8 +1,58 @@
 /*!
  * loading ui
+ * @todo 目前使用 svg 来实现可定制的 loading，在 mac chrome 下，CPU 增高？？
  * @author ydr.me
  * @create 2015-05-15 10:19
  */
+
+
+/*************
+ <div class="loader">Loading...</div>
+
+ .loader {
+  margin: 6em auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-left: 1.1em solid #ffffff;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+ .loader,
+ .loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+ @-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+ @keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+ *************/
+
 
 
 define(function (require, exports, module) {
@@ -175,6 +225,74 @@ define(function (require, exports, module) {
 
 
         /**
+         * 打开 loading
+         * @param [callback] {Function} 关闭后回调
+         * @returns {Loading}
+         */
+        open: function (callback) {
+            var the = this;
+
+            if (the.visible) {
+                return the;
+            }
+
+            the.visible = true;
+
+            if (the._mask) {
+                the._mask.open();
+            }
+
+            attribute.css(the._$loading, {
+                display: 'block',
+                opacity: 0,
+                scale: 0.5,
+                zIndex: ui.getZindex()
+            });
+            animation.transition(the._$loading, {
+                opacity: 1,
+                scale: 1
+            }, the._transitionOptions, callback);
+
+            return the;
+        },
+
+
+        /**
+         * 关闭 loading，关闭不会删除 loading，若要删除 loading 使用 done 或 destroy
+         * @param [callback] {Function} 关闭后回调
+         * @returns {Loading}
+         */
+        close: function (callback) {
+            var the = this;
+
+            if (!the.visible) {
+                return the;
+            }
+
+            the.visible = false;
+
+            if (the._mask) {
+                the._mask.close();
+            }
+
+            animation.transition(the._$loading, {
+                opacity: 0,
+                scale: 0.5
+            }, the._transitionOptions, function () {
+                attribute.css(the._$loading, {
+                    display: 'none'
+                });
+
+                if (typeis.function(callback)) {
+                    callback();
+                }
+            });
+
+            return the;
+        },
+
+
+        /**
          * 销毁实例
          */
         destroy: function () {
@@ -188,27 +306,33 @@ define(function (require, exports, module) {
         done: function (callback) {
             var the = this;
 
-            if (!the.visible) {
+            if (the._destory) {
                 return;
             }
 
-            the.visible = false;
+            the._destory = true;
 
             if (the._mask) {
                 the._mask.destroy();
             }
 
-            animation.transition(the._$loading, {
-                opacity: 0,
-                scale: 0.5
-            }, the._transitionOptions, function () {
+            var destory = function () {
+                the.visible = false;
                 modification.remove(the._$loading);
 
                 if (typeis.function(callback)) {
                     callback();
                 }
-            });
+            };
 
+            if (the.visible) {
+                animation.transition(the._$loading, {
+                    opacity: 0,
+                    scale: 0.5
+                }, the._transitionOptions, destory);
+            } else {
+                destory();
+            }
         }
     });
     Loading.defaults = defaults;
