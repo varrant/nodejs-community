@@ -32,6 +32,10 @@
   &-inner{
     display: table-cell;
     vertical-align: middle;
+
+    img{
+      vertical-align: middle;
+    }
   }
 
   &-cover,

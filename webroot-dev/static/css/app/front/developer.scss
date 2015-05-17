@@ -7,19 +7,6 @@
 
 //usercard
 .usercard {
-  &-main {
-    margin-bottom: 20px;
-  }
-
-  &-avatar {
-    width: 100px;
-    height: 100px;
-  }
-
-  &-body {
-    margin-left: 120px;
-  }
-
   &-bio {
     margin-bottom: 20px;
   }
@@ -36,4 +23,9 @@
       margin-right: 20px;
     }
   }
+}
+
+
+.history{
+
 }
