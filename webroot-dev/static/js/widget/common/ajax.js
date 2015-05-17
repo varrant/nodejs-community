@@ -47,13 +47,12 @@ define(function (require, exports, module) {
                     case 400:
                         break;
 
-                    // 未登陆
+                    // 未登录
                     case 401:
-                        return alert(json).on('close', function (index) {
-                            alert(index);
-                        });
+                        return alert(json).on('sure', login);
 
                     // 不被接受，返回首页
+                    // 没有权限发布文章等
                     case 406:
                         return alert(json).on('close', function () {
                             location.replace('/');
