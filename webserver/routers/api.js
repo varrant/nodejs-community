@@ -78,6 +78,7 @@ module.exports = function (app, ctrl) {
     app.get('/api/developer/', ctrl.developer.get);
     app.get('/admin/api/developer/', ctrl.developer.detail);
     app.post('/admin/api/developer/', ctrl.developer.role);
+    app.post('/admin/api/developer/follow/status/', ctrl.developer.role);
 
 
     // translate

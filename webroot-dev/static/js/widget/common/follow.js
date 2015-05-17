@@ -14,37 +14,38 @@ define(function (require, exports, module) {
     var ajax = require('../../widget/common/ajax.js');
     var confirm = require('../../alien/widgets/confirm.js');
     var alert = require('../../alien/widgets/alert.js');
-    var Loading = require('../../alien/ui/Loading/');
-    var doc = window.document;
+    var win = window;
+    var doc = win.document;
     var STATUS = {
-        self: '我自己',
+        me: '我自己',
         on: '<i class="fi fi-heart"></i>已关注 TA',
         un: '<i class="fi fi-heart-o"></i>关注 TA'
     };
     var $follows = selector.query('.follow-developer');
-    var changeStatus = function($btn, status){
-
+    var changeStatus = function ($btn, status) {
+        $btn.innerHTML = STATUS[status];
+        $btn.status = status;
     };
+    var winDeveloper = win['-developer-'];
 
     $follows.forEach(function ($follow) {
         var id = attribute.data($follow, 'id');
 
-        new Loading($follow, {
-            isModal: true,
-            text: null,
-            style: {
-                size: 30,
-                backgroundColor: 'rgba(0,0,0,0)'
-            }
-        });
+        if (!winDeveloper.id) {
+            return changeStatus($follow, 'un');
+        }
 
         ajax({
             loading: false,
-            url: '/api/developer/is-follow/',
+            url: '/admin/api/developer/follow/status/',
             query: {
                 id: id
             }
-        }).on('error');
+        }).on('success', function (json) {
+            changeStatus($follow, json.status);
+        }).on('error', function () {
+            changeStatus($follow, 'un');
+        });
     });
 
     // 关注个人

@@ -238,5 +238,11 @@ module.exports = function (app) {
             });
     };
 
+
+
+    exports.getFollowStatus = function (req, res, next) {
+        //developer.findOne();
+    };
+
     return exports;
 };
