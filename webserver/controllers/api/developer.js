@@ -272,7 +272,7 @@ module.exports = function (app) {
 
     // 关注某人
     exports.putFollow = function (req, res, next) {
-        developer.follow(req.session.$developer.id, req.body.id, function (err) {
+        developer.follow(req.session.$developer, req.body.id, function (err) {
             if (err) {
                 return next(err);
             }
@@ -286,7 +286,7 @@ module.exports = function (app) {
 
     // 取消关注某人
     exports.deleteFollow = function (req, res, next) {
-        developer.unfollow(req.session.$developer.id, req.body.id, function (err) {
+        developer.unfollow(req.session.$developer, req.body.id, function (err) {
             if (err) {
                 return next(err);
             }

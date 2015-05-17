@@ -260,3 +260,35 @@ exports.agreeReply = function (agreeDeveloper, agreeByDeveloper, agreeinObject, 
     var content = noti.template.render(data);
     email.send(agreeByDeveloper, subject, content);
 };
+
+
+/**
+ * 关注通知
+ * @param follower   {Object} 关注者
+ * @param byFollower {Object} 被关注者
+ */
+exports.follow = function (follower, byFollower) {
+    // 1. 站内通知
+    notification.createOne({
+        type: 'follow',
+        source: follower.id.toString(),
+        target: byFollower.id.toString()
+    }, log.holdError);
+
+    // 2. 邮件通知
+    var noti = configs.notification.follow;
+    var subject = noti.subject;
+    var data = {
+        from: configs.smtp.from,
+        sender: {
+            nickname: follower.nickname
+        },
+        receiver: {
+            nickname: byFollower.nickname
+        }
+    };
+    var content = noti.template.render(data);
+
+    email.send(byFollower, subject, content);
+};
+
