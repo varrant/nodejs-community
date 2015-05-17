@@ -43,12 +43,6 @@ var schema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // 类型，详细参考 doc
-    value: {
-        type: Number,
-        required: true,
-        default: 1
-    },
     // 被操作 object
     object: {
         type: mongoose.Schema.Types.ObjectId,
@@ -66,9 +60,9 @@ var schema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    // 是否被允许，默认 true
-    // 是否被读取了
-    // 通常为新消息、新申请时，设置为 false
+    // 是否被允许，
+    // 默认 true，如：关注他人、邮件订阅等不需要对方同意的活动
+    // 通常为新申请、请求加入等活动时，需要对方同意的，设置为 false
     hasApproved: {
         type: Boolean,
         default: true
