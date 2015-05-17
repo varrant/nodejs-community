@@ -240,18 +240,18 @@ module.exports = function (app) {
     };
 
 
-
+    // 获取用户的关注状态
     exports.getFollowStatus = function (req, res, next) {
         interactive.findOne({
             source: req.session.$developer.id,
             target: req.query.id,
             type: 'follow'
         }, function (err, doc) {
-            if(err){
+            if (err) {
                 return next(err);
             }
 
-            if(!doc){
+            if (!doc) {
                 return res.json({
                     code: 200,
                     data: {
@@ -259,6 +259,13 @@ module.exports = function (app) {
                     }
                 });
             }
+
+            res.json({
+                code: 200,
+                data: {
+                    status: doc.hasApproved ? 'on' : 'un'
+                }
+            });
         });
     };
 
