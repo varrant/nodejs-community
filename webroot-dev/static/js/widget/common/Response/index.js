@@ -25,6 +25,7 @@ define(function (require, exports, module) {
     var confirm = require('../../../alien/widgets/confirm.js');
     var tip = require('../tip.js');
     var Pager = require('../../../alien/ui/Pager/');
+    var Loading = require('../../../alien/ui/Loading/');
     var Respond = require('../Respond/index');
     var Template = require('../../../alien/libs/Template.js');
     var templateWrap = require('html!./wrap.html');
@@ -69,7 +70,7 @@ define(function (require, exports, module) {
                 var the = this;
 
                 // key, val, name
-                fd.append('img', list[0].file, 'img.png');
+                fd.append('img', list[0].file);
 
                 ajax({
                     url: '/admin/api/oss/',
@@ -474,7 +475,7 @@ define(function (require, exports, module) {
                 url: options.url.post,
                 method: 'post',
                 body: data,
-                loading: '评论中'
+                loading: (parentId ? '回复' : '评论') + '中'
             })
                 .on('success', function (data) {
                     var resp = data.response;
@@ -719,7 +720,8 @@ define(function (require, exports, module) {
             }, options.query, the._replyMap[id].query);
 
             ajax({
-                url: options.url.list + '?' + qs.stringify(query)
+                url: options.url.list + '?' + qs.stringify(query),
+                loading: false
             })
                 .on('success', function (data) {
                     the._renderReply($listParent, dato.extend({

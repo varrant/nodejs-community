@@ -32,7 +32,7 @@ define(function (require, exports, module) {
             options.body = JSON.stringify(options.body);
         }
 
-        if (options.loading !== false) {
+        if (options.loading) {
             the.loading = new Loading(window, options.loading);
         }
 
