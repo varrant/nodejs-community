@@ -17,10 +17,11 @@ define(function (require, exports, module) {
      * @requires core/dom/selector
      *
      * @example
+     * // draggablefor="#被拖动的 id"
      * // dom结构
      * // &lt;div id="abc"&gt;
-     * //     这里的 draggablefor 属性指向的是拖拽影响的元素，为空表示拖拽自身
-     * //     &lt;div draggablefor="abc"&gt;&lt;/div&gt;
+     * //     &lt;!-- 这里的 draggablefor 属性指向的是拖拽影响的元素，为空表示拖拽自身 --&gt;
+     * //     &lt;div draggablefor="abc" &gt;&lt;/div&gt;
      * // &lt;/div&gt;
      * // 可以在事件监听里取消默认行为，即 eve.preventDefault();
      * event.on(ele, 'dragstart', fn);
@@ -40,6 +41,8 @@ define(function (require, exports, module) {
     var dragendEvent = 'mouseup touchend MSPointerUp pointerup touchcancel MSPointerCancel pointercancel';
     var x0 = null;
     var y0 = null;
+    var x1 = null;
+    var y1 = null;
     // 0 = 未开始拖动
     // 1 = 开始拖动
     // 2 = 拖动中
@@ -91,8 +94,10 @@ define(function (require, exports, module) {
         var _eve = eve.type === 'mousemove' && eve.button === 0 ? eve : (
             eve.touches && eve.touches.length ? eve.touches[0] : null
         );
-        var x1 = _eve ? _eve.clientX : null;
-        var y1 = _eve ? _eve.clientY : null;
+
+        x1 = _eve ? _eve.clientX : null;
+        y1 = _eve ? _eve.clientY : null;
+
         var dispatchDragstart;
         var dispatchDrag;
 
@@ -133,7 +138,10 @@ define(function (require, exports, module) {
              * @event drag
              * @param event {Object} 事件对象
              */
-            dispatchDrag = event.dispatch(ele, 'drag', _eve);
+            dispatchDrag = event.dispatch(ele, 'drag', _eve, {
+                deltaX: x1 - x0,
+                deltaY: y1 - y0
+            });
 
             if (dispatchDrag.defaultPrevented !== true) {
                 attribute.left(clone, left + x1 - x0);
@@ -145,7 +153,7 @@ define(function (require, exports, module) {
     });
 
     event.on(document, dragendEvent, function (eve) {
-        var _eve = eve.type === 'mousemove' && eve.button === 0 ?
+        var _eve = eve.type === 'mouseup' && eve.button === 0 ?
             eve :
             (eve.touches && eve.touches.length ?
                 eve.touches[0] :
@@ -157,7 +165,10 @@ define(function (require, exports, module) {
         var dispatchDragend;
 
         if (state === 2) {
-            dispatchDragend = event.dispatch(ele, 'dragend', _eve);
+            dispatchDragend = event.dispatch(ele, 'dragend', _eve, {
+                deltaX: x1 - x0,
+                deltaY: y1 - y0
+            });
 
             if (dispatchDragend.defaultPrevented !== true) {
                 from = attribute.css(dragfor, ['visibility', 'left', 'top', 'margin-left', 'margin-top']);

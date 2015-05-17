@@ -42,6 +42,10 @@ define(function (require, exports, module) {
     var innerHeight = ['borderTopWidth', 'borderBottomWidth'];
     var height = innerHeight.concat(['paddingTop', 'paddingBottom']);
     //var alienKey = '-alien-core-dom-attribute-';
+    var win = window;
+    var doc = win.document;
+    var html = doc.documentElement;
+    var body = doc.body;
     var isRelativeToViewport = _isRelativeToViewport();
 
 
@@ -67,9 +71,17 @@ define(function (require, exports, module) {
     exports.attr = function (ele, key, val) {
         return _getSet(arguments, {
             get: function (ele, key) {
+                if (!typeis.element(ele)) {
+                    return;
+                }
+
                 return ele.getAttribute(key);
             },
             set: function (ele, key, val) {
+                if (!typeis.element(ele)) {
+                    return;
+                }
+
                 ele.setAttribute(key, val);
             }
         });
@@ -88,7 +100,7 @@ define(function (require, exports, module) {
      * // => true
      */
     exports.hasAttr = function (ele, key) {
-        if (!ele || ele.nodeType !== 1 || !key) {
+        if (!typeis.element(ele)) {
             return false;
         }
 
@@ -229,6 +241,10 @@ define(function (require, exports, module) {
 
         return _getSet(arguments, {
             get: function (ele, key) {
+                if (!typeis.element(ele)) {
+                    return;
+                }
+
                 var temp = key.split('::');
                 var pseudo = temp.length === 1 ? null : temp[temp.length - 1];
 
@@ -237,6 +253,10 @@ define(function (require, exports, module) {
                 return getComputedStyle(ele, pseudo).getPropertyValue(_toSepString(key));
             },
             set: function (ele, key, val) {
+                if (!typeis.element(ele)) {
+                    return;
+                }
+
                 key = key.split('::', 1)[0];
 
                 var fix = exports.fixCss(key, val);
@@ -267,7 +287,7 @@ define(function (require, exports, module) {
      * 设置、获取元素的滚动条高度
      * @param ele {HTMLElement|Node|Window|Document|Object} 元素
      * @param [top] {Number} 高度
-     * @returns {number|*}
+     * @returns {number|undefined}
      *
      * @example
      * // get
@@ -279,13 +299,13 @@ define(function (require, exports, module) {
     exports.scrollTop = function (ele, top) {
         ele = selector.query(ele)[0];
 
-        if (top === undefined) {
-            return _isDispute(ele) ? Math.max(document.body.scrollTop, document.documentElement.scrollTop) : ele.scrollTop;
+        if (typeis.undefined(top)) {
+            return _isDispute(ele) ? Math.max(body.scrollTop, html.scrollTop) : ele.scrollTop;
         }
 
         if (_isDispute(ele)) {
-            document.body.scrollTop = top;
-            document.documentElement.scrollTop = top;
+            body.scrollTop = top;
+            html.scrollTop = top;
         } else {
             ele.scrollTop = top;
         }
@@ -296,7 +316,7 @@ define(function (require, exports, module) {
      * 设置、获取元素的滚动条左距离
      * @param ele {HTMLElement|Node|Window|Document|Object} 元素
      * @param [left] {Number} 高度
-     * @returns {number|*}
+     * @returns {number|undefined}
      *
      * @example
      * // get
@@ -308,13 +328,13 @@ define(function (require, exports, module) {
     exports.scrollLeft = function (ele, left) {
         ele = selector.query(ele)[0];
 
-        if (left === undefined) {
-            return _isDispute(ele) ? Math.max(document.body.scrollLeft, document.documentElement.scrollLeft) : ele.scrollLeft;
+        if (typeis.undefined(left)) {
+            return _isDispute(ele) ? Math.max(body.scrollLeft, html.scrollLeft) : ele.scrollLeft;
         }
 
         if (_isDispute(ele)) {
-            document.body.scrollLeft = left;
-            document.documentElement.scrollLeft = left;
+            body.scrollLeft = left;
+            html.scrollLeft = left;
         } else {
             ele.scrollLeft = left;
         }
@@ -348,6 +368,10 @@ define(function (require, exports, module) {
     exports.data = function (ele, key, val) {
         return _getSet(arguments, {
             get: function (ele, key) {
+                if (!typeis.element(ele)) {
+                    return;
+                }
+
                 var ret = ele.dataset[string.humprize(key)];
 
                 try {
@@ -365,6 +389,10 @@ define(function (require, exports, module) {
                 return ret;
             },
             set: function (ele, key, val) {
+                if (!typeis.element(ele)) {
+                    return;
+                }
+
                 if (typeis(val) === 'object') {
                     try {
                         val = JSON.stringify(val);
@@ -385,6 +413,10 @@ define(function (require, exports, module) {
      * @returns {*}
      */
     exports.removeData = function ($ele, key) {
+        if (!typeis.element($ele)) {
+            return;
+        }
+
         return exports.removeAttr($ele, 'data-' + key);
     };
 
@@ -405,9 +437,17 @@ define(function (require, exports, module) {
     exports.html = function (ele, html) {
         return _getSet(arguments, {
             get: function (ele) {
+                if (!typeis.element(ele)) {
+                    return;
+                }
+
                 return ele.innerHTML;
             },
             set: function (ele, html) {
+                if (!typeis.element(ele)) {
+                    return;
+                }
+
                 ele.innerHTML = html;
             }
         }, 1);
@@ -430,9 +470,17 @@ define(function (require, exports, module) {
     exports.text = function (ele, text) {
         return _getSet(arguments, {
             get: function (ele) {
+                if (!typeis.element(ele)) {
+                    return;
+                }
+
                 return ele.innerText;
             },
             set: function (ele, text) {
+                if (!typeis.element(ele)) {
+                    return;
+                }
+
                 ele.innerText = text;
             }
         }, 1);
@@ -489,10 +537,6 @@ define(function (require, exports, module) {
      * attribute.hasClass(ele, 'class');
      */
     exports.hasClass = function (ele, className) {
-        if (!ele || ele.nodeType !== 1) {
-            return false;
-        }
-
         return _class(ele, 2, className);
     };
 
@@ -536,7 +580,7 @@ define(function (require, exports, module) {
     /**
      * 获取、设置元素的占位宽度
      * content + padding + border
-     * @param {HTMLElement|Node} $ele
+     * @param {Object} $ele
      * @param {Number} [val] 宽度值
      * @returns {Number|undefined|*}
      *
@@ -555,7 +599,7 @@ define(function (require, exports, module) {
     /**
      * 获取、设置元素的占位宽度
      * content + padding
-     * @param {HTMLElement|Node} $ele
+     * @param {Object} $ele
      * @param {Number} [val] 宽度值
      * @returns {Number|undefined|*}
      *
@@ -658,11 +702,11 @@ define(function (require, exports, module) {
      */
     exports.getElementFromPoint = function (clientX, clientY) {
         if (!isRelativeToViewport) {
-            clientX += window.pageXOffset;
-            clientY += window.pageYOffset;
+            clientX += win.pageXOffset;
+            clientY += win.pageYOffset;
         }
 
-        return document.elementFromPoint(clientX, clientY);
+        return doc.elementFromPoint(clientX, clientY);
     };
 
 
@@ -716,7 +760,7 @@ define(function (require, exports, module) {
      * @private
      */
     function _isDispute(ele) {
-        return ele === window || ele === document || ele === document.body || ele === document.documentElement;
+        return ele === win || ele === doc || ele === body || ele === html;
     }
 
 
@@ -835,7 +879,7 @@ define(function (require, exports, module) {
                             return window['inner' + key2];
 
                         case 'document':
-                            return document.documentElement['scroll' + key2];
+                            return Math.max(html['scroll' + key2], html['client' + key2])
                     }
                 }
                 // set
@@ -922,8 +966,8 @@ define(function (require, exports, module) {
      * @returns {boolean}
      */
     function _isRelativeToViewport() {
-        var x = window.pageXOffset ? window.pageXOffset + window.innerWidth - 1 : 0;
-        var y = window.pageYOffset ? window.pageYOffset + window.innerHeight - 1 : 0;
+        var x = win.pageXOffset ? win.pageXOffset + win.innerWidth - 1 : 0;
+        var y = win.pageYOffset ? win.pageYOffset + win.innerHeight - 1 : 0;
 
         if (!x && !y) {
             return true;
@@ -931,6 +975,6 @@ define(function (require, exports, module) {
 
         // Test with a point larger than the viewport. If it returns an element,
         // then that means elementFromPoint takes page coordinates.
-        return !document.elementFromPoint(x, y);
+        return !doc.elementFromPoint(x, y);
     }
 });
