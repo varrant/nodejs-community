@@ -376,13 +376,17 @@ exports.increaseColumnCount = function (conditions, count, callback) {
 /**
  * 关注某人
  * @param operatorId {String} 关注者 ID
- * @param userId {String} 被关注者 ID
+ * @param developerId {String} 被关注者 ID
  * @param callback {Function} 回调
  */
-exports.follow = function (operatorId, userId, callback) {
+exports.follow = function (operatorId, developerId, callback) {
+    if (operatorId === developerId) {
+        return callback(new Error('不必自己关注自己'));
+    }
+
     interactive.active({
         source: operatorId,
-        target: userId,
+        target: developerId,
         type: 'follow',
         hasApproved: 1
     }, function (err, isModified) {
@@ -390,7 +394,7 @@ exports.follow = function (operatorId, userId, callback) {
 
         if (isModified) {
             developer.increase({_id: operatorId}, 'followCount', 1, log.holdError);
-            developer.increase({_id: userId}, 'followByCount', 1, log.holdError);
+            developer.increase({_id: developerId}, 'followByCount', 1, log.holdError);
         }
     });
 };
@@ -399,13 +403,17 @@ exports.follow = function (operatorId, userId, callback) {
 /**
  * 取消关注某人
  * @param operatorId {String} 取消关注者 ID
- * @param userId {String} 被取消关注者 ID
+ * @param developerId {String} 被取消关注者 ID
  * @param callback {Function} 回调
  */
-exports.unfollow = function (operatorId, userId, callback) {
+exports.unfollow = function (operatorId, developerId, callback) {
+    if (operatorId === developerId) {
+        return callback(new Error('不必自己取消关注自己'));
+    }
+
     interactive.active({
         source: operatorId,
-        target: userId,
+        target: developerId,
         type: 'follow',
         hasApproved: 0
     }, function (err, isModified) {
@@ -413,7 +421,7 @@ exports.unfollow = function (operatorId, userId, callback) {
 
         if (isModified) {
             developer.increase({_id: operatorId}, 'followCount', -1, log.holdError);
-            developer.increase({_id: userId}, 'followByCount', -1, log.holdError);
+            developer.increase({_id: developerId}, 'followByCount', -1, log.holdError);
         }
     });
 };

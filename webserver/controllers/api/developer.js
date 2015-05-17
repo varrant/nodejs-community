@@ -269,5 +269,47 @@ module.exports = function (app) {
         });
     };
 
+
+    // 关注某人
+    exports.putFollow = function (req, res, next) {
+        developer.follow(req.session.$developer.id, req.body.id, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            if (!doc) {
+                return res.json({
+                    code: 500,
+                    message: '关注失败'
+                });
+            }
+
+            res.json({
+                code: 200
+            });
+        });
+    };
+
+
+    // 关注某人
+    exports.putFollow = function (req, res, next) {
+        developer.follow(req.session.$developer.id, req.body.id, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            if (!doc) {
+                return res.json({
+                    code: 500,
+                    message: '关注失败'
+                });
+            }
+
+            res.json({
+                code: 200
+            });
+        });
+    };
+
     return exports;
 };
