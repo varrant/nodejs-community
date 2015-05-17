@@ -245,7 +245,7 @@ define(function (require, exports, module) {
             var the = this;
 
             prompt('请输入专辑名称').on('sure', function (name) {
-                var ld = new Loading('正在翻译');
+                var ld = new Loading(window, '正在翻译');
 
                 the._translate(name, function (err, uri) {
                     ld.done();

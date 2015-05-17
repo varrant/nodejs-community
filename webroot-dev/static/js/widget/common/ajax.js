@@ -33,7 +33,7 @@ define(function (require, exports, module) {
         }
 
         if (options.loading !== false) {
-            the.loading = new Loading(options.loading);
+            the.loading = new Loading(window, options.loading);
         }
 
         the.xhr = xhr.ajax(options)
