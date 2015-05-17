@@ -92,21 +92,6 @@
     cursor: zoom-in;
 }
 
-.alien-ui-response-content p > img {
-    display: block;
-    margin: 0 auto;
-    border: 1px solid #EEE;
-    box-shadow: 0 4px 10px #E3E3E3;
-}
-
-.alien-ui-response-content p {
-    white-space: pre-wrap;
-}
-
-.alien-ui-response-content p:last-child {
-    margin-bottom: 0;
-}
-
 .alien-ui-response-action {
     margin-top: 20px;
 }
