@@ -10,6 +10,7 @@
 var configs = require('../../../configs/');
 var developer = require('../../services/').developer;
 var setting = require('../../services/').setting;
+var interactive = require('../../services/').interactive;
 var cookie = require('../../utils/').cookie;
 var filter = require('../../utils/').filter;
 var howdo = require('howdo');
@@ -241,7 +242,24 @@ module.exports = function (app) {
 
 
     exports.getFollowStatus = function (req, res, next) {
-        //developer.findOne();
+        interactive.findOne({
+            source: req.session.$developer.id,
+            target: req.query.id,
+            type: 'follow'
+        }, function (err, doc) {
+            if(err){
+                return next(err);
+            }
+
+            if(!doc){
+                return res.json({
+                    code: 200,
+                    data: {
+                        status: 'un'
+                    }
+                });
+            }
+        });
     };
 
     return exports;

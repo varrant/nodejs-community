@@ -7,6 +7,7 @@
 - `source` 源
 - `target` 目标
 - `type` 类型
+- `value` 值
 - `object` 被操作 object
 - `response` 被操作 response
 - `interactiveAt` 操作时间
