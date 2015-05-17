@@ -24,13 +24,14 @@ define(function (require, exports, module) {
 
     var ui = require('../');
     var Scrollbar = require('../Scrollbar/');
+    var Loading = require('../Loading/');
     var Mask = require('../Mask/');
     var Window = require('../Window/index.js');
     var selector = require('../../core/dom/selector.js');
     var attribute = require('../../core/dom/attribute.js');
     var modification = require('../../core/dom/modification.js');
     var animation = require('../../core/dom/animation.js');
-    var event = require('../../core/event/touch.js');
+    var event = require('../../core/event/hotkey.js');
     var Template = require('../../libs/Template.js');
     var template = require('./template.html', 'html');
     var style = require('./style.css', 'css');
@@ -43,20 +44,18 @@ define(function (require, exports, module) {
     var arrowRight = require('./arrow-right.png', 'image');
     var tpl = new Template(template);
     var alienClass = 'alien-ui-imgview';
+    var alienIndex = 0;
+    var win = window;
+    var doc = win.document;
     var noop = function () {
         // ignore
     };
     var defaults = {
         duration: 400,
         easing: 'in-out',
-        loading: {
-            url: 'http://s.ydr.me/p/i/loading-128.gif',
-            width: 64,
-            height: 64
-        },
         thumbnailSize: {
-            width: 60,
-            height: 60
+            width: 50,
+            height: 50
         }
     };
     var Imgview = ui.create({
@@ -115,6 +114,7 @@ define(function (require, exports, module) {
             });
             the._$window = the._window.getNode();
             the._$window.innerHTML = tpl.render({
+                id: alienIndex++,
                 list: the._list
             });
 
@@ -155,9 +155,8 @@ define(function (require, exports, module) {
                 the._window.resize();
             }));
 
-
             // 上一张
-            event.on(the._$prev, 'click', function () {
+            event.on(the._$prev, 'click', the._onprev = function () {
                 var length = the._list.length;
 
                 if (length > 1 && the._index > 0) {
@@ -166,9 +165,10 @@ define(function (require, exports, module) {
                     the._show();
                 }
             });
+            event.on(doc, 'left', the._onprev);
 
             // 下一张
-            event.on(the._$next, 'click', function () {
+            event.on(the._$next, 'click', the._onnext = function () {
                 var length = the._list.length;
 
                 if (length > 1 && the._index < length - 1) {
@@ -177,6 +177,7 @@ define(function (require, exports, module) {
                     the._show();
                 }
             });
+            event.on(doc, 'right', the._onnext);
 
             // 单击序列
             event.on(the._$navList, 'click', '*', function () {
@@ -192,7 +193,7 @@ define(function (require, exports, module) {
             });
 
             // 点击关闭
-            event.on(the._$close, 'click', function () {
+            event.on(the._$close, 'click', the._onclose = function () {
                 the._window.close(function () {
                     the._mask.close();
                     attribute.addClass(the._$content, alienClass + '-content-loading');
@@ -200,6 +201,7 @@ define(function (require, exports, module) {
                     the._renderContent();
                 });
             });
+            event.on(doc, 'esc', the._onclose);
         },
 
 
@@ -260,11 +262,6 @@ define(function (require, exports, module) {
             var options = the._options;
 
             attribute.css(the._$content, 'bottom', number.parseFloat(options.thumbnailSize.height));
-            attribute.css(the._$loading, {
-                width: options.loading.width,
-                height: options.loading.height,
-                backgroundImage: 'url(' + options.loading.url + ')'
-            });
         },
 
 
@@ -291,6 +288,31 @@ define(function (require, exports, module) {
 
 
         /**
+         * 切换 loading 的显隐
+         * @param isShow
+         * @private
+         */
+        _loading: function (isShow) {
+            var the = this;
+
+            if (isShow) {
+                the._loading(false);
+                the._ld = new Loading(window, {
+                    style: {
+                        border: '1px solid #333'
+                    },
+                    isModal: false
+                });
+            } else {
+                if (the._ld) {
+                    the._ld.done();
+                    the._ld = null;
+                }
+            }
+        },
+
+
+        /**
          * 展示
          * @private
          */
@@ -304,6 +326,7 @@ define(function (require, exports, module) {
                 easing: options.easing
             };
             var onnext = function () {
+                the._loading(true);
                 attribute.addClass(the._$content, loadingClass);
                 attribute.removeClass(the._$itemlist, activeClass);
                 attribute.addClass(the._$itemlist[the._index], activeClass);
@@ -319,6 +342,7 @@ define(function (require, exports, module) {
 
                     if (the._index === meta.index) {
                         attribute.removeClass(the._$content, loadingClass);
+                        the._loading(false);
                         the._opened = true;
 
                         var maxWidth = Math.min(attribute.width(the._$content) - 20, meta.width);
@@ -332,26 +356,16 @@ define(function (require, exports, module) {
                         animation.transition(the._$body, {
                             width: realWidth,
                             height: realHeight
-                        }, transitionOptions, function () {
-                            //attribute.css(the._$body, 'backgroundImage', 'url(' + meta.src + ')');
-                        });
+                        }, transitionOptions);
                     }
                 });
             };
 
             // 已经有 body 打开
             if (the._opened) {
-                //attribute.css(the._$body, 'backgroundImage', 'none');
-                animation.transition(the._$body, {
-                    width: options.loading.width,
-                    height: options.loading.height
-                }, transitionOptions, onnext);
+                animation.transition(the._$body, options.thumbnailSize, transitionOptions, onnext);
             } else {
-                attribute.css(the._$body, {
-                    width: options.loading.width,
-                    height: options.loading.height,
-                    backgroundImage: 'none'
-                });
+                attribute.css(the._$body, options.thumbnailSize);
                 onnext();
             }
         },
@@ -372,7 +386,6 @@ define(function (require, exports, module) {
          */
         open: function (list, index) {
             var the = this;
-            //var options = the._options;
 
             list = list.map(function (item) {
                 if (typeis.string(item)) {
@@ -404,6 +417,9 @@ define(function (require, exports, module) {
             event.un(the._$prev, 'click');
             event.un(the._$next, 'click');
             event.un(the._$navList, 'click');
+            event.un(doc, 'left', the._onprev);
+            event.un(doc, 'right', the._onnext);
+            event.un(doc, 'esc', the._onclose);
             the._window.destroy();
             the._mask.destroy();
         }
