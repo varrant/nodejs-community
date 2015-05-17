@@ -32,10 +32,15 @@
 <div class="layout-body a-fade-in">
     <div class="banner">
         <div class="banner-bg" id="cover" style="background-image: url('{{=$settings.default.banner}}')"></div>
-        <h1 class="banner-name"><i class="fi fi-book"></i>所有专辑<small>/{{developer.index+1}}</small></h1>
+        <h1 class="banner-name">
+            <img src="{{developer.email|gravatar:200}}"
+                 class="img-rounder"
+                 alt="avatar" width="100" height="100" coolieignore/>
+            <p>{{developer.nickname}}</p>
+        </h1>
 
         <div class="banner-action">
-            <a class="btn btn-blank btn-lg btn-ghost" href="/admin/column/"><i class="fi fi-pencil"></i>新建专辑</a>
+            <a class="btn btn-blank btn-lg btn-ghost" href="/admin/column/"><i class="fi fi-heart-o"></i>关注</a>
         </div>
         <div class="banner-share btn-group">
             <button class="btn btn-default share-weibo btn-primary"><i class="fi fi-weibo"></i><span class="hidden-xs hidden-sm">分享到新浪微博</span></button>

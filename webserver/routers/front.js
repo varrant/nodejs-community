@@ -149,20 +149,20 @@ module.exports = function (app, ctrl) {
 
     // developer
     app.get('/developer/:githubLogin/', ctrl.developer.home);
-    app.get('/developer/:githubLogin/comment/', ctrl.developer.comment);
-    app.get('/developer/:githubLogin/comment/page/:page/', ctrl.developer.comment);
-    app.get('/developer/:githubLogin/comment-by/', ctrl.developer.commentBy);
-    app.get('/developer/:githubLogin/comment-by/page/:page/', ctrl.developer.commentBy);
-    app.get('/developer/:githubLogin/reply/', ctrl.developer.reply);
-    app.get('/developer/:githubLogin/reply/page/:page/', ctrl.developer.reply);
-    app.get('/developer/:githubLogin/reply-by/', ctrl.developer.replyBy);
-    app.get('/developer/:githubLogin/reply-by/page/:page/', ctrl.developer.replyBy);
-    app.get('/developer/:githubLogin/accept/', ctrl.developer.accept);
-    app.get('/developer/:githubLogin/accept/page/:page/', ctrl.developer.accept);
-    app.get('/developer/:githubLogin/accept-by/', ctrl.developer.acceptBy);
-    app.get('/developer/:githubLogin/accept-by/page/:page/', ctrl.developer.acceptBy);
-    app.get('/developer/:githubLogin/agree/', ctrl.developer.agree);
-    app.get('/developer/:githubLogin/agree/page/:page/', ctrl.developer.agree);
-    app.get('/developer/:githubLogin/agree-by/', ctrl.developer.agreeBy);
-    app.get('/developer/:githubLogin/agree-by/page/:page/', ctrl.developer.agreeBy);
+    //app.get('/developer/:githubLogin/comment/', ctrl.developer.comment);
+    //app.get('/developer/:githubLogin/comment/page/:page/', ctrl.developer.comment);
+    //app.get('/developer/:githubLogin/comment-by/', ctrl.developer.commentBy);
+    //app.get('/developer/:githubLogin/comment-by/page/:page/', ctrl.developer.commentBy);
+    //app.get('/developer/:githubLogin/reply/', ctrl.developer.reply);
+    //app.get('/developer/:githubLogin/reply/page/:page/', ctrl.developer.reply);
+    //app.get('/developer/:githubLogin/reply-by/', ctrl.developer.replyBy);
+    //app.get('/developer/:githubLogin/reply-by/page/:page/', ctrl.developer.replyBy);
+    //app.get('/developer/:githubLogin/accept/', ctrl.developer.accept);
+    //app.get('/developer/:githubLogin/accept/page/:page/', ctrl.developer.accept);
+    //app.get('/developer/:githubLogin/accept-by/', ctrl.developer.acceptBy);
+    //app.get('/developer/:githubLogin/accept-by/page/:page/', ctrl.developer.acceptBy);
+    //app.get('/developer/:githubLogin/agree/', ctrl.developer.agree);
+    //app.get('/developer/:githubLogin/agree/page/:page/', ctrl.developer.agree);
+    //app.get('/developer/:githubLogin/agree-by/', ctrl.developer.agreeBy);
+    //app.get('/developer/:githubLogin/agree-by/page/:page/', ctrl.developer.agreeBy);
 };
