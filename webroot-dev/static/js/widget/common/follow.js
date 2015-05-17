@@ -42,7 +42,7 @@ define(function (require, exports, module) {
 
         ajax({
             loading: false,
-            url: '/admin/api/developer/follow/status/',
+            url: '/admin/api/developer/follow/',
             query: {
                 id: id
             }

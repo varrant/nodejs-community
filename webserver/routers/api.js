@@ -78,7 +78,9 @@ module.exports = function (app, ctrl) {
     app.get('/api/developer/', ctrl.developer.get);
     app.get('/admin/api/developer/', ctrl.developer.detail);
     app.post('/admin/api/developer/', ctrl.developer.role);
-    app.get('/admin/api/developer/follow/status/', ctrl.developer.getFollowStatus);
+    app.get('/admin/api/developer/follow/', ctrl.developer.getFollow);
+    app.put('/admin/api/developer/follow/', ctrl.developer.putFollow);
+    app.delete('/admin/api/developer/follow/', ctrl.developer.deleteFollow);
 
 
     // translate

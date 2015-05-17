@@ -241,7 +241,7 @@ module.exports = function (app) {
 
 
     // 获取用户的关注状态
-    exports.getFollowStatus = function (req, res, next) {
+    exports.getFollow = function (req, res, next) {
         interactive.findOne({
             source: req.session.$developer.id,
             target: req.query.id,
@@ -272,16 +272,9 @@ module.exports = function (app) {
 
     // 关注某人
     exports.putFollow = function (req, res, next) {
-        developer.follow(req.session.$developer.id, req.body.id, function (err, doc) {
+        developer.follow(req.session.$developer.id, req.body.id, function (err) {
             if (err) {
                 return next(err);
-            }
-
-            if (!doc) {
-                return res.json({
-                    code: 500,
-                    message: '关注失败'
-                });
             }
 
             res.json({
@@ -291,18 +284,11 @@ module.exports = function (app) {
     };
 
 
-    // 关注某人
-    exports.putFollow = function (req, res, next) {
-        developer.follow(req.session.$developer.id, req.body.id, function (err, doc) {
+    // 取消关注某人
+    exports.deleteFollow = function (req, res, next) {
+        developer.unfollow(req.session.$developer.id, req.body.id, function (err) {
             if (err) {
                 return next(err);
-            }
-
-            if (!doc) {
-                return res.json({
-                    code: 500,
-                    message: '关注失败'
-                });
             }
 
             res.json({
