@@ -40,14 +40,13 @@
                      alt="avatar" width="100" height="100" coolieignore/>
                 <div class="banner-info">
                     <h1 class="banner-name">{{developer.nickname}}</h1>
-                    <!--<p class="banner-intro"><i class="fi fi-fw fi-map-marker"></i>{{developer.meta.location}}</p>-->
-                    <!--<p class="banner-intro"><i class="fi fi-fw fi-group"></i>{{developer.meta.company}}</p>-->
                 </div>
             </div>
         </div>
 
         <div class="banner-action">
-            <button class="btn btn-blank btn-lg btn-ghost"><i class="fi fi-heart-o"></i>关注 TA</button>
+            <button class="btn btn-blank btn-lg btn-ghost follow-developer"
+                    data-follow="{{developer.id}}" disabled><i class="fi fi-heart-o"></i>关注 TA</button>
         </div>
         <div class="banner-share btn-group">
             <button class="btn btn-default share-weibo btn-primary"><i class="fi fi-weibo"></i><span class="hidden-xs hidden-sm">分享到新浪微博</span></button>
