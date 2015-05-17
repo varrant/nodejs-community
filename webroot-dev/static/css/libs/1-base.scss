@@ -1,0 +1,207 @@
+*,*::before,*::after{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+  font-size: 62.5%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga", "kern";
+}
+
+// @link http://mux.alimama.com/posts/1423
+@media only screen and (min-width: 481px) {
+  html{
+    font-size: 94% !important;
+  }
+}
+@media only screen and (min-width: 561px) {
+  html{
+    font-size: 109% !important;
+  }
+}
+@media only screen and (min-width: 641px) {
+  html{
+    font-size: 125% !important;
+  }
+}
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+iframe {
+  border: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+body{
+  color: #333;
+  font-size: 16px;
+}
+
+
+/*Only phones */
+@media only screen and (max-width: 640px) {
+  /**
+   * Break strings if their length exceeds the width of their container
+   */
+  body {
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+  }
+}
+
+button, input, optgroup, select, textarea{
+  font: initial;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+a {
+  color: #0e90d2;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #095f8a;
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+
+  &.favicon{
+    width: 16px !important;
+    height: 16px !important;
+    max-width: none !important;
+    max-height: none !important;
+    vertical-align: middle;
+  }
+}
+
+.row::before,
+.row::after,
+[class*=avg-]::before,
+[class*=avg-]::after,
+.clearfix::before,
+.clearfix:after,
+.list-left::before,
+.list-left::after,
+.list-right::before,
+.list-right::after {
+  display: table;
+  content: " ";
+}
+
+.row::after,
+[class*=avg-]::after,
+.clearfix::after,
+.list-left::after,
+.list-right::after {
+  clear: both;
+}
+
+.none {
+  display: none !important;
+}
+
+.visible {
+  visibility: visible !important;
+}
+
+.hidden {
+  visibility: hidden !important;
+}
+
+.transition {
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+.loading {
+  background: url("http://s.ydr.me/p/i/loading-32.gif") no-repeat 0/16px;
+  display: inline-block;
+  padding-left: 20px;
+  color: #888;
+}
+
+.list-left,
+.list-right {
+  list-style: none;
+}
+
+.pull-left,
+.list-left > * {
+  float: left !important;
+}
+
+.pull-right,
+.list-right > * {
+  float: right !important;
+}
+
+
+

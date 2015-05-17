@@ -1,0 +1,118 @@
+.typo {
+  font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga", "kern";
+  color: #333;
+  background: #fff;
+  line-height: 1.8; }
+  .typo h1, .typo h2, .typo h3, .typo h4, .typo h5, .typo h6 {
+    font-family: 'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
+    font-weight: 200;
+    color: #000;
+    margin-bottom: 0.4em;
+    line-height: 1.5; }
+  .typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr, .typo table, .typo blockquote {
+    margin-bottom: 1.8em; }
+  .typo h1,
+  .typo h2,
+  .typo h3,
+  .typo h4,
+  .typo h5,
+  .typo h6 {
+    margin: 0 0 1.6rem 0;
+    font-weight: 600;
+    font-size: 100%; }
+  .typo h1 {
+    font-size: 1.5em; }
+  .typo h2 {
+    font-size: 1.25em; }
+  .typo * + h1,
+  .typo * + h2,
+  .typo * + h3,
+  .typo * + h4,
+  .typo * + h5,
+  .typo * + h6 {
+    margin-top: 2em; }
+  .typo ul,
+  .typo ol {
+    padding-left: 2em; }
+  .typo ul > li > ul,
+  .typo ul > li > ol,
+  .typo ol > li > ol,
+  .typo ol > li > ul {
+    margin: 1em 0; }
+  .typo dt {
+    font-weight: bold; }
+  .typo dt + dd {
+    margin-top: .5em; }
+  .typo dd {
+    margin-left: 0; }
+  .typo dd + dt {
+    margin-top: 1em; }
+  .typo ol {
+    list-style: decimal; }
+  .typo li ul {
+    list-style: circle; }
+  .typo table {
+    width: 100%; }
+  .typo table th, .typo table td, .typo table caption {
+    border: 1px solid #ddd;
+    padding: 0.5em 1em;
+    color: #666;
+    vertical-align: middle; }
+  .typo table th {
+    background: #fbfbfb; }
+  .typo table thead th {
+    background: #f1f1f1; }
+  .typo .typo table caption {
+    border-bottom: none; }
+  .typo address, .typo caption, .typo cite, .typo code, .typo dfn, .typo em, .typo th, .typo var {
+    font-style: normal;
+    font-weight: 400; }
+  .typo blockquote {
+    border-left: 1px solid #31A0D8;
+    font-family: Georgia, "Times New Roman", Times, Kai, "Kaiti SC", KaiTi, BiauKai, "FontAwesome", serif;
+    padding-left: 1em;
+    margin: 1em 3em 1em 2em; }
+    @media (max-width: 640px) {
+      .typo blockquote {
+        margin: 1em 0; } }
+  .typo blockquote small {
+    display: block;
+    color: #999999;
+    font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+    text-align: right; }
+  .typo blockquote p:last-of-type {
+    margin-bottom: 0; }
+  .typo hr {
+    display: block;
+    padding: 0;
+    border: 0;
+    height: 0;
+    border-top: 1px solid #eeeeee;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box; }
+  .typo code, .typo pre {
+    font-family: Monaco, Menlo, Consolas, "Courier New", FontAwesome, monospace;
+    background-color: #F8F8F8; }
+  .typo code {
+    margin: 0 1px;
+    padding: 1px 4px;
+    border-radius: 2px;
+    color: #C7254E; }
+  .typo pre {
+    background: #F6F6F6;
+    padding: 10px;
+    border: 1px solid #DDD;
+    border-radius: 6px;
+    word-wrap: normal; }
+  .typo pre code {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    color: initial; }
+
