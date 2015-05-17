@@ -375,7 +375,7 @@ exports.increaseColumnCount = function (conditions, count, callback) {
 
 /**
  * 关注某人
- * @param operator {Object} 关注者 ID
+ * @param operator {Object} 关注者
  * @param developerId {String} 被关注者 ID
  * @param callback {Function} 回调
  */
@@ -384,51 +384,83 @@ exports.follow = function (operator, developerId, callback) {
         return callback(new Error('不必自己关注自己'));
     }
 
-    interactive.active({
-        source: operator.id,
-        target: developerId,
-        type: 'follow',
-        hasApproved: 1
-    }, function (err, isModified, newDoc, oldDoc) {
-        callback(err);
+    howdo
+        // 判断对方是否存在
+        .task(function (next) {
+            developer.findOne({
+                _id: developerId
+            }, next);
+        })
+        // 写入活动
+        .task(function (next, followBy) {
+            interactive.active({
+                source: operator.id.toString(),
+                target: followBy.id.toString(),
+                type: 'follow',
+                hasApproved: 1
+            }, function (err, isModified, newDoc, oldDoc) {
+                next(err, isModified, newDoc, oldDoc, followBy);
+            });
+        })
+        .follow(function (err, isModified, newDoc, oldDoc, followBy) {
+            callback(err);
 
-        // 首次关注才会通知对方
-        if(!oldDoc){
-            notice.follow(operator, developerId);
-        }
+            if (err) {
+                return;
+            }
 
-        if (isModified) {
-            developer.increase({_id: operator.id}, 'followCount', 1, log.holdError);
-            developer.increase({_id: developerId}, 'followByCount', 1, log.holdError);
-        }
-    });
+            // 首次关注才会通知对方
+            if (!oldDoc) {
+                notice.follow(operator, followBy);
+            }
+
+            if (isModified) {
+                developer.increase({_id: operator.id}, 'followCount', 1, log.holdError);
+                developer.increase({_id: followBy.id}, 'followByCount', 1, log.holdError);
+            }
+        });
+
+
 };
 
 
 /**
  * 取消关注某人
- * @param operatorId {String} 取消关注者 ID
+ * @param operator {Object} 取消关注者
  * @param developerId {String} 被取消关注者 ID
  * @param callback {Function} 回调
  */
-exports.unfollow = function (operatorId, developerId, callback) {
-    if (operatorId === developerId) {
+exports.unfollow = function (operator, developerId, callback) {
+    if (operator.id.toString() === developerId) {
         return callback(new Error('不必自己取消关注自己'));
     }
 
-    interactive.active({
-        source: operatorId,
-        target: developerId,
-        type: 'follow',
-        hasApproved: 0
-    }, function (err, isModified) {
-        callback(err);
+    howdo
+        // 判断对方是否存在
+        .task(function (next) {
+            developer.findOne({
+                _id: developerId
+            }, next);
+        })
+        // 写入活动
+        .task(function (next, unfollowBy) {
+            interactive.active({
+                source: operator.id.toString(),
+                target: unfollowBy.id.toString(),
+                type: 'follow',
+                hasApproved: 0
+            }, function (err, isModified, newDoc, oldDoc) {
+                next(err, isModified, newDoc, oldDoc, unfollowBy);
+            });
+        })
+        .follow(function (err, isModified, newDoc, oldDoc, unfollowBy) {
+            callback(err);
 
-        if (isModified) {
-            developer.increase({_id: operatorId}, 'followCount', -1, log.holdError);
-            developer.increase({_id: developerId}, 'followByCount', -1, log.holdError);
-        }
-    });
+            if (!err && isModified) {
+                developer.increase({_id: operator.id}, 'followCount', -1, log.holdError);
+                developer.increase({_id: unfollowBy.id}, 'followByCount', -1, log.holdError);
+            }
+        });
 };
 
 
