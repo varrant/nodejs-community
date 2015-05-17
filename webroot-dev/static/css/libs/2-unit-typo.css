@@ -16,8 +16,6 @@
     margin-bottom: 2rem; }
     .typo .toc-title {
       margin-bottom: 1rem; }
-    .typo .toc li {
-      list-style-type: square; }
     .typo .toc li, .typo .toc ul {
       margin: 0; }
   .typo h1, .typo h2, .typo h3, .typo h4, .typo h5, .typo h6 {
@@ -51,11 +49,6 @@
   .typo ul,
   .typo ol {
     padding-left: 2em; }
-  .typo ul > li > ul,
-  .typo ul > li > ol,
-  .typo ol > li > ol,
-  .typo ol > li > ul {
-    margin: 1em 0; }
   .typo dt {
     font-weight: bold; }
   .typo dt + dd {
@@ -66,8 +59,10 @@
     margin-top: 1em; }
   .typo ol {
     list-style: decimal; }
-  .typo li ul {
-    list-style: circle; }
+  .typo ul {
+    list-style: square; }
+  .typo img {
+    vertical-align: baseline; }
   .typo table {
     width: 100%; }
   .typo table th, .typo table td, .typo table caption {

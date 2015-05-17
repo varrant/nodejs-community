@@ -12,22 +12,18 @@
   background: #fff;
   line-height: 1.8;
 
-  .toc{
+  .toc {
     display: inline-block;
     min-width: 200px;
     border: 1px solid #ddd;
     padding: 20px;
     margin-bottom: 2rem;
 
-    &-title{
+    &-title {
       margin-bottom: 1rem;
     }
 
-    li{
-      list-style-type: square;
-    }
-
-    li,ul{
+    li, ul {
       margin: 0;
     }
   }
@@ -77,13 +73,6 @@
     padding-left: 2em;
   }
 
-  ul > li > ul,
-  ul > li > ol,
-  ol > li > ol,
-  ol > li > ul {
-    margin: 1em 0;
-  }
-
   dt {
     font-weight: bold;
   }
@@ -104,8 +93,12 @@
     list-style: decimal;
   }
 
-  li ul {
-    list-style: circle;
+  ul {
+    list-style: square;
+  }
+
+  img{
+    vertical-align: baseline;
   }
 
   table {

@@ -14,11 +14,6 @@
     cursor: -webkit-zoom-in;
     cursor: -moz-zoom-in;
     cursor: zoom-in; }
-  .post-content p > img {
-    display: block;
-    margin: 0 auto;
-    border: 1px solid #EEE;
-    box-shadow: 0 4px 10px #E3E3E3; }
   .post-hidden {
     border-top: 3px dotted #DDD;
     padding-top: 30px;
