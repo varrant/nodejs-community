@@ -63,7 +63,7 @@ define(function (require, exports, module) {
                 url: the._options.url + qs.stringify({
                     id: options.id,
                     section: options.section
-                }),
+                })
             }).on('success', the._onsuccess.bind(the)).on('error', alert);
         },
 
