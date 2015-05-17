@@ -245,6 +245,14 @@ define(function (require, exports, module) {
             var the = this;
 
             prompt('请输入专辑名称').on('sure', function (name) {
+                var pm = this;
+
+                name = name.trim();
+
+                if (!name) {
+                    return alert('专辑名称不能为空');
+                }
+
                 var ld = new Loading(window, '正在翻译');
 
                 the._translate(name, function (err, uri) {
@@ -271,7 +279,8 @@ define(function (require, exports, module) {
                         });
                         the.vue.$data.object.column = data.id;
                         setTimeout(function () {
-                            the._$objectColumn.value = data.id
+                            the._$objectColumn.value = data.id;
+                            pm.close();
                         }, 100);
                     }).on('error', alert);
                 });
