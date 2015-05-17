@@ -384,7 +384,7 @@ exports.follow = function (operatorId, userId, callback) {
         source: operatorId,
         target: userId,
         type: 'follow',
-        value: 1
+        hasApproved: 1
     }, function (err, isModified) {
         callback(err);
 
@@ -407,7 +407,7 @@ exports.unfollow = function (operatorId, userId, callback) {
         source: operatorId,
         target: userId,
         type: 'follow',
-        value: 0
+        hasApproved: 0
     }, function (err, isModified) {
         callback(err);
 

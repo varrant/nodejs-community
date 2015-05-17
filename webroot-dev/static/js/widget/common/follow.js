@@ -27,12 +27,17 @@ define(function (require, exports, module) {
         $btn.status = status;
     };
     var winDeveloper = win['-developer-'];
+    var winWebsite = win['-website-'];
 
     $follows.forEach(function ($follow) {
         var id = attribute.data($follow, 'id');
 
         if (!winDeveloper.id) {
             return changeStatus($follow, 'un');
+        }
+
+        if (winDeveloper.id === id) {
+            return changeStatus($follow, 'me');
         }
 
         ajax({
@@ -50,6 +55,18 @@ define(function (require, exports, module) {
 
     // 关注个人
     event.on(doc, 'click', '.follow-developer', function () {
+        var status = this.status;
 
+        if (!status) {
+            return alert('我还没有准备好呢');
+        }
+
+        if (status === 'me') {
+            return alert('感谢你对 <b>' + winWebsite.title + '</b> 的大力支持，我们将一如既然的视你如初见。谢谢你，<b>' +
+                winDeveloper.nickname + '</b>！', {
+                title: '谢谢你',
+                buttons: ['么么哒']
+            });
+        }
     });
 });
