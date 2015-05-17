@@ -110,7 +110,13 @@ define(function (require, exports, module) {
                 url: '/api/developer/logout/',
                 loading: '注销中'
             }).on('success', function () {
-                location.reload();
+                var pth = location.pathname;
+
+                if (/^\/admin\//i.test(pth)) {
+                    location.replace('/');
+                } else {
+                    location.replace(pth);
+                }
             }).on('error', alert);
         };
 
