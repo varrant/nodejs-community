@@ -13,7 +13,7 @@ define(function (require, exports, module) {
     var confirm = require('../../alien/widgets/confirm.js');
     var prompt = require('../common/prompt.js');
     var tip = require('../common/tip.js');
-    var loading = require('../common/loading.js');
+    var Loading = require('../../alien/ui/Loading/');
     var selector = require('../../alien/core/dom/selector.js');
     var ui = require('../../alien/ui/');
     var Editor = require('../../alien/ui/Editor/');
@@ -245,10 +245,10 @@ define(function (require, exports, module) {
             var the = this;
 
             prompt('请输入专辑名称').on('sure', function (name) {
-                var ld = loading('正在翻译');
+                var ld = new Loading('正在翻译');
 
                 the._translate(name, function (err, uri) {
-                    ld.destroy();
+                    ld.done();
 
                     if (err) {
                         return alert(err);

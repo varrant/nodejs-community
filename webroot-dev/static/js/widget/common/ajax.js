@@ -12,7 +12,7 @@ define(function (require, exports, module) {
     var json = 'application/json; charset=utf-8';
     var login = require('./login.js');
     var alert = require('../../alien/widgets/alert.js');
-    var loading = require('./loading.js');
+    var Loading = require('../../alien/ui/Loading/');
     var Emitter = require('../../alien/libs/Emitter.js');
     var klass = require('../../alien/utils/class.js');
     var Ajax = klass.extends(Emitter).create(function (options) {
@@ -33,7 +33,7 @@ define(function (require, exports, module) {
         }
 
         if (options.loading !== false) {
-            the.loading = loading(options.loading);
+            the.loading = new Loading(options.loading);
         }
 
         the.xhr = xhr.ajax(options)
@@ -58,7 +58,6 @@ define(function (require, exports, module) {
                     return the.emit('success', json.data);
                 }
 
-
                 var err = new Error(json.message);
 
                 err.code = json.code;
@@ -80,7 +79,7 @@ define(function (require, exports, module) {
             })
             .on('complete', function () {
                 if (the.loading) {
-                    the.loading.destroy();
+                    the.loading.done();
                 }
             });
     });
