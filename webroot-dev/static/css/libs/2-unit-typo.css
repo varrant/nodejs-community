@@ -8,6 +8,18 @@
   color: #333;
   background: #fff;
   line-height: 1.8; }
+  .typo .toc {
+    display: inline-block;
+    min-width: 200px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 2rem; }
+    .typo .toc-title {
+      margin-bottom: 1rem; }
+    .typo .toc li {
+      list-style-type: square; }
+    .typo .toc li, .typo .toc ul {
+      margin: 0; }
   .typo h1, .typo h2, .typo h3, .typo h4, .typo h5, .typo h6 {
     font-family: 'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
     font-weight: 200;

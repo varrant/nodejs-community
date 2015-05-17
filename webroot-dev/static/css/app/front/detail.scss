@@ -9,8 +9,6 @@ $border-color: #e6e6e6;
   position: relative;
 
   &-content {
-    font: 400 18px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-
     a {
       border-bottom: 1px dotted;
       text-decoration: none;
@@ -61,17 +59,7 @@ $border-color: #e6e6e6;
   }
 }
 
-.toc{
-  display: inline-block;
-  margin-right: 20px;
-  min-width: 200px;
-  border: 1px solid #ddd;
-  padding: 20px;
 
-  li,ul{
-    margin: 0;
-  }
-}
 
 // 版权信息
 .copyright {

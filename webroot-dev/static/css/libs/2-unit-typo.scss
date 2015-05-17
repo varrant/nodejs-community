@@ -12,6 +12,26 @@
   background: #fff;
   line-height: 1.8;
 
+  .toc{
+    display: inline-block;
+    min-width: 200px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 2rem;
+
+    &-title{
+      margin-bottom: 1rem;
+    }
+
+    li{
+      list-style-type: square;
+    }
+
+    li,ul{
+      margin: 0;
+    }
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
     font-weight: 200;
