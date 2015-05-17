@@ -33,6 +33,10 @@ define(function (require, exports, module) {
         }
 
         if (options.loading !== false && options.loading !== null) {
+            if (the.loading) {
+                the.loading.done();
+            }
+
             the.loading = new Loading(window, options.loading);
         }
 
@@ -80,6 +84,7 @@ define(function (require, exports, module) {
             .on('complete', function () {
                 if (the.loading) {
                     the.loading.done();
+                    the.loading = null;
                 }
             });
     });
