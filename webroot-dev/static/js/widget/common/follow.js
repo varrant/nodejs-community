@@ -15,6 +15,7 @@ define(function (require, exports, module) {
     var confirm = require('../../alien/widgets/confirm.js');
     var alert = require('../../alien/widgets/alert.js');
     var string = require('../../alien/utils/string.js');
+    var login = require('./login.js');
     var win = window;
     var doc = win.document;
     var STATUS = {
@@ -61,6 +62,10 @@ define(function (require, exports, module) {
 
         if (!status) {
             return alert('我还没有准备好呢');
+        }
+
+        if (!winDeveloper.id) {
+            return alert('请在登录后再关注 TA').on('sure', login);
         }
 
         if (status === 'me') {
