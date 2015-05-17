@@ -29,7 +29,17 @@ define(function (require, exports, module) {
     $follows.forEach(function ($follow) {
         var id = attribute.data($follow, 'id');
 
+        new Loading($follow, {
+            isModal: true,
+            text: null,
+            style: {
+                size: 30,
+                backgroundColor: 'rgba(0,0,0,0)'
+            }
+        });
+
         ajax({
+            loading: false,
             url: '/api/developer/is-follow/',
             query: {
                 id: id
