@@ -1,8 +1,14 @@
 <div class="alien-ui-respond clearfix">
     <div class="alien-ui-respond-avatar pull-left">
+        {{if githubLogin}}
         <a href="/developer/{{=githubLogin}}/"><img src="{{avatar}}"
                                                     class="img-rounder"
                                                     alt="avatar" width="50" height="50"/></a>
+        {{else}}
+        <img src="{{avatar}}"
+             class="img-rounder"
+             alt="avatar" width="50" height="50"/>
+        {{/if}}
     </div>
     <div class="alien-ui-respond-body">
         <textarea class="alien-ui-respond-input ipt j-flag" rows="3" placeholder="{{placeholder}}"></textarea>
