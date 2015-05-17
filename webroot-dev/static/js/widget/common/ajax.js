@@ -49,7 +49,9 @@ define(function (require, exports, module) {
 
                     // 未登陆
                     case 401:
-                        return alert(json).on('close', login);
+                        return alert(json).on('close', function (index) {
+                            alert(index);
+                        });
 
                     // 不被接受，返回首页
                     case 406:
