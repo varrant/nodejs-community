@@ -115,10 +115,6 @@ define(function (require, exports, module) {
             return $img.src;
         });
 
-        event.on(document.body, 'click', '.alien-ui-response-content img:not(.favicon)', function () {
-            imgview.open([this.src]);
-        });
-
         event.on(document.body, 'click', '.post-content img:not(.favicon)', function () {
             var src = this.src;
             var index = postImgList.indexOf(src);

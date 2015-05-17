@@ -9,6 +9,7 @@ define(function (require, exports, module) {
     'use strict';
 
     var ui = require('../../../alien/ui/');
+    var Imgview = require('../../../alien/ui/Imgview/');
     var selector = require('../../../alien/core/dom/selector.js');
     var modification = require('../../../alien/core/dom/modification.js');
     var attribute = require('../../../alien/core/dom/attribute.js');
@@ -133,6 +134,7 @@ define(function (require, exports, module) {
             the._replyMap = {};
             $parent.innerHTML = html;
             the._$wrap = selector.children($parent)[0];
+            the._imgview = new Imgview();
             the._initEvent();
         },
 
@@ -147,6 +149,7 @@ define(function (require, exports, module) {
             var replyClass = '.' + alienClass + '-reply';
             var agreeClass = '.' + alienClass + '-agree';
             var acceptClass = '.' + alienClass + '-accept';
+            var contentClass = '.' + alienClass + '-content';
 
             event.on(the._$parent, 'click', replyClass, the._reply.bind(the));
             event.on(the._$parent, 'click', agreeClass, the._agree.bind(the));
@@ -156,9 +159,20 @@ define(function (require, exports, module) {
                 var acceptMyself = options.developer.id === author;
 
                 confirm('确定要采纳' + (acceptMyself ? '你自己的' : '该') + '回答为最佳答案吗？采纳后将无法取消或更改' +
-                (acceptMyself ? '，其中采纳自己的回答不会提升任何威望' : '') +
-                '。').on('sure', the._accept.bind(the, eve));
+                    (acceptMyself ? '，其中采纳自己的回答不会提升任何威望' : '') +
+                    '。').on('sure', the._accept.bind(the, eve));
             });
+
+            var imgSelector = 'img:not(.favicon)';
+            event.on(the._$parent, 'click', imgSelector, function () {
+                var $content = selector.closest(this, contentClass)[0];
+                var list = selector.query(imgSelector, $content).map(function (img) {
+                    return img.src;
+                });
+
+                the._imgview.open(list, list.indexOf(this.src));
+            });
+
             event.on(window, 'scroll', the._onscroll = controller.debounce(function () {
                 if (!the._ready && attribute.scrollTop(window) > attribute.top(the._$parent) - attribute.height(top)) {
                     the._ajaxContainer();
