@@ -87,14 +87,11 @@ exports.active = function (data, callback) {
         hasApproved: data.hasApproved
     };
 
-    if (!data.object && !data.response) {
+    // 不是关注人 && 没有 object && 没有 response
+    if (data.type !== 'follow' && !data.object && !data.response) {
         var err = new Error('至少需要一个 object 或 response');
         return callback(err);
     }
-
-    //if (data.model === 'developer' || data.model === 'object') {
-    //    // 发送邮件给被动用户
-    //}
 
     conditions.object = data.object;
     conditions.response = data.response;
