@@ -1,57 +1,6 @@
 .layout-body {
   margin-top: 50px; }
 
-.banner {
-  position: relative;
-  text-align: center;
-  background: rgba(75, 156, 219, 0.2);
-  padding-top: 30px;
-  padding-bottom: 30px;
-  -webkit-transition: background 500ms;
-  transition: background 500ms;
-  min-height: 300px;
-  color: #fff; }
-  .banner-bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center bottom; }
-  .banner-center {
-    display: table;
-    width: 100%; }
-  .banner-inner {
-    display: table-cell;
-    vertical-align: middle; }
-  .banner-cover,
-  .banner-info {
-    display: inline-block;
-    vertical-align: middle; }
-  .banner-info {
-    margin-left: 20px;
-    text-align: left; }
-  .banner-name {
-    margin: 0 0 20px;
-    padding: 0;
-    font-weight: normal; }
-  .banner-intro,
-  .banner-desc {
-    max-width: 400px;
-    font-size: 13px;
-    color: #EAF5FF; }
-  .banner-desc {
-    padding-top: 10px; }
-  .banner-action {
-    margin-top: 40px; }
-  .banner-share {
-    position: absolute;
-    right: 10px;
-    bottom: 10px; }
-
 .choose {
   padding: 20px;
   margin: -20px -20px 20px;

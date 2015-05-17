@@ -12,11 +12,8 @@
   margin-bottom: 20px; }
 
 .usercard-statistics {
-  background-color: #fcfcfc;
   border-top: 1px solid #ddd;
-  box-shadow: 0 2px 2px #f0f0f0 inset;
-  margin: 0 -20px -20px -20px;
-  padding: 20px; }
+  padding: 20px 0; }
   .usercard-statistics ul {
     margin: 0 0 10px; }
   .usercard-statistics li {
