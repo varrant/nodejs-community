@@ -14,6 +14,7 @@ define(function (require, exports, module) {
     var ajax = require('../../widget/common/ajax.js');
     var confirm = require('../../alien/widgets/confirm.js');
     var alert = require('../../alien/widgets/alert.js');
+    var string = require('../../alien/utils/string.js');
     var win = window;
     var doc = win.document;
     var STATUS = {
@@ -55,18 +56,34 @@ define(function (require, exports, module) {
 
     // 关注个人
     event.on(doc, 'click', '.follow-developer', function () {
-        var status = this.status;
+        var $follow = this;
+        var status = $follow.status;
 
         if (!status) {
             return alert('我还没有准备好呢');
         }
 
         if (status === 'me') {
-            return alert('感谢你对 <b>' + winWebsite.title + '</b> 的大力支持，我们将一如既然的视你如初见。谢谢你，<b>' +
-                winDeveloper.nickname + '</b>！', {
+            return alert(string.assign('<b>${nickname}</b>，你好：<br>你是我们的 <b>第${index}位</b> 前端开发者，' +
+                '感谢你一直以来对 <b>${site}</b> 的支持，我们将一如既然的视你如初见。', {
+                nickname: winDeveloper.nickname,
+                index: winDeveloper.index * 1 + 1,
+                site: winWebsite.title
+            }), {
                 title: '谢谢你',
                 buttons: ['么么哒']
             });
         }
+
+        ajax({
+            url: '/admin/api/developer/follow/',
+            method: status === 'on' ? 'delete' : 'put',
+            loading: status === 'on' ? '取消关注' : '关注',
+            body: {
+                id: attribute.data($follow, 'id')
+            }
+        }).on('success', function () {
+            changeStatus($follow, status === 'on' ? 'un' : 'on');
+        }).on('error', alert);
     });
 });
