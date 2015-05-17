@@ -29,12 +29,16 @@ define(function (require, exports, module) {
         }
 
         jsonp({
-            url: url
+            url: url,
+            query: {
+                per_page: 200
+            }
         }).on('success', function (json) {
             var list = json && json.data || [];
 
             list.forEach(function (item) {
-                item.updatedFrom = date.from(new Date(item.updated_at));
+                item.createFrom = date.from(new Date(item.created_at));
+                item.updatedFrom = date.from(new Date(item.pushed_at));
             });
 
             list.sort(function (a, b) {

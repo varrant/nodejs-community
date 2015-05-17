@@ -6,9 +6,17 @@
 
 .usercard-statistics {
   border-top: 1px solid #ddd;
-  padding: 20px 0; }
+  padding: 20px 0;
+  font-size: 14px; }
   .usercard-statistics ul {
-    margin: 0 0 10px; }
+    margin: 0 0 15px; }
   .usercard-statistics li {
     margin-right: 20px; }
+
+.history .favicon {
+  margin-right: 4px; }
+
+.history-desc {
+  padding: 15px 0;
+  color: #666; }
 

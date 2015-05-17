@@ -14,9 +14,10 @@
   &-statistics {
     border-top: 1px solid #ddd;
     padding: 20px 0;
+    font-size: 14px;
 
     ul {
-      margin: 0 0 10px;
+      margin: 0 0 15px;
     }
 
     li {
@@ -27,5 +28,12 @@
 
 
 .history{
+  .favicon{
+    margin-right: 4px;
+  }
 
+  &-desc{
+    padding: 15px 0;
+    color: #666;
+  }
 }

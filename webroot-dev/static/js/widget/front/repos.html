@@ -12,12 +12,14 @@
                         target="_blank"
                         href="{{=item.homepage || item.html_url}}"><img
                         src="http://f.ydr.me/{{= item.homepage || item.html_url}}"
-                        width="16" height="16"
-                        alt="f"/>{{item.name}}</a></strong><i
-                        class="text-space"></i><span class="text-muted"><i
-                        class="fi fi-star"></i>{{item.stargazers_count}}</span>
+                        width="16" height="16" class="favicon"
+                        alt="f"/>{{item.name}}</a></strong>
+                <i class="text-space"></i>
+                <span class="text-muted"><i class="fi fi-star"></i>{{item.stargazers_count}}</span>
+                <i class="text-space"></i>
+                <span class="text-muted"><i class="fi fi-code-fork"></i>{{item.forks}}</span>
 
-                <blockquote>{{item.description||"暂无描述。"}}</blockquote>
+                <div class="history-desc">{{item.description||"暂无描述。"}}</div>
             </li>
             {{/list}}
             {{else}}
