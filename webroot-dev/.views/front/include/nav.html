@@ -59,6 +59,7 @@
         </div>
     </nav>
 
+    {{if $developer.id}}
     <ul class="nav-downlist j-flag transition" id="nav-downlist">
         <li><a href="/admin/me/"><i class="fi fi-user"></i>关于我</a></li>
         <li><a href="/admin/notification/" class="j-notification-wrap"><i class="fi fi-at"></i>我的通知</a></li>
@@ -73,4 +74,5 @@
         {{/if}}
         <li><a href="javascript:;" class="j-logout"><i class="fi fi-power-off"></i>登出</a></li>
     </ul>
+    {{/if}}
 </header>
