@@ -30,6 +30,7 @@ define(function (require, exports, module) {
     };
     var winDeveloper = win['-developer-'];
     var winWebsite = win['-website-'];
+    var winTA = win['-ta-'];
 
     $follows.forEach(function ($follow) {
         var id = attribute.data($follow, 'id');
@@ -80,15 +81,27 @@ define(function (require, exports, module) {
             });
         }
 
-        ajax({
-            url: '/admin/api/developer/follow/',
-            method: status === 'on' ? 'delete' : 'put',
-            loading: status === 'on' ? '取消关注' : '关注',
-            body: {
-                id: attribute.data($follow, 'id')
-            }
-        }).on('success', function () {
-            changeStatus($follow, status === 'on' ? 'un' : 'on');
-        }).on('error', alert);
+        var next = function () {
+            ajax({
+                url: '/admin/api/developer/follow/',
+                method: status === 'on' ? 'delete' : 'put',
+                loading: status === 'on' ? '取消关注' : '关注',
+                body: {
+                    id: attribute.data($follow, 'id')
+                }
+            }).on('success', function () {
+                changeStatus($follow, status === 'on' ? 'un' : 'on');
+
+                if (status === 'un') {
+                    alert('你已成功关注了 ' + winTA.nickname);
+                }
+            }).on('error', alert);
+        };
+
+        if (status === 'on') {
+            confirm('确定要取消对 ' + winTA.nickname + ' 的关注吗？').on('sure', next);
+        } else {
+            next();
+        }
     });
 });
