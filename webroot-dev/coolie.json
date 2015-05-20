@@ -4,8 +4,7 @@
     "coolie-config.js": "./static/js/coolie-config.js"
   },
   "css": {
-    "dest": "./static/css/",
-    "host": "/"
+    "dest": "./static/css/"
   },
   "html": {
     "src": [
@@ -18,7 +17,7 @@
   },
   "dest": {
     "dirname": "../webroot-pro/",
-    "host": "https://dn-fed.qbox.me/@/static/"
+    "host": "https://dn-fed.qbox.me/@/"
   },
   "copy": [
     "./static/js/libs/**/*.js",
