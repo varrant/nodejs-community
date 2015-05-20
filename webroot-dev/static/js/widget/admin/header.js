@@ -15,6 +15,7 @@ define(function (require) {
     var animation = require('../../alien/core/dom/animation.js');
     var event = require('../../alien/core/event/base.js');
     var app = {};
+    var winDeveloper = window['-developer-'];
 
     app.scrollTop = function () {
         var $header = selector.query('header')[0];
@@ -36,6 +37,10 @@ define(function (require) {
 
     // 通知
     app.notification = function () {
+        if (!winDeveloper.id) {
+            return;
+        }
+
         var $span = selector.query('#notification')[0];
         var html_1 = '<i class="fi fi-exclamation-triangle s-danger"></i>';
 
@@ -43,7 +48,7 @@ define(function (require) {
             url: '/admin/api/notification/count/',
             loading: false
         }).on('success', function (data) {
-                $span.innerHTML = '<a class="badge badge-' +
+            $span.innerHTML = '<a class="badge badge-' +
                 (data === 0 ? 'default' : 'danger') +
                 '" href="/admin/notification/"><i class="fi fi-at"></i><span>' + data + '</span></a>';
         }).on('error', function () {
