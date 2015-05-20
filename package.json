@@ -4,8 +4,9 @@
   "private": true,
   "description": "前端开发社区",
   "scripts": {
-    "ready": "node ./cli/install.js ./settings.json",
-    "start": "node ./cli/start.js"
+    "ready": "node ./clis/install.js ./settings.json",
+    "start": "node ./clis/start.js",
+    "release": "coolie build webroot-dev && 7niu upload && git add webroot-pro/* -m 'release' && git push"
   },
   "preferGlobal": false,
   "bin": {},
