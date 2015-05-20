@@ -281,7 +281,8 @@ exports.follow = function (follower, byFollower) {
     var data = {
         from: configs.smtp.from,
         sender: {
-            nickname: follower.nickname
+            nickname: follower.nickname,
+            link: configs.app.host + '/developer/' + follower.githubLogin + '/'
         },
         receiver: {
             nickname: byFollower.nickname
