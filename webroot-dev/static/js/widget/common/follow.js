@@ -93,7 +93,7 @@ define(function (require, exports, module) {
                 changeStatus($follow, status === 'on' ? 'un' : 'on');
 
                 if (status === 'un') {
-                    alert('你已成功关注了 ' + winTA.nickname);
+                    alert('你已成功关注了 ' + winTA.nickname + '，你将会第一时间获取到 TA 的公开动态。');
                 }
             }).on('error', alert);
         };
