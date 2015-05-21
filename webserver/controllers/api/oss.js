@@ -61,17 +61,12 @@ module.exports = function (app) {
     exports.getQiniuKey = function (req, res, next) {
         var settings = cache.get('app.settings');
 
-        if (settings.qiniu.dirname.slice(-1) !== '/') {
-            settings.qiniu.dirname += '/';
-        }
-
         qiniu.config(settings.qiniu);
 
         res.json({
             code: 200,
             data: qiniu.generateKeyAndToken({
-                dirname: settings.qiniu.dirname + date.format('YYYY/MM/'),
-                filename: random.string(6, 'a0')
+                dirname: settings.qiniu.dirname
             })
         });
     };

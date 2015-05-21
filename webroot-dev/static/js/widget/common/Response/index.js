@@ -81,8 +81,6 @@ define(function (require, exports, module) {
                     fd.append('token', data.token);
                     fd.append('file', list[0].file);
 
-                    var ld = new Loading();
-
                     xhr.ajax({
                         url: 'http://up.qiniu.com',
                         method: 'post',
@@ -91,7 +89,6 @@ define(function (require, exports, module) {
                         onprogress(eve.alienDetail.percent);
                     }).on('success', function (json) {
                         if (!json.key) {
-                            ld.done();
                             return alert('上传失败');
                         }
 
@@ -99,7 +96,6 @@ define(function (require, exports, module) {
 
                         img.src = ret.url;
                         img.onload = img.onerror = function () {
-                            ld.done();
                             ondone(null, [{
                                 name: "",
                                 url: ret.url,
@@ -119,7 +115,6 @@ define(function (require, exports, module) {
                             // ignore
                         }
 
-                        ld.done();
                         the.uploadDestroy();
                         alert(json);
                     });
