@@ -1,5 +1,5 @@
 <header class="g-header clearfix">
     hi，
-    <img src="{{$developer.email|gravatar:40}}" alt="avatar" width="20" height="20" coolieignore/>
+    <img src="{{=$developer.email|gravatar:40}}" alt="avatar" width="20" height="20" coolieignore/>
     {{$developer.nickname}}{{$developer.group?'（' + $developer.group + '）':''}}
 </header>
