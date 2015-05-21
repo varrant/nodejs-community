@@ -89,6 +89,7 @@ define(function (require, exports, module) {
                         onprogress(eve.alienDetail.percent);
                     }).on('success', function (json) {
                         if (!json.key) {
+                            the.uploadDestroy();
                             return alert('上传失败');
                         }
 
@@ -119,6 +120,7 @@ define(function (require, exports, module) {
                         alert(json);
                     });
                 }).on('error', function () {
+                    the.uploadDestroy();
                     alert('上传凭证获取失败');
                 });
             }
