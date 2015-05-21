@@ -32,6 +32,7 @@ define(function (require, exports, module) {
     var templateContainer = require('html!./container.html');
     var templateList = require('html!./list.html');
     var Prettify = require('../../../alien/ui/Prettify/');
+    var xhr = require('../../../alien/core/communication/xhr.js');
     var style = require('css!./style.css');
     var tplWrap = new Template(templateWrap);
     var tplContainer = new Template(templateContainer);
@@ -66,41 +67,65 @@ define(function (require, exports, module) {
                 text: 'markdown 编辑器使用帮助'
             },
             uploadCallback: function (list, onprogress, ondone) {
-                //var fd = new FormData();
-                //var the = this;
-                //
-                //// key, val, name
-                //fd.append('img', list[0].file);
-                //
-                //ajax({
-                //    url: '/admin/api/oss/',
-                //    method: 'put',
-                //    body: fd,
-                //    loading: false
-                //})
-                //    .on('progress', function (eve) {
-                //        onprogress(eve.alienDetail.percent);
-                //    })
-                //    .on('success', function (data) {
-                //        //cacheControl: "max-age=315360000"
-                //        //contentType: "image/png"
-                //        //encoding: "utf8"
-                //        //image: {type: "png", width: 200, height: 200}
-                //        //ourl: "http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f/i/20141228233411750487888485"
-                //        //surl: "http://s.ydr.me/f/i/20141228233411750487888485"
-                //        var image = data.image || {};
-                //
-                //        ondone(null, [{
-                //            name: "",
-                //            url: data.surl,
-                //            width: image.width,
-                //            height: image.height
-                //        }]);
-                //    })
-                //    .on('error', function (err) {
-                //        the.uploadDestroy();
-                //        alert(err);
-                //    });
+                var the = this;
+                var ret = {};
+
+                ajax({
+                    url: '/admin/api/qiniu/'
+                }).on('success', function (data) {
+                    ret.url = data.url;
+
+                    var fd = new FormData();
+
+                    fd.append('key', data.key);
+                    fd.append('token', data.token);
+                    fd.append('file', list[0].file);
+
+                    var ld = new Loading();
+
+                    xhr.ajax({
+                        url: 'http://up.qiniu.com',
+                        method: 'post',
+                        body: fd
+                    }).on('progress', function (eve) {
+                        onprogress(eve.alienDetail.percent);
+                    }).on('success', function (json) {
+                        if (!json.key) {
+                            ld.done();
+                            return alert('上传失败');
+                        }
+
+                        var img = new Image();
+
+                        img.src = ret.url;
+                        img.onload = img.onerror = function () {
+                            ld.done();
+                            ondone(null, [{
+                                name: "",
+                                url: ret.url,
+                                width: this.width,
+                                height: this.height
+                            }]);
+                        };
+                    }).on('error', function () {
+                        var json = {
+                            message: '未知错误'
+                        };
+
+                        try {
+                            json = JSON.parse(this.xhr.responseText);
+                            json.message = json.error;
+                        } catch (err) {
+                            // ignore
+                        }
+
+                        ld.done();
+                        the.uploadDestroy();
+                        alert(json);
+                    });
+                }).on('error', function () {
+                    alert('上传凭证获取失败');
+                });
             }
         },
         sync: {
