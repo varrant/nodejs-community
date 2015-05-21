@@ -58,13 +58,20 @@ module.exports = function (app) {
     // 生成七牛上传凭证
     exports.getKey = function (req, res, next) {
         var settings = cache.get('app.settings');
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+
+        if (settings.qiniu.dirname.slice(-1) === '/') {
+            settings.qiniu.dirname = settings.qiniu.dirname.slice(0, -1);
+        }
 
         qiniu.config(settings.qiniu);
 
         res.json({
             code: 200,
             data: qiniu.generateKeyAndToken({
-                dirname: ''
+                dirname: settings.qiniu.dirname + year + '/' + month
             })
         });
     };
