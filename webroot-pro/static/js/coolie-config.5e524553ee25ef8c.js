@@ -1,1 +1,0 @@
-/*coolie@0.16.1 1432125589595*/coolie.config({base:"./app/",host:"",debug:!1,version:{}}).use();

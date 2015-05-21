@@ -1,2 +1,2 @@
 <div class="card" id="list"> <h2 class="card-title"><i class="fi fi-reply"></i>回复记录 </h2> <div class="card-body"> <ul class="simplelist history"> {{if list.length}} {{list list as item}} <li class="clearfix"> <span class="pull-right text-light">{{item.interactiveAt|datefrom}}</span> {{developer.nickname}}在<a href="/{{=sectionURIMap[item.object.section]}}/{{=item.object.uri}}.html">《{{item.object.title}}》</a> 回复了<a href="/developer/{{=item.target.githubLogin}}">{{item.target.nickname}}</a>的评论。 </li> {{/list}} {{else}} <li class="text-center text-muted"> <i class="fi fi-info-circle"></i>暂无相关信息。 </li> {{/if}} </ul> </div> <div class="card-footer text-center"> <div id="pager"></div> </div></div>
-<!--coolie@0.16.1 1432125737640-->
+<!--coolie@0.16.5 1432179538920-->
