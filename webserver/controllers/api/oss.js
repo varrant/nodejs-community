@@ -56,7 +56,7 @@ module.exports = function (app) {
 
 
     // 生成七牛上传凭证
-    exports.getKey = function (req, res, next) {
+    exports.getQiniuKey = function (req, res, next) {
         var settings = cache.get('app.settings');
         var date = new Date();
         var year = date.getFullYear();

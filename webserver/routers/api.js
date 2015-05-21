@@ -44,7 +44,8 @@ module.exports = function (app, ctrl) {
 
 
     // oss
-    app.put('/admin/api/oss/', ctrl.oss.put);
+    //app.put('/admin/api/oss/', ctrl.oss.put);
+    app.get('/admin/api/qiniu/', ctrl.oss.getQiniuKey);
 
 
     // setting
