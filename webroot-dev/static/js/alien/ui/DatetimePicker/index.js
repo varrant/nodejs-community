@@ -121,6 +121,7 @@ define(function (require, exports, module) {
             the._$minute = nodes[4];
             the._$second = nodes[5];
             the._$wrap = $wrap;
+            the._$cancel = selector.query('.j-cancel', $wrap)[0];
             the._$now = selector.query('.j-now', $wrap)[0];
             the._$sure = selector.query('.j-sure', $wrap)[0];
 
@@ -305,16 +306,24 @@ define(function (require, exports, module) {
             });
 
             // 点击现在
+            event.on(the._$cancel, 'click', function () {
+                the.close();
+                the.emit('cancel');
+            });
+
+            // 点击现在
             event.on(the._$now, 'click', function () {
                 the._date = new Date();
                 the._onchange(the._date);
                 the._render();
+                the.emit('now', the._date);
             });
 
             // 点击确定
             event.on(the._$sure, 'click', function () {
-                the._onchange();
-                the._popup.close();
+                the._$input.value = date.format(options.format, the._date);
+                the.close();
+                the.emit('sure', the._date);
             });
         },
 
@@ -326,12 +335,9 @@ define(function (require, exports, module) {
          */
         _onchange: function (d) {
             var the = this;
-            var options = the._options;
 
             the._date = d || new Date(the._choose.year, the._choose.month, the._choose.date,
                     the._choose.hours, the._choose.minutes, the._choose.seconds, 0);
-
-            the._$input.value = date.format(options.format, the._date);
             the.emit('change', the._date);
         },
 
@@ -379,7 +385,20 @@ define(function (require, exports, module) {
             the._date = date.parse(value);
             the._render();
             the._onchange();
-            the._popup.open();
+            the._popup.open(function () {
+                // 重新打开后，更新滑块的位置信息
+                if (the._rHours) {
+                    the._rHours.update();
+                }
+
+                if (the._rMinutes) {
+                    the._rMinutes.update();
+                }
+
+                if (the._rSeconds) {
+                    the._rSeconds.update();
+                }
+            });
 
             return the;
         },
@@ -404,11 +423,6 @@ define(function (require, exports, module) {
          */
         _renderList: function () {
             var the = this;
-
-            if (the._lastChoose.year === the._choose.year && the._lastChoose.month === the._choose.month) {
-                return;
-            }
-
             var options = the._options;
             var list = calendar.month(the._choose.year, the._choose.month, dato.extend({}, options, {
                 activeDate: the._choose.year ? new Date(the._choose.year, the._choose.month, the._choose.date) : null
@@ -427,8 +441,8 @@ define(function (require, exports, module) {
             }
 
             the._$list.innerHTML = tplList.render(data);
-            the._lastChoose.year = the._choose.year;
-            the._lastChoose.month = the._choose.month;
+            //the._lastChoose.year = the._choose.year;
+            //the._lastChoose.month = the._choose.month;
         },
 
 
