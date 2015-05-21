@@ -8,6 +8,7 @@
 
 var AliOSS = require('ydr-utils').AliOSS;
 var random = require('ydr-utils').random;
+var qiniu = require('ydr-utils').qiniu;
 var cache = require('ydr-utils').cache;
 var REG_IMAGE = /^image\/.*$/;
 var configs = require('../../../configs/');
@@ -51,6 +52,10 @@ module.exports = function (app) {
                 data: ret
             });
         });
+    };
+
+    exports.getKey = function (req, res, next) {
+        var kat = qiniu.generateKeyAndToken();
     };
 
     return exports;

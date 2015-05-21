@@ -66,41 +66,41 @@ define(function (require, exports, module) {
                 text: 'markdown 编辑器使用帮助'
             },
             uploadCallback: function (list, onprogress, ondone) {
-                var fd = new FormData();
-                var the = this;
-
-                // key, val, name
-                fd.append('img', list[0].file);
-
-                ajax({
-                    url: '/admin/api/oss/',
-                    method: 'put',
-                    body: fd,
-                    loading: false
-                })
-                    .on('progress', function (eve) {
-                        onprogress(eve.alienDetail.percent);
-                    })
-                    .on('success', function (data) {
-                        //cacheControl: "max-age=315360000"
-                        //contentType: "image/png"
-                        //encoding: "utf8"
-                        //image: {type: "png", width: 200, height: 200}
-                        //ourl: "http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f/i/20141228233411750487888485"
-                        //surl: "http://s.ydr.me/f/i/20141228233411750487888485"
-                        var image = data.image || {};
-
-                        ondone(null, [{
-                            name: "",
-                            url: data.surl,
-                            width: image.width,
-                            height: image.height
-                        }]);
-                    })
-                    .on('error', function (err) {
-                        the.uploadDestroy();
-                        alert(err);
-                    });
+                //var fd = new FormData();
+                //var the = this;
+                //
+                //// key, val, name
+                //fd.append('img', list[0].file);
+                //
+                //ajax({
+                //    url: '/admin/api/oss/',
+                //    method: 'put',
+                //    body: fd,
+                //    loading: false
+                //})
+                //    .on('progress', function (eve) {
+                //        onprogress(eve.alienDetail.percent);
+                //    })
+                //    .on('success', function (data) {
+                //        //cacheControl: "max-age=315360000"
+                //        //contentType: "image/png"
+                //        //encoding: "utf8"
+                //        //image: {type: "png", width: 200, height: 200}
+                //        //ourl: "http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f/i/20141228233411750487888485"
+                //        //surl: "http://s.ydr.me/f/i/20141228233411750487888485"
+                //        var image = data.image || {};
+                //
+                //        ondone(null, [{
+                //            name: "",
+                //            url: data.surl,
+                //            width: image.width,
+                //            height: image.height
+                //        }]);
+                //    })
+                //    .on('error', function (err) {
+                //        the.uploadDestroy();
+                //        alert(err);
+                //    });
             }
         },
         sync: {

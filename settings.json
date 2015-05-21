@@ -13,13 +13,12 @@
     "group": "founder",
     "title": "创始人"
   },
-  // 阿里云 OSS
-  "alioss": {
-    "accessKeyId": "access_key_id",
-    "accessKeySecret": "aceess_key_Secret",
-    "host": "oss-cn-hangzhou.aliyuncs.com",
-    "bucket": "your_oss_bucket",
-    "domain": "your_static_domain_com"
+  // 七牛云存储
+  "qiniu": {
+    "access_key": "access_key",
+    "secret_key": "secret_key",
+    "host": "http://host",
+    "bucket": "your_oss_bucket"
   },
   // github 授权登录
   // **最重要，否则无法正常授权登陆**
