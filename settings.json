@@ -18,7 +18,8 @@
     "access_key": "access_key",
     "secret_key": "secret_key",
     "host": "http://host",
-    "bucket": "your_oss_bucket"
+    "bucket": "your_oss_bucket",
+    "dirname": "/res"
   },
   // github 授权登录
   // **最重要，否则无法正常授权登陆**

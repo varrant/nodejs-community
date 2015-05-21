@@ -54,8 +54,19 @@ module.exports = function (app) {
         });
     };
 
+
+    // 生成七牛上传凭证
     exports.getKey = function (req, res, next) {
-        var kat = qiniu.generateKeyAndToken();
+        var settings = cache.get('app.settings');
+
+        qiniu.config(settings.qiniu);
+
+        res.json({
+            code: 200,
+            data: qiniu.generateKeyAndToken({
+                dirname: ''
+            })
+        });
     };
 
     return exports;

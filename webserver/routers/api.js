@@ -6,7 +6,7 @@
 
 'use strict';
 
-var settings = ['oauth', 'alioss', 'smtp', 'website', 'default'];
+var settings = ['oauth', 'qiniu', 'smtp', 'website', 'default'];
 var configs = require('../../configs/');
 
 module.exports = function (app, ctrl) {
