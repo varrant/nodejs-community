@@ -2396,6 +2396,10 @@
         "css": [],
         "main": ""
     },
+    ".views/sadmin/include/setting/qiniu.html": {
+        "css": [],
+        "main": ""
+    },
     ".views/sadmin/include/setting/roles.html": {
         "css": [],
         "main": ""
