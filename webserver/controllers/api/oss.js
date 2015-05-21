@@ -10,6 +10,8 @@ var AliOSS = require('ydr-utils').AliOSS;
 var random = require('ydr-utils').random;
 var qiniu = require('ydr-utils').qiniu;
 var cache = require('ydr-utils').cache;
+var string = require('ydr-utils').string;
+var date = require('ydr-utils').date;
 var REG_IMAGE = /^image\/.*$/;
 var configs = require('../../../configs/');
 
@@ -58,12 +60,9 @@ module.exports = function (app) {
     // 生成七牛上传凭证
     exports.getQiniuKey = function (req, res, next) {
         var settings = cache.get('app.settings');
-        var date = new Date();
-        var year = date.getFullYear();
-        var month = date.getMonth() + 1;
 
-        if (settings.qiniu.dirname.slice(-1) === '/') {
-            settings.qiniu.dirname = settings.qiniu.dirname.slice(0, -1);
+        if (settings.qiniu.dirname.slice(-1) !== '/') {
+            settings.qiniu.dirname += '/';
         }
 
         qiniu.config(settings.qiniu);
@@ -71,7 +70,8 @@ module.exports = function (app) {
         res.json({
             code: 200,
             data: qiniu.generateKeyAndToken({
-                dirname: settings.qiniu.dirname + year + '/' + month
+                dirname: settings.qiniu.dirname + date.format('YYYY/MM/'),
+                filename: random.string(6, 'a0')
             })
         });
     };
