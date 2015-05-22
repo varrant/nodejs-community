@@ -21,6 +21,7 @@ define(function (require, exports, module) {
     var controller = require('../../alien/utils/controller.js');
     var date = require('../../alien/utils/date.js');
     var qs = require('../../alien/utils/querystring.js');
+    var xhr = require('../../alien/core/communication/xhr.js');
     var defaults = {
         url: '/admin/api/object/?',
         id: '',
@@ -118,40 +119,62 @@ define(function (require, exports, module) {
             the._$objectColumn = selector.query('#objectColumn')[0];
 
             the.editorUploadCallback = function (list, onprogress, ondone) {
-                var fd = new FormData();
                 var the = this;
-
-                // key, val, name
-                fd.append('img', list[0].file, 'img.png');
+                var ret = {};
 
                 ajax({
-                    url: '/admin/api/oss/',
-                    method: 'put',
-                    body: fd,
-                    loading: false
-                })
-                    .on('progress', function (eve) {
+                    url: '/admin/api/qiniu/'
+                }).on('success', function (data) {
+                    ret.url = data.url;
+
+                    var fd = new FormData();
+
+                    fd.append('key', data.key);
+                    fd.append('token', data.token);
+                    fd.append('file', list[0].file);
+
+                    xhr.ajax({
+                        url: 'http://up.qiniu.com',
+                        method: 'post',
+                        body: fd
+                    }).on('progress', function (eve) {
                         onprogress(eve.alienDetail.percent);
-                    })
-                    .on('success', function (data) {
-                        var image = data.image || {};
-                        //cacheControl: "max-age=315360000"
-                        //contentType: "image/png"
-                        //encoding: "utf8"
-                        //image: {type: "png", width: 200, height: 200}
-                        //ourl: "http://s-ydr-me.oss-cn-hangzhou.aliyuncs.com/f/i/20141228233411750487888485"
-                        //surl: "http://s.ydr.me/f/i/20141228233411750487888485"
-                        ondone(null, [{
-                            name: "img.png",
-                            url: data.surl,
-                            width: image.width,
-                            height: image.height
-                        }]);
-                    })
-                    .on('error', function (err) {
+                    }).on('success', function (json) {
+                        if (!json.key) {
+                            the.uploadDestroy();
+                            return alert('上传失败');
+                        }
+
+                        var img = new Image();
+
+                        img.src = ret.url;
+                        img.onload = img.onerror = function () {
+                            ondone(null, [{
+                                name: "",
+                                url: ret.url,
+                                width: this.width,
+                                height: this.height
+                            }]);
+                        };
+                    }).on('error', function () {
+                        var json = {
+                            message: '未知错误'
+                        };
+
+                        try {
+                            json = JSON.parse(this.xhr.responseText);
+                            json.message = json.error;
+                        } catch (err) {
+                            // ignore
+                        }
+
                         the.uploadDestroy();
-                        alert(err);
+                        alert(json);
                     });
+                }).on('error', function () {
+                    the.uploadDestroy();
+                    alert('上传凭证获取失败');
+                });
             };
 
             the._editor1 = new Editor(the._contentSelector, {
