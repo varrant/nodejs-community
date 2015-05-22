@@ -32,12 +32,9 @@ define(function (require, exports, module) {
             minHeight: 200,
             ratio: 1,
             ajax: {
-                url: '/admin/api/oss/',
-                method: 'put',
-                headers: {
-                    accept: 'application/json; charset=utf-8',
-                    'x-request-csrf': window['-csrf-']
-                }
+                url: 'http://up.qiniu.com/',
+                method: 'post',
+                fileKey: 'file'
             }
         },
         url: '',
