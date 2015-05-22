@@ -11,6 +11,11 @@
 var mongoose = require('../../webserver/mongoose.js');
 var object = require('../../webserver/models/').object;
 var howdo = require('howdo');
+var xss = require('ydr-utils').xss;
+// http://s.ydr.me/f/i/20141223232616632423139866
+// https://dn-fed.qbox.me/@/i/20141223232616632423139866
+var REG_S_YDR_ME = /http:\/\/s\.ydr\.me\/f\//g;
+
 
 mongoose(function (err) {
     if (err) {
@@ -27,16 +32,32 @@ mongoose(function (err) {
         }
 
         howdo.each(docs, function (index, doc, done) {
-            var content = doc.content;
-            var hidden = doc.hidden;
+            var content = doc.content.replace(REG_S_YDR_ME, 'https://dn-fed.qbox.me/@/');
+            var hidden = doc.hidden.replace(REG_S_YDR_ME, 'https://dn-fed.qbox.me/@/');
+
+            content = xss.mdSafe(content);
+            hidden = xss.mdSafe(hidden);
+
+            var introduction = xss.mdIntroduction(content);
+
+            var toc = xss.mdTOC(content);
+
+            var contentHTML = '';
+
+            if (toc.trim()) {
+                contentHTML += '<div class="toc"><h3 class="toc-title">TOC</h3>' + xss.mdRender(toc, true) + '</div>';
+            }
+
+            contentHTML += xss.mdRender(content);
 
             object.findOneAndUpdate({
                 _id: doc.id
             }, {
-                content: '',
-                contentHTML: '',
-                hidden: '',
-                hiddenHTML: ''
+                introduction: introduction,
+                content: content,
+                contentHTML: contentHTML,
+                hidden: hidden,
+                hiddenHTML: xss.mdRender(hidden)
             }, done);
         }).together(function (err) {
             if (err) {
