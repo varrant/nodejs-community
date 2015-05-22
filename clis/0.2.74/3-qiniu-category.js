@@ -9,7 +9,7 @@
 
 
 var mongoose = require('../../webserver/mongoose.js');
-var column = require('../../webserver/models/').column;
+var category = require('../../webserver/models/').category;
 var howdo = require('howdo');
 var xss = require('ydr-utils').xss;
 // http://s.ydr.me/f/i/20141223232616632423139866
@@ -24,27 +24,27 @@ mongoose(function (err) {
         return process.exit();
     }
 
-    column.find({}, function (err, docs) {
+    category.find({}, function (err, docs) {
         if (err) {
-            console.log('find column error');
+            console.log('find category error');
             console.error(err.stack);
             return process.exit();
         }
 
         howdo.each(docs, function (index, doc, done) {
-            column.findOneAndUpdate({
+            category.findOneAndUpdate({
                 _id: doc.id
             }, {
                 cover: doc.cover.replace(REG_S_YDR_ME, 'https://dn-fed.qbox.me/@/')
             }, done);
         }).follow(function (err) {
             if (err) {
-                console.log('modify column error');
+                console.log('modify category error');
                 console.error(err.stack);
                 return process.exit();
             }
 
-            console.log('modify all column success');
+            console.log('modify all category success');
             process.exit();
         });
     });
