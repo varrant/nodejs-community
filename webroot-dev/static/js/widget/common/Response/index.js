@@ -82,7 +82,7 @@ define(function (require, exports, module) {
                     fd.append('file', list[0].file);
 
                     xhr.ajax({
-                        url: 'http://up.qiniu.com',
+                        url: 'https://up.qiniu.com',
                         method: 'post',
                         body: fd
                     }).on('progress', function (eve) {
