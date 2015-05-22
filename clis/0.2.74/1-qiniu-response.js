@@ -55,7 +55,7 @@ mongoose(function (err) {
                 content: content,
                 contentHTML: contentHTML
             }, done);
-        }).together(function (err) {
+        }).follow(function (err) {
             if (err) {
                 console.log('modify response error');
                 console.error(err.stack);
