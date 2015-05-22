@@ -22,7 +22,7 @@ validator.pushRule({
     type: 'string',
     alias: '评论内容',
     trim: true,
-    minLength: 5,
+    minLength: 1,
     maxLength: 5000,
     regexp: REG_CONTENT,
     onafter: function (val, data) {

@@ -36,6 +36,10 @@ mongoose(function (err) {
 
             content = xss.mdSafe(content);
 
+            if(!content.trim()){
+                content = '无内容';
+            }
+
             var contentHTML = xss.mdRender(content);
 
             if (!contentHTML) {
