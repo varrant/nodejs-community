@@ -1,8 +1,4 @@
-*,*::before,*::after{
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+/// base
 
 html {
   font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
@@ -12,25 +8,35 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga", "kern";
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 // @link http://mux.alimama.com/posts/1423
 @media only screen and (min-width: 481px) {
-  html{
+  html {
     font-size: 94% !important;
   }
 }
+
 @media only screen and (min-width: 561px) {
-  html{
+  html {
     font-size: 109% !important;
   }
 }
+
 @media only screen and (min-width: 641px) {
-  html{
+  html {
     font-size: 125% !important;
   }
 }
-
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -82,11 +88,10 @@ ul {
   list-style: none;
 }
 
-body{
+body {
   color: #333;
   font-size: 16px;
 }
-
 
 /*Only phones */
 @media only screen and (max-width: 640px) {
@@ -102,7 +107,7 @@ body{
   }
 }
 
-button, input, optgroup, select, textarea{
+button, input, optgroup, select, textarea {
   font: initial;
 }
 
@@ -128,12 +133,12 @@ a:focus {
   outline-offset: -2px;
 }
 
-img{
+img {
   max-width: 100%;
   height: auto;
   vertical-align: top;
 
-  &.favicon{
+  &.favicon {
     width: 16px !important;
     height: 16px !important;
     max-width: none !important;
