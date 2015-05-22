@@ -24,8 +24,12 @@ validator.pushRule({
     trim: true,
     minLength: 1,
     maxLength: 5000,
-    regexp: REG_CONTENT,
+    //regexp: REG_CONTENT,
     onafter: function (val, data) {
+        if (!REG_CONTENT.test(val)) {
+            val = '无内容';
+        }
+
         val = xss.mdSafe(val);
         data.contentHTML = xss.mdRender(val);
 
