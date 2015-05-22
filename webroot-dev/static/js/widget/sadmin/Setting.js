@@ -60,12 +60,32 @@ define(function (require, exports, module) {
             the._initData();
             the._upload = new Upload(options.uploadOptions);
             the._upload.on('success', function (json) {
-                if (json.code !== 200) {
-                    return alert(json);
+                if (!json.key) {
+                    return alert('上传失败');
                 }
 
-                the.vue.$data[the._options.itemKey][the._imgKey] = json.data.surl;
+                the.vue.$data[the._options.itemKey][the._imgKey] = the._url;
                 this.close();
+            }).on('upload', function () {
+                ajax({
+                    url: '/admin/api/qiniu/'
+                }).on('success', function (data) {
+                    the._url = data.url;
+                    the._upload.setOptions({
+                        ajax: {
+                            body: {
+                                key: data.key,
+                                token: data.token
+                            }
+                        }
+                    });
+                    the._upload.upload();
+                }).on('error', function () {
+                    the.uploadDestroy();
+                    alert('上传凭证获取失败');
+                });
+
+                return false;
             }).on('error', alert);
         },
 
