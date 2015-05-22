@@ -22,20 +22,16 @@ validator.pushRule({
     type: 'string',
     alias: '评论内容',
     trim: true,
-    minLength: 1,
+    minLength: 5,
     maxLength: 5000,
-    //regexp: REG_CONTENT,
+    regexp: REG_CONTENT,
     onafter: function (val, data) {
-        if (!REG_CONTENT.test(val)) {
-            val = '无内容';
-        }
-
         val = xss.mdSafe(val);
         data.contentHTML = xss.mdRender(val);
 
-        //if(!data.contentHTML.replace(REG_TAG, '').trim()){
-        //    return new Error('文字内容不能为空');
-        //}
+        if(!data.contentHTML.replace(REG_TAG, '').trim()){
+            return new Error('文字内容不能为空');
+        }
 
         return val;
     },
