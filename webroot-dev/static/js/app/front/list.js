@@ -26,7 +26,7 @@ define(function (require, exports, module) {
     var app = {};
     var section = window['-section-'];
     var $body = selector.query('#body')[0];
-    var template = selector.query('#template')[0].innerHTML;
+    var template = selector.query('#template')[0].value;
     var tpl = new Template(template);
     //var beginURL = location.href;
 
