@@ -228,11 +228,8 @@ module.exports = function (app) {
                             object.find({
                                 column: obje.column.id
                             }, {
-                                not: {
-                                    _id: obje.id
-                                },
                                 select: 'id uri title section',
-                                sort: {publishAt: -1}
+                                sort: {publishAt: 1}
                             }, function (err, list) {
                                 if (err) {
                                     log.holdError(err);
