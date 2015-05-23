@@ -72,11 +72,16 @@
                     <h2 class="card-title">
                         <i class="fi fi-book"></i>
                         {{object.column.name}}
+                        <small class="card-subtitle">{{object.column.introduction}}</small>
                     </h2>
                     <div class="card-body">
                         <ul class="simplelist">
                             {{list columnObjects as item}}
-                            <li><a href="#">{{item.title}}</a></li>
+                            <li class="clearfix">
+                                <time></time>
+                                <span class="badge badge-default">{{$sectionIDMap[item.section].name}}</span>
+                                <a href="#">{{item.title}}</a>
+                            </li>
                             {{/list}}
                         </ul>
                     </div>
