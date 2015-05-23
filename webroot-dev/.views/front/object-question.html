@@ -75,6 +75,29 @@
                 </div>
                 <!--/内容-->
 
+                <!--专辑-->
+                {{if object.column}}
+                <div class="card">
+                    <h2 class="card-title">
+                        <i class="fi fi-book"></i>
+                        {{object.column.name}}
+                        <small class="card-subtitle">{{object.column.introduction}}</small>
+                    </h2>
+                    <div class="card-body">
+                        <ul class="simplelist">
+                            {{list columnObjects as item}}
+                            <li class="clearfix">
+                                <time datetime="{{item.publishAt}}" class="pull-right text-light"><i class="fi fi-clock-o"></i>{{item.publishAt|datefrom}}</time>
+                                <span class="badge badge-default">{{$sectionIDMap[item.section].name}}</span>
+                                <a href="/{{=$sectionIDMap[item.section].uri}}/{{=item.uri}}.html">{{item.title}}</a>
+                            </li>
+                            {{/list}}
+                        </ul>
+                    </div>
+                </div>
+                {{/if}}
+                <!--/专辑-->
+
                 <div id="response"></div>
             </div>
             <!--/主-->
