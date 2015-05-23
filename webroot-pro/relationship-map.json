@@ -1649,7 +1649,7 @@
     ".views/front/object-article.html": {
         "css": [
             {
-                "static/css/94d5196e56d2606ba5306be7419e9df4.css": [
+                "static/css/320f0fdaaf7b09274693b380a8e7a592.css": [
                     "static/css/app/front/detail.css"
                 ]
             }
@@ -1754,7 +1754,7 @@
     ".views/front/object-help.html": {
         "css": [
             {
-                "static/css/94d5196e56d2606ba5306be7419e9df4.css": [
+                "static/css/320f0fdaaf7b09274693b380a8e7a592.css": [
                     "static/css/app/front/detail.css"
                 ]
             }
@@ -1859,7 +1859,7 @@
     ".views/front/object-link.html": {
         "css": [
             {
-                "static/css/94d5196e56d2606ba5306be7419e9df4.css": [
+                "static/css/320f0fdaaf7b09274693b380a8e7a592.css": [
                     "static/css/app/front/detail.css"
                 ]
             }
@@ -1964,7 +1964,7 @@
     ".views/front/object-question.html": {
         "css": [
             {
-                "static/css/94d5196e56d2606ba5306be7419e9df4.css": [
+                "static/css/320f0fdaaf7b09274693b380a8e7a592.css": [
                     "static/css/app/front/detail.css"
                 ]
             }

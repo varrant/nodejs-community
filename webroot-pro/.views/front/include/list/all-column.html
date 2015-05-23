@@ -1,2 +1,2 @@
 <ul class="thumblist avg-xs-1 avg-sm-3 avg-md-4"> {{if !list.length}} <li class="col-xs-12"> <div class="alert alert-warning"><i class="fi fi-info-circle"></i>暂无相关内容。</div> </li> {{/if}} {{list list as item}} <li class="thumblist-item"> <a href="/column/{{=item.uri}}/"><img src="{{=item.cover}}" alt="{{item.name}}" class="thumblist-cover img-rounder img-border-primary" width="100" height="100" /></a> <div class="thumblist-name">{{item.name}}</div> <div class="thumblist-author"><a href="/developer/{{=item.author.githubLogin}}/"><i class="fi fi-user"></i>{{item.author.nickname}}</a> </div> </li> {{/list}}</ul>
-<!--coolie@0.16.8 1432371008613-->
+<!--coolie@0.16.8 1432374852845-->
