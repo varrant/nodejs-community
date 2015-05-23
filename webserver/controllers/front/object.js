@@ -222,6 +222,7 @@ module.exports = function (app) {
                 data.title = obje.title;
                 data.keywords = obje.labels.join('，');
                 data.description = obje.introduction;
+                data.column = obje.column;
                 data.object = obje;
                 data.page = page;
                 data.section = section;
