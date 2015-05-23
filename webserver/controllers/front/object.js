@@ -225,6 +225,10 @@ module.exports = function (app) {
                     howdo
                         // 查找专辑信息
                         .task(function (done) {
+                            if (!obje.column) {
+                                return done();
+                            }
+
                             object.find({
                                 column: obje.column.id
                             }, {
