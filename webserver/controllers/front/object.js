@@ -203,54 +203,126 @@ module.exports = function (app) {
             var $developer = res.locals.$developer;
             var configs = cache.get('app.configs');
 
-            object.findOne({
-                section: section.id,
-                uri: uri,
-                isDisplay: true
-            }, {
-                populate: ['author', 'category', 'column']
-            }, function (err, obje) {
-                if (err) {
-                    return next(err);
-                }
+            howdo
+                // 查找文章
+                .task(function (next) {
+                    object.findOne({
+                        section: section.id,
+                        uri: uri,
+                        isDisplay: true
+                    }, {
+                        populate: ['author', 'category', 'column']
+                    }, next);
+                })
+                // 查找专辑 + 是否回复
+                .task(function (next, obje) {
+                    if (!obje) {
+                        return next(null, obje);
+                    }
 
-                if (!obje) {
-                    return next();
-                }
+                    howdo
+                        // 查找专辑信息
+                        .task(function (done) {
+                            object.find({
+                                column: obje.column.id
+                            }, {
+                                not: {
+                                    _id: obje.id
+                                }
+                            }, function (err, list) {
+                                if (err) {
+                                    log.holdError(err);
+                                }
 
-                data.hasResponsed = false;
-                data.title = obje.title;
-                data.keywords = obje.labels.join('，');
-                data.description = obje.introduction;
-                data.column = obje.column;
-                data.object = obje;
-                data.page = page;
-                data.section = section;
-                data.url = configs.app.host + '/' + section.uri + '/' + obje.uri + '.html';
+                                data.columnObjects = list || [];
+                                done();
+                            });
+                        })
+                        // 是否回复信息
+                        .task(function (done) {
+                            if ($developer && $developer.id) {
+                                response.findOne({
+                                    author: $developer.id.toString(),
+                                    object: obje.id.toString()
+                                }, function (err, resp) {
+                                    if (err) {
+                                        log.holdError(err);
+                                        data.hasResponsed = false;
+                                    } else {
+                                        data.hasResponsed = !!resp;
+                                    }
 
-                var onend = function () {
-                    object.increaseViewByCount({_id: obje.id}, 1, log.holdError);
-                    data.section = section;
-                    //res.json(obje);
-                    res.render('front/object-' + section.uri + '.html', data);
-                };
+                                    done();
+                                });
+                            } else {
+                                done();
+                            }
+                        })
+                        // 异步顺序并行
+                        .together(function () {
+                            next(null, obje);
+                        });
+                })
+                .follow(function (err, obje) {
+                    if (err) {
+                        return next(err);
+                    }
 
-                if ($developer && $developer.id) {
-                    response.findOne({
-                        author: $developer.id.toString(),
-                        object: obje.id.toString()
-                    }, function (err, resp) {
-                        if (err) {
-                            return next(err);
-                        }
+                    if (!obje) {
+                        return next();
+                    }
 
-                        data.hasResponsed = !!resp;
-                        onend();
-                    });
-                } else {
-                    onend();
-                }
-            });
+                    res.json(data);
+                });
+
+            //object.findOne({
+            //    section: section.id,
+            //    uri: uri,
+            //    isDisplay: true
+            //}, {
+            //    populate: ['author', 'category', 'column']
+            //}, function (err, obje) {
+            //    if (err) {
+            //        return next(err);
+            //    }
+            //
+            //    if (!obje) {
+            //        return next();
+            //    }
+            //
+            //    data.hasResponsed = false;
+            //    data.title = obje.title;
+            //    data.keywords = obje.labels.join('，');
+            //    data.description = obje.introduction;
+            //    data.column = obje.column;
+            //    data.object = obje;
+            //    data.page = page;
+            //    data.section = section;
+            //    data.url = configs.app.host + '/' + section.uri + '/' + obje.uri + '.html';
+            //
+            //    var onend = function () {
+            //        object.increaseViewByCount({_id: obje.id}, 1, log.holdError);
+            //        data.section = section;
+            //        res.json(obje);
+            //        //res.render('front/object-' + section.uri + '.html', data);
+            //    };
+            //
+            //    if ($developer && $developer.id) {
+            //        response.findOne({
+            //            author: $developer.id.toString(),
+            //            object: obje.id.toString()
+            //        }, function (err, resp) {
+            //            if (err) {
+            //                return next(err);
+            //            }
+            //
+            //            data.hasResponsed = !!resp;
+            //            onend();
+            //        });
+            //    } else {
+            //        onend();
+            //    }
+            //});
         };
     };
 
