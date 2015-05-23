@@ -228,7 +228,7 @@ module.exports = function (app) {
                             object.find({
                                 column: obje.column.id
                             }, {
-                                select: 'id uri title section',
+                                select: 'id uri title section publishAt',
                                 sort: {publishAt: 1}
                             }, function (err, list) {
                                 if (err) {

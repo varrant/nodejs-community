@@ -78,9 +78,9 @@
                         <ul class="simplelist">
                             {{list columnObjects as item}}
                             <li class="clearfix">
-                                <time></time>
+                                <time datetime="{{item.publishAt}}" class="pull-right text-light"><i class="fi fi-clock-o"></i>{{item.publishAt|datefrom}}</time>
                                 <span class="badge badge-default">{{$sectionIDMap[item.section].name}}</span>
-                                <a href="#">{{item.title}}</a>
+                                <a href="/{{=$sectionIDMap[item.section].uri}}/{{=item.uri}}.html">{{item.title}}</a>
                             </li>
                             {{/list}}
                         </ul>
