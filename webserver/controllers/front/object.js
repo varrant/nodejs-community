@@ -203,6 +203,8 @@ module.exports = function (app) {
             var $developer = res.locals.$developer;
             var configs = cache.get('app.configs');
 
+            data.hasResponsed = false;
+
             howdo
                 // 查找文章
                 .task(function (next) {
@@ -228,7 +230,9 @@ module.exports = function (app) {
                             }, {
                                 not: {
                                     _id: obje.id
-                                }
+                                },
+                                select: 'id uri title section',
+                                sort: {publishAt: -1}
                             }, function (err, list) {
                                 if (err) {
                                     log.holdError(err);
@@ -272,7 +276,19 @@ module.exports = function (app) {
                         return next();
                     }
 
-                    res.json(data);
+                    data.title = obje.title;
+                    data.keywords = obje.labels.join('，');
+                    data.description = obje.introduction;
+                    data.column = obje.column;
+                    data.object = obje;
+                    data.page = page;
+                    data.section = section;
+                    data.url = configs.app.host + '/' + section.uri + '/' + obje.uri + '.html';
+                    object.increaseViewByCount({_id: obje.id}, 1, log.holdError);
+                    data.section = section;
+
+                    //res.json(data);
+                    res.render('front/object-' + section.uri + '.html', data);
                 });
 
             //object.findOne({
