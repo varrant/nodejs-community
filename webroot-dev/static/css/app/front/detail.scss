@@ -2,10 +2,15 @@ $border-color: #e6e6e6;
 
 
 .codedemo{
-  &-jsbin{
+  &-jsbin,
+  &-jsfiddle{
     display: block;
     width: 100%;
     height: 300px;
+    margin: 10px 0;
+  }
+
+  &-jsbin{
     border: 2px solid #BFBFBF;
   }
 }
