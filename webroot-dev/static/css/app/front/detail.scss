@@ -1,6 +1,14 @@
 $border-color: #e6e6e6;
 
 
+.codedemo{
+  &-jsbin{
+    display: block;
+    width: 100%;
+    height: 300px;
+    border: 2px solid #BFBFBF;
+  }
+}
 
 
 
