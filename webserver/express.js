@@ -46,8 +46,8 @@ Template.addFilter('datefrom', function (val) {
     return date.from(val);
 });
 
-Template.addFilter('datetime', function (val) {
-    return date.format('YYYY-MM-DD HH:mm:ss 星期e', val);
+Template.addFilter('datetime', function (val, format) {
+    return date.format(format || 'YYYY-MM-DD HH:mm:ss 星期e', val);
 });
 
 
