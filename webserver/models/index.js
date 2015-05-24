@@ -520,7 +520,8 @@ dato.each(models, function (key, model) {
      * @param item {*} 项目
      * @param options {Object} 配置
      * @param [options.maxLength=null] {Object} 最大长度
-     * @param [options.unique=false] {Object} 是否不重复
+     * @param [options.isUnique=false] {Object} 是否不重复
+     * @param [options.isDeleteDuplicatorAndPush=true] {Object} 是否删除重复的，然后追加到末尾
      * @param callback {Function} 回调
      */
     exports[key].push = function (conditions, path, item, options, callback) {
@@ -534,7 +535,8 @@ dato.each(models, function (key, model) {
             callback = args[3];
             options = {
                 maxLength: null,
-                unique: false
+                isUnique: false,
+                isDeleteDuplicatorAndPush: true
             };
         }
 
@@ -551,13 +553,25 @@ dato.each(models, function (key, model) {
 
             var array = doc[path] || [];
 
+            // 如果超过最大长度
             if (array.length === options.maxLength) {
                 array.shift();
             }
 
-            if (!options.unique || array.indexOf(item) === -1) {
+            // 可以重复
+            if (!options.isUnique) {
                 array.push(item);
             }
+            // 不能重复
+            else {
+                var duplicateIndex = array.indexOf(item);
+
+                if (duplicateIndex > -1 && options.isDeleteDuplicatorAndPush) {
+                    array.splice(duplicateIndex, 1);
+                    array.push(item);
+                }
+            }
+
 
             var data = {};
             data[path] = array;

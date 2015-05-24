@@ -904,14 +904,15 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
 
 
 /**
- * 写入访问者
+ * 写入访问者，最多20个
  * @param conditions
  * @param visitor
  * @param callback
  */
 exports.pushVisitor = function (conditions, visitor, callback) {
     developer.push(conditions, 'visitors', visitor.id.toString(), {
-        unique: true
+        unique: true,
+        maxLength: 20
     }, callback);
 };
 
