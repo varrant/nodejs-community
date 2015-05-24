@@ -17,7 +17,8 @@ var dato = require('ydr-utils').dato;
  * @returns {RegExp}
  */
 exports.title = function (minLength, maxLength) {
-    var title = '[\\u4e00-\\u9fa5\\w\\d \\-，,.?？!！、\\\\:：/（）—－–+\\[\\]]';
+    var title = '[\\u4e00-\\u9fa5\\w\\d \\-，,.?？!！、\\\\:：/（）—－–+\\[\\]' +
+        '“”‘’\'"《》〈〉]';
 
     return new RegExp('^' + title + '{' + minLength + ',' + maxLength + '}$');
 };
@@ -45,12 +46,12 @@ exports.uri = function (minLength, maxLength) {
  * @returns {RegExp}
  */
 exports.content = function (minLength, maxLength) {
-    //var content = '[\\u4e00-\\u9fa5\\w\\s\\-' +
-    //    '~`!@#$%^&*()+={\\[}\\]|\\\\' +
-    //    ':;"\'<,>.。?\/·！￥（）—－–【】' +
-    //    '「」『』|´（）〈〉〔〕〖〗' +
-    //    '：；“”‘’《，》。？、…\\n\\r\\t]';
-    var content = '[\\s\\S]';
+    var content = '[\\u4e00-\\u9fa5\\w\\s\\-' +
+        '~`!@#$%^&*()+={\\[}\\]|\\\\' +
+        ':;"\'<,>.。?\/·！￥（）—－–【】' +
+        '「」『』|´（）〈〉〔〕〖〗' +
+        '：；“”‘’《，》。？、…\\n\\r\\t]';
+    //var content = '[\\s\\S]';
 
     return new RegExp('^' + content + '{' + minLength + ',' + maxLength + '}$');
 };
