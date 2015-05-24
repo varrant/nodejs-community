@@ -500,7 +500,9 @@ exports.increaseApplyByCount = function (conditions, count, callback) {
  * @param callback {Function} 回调
  */
 exports.pushContributor = function (conditions, contributor, callback) {
-    object.push(conditions, 'contributors', contributor.id.toString(), 5, callback);
+    object.push(conditions, 'contributors', contributor.id.toString(), {
+        maxLength: 5
+    }, callback);
 };
 
 

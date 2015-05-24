@@ -532,7 +532,10 @@ dato.each(models, function (key, model) {
 
         if (args.length === 4) {
             callback = args[3];
-            maxLength = null;
+            options = {
+                maxLength: null,
+                unique: false
+            };
         }
 
         model.findOne(conditions, function (err, doc) {
@@ -546,30 +549,22 @@ dato.each(models, function (key, model) {
                 return callback(err);
             }
 
-            if (maxLength) {
-                var array = doc[path] || [];
+            var array = doc[path] || [];
 
-                if (array.length === maxLength) {
-                    array.shift();
-                }
-
-                array.push(item);
-                var data = {};
-                data[path] = array;
-
-                model.findOneAndUpdate(conditions, data, function (err, doc) {
-                    callback(err, doc && doc.toJSON());
-                });
-            } else {
-                var push = {};
-                push[path] = item;
-
-                model.findOneAndUpdate(conditions, {
-                    $push: push
-                }, {upsert: true}, function (err, doc) {
-                    callback(err, doc && doc.toJSON());
-                });
+            if (array.length === options.maxLength) {
+                array.shift();
             }
+
+            if (!options.unique || array.indexOf(item) === -1) {
+                array.push(item);
+            }
+
+            var data = {};
+            data[path] = array;
+
+            model.findOneAndUpdate(conditions, data, function (err, doc) {
+                callback(err, doc && doc.toJSON());
+            });
         });
     };
 

@@ -365,7 +365,7 @@ exports.agree = function (operator, conditions, callback) {
 // * @param callback {Function} 回调
 // */
 //exports.pushAgreer = function (conditions, agreer, callback) {
-//    object.push(conditions, 'agreers', agreer.id, 5, callback);
+//    object.push(conditions, 'agreers', agreer.id, {maxLength: 5}, callback);
 //};
 
 
