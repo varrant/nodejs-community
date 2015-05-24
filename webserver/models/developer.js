@@ -91,6 +91,14 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 1
     },
+    // 访客，不能重复
+    // [{
+    //     id: 'xxx'
+    // }]
+    visitors: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'developer'
+    }],
     // 评论 object 次数
     commentCount: {
         type: Number,

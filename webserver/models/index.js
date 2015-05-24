@@ -518,10 +518,12 @@ dato.each(models, function (key, model) {
      * @param conditions {Object} 查询条件
      * @param path {String} 查询字段
      * @param item {*} 项目
-     * @param [maxLength] {Number|Function} 最大长度
+     * @param options {Object} 配置
+     * @param [options.maxLength=null] {Object} 最大长度
+     * @param [options.unique=false] {Object} 是否不重复
      * @param callback {Function} 回调
      */
-    exports[key].push = function (conditions, path, item, maxLength, callback) {
+    exports[key].push = function (conditions, path, item, options, callback) {
         if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
             return callback(new Error('the id of conditions is invalid'));
         }
