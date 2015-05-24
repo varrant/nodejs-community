@@ -102,6 +102,8 @@ module.exports = function (app) {
 
         developer.findOne({
             githubLogin: githubLogin
+        }, {
+            populate: ['visitors']
         }, function (err, doc) {
             if (err) {
                 return next(err);

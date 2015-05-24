@@ -22,6 +22,11 @@
 
     li {
       margin-right: 20px;
+      line-height: 20px;
+    }
+
+    & &-striped{
+      margin: 0;
     }
   }
 }
