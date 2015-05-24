@@ -46,12 +46,14 @@ exports.uri = function (minLength, maxLength) {
  * @returns {RegExp}
  */
 exports.content = function (minLength, maxLength) {
-    var content = '[\\u4e00-\\u9fa5\\w\\s\\-' +
-        '~`!@#$%^&*()+={\\[}\\]|\\\\' +
-        ':;"\'<,>.。?\/·！￥（）—－–【】' +
-        '「」『』|´（）〈〉〔〕〖〗' +
-        '：；“”‘’《，》。？、…\\n\\r\\t]';
-    //var content = '[\\s\\S]';
+    //var content = '[\\u4e00-\\u9fa5\\w\\s\\-' +
+    //    '~`!@#$%^&*()+={\\[}\\]|\\\\' +
+    //    ':;"\'<,>.。?\/·！￥（）—－–【】' +
+    //    '「」『』|´（）〈〉〔〕〖〗' +
+    //        // 特殊符
+    //    '……～﹪①②③④⑤⑥⑦⑧⑨' +
+    //    '：；“”‘’《，》。？、…\\n\\r\\t]';
+    var content = '[\\s\\S]';
 
     return new RegExp('^' + content + '{' + minLength + ',' + maxLength + '}$');
 };
