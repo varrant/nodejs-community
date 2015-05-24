@@ -130,6 +130,11 @@ module.exports = function (app) {
             };
 
             developer.increaseViewByCount({_id: doc.id}, 1, log.holdError);
+
+            if (req.session.$developer.id && req.session.$developer.id.toString() !== doc.id.toString()) {
+                developer.pushVisitor({_id: doc.id}, req.session.$developer, log.holdError);
+            }
+
             res.render('front/developer-home.html', data);
         });
     };

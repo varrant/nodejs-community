@@ -145,6 +145,8 @@ module.exports = function (app) {
 
         var userCookie = req.cookies[configs.secret.cookie.userKey];
 
+        req.session.$developer = req.session.$developer || {};
+
         // 不存在 cookie
         if (!userCookie) {
             cookie.logout(req, res);
@@ -160,13 +162,13 @@ module.exports = function (app) {
         }
 
         // 与 session 不匹配
-        if (req.session.$developer && req.session.$developer.id !== developerId) {
+        if (req.session.$developer.id !== developerId) {
             cookie.logout(req, res);
             return next();
         }
 
         // 与 session 匹配
-        if (req.session.$developer && req.session.$developer.id === developerId) {
+        if (req.session.$developer.id === developerId) {
             res.locals.$developer = req.session.$developer;
 
             var modifyDevelopers = cache.get('modify.developers');

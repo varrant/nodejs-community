@@ -904,6 +904,19 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
 
 
 /**
+ * 写入访问者
+ * @param conditions
+ * @param visitor
+ * @param callback
+ */
+exports.pushVisitor = function (conditions, visitor, callback) {
+    developer.push(conditions, 'visitors', visitor.id.toString(), {
+        unique: true
+    }, callback);
+};
+
+
+/**
  * 段阶乘
  * @param min
  * @param max
