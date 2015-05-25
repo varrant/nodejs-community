@@ -560,20 +560,21 @@ dato.each(models, function (key, model) {
                 array.shift();
             }
 
-            // 可以重复
-            if (!options.isUnique) {
-                array.push(item);
-            }
             // 不能重复
-            else {
+            if (options.isUnique) {
                 var duplicateIndex = array.indexOf(item);
+
+                console.log(duplicateIndex);
 
                 if (duplicateIndex > -1 && options.isDeleteDuplicatorAndPush) {
                     array.splice(duplicateIndex, 1);
                     array.push(item);
                 }
             }
-
+            // 可以重复
+            else {
+                array.push(item);
+            }
 
             var data = {};
             data[path] = array;
