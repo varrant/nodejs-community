@@ -113,7 +113,6 @@ exports.createOne = function (author, data, meta, callback) {
         .task(function (next, responseObject, parentResponse) {
 
 
-
             response.validator.validateAll(data2, function (err, data3) {
                 if (err) {
                     return next(err);
@@ -141,10 +140,6 @@ exports.createOne = function (author, data, meta, callback) {
                             next(err, responseObject, parentResponse, doc);
                         });
                     });
-
-                //response.createOne(data3, function (err, doc) {
-                //    next(err, responseObject, parentResponse, doc);
-                //});
             });
         })
         // 顺序串行
@@ -249,6 +244,11 @@ exports.createOne = function (author, data, meta, callback) {
                     // 推入 object 的 contributors
                     object.pushContributor({_id: doc.object}, author, log.holdError);
                 }
+
+                // at
+                atList3.forEach(function (atTo) {
+                    notice.at(author, atTo, responseObject, doc);
+                });
             }
         });
 };

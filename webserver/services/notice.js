@@ -298,42 +298,35 @@ exports.follow = function (follower, byFollower) {
 /**
  * at 通知
  * @param atFrom
- * @param atToGithubLogin
+ * @param atTo
+ * @param atObject
+ * @param atResponse
  */
-exports.at = function (atFrom, atToGithubLogin, response) {
-    developer.findOne({
-        githubLogin: atToGithubLogin
-    }, function (err, atTo) {
-        if(err){
-            return log.holdError(err);
+exports.at = function (atFrom, atTo, atObject, atResponse) {
+    // 1. 站内通知
+    notification.createOne({
+        type: 'at',
+        source: atFrom.id.toString(),
+        target: atTo.id.toString()
+    }, log.holdError);
+
+    // 2. 邮件通知
+    var noti = configs.notification.at;
+    var subject = noti.subject;
+    var data = {
+        from: configs.smtp.from,
+        sender: {
+            nickname: atFrom.nickname,
+            type: atResponse.parentResponse ? '回复' : '评论'
+        },
+        receiver: {
+            nickname: atTo.nickname,
+            response: atResponse.contentHTML,
+            object: atObject.title,
+            link: configs.app.host + '/object/?id=' + atObject.id
         }
+    };
+    var content = noti.template.render(data);
 
-        if(atTo){
-            // 1. 站内通知
-            notification.createOne({
-                type: 'at',
-                source: atFrom.id.toString(),
-                target: atTo.id.toString()
-            }, log.holdError);
-
-            // 2. 邮件通知
-            var noti = configs.notification.at;
-            var subject = noti.subject;
-            var data = {
-                from: configs.smtp.from,
-                sender: {
-                    nickname: atFrom.nickname
-                },
-                receiver: {
-                    nickname: atTo.nickname,
-                    response: atTo.contentHTML,
-                    object: atTo.title,
-                    link: configs.app.host + '/object/?id=' + agreeinObject.id
-                }
-            };
-            var content = noti.template.render(data);
-
-            email.send(atFrom, subject, content);
-        }
-    });
+    email.send(atFrom, subject, content);
 };
