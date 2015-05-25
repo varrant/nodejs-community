@@ -311,7 +311,7 @@ exports.at = function (atFrom, atTo, atObject, atResponse) {
     }, log.holdError);
 
     // 2. 邮件通知
-    var noti = configs.notification.at;
+    var noti = atResponse.parentResponse ? configs.notification.replyAt : configs.notification.commentAt;
     var subject = noti.subject;
     var data = {
         from: configs.smtp.from,
