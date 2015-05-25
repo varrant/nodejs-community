@@ -182,6 +182,8 @@ dato.each(models, function (key, model) {
 
             var rules = this.rules;
 
+            console.log(data);
+
             model.create(data, function (err, doc) {
                 if (err) {
                     err = _parseError(rules, err);

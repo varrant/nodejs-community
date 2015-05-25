@@ -56,6 +56,7 @@ exports.findOneAndUpdate = response.findOneAndUpdate;
  */
 exports.createOne = function (author, data, meta, callback) {
     var data2 = dato.select(data, ['content', 'parentResponse', 'object']);
+    var atList2 = [];
 
     data2.author = author.id;
     data2.meta = meta;
@@ -110,6 +111,28 @@ exports.createOne = function (author, data, meta, callback) {
         })
         // 3. 写入
         .task(function (next, responseObject, parentResponse) {
+            var atList = data2.atList;
+
+            //data2.atList = [];
+            //howdo
+            //    .each(atList, function (index, githubLogin, done) {
+            //        developer.findOne({
+            //            githubLogin: githubLogin
+            //        }, function (err, d) {
+            //            if (d) {
+            //                atList2.push(d);
+            //                data2.atList.push(d.id);
+            //            }
+            //
+            //            done();
+            //        });
+            //    })
+            //    .together(function () {
+            //        response.createOne(data2, function (err, doc) {
+            //            next(err, responseObject, parentResponse, doc);
+            //        });
+            //    });
+
             response.createOne(data2, function (err, doc) {
                 next(err, responseObject, parentResponse, doc);
             });
@@ -119,6 +142,8 @@ exports.createOne = function (author, data, meta, callback) {
             callback(err, doc, responseObject);
 
             if (!err && doc) {
+                console.log(doc);
+
                 // 数
                 // 评论
                 if (!doc.parentResponse) {

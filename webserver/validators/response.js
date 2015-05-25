@@ -15,6 +15,9 @@ var regexp = require('../utils/').regexp;
 var filter = require('../utils/').filter;
 var REG_CONTENT = regexp.content(5, 5000);
 var REG_TAG = /<[^>]*?>/g;
+xss.config({
+    atLink: configs.app.host + '/developer/${at}/'
+});
 
 
 validator.pushRule({
