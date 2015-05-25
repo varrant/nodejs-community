@@ -61,9 +61,17 @@ var schema = new mongoose.Schema({
     },
     // 赞同者，最多五个
     // [{
-    //     id: 'xxx'
+    //     id
     // }]
     agreers: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'developer'
+    }],
+    // 提到的人
+    // [{
+    //     id
+    // }]
+    atList: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'developer'
     }],

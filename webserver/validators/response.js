@@ -28,6 +28,7 @@ validator.pushRule({
     onafter: function (val, data) {
         var mdSafe = xss.mdSafe(val);
 
+        data.atList = mdSafe.atList;
         val = mdSafe.markdown;
         data.contentHTML = xss.mdRender(val);
 
