@@ -5,7 +5,6 @@
   min-width: 200px;
   overflow: auto; }
   .alien-ui-ctrllist-item {
-    height: 14px;
     line-height: 14px;
     font-size: 14px;
     white-space: nowrap;

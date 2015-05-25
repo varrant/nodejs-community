@@ -91,6 +91,7 @@ define(function (require, exports, module) {
 
         /**
          * 设置不可用
+         * @returns {Respond}
          */
         disable: function () {
             var the = this;
@@ -102,6 +103,7 @@ define(function (require, exports, module) {
 
         /**
          * 设置可用
+         * @returns {Respond}
          */
         enable: function () {
             var the = this;
@@ -113,12 +115,27 @@ define(function (require, exports, module) {
 
         /**
          * 重置
+         * @returns {Respond}
          */
         reset: function () {
             var the = this;
 
             the._editor.setValue('');
             the._editor.clearStore();
+            return the;
+        },
+
+
+        /**
+         * 设置 at 列表
+         * @param list
+         * @returns {Respond}
+         */
+        setAtList: function (list) {
+            var the = this;
+
+            the._editor.setAtList(list);
+
             return the;
         },
 

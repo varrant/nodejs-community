@@ -26,7 +26,7 @@ define(function (require, exports, module) {
     var tip = require('../tip.js');
     var Pager = require('../../../alien/ui/Pager/');
     var Loading = require('../../../alien/ui/Loading/');
-    var Respond = require('../Respond/index');
+    var Respond = require('../Respond/');
     var Template = require('../../../alien/libs/Template.js');
     var templateWrap = require('html!./wrap.html');
     var templateContainer = require('html!./container.html');
@@ -133,7 +133,8 @@ define(function (require, exports, module) {
         list: {
             canAccept: false
         },
-        $hidden: selector.query('#hidden')[0]
+        $hidden: selector.query('#hidden')[0],
+        developer: null
     };
     var Response = ui.create({
         constructor: function ($parent, options) {
@@ -158,6 +159,8 @@ define(function (require, exports, module) {
             $parent.innerHTML = html;
             the._$wrap = selector.children($parent)[0];
             the._imgview = new Imgview();
+            the._atMap = {};
+            the._atList = [];
             the._initEvent();
         },
 
@@ -388,7 +391,7 @@ define(function (require, exports, module) {
 
                     if (!the._readyComment) {
                         the._readyComment = true;
-                        the._initRespond(the._$respondParent, the._$listParent);
+                        the._commentRespond = the._initRespond(the._$respondParent, the._$listParent);
                         the._pager = new Pager(the._$paginationParent, the._pagerOptions);
                         the._pager.on('change', function (page) {
                             the.changePage(page);
@@ -396,10 +399,50 @@ define(function (require, exports, module) {
                         });
                     }
 
+                    the._updateAtList(data.list, true);
                     the.prettify();
                 })
                 .on('error', alert)
                 .on('finish', the._ajaxFinish.bind(the));
+        },
+
+
+        /**
+         * 更新 at 列表
+         * @param list
+         * @param isComment
+         * @private
+         */
+        _updateAtList: function (list, isComment) {
+            var the = this;
+            var options = the._options;
+
+            if (isComment) {
+                the._atList = [];
+                the._atMap = {};
+            }
+
+            list.forEach(function (item) {
+                var author = item.author;
+
+                if (author.id !== options.developer.id && !the._atMap[author.id]) {
+                    the._atList.push({
+                        value: author.githubLogin,
+                        text: author.nickname
+                    });
+                    the._atMap[author.id] = 1;
+                }
+            });
+
+            if (the._commentRespond) {
+                the._commentRespond.setAtList(the._atList);
+            }
+
+            if (the._replyMap) {
+                dato.each(the._replyMap, function (id, replyItem) {
+                    replyItem.respond.setAtList(the._atList);
+                });
+            }
         },
 
 
@@ -759,6 +802,8 @@ define(function (require, exports, module) {
                         the._replyMap[id].respond = the._initRespond($contentParent, $listParent, $btn) || {};
                         the._replyMap[id].respond._replyParentId = id;
                     }
+
+                    the._updateAtList(data.list, false);
                 })
                 .on('error', alert)
                 .on('finish', the._ajaxFinish.bind(the));

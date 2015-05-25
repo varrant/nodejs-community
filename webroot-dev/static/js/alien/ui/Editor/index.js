@@ -403,7 +403,7 @@ define(function (require, exports, module) {
 
             // 选择
             the._ctrlList.on('sure', function (choose) {
-                the.replace(choose.value + '');
+                the.replace(choose.value + ' ');
             });
 
             // @
@@ -423,6 +423,8 @@ define(function (require, exports, module) {
                     var offset = selection.getOffset(the._$code);
 
                     offset.width = offset.height = 1;
+                    offset.left+=attribute.left(the._$editor);
+                    offset.top+=attribute.top(the._$editor);
                     the._ctrlList.update(the._atList).open(offset);
                 }
             });
