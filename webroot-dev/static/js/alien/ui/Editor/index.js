@@ -29,6 +29,9 @@ define(function (require, exports, module) {
      */
 
     var CodeMirror = require('../../3rd/codemirror/mode/gfm.js');
+    var codeMirrorGoLineUp = CodeMirror.commands.goLineUp;
+    var codeMirrorGoLineDown = CodeMirror.commands.goLineDown;
+    var codeMirrorNewlineAndIndent = CodeMirror.commands.newlineAndIndent;
     //require('../../3rd/codemirror/addon/display/fullscreen.js');
     require('../../3rd/codemirror/addon/display/placeholder.js');
     //require('../../3rd/codemirror/addon/selection/active-line.js');
@@ -36,6 +39,7 @@ define(function (require, exports, module) {
     var ui = require('../');
     var confirm = require('../../widgets/confirm.js');
     var Dialog = require('../Dialog/');
+    var CtrlList = require('../CtrlList/');
     var selector = require('../../core/dom/selector.js');
     var attribute = require('../../core/dom/attribute.js');
     var modification = require('../../core/dom/modification.js');
@@ -44,9 +48,13 @@ define(function (require, exports, module) {
     var date = require('../../utils/date.js');
     var dato = require('../../utils/dato.js');
     var typeis = require('../../utils/typeis.js');
+    var string = require('../../utils/string.js');
+    var selection = require('../../utils/selection.js');
     var Template = require('../../libs/Template.js');
     var template = require('./template.html', 'html');
+    var templateAt = require('./at.html', 'html');
     var tpl = new Template(template);
+    var tplAt = new Template(templateAt);
     var style = require('./style.css', 'css');
     var alert = require('../../widgets/alert.js');
     var alienClass = 'alien-ui-editor';
@@ -57,6 +65,9 @@ define(function (require, exports, module) {
     var pathname = location.pathname;
     var $html = document.documentElement;
     var markedRender = new marked.Renderer();
+    var noop = function () {
+        // ignore
+    };
     var defaults = {
         // 手动设置 ID
         id: '',
@@ -102,9 +113,17 @@ define(function (require, exports, module) {
                 styleSelectedText: true,
                 tabSize: the._options.tabSize
             });
-
+            the._ctrlList = new CtrlList([], {
+                maxHeight: 200,
+                offset: {
+                    left: 20,
+                    top: 10
+                }
+            });
             the._$wrapper = the._editor.getWrapperElement();
             the._$scroller = the._editor.getScrollerElement();
+            the._$input = the._editor.display.input.textarea;
+            the._$code = selector.query('.CodeMirror-code', the._$scroller)[0];
             the._$editor = modification.wrap(the._$wrapper, '<div class="' + alienClass + '"/>')[0];
             the._$editor.id = alienClass + '-' + the._id;
             the._$preview = modification.create('div', {
@@ -112,6 +131,7 @@ define(function (require, exports, module) {
             });
             the._isFullScreen = false;
             the._noPreview = true;
+            the._atList = [];
             modification.insert(the._$preview, the._$editor);
             attribute.addClass(the._$editor, alienClass + ' ' + the._options.addClass);
             attribute.css(the._$scroller, 'min-height', the._options.minHeight);
@@ -154,10 +174,10 @@ define(function (require, exports, module) {
             // 1天之内的本地记录 && 内容部分不一致
             if (deltaTime < minTime && Math.abs(nowLen - storeLen) >= the._options.checkLength) {
                 confirm('本地缓存内容与当前不一致。' +
-                '<br>缓存时间为：<b>' + humanTime + '</b>。' +
-                '<br>本地缓存内容长度为：<b>' + storeLen + '</b>。' +
-                '<br>当前内容长度为：<b>' + nowLen + '</b>。' +
-                '<br>是否恢复？')
+                    '<br>缓存时间为：<b>' + humanTime + '</b>。' +
+                    '<br>本地缓存内容长度为：<b>' + storeLen + '</b>。' +
+                    '<br>当前内容长度为：<b>' + nowLen + '</b>。' +
+                    '<br>是否恢复？')
                     .on('sure', function () {
                         the.setValue(storeVal);
                         the._$ele.value = storeVal;
@@ -210,9 +230,9 @@ define(function (require, exports, module) {
                 });
 
                 the._storeId += pathname +
-                '<' + the._$ele.tagName + '>.' +
-                the._$ele.className +
-                '[' + attrList.join(';') + ']';
+                    '<' + the._$ele.tagName + '>.' +
+                    the._$ele.className +
+                    '[' + attrList.join(';') + ']';
             }
         },
 
@@ -353,9 +373,8 @@ define(function (require, exports, module) {
                 the._$preview.innerHTML = marked(the._$ele.value, {renderer: markedRender});
             };
 
-
             // `code`
-            the._addKeyMap('`', function () {
+            the._addKeyMap(null, '`', function () {
                 var raw = the._editor.getSelection();
 
                 if (raw) {
@@ -363,28 +382,93 @@ define(function (require, exports, module) {
                 } else {
                     the.replace('`');
                 }
-            }, false);
-
-
-            // __blod__
-            the._addKeyMap('B', function () {
-                the.wrap('__');
             });
 
+            // ctrlList 打开
+            the._ctrlList.on('open', function () {
+                the._isAt = true;
+                the._searchLength = 0;
+            });
+
+            // ctrlList 关闭
+            the._ctrlList.on('close', function () {
+                the._isAt = false;
+                CodeMirror.commands.goLineUp = codeMirrorGoLineUp;
+                CodeMirror.commands.goLineDown = codeMirrorGoLineDown;
+                CodeMirror.commands.newlineAndIndent = codeMirrorNewlineAndIndent;
+                dato.repeat(the._searchLength, function () {
+                    the._editor.execCommand('delCharBefore')
+                });
+            });
+
+            // 选择
+            the._ctrlList.on('sure', function (choose) {
+                the.replace(choose.value + '');
+            });
+
+            // @
+            the._addKeyMap('shift', '2', function () {
+                the.replace('@');
+
+                if(!the._atList.length){
+                    return;
+                }
+
+                if (!the._isAt) {
+                    CodeMirror.commands.goLineUp = noop;
+                    CodeMirror.commands.goLineDown = noop;
+                    CodeMirror.commands.newlineAndIndent = noop;
+                    the._isAt = true;
+
+                    var offset = selection.getOffset(the._$code);
+
+                    offset.width = offset.height = 1;
+                    the._ctrlList.update(the._atList).open(offset);
+                }
+            });
+
+            // 退格
+            event.on(the._$input, 'backspace', function () {
+                the._ctrlList.close();
+            });
+
+            // 监听输入
+            event.on(the._$input, 'input', function () {
+                var value = this.value;
+
+                if (!value) {
+                    return;
+                }
+
+                var searchList = [];
+                var reg = new RegExp(string.escapeRegExp(value), 'i');
+
+                the._searchLength++;
+                the._atList.forEach(function (item) {
+                    if (reg.test(item.text)) {
+                        searchList.push(item);
+                    }
+                });
+                the._ctrlList.update(searchList);
+            });
+
+            // **blod**
+            the._addKeyMap('ctrl', 'B', function () {
+                the.wrap('**');
+            });
 
             // _italic_
-            the._addKeyMap('I', function () {
+            the._addKeyMap('ctrl', 'I', function () {
                 the.wrap('_');
             });
 
 
             // fullScreen
-            the._addKeyMap('F11', toggleFullScreen);
+            the._addKeyMap('ctrl', 'F11', toggleFullScreen);
 
 
             // preview
-            the._addKeyMap('P', togglePreview);
-
+            the._addKeyMap('ctrl', 'P', togglePreview);
 
             // change
             the._editor.on('change', function () {
@@ -405,16 +489,13 @@ define(function (require, exports, module) {
                 syncMarkedOnChange();
             });
 
-
             // 同步滚动
             event.on(the._$scroller, 'scroll', the._onscroll = function () {
                 the._$preview.scrollTop = (the._$preview.scrollHeight - the._$preview.offsetHeight) * the._$scroller.scrollTop / (the._$scroller.scrollHeight - the._$scroller.offsetHeight);
             });
 
-
             // cursor
             the._editor.on('cursorActivity', the._saveLocal.bind(the));
-
 
             // 修改设置时
             the.on('setoptions', function (options) {
@@ -427,6 +508,19 @@ define(function (require, exports, module) {
             event.on(the._$wrapper, 'drop', the._ondrop.bind(the));
             event.on(the._$wrapper, 'paste', the._onpaste.bind(the));
             event.on(the._$wrapper, 'click', the._onclick.bind(the));
+        },
+
+
+        /**
+         * 设置 at 列表
+         * @param list {Array} 列表
+         * @returns {Editor}
+         */
+        setAtList: function (list) {
+            var the = this;
+
+            the._atList = list;
+            return the;
         },
 
 
@@ -473,6 +567,7 @@ define(function (require, exports, module) {
 
         /**
          * 解析拖拽、粘贴里的图片信息
+         * @param eve
          * @param items
          * @private
          */
@@ -568,7 +663,7 @@ define(function (require, exports, module) {
 
                     _img.src = img.url;
                     html.push('![](' + img.url +
-                    (typeis.undefined(img.width) ? '' : ' =' + img.width + 'x' + img.height) + ')');
+                        (typeis.undefined(img.width) ? '' : ' =' + img.width + 'x' + img.height) + ')');
                 });
 
                 the.replace(html.join(' '));
@@ -595,20 +690,28 @@ define(function (require, exports, module) {
 
         /**
          * 添加事件回调
-         * @param key
+         * @param extraKey
+         * @param mainKey
          * @param callback
-         * @param [isCtrl=true]
          * @private
          */
-        _addKeyMap: function (key, callback, isCtrl) {
+        _addKeyMap: function (extraKey, mainKey, callback) {
             var the = this;
             var ctrl = the._isMac ? 'Cmd-' : 'Ctrl-';
             var map = {};
 
-            if (isCtrl === false) {
-                map[key] = callback;
-            } else {
-                map[ctrl + key] = callback;
+            switch (extraKey) {
+                case null:
+                    map[mainKey] = callback;
+                    break;
+
+                case 'shift':
+                    map['Shift-' + mainKey] = callback;
+                    break;
+
+                case 'ctrl':
+                    map[ctrl + mainKey] = callback;
+                    break;
             }
 
             the._editor.addKeyMap(map);
@@ -640,6 +743,7 @@ define(function (require, exports, module) {
     });
 
     Editor.defaults = defaults;
+    require('../../core/event/hotkey.js');
     markedRender.image = require('./marked-render-image.js');
     markedRender.table = require('./marked-render-table.js');
     modification.importStyle(style);

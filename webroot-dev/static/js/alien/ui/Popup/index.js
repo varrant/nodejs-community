@@ -43,7 +43,10 @@ define(function (require, exports, module) {
         // 箭头的尺寸
         arrowSize: 10,
         // 偏移距离，通常为0
-        offset: 0,
+        offset: {
+            left: 0,
+            top: 0
+        },
         // 对齐优先级：center、side
         // center:
         //       [=====]
@@ -67,7 +70,7 @@ define(function (require, exports, module) {
             var the = this;
 
             the._$target = selector.query($target)[0];
-            the._options = dato.extend({}, defaults, options);
+            the._options = dato.extend(true, {}, defaults, options);
             the._init();
         },
 
@@ -96,6 +99,15 @@ define(function (require, exports, module) {
 
 
         /**
+         * 获取当前 popup 节点
+         * @returns {Object}
+         */
+        getNode: function () {
+            return this._$popup;
+        },
+
+
+        /**
          * 设置弹出层的内容
          * @param html {String} 内容
          * @returns {Popup}
@@ -111,11 +123,15 @@ define(function (require, exports, module) {
 
         /**
          * 打开弹出层
-         * @param [$target] {Object} 参考对象
+         * @param [position] {Object} 指定位置
+         * @param [position.width] {Number} 指定位置
+         * @param [position.height] {Number} 指定位置
+         * @param [position.left] {Number} 指定位置
+         * @param [position.top] {Number} 指定位置
          * @param [callback] {Function} 回调
          * @returns {Popup}
          */
-        open: function ($target, callback) {
+        open: function (position, callback) {
             var the = this;
 
             if (the.visible) {
@@ -135,14 +151,11 @@ define(function (require, exports, module) {
             var priorityList = options.priority === 'center' ? ['center', 'side'] : ['side'];
             var args = allocation.args(arguments);
 
-            if (typeis.element(args[0])) {
-                the._$target = $target || the._$target;
-            }else{
+            if (typeis.object(args[0])) {
+                the._$target = null;
+                the._target = args[0];
+            } else {
                 callback = args[0];
-            }
-
-            if (!the._$target) {
-                throw 'miss a popup target element';
             }
 
             // 1. 计算窗口位置
@@ -152,12 +165,14 @@ define(function (require, exports, module) {
             };
 
             // 2. 计算目标位置
-            the._target = {
-                width: attribute.outerWidth(the._$target),
-                height: attribute.outerHeight(the._$target),
-                left: attribute.left(the._$target),
-                top: attribute.top(the._$target)
-            };
+            if (the._$target !== null) {
+                the._target = {
+                    width: attribute.outerWidth(the._$target),
+                    height: attribute.outerHeight(the._$target),
+                    left: attribute.left(the._$target),
+                    top: attribute.top(the._$target)
+                };
+            }
 
             // 3. 透明显示 popup，便于计算
             attribute.css(the._$popup, dato.extend({
@@ -305,55 +320,71 @@ define(function (require, exports, module) {
                 }
 
                 pos[type] = findSide;
+
+                switch (type) {
+                    case 'left':
+                        pos[type] += options.offset.left;
+                        break;
+                    case 'right':
+                        pos[type] -= options.offset.left;
+                        break;
+                    case 'top':
+                        pos[type] += options.offset.top;
+                        break;
+                    case 'bottom':
+                        pos[type] -= options.offset.top;
+                        break;
+                }
+
             };
 
             if (priority === 'center') {
                 switch (dir) {
                     case 'bottom':
                         pos.left = the._target.left + the._target.width / 2 - the._popup.width / 2;
-                        pos.top = the._target.top + the._target.height + options.arrowSize + options.offset;
+                        pos.top = the._target.top + the._target.height + options.arrowSize + options.offset.top;
                         break;
 
                     case 'right':
-                        pos.left = the._target.left + the._target.width + options.arrowSize + options.offset;
+                        pos.left = the._target.left + the._target.width + options.arrowSize + options.offset.left;
                         pos.top = the._target.top + the._target.height / 2 - the._popup.height / 2;
                         break;
 
                     case 'top':
                         pos.left = the._target.left + the._target.width / 2 - the._popup.width / 2;
-                        pos.top = the._target.top - options.arrowSize - the._popup.height - options.offset;
+                        pos.top = the._target.top - options.arrowSize - the._popup.height - options.offset.top;
                         break;
 
                     case 'left':
-                        pos.left = the._target.left - options.arrowSize - the._popup.width - options.offset;
+                        pos.left = the._target.left - options.arrowSize - the._popup.width - options.offset.left;
                         pos.top = the._target.top + the._target.height / 2 - the._popup.height / 2;
                         break;
                 }
             } else {
                 switch (dir) {
                     case 'bottom':
-                        pos.top = the._target.top + the._target.height + options.arrowSize + options.offset;
+                        pos.top = the._target.top + the._target.height + options.arrowSize + options.offset.top;
                         firstSide = the._target.left;
                         secondSide = the._target.left + the._target.width - the._popup.width;
                         sideCheck('left', firstSide, secondSide);
                         break;
 
                     case 'right':
-                        pos.left = the._target.left + the._target.width + options.arrowSize + options.offset;
+                        pos.left = the._target.left + the._target.width + options.arrowSize + options.offset.left;
                         firstSide = the._target.top;
                         secondSide = the._target.top + the._target.height - the._popup.height;
                         sideCheck('top', firstSide, secondSide);
                         break;
 
                     case 'top':
-                        pos.top = the._target.top - the._popup.height - options.arrowSize - options.offset;
+                        pos.top = the._target.top - the._popup.height - options.arrowSize - options.offset.top;
                         firstSide = the._target.left;
                         secondSide = the._target.left + the._target.width - the._popup.width;
                         sideCheck('left', firstSide, secondSide);
                         break;
 
                     case 'left':
-                        pos.left = the._target.left - options.arrowSize - the._popup.width - options.offset;
+                        pos.left = the._target.left - options.arrowSize - the._popup.width - options.offset.left;
                         firstSide = the._target.top;
                         secondSide = the._target.top + the._target.height - the._popup.height;
                         sideCheck('top', firstSide, secondSide);
