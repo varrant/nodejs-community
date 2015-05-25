@@ -36,7 +36,7 @@
                 </ul>
                 {{if developer.visitors && developer.visitors.length}}
                 <div>
-                    <span>最近访客：</span>
+                    最近访客：
                     {{list developer.visitors as index,item}}
                     <a href="/developer/{{=item.githubLogin}}">
                         <img src="{{=item.avatarM}}"
