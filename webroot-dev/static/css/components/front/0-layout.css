@@ -46,3 +46,9 @@ body {
   .layout-sub:before {
     background: none; } }
 
+.at {
+  background: #FFEDA9;
+  padding: 3px 6px;
+  border: 1px solid #FAE79D;
+  border-radius: 4px; }
+
