@@ -376,11 +376,11 @@ define(function (require, exports, module) {
 
                     // 渲染分页
                     if (the._pager) {
+                        the._destroyReply();
                         the._pager.render({
                             page: options.query.page,
                             max: Math.ceil(the._count.comment / options.query.limit)
                         });
-                        the._destroyReply();
                     }
 
                     the._renderComment(dato.extend({

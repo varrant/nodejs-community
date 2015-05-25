@@ -328,5 +328,5 @@ exports.at = function (atFrom, atTo, atObject, atResponse) {
     };
     var content = noti.template.render(data);
 
-    email.send(atFrom, subject, content);
+    email.send(atTo, subject, content);
 };
