@@ -555,16 +555,9 @@ dato.each(models, function (key, model) {
 
             var array = doc[path] || [];
 
-            // 如果超过最大长度
-            if (array.length === options.maxLength) {
-                array.shift();
-            }
-
             // 不能重复
             if (options.isUnique) {
                 var duplicateIndex = array.indexOf(item);
-
-                console.log(duplicateIndex);
 
                 if (duplicateIndex > -1 && options.isDeleteDuplicatorAndPush) {
                     array.splice(duplicateIndex, 1);
@@ -574,6 +567,11 @@ dato.each(models, function (key, model) {
             // 可以重复
             else {
                 array.push(item);
+            }
+
+            // 如果超过最大长度
+            if (array.length === options.maxLength) {
+                array.shift();
             }
 
             var data = {};

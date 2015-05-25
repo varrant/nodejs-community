@@ -911,7 +911,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
  */
 exports.pushVisitor = function (conditions, visitor, callback) {
     developer.push(conditions, 'visitors', visitor.id.toString(), {
-        unique: true,
+        isUnique: true,
         maxLength: 20,
         isDeleteDuplicatorAndPush: true
     }, callback);
