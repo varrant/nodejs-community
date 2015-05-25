@@ -561,8 +561,9 @@ dato.each(models, function (key, model) {
 
                 if (duplicateIndex > -1 && options.isDeleteDuplicatorAndPush) {
                     array.splice(duplicateIndex, 1);
-                    array.push(item);
                 }
+
+                array.push(item);
             }
             // 可以重复
             else {
