@@ -67,7 +67,9 @@ dato.each(models, function (key, model) {
         throw new Error('`' + key + '`验证规则不存在');
     }
 
-    exports[key] = {};
+    exports[key] = {
+        validator: validator
+    };
 
     /**
      * 查找一个
@@ -181,8 +183,6 @@ dato.each(models, function (key, model) {
             }
 
             var rules = this.rules;
-
-            console.log(data);
 
             model.create(data, function (err, doc) {
                 if (err) {

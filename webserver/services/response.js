@@ -133,8 +133,17 @@ exports.createOne = function (author, data, meta, callback) {
             //        });
             //    });
 
-            response.createOne(data2, function (err, doc) {
-                next(err, responseObject, parentResponse, doc);
+            response.validator.validateAll(data2, function (err, data3) {
+                if (err) {
+                    return next(err);
+                }
+
+                console.log('data3:');
+                console.log(data3);
+
+                //response.createOne(data3, function (err, doc) {
+                //    next(err, responseObject, parentResponse, doc);
+                //});
             });
         })
         // 顺序串行
