@@ -1,2 +1,2 @@
 <div id="role" class="none"> <div class="alert alert-danger alert-line"> <p><i class="fi fi-exclamation-triangle"></i>对 <strong>\{{developer.nickname}}</strong> 的权限控制。</p> </div> <ul> <li v-repeat="kind:kinds"> <div class="">\{{kind.name}}</div> <ul> <li v-repeat="item:kind.list"> <label><input type="checkbox" value="\{{item.role}}" v-model="item.checked"/>\{{item.name}}（\{{item.role}}）</label> </li> </ul> </li> </ul> <div class="text-center"> <button class="btn btn-danger btn-lg" v-on="click:onsave($event, developer._id)">保存权限设置</button> </div></div>
-<!--coolie@0.16.11 1432485535237-->
+<!--coolie@0.16.11 1432569971890-->
