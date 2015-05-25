@@ -305,9 +305,11 @@ exports.follow = function (follower, byFollower) {
 exports.at = function (atFrom, atTo, atObject, atResponse) {
     // 1. 站内通知
     notification.createOne({
-        type: 'at',
+        type: atResponse.parentResponse ? 'replyAt' : 'commentAt',
         source: atFrom.id.toString(),
-        target: atTo.id.toString()
+        target: atTo.id.toString(),
+        object: atObject.id.toString(),
+        response: atResponse.id.toString()
     }, log.holdError);
 
     // 2. 邮件通知
