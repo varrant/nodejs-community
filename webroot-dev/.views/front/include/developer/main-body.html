@@ -35,15 +35,16 @@
                     <li><i class="fi fi-reply"></i>被回复 {{developer.replyByCount|format}} 次</li>
                 </ul>
                 {{if developer.visitors && developer.visitors.length}}
-                <ul class="list-left">
-                    <li class="usercard-statistics-striped">最近访客：</li>
+                <div>
+                    <span>最近访客：</span>
                     {{list developer.visitors as index,item}}
-                    <li><a href="/developer/{{=item.githubLogin}}">
-                        <img src="{{=item.avatarM}}" class="img-rounder"
+                    <a href="/developer/{{=item.githubLogin}}">
+                        <img src="{{=item.avatarM}}"
+                             class="img-rounder text-space"
                              width="20" height="20" alt="avatar"
-                             coolieignore/></a></li>
+                             coolieignore/></a>
                     {{/list}}
-                </ul>
+                </div>
                 {{/if}}
             </div>
         </div>
