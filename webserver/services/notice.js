@@ -13,6 +13,7 @@ var notification = require('./notification.js');
 var response = require('./response.js');
 var log = require('ydr-utils').log;
 var email = require('./email.js');
+var developer = require('./developer.js');
 
 
 /**
@@ -293,3 +294,46 @@ exports.follow = function (follower, byFollower) {
     email.send(byFollower, subject, content);
 };
 
+
+/**
+ * at 通知
+ * @param atFrom
+ * @param atToGithubLogin
+ */
+exports.at = function (atFrom, atToGithubLogin, response) {
+    developer.findOne({
+        githubLogin: atToGithubLogin
+    }, function (err, atTo) {
+        if(err){
+            return log.holdError(err);
+        }
+
+        if(atTo){
+            // 1. 站内通知
+            notification.createOne({
+                type: 'at',
+                source: atFrom.id.toString(),
+                target: atTo.id.toString()
+            }, log.holdError);
+
+            // 2. 邮件通知
+            var noti = configs.notification.at;
+            var subject = noti.subject;
+            var data = {
+                from: configs.smtp.from,
+                sender: {
+                    nickname: atFrom.nickname
+                },
+                receiver: {
+                    nickname: atTo.nickname,
+                    response: atTo.contentHTML,
+                    object: atTo.title,
+                    link: configs.app.host + '/object/?id=' + agreeinObject.id
+                }
+            };
+            var content = noti.template.render(data);
+
+            email.send(atFrom, subject, content);
+        }
+    });
+};

@@ -59,7 +59,9 @@ validator.pushRule({
     maxLength: 50000,
     regexp: REG_CONTENT,
     onafter: function (val, data) {
-        val = xss.mdSafe(val);
+        var mdSafe = xss.mdSafe(val);
+
+        val = mdSafe.markdown;
 
         data.introduction = xss.mdIntroduction(val);
 
@@ -93,7 +95,7 @@ validator.pushRule({
     maxLength: 1000,
     regexp: REG_INTRODUCTION,
     onafter: function (val, data) {
-        val = xss.mdSafe(val || '');
+        val = xss.mdSafe(val || '').markdown;
         data.hiddenHTML = xss.mdRender(val);
         return val;
     },

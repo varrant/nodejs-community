@@ -26,7 +26,9 @@ validator.pushRule({
     maxLength: 5000,
     regexp: REG_CONTENT,
     onafter: function (val, data) {
-        val = xss.mdSafe(val);
+        var mdSafe = xss.mdSafe(val);
+
+        val = mdSafe.markdown;
         data.contentHTML = xss.mdRender(val);
 
         if(!data.contentHTML.replace(REG_TAG, '').trim()){
