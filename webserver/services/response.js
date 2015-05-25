@@ -147,8 +147,6 @@ exports.createOne = function (author, data, meta, callback) {
             callback(err, doc, responseObject);
 
             if (!err && doc) {
-                console.log(doc);
-
                 // 数
                 // 评论
                 if (!doc.parentResponse) {
