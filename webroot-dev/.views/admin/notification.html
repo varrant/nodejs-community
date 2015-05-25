@@ -61,11 +61,11 @@
                                         </div>
                                         <div v-if="notification.type === 'commentAt'">
                                             <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
-                                                <strong>\{{notification.source.nickname}}</strong> 在《\{{notification.object.title}}》上评论中提到了你。</a>
+                                                <strong>\{{notification.source.nickname}}</strong> 在《\{{notification.object.title}}》上的评论中提到了你。</a>
                                         </div>
                                         <div v-if="notification.type === 'replyAt'">
                                             <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
-                                                <strong>\{{notification.source.nickname}}</strong> 在《\{{notification.object.title}}》上回复中提到了你。</a>
+                                                <strong>\{{notification.source.nickname}}</strong> 在《\{{notification.object.title}}》上的回复中提到了你。</a>
                                         </div>
                                         <div v-if="notification.type === 'reply'">
                                             <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
