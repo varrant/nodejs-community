@@ -320,7 +320,7 @@ exports.updateOne = function (author, conditions, data, callback) {
         // 5. 更新
         .task(function (next, objectInSection) {
             var date = new Date();
-            var data2 = dato.select(data, ['category', 'column', 'labels',
+            var data2 = dato.select(data, ['title', 'category', 'column', 'labels',
                 'reference', 'content', 'hidden', 'isDisplay']);
             var err;
 
