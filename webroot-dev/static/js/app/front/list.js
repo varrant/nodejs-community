@@ -144,7 +144,6 @@ define(function (require, exports, module) {
         event.on(window, 'popstate', function () {
             var state = history.state;
 
-            alert('123');
             app.pjax(state && state.url || startPage, true);
         });
     };

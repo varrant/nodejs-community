@@ -2,8 +2,7 @@
     <li>
         <div class="form-key">链接标题<span class="form-required">*</span></div>
         <div class="form-val">
-            <p class="form-opt" v-if="object._id">\{{object.title}}</p>
-            <input v-if="!object._id" class="ipt" type="text" name="title" v-model="object.title"
+            <input class="ipt" type="text" name="title" v-model="object.title"
                    value="\{{object.title}}" id="title"/>
 
             <p class="form-desc">连接的标题，5-100字符以内。仅支持：中文、英文、数字、短横线、下划线、逗号等常用字符。</p>
