@@ -26,7 +26,7 @@ define(function (require, exports, module) {
     var app = {};
     var section = window['-section-'];
     var $body = selector.query('#body')[0];
-    var template = selector.query('#template')[0].value;
+    var template = selector.query('#template')[0].innerHTML;
     var tpl = new Template(template);
     //var beginURL = location.href;
 
@@ -144,6 +144,7 @@ define(function (require, exports, module) {
         event.on(window, 'popstate', function () {
             var state = history.state;
 
+            alert('123');
             app.pjax(state && state.url || startPage, true);
         });
     };
