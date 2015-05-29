@@ -106,7 +106,7 @@ define(function (require, exports, module) {
             });
             the.vue = new Vue({
                 el: the._formSelector,
-                data: data,
+                data: the._data = data,
                 methods: dato.extend({
                     pushlabel: the._onpushlabel.bind(the),
                     removelabel: the._onremovelabel.bind(the),
@@ -296,11 +296,11 @@ define(function (require, exports, module) {
                             introduction: '专辑《' + name + '》创建于 ' + date.format('YYYY年M月D日 HH:mm:ss') + '。'
                         }
                     }).on('success', function (data) {
-                        the.vue.$data.columns.push({
+                        the._data.columns.push({
                             text: data.name,
                             value: data.id
                         });
-                        the.vue.$data.object.column = data.id;
+                        the._data.object.column = data.id;
                         setTimeout(function () {
                             the._$objectColumn.value = data.id;
                             pm.close();
@@ -328,7 +328,7 @@ define(function (require, exports, module) {
          */
         _watchAddHidden: function () {
             var the = this;
-            var data = the.vue.$data;
+            var data = the._data;
             var toggle = function (boolean) {
                 //if(boolean && the._editor2){
                 //    the.editor2.focus();
@@ -367,19 +367,21 @@ define(function (require, exports, module) {
             var the = this;
 
             // 实时翻译
-            the.vue.$watch('object.title', controller.debounce(function (word) {
-                if (xhr) {
-                    xhr.abort();
-                }
-
-                xhr = the._translate(word, function (err, word2) {
-                    if (err) {
-                        return;
+            if(!the._data.object.id){
+                the.vue.$watch('object.title', controller.debounce(function (word) {
+                    if (xhr) {
+                        xhr.abort();
                     }
 
-                    the.vue.$data.object.uri = word2;
-                });
-            }));
+                    xhr = the._translate(word, function (err, word2) {
+                        if (err) {
+                            return;
+                        }
+
+                        the._data.object.uri = word2;
+                    });
+                }));
+            }
         },
 
 
@@ -396,7 +398,7 @@ define(function (require, exports, module) {
                 url: '/api/translate/?word=' + encodeURIComponent(word)
             }).on('complete', function (err, data) {
                 callback(err, data);
-                xhr = null
+                xhr = null;
             }).xhr;
 
             return xhr;
