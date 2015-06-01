@@ -11,7 +11,7 @@
         <div class="alien-ui-response-avatar pull-left">
             <a href="/developer/{{=item.author.githubLogin}}/"><img src="{{item.author.avatar}}"
                                                                     class="img-rounder"
-                                                                    alt="avatar" width="50" height="50"/></a>
+                                                                    alt="avatar" width="50" height="50" coolieignore/></a>
 
             {{if !item.parentResponse}}
             <i class="fi fi-check alien-ui-response-flag"></i>
@@ -38,7 +38,7 @@
                             class="alien-ui-response-number">{{item.agreeByCount}}</span></button>
                     <span class="alien-ui-response-agreers list-left">
                         {{list item.agreers as agreer}}
-                        <a href="/developer/{{=agreer.githubLogin}}/"><img class="img-rounder" src="{{=agreer.avatarM}}"></a>
+                        <a href="/developer/{{=agreer.githubLogin}}/"><img class="img-rounder" src="{{=agreer.avatarM}}" coolieignore></a>
                         {{/list}}
                     </span>
                 </li>

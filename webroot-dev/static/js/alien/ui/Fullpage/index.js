@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * Fullpage
  * @author ydr.me
  * @create 2015-05-22 14:56
  */
@@ -7,7 +7,15 @@
 
 define(function (require, exports, module) {
     /**
-     * @module parent/index
+     * @module ui/Fullpage/
+     * @requires core/dom/selector
+     * @requires core/dom/attribute
+     * @requires core/dom/animation
+     * @requires core/event/touch
+     * @requires core/event/wheel
+     * @requires utils/dato
+     * @requires utils/typeis
+     * @requires utils/controller
      */
 
     'use strict';
@@ -17,6 +25,7 @@ define(function (require, exports, module) {
     var attribute = require('../../core/dom/attribute.js');
     var animation = require('../../core/dom/animation.js');
     var event = require('../../core/event/touch.js');
+    require('../../core/event/wheel.js');
     var dato = require('../../utils/dato.js');
     var typeis = require('../../utils/typeis.js');
     var controller = require('../../utils/controller.js');
@@ -60,7 +69,7 @@ define(function (require, exports, module) {
         _init: function () {
             var the = this;
 
-            the.index = 0;
+            the._lastIndex = the.index = 0;
             the._animating = false;
             the._initNode();
             the.update();
@@ -90,6 +99,20 @@ define(function (require, exports, module) {
             var the = this;
             var options = the._options;
 
+            the._axis = [];
+
+            if (typeis.string(options.axis)) {
+                dato.repeat(the.length, function () {
+                    the._axis.push(options.axis);
+                });
+            } else {
+                var axisLength = options.axis.length;
+
+                dato.repeat(the.length, function (index) {
+                    the._axis.push(options.axis[index % axisLength]);
+                });
+            }
+
             if (typeis.function(options.navGenerator) && the._$nav) {
                 var navHtml = '';
 
@@ -115,16 +138,22 @@ define(function (require, exports, module) {
                 overflow: 'hidden'
             };
             var containerStyle = {};
-            var length = the.length;
+            var xLength = 0;
+            var yLength = 0;
+            var xTimes = 0;
+            var yTimes = 0;
+            var lastAxis = null;
 
-            if (options.axis === 'x') {
-                containerStyle.width = winWidth * length;
-                containerStyle.height = winHeight;
-            } else {
-                containerStyle.width = winWidth;
-                containerStyle.height = winHeight * length;
-            }
+            dato.each(the._axis, function (index, axis) {
+                if (axis === 'x') {
+                    xLength++;
+                } else {
+                    yLength++;
+                }
+            });
 
+            containerStyle.width = winWidth * xLength;
+            containerStyle.height = winHeight * yLength;
             attribute.css(html, overStyle);
             attribute.css(body, overStyle);
             attribute.css(the._$container, containerStyle);
@@ -134,15 +163,29 @@ define(function (require, exports, module) {
                     width: winWidth,
                     height: winHeight
                 };
+                var axis = the._axis[index];
 
-                if (options.axis === 'x') {
-                    style.left = index * winWidth;
-                    style.top = 0;
+                if (index) {
+                    if (lastAxis && lastAxis === 'y') {
+                        yTimes++;
+                    } else if (lastAxis && lastAxis === 'x') {
+                        xTimes++;
+                    }
+
+                    style.left = xTimes * winWidth;
+                    style.top = yTimes * winHeight;
+
+                    if (axis === 'x') {
+                        xTimes++;
+                    } else {
+                        yTimes++;
+                    }
                 } else {
-                    style.top = index * winHeight;
                     style.left = 0;
+                    style.top = 0;
                 }
 
+                lastAxis = axis;
                 attribute.css($item, style);
             });
 
@@ -190,12 +233,9 @@ define(function (require, exports, module) {
 
             event.on(doc, 'wheelstart', function () {
                 wheelState = 2;
-                //console.log('wheelstart', wheelState);
             });
 
-            event.on(doc, 'wheelchange', the._onwheel = function (eve) {
-                //console.log('wheelchange', wheelState);
-
+            event.on(doc, 'wheelchange', function (eve) {
                 if (wheelState !== 2) {
                     return;
                 }
@@ -211,7 +251,6 @@ define(function (require, exports, module) {
 
             event.on(doc, 'wheelend', function () {
                 wheelState = 1;
-                //console.log('wheelend', wheelState);
             });
 
             event.on(win, 'resize', the._onresize = controller.debounce(the.update.bind(the)));
@@ -226,12 +265,29 @@ define(function (require, exports, module) {
             var the = this;
             var options = the._options;
             var to = {};
+            var axis = the._axis[the.index];
 
-            to['translate' + (options.axis.toUpperCase())] = -the.index * (options.axis === 'x' ? the._winWidth : the._winHeight);
+            to['translate' + (axis.toUpperCase())] = -the.index * (axis === 'x' ? the._winWidth : the._winHeight);
 
             if (the._animating) {
                 return;
             }
+
+            /**
+             * 待离开 page
+             * @event beforeleave
+             * @params index {Number} 待离开的索引值
+             * @params length {Number} page 总长度
+             */
+            the.emit('beforeleave', the._lastIndex, the.length);
+
+            /**
+             * 待进入 page
+             * @event beforeenter
+             * @params index {Number} 待进入的索引值
+             * @params length {Number} page 总长度
+             */
+            the.emit('beforeenter', the.index, the.length);
 
             the._animating = true;
             animation.transition(the._$container, to, {
@@ -241,6 +297,21 @@ define(function (require, exports, module) {
                 attribute.removeClass(the._$navItems, options.navActiveClass);
                 attribute.addClass(the._$navItems[the.index], options.navActiveClass);
                 the._animating = false;
+                /**
+                 * 已离开 page
+                 * @event beforeleave
+                 * @params index {Number} 已离开的索引值
+                 * @params length {Number} page 总长度
+                 */
+                the.emit('afterleave', the._lastIndex, the.length);
+
+                /**
+                 * 已进入 page
+                 * @event afterenter
+                 * @params index {Number} 已进入的索引值
+                 * @params length {Number} page 总长度
+                 */
+                the.emit('afterenter', the._lastIndex = the.index, the.length);
             });
         },
 
@@ -250,7 +321,6 @@ define(function (require, exports, module) {
         }
     });
 
-    require('../../core/event/wheel.js');
     Fullpage.defaults = defaults;
     module.exports = Fullpage;
 });
