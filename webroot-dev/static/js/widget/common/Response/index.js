@@ -592,9 +592,9 @@ define(function (require, exports, module) {
                 list: [data]
             }, the._options.list));
             var node = modification.parse(html)[0];
-            var $findLoadingItem = selector.query('.' + alienClass + '-loading', $parent)[0];
+            var $firstChild = selector.children($parent)[0];
 
-            if ($findLoadingItem) {
+            if (attribute.hasClass($firstChild, alienClass + '-loading')) {
                 $parent.innerHTML = '';
             }
 

@@ -150,6 +150,7 @@
     border: 1px solid #F0F0F0;
     display: none;
     background: #fff;
+    padding-top: 10px;
 }
 
 .alien-ui-response-children .alien-ui-response-body {
