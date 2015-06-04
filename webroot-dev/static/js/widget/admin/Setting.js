@@ -33,7 +33,7 @@ define(function (require, exports, module) {
             minHeight: 200,
             ratio: 1,
             ajax: {
-                url: 'https://up.qbox.me//',
+                url: 'http://up.qiniu.com/',
                 method: 'post',
                 fileKey: 'file'
             }
@@ -248,17 +248,17 @@ define(function (require, exports, module) {
          * @private
          */
         _translate: function () {
-            var xhr = null;
+            var _ajax = null;
             var itemKey = this._options.itemKey;
             var vue = this.vue;
             var $translate = selector.query('#translate')[0];
 
             event.on($translate, 'keyup', function () {
-                if (xhr) {
-                    xhr.abort();
+                if (_ajax && _ajax.xhr) {
+                    _ajax.xhr.abort();
                 }
 
-                xhr = ajax({
+                _ajax = ajax({
                     loading: false,
                     url: '/api/translate/?word=' + encodeURIComponent(this.value)
                 })
@@ -266,7 +266,7 @@ define(function (require, exports, module) {
                         vue.$data[itemKey].uri = data;
                     })
                     .on('complete', function () {
-                        xhr = null;
+                        _ajax = null;
                     });
             });
 

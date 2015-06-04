@@ -20,7 +20,7 @@ module.exports = function (app) {
 
     // 所有专辑
     exports.getAllList = function (req, res, next) {
-        var listOptions = filter.skipLimit(req.params);
+        var listOptions = filter.skipLimit(req.params, 1, 12);
         var isAJAX = req.headers['x-request-with'] === 'XMLHttpRequest';
 
         howdo

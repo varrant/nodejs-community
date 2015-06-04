@@ -32,7 +32,7 @@ define(function (require, exports, module) {
             minHeight: 200,
             ratio: 1,
             ajax: {
-                url: 'https://up.qbox.me//',
+                url: 'http://up.qiniu.com/',
                 method: 'post',
                 fileKey: 'file'
             }

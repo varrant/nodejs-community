@@ -70,7 +70,7 @@
   .thumblist-item {
     position: relative;
     text-align: center;
-    margin-bottom: 50px; }
+    margin: 20px 0 30px 0; }
   .thumblist-name {
     height: 16px;
     line-height: 16px;
