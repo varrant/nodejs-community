@@ -51,7 +51,7 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js",
+            "static/js/alien/libs/Scroll.js",
             "static/js/widget/admin/Setting.js",
             "static/js/widget/common/tip.js",
             "static/js/widget/common/tip.css",
@@ -128,7 +128,7 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js"
+            "static/js/alien/libs/Scroll.js"
         ]
     },
     ".views/admin/home.html": {
@@ -183,7 +183,7 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js"
+            "static/js/alien/libs/Scroll.js"
         ]
     },
     ".views/admin/include/column/list.html": {
@@ -205,7 +205,7 @@
     ".views/admin/include/meta.html": {
         "css": [
             {
-                "static/css/5d9c102c2e9acbbd68aec73341b0ca6a.css": [
+                "static/css/d88864b4e144df7beb5239d108976890.css": [
                     "static/css/components/front/0-layout.css",
                     "static/css/components/front/1-header.css",
                     "static/css/components/front/2-unit-card.css",
@@ -369,7 +369,7 @@
             "static/js/alien/ui/Editor/marked-render-table.js",
             "static/js/widget/front/nav.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js"
+            "static/js/alien/libs/Scroll.js"
         ]
     },
     ".views/admin/item-help.html": {
@@ -460,7 +460,7 @@
             "static/js/alien/ui/Editor/marked-render-table.js",
             "static/js/widget/front/nav.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js"
+            "static/js/alien/libs/Scroll.js"
         ]
     },
     ".views/admin/item-link.html": {
@@ -551,7 +551,7 @@
             "static/js/alien/ui/Editor/marked-render-table.js",
             "static/js/widget/front/nav.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js"
+            "static/js/alien/libs/Scroll.js"
         ]
     },
     ".views/admin/item-question.html": {
@@ -642,7 +642,7 @@
             "static/js/alien/ui/Editor/marked-render-table.js",
             "static/js/widget/front/nav.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js"
+            "static/js/alien/libs/Scroll.js"
         ]
     },
     ".views/admin/list-article.html": {
@@ -704,7 +704,7 @@
             "static/js/alien/libs/Pagination.js",
             "static/js/widget/front/nav.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js"
+            "static/js/alien/libs/Scroll.js"
         ]
     },
     ".views/admin/list-help.html": {
@@ -766,7 +766,7 @@
             "static/js/alien/libs/Pagination.js",
             "static/js/widget/front/nav.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js"
+            "static/js/alien/libs/Scroll.js"
         ]
     },
     ".views/admin/list-link.html": {
@@ -828,7 +828,7 @@
             "static/js/alien/libs/Pagination.js",
             "static/js/widget/front/nav.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js"
+            "static/js/alien/libs/Scroll.js"
         ]
     },
     ".views/admin/list-question.html": {
@@ -890,7 +890,7 @@
             "static/js/alien/libs/Pagination.js",
             "static/js/widget/front/nav.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js"
+            "static/js/alien/libs/Scroll.js"
         ]
     },
     ".views/admin/notification.html": {
@@ -945,7 +945,7 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js",
+            "static/js/alien/libs/Scroll.js",
             "static/js/widget/admin/List.js",
             "static/js/alien/core/navigator/hashbang.js",
             "static/js/alien/utils/hashbang.js",
@@ -1025,7 +1025,7 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js",
+            "static/js/alien/libs/Scroll.js",
             "static/js/widget/common/share.js",
             "static/js/widget/common/follow.js",
             "static/js/alien/ui/Pager/index.js",
@@ -1097,7 +1097,7 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js"
+            "static/js/alien/libs/Scroll.js"
         ]
     },
     ".views/front/include/bottom.html": {
@@ -1191,7 +1191,7 @@
     ".views/front/include/meta.html": {
         "css": [
             {
-                "static/css/0851742922b4b0407e35a3476e18fea6.css": [
+                "static/css/a4f0361c671f9f1f44871b0adfb61ff4.css": [
                     "static/css/components/front/0-layout.css",
                     "static/css/components/front/1-header.css",
                     "static/css/components/front/2-unit-card.css",
@@ -1279,11 +1279,12 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js",
+            "static/js/alien/libs/Scroll.js",
             "static/js/widget/common/share.js",
-            "static/js/alien/ui/Pager/index.js",
-            "static/js/alien/ui/Pager/template.html",
-            "static/js/alien/ui/Pager/style.css"
+            "static/js/alien/ui/Pagination/index.js",
+            "static/js/alien/ui/Pagination/style.css",
+            "static/js/alien/ui/Pagination/template.html",
+            "static/js/alien/libs/Pagination.js"
         ]
     },
     ".views/front/list-article.html": {
@@ -1346,11 +1347,12 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js",
+            "static/js/alien/libs/Scroll.js",
             "static/js/widget/common/share.js",
-            "static/js/alien/ui/Pager/index.js",
-            "static/js/alien/ui/Pager/template.html",
-            "static/js/alien/ui/Pager/style.css"
+            "static/js/alien/ui/Pagination/index.js",
+            "static/js/alien/ui/Pagination/style.css",
+            "static/js/alien/ui/Pagination/template.html",
+            "static/js/alien/libs/Pagination.js"
         ]
     },
     ".views/front/list-help.html": {
@@ -1413,11 +1415,12 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js",
+            "static/js/alien/libs/Scroll.js",
             "static/js/widget/common/share.js",
-            "static/js/alien/ui/Pager/index.js",
-            "static/js/alien/ui/Pager/template.html",
-            "static/js/alien/ui/Pager/style.css"
+            "static/js/alien/ui/Pagination/index.js",
+            "static/js/alien/ui/Pagination/style.css",
+            "static/js/alien/ui/Pagination/template.html",
+            "static/js/alien/libs/Pagination.js"
         ]
     },
     ".views/front/list-link.html": {
@@ -1480,11 +1483,12 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js",
+            "static/js/alien/libs/Scroll.js",
             "static/js/widget/common/share.js",
-            "static/js/alien/ui/Pager/index.js",
-            "static/js/alien/ui/Pager/template.html",
-            "static/js/alien/ui/Pager/style.css"
+            "static/js/alien/ui/Pagination/index.js",
+            "static/js/alien/ui/Pagination/style.css",
+            "static/js/alien/ui/Pagination/template.html",
+            "static/js/alien/libs/Pagination.js"
         ]
     },
     ".views/front/list-one-column.html": {
@@ -1547,11 +1551,12 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js",
+            "static/js/alien/libs/Scroll.js",
             "static/js/widget/common/share.js",
-            "static/js/alien/ui/Pager/index.js",
-            "static/js/alien/ui/Pager/template.html",
-            "static/js/alien/ui/Pager/style.css"
+            "static/js/alien/ui/Pagination/index.js",
+            "static/js/alien/ui/Pagination/style.css",
+            "static/js/alien/ui/Pagination/template.html",
+            "static/js/alien/libs/Pagination.js"
         ]
     },
     ".views/front/list-question.html": {
@@ -1614,11 +1619,12 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js",
+            "static/js/alien/libs/Scroll.js",
             "static/js/widget/common/share.js",
-            "static/js/alien/ui/Pager/index.js",
-            "static/js/alien/ui/Pager/template.html",
-            "static/js/alien/ui/Pager/style.css"
+            "static/js/alien/ui/Pagination/index.js",
+            "static/js/alien/ui/Pagination/style.css",
+            "static/js/alien/ui/Pagination/template.html",
+            "static/js/alien/libs/Pagination.js"
         ]
     },
     ".views/front/oauth-authorize.html": {
@@ -1685,7 +1691,7 @@
     ".views/front/object-article.html": {
         "css": [
             {
-                "static/css/1d7a5db0a90f23d984b09090860340bb.css": [
+                "static/css/f0546e375bba68ce5782ef1cd7baf938.css": [
                     "static/css/app/front/detail.css"
                 ]
             }
@@ -1742,7 +1748,7 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js",
+            "static/js/alien/libs/Scroll.js",
             "static/js/widget/common/share.js",
             "static/js/widget/common/Response/index.js",
             "static/js/alien/ui/Imgview/index.js",
@@ -1755,9 +1761,10 @@
             "static/js/alien/utils/date.js",
             "static/js/widget/common/tip.js",
             "static/js/widget/common/tip.css",
-            "static/js/alien/ui/Pager/index.js",
-            "static/js/alien/ui/Pager/template.html",
-            "static/js/alien/ui/Pager/style.css",
+            "static/js/alien/ui/Pagination/index.js",
+            "static/js/alien/ui/Pagination/style.css",
+            "static/js/alien/ui/Pagination/template.html",
+            "static/js/alien/libs/Pagination.js",
             "static/js/widget/common/Respond/index.js",
             "static/js/alien/ui/Editor/index.js",
             "static/js/alien/3rd/codemirror/mode/gfm.js",
@@ -1798,7 +1805,7 @@
     ".views/front/object-help.html": {
         "css": [
             {
-                "static/css/1d7a5db0a90f23d984b09090860340bb.css": [
+                "static/css/f0546e375bba68ce5782ef1cd7baf938.css": [
                     "static/css/app/front/detail.css"
                 ]
             }
@@ -1855,7 +1862,7 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js",
+            "static/js/alien/libs/Scroll.js",
             "static/js/widget/common/share.js",
             "static/js/widget/common/Response/index.js",
             "static/js/alien/ui/Imgview/index.js",
@@ -1868,9 +1875,10 @@
             "static/js/alien/utils/date.js",
             "static/js/widget/common/tip.js",
             "static/js/widget/common/tip.css",
-            "static/js/alien/ui/Pager/index.js",
-            "static/js/alien/ui/Pager/template.html",
-            "static/js/alien/ui/Pager/style.css",
+            "static/js/alien/ui/Pagination/index.js",
+            "static/js/alien/ui/Pagination/style.css",
+            "static/js/alien/ui/Pagination/template.html",
+            "static/js/alien/libs/Pagination.js",
             "static/js/widget/common/Respond/index.js",
             "static/js/alien/ui/Editor/index.js",
             "static/js/alien/3rd/codemirror/mode/gfm.js",
@@ -1911,7 +1919,7 @@
     ".views/front/object-link.html": {
         "css": [
             {
-                "static/css/1d7a5db0a90f23d984b09090860340bb.css": [
+                "static/css/f0546e375bba68ce5782ef1cd7baf938.css": [
                     "static/css/app/front/detail.css"
                 ]
             }
@@ -1968,7 +1976,7 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js",
+            "static/js/alien/libs/Scroll.js",
             "static/js/widget/common/share.js",
             "static/js/widget/common/Response/index.js",
             "static/js/alien/ui/Imgview/index.js",
@@ -1981,9 +1989,10 @@
             "static/js/alien/utils/date.js",
             "static/js/widget/common/tip.js",
             "static/js/widget/common/tip.css",
-            "static/js/alien/ui/Pager/index.js",
-            "static/js/alien/ui/Pager/template.html",
-            "static/js/alien/ui/Pager/style.css",
+            "static/js/alien/ui/Pagination/index.js",
+            "static/js/alien/ui/Pagination/style.css",
+            "static/js/alien/ui/Pagination/template.html",
+            "static/js/alien/libs/Pagination.js",
             "static/js/widget/common/Respond/index.js",
             "static/js/alien/ui/Editor/index.js",
             "static/js/alien/3rd/codemirror/mode/gfm.js",
@@ -2024,7 +2033,7 @@
     ".views/front/object-question.html": {
         "css": [
             {
-                "static/css/1d7a5db0a90f23d984b09090860340bb.css": [
+                "static/css/f0546e375bba68ce5782ef1cd7baf938.css": [
                     "static/css/app/front/detail.css"
                 ]
             }
@@ -2081,7 +2090,7 @@
             "static/js/alien/ui/Loading/style.css",
             "static/js/alien/widgets/confirm.js",
             "static/js/widget/front/footer.js",
-            "static/js/alien/ui/Scroll/index.js",
+            "static/js/alien/libs/Scroll.js",
             "static/js/widget/common/share.js",
             "static/js/widget/common/Response/index.js",
             "static/js/alien/ui/Imgview/index.js",
@@ -2094,9 +2103,10 @@
             "static/js/alien/utils/date.js",
             "static/js/widget/common/tip.js",
             "static/js/widget/common/tip.css",
-            "static/js/alien/ui/Pager/index.js",
-            "static/js/alien/ui/Pager/template.html",
-            "static/js/alien/ui/Pager/style.css",
+            "static/js/alien/ui/Pagination/index.js",
+            "static/js/alien/ui/Pagination/style.css",
+            "static/js/alien/ui/Pagination/template.html",
+            "static/js/alien/libs/Pagination.js",
             "static/js/widget/common/Respond/index.js",
             "static/js/alien/ui/Editor/index.js",
             "static/js/alien/3rd/codemirror/mode/gfm.js",
