@@ -14,7 +14,7 @@ define(function (require, exports, module) {
     require('../../widget/common/share.js');
 
     var Template = require('../../alien/libs/Template.js');
-    var Pager = require('../../alien/ui/Pager/');
+    var Pagination = require('../../alien/ui/Pagination/');
     var selector = require('../../alien/core/dom/selector.js');
     var animation = require('../../alien/core/dom/animation.js');
     var attribute = require('../../alien/core/dom/attribute.js');
@@ -89,7 +89,7 @@ define(function (require, exports, module) {
                 return;
             }
 
-            app.page = new Pager('#pager', pager);
+            app.page = new Pagination('#pager', pager);
 
             app.page.on('change', function (page) {
                 app.options.page = page;
@@ -114,7 +114,8 @@ define(function (require, exports, module) {
             pager.max = Math.ceil(pager.count / pager.limit);
             app.options.page = data.pager.page;
             app.page.render({
-                page: pager.page
+                page: pager.page,
+                max: Math.ceil(pager.count / pager.limit)
             });
 
             if (!isNotChangeURL) {
