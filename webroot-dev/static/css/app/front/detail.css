@@ -42,21 +42,6 @@
 .copyright .label {
   margin-left: 10px; }
 
-.bdsharebuttonbox {
-  display: inline-block;
-  vertical-align: middle; }
-
-.heading-link {
-  position: relative;
-  color: #222; }
-  .heading-link::before {
-    position: absolute;
-    content: "#";
-    left: -15px;
-    opacity: 0;
-    transition: opacity 200ms; }
-  .heading-link:hover {
-    color: #222; }
-    .heading-link:hover::before {
-      opacity: 1; }
+.author-avatar {
+  margin-bottom: 30px; }
 
