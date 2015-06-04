@@ -1,16 +1,25 @@
 $border-color: #e6e6e6;
 
 .codedemo {
+  &-jsdm,
   &-jsbin,
   &-jsfiddle {
     display: block;
     width: 100%;
-    height: 300px;
+    height: 305px;
     margin: 10px 0;
+  }
+
+  &-jsfiddle{
+    border: 1px solid #C0C4C7;
   }
 
   &-jsbin {
     border: 2px solid #BFBFBF;
+  }
+
+  &-jsdm {
+    border: 2px solid #3D3D3E;
   }
 }
 
