@@ -6,7 +6,8 @@
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid #f0f0f0;
-    font-size: 14px; }
+    font-size: 14px;
+    word-break: break-all; }
     .simplelist > li:last-child {
       margin-bottom: 0;
       padding-bottom: 0;
