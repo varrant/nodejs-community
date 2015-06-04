@@ -24,7 +24,7 @@ define(function (require, exports, module) {
     var alert = require('../../../alien/widgets/alert.js');
     var confirm = require('../../../alien/widgets/confirm.js');
     var tip = require('../tip.js');
-    var Pager = require('../../../alien/ui/Pager/');
+    var Pagination = require('../../../alien/ui/Pagination/');
     var Loading = require('../../../alien/ui/Loading/');
     var Respond = require('../Respond/');
     var Template = require('../../../alien/libs/Template.js');
@@ -392,7 +392,7 @@ define(function (require, exports, module) {
                     if (!the._readyComment) {
                         the._readyComment = true;
                         the._commentRespond = the._initRespond(the._$respondParent, the._$listParent);
-                        the._pager = new Pager(the._$paginationParent, the._pagerOptions);
+                        the._pager = new Pagination(the._$paginationParent, the._pagerOptions);
                         the._pager.on('change', function (page) {
                             the.changePage(page);
                             the.emit('page', page);
