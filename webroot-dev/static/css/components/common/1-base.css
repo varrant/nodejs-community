@@ -222,7 +222,7 @@ img {
   transition: all 0.4s; }
 
 .loading {
-  background: url("https://dn-fed.qbox.me/@/p/i/loading-32.gif") no-repeat 0/16px;
+  background: url("http://s.ydr.me/@/p/i/loading-32.gif") no-repeat 0/16px;
   display: inline-block;
   padding-left: 20px;
   color: #888; }

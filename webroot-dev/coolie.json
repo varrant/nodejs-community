@@ -17,7 +17,7 @@
   },
   "dest": {
     "dirname": "../webroot-pro/",
-    "host": "https://dn-fed.qbox.me/@/"
+    "host": "http://s.ydr.me/@/"
   },
   "copy": [
     "./static/js/libs/**/*.js",
