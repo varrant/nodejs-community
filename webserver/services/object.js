@@ -212,7 +212,7 @@ exports.createOne = function (author, data, callback) {
                 }
 
                 // 通知给粉丝
-                notice.followingObject(author, doc, objectInSection);
+                notice.followingObject(author, doc);
             }
         });
 };

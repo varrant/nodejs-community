@@ -23,9 +23,7 @@
 - `agree`: A的评论/回复被赞同
 - `role`: A的权限被修改了
 - `follow`: A关注了B
-- `following-article`：关注者发表了文章
-- `following-link`：关注者分享了链接
-- `following-question`：关注者发起了提问
+- `following-object`：关注者发表了 object
 - `at`: A提到了B
 
 

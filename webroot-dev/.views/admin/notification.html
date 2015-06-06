@@ -78,9 +78,9 @@
                                             <a href="/developer/\{{notification.source.githubLogin}}/">
                                                 <strong>\{{notification.source.nickname}}</strong></a> 关注了你。
                                         </div>
-                                        <div v-if="notification.type === 'following-article'">
+                                        <div v-if="notification.type === 'following-object'">
                                             <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
-                                                <strong>\{{notification.source.nickname}}</strong> 发表了《\{{notification.object.title}}》。</a>
+                                                你关注的 <strong>\{{notification.source.nickname}}</strong> 发表了《\{{notification.object.title}}》。</a>
                                         </div>
                                         <div v-if="notification.type === 'accept'">
                                             <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
