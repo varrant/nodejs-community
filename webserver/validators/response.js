@@ -15,8 +15,9 @@ var regexp = require('../utils/').regexp;
 var filter = require('../utils/').filter;
 var REG_CONTENT = regexp.content(5, 5000);
 var REG_TAG = /<[^>]*?>/g;
+
 xss.config({
-    atLink: configs.app.host + '/developer/${at}/'
+    atLink: '/developer/${at}/'
 });
 
 
@@ -36,7 +37,7 @@ validator.pushRule({
             at: true
         });
 
-        data.contentHTML = mdRender.html
+        data.contentHTML = mdRender.html;
 
         if (!data.atList) {
             data.atList = mdRender.atList;
