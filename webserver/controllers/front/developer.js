@@ -801,5 +801,55 @@ module.exports = function (app) {
         };
     };
 
+
+    // 我的粉丝
+    exports.follower = function () {
+        var githubLogin = req.params.githubLogin;
+        var data = {
+            title: '我的粉丝'
+        };
+
+        developer.findOne({
+            githubLogin: githubLogin
+        }, {
+            populate: ['follower']
+        }, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            if (!doc) {
+                return next();
+            }
+
+            res.render('front/developer-follower.html', data);
+        });
+    };
+
+
+    // 我的关注
+    exports.following = function () {
+        var githubLogin = req.params.githubLogin;
+        var data = {
+            title: '我的关注'
+        };
+
+        developer.findOne({
+            githubLogin: githubLogin
+        }, {
+            populate: ['follower']
+        }, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            if (!doc) {
+                return next();
+            }
+
+            res.render('front/developer-following.html', data);
+        });
+    };
+
     return exports;
 };
