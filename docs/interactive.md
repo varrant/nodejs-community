@@ -1,6 +1,6 @@
 # interactive
 
-适用于：点赞、被评论、被收藏、申请加入组织等
+适用于：点赞、被评论、关注、被收藏、申请加入组织等
 
 `*`表示虚拟字段
 
@@ -23,14 +23,16 @@
 - `agree`: A的评论/回复被赞同
 - `role`: A的权限被修改了
 - `follow`: A关注了B
-- `following-comment`：关注者参与了评论
-- `following-reply`：关注者参与了回复
 - `following-article`：关注者发表了文章
 - `following-link`：关注者分享了链接
 - `following-question`：关注者发起了提问
 - `at`: A提到了B
 
+
+
 # 未实现的 type
+- `following-comment`：关注者参与了评论
+- `following-reply`：关注者参与了回复
 - `favorite`: A收藏了B的object
 - `apply`: A申请了B的organization
 - `score`: A的object被管理员加分了

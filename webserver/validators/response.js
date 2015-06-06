@@ -29,7 +29,7 @@ validator.pushRule({
     maxLength: 5000,
     regexp: REG_CONTENT,
     onafter: function (val, data) {
-        var mdSafe = xss.mdSafe(val);
+        var mdSafe = xss.mdSafe(val, true);
 
         if(!data.atList){
             data.atList = mdSafe.atList;
