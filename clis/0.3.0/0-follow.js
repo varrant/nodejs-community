@@ -30,7 +30,8 @@ mongoose(function (err) {
     //});
 
     interactive.find({
-        type: 'follow'
+        type: 'follow',
+        hasApproved: true
     }, function (err, list) {
         if (err) {
             console.log('find interactive error');
@@ -38,6 +39,7 @@ mongoose(function (err) {
             return process.exit();
         }
 
+        console.log(list.length, 'length');
         howdo.each(list, function (index, ia, done) {
             var source = ia.source.toString();
             var target = ia.target.toString();
@@ -58,7 +60,7 @@ mongoose(function (err) {
                     }, source, done);
                 })
                 .together(done);
-        }).together(function () {
+        }).follow(function () {
             console.log('do success');
             return process.exit();
         });
