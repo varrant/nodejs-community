@@ -54,7 +54,7 @@ module.exports = function (app) {
         },
         followingObject: {
             subject: '关注者动态',
-            template: _template('follow-object.html')
+            template: _template('following-object.html')
         },
         commentAt: {
             subject: '提到了你',
