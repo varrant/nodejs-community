@@ -850,6 +850,7 @@ module.exports = function (app) {
                 return next();
             }
 
+            skipLimit.count = doc.following.length;
             var list = doc.following.slice((skipLimit.page - 1) * skipLimit.limit, skipLimit.page * skipLimit.limit);
             var data = {
                 developer: doc,
