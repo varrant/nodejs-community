@@ -965,10 +965,154 @@
         ],
         "main": ""
     },
+    ".views/front/developer-follower.html": {
+        "css": [
+            {
+                "static/css/60268369f4c425fb09a7eb1add3623ab.css": [
+                    "static/css/app/front/developer.css"
+                ]
+            }
+        ],
+        "main": "static/js/app/front/developer.js",
+        "deps": [
+            "static/js/widget/front/login.js",
+            "static/js/alien/core/event/base.js",
+            "static/js/alien/utils/allocation.js",
+            "static/js/alien/utils/typeis.js",
+            "static/js/alien/utils/dato.js",
+            "static/js/alien/core/dom/selector.js",
+            "static/js/alien/core/navigator/compatible.js",
+            "static/js/alien/utils/string.js",
+            "static/js/alien/core/dom/modification.js",
+            "static/js/alien/core/dom/attribute.js",
+            "static/js/alien/utils/matrix.js",
+            "static/js/alien/utils/number.js",
+            "static/js/alien/core/dom/see.js",
+            "static/js/alien/ui/Dialog/index.js",
+            "static/js/alien/ui/Mask/index.js",
+            "static/js/alien/core/event/touch.js",
+            "static/js/alien/3rd/fastclick.js",
+            "static/js/alien/utils/controller.js",
+            "static/js/alien/core/dom/animation.js",
+            "static/js/alien/utils/easing.js",
+            "static/js/alien/libs/Queue.js",
+            "static/js/alien/utils/class.js",
+            "static/js/alien/libs/Emitter.js",
+            "static/js/alien/ui/index.js",
+            "static/js/alien/ui/Mask/style.css",
+            "static/js/alien/ui/Window/index.js",
+            "static/js/alien/ui/Window/style.css",
+            "static/js/alien/ui/Scrollbar/index.js",
+            "static/js/alien/ui/Scrollbar/style.css",
+            "static/js/alien/ui/Scrollbar/template.html",
+            "static/js/alien/libs/Template.js",
+            "static/js/alien/utils/random.js",
+            "static/js/alien/core/event/wheel.js",
+            "static/js/alien/core/event/drag.js",
+            "static/js/alien/ui/Dialog/template.html",
+            "static/js/alien/ui/Dialog/style.css",
+            "static/js/widget/common/login.js",
+            "static/js/widget/front/nav.js",
+            "static/js/widget/common/ajax.js",
+            "static/js/alien/core/communication/xhr.js",
+            "static/js/alien/utils/querystring.js",
+            "static/js/alien/widgets/alert.js",
+            "static/js/alien/ui/Msg/index.js",
+            "static/js/alien/ui/Msg/template.html",
+            "static/js/alien/ui/Msg/style.css",
+            "static/js/alien/ui/Loading/index.js",
+            "static/js/alien/ui/Loading/template.html",
+            "static/js/alien/ui/Loading/style.css",
+            "static/js/alien/widgets/confirm.js",
+            "static/js/widget/front/footer.js",
+            "static/js/alien/libs/Scroll.js",
+            "static/js/widget/common/share.js",
+            "static/js/widget/common/follow.js",
+            "static/js/alien/ui/Pager/index.js",
+            "static/js/alien/ui/Pager/template.html",
+            "static/js/alien/ui/Pager/style.css",
+            "static/js/widget/front/repos.js",
+            "static/js/alien/core/communication/jsonp.js",
+            "static/js/alien/utils/date.js",
+            "static/js/widget/front/repos.html"
+        ]
+    },
+    ".views/front/developer-following.html": {
+        "css": [
+            {
+                "static/css/60268369f4c425fb09a7eb1add3623ab.css": [
+                    "static/css/app/front/developer.css"
+                ]
+            }
+        ],
+        "main": "static/js/app/front/developer.js",
+        "deps": [
+            "static/js/widget/front/login.js",
+            "static/js/alien/core/event/base.js",
+            "static/js/alien/utils/allocation.js",
+            "static/js/alien/utils/typeis.js",
+            "static/js/alien/utils/dato.js",
+            "static/js/alien/core/dom/selector.js",
+            "static/js/alien/core/navigator/compatible.js",
+            "static/js/alien/utils/string.js",
+            "static/js/alien/core/dom/modification.js",
+            "static/js/alien/core/dom/attribute.js",
+            "static/js/alien/utils/matrix.js",
+            "static/js/alien/utils/number.js",
+            "static/js/alien/core/dom/see.js",
+            "static/js/alien/ui/Dialog/index.js",
+            "static/js/alien/ui/Mask/index.js",
+            "static/js/alien/core/event/touch.js",
+            "static/js/alien/3rd/fastclick.js",
+            "static/js/alien/utils/controller.js",
+            "static/js/alien/core/dom/animation.js",
+            "static/js/alien/utils/easing.js",
+            "static/js/alien/libs/Queue.js",
+            "static/js/alien/utils/class.js",
+            "static/js/alien/libs/Emitter.js",
+            "static/js/alien/ui/index.js",
+            "static/js/alien/ui/Mask/style.css",
+            "static/js/alien/ui/Window/index.js",
+            "static/js/alien/ui/Window/style.css",
+            "static/js/alien/ui/Scrollbar/index.js",
+            "static/js/alien/ui/Scrollbar/style.css",
+            "static/js/alien/ui/Scrollbar/template.html",
+            "static/js/alien/libs/Template.js",
+            "static/js/alien/utils/random.js",
+            "static/js/alien/core/event/wheel.js",
+            "static/js/alien/core/event/drag.js",
+            "static/js/alien/ui/Dialog/template.html",
+            "static/js/alien/ui/Dialog/style.css",
+            "static/js/widget/common/login.js",
+            "static/js/widget/front/nav.js",
+            "static/js/widget/common/ajax.js",
+            "static/js/alien/core/communication/xhr.js",
+            "static/js/alien/utils/querystring.js",
+            "static/js/alien/widgets/alert.js",
+            "static/js/alien/ui/Msg/index.js",
+            "static/js/alien/ui/Msg/template.html",
+            "static/js/alien/ui/Msg/style.css",
+            "static/js/alien/ui/Loading/index.js",
+            "static/js/alien/ui/Loading/template.html",
+            "static/js/alien/ui/Loading/style.css",
+            "static/js/alien/widgets/confirm.js",
+            "static/js/widget/front/footer.js",
+            "static/js/alien/libs/Scroll.js",
+            "static/js/widget/common/share.js",
+            "static/js/widget/common/follow.js",
+            "static/js/alien/ui/Pager/index.js",
+            "static/js/alien/ui/Pager/template.html",
+            "static/js/alien/ui/Pager/style.css",
+            "static/js/widget/front/repos.js",
+            "static/js/alien/core/communication/jsonp.js",
+            "static/js/alien/utils/date.js",
+            "static/js/widget/front/repos.html"
+        ]
+    },
     ".views/front/developer-home.html": {
         "css": [
             {
-                "static/css/c220013424c719207a51f99a83a502c4.css": [
+                "static/css/60268369f4c425fb09a7eb1add3623ab.css": [
                     "static/css/app/front/developer.css"
                 ]
             }
@@ -1104,6 +1248,10 @@
         "css": [],
         "main": ""
     },
+    ".views/front/include/developer/follow.html": {
+        "css": [],
+        "main": ""
+    },
     ".views/front/include/developer/main-accept-by.html": {
         "css": [],
         "main": ""
@@ -1191,7 +1339,7 @@
     ".views/front/include/meta.html": {
         "css": [
             {
-                "static/css/a4f0361c671f9f1f44871b0adfb61ff4.css": [
+                "static/css/999d33244736432e9fa2e0e87a286da1.css": [
                     "static/css/components/front/0-layout.css",
                     "static/css/components/front/1-header.css",
                     "static/css/components/front/2-unit-card.css",

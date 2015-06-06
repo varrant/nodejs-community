@@ -21,7 +21,6 @@
   },
   "copy": [
     "./static/js/libs/**/*.js",
-    "./favicon.ico",
     "./robots.txt"
   ]
 }
