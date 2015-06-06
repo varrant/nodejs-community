@@ -360,8 +360,12 @@ define(function (require, exports, module) {
         _ajaxFollowing: function () {
             var the = this;
 
+            if(!the._options.developer.id){
+                return;
+            }
+
             ajax({
-                url: '/api/developer/following/',
+                url: '/admin/api/developer/following/',
                 loading: false
             }).on('success', function (json) {
                 the._following = json.list.map(function (item) {
