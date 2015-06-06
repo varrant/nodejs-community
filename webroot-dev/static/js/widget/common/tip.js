@@ -13,7 +13,7 @@ define(function (require, exports, module) {
 
     var Msg = require('../../alien/ui/Msg/index.js');
     var modification = require('../../alien/core/dom/modification.js');
-    var style = require('css!./tip.css');
+    var style = require('./tip.css', 'css');
 
     modification.importStyle(style);
 
