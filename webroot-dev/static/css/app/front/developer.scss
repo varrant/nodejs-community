@@ -44,8 +44,18 @@
 }
 
 .dlist{
-  li{
+  &-item{
     text-align: center;
     margin-bottom: 40px;
+  }
+
+  &-avatar{
+    margin-bottom: 10px;
+  }
+
+  &-name{
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
   }
 }

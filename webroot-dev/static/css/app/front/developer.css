@@ -23,7 +23,15 @@
   padding: 15px 0;
   color: #666; }
 
-.dlist li {
+.dlist-item {
   text-align: center;
   margin-bottom: 40px; }
+
+.dlist-avatar {
+  margin-bottom: 10px; }
+
+.dlist-name {
+  height: 30px;
+  line-height: 30px;
+  overflow: hidden; }
 

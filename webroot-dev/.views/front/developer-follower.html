@@ -63,18 +63,18 @@
 
                 <!--我的粉丝-->
                 <div class="card">
-                    <h2 class="card-title"><i class="fi fi-user"></i>{{title}}
+                    <h2 class="card-title"><i class="fi fi-user"></i>{{title}}（{{developer.follower.length}}）
                         {{if developer.hasCertificated}}<i class="fi fi-check-circle text-success" title="个人认证"></i>{{/if}}
                         {{if pageType !== "home"}}<span class="text-space text-light">/</span><i class="fi fi-home"></i><a href="/developer/{{=developer.githubLogin}}/">主页</a>{{/if}}
                     </h2>
 
                     <div class="card-body">
                         <ul class="dlist avg-xs-1 avg-sm-3 avg-md-4">
-                            {{list list as index,item}}
-                            <li>
-                                <p><img src="https://images.weserv.nl/?url=s.gravatar.com%2Favatar%2F076de35998b7a6956a6183bf3d694094%3Fs%3D200%26d%3Dretro"
-                                        alt="avatar" class="img-rounder img-border-blank" coolieignore/></p>
-                                <p>#云淡然</p>
+                            {{list developer.follower as index,item}}
+                            <li class="dlist-item">
+                                <p class="dlist-avatar"><a href="/developer/{{item.githubLogin}}/"><img src="{{item.avatarL}}"
+                                        alt="avatar" class="img-rounder img-border-blank" coolieignore/></a></p>
+                                <p class="dlist-name"><a href="/developer/{{item.githubLogin}}/">{{item.nickname}}</a></p>
                             </li>
                             {{/list}}
                         </ul>
