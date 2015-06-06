@@ -52,6 +52,10 @@ module.exports = function (app) {
             subject: '关注了你',
             template: _template('follow.html')
         },
+        followingObject: {
+            subject: '关注者动态',
+            template: _template('follow-object.html')
+        },
         commentAt: {
             subject: '提到了你',
             template: _template('commentAt.html')

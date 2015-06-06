@@ -335,12 +335,14 @@ exports.at = function (atFrom, atTo, atObject, atResponse) {
 
 
 /**
- * 关注者发表了文章，通知 TA 的粉丝
+ * 关注者发表了 object，通知作者的粉丝
  * @param author
  * @param theObject
  */
 exports.followingObject = function (author, theObject) {
     var type = 'following-object';
+
+    // 遍历作者的粉丝
     author.follower.forEach(function (target) {
         // 1. 站内通知
         notification.createOne({
@@ -349,5 +351,33 @@ exports.followingObject = function (author, theObject) {
             target: target,
             object: theObject.id.toString()
         }, log.holdError);
+
+        // 2. 邮件通知
+        developer.findOne({
+            _id: target
+        }, function (err, targetDeveloper) {
+            if (err || !targetDeveloper) {
+                return;
+            }
+
+            var noti = configs.notification.followingObject;
+            var subject = noti.subject;
+            var data = {
+                from: configs.smtp.from,
+                sender: {
+                    nickname: author.nickname
+                },
+                receiver: {
+                    nickname: targetDeveloper.nickname
+                },
+                object: {
+                    title: theObject.title,
+                    link: configs.app.host + '/object/?id=' + theObject.id
+                }
+            };
+            var content = noti.template.render(data);
+
+            email.send(atTo, subject, content);
+        });
     });
 };
