@@ -139,12 +139,12 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    // 关注我的人
+    // 我的粉丝
     follower: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'developer'
     }],
-    // 我关注的人
+    // 我的关注
     following: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'developer'

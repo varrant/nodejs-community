@@ -25,8 +25,8 @@
 - `replyByCount` 被回复次数
 - `agreeByCount` 被赞同次数
 - `acceptByCount` 被接受次数
-- `followCount` 关注人数
-- `followByCount` 被关注人数
+- `follower` 我的粉丝
+- `following` 我的关注
 - `columnCount` column 数量
 - `sectionStatistics` section 统计
 - `categoryStatistics` category 统计
