@@ -342,4 +342,14 @@ exports.at = function (atFrom, atTo, atObject, atResponse) {
  */
 exports.followingObject = function (author, theObject, sectionURI) {
     var type = 'following-' + sectionURI;
+
+    author.follower.forEach(function (target) {
+        // 1. 站内通知
+        notification.createOne({
+            type: type,
+            source: author.id.toString(),
+            target: target,
+            object: theObject.id.toString()
+        }, log.holdError);
+    });
 };
