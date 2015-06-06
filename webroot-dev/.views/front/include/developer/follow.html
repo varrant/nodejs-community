@@ -1,3 +1,4 @@
+{{if list.length}}
 <ul class="dlist avg-xs-1 avg-sm-3 avg-md-4">
     {{list list as index,item}}
     <li class="dlist-item">
@@ -7,3 +8,7 @@
     </li>
     {{/list}}
 </ul>
+{{else}}
+<div class="alert alert-warning"><i class="fi fi-info-circle"></i>暂无相关{{pageType=='following' ? '关注' : '粉丝'}}。</div>
+{{/if}}
+
