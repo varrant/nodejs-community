@@ -17,6 +17,8 @@ define(function (require, exports, module) {
     var app = {};
     var Pager = require('../../alien/ui/Pager/');
     var selector = require('../../alien/core/dom/selector.js');
+    var animation = require('../../alien/core/dom/animation.js');
+    var attribute = require('../../alien/core/dom/attribute.js');
     var event = require('../../alien/core/event/base.js');
     var Template = require('../../alien/libs/Template.js');
     var dato = require('../../alien/utils/dato.js');
@@ -54,31 +56,30 @@ define(function (require, exports, module) {
                 url: url
             }).on('success', function (data) {
                 $body.innerHTML = tpl.render(data);
-                //dato.extend(pager, data.pager);
-                //pager.max = Math.ceil(pager.count / pager.limit);
-                //app.options.page = data.pager.page;
-                //app.page.render({
-                //    page: pager.page,
-                //    max: Math.ceil(pager.count / pager.limit)
-                //});
-                //
-                //history.pushState({
-                //    url: url
-                //}, data.title, url);
-                //animation.scrollTo(window, {
-                //    y: attribute.top($body) - 60
-                //});
+                dato.extend(winPager, data.pager);
+                winPager.max = Math.ceil(winPager.count / winPager.limit);
+                pager.render({
+                    page: winPager.page,
+                    max: Math.ceil(winPager.count / winPager.limit)
+                });
+                animation.scrollTo(window, {
+                    y: attribute.top($body) - 60
+                });
             });
         };
 
         pager.on('change', function (page) {
-            location.href = path + 'page/' + page + '/';
+            var url = path + 'page/' + page + '/';
+            history.pushState({
+                url: url
+            }, '', url);
+            getList(url);
         });
 
         event.on(window, 'popstate', function () {
             var state = history.state;
 
-            if(state && state.url){
+            if (state && state.url) {
                 getList(state.url);
             }
         });
