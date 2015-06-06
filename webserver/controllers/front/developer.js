@@ -826,7 +826,6 @@ module.exports = function (app) {
                 skipLimit: {}
             };
 
-
             res.render('front/developer-follower.html', data);
         });
     };
@@ -839,7 +838,7 @@ module.exports = function (app) {
         developer.findOne({
             githubLogin: githubLogin
         }, {
-            populate: ['follower']
+            populate: ['following']
         }, function (err, doc) {
             if (err) {
                 return next(err);
@@ -852,7 +851,7 @@ module.exports = function (app) {
             var data = {
                 developer: doc,
                 title: doc.nickname + '的关注',
-                pageType: 'follower',
+                pageType: 'following',
                 skipLimit: {}
             };
 
