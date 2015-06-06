@@ -491,6 +491,32 @@ exports.pullFollower = function (conditions, followerId, callback) {
 
 
 /**
+ * 添加我的关注
+ * @param conditions {Object} 查询条件
+ * @param followerId {String} 我关注的 ID
+ * @param callback {Function} 回调
+ */
+exports.pushFollowing = function (conditions, followerId, callback) {
+    developer.push(conditions, 'following', followerId, {
+        maxLength: null,
+        isUnique: true,
+        isDeleteDuplicatorAndPush: false
+    }, callback);
+};
+
+
+/**
+ * 取消我的关注
+ * @param conditions {Object} 查询条件
+ * @param followerId {String} 我关注的 ID
+ * @param callback {Function} 回调
+ */
+exports.pullFolloing = function (conditions, followerId, callback) {
+    developer.pull(conditions, 'following', followerId, callback);
+};
+
+
+/**
  * 增加 section 中的 object 统计
  * @param conditions {Object} 查询条件
  * @param sectionId {string} section Id
