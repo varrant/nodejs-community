@@ -805,7 +805,7 @@ module.exports = function (app) {
     // 我的粉丝
     exports.follower = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var skipLimit = filter.skipLimit(req.params);
+        var skipLimit = filter.skipLimit(req.params, 1, 12);
 
         developer.findOne({
             githubLogin: githubLogin
@@ -835,7 +835,7 @@ module.exports = function (app) {
     // 我的关注
     exports.following = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var skipLimit = filter.skipLimit(req.params);
+        var skipLimit = filter.skipLimit(req.params, 1, 12);
 
         developer.findOne({
             githubLogin: githubLogin
