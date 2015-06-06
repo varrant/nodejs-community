@@ -6,7 +6,6 @@
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga", "kern";
   color: #333;
-  background: #fff;
   line-height: 1.8; }
   .typo .toc {
     display: inline-block;
