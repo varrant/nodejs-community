@@ -93,7 +93,13 @@ define(function (require, exports, module) {
 
             app.page.on('change', function (page) {
                 app.options.page = page;
-                app.pjax(app.buildPath());
+
+                var url = app.buildPath();
+
+                history.pushState({
+                    url: url
+                }, '', url);
+                app.pjax(url);
             });
         }
     };
