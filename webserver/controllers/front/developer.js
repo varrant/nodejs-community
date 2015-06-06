@@ -803,11 +803,8 @@ module.exports = function (app) {
 
 
     // 我的粉丝
-    exports.follower = function () {
+    exports.follower = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var data = {
-            title: '我的粉丝'
-        };
 
         developer.findOne({
             githubLogin: githubLogin
@@ -821,6 +818,14 @@ module.exports = function (app) {
             if (!doc) {
                 return next();
             }
+
+            var data = {
+                developer: doc,
+                title: doc.nickname + '的粉丝',
+                pageType: 'follower',
+                skipLimit: {}
+            };
+
 
             res.render('front/developer-follower.html', data);
         });
@@ -828,11 +833,8 @@ module.exports = function (app) {
 
 
     // 我的关注
-    exports.following = function () {
+    exports.following = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var data = {
-            title: '我的关注'
-        };
 
         developer.findOne({
             githubLogin: githubLogin
@@ -846,6 +848,13 @@ module.exports = function (app) {
             if (!doc) {
                 return next();
             }
+
+            var data = {
+                developer: doc,
+                title: doc.nickname + '的关注',
+                pageType: 'follower',
+                skipLimit: {}
+            };
 
             res.render('front/developer-following.html', data);
         });
