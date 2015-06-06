@@ -141,25 +141,13 @@ var schema = new mongoose.Schema({
     },
     // 关注我的人
     follower: [{
-        developerr: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'developer'
-        },
-        at: {
-            type: Date,
-            default: Date.now
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'developer'
     }],
     // 我关注的人
     following: [{
-        developerr: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'developer'
-        },
-        at: {
-            type: Date,
-            default: Date.now
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'developer'
     }],
     //// 关注人数 => following.length
     //followCount: {
