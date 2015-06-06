@@ -160,6 +160,7 @@ define(function (require, exports, module) {
             the._$wrap = selector.children($parent)[0];
             the._imgview = new Imgview();
             the._atMap = {};
+            the._following = [];
             the._atList = [];
             the._initEvent();
         },
@@ -238,6 +239,7 @@ define(function (require, exports, module) {
             the._$paginationParent = nodes[2];
             the._$commentByCount = selector.query('.' + commentByCountClass);
             the._$replyByCount = selector.query('.' + replyByCountClass);
+            the._ajaxFollowing();
             the._ajaxComment();
             the._increaseCount();
             the._updateTime();
@@ -352,6 +354,27 @@ define(function (require, exports, module) {
 
 
         /**
+         * 加载关注列表
+         * @private
+         */
+        _ajaxFollowing: function () {
+            var the = this;
+
+            ajax({
+                url: '/api/developer/following/',
+                loading: false
+            }).on('success', function (json) {
+                the._following = json.list.map(function (item) {
+                    return {
+                        value: item.githubLogin,
+                        text: item.nickname
+                    };
+                });
+            });
+        },
+
+
+        /**
          * 初始化主评论
          * @private
          */
@@ -409,8 +432,8 @@ define(function (require, exports, module) {
 
         /**
          * 更新 at 列表
-         * @param list
-         * @param isComment
+         * @param list {Array} 数据列表
+         * @param isComment {Boolean} 是否为评论
          * @private
          */
         _updateAtList: function (list, isComment) {
@@ -430,9 +453,18 @@ define(function (require, exports, module) {
                         value: author.githubLogin,
                         text: author.nickname
                     });
-                    the._atMap[author.id] = 1;
+                    the._atMap[author.githubLogin] = 1;
                 }
             });
+
+            if (isComment) {
+                the._following.forEach(function (item) {
+                    if (!the._atMap[item.value]) {
+                        the._atList.push(item);
+                        the._atMap[item.value] = 1;
+                    }
+                });
+            }
 
             if (the._commentRespond) {
                 the._commentRespond.setAtList(the._atList);
