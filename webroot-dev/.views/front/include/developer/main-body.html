@@ -25,10 +25,11 @@
                     <li><i class="fi fi-weibo"></i><a href="http://weibo.com/{{developer.weibo}}/" target="_blank">{{developer.weibo}}</a></li>
                     {{/if}}
                     <li><i class="fi fi-github"></i><a href="https://github.com/{{developer.githubLogin}}" target="_blank">{{developer.githubLogin}}</a></li>
+                    <li><i class="fi fi-heart"></i><a href="/developer/{{developer.githubLogin}}/following/">{{developer.following.length|format}} 个关注</a></li>
+                    <li><i class="fi fi-heart"></i><a href="/developer/{{developer.githubLogin}}/follower/">{{developer.follower.length|format}} 个粉丝</a></li>
                 </ul>
                 <ul class="list-left">
                     <li><i class="fi fi-circle"></i>{{developer.score|format}} 声望</li>
-                    <li><i class="fi fi-heart"></i>{{developer.follower.length|format}} 个粉丝</li>
                     <li><i class="fi fi-check-square"></i>被采纳 {{developer.acceptByCount|format}} 次</li>
                     <li><i class="fi fi-thumbs-up"></i>被赞同 {{developer.agreeByCount|format}} 次</li>
                     <li><i class="fi fi-comment"></i>被评论 {{developer.commentByCount|format}} 次</li>
