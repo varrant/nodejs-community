@@ -12,7 +12,7 @@
 <link rel="dns-prefetch" href="//f.ydr.me">
 <script>window['-csrf-']='{{$csrf}}';</script>
 <script>window['-developer-']={
-    id: '{{$developer.id ?$developer.id : ""}}',
+    id: '{{$developer.id ? $developer.id : ""}}',
     nickname: '{{$developer.nickname || ""}}',
     email: '{{$developer.email || ""}}',
     avatar: '{{=$developer.avatar || $settings.default.avatar}}',

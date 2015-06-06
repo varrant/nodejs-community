@@ -22,7 +22,7 @@ define(function (require, exports, module) {
         id: '',
         previewClass: 'typo',
         minHeight: 100,
-        avatar: 'http://s.ydr.me/@/p/i/avatar.png',
+        avatar: '',
         githubLogin: '#',
         markdownHelp: {
             link: '#',
