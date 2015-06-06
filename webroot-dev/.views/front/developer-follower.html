@@ -60,23 +60,28 @@
         <div class="row layout-container">
             <!--主-->
             <div class="col-md-12 layout-main">
+
+                <!--我的粉丝-->
                 <div class="card">
                     <h2 class="card-title"><i class="fi fi-user"></i>{{title}}
                         {{if developer.hasCertificated}}<i class="fi fi-check-circle text-success" title="个人认证"></i>{{/if}}
                         {{if pageType !== "home"}}<span class="text-space text-light">/</span><i class="fi fi-home"></i><a href="/developer/{{=developer.githubLogin}}/">主页</a>{{/if}}
                     </h2>
+
+                    <div class="card-body">
+                        <ul class="dlist avg-xs-1 avg-sm-3 avg-md-4">
+                            {{list list as index,item}}
+                            <li>
+                                <p><img src="https://images.weserv.nl/?url=s.gravatar.com%2Favatar%2F076de35998b7a6956a6183bf3d694094%3Fs%3D200%26d%3Dretro"
+                                        alt="avatar" class="img-rounder img-border-blank" coolieignore/></p>
+                                <p>#云淡然</p>
+                            </li>
+                            {{/list}}
+                        </ul>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <ul class="dlist">
-                        {{list list as index,item}}
-                        <li>
-                            <p><img src="https://images.weserv.nl/?url=s.gravatar.com%2Favatar%2F076de35998b7a6956a6183bf3d694094%3Fs%3D200%26d%3Dretro"
-                                 alt="avatar" class="img-rounder img-border-blank" coolieignore/></p>
-                            <p>#云淡然</p>
-                        </li>
-                        {{/list}}
-                    </ul>
-                </div>
+                <!--/我的粉丝-->
+
             </div>
             <!--/主-->
         </div>
