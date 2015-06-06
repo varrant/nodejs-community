@@ -9,11 +9,6 @@
 var cache = require('ydr-utils').cache;
 
 module.exports = function (app, ctrl) {
-    // user
-    app.get('/developer/oauth/authorize/', ctrl.developer.oauthAuthorize);
-    app.get('/developer/oauth/callback/', ctrl.developer.oauthCallback);
-
-
     // home
     app.get('/', ctrl.main.getHome);
 
@@ -148,7 +143,11 @@ module.exports = function (app, ctrl) {
 
 
     // developer
+    app.get('/developer/oauth/authorize/', ctrl.developer.oauthAuthorize);
+    app.get('/developer/oauth/callback/', ctrl.developer.oauthCallback);
     app.get('/developer/:githubLogin/', ctrl.developer.home);
+    app.get('/developer/:githubLogin/follower', ctrl.developer.home);
+    app.get('/developer/:githubLogin/following', ctrl.developer.home);
     //app.get('/developer/:githubLogin/comment/', ctrl.developer.comment);
     //app.get('/developer/:githubLogin/comment/page/:page/', ctrl.developer.comment);
     //app.get('/developer/:githubLogin/comment-by/', ctrl.developer.commentBy);

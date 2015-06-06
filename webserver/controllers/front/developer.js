@@ -448,6 +448,7 @@ module.exports = function (app) {
             });
     };
 
+
     // 我的赞同
     exports.agree = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
@@ -601,6 +602,7 @@ module.exports = function (app) {
             });
     };
 
+
     // 我的采纳
     exports.accept = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
@@ -677,6 +679,7 @@ module.exports = function (app) {
             });
     };
 
+
     // 我的被采纳
     exports.acceptBy = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
@@ -751,6 +754,7 @@ module.exports = function (app) {
                 res.render('front/developer-home.html', data);
             });
     };
+
 
     // 我的object
     exports.object = function (sectionId) {
