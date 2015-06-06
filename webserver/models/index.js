@@ -571,7 +571,7 @@ dato.each(models, function (key, model) {
             }
 
             // 如果超过最大长度
-            if (array.length > options.maxLength) {
+            if (typeis.number(options.maxLength) && array.length > options.maxLength) {
                 array = array.slice(array.length - options.maxLength, array.length);
             }
 
