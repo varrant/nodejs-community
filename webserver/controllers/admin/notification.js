@@ -13,7 +13,7 @@ module.exports = function (app) {
 
     exports.get = function (req, res, next) {
         var data = {
-            title: '提醒',
+            title: '我的通知',
             sectionURIMap: cache.get('app.sectionURIMap')
         };
 
