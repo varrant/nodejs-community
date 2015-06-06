@@ -52,23 +52,23 @@
                                     <td>\{{(query.page - 1) * query.limit + $index + 1}}</td>
                                     <td class="text-left">
                                         <div v-if="notification.type === 'commentObject'">
-                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
+                                            <a href="/object/?id=\{{notification.object.id}}" v-on="click: toggle(notification, true)">
                                                 <strong>\{{notification.source.nickname}}</strong> 评论了你的《\{{notification.object.title}}》。</a>
                                         </div>
                                         <div v-if="notification.type === 'replyObject'">
-                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
+                                            <a href="/object/?id=\{{notification.object.id}}" v-on="click: toggle(notification, true)">
                                                 <strong>\{{notification.source.nickname}}</strong> 回复了你的《\{{notification.object.title}}》。</a>
                                         </div>
                                         <div v-if="notification.type === 'commentAt'">
-                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
+                                            <a href="/object/?id=\{{notification.object.id}}" v-on="click: toggle(notification, true)">
                                                 <strong>\{{notification.source.nickname}}</strong> 在《\{{notification.object.title}}》上的评论中提到了你。</a>
                                         </div>
                                         <div v-if="notification.type === 'replyAt'">
-                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
+                                            <a href="/object/?id=\{{notification.object.id}}" v-on="click: toggle(notification, true)">
                                                 <strong>\{{notification.source.nickname}}</strong> 在《\{{notification.object.title}}》上的回复中提到了你。</a>
                                         </div>
                                         <div v-if="notification.type === 'reply'">
-                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
+                                            <a href="/object/?id=\{{notification.object.id}}" v-on="click: toggle(notification, true)">
                                                 <strong>\{{notification.source.nickname}}</strong> 回复了你在《\{{notification.object.title}}》上的评论。</a>
                                         </div>
                                         <div v-if="notification.type === 'role'">
@@ -79,19 +79,19 @@
                                                 <strong>\{{notification.source.nickname}}</strong></a> 关注了你。
                                         </div>
                                         <div v-if="notification.type === 'following-object'">
-                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
+                                            <a href="/object/?id=\{{notification.object.id}}" v-on="click: toggle(notification, true)">
                                                 你关注的 <strong>\{{notification.source.nickname}}</strong> 发表了《\{{notification.object.title}}》。</a>
                                         </div>
                                         <div v-if="notification.type === 'accept'">
-                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
+                                            <a href="/object/?id=\{{notification.object.id}}" v-on="click: toggle(notification, true)">
                                                 <strong>\{{notification.source.nickname}}</strong> 采纳了你在《\{{notification.object.title}}》上的回答。</a>
                                         </div>
                                         <div v-if="notification.type === 'agreeComment'">
-                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
+                                            <a href="/object/?id=\{{notification.object.id}}" v-on="click: toggle(notification, true)">
                                                 <strong>\{{notification.source.nickname}}</strong> 赞同了你在《\{{notification.object.title}}》上的评论。</a>
                                         </div>
                                         <div v-if="notification.type === 'agreeReply'">
-                                            <a v-attr="href: '/' + sectionIDMap[notification.object.section].uri + '/' + notification.object.uri + '.html'" v-on="click: toggle(notification, true)">
+                                            <a href="/object/?id=\{{notification.object.id}}" v-on="click: toggle(notification, true)">
                                                 <strong>\{{notification.source.nickname}}</strong> 赞同了你在《\{{notification.object.title}}》上的回复。</a>
                                         </div>
                                     </td>
