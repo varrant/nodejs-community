@@ -42,7 +42,7 @@ module.exports = function (app) {
             };
             var data = {
                 section: section,
-                title: section.name,
+                title: section.name + (listOptions.page ? ' - 第' + listOptions.page + '页' : ''),
                 choose: {}
             };
             var isAJAX = req.headers['x-request-with'] === 'XMLHttpRequest';
