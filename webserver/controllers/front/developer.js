@@ -145,7 +145,7 @@ module.exports = function (app) {
     // 我的评论
     exports.comment = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var skipLimit = filter.skipLimit(req.params);
+        var pager = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -175,7 +175,7 @@ module.exports = function (app) {
                     populate: ['response', 'object', 'target']
                 };
 
-                dato.extend(options, skipLimit);
+                dato.extend(options, pager);
 
                 interactive.find({
                     source: de.id,
@@ -209,9 +209,9 @@ module.exports = function (app) {
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
                     list: docs,
-                    skipLimit: skipLimit
+                    pager: pager
                 };
-                skipLimit.count = de.commentCount;
+                pager.count = de.commentCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -222,7 +222,7 @@ module.exports = function (app) {
     // 我的被评论
     exports.commentBy = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var skipLimit = filter.skipLimit(req.params);
+        var pager = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -252,7 +252,7 @@ module.exports = function (app) {
                     populate: ['response', 'object', 'source']
                 };
 
-                dato.extend(options, skipLimit);
+                dato.extend(options, pager);
 
                 interactive.find({
                     target: de.id,
@@ -286,9 +286,9 @@ module.exports = function (app) {
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
                     list: docs,
-                    skipLimit: skipLimit
+                    skipLimit: pager
                 };
-                skipLimit.count = de.commentByCount;
+                pager.count = de.commentByCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -299,7 +299,7 @@ module.exports = function (app) {
     // 我的回复
     exports.reply = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var skipLimit = filter.skipLimit(req.params);
+        var pager = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -329,7 +329,7 @@ module.exports = function (app) {
                     populate: ['response', 'object', 'target']
                 };
 
-                dato.extend(options, skipLimit);
+                dato.extend(options, pager);
 
                 interactive.find({
                     source: de.id,
@@ -363,9 +363,9 @@ module.exports = function (app) {
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
                     list: docs,
-                    skipLimit: skipLimit
+                    pager: pager
                 };
-                skipLimit.count = de.replyCount;
+                pager.count = de.replyCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -376,7 +376,7 @@ module.exports = function (app) {
     // 我的被回复
     exports.replyBy = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var skipLimit = filter.skipLimit(req.params);
+        var pager = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -406,7 +406,7 @@ module.exports = function (app) {
                     populate: ['source', 'object', 'response']
                 };
 
-                dato.extend(options, skipLimit);
+                dato.extend(options, pager);
                 interactive.find({
                     target: de.id,
                     type: 'reply'
@@ -439,9 +439,9 @@ module.exports = function (app) {
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
                     list: docs,
-                    skipLimit: skipLimit
+                    pager: pager
                 };
-                skipLimit.count = de.replyByCount;
+                pager.count = de.replyByCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -452,7 +452,7 @@ module.exports = function (app) {
     // 我的赞同
     exports.agree = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var skipLimit = filter.skipLimit(req.params);
+        var pager = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -483,7 +483,7 @@ module.exports = function (app) {
                     populate: ['response', 'object', 'target']
                 };
 
-                dato.extend(options, skipLimit);
+                dato.extend(options, pager);
 
                 interactive.find({
                     source: de.id,
@@ -517,9 +517,9 @@ module.exports = function (app) {
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
                     list: docs,
-                    skipLimit: skipLimit
+                    pager: pager
                 };
-                skipLimit.count = de.agreeCount;
+                pager.count = de.agreeCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -530,7 +530,7 @@ module.exports = function (app) {
     // 我的被赞同
     exports.agreeBy = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var skipLimit = filter.skipLimit(req.params);
+        var pager = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -560,7 +560,7 @@ module.exports = function (app) {
                     populate: ['source', 'object', 'response']
                 };
 
-                dato.extend(options, skipLimit);
+                dato.extend(options, pager);
                 interactive.find({
                     type: 'agree',
                     target: de.id.toString()
@@ -593,9 +593,9 @@ module.exports = function (app) {
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
                     list: docs,
-                    skipLimit: skipLimit
+                    pager: pager
                 };
-                skipLimit.count = de.agreeByCount;
+                pager.count = de.agreeByCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -606,7 +606,7 @@ module.exports = function (app) {
     // 我的采纳
     exports.accept = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var skipLimit = filter.skipLimit(req.params);
+        var pager = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -636,7 +636,7 @@ module.exports = function (app) {
                     populate: ['response', 'object', 'target']
                 };
 
-                dato.extend(options, skipLimit);
+                dato.extend(options, pager);
 
                 interactive.find({
                     source: de.id,
@@ -670,9 +670,9 @@ module.exports = function (app) {
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
                     list: docs,
-                    skipLimit: skipLimit
+                    pager: pager
                 };
-                skipLimit.count = de.acceptCount;
+                pager.count = de.acceptCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -683,7 +683,7 @@ module.exports = function (app) {
     // 我的被采纳
     exports.acceptBy = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var skipLimit = filter.skipLimit(req.params);
+        var pager = filter.skipLimit(req.params);
 
         howdo
             // 查找用户
@@ -713,7 +713,7 @@ module.exports = function (app) {
                     populate: ['source', 'object', 'response']
                 };
 
-                dato.extend(options, skipLimit);
+                dato.extend(options, pager);
                 interactive.find({
                     type: 'accept',
                     target: de.id.toString()
@@ -746,9 +746,9 @@ module.exports = function (app) {
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
                     list: docs,
-                    skipLimit: skipLimit
+                    pager: pager
                 };
-                skipLimit.count = de.acceptByCount;
+                pager.count = de.acceptByCount;
 
                 developer.increaseViewByCount({_id: de.id}, 1, log.holdError);
                 res.render('front/developer-home.html', data);
@@ -805,7 +805,7 @@ module.exports = function (app) {
     // 我的粉丝
     exports.follower = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var skipLimit = filter.skipLimit(req.params, 1, 12);
+        var pager = filter.skipLimit(req.params, 1, 12);
         var isAJAX = req.headers['x-request-with'] === 'XMLHttpRequest';
 
         developer.findOne({
@@ -821,17 +821,17 @@ module.exports = function (app) {
                 return next();
             }
 
-            skipLimit.count = doc.follower.length;
-            var list = doc.follower.slice((skipLimit.page - 1) * skipLimit.limit, skipLimit.page * skipLimit.limit);
+            pager.count = doc.follower.length;
+            var list = doc.follower.slice((pager.page - 1) * pager.limit, pager.page * pager.limit);
             var data = {
                 developer: doc,
                 title: doc.nickname + '的粉丝',
                 pageType: 'follower',
-                skipLimit: skipLimit,
+                skipLimit: pager,
                 list: list
             };
 
-            if(isAJAX){
+            if (isAJAX) {
                 return res.send({
                     code: 200,
                     data: data
@@ -846,7 +846,7 @@ module.exports = function (app) {
     // 我的关注
     exports.following = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var skipLimit = filter.skipLimit(req.params, 1, 1);
+        var pager = filter.skipLimit(req.params, 1, 1);
         var isAJAX = req.headers['x-request-with'] === 'XMLHttpRequest';
 
         developer.findOne({
@@ -862,17 +862,17 @@ module.exports = function (app) {
                 return next();
             }
 
-            skipLimit.count = doc.following.length;
-            var list = doc.following.slice((skipLimit.page - 1) * skipLimit.limit, skipLimit.page * skipLimit.limit);
+            pager.count = doc.following.length;
+            var list = doc.following.slice((pager.page - 1) * pager.limit, pager.page * pager.limit);
             var data = {
                 developer: doc,
                 title: doc.nickname + '的关注',
                 pageType: 'following',
-                skipLimit: skipLimit,
+                pager: pager,
                 list: list
             };
 
-            if(isAJAX){
+            if (isAJAX) {
                 return res.send({
                     code: 200,
                     data: data

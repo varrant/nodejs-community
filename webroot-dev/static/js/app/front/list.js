@@ -134,8 +134,6 @@ define(function (require, exports, module) {
 
     // 构建 pjax
     app.buildPjax = function () {
-        var startPage = location.href;
-
         event.on($body, 'click', '.choose a', function () {
             app.pjax(this.href);
 
@@ -145,7 +143,9 @@ define(function (require, exports, module) {
         event.on(window, 'popstate', function () {
             var state = history.state;
 
-            app.pjax(state && state.url || startPage, true);
+            if(state && state.url){
+                app.pjax(state && state.url, true);
+            }
         });
     };
 
