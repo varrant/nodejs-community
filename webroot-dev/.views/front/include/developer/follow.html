@@ -1,0 +1,9 @@
+<ul class="dlist avg-xs-1 avg-sm-3 avg-md-4">
+    {{list list as index,item}}
+    <li class="dlist-item">
+        <p class="dlist-avatar"><a href="/developer/{{item.githubLogin}}/"><img src="{{item.avatarL}}"
+                                                                                alt="avatar" class="img-rounder img-border-primary" coolieignore/></a></p>
+        <p class="dlist-name"><a href="/developer/{{item.githubLogin}}/">{{item.nickname}}</a></p>
+    </li>
+    {{/list}}
+</ul>

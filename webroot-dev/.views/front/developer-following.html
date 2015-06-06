@@ -68,16 +68,14 @@
                         {{if pageType !== "home"}}<span class="text-space text-light">/</span><i class="fi fi-home"></i><a href="/developer/{{=developer.githubLogin}}/">主页</a>{{/if}}
                     </h2>
 
-                    <div class="card-body">
-                        <ul class="dlist avg-xs-1 avg-sm-3 avg-md-4">
-                            {{list list as index,item}}
-                            <li class="dlist-item">
-                                <p class="dlist-avatar"><a href="/developer/{{item.githubLogin}}/"><img src="{{item.avatarL}}"
-                                        alt="avatar" class="img-rounder img-border-blank" coolieignore/></a></p>
-                                <p class="dlist-name"><a href="/developer/{{item.githubLogin}}/">{{item.nickname}}</a></p>
-                            </li>
-                            {{/list}}
-                        </ul>
+                    <div class="card-body" id="body">
+                        {{include ./include/developer/follow.html}}
+                    </div>
+
+                    <div class="card-footer text-center">
+                        <!--分页器-->
+                        <div id="pager"></div>
+                        <!--/分页器-->
                     </div>
                 </div>
                 <!--/我的关注-->
@@ -90,6 +88,10 @@
     {{include ./include/footer.html}}
 </div>
 
+
+{{ignore}}
+<style type="text/plain" id="template">{{include ./include/developer/follow.html}}</style>
+{{/ignore}}
 
 {{include ./include/bottom.html}}
 <script coolie src="http://s.ydr.me/@/p/j/coolie/0.12.0/coolie.min.js"
