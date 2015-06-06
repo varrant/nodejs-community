@@ -210,6 +210,9 @@ exports.createOne = function (author, data, callback) {
                         }
                     }, log.holdError);
                 }
+
+                // 通知给粉丝
+                notice.followingObject(author, doc, objectInSection);
             }
         });
 };

@@ -338,11 +338,10 @@ exports.at = function (atFrom, atTo, atObject, atResponse) {
  * 关注者发表了文章，通知 TA 的粉丝
  * @param author
  * @param theObject
- * @param sectionURI
+ * @param objectInSection
  */
-exports.followingObject = function (author, theObject, sectionURI) {
-    var type = 'following-' + sectionURI;
-
+exports.followingObject = function (author, theObject, objectInSection) {
+    var type = 'following-' + objectInSection.uri;
     author.follower.forEach(function (target) {
         // 1. 站内通知
         notification.createOne({
