@@ -452,7 +452,7 @@ define(function (require, exports, module) {
             list.forEach(function (item) {
                 var author = item.author;
 
-                if (author.id !== options.developer.id && !the._atMap[author.id]) {
+                if (author.id !== options.developer.id && !the._atMap[author.githubLogin]) {
                     the._atList.push({
                         value: author.githubLogin,
                         text: author.nickname
