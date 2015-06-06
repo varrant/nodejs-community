@@ -20,7 +20,6 @@ xss.config({
     atLink: '/developer/${at}/'
 });
 
-
 validator.pushRule({
     name: 'content',
     type: 'string',
