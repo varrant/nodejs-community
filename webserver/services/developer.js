@@ -415,8 +415,14 @@ exports.follow = function (operator, developerId, callback) {
             }
 
             if (isModified) {
-                developer.increase({_id: operator.id}, 'followCount', 1, log.holdError);
-                developer.increase({_id: followBy.id}, 'followByCount', 1, log.holdError);
+                // 我关注的人
+                exports.pushFollowing({
+                    _id: operator.id
+                }, developerId, log.holdError);
+                // 关注我的人
+                exports.pushFollower({
+                    _id: developerId
+                }, operator.id, log.holdError);
             }
         });
 
@@ -457,8 +463,14 @@ exports.unfollow = function (operator, developerId, callback) {
             callback(err);
 
             if (!err && isModified) {
-                developer.increase({_id: operator.id}, 'followCount', -1, log.holdError);
-                developer.increase({_id: unfollowBy.id}, 'followByCount', -1, log.holdError);
+                // 取消我关注的人
+                exports.pullFollowing({
+                    _id: operator.id
+                }, developerId, log.holdError);
+                // 取消关注我的人
+                exports.pullFollower({
+                    _id: developerId
+                }, operator.id, log.holdError);
             }
         });
 };
@@ -511,7 +523,7 @@ exports.pushFollowing = function (conditions, followerId, callback) {
  * @param followerId {String} 我关注的 ID
  * @param callback {Function} 回调
  */
-exports.pullFolloing = function (conditions, followerId, callback) {
+exports.pullFollowing = function (conditions, followerId, callback) {
     developer.pull(conditions, 'following', followerId, callback);
 };
 
