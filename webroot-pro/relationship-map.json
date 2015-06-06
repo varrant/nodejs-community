@@ -205,7 +205,7 @@
     ".views/admin/include/meta.html": {
         "css": [
             {
-                "static/css/d88864b4e144df7beb5239d108976890.css": [
+                "static/css/79716017c37f52948e3b1feafdeb1d9e.css": [
                     "static/css/components/front/0-layout.css",
                     "static/css/components/front/1-header.css",
                     "static/css/components/front/2-unit-card.css",
@@ -1339,7 +1339,7 @@
     ".views/front/include/meta.html": {
         "css": [
             {
-                "static/css/999d33244736432e9fa2e0e87a286da1.css": [
+                "static/css/573d7576a7f71df67b026048c41ba006.css": [
                     "static/css/components/front/0-layout.css",
                     "static/css/components/front/1-header.css",
                     "static/css/components/front/2-unit-card.css",
