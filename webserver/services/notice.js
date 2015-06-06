@@ -332,3 +332,14 @@ exports.at = function (atFrom, atTo, atObject, atResponse) {
 
     email.send(atTo, subject, content);
 };
+
+
+/**
+ * 关注者发表了文章，通知 TA 的粉丝
+ * @param author
+ * @param theObject
+ * @param sectionURI
+ */
+exports.followingObject = function (author, theObject, sectionURI) {
+    var type = 'following-' + sectionURI;
+};
