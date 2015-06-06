@@ -806,6 +806,7 @@ module.exports = function (app) {
     exports.follower = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
         var skipLimit = filter.skipLimit(req.params, 1, 12);
+        var isAJAX = req.headers['x-request-with'] === 'XMLHttpRequest';
 
         developer.findOne({
             githubLogin: githubLogin
@@ -820,12 +821,22 @@ module.exports = function (app) {
                 return next();
             }
 
+            skipLimit.count = doc.follower.length;
+            var list = doc.follower.slice((skipLimit.page - 1) * skipLimit.limit, skipLimit.page * skipLimit.limit);
             var data = {
                 developer: doc,
                 title: doc.nickname + '的粉丝',
                 pageType: 'follower',
-                skipLimit: skipLimit
+                skipLimit: skipLimit,
+                list: list
             };
+
+            if(isAJAX){
+                return res.send({
+                    code: 200,
+                    data: data
+                });
+            }
 
             res.render('front/developer-follower.html', data);
         });
@@ -836,6 +847,7 @@ module.exports = function (app) {
     exports.following = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
         var skipLimit = filter.skipLimit(req.params, 1, 1);
+        var isAJAX = req.headers['x-request-with'] === 'XMLHttpRequest';
 
         developer.findOne({
             githubLogin: githubLogin
@@ -859,6 +871,13 @@ module.exports = function (app) {
                 skipLimit: skipLimit,
                 list: list
             };
+
+            if(isAJAX){
+                return res.send({
+                    code: 200,
+                    data: data
+                });
+            }
 
             res.render('front/developer-following.html', data);
         });
