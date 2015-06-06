@@ -805,6 +805,7 @@ module.exports = function (app) {
     // 我的粉丝
     exports.follower = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
+        var skipLimit = filter.skipLimit(req.params);
 
         developer.findOne({
             githubLogin: githubLogin
@@ -823,7 +824,7 @@ module.exports = function (app) {
                 developer: doc,
                 title: doc.nickname + '的粉丝',
                 pageType: 'follower',
-                skipLimit: {}
+                skipLimit: skipLimit
             };
 
             res.render('front/developer-follower.html', data);
@@ -834,6 +835,7 @@ module.exports = function (app) {
     // 我的关注
     exports.following = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
+        var skipLimit = filter.skipLimit(req.params);
 
         developer.findOne({
             githubLogin: githubLogin
@@ -852,7 +854,7 @@ module.exports = function (app) {
                 developer: doc,
                 title: doc.nickname + '的关注',
                 pageType: 'following',
-                skipLimit: {}
+                skipLimit: skipLimit
             };
 
             res.render('front/developer-following.html', data);
