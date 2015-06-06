@@ -297,5 +297,39 @@ module.exports = function (app) {
         });
     };
 
+
+    // 取我最近关注的 50 个用户
+    exports.getFollowing = function (req, res, next) {
+        developer.findOne({
+            _id: req.session.$developer.id
+        }, {
+            populate: [{
+                path: 'following',
+                select: 'nickname email githubLogin'
+            }]
+        }, function (err, doc) {
+            if (err) {
+                return next(err);
+            }
+
+            if (!doc) {
+                return next();
+            }
+
+            var list = doc.following.slice(-50);
+
+            list.forEach(function (item) {
+                delete(item.email);
+            });
+
+            res.send({
+                code: 200,
+                data: {
+                    list: list
+                }
+            });
+        });
+    };
+
     return exports;
 };

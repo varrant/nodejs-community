@@ -77,6 +77,7 @@ module.exports = function (app, ctrl) {
     app.post('/api/developer/login/', ctrl.developer.login);
     app.post('/api/developer/logout/', ctrl.developer.logout);
     app.get('/api/developer/', ctrl.developer.get);
+    app.get('/api/developer/following/', ctrl.developer.getFollowing);
     app.get('/admin/api/developer/', ctrl.developer.detail);
     app.post('/admin/api/developer/', ctrl.developer.role);
     app.get('/admin/api/developer/follow/', ctrl.developer.getFollow);
