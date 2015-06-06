@@ -17,6 +17,7 @@ define(function (require, exports, module) {
     var app = {};
     var Pager = require('../../alien/ui/Pager/');
     var selector = require('../../alien/core/dom/selector.js');
+    var Template = require('../../alien/libs/Template.js');
     var win = window;
     var winPage = win['-page-'];
     var winTa = win['-ta-'];
@@ -35,6 +36,10 @@ define(function (require, exports, module) {
         if (!$pager) {
             return;
         }
+
+        var $body = selector.query('#body')[0];
+        var template = selector.query('#template')[0].innerHTML;
+        var tpl = new Template(template);
 
         var path = location.pathname.replace(/page\/.*$/, '');
         var pager = new Pager($pager, {
