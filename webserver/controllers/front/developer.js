@@ -128,7 +128,7 @@ module.exports = function (app) {
                 title: doc.nickname,
                 pageType: 'home',
                 sectionStatistics: sectionStatistics,
-                skipLimit: {}
+                pager: {}
             };
 
             developer.increaseViewByCount({_id: doc.id}, 1, log.holdError);
@@ -286,7 +286,7 @@ module.exports = function (app) {
                     sectionStatistics: sectionStatistics,
                     sectionURIMap: sectionURIMap,
                     list: docs,
-                    skipLimit: pager
+                    pager: pager
                 };
                 pager.count = de.commentByCount;
 
@@ -827,7 +827,7 @@ module.exports = function (app) {
                 developer: doc,
                 title: doc.nickname + '的粉丝',
                 pageType: 'follower',
-                skipLimit: pager,
+                pager: pager,
                 list: list
             };
 
@@ -846,7 +846,7 @@ module.exports = function (app) {
     // 我的关注
     exports.following = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var pager = filter.skipLimit(req.params, 1, 1);
+        var pager = filter.skipLimit(req.params, 1, 12);
         var isAJAX = req.headers['x-request-with'] === 'XMLHttpRequest';
 
         developer.findOne({

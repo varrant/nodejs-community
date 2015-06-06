@@ -11,6 +11,10 @@
                 <ul class="list-left">
                     <li><i class="fi fi-map-marker"></i>{{developer.meta.location}}</li>
                     <li><i class="fi fi-group"></i>{{developer.meta.company}}</li>
+                    <li><i class="fi fi-heart"></i><a href="/developer/{{developer.githubLogin}}/following/">{{developer.following.length|format}} 个关注</a></li>
+                    <li><i class="fi fi-heart"></i><a href="/developer/{{developer.githubLogin}}/follower/">{{developer.follower.length|format}} 个粉丝</a></li>
+                </ul>
+                <ul class="list-left">
                     <li><i class="fi fi-link"></i>{{if developer.meta.blog}}<a
                             href="{{=developer.meta.blog}}"
                             target="_blank" rel="nofollow"><img
@@ -23,8 +27,6 @@
                     <li><i class="fi fi-weibo"></i><a href="http://weibo.com/{{developer.weibo}}/" target="_blank">{{developer.weibo}}</a></li>
                     {{/if}}
                     <li><i class="fi fi-github"></i><a href="https://github.com/{{developer.githubLogin}}" target="_blank">{{developer.githubLogin}}</a></li>
-                    <li><i class="fi fi-heart"></i><a href="/developer/{{developer.githubLogin}}/following/">{{developer.following.length|format}} 个关注</a></li>
-                    <li><i class="fi fi-heart"></i><a href="/developer/{{developer.githubLogin}}/follower/">{{developer.follower.length|format}} 个粉丝</a></li>
                 </ul>
                 <ul class="list-left">
                     <li><i class="fi fi-circle"></i>{{developer.score|format}} 声望</li>
