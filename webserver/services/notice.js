@@ -377,7 +377,7 @@ exports.followingObject = function (author, theObject) {
             };
             var content = noti.template.render(data);
 
-            email.send(atTo, subject, content);
+            email.send(targetDeveloper, subject, content);
         });
     });
 };
