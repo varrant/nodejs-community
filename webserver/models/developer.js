@@ -139,16 +139,26 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    // 关注人数
-    followCount: {
-        type: Number,
-        default: 0
-    },
-    // 被关注人数
-    followByCount: {
-        type: Number,
-        default: 0
-    },
+    // 关注我的人
+    follower: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'developer'
+    }],
+    // 我关注的人
+    following: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'developer'
+    }],
+    //// 关注人数 => following.length
+    //followCount: {
+    //    type: Number,
+    //    default: 0
+    //},
+    //// 被关注人数 => follower.length
+    //followByCount: {
+    //    type: Number,
+    //    default: 0
+    //},
     // column 数量
     columnCount: {
         type: Number,
