@@ -15,8 +15,8 @@ define(function (require, exports, module) {
     var dato = require('../../../alien/utils/dato.js');
     var Editor = require('../../../alien/ui/Editor/');
     var Template = require('../../../alien/libs/Template.js');
-    var template = require('html!./template.html');
-    var style = require('css!./style.css');
+    var template = require('./template.html', 'html');
+    var style = require('./style.css', 'css');
     var tpl = new Template(template);
     var defaults = {
         id: '',

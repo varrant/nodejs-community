@@ -28,12 +28,12 @@ define(function (require, exports, module) {
     var Loading = require('../../../alien/ui/Loading/');
     var Respond = require('../Respond/');
     var Template = require('../../../alien/libs/Template.js');
-    var templateWrap = require('html!./wrap.html');
-    var templateContainer = require('html!./container.html');
-    var templateList = require('html!./list.html');
+    var templateWrap = require('./wrap.html', 'html');
+    var templateContainer = require('./container.html', 'html');
+    var templateList = require('./list.html', 'html');
     var Prettify = require('../../../alien/ui/Prettify/');
     var xhr = require('../../../alien/core/communication/xhr.js');
-    var style = require('css!./style.css');
+    var style = require('./style.css', 'css');
     var tplWrap = new Template(templateWrap);
     var tplContainer = new Template(templateContainer);
     var tplList = new Template(templateList);

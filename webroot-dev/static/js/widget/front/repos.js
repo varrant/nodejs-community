@@ -16,7 +16,7 @@ define(function (require, exports, module) {
     var Template = require('../../alien/libs/Template.js');
     var dato = require('../../alien/utils/dato.js');
     var date = require('../../alien/utils/date.js');
-    var template = require('html!./repos.html');
+    var template = require('./repos.html', 'html');
     var tpl = new Template(template);
 
     module.exports = function (ta, $container) {
