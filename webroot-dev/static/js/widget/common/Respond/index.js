@@ -20,6 +20,7 @@ define(function (require, exports, module) {
     var tpl = new Template(template);
     var defaults = {
         id: '',
+        previewClass: 'typo',
         minHeight: 100,
         avatar: 'http://s.ydr.me/@/p/i/avatar.png',
         githubLogin: '#',

@@ -179,6 +179,7 @@ define(function (require, exports, module) {
 
             the._editor1 = new Editor(the._contentSelector, {
                 id: data.id,
+                previewClass: 'typo',
                 uploadCallback: the.editorUploadCallback,
                 minHeight: 200
             }).on('change', function (val) {
