@@ -805,7 +805,7 @@ module.exports = function (app) {
     // 我的粉丝
     exports.follower = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var pager = filter.skipLimit(req.params, 1, 12);
+        var pager = filter.skipLimit(req.params, 1, 1);
         var isAJAX = req.headers['x-request-with'] === 'XMLHttpRequest';
 
         developer.findOne({
@@ -825,7 +825,7 @@ module.exports = function (app) {
             var list = doc.follower.slice((pager.page - 1) * pager.limit, pager.page * pager.limit);
             var data = {
                 developer: doc,
-                title: doc.nickname + '的粉丝',
+                title: doc.nickname + '的粉丝' + (pager.page > 1 ? ' - 第' + pager.page + '页' : ''),
                 pageType: 'follower',
                 pager: pager,
                 list: list
@@ -866,7 +866,7 @@ module.exports = function (app) {
             var list = doc.following.slice((pager.page - 1) * pager.limit, pager.page * pager.limit);
             var data = {
                 developer: doc,
-                title: doc.nickname + '的关注',
+                title: doc.nickname + '的关注' + (pager.page > 1 ? ' - 第' + pager.page + '页' : ''),
                 pageType: 'following',
                 pager: pager,
                 list: list
