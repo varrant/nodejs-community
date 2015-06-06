@@ -39,7 +39,7 @@
                 <div>
                     最近访客：
                     {{list developer.visitors as index,item}}
-                    <a href="/developer/{{=item.githubLogin}}">
+                    <a href="/developer/{{=item.githubLogin}}/" title="{{item.nickname}}">
                         <img src="{{=item.avatarM}}"
                              class="img-rounder text-space"
                              width="20" height="20" alt="avatar"
