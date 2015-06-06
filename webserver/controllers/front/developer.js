@@ -823,7 +823,8 @@ module.exports = function (app) {
                 developer: doc,
                 title: doc.nickname + '的粉丝',
                 pageType: 'follower',
-                skipLimit: {}
+                skipLimit: {},
+                list: new Array(20)
             };
 
 
