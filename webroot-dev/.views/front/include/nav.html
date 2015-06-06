@@ -75,6 +75,8 @@
         {{if $permission.help}}
         <li><a href="/admin/object/help/list/"><i class="fi fi-question-circle"></i>帮助管理</a></li>
         {{/if}}
+        <li><a href="/developer/{{$developer.githubLogin}}/following/"><i class="fi fi-heart"></i>我的关注</a></li>
+        <li><a href="/developer/{{$developer.githubLogin}}/follower/"><i class="fi fi-heart-o"></i>我的粉丝</a></li>
         <li><a href="javascript:;" class="j-logout"><i class="fi fi-power-off"></i>登出</a></li>
     </ul>
     {{/if}}
