@@ -112,11 +112,6 @@ define(function (require, exports, module) {
                 page: pager.page,
                 max: Math.ceil(pager.count / pager.limit)
             });
-
-            history.pushState({
-                url: url
-            }, data.title, url);
-
             app.getPath();
             animation.scrollTo(window, {
                 y: attribute.top($body) - 60
@@ -128,7 +123,12 @@ define(function (require, exports, module) {
     // 构建 pjax
     app.buildPjax = function () {
         event.on($body, 'click', '.choose a', function () {
-            app.pjax(this.href);
+            var url = this.href;
+
+            history.pushState({
+                url: url
+            }, '', url);
+            app.pjax(url);
 
             return false;
         });
