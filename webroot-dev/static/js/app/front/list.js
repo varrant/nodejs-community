@@ -100,12 +100,7 @@ define(function (require, exports, module) {
 
 
     // pjax
-    /**
-     * pjax
-     * @param url {String} 打开的 url
-     * @param [isNotChangeURL=false] {Boolean} 是否改变 url
-     */
-    app.pjax = function (url, isNotChangeURL) {
+    app.pjax = function (url) {
         ajax({
             url: url
         }).on('success', function (data) {
@@ -118,11 +113,9 @@ define(function (require, exports, module) {
                 max: Math.ceil(pager.count / pager.limit)
             });
 
-            if (!isNotChangeURL) {
-                history.pushState({
-                    url: url
-                }, data.title, url);
-            }
+            history.pushState({
+                url: url
+            }, data.title, url);
 
             app.getPath();
             animation.scrollTo(window, {
@@ -143,8 +136,8 @@ define(function (require, exports, module) {
         event.on(window, 'popstate', function () {
             var state = history.state;
 
-            if(state && state.url){
-                app.pjax(state && state.url, true);
+            if (state && state.url) {
+                app.pjax(state.url);
             }
         });
     };

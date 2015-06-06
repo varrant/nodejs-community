@@ -17,10 +17,11 @@ define(function (require, exports, module) {
     var app = {};
     var Pager = require('../../alien/ui/Pager/');
     var selector = require('../../alien/core/dom/selector.js');
+    var event = require('../../alien/core/event/base.js');
     var Template = require('../../alien/libs/Template.js');
     var dato = require('../../alien/utils/dato.js');
     var win = window;
-    var winPage = win['-page-'];
+    var winPager = win['-pager-'];
     var winTa = win['-ta-'];
     var repos = require('../../widget/front/repos.js');
     var ajax = require('../../widget/common/ajax.js');
@@ -45,8 +46,8 @@ define(function (require, exports, module) {
         var tpl = new Template(template);
         var path = location.pathname.replace(/page\/.*$/, '');
         var pager = new Pager($pager, {
-            page: winPage.page,
-            max: Math.ceil(winPage.count / winPage.limit)
+            page: winPager.page,
+            max: Math.ceil(winPager.count / winPager.limit)
         });
         var getList = function (url) {
             ajax({
@@ -72,6 +73,14 @@ define(function (require, exports, module) {
 
         pager.on('change', function (page) {
             location.href = path + 'page/' + page + '/';
+        });
+
+        event.on(window, 'popstate', function () {
+            var state = history.state;
+
+            if(state && state.url){
+                getList(state.url);
+            }
         });
     };
 
