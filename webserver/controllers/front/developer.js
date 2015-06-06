@@ -805,7 +805,7 @@ module.exports = function (app) {
     // 我的粉丝
     exports.follower = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var pager = filter.skipLimit(req.params, 1, 1);
+        var pager = filter.skipLimit(req.params, 1, 12);
         var isAJAX = req.headers['x-request-with'] === 'XMLHttpRequest';
 
         developer.findOne({

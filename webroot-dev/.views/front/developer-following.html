@@ -63,7 +63,7 @@
 
                 <!--我的关注-->
                 <div class="card">
-                    <h2 class="card-title"><i class="fi fi-user"></i>{{title}}（{{developer.following.length}}）
+                    <h2 class="card-title"><i class="fi fi-user"></i>{{developer.nickname}}的关注（{{developer.following.length}}）
                         {{if developer.hasCertificated}}<i class="fi fi-check-circle text-success" title="个人认证"></i>{{/if}}
                         {{if pageType !== "home"}}<span class="text-space text-light">/</span><i class="fi fi-home"></i><a href="/developer/{{=developer.githubLogin}}/">主页</a>{{/if}}
                     </h2>
