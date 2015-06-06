@@ -147,7 +147,9 @@ module.exports = function (app, ctrl) {
     app.get('/developer/oauth/callback/', ctrl.developer.oauthCallback);
     app.get('/developer/:githubLogin/', ctrl.developer.home);
     app.get('/developer/:githubLogin/follower/', ctrl.developer.follower);
+    app.get('/developer/:githubLogin/follower/page/:page/', ctrl.developer.follower);
     app.get('/developer/:githubLogin/following/', ctrl.developer.following);
+    app.get('/developer/:githubLogin/following/page/:page/', ctrl.developer.following);
     //app.get('/developer/:githubLogin/comment/', ctrl.developer.comment);
     //app.get('/developer/:githubLogin/comment/page/:page/', ctrl.developer.comment);
     //app.get('/developer/:githubLogin/comment-by/', ctrl.developer.commentBy);

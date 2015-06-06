@@ -835,7 +835,7 @@ module.exports = function (app) {
     // 我的关注
     exports.following = function (req, res, next) {
         var githubLogin = req.params.githubLogin;
-        var skipLimit = filter.skipLimit(req.params, 1, 12);
+        var skipLimit = filter.skipLimit(req.params, 1, 1);
 
         developer.findOne({
             githubLogin: githubLogin
@@ -850,11 +850,13 @@ module.exports = function (app) {
                 return next();
             }
 
+            var list = doc.following.slice((skipLimit.page - 1) * skipLimit.limit, skipLimit.page * skipLimit.limit);
             var data = {
                 developer: doc,
                 title: doc.nickname + '的关注',
                 pageType: 'following',
-                skipLimit: skipLimit
+                skipLimit: skipLimit,
+                list: list
             };
 
             res.render('front/developer-following.html', data);
