@@ -61,7 +61,17 @@
             <!--主-->
             <div class="col-md-12 layout-main">
                 <div class="card">
-
+                    <h2 class="card-title"><i class="fi fi-user"></i>{{title}}
+                        {{if developer.hasCertificated}}<i class="fi fi-check-circle text-success" title="个人认证"></i>{{/if}}
+                        {{if pageType !== "home"}}<span class="text-space text-light">/</span><i class="fi fi-home"></i><a href="/developer/{{=developer.githubLogin}}/">主页</a>{{/if}}
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <ul class="dlist">
+                        {{list}}
+                        <li></li>
+                        {{/list}}
+                    </ul>
                 </div>
             </div>
             <!--/主-->
