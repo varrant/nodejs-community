@@ -46,9 +46,14 @@ body {
   .layout-sub:before {
     background: none; } }
 
-.at {
+a.at {
   background: #FFEDA9;
   padding: 3px 6px;
-  border: 1px solid #FAE79D;
-  border-radius: 4px; }
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 900; }
+  a.at:hover,
+  a.at:active {
+    border: 0;
+    text-decoration: none; }
 

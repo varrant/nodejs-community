@@ -15,7 +15,7 @@
     id: '{{$developer.id ?$developer.id : ""}}',
     nickname: '{{$developer.nickname || ""}}',
     email: '{{$developer.email || ""}}',
-    avatar: '{{=$developer.avatar ||  "http://s.ydr.me/p/i/avatar.png"}}',
+    avatar: '{{=$developer.avatar || $settings.default.avatar}}',
     score: '{{$developer.score}}',
     githubLogin: '{{$developer.githubLogin || ""}}',
     index: '{{$developer.index}}'
