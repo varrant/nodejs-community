@@ -29,16 +29,20 @@ validator.pushRule({
     maxLength: 5000,
     regexp: REG_CONTENT,
     onafter: function (val, data) {
-        var mdSafe = xss.mdSafe(val, true);
+        val = xss.mdSafe(val);
 
-        if(!data.atList){
-            data.atList = mdSafe.atList;
+        var mdRender = xss.mdRender(val, {
+            favicon: true,
+            at: true
+        });
+
+        data.contentHTML = mdRender.html
+
+        if (!data.atList) {
+            data.atList = mdRender.atList;
         }
 
-        val = mdSafe.markdown;
-        data.contentHTML = xss.mdRender(val);
-
-        if(!data.contentHTML.replace(REG_TAG, '').trim()){
+        if (!data.contentHTML.replace(REG_TAG, '').trim()) {
             return new Error('文字内容不能为空');
         }
 

@@ -59,9 +59,9 @@ validator.pushRule({
     maxLength: 50000,
     regexp: REG_CONTENT,
     onafter: function (val, data) {
-        var mdSafe = xss.mdSafe(val, false);
+        var mdSafe = xss.mdSafe(val);
 
-        val = mdSafe.markdown;
+        val = mdSafe;
 
         data.introduction = xss.mdIntroduction(val);
 
@@ -70,10 +70,13 @@ validator.pushRule({
         data.contentHTML = '';
 
         if (toc.trim()) {
-            data.contentHTML += '<div class="toc"><h3 class="toc-title">TOC</h3>' + xss.mdRender(toc, true) + '</div>';
+            data.contentHTML += '<div class="toc"><h3 class="toc-title">TOC</h3>' + xss.mdRender(toc, {
+                    favicon: false,
+                    at: false
+                }).html + '</div>';
         }
 
-        data.contentHTML += xss.mdRender(val);
+        data.contentHTML += xss.mdRender(val).html;
 
         if (!data.contentHTML.replace(REG_TAG, '').trim()) {
             return new Error('文字内容不能为空');
@@ -95,8 +98,8 @@ validator.pushRule({
     maxLength: 1000,
     regexp: REG_INTRODUCTION,
     onafter: function (val, data) {
-        val = xss.mdSafe(val || '', false).markdown;
-        data.hiddenHTML = xss.mdRender(val);
+        val = xss.mdSafe(val || '');
+        data.hiddenHTML = xss.mdRender(val).html;
         return val;
     },
     msg: {
