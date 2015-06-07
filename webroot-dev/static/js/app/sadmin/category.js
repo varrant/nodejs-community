@@ -9,10 +9,10 @@ define(function (require, exports, module) {
     'use strict';
 
 
-    require('../../widget/sadmin/header.js');
-    require('../../widget/sadmin/sidebar.js');
+    require('.././sadmin/header.js');
+    require('.././sadmin/sidebar.js');
 
-    var Setting = require('../../widget/sadmin/Setting.js');
+    var Setting = require('.././sadmin/Setting.js');
     new Setting('#category', {
         url: '/admin/api/category/',
         itemKey: 'category',

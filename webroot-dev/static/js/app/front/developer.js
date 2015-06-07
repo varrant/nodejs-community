@@ -8,11 +8,11 @@
 define(function (require, exports, module) {
     "use strict";
 
-    require('../../widget/front/login.js');
-    require('../../widget/front/nav.js');
-    require('../../widget/front/footer.js');
-    require('../../widget/common/share.js');
-    require('../../widget/common/follow.js');
+    require('.././front/login.js');
+    require('.././front/nav.js');
+    require('.././front/footer.js');
+    require('.././common/share.js');
+    require('.././common/follow.js');
 
     var app = {};
     var Pager = require('../../alien/ui/Pager/');
@@ -25,8 +25,8 @@ define(function (require, exports, module) {
     var win = window;
     var winPager = win['-pager-'];
     var winTa = win['-ta-'];
-    var repos = require('../../widget/front/repos.js');
-    var ajax = require('../../widget/common/ajax.js');
+    var repos = require('.././front/repos.js');
+    var ajax = require('.././common/ajax.js');
 
 
     // github repos

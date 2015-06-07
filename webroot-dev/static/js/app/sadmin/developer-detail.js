@@ -8,11 +8,11 @@
 define(function (require, exports, module) {
     'use strict';
 
-    require('../../widget/sadmin/header.js');
-    require('../../widget/sadmin/sidebar.js');
-    require('../../widget/common/vue-filter.js');
+    require('.././sadmin/header.js');
+    require('.././sadmin/sidebar.js');
+    require('.././common/vue-filter.js');
 
-    var ajax = require('../../widget/common/ajax.js');
+    var ajax = require('.././common/ajax.js');
     var alert = require('../../alien/widgets/alert.js');
     var confirm = require('../../alien/widgets/confirm.js');
     var dato = require('../../alien/utils/dato.js');

@@ -8,22 +8,22 @@
 define(function (require, exports, module) {
     'use strict';
 
-    require('../../widget/front/login.js');
-    require('../../widget/front/nav.js');
-    require('../../widget/front/footer.js');
-    require('../../widget/common/share.js');
+    require('.././front/login.js');
+    require('.././front/nav.js');
+    require('.././front/footer.js');
+    require('.././common/share.js');
 
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
     var animation = require('../../alien/core/dom/animation.js');
     var event = require('../../alien/core/event/touch.js');
-    var Response = require('../../widget/common/Response/');
+    var Response = require('.././common/Response/');
     var Imgview = require('../../alien/ui/Imgview/');
     var Prettify = require('../../alien/ui/Prettify/');
     var dato = require('../../alien/utils/dato.js');
     var number = require('../../alien/utils/number.js');
     var url = require('../../alien/utils/url.js');
-    var ajax = require('../../widget/common/ajax.js');
+    var ajax = require('.././common/ajax.js');
     var win = window;
     var winObject = win['-object-'];
     var winSection = win['-section-'];

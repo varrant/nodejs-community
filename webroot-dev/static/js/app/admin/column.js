@@ -9,10 +9,10 @@ define(function (require, exports, module) {
     'use strict';
 
 
-    require('../../widget/front/nav.js');
-    require('../../widget/front/footer.js');
+    require('../../modules/front/nav.js');
+    require('../../modules/front/footer.js');
 
-    var Setting = require('../../widget/admin/Setting.js');
+    var Setting = require('../../modules/admin/Setting.js');
     new Setting('#column', {
         url: '/admin/api/column/',
         itemKey: 'column',

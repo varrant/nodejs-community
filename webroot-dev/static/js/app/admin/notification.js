@@ -9,10 +9,10 @@ define(function (require, exports, module) {
     'use strict';
 
 
-    require('../../widget/front/nav.js');
-    require('../../widget/front/footer.js');
-    var List = require('../../widget/admin/List.js');
-    var ajax = require('../../widget/common/ajax.js');
+    require('../../modules/front/nav.js');
+    require('../../modules/front/footer.js');
+    var List = require('../../modules/admin/List.js');
+    var ajax = require('../../modules/common/ajax.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');

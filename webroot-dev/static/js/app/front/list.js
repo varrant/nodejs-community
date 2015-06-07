@@ -8,10 +8,10 @@
 define(function (require, exports, module) {
     'use strict';
 
-    require('../../widget/front/login.js');
-    require('../../widget/front/nav.js');
-    require('../../widget/front/footer.js');
-    require('../../widget/common/share.js');
+    require('.././front/login.js');
+    require('.././front/nav.js');
+    require('.././front/footer.js');
+    require('.././common/share.js');
 
     var Template = require('../../alien/libs/Template.js');
     var Pagination = require('../../alien/ui/Pagination/');
@@ -21,7 +21,7 @@ define(function (require, exports, module) {
     var dato = require('../../alien/utils/dato.js');
     var random = require('../../alien/utils/random.js');
     var event = require('../../alien/core/event/touch.js');
-    var ajax = require('../../widget/common/ajax.js');
+    var ajax = require('.././common/ajax.js');
     var pager = window['-pager-'];
     var app = {};
     var section = window['-section-'];

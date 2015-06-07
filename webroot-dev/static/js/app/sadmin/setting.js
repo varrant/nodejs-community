@@ -8,11 +8,11 @@
 define(function (require, exports, module) {
     'use strict';
 
-    require('../../widget/sadmin/header.js');
-    require('../../widget/sadmin/sidebar.js');
+    require('.././sadmin/header.js');
+    require('.././sadmin/sidebar.js');
 
     var alert = require('../../alien/widgets/alert.js');
-    var ajax = require('../../widget/common/ajax.js');
+    var ajax = require('.././common/ajax.js');
     var app = {};
 
     app.init = function () {
