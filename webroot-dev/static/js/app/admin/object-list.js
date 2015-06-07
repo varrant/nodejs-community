@@ -8,10 +8,10 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var List = require('.././admin/List.js');
+    var List = require('../../modules/admin/List.js');
 
-    require('.././front/nav.js');
-    require('.././front/footer.js');
+    require('../../modules/front/nav.js');
+    require('../../modules/front/footer.js');
 
     new List('#list', '#pagination', {
         query: {

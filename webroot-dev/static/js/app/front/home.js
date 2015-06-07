@@ -8,9 +8,9 @@
 define(function (require, exports, module) {
     'use strict';
 
-    require('.././front/login.js');
-    require('.././front/nav.js');
-    require('.././front/footer.js');
+    require('../../modules/front/login.js');
+    require('../../modules/front/nav.js');
+    require('../../modules/front/footer.js');
 
     //var keyframes = require('../../alien/core/dom/keyframes.js');
     //var selector = require('../../alien/core/dom/selector.js');

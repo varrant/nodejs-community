@@ -8,6 +8,6 @@
 define(function (require, exports, module) {
     'use strict';
 
-    require('.././sadmin/header.js');
-    require('.././sadmin/sidebar.js');
+    require('../../modules/sadmin/header.js');
+    require('../../modules/sadmin/sidebar.js');
 });

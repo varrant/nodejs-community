@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var Item = require('.././admin/Item.js');
+    var Item = require('../../modules/admin/Item.js');
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
     var event = require('../../alien/core/event/base.js');
@@ -24,8 +24,8 @@ define(function (require, exports, module) {
         item.on('success', app.response);
     };
 
-    require('.././front/nav.js');
-    require('.././front/footer.js');
+    require('../../modules/front/nav.js');
+    require('../../modules/front/footer.js');
 
 
     app.object();

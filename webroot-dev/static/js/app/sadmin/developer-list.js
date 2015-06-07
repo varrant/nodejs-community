@@ -8,10 +8,10 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var List = require('.././sadmin/List.js');
+    var List = require('../../modules/sadmin/List.js');
 
-    require('.././sadmin/header.js');
-    require('.././sadmin/sidebar.js');
+    require('../../modules/sadmin/header.js');
+    require('../../modules/sadmin/sidebar.js');
 
     new List('#list', '#pagination', {
         url:  '/api/developer/'
