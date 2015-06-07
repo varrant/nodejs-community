@@ -6,7 +6,7 @@
   "scripts": {
     "ready": "node ./clis/install.js ./settings.json",
     "start": "node ./clis/start.js",
-    "release": "rm -r webroot-pro && coolie build webroot-dev && 7niu upload && git add webroot-pro/* && git commit -am 'release' && git push"
+    "release": "rm -r webroot-pro && coolie build webroot-dev && 7niu upload && git add webroot-pro/**/* && git commit -am 'release' && git push"
   },
   "preferGlobal": false,
   "bin": {},
