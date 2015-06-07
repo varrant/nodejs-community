@@ -25,11 +25,12 @@ define(function (require, exports, module) {
      */
     var tip = function (type, content) {
         return new Msg({
+            width: 'auto',
+            minWidth: 100,
             isModal: false,
             title: null,
             content: content,
             buttons: null,
-            width: 'auto',
             addClass: 'alien-msg-' + type,
             timeout: 3456
         });
