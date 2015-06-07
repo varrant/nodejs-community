@@ -41,7 +41,9 @@ define(function (require, exports, module) {
     var alienClass = 'alien-ui-msg';
     var $body = document.body;
     var defaults = {
-        width: 300,
+        width: '33%',
+        minWidth: 300,
+        maxWidth: 900,
         height: 'auto',
         left: 'center',
         top: 'center',
@@ -118,6 +120,8 @@ define(function (require, exports, module) {
             the._window = new Window(null, {
                 parentNode: the._mask ? the._$mask : $body,
                 width: options.width,
+                minWidth: options.minWidth,
+                maxWidth: options.maxWidth,
                 height: options.height,
                 left: options.left,
                 top: options.top,
@@ -187,6 +191,9 @@ define(function (require, exports, module) {
                     the.destroy();
                 }
             });
+
+            // 传递部分 window 事件到 msg
+            the._window.pipe(the, ['!open', '!close']);
         },
 
 

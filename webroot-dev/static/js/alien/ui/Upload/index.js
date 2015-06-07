@@ -178,16 +178,16 @@ define(function (require, exports, module) {
          */
         _initEvent: function () {
             var the = this;
-            //var options = the._options;
+
+            the._dialog.on('beforeopen', function () {
+                the._applyOptions();
+            });
 
             the._dialog.on('close', function () {
-                the._applyOptions();
-
                 if (the._xhr) {
                     the._xhr.abort();
                 }
             });
-
 
             // 选择图片
             event.on(the._$dialog, 'change', '.' + alienKey + '-file', function (eve) {

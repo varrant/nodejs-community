@@ -39,7 +39,9 @@ define(function (require, exports, module) {
     var $body = document.body;
     var defaults = {
         parentNode: $body,
-        width: 500,
+        width: '90%',
+        minWidth: 300,
+        maxWidth: 900,
         height: 'auto',
         top: 'center',
         right: null,
@@ -65,6 +67,12 @@ define(function (require, exports, module) {
             the.visible = false;
             the._init();
         },
+
+        /**
+         * 初始化
+         * @returns {Window}
+         * @private
+         */
         _init: function () {
             var the = this;
             var options = the._options;
@@ -87,8 +95,12 @@ define(function (require, exports, module) {
                     position: 'absolute'
                 }
             });
+            the._$focus = modification.create('input', {
+                class: alienClass + '-focus'
+            });
             attribute.addClass(the._$window, options.addClass);
             modification.insert(the._$window, options.parentNode);
+            modification.insert(the._$focus, the._$window);
 
             if (the._$content) {
                 modification.insert($pos, the._$content, 'afterend');
@@ -124,6 +136,8 @@ define(function (require, exports, module) {
             attribute.css(the._$window, {
                 display: 'block',
                 width: options.width,
+                minWidth: options.minWidth,
+                maxWidth: options.maxWidth,
                 height: options.height,
                 position: hasMask ? 'absolute' : 'fixed',
                 scale: 1
@@ -196,30 +210,42 @@ define(function (require, exports, module) {
                  * @event open
                  */
                 the.emit('open');
+                the._$focus.focus();
+                the._$focus.blur();
 
                 if (typeis.function(callback)) {
                     callback.call(the);
                 }
             };
-            var to = the._getPos();
 
-            dato.extend(to, {
-                opacity: 0,
-                zIndex: ui.getZindex(),
-                scale: 0.9,
-                translateY: '6%'
+            controller.nextTick(function () {
+                /**
+                 * 窗口打开之前
+                 * @event beforeopen
+                 */
+                if (the.emit('beforeopen') === false) {
+                    return;
+                }
+
+                var to = the._getPos();
+
+                the.visible = true;
+                dato.extend(to, {
+                    opacity: 0,
+                    zIndex: ui.getZindex(),
+                    scale: 0.9,
+                    translateY: '6%'
+                });
+                attribute.css(the._$window, to);
+                animation.transition(the._$window, {
+                    scale: 1,
+                    opacity: 1,
+                    translateY: 0
+                }, {
+                    duration: options.duration,
+                    easing: options.easing.open
+                }, onopen);
             });
-
-            the.visible = true;
-            attribute.css(the._$window, to);
-            animation.transition(the._$window, {
-                scale: 1,
-                opacity: 1,
-                translateY: 0
-            }, {
-                duration: options.duration,
-                easing: options.easing.open
-            }, onopen);
 
             return the;
         },
@@ -253,10 +279,23 @@ define(function (require, exports, module) {
 
             var to = the._getPos();
 
+            /**
+             * 窗口大小改变之前
+             * @event beforeresize
+             */
+            if (the.emit('beforeresize') === false) {
+                return the;
+            }
+
             animation.transition(the._$window, to, {
                 duration: options.duration,
                 easing: options.easing.resize
             }, function () {
+                /**
+                 * 窗口大小改变之后
+                 * @event resize
+                 */
+                the.emit('resize');
                 callback.call(the);
             });
 
@@ -293,16 +332,26 @@ define(function (require, exports, module) {
                 callback.call(the);
             };
 
-            the.visible = false;
-            animation.transition(the._$window, {
-                scale: 0.9,
-                opacity: 0,
-                translateY: '-6%'
-            }, {
-                direction: 'reverse',
-                duration: options.duration,
-                easing: options.easing.close
-            }, onclose);
+            controller.nextTick(function () {
+                /**
+                 * 窗口关闭之前
+                 * @event beforeclose
+                 */
+                if (the.emit('beforeclose') === false) {
+                    return;
+                }
+
+                the.visible = false;
+                animation.transition(the._$window, {
+                    scale: 0.9,
+                    opacity: 0,
+                    translateY: '-6%'
+                }, {
+                    direction: 'reverse',
+                    duration: options.duration,
+                    easing: options.easing.close
+                }, onclose);
+            });
 
             return the;
         },
