@@ -40,6 +40,7 @@ define(function (require, exports, module) {
     var confirm = require('../../widgets/confirm.js');
     var Dialog = require('../Dialog/');
     var CtrlList = require('../CtrlList/');
+    var AutoHeight = require('../AutoHeight/');
     var selector = require('../../core/dom/selector.js');
     var attribute = require('../../core/dom/attribute.js');
     var modification = require('../../core/dom/modification.js');
@@ -52,27 +53,30 @@ define(function (require, exports, module) {
     var selection = require('../../utils/selection.js');
     var Template = require('../../libs/Template.js');
     var template = require('./template.html', 'html');
-    var templateAt = require('./at.html', 'html');
     var tpl = new Template(template);
-    var tplAt = new Template(templateAt);
     var style = require('./style.css', 'css');
     var alert = require('../../widgets/alert.js');
     var alienClass = 'alien-ui-editor';
     var alienIndex = 0;
     var RE_IMG_TYPE = /^image\//;
     //var alienIndex = 0;
-    var localStorage = window.localStorage;
+    var win = window;
+    var doc = win.document;
+    var localStorage = win.localStorage;
     var pathname = location.pathname;
-    var $html = document.documentElement;
+    var $html = doc.documentElement;
     var markedRender = new marked.Renderer();
     var noop = function () {
         // ignore
     };
+    var isMobile = 'ontouchend' in doc;
     var defaults = {
         // 手动设置 ID
         id: '',
         addClass: '',
         previewClass: '',
+        // 是否自动适配移动端，将富文本替换为 textarea
+        isAdaptMobile: true,
         // tab 长度
         tabSize: 4,
         // 是否允许备份
@@ -92,57 +96,67 @@ define(function (require, exports, module) {
         constructor: function ($ele, options) {
             var the = this;
             the._isMac = CodeMirror.keyMap.default === CodeMirror.keyMap.macDefault;
-
             the._id = alienIndex++;
             the._$ele = selector.query($ele)[0];
             the._options = dato.extend({}, defaults, options);
             the._calStoreId();
-            the._editor = CodeMirror.fromTextArea(the._$ele, {
-                mode: 'gfm',
-                lineNumbers: false,
-                theme: "fed",
-                autoCloseBrackets: true,
-                autoCloseTags: true,
-                dragDrop: false,
-                foldGutter: false,
-                indentWithTabs: true,
-                lineWrapping: true,
-                matchBrackets: true,
-                readOnly: false,
-                showTrailingSpace: true,
-                styleActiveLine: true,
-                styleSelectedText: true,
-                tabSize: the._options.tabSize
-            });
-            the._ctrlList = new CtrlList([], {
-                maxHeight: 200,
-                offset: {
-                    left: 20,
-                    top: 10
-                }
-            });
-            the._$wrapper = the._editor.getWrapperElement();
-            the._$scroller = the._editor.getScrollerElement();
-            the._$textarea = the._editor.display.input.textarea;
-            the._$code = selector.query('.CodeMirror-code', the._$scroller)[0];
-            the._$input = modification.wrap(the._$wrapper, '<div class="' + alienClass + '-input"/>')[0];
-            the._$editor = modification.wrap(the._$input, '<div class="' + alienClass + '"/>')[0];
-            the._$editor.id = alienClass + '-' + the._id;
-            the._$output = modification.create('div', {
-                class: alienClass + '-output ' + options.previewClass
-            });
-            the._isFullScreen = false;
-            the._isPreview = false;
-            the._atList = [];
-            modification.insert(the._$output, the._$editor);
-            attribute.addClass(the._$editor, alienClass + ' ' + the._options.addClass);
-            attribute.css(the._$scroller, 'min-height', the._options.minHeight);
+
+            if (isMobile && the._options.isAdaptMobile) {
+                the._adaptMobile = true;
+                the._ctrlList = null;
+                the._$editor = modification.wrap(the._$ele, '<div class="' + alienClass + '"/>')[0];
+                the._autoHeight = new AutoHeight(the._$ele);
+            } else {
+                the._editor = CodeMirror.fromTextArea(the._$ele, {
+                    mode: 'gfm',
+                    lineNumbers: false,
+                    theme: "fed",
+                    autoCloseBrackets: true,
+                    autoCloseTags: true,
+                    dragDrop: false,
+                    foldGutter: false,
+                    indentWithTabs: true,
+                    lineWrapping: true,
+                    matchBrackets: true,
+                    readOnly: false,
+                    showTrailingSpace: true,
+                    styleActiveLine: true,
+                    styleSelectedText: true,
+                    tabSize: the._options.tabSize
+                });
+                the._$wrapper = the._editor.getWrapperElement();
+                the._$scroller = the._editor.getScrollerElement();
+                the._$textarea = the._editor.display.input.textarea;
+                the._$code = selector.query('.CodeMirror-code', the._$scroller)[0];
+                the._$input = modification.wrap(the._$wrapper, '<div class="' + alienClass + '-input"/>')[0];
+                the._$editor = modification.wrap(the._$input, '<div class="' + alienClass + '"/>')[0];
+                the._$editor.id = alienClass + '-' + the._id;
+                the._$output = modification.create('div', {
+                    class: alienClass + '-output ' + options.previewClass
+                });
+                modification.insert(the._$output, the._$editor);
+                attribute.addClass(the._$editor, alienClass + ' ' + the._options.addClass);
+                attribute.css(the._$scroller, 'min-height', the._options.minHeight);
+                the._ctrlList = new CtrlList([], {
+                    maxHeight: 200,
+                    offset: {
+                        left: 20,
+                        top: 10
+                    }
+                });
+                the._isFullScreen = false;
+                the._isPreview = false;
+                the._atList = [];
+            }
+
             the._initEvent();
 
             if (the._options.canBackup) {
                 controller.nextTick(the._initValue, the);
             }
         },
+
+
         /**
          * 设置编辑器内容
          * @param value {String} 设置内容
@@ -151,8 +165,15 @@ define(function (require, exports, module) {
         setValue: function (value) {
             var the = this;
 
-            the._editor.setValue(value);
-            the._editor.refresh();
+            the._$ele.value = value;
+
+            if (the._adaptMobile) {
+                the._autoHeight.resize();
+            }else{
+                the._editor.setValue(value);
+                the._$ele.value = value;
+                the._editor.refresh();
+            }
 
             return the;
         },
@@ -181,16 +202,18 @@ define(function (require, exports, module) {
                     '<br>当前内容长度为：<b>' + nowLen + '</b>。' +
                     '<br>是否恢复？')
                     .on('sure', function () {
-                        the.setValue(storeVal);
-                        the._$ele.value = storeVal;
+                        if (!the._adaptMobile) {
+                            controller.nextTick(function () {
+                                try {
+                                    the._editor.setCursor(local.cur);
+                                } catch (err) {
+                                    // ignore
+                                }
+                            });
+                        }
 
-                        controller.nextTick(function () {
-                            try {
-                                the._editor.setCursor(local.cur);
-                            } catch (err) {
-                                // ignore
-                            }
-                        });
+                        the.setValue(storeVal);
+
                         /**
                          * 编辑器内容变化之后
                          * @event change
@@ -268,7 +291,7 @@ define(function (require, exports, module) {
                 localStorage.setItem(the._storeId, JSON.stringify({
                     val: the._$ele.value,
                     ver: Date.now(),
-                    cur: the._editor.getCursor()
+                    cur: the._adaptMobile ? 0 : the._editor.getCursor()
                 }));
             } catch (err) {
                 // ignore
@@ -282,7 +305,7 @@ define(function (require, exports, module) {
         clearStore: function () {
             var the = this;
 
-            window.localStorage.setItem(the._storeId, '');
+            win.localStorage.setItem(the._storeId, '');
 
             return the;
         },
@@ -294,6 +317,10 @@ define(function (require, exports, module) {
          */
         replace: function (value) {
             var the = this;
+
+            if (the._adaptMobile) {
+                return the;
+            }
 
             the._editor.focus();
             the._editor.replaceSelection(value);
@@ -309,6 +336,10 @@ define(function (require, exports, module) {
          */
         wrap: function (value) {
             var the = this;
+
+            if (the._adaptMobile) {
+                return the;
+            }
 
             the._editor.focus();
 
@@ -332,6 +363,29 @@ define(function (require, exports, module) {
          */
         _initEvent: function () {
             var the = this;
+
+            // 修改设置时
+            the.on('setoptions', function (options) {
+                if (the._storeId !== options.id) {
+                    the._storeId = options.id;
+                }
+            });
+
+            if (the._adaptMobile) {
+                // change
+                event.on(the._$ele, 'change input', function () {
+                    /**
+                     * 编辑器内容变化之后
+                     * @event change
+                     * @param value {String} 变化之后的内容
+                     */
+                    the.emit('change', the._$ele.value);
+                    the._saveLocal();
+                });
+
+                return;
+            }
+
             // 切换全屏
             var toggleFullScreen = function () {
                 if (the._isPreview) {
@@ -511,12 +565,6 @@ define(function (require, exports, module) {
             // cursor
             the._editor.on('cursorActivity', the._saveLocal.bind(the));
 
-            // 修改设置时
-            the.on('setoptions', function (options) {
-                if (the._storeId !== options.id) {
-                    the._storeId = options.id;
-                }
-            });
 
             event.on(the._$wrapper, 'dragenter dragover', the._ondrag.bind(the));
             event.on(the._$wrapper, 'drop', the._ondrop.bind(the));
@@ -532,6 +580,10 @@ define(function (require, exports, module) {
          */
         setAtList: function (list) {
             var the = this;
+
+            if (the._adaptMobile) {
+                return the;
+            }
 
             the._atList = list;
             return the;
@@ -597,7 +649,7 @@ define(function (require, exports, module) {
 
                     if (file && file.size > 0) {
                         the._uploadList.push({
-                            url: window.URL.createObjectURL(item.getAsFile()),
+                            url: win.URL.createObjectURL(item.getAsFile()),
                             file: file
                         });
                     }
@@ -640,7 +692,7 @@ define(function (require, exports, module) {
             }
 
             $dialog = modification.parse(tpl.render(dt))[0];
-            modification.insert($dialog, document.body, 'beforeend');
+            modification.insert($dialog, doc.body, 'beforeend');
             the._$dialog = $dialog;
             the._dialog = new Dialog($dialog, {
                 title: '上传' + the._uploadList.length + '张图片（0%）',
@@ -695,6 +747,10 @@ define(function (require, exports, module) {
         uploadDestroy: function () {
             var the = this;
 
+            if (the._adaptMobile) {
+                return the;
+            }
+
             the._dialog.destroy(function () {
                 modification.remove(the._$dialog);
                 the._editor.focus();
@@ -737,7 +793,9 @@ define(function (require, exports, module) {
          * @returns {*}
          */
         getValue: function () {
-            return this._editor.getValue();
+            var the = this;
+
+            return the._adaptMobile ? the._$ele.value : the._editor.getValue();
         },
 
 
@@ -747,12 +805,16 @@ define(function (require, exports, module) {
         destroy: function () {
             var the = this;
 
-            event.un(the._$scroller, 'scroll', the._onscroll);
-            event.un(the._$wrapper, 'input', the._oninput);
-            event.un(the._$wrapper, 'dragenter dragover', the._ondrag);
-            event.un(the._$wrapper, 'drop', the._ondrop);
-            event.un(the._$wrapper, 'paste', the._onpaste);
-            this._editor.toTextArea();
+            if (the._adaptMobile) {
+                modification.unwrap(the._$ele, 'div');
+            } else {
+                event.un(the._$scroller, 'scroll', the._onscroll);
+                event.un(the._$wrapper, 'input', the._oninput);
+                event.un(the._$wrapper, 'dragenter dragover', the._ondrag);
+                event.un(the._$wrapper, 'drop', the._ondrop);
+                event.un(the._$wrapper, 'paste', the._onpaste);
+                this._editor.toTextArea();
+            }
         }
     });
 
