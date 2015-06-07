@@ -58,11 +58,11 @@ define(function (require, exports, module) {
             the._upload = new Upload(options.uploadOptions);
             the._upload.on('success', function (json) {
                 if (!json.key) {
-                    return alert('上传失败');
+                    alert('上传失败');
+                    return false;
                 }
 
                 the.vue.$data[the._options.itemKey][the._imgKey] = the._url;
-                this.close();
             }).on('upload', function () {
                 ajax({
                     url: '/admin/api/qiniu/'
