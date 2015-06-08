@@ -82,29 +82,20 @@ module.exports = function (app) {
                         }, {
                             path: 'contributors',
                             select: developerSelect
+                        }, {
+                            path: 'column',
+                            select: 'id uri name'
                         }];
                         listOptions.sort = {publishAt: -1};
-                        listOptions.select = 'id title uri category column author ' +
+                        listOptions.select = 'id title uri category author ' +
                             'contributors commentByCount viewByCount updateAt publishAt acceptByResponse';
                         object.find(conditions, listOptions, done);
-                    })
-                    // 查找 columns
-                    .task(function (done) {
-                        column.find({
-                            author: res.locals.$developer.id
-                        }, done);
                     })
                     // 异步并行
                     .together(function (err, count, docs, columns) {
                         if (err) {
                             return next(err);
                         }
-
-                        data.columnsMap = {};
-
-                        columns.forEach(function (item) {
-                            data.columnsMap[item.id] = item;
-                        });
 
                         data.objects = docs;
                         data.pager = {
