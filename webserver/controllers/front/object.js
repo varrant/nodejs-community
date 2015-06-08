@@ -87,12 +87,12 @@ module.exports = function (app) {
                             select: 'id uri name'
                         }];
                         listOptions.sort = {publishAt: -1};
-                        listOptions.select = 'id title uri category author ' +
+                        listOptions.select = 'id title uri category author column ' +
                             'contributors commentByCount viewByCount updateAt publishAt acceptByResponse';
                         object.find(conditions, listOptions, done);
                     })
                     // 异步并行
-                    .together(function (err, count, docs, columns) {
+                    .together(function (err, count, docs) {
                         if (err) {
                             return next(err);
                         }
