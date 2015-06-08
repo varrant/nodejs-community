@@ -34,9 +34,8 @@
                         </li>
                         <li><i class="fi fi-eye"></i>{{object.viewByCount}}</li>
                         <li><i class="fi fi-comments"></i>{{object.commentByCount}}</li>
-                        {{if columnsMap[object.column]}}
-                        <li><i class="fi fi-book"></i><a href="/column/{{=columnsMap[object.column].uri}}">{{columnsMap[object.column].name}}</a>
-                        </li>
+                        {{if object.column}}
+                        <li><i class="fi fi-book"></i><a href="/column/{{=object.column.uri}}">{{object.column.name}}</a></li>
                         {{/if}}
                     </ul>
                 </div>
