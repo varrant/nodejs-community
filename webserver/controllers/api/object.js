@@ -142,7 +142,7 @@ module.exports = function (app) {
                     }
 
                     if ((author.role & (1 << doc.role)) === 0) {
-                        err = new Error('在该板块暂无发布权限<br><a href="' + link + '">点击这里联系管理员</a>');
+                        err = new Error('很抱歉，在该板块你暂无发布权限哦。<a href="' + link + '">点击这里联系管理员申请开通</a>。');
                         err.code = 406;
                         return next(err);
                     }
