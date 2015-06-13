@@ -25,4 +25,9 @@
     .home-items li {
       line-height: 20px;
       margin-bottom: 10px; }
+      .home-items li:last-child {
+        margin-bottom: 0; }
+  .home-item-avatar {
+    width: 20px;
+    height: 20px; }
 

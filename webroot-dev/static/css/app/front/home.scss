@@ -42,6 +42,17 @@ $border-color: #e6e6e6;
     li{
       line-height: 20px;
       margin-bottom: 10px;
+
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  &-item{
+    &-avatar{
+      width: 20px;
+      height: 20px;
     }
   }
 }
