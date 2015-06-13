@@ -77,16 +77,18 @@ define(function (require, exports, module) {
          */
         _initEvent: function () {
             var the = this;
-
-            event.on(the._$submit, 'click', function () {
-                var value = the._$content.value.trim();
+            var onsubmit  = function () {
+                var value = the._editor.getValue().trim();
 
                 if (value) {
-                    the.emit('submit', value.trim());
+                    the.emit('submit', value);
                 } else {
                     the.emit('empty');
                 }
-            });
+            };
+
+            the._editor.on('submit', onsubmit);
+            event.on(the._$submit, 'click', onsubmit);
         },
 
 

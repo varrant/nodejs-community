@@ -16,6 +16,8 @@
  * @create 2015-03-10 17:29
  */
 
+// aos 和 ios 都已经在全局注入了相同的属性，并且都是同步的，因此可以不必等待 ready？
+// ios https://github.com/marcuswestin/WebViewJavascriptBridge/blob/master/WebViewJavascriptBridge/WebViewJavascriptBridge.js.txt
 
 define(function (require, exports, module) {
     'use strict';
@@ -30,15 +32,18 @@ define(function (require, exports, module) {
         // ignore
     };
     var ua = navigator.userAgent;
+    var isIOS = /iphone|ipad|ipod/i.test(navigator.appVersion || ua);
+    var namespace = 'WebViewJavascriptBridge';
     var defaults = {
         shareData: {},
-        dkTokenKey: '-dkToken-'
+        dkTokenKey: '-dkToken-',
+        timeout: 1000
     };
     var Dangke = klass.extends(Emitter).create({
         constructor: function (options) {
             var the = this;
 
-            the._namespace = 'WebViewJavascriptBridge';
+            //the._namespace = 'WebViewJavascriptBridge';
             the._options = dato.extend(true, {}, defaults, options);
             the._shareData = the._options.shareData;
             the._init();
@@ -52,6 +57,7 @@ define(function (require, exports, module) {
             var the = this;
 
             the._readyCallbacks = [];
+            the._brokenCallbacks = [];
             the._asyncCallbacks = {};
             the._andCallbacks = {};
             the._hasReady = false;
@@ -70,7 +76,7 @@ define(function (require, exports, module) {
          */
         _setDkToken: function (json) {
             json = json || {};
-            window[defaults.dkTokenKey] = json.dkToken || '';
+            win[defaults.dkTokenKey] = json.dkToken || '';
         },
 
 
@@ -81,11 +87,11 @@ define(function (require, exports, module) {
          */
         _initEvent: function () {
             var the = this;
+            var options = the._options;
             var onready = function (bridge) {
                 if (the._hasReady) {
                     return;
                 }
-
 
                 the._hasReady = true;
                 the.bridge = bridge;
@@ -106,6 +112,8 @@ define(function (require, exports, module) {
                  * @private
                  */
                 the._isAndroid = !!bridge.require;
+                the.isDangke = true;
+                the.platform = the._isAndroid ? 'aos' : 'ios';
 
 
                 /**
@@ -114,21 +122,39 @@ define(function (require, exports, module) {
                  * @param bridge {Object} jsbridge 对象
                  */
                 the.emit('ready', bridge);
-
                 the._readyCallbacks.forEach(function (callback) {
                     callback.call(the);
                 });
             };
+            var onbroken = function () {
+                if (the._hasBroken) {
+                    return;
+                }
+
+                the._hasBroken = true;
+                the.isDangke = false;
+                the.platform = isIOS ? 'ios' : 'aos';
+                the.emit('broken');
+                the._brokenCallbacks.forEach(function (callback) {
+                    callback.call(the);
+                });
+            };
+            var past = Date.now();
 
             the._timeid = setInterval(function () {
-                if (the._namespace in win && !the._hasReady) {
+                if (Date.now() - past > options.timeout) {
                     clearInterval(the._timeid);
-                    onready(win[the._namespace]);
+                    return onbroken();
                 }
-            }, 200);
+
+                if (namespace in win && !the._hasReady) {
+                    clearInterval(the._timeid);
+                    onready(win[namespace]);
+                }
+            }, 10);
 
             // WebViewJavascriptBridgeReady
-            document.addEventListener(the._namespace + 'Ready', function (eve) {
+            document.addEventListener(namespace + 'Ready', function (eve) {
                 onready(eve.bridge);
             });
         },
@@ -232,16 +258,13 @@ define(function (require, exports, module) {
 
 
         /**
-         * 监听，目前注册的事件有：
-         * club.follow 俱乐部关注
-         * bottom.apply 点击报名
-         * bottom.respond 点击咨询
-         * location.back 点击返回
+         * 监听
          * @param event {String} 事件名称
          * @param [callback] {Function} 事件回调
          */
         when: function (event, callback) {
             var the = this;
+
 
             callback = typeis.function(callback) ? callback : noop;
 
@@ -260,7 +283,7 @@ define(function (require, exports, module) {
                     the._andCallbacks[event].push(callback);
                 }
 
-                window[the._namespace + event] = function (res) {
+                win[namespace + event] = function (res) {
                     the._onreceive.call(the, res, function (err, json) {
                         var self = this;
                         var args = arguments;
@@ -295,12 +318,31 @@ define(function (require, exports, module) {
         ready: function (callback) {
             var the = this;
 
-            callback = typeis.function(callback) ? callback : noop;
+            if (typeis.function(callback)) {
+                if (the._hasReady) {
+                    callback.call(the);
+                } else {
+                    the._readyCallbacks.push(callback);
+                }
+            }
 
-            if (the._hasReady) {
-                callback.call(the);
-            } else {
-                the._readyCallbacks.push(callback);
+            return the;
+        },
+
+
+        /**
+         * 荡客准备失败后执行
+         * @param callback {Function} 事件回调
+         */
+        broken: function (callback) {
+            var the = this;
+
+            if (typeis.function(callback)) {
+                if (the._hasBroken) {
+                    callback.call(the);
+                } else {
+                    the._brokenCallbacks.push(callback);
+                }
             }
 
             return the;
@@ -320,7 +362,6 @@ define(function (require, exports, module) {
 
         /**
          * 发送数据
-         * type: 'love' 点击想去
          * @param [data] {Object} 数据
          * @param [callback] {Function} 回调
          */
@@ -582,9 +623,8 @@ define(function (require, exports, module) {
 
 
         /**
-         * 页面全屏，此时页面的返回功能将会失效
-         * @param data {Object} 数据
-         * @param data.active {Boolean} 是否启用
+         * 页面关闭
+         * @param [data] {Object} 数据
          * @param [callback] {Function} 回调
          */
         locationFullscreen: function (data, callback) {
@@ -599,17 +639,6 @@ define(function (require, exports, module) {
          */
         locationFinished: function (data, callback) {
             return this._location('finished', data, callback);
-        },
-
-
-        /**
-         * 修改页面标题
-         * @param data {Object} 数据
-         * @param data.title {String} 数据
-         * @param [callback] {Function} 回调
-         */
-        locationTitle: function (data, callback) {
-            return this._location('title', data, callback);
         },
 
 
@@ -843,9 +872,7 @@ define(function (require, exports, module) {
 
         /**
          * 显示/隐藏底部报名按钮
-         * @param data {Object} 数据
-         * @param data.active {Boolean} 是否可以报名
-         * @param data.hidden {Boolean} 是否隐藏
+         * @param [data]
          * @param [callback]
          * @returns {*}
          */
@@ -854,7 +881,7 @@ define(function (require, exports, module) {
         }
     });
 
-    Dangke.isDangke = /\bdangke\b/i.test(ua);
+    Dangke.isDangke = /\bdangk(e|r)\b/i.test(ua) || namespace in win;
     Dangke.defaults = defaults;
     module.exports = Dangke;
 });

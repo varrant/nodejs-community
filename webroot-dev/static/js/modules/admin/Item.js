@@ -178,7 +178,7 @@ define(function (require, exports, module) {
             };
 
             the._editor1 = new Editor(the._contentSelector, {
-                id: data.id,
+                id: data.object.id + '-object',
                 previewClass: 'typo',
                 uploadCallback: the.editorUploadCallback,
                 minHeight: 200
@@ -343,7 +343,7 @@ define(function (require, exports, module) {
 
                 if ($hidden) {
                     the._editor2 = new Editor($hidden, {
-                        id: data.id + '-hidden',
+                        id: data.object.id + '-hidden',
                         uploadCallback: the.editorUploadCallback
                     }).on('change', function (val) {
                             data.object.hidden = val;

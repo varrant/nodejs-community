@@ -61,7 +61,6 @@ define(function (require, exports, module) {
     // 评论
     app.response = function () {
         var $title = selector.query('#object-title')[0];
-        var object = winObject;
         var location = window.location;
         var matches = location.href.match(/^(.*\.html)(\/page\/(\d+)\/)?($|#)/);
         var base = matches[1];
@@ -69,28 +68,28 @@ define(function (require, exports, module) {
         var history = window.history;
         var res = new Response('#response', {
             developer: winDeveloper,
-            id: object.id,
+            id: winObject.id + '-response',
             query: {
                 page: page,
                 limit: 10,
-                object: object.id
+                object: winObject.id
             },
             list: {
                 developer: winDeveloper,
                 author: winAuthor,
-                object: object,
+                object: winObject,
                 canAccept: winSection.uri === 'question'
             },
             count: {
-                comment: object.commentByCount,
-                reply: object.replyByCount
+                comment: winObject.commentByCount,
+                reply: winObject.replyByCount
             },
             respond: {
                 githubLogin: winDeveloper.githubLogin,
-                id: object.id,
+                id: winObject.id,
                 avatar: winDeveloper.avatar
             },
-            acceptByResponse: object.acceptByResponse
+            acceptByResponse: winObject.acceptByResponse
         });
 
         res.on('accept', function () {
