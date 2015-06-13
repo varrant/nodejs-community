@@ -8,6 +8,9 @@
 
 var section = require('../models/').section;
 var dato = require('ydr-utils').dato;
+var typeis = require('ydr-utils').typeis;
+var cache = require('ydr-utils').cache;
+var sync = require('../utils/').sync;
 var keys = ['name', 'role', 'uri', 'cover', 'background', 'introduction'];
 
 
@@ -74,5 +77,21 @@ exports.existOne = function (conditions, data, callback) {
  * @param callback {Function} 回调
  */
 exports.increaseObjectCount = function (conditions, count, callback) {
-    section.increase(conditions, 'objectCount', count, callback);
+    section.increase(conditions, 'objectCount', count, function (err, doc) {
+        if (typeis.function(callback)) {
+            callback.apply(this, arguments);
+        }
+
+        if (!err) {
+            var list = cache.get('app.sectionList').map(function (item) {
+                if (item.id.toString() === doc.id.toString()) {
+                    item.objectCount = doc.objectCount;
+                }
+
+                return item;
+            });
+            
+            sync.section(list);
+        }
+    });
 };
