@@ -9,6 +9,7 @@
 var random = require('ydr-utils').random;
 var dato = require('ydr-utils').dato;
 var typeis = require('ydr-utils').typeis;
+var cache = require('ydr-utils').cache;
 var howdo = require('howdo');
 var object = require('../../services/').object;
 var developer = require('../../services/').developer;
@@ -29,10 +30,38 @@ module.exports = function (app) {
         var statistics = {};
         var data = {
             title: '',
+            hotMap: {},
             statistics: statistics
         };
+        var sectionList = cache.get('app.sectionList');
 
-        res.render('front/home.html', data);
+        howdo
+            .each(sectionList, function (index, sec, done) {
+                if (sec.uri === 'help') {
+                    return done();
+                }
+
+                object.findHot(sec.id, 10, function (err, docs) {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    data.hotMap[sec.uri] = docs;
+                    done();
+                });
+            })
+            .together(function (err) {
+                if (err) {
+                    return next(err);
+                }
+
+                //res.send({
+                //    code: 200,
+                //    data: data
+                //});
+                res.render('front/home.html', data);
+            });
+
 
         //howdo
         //    // 注册用户数
