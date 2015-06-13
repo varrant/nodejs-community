@@ -733,8 +733,7 @@ exports.findHot = function (sectionId, limit, callback) {
         isDisplay: true
     }, {
         sort: {
-            publishAt: -1,
-            viewByCount: -1
+            commentByCount: -1
         },
         limit: limit,
         populate: [{
