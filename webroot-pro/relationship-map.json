@@ -198,7 +198,7 @@
     },
     ".views/admin/include/meta.html": {
         "css": {
-            "static/css/79716017c37f52948e3b1feafdeb1d9e.css": [
+            "static/css/44fd7727bea53d4b9ec5e3daa6738bcc.css": [
                 "static/css/components/front/0-layout.css",
                 "static/css/components/front/1-header.css",
                 "static/css/components/front/2-unit-card.css",
@@ -1153,7 +1153,7 @@
     },
     ".views/front/home.html": {
         "css": {
-            "static/css/e22017b5fe6504a28099212a1c79cea1.css": [
+            "static/css/c346957d9bf130f146c893743ea97121.css": [
                 "static/css/app/front/home.css"
             ]
         },
@@ -1306,7 +1306,7 @@
     },
     ".views/front/include/meta.html": {
         "css": {
-            "static/css/573d7576a7f71df67b026048c41ba006.css": [
+            "static/css/bc82a28ae461749874d0ecbf376c170f.css": [
                 "static/css/components/front/0-layout.css",
                 "static/css/components/front/1-header.css",
                 "static/css/components/front/2-unit-card.css",
