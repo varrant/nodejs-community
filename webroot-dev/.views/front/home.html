@@ -23,22 +23,23 @@
             <div class="col-md-12 layout-main">
                 <ul class="avg-xs-1 home" id="list">
                     {{var sectionTypes = [];}}
-                    {{# sectionTypes.push({name: 'article', icon: 'file-text'});}}
-                    {{# sectionTypes.push({name: 'question', icon: 'cube'});}}
-                    {{# sectionTypes.push({name: 'link', icon: 'link'});}}
+                    {{# sectionTypes.push({uri: 'article', icon: 'file-text'});}}
+                    {{# sectionTypes.push({uri: 'question', icon: 'cube'});}}
+                    {{# sectionTypes.push({uri: 'link', icon: 'link'});}}
 
                     {{list sectionTypes as st}}
-                        {{if $sectionURIMap[st.name]}}
-                        <li class="home-{{=st.name}}" style="background-image: url('{{=$sectionURIMap[st.name].background}}');" coolieignore>
+                        {{if $sectionURIMap[st.uri]}}
+                        <li class="home-{{=st.uri}}" style="background-image: url('{{=$sectionURIMap[st.uri].background}}');" coolieignore>
                             <div class="row">
                                 <div class="col-sm-2">
-                                    <div class="home-icon text-center"><a href="/{{=st.name}}/"><img class="img-rounder img-border-blank" src="{{$sectionURIMap[st.name].cover}}" alt="cover" coolieignore/></a></div>
-                                    <div class="home-name text-center">{{$sectionURIMap[st.name].name}}<small>/{{$sectionURIMap[st.name].objectCount|format}}</small></div>
+                                    <div class="home-icon text-center"><a href="/{{=st.uri}}/"><img class="img-rounder img-border-blank" src="{{$sectionURIMap[st.uri].cover}}" alt="cover" coolieignore/></a></div>
+                                    <div class="home-name text-center">{{$sectionURIMap[st.uri].name}}<small>/{{$sectionURIMap[st.uri].objectCount|format}}</small></div>
                                 </div>
                                 <div class="col-sm-10">
                                     <ul class="home-items">
-                                        <li>热门文章1</li>
-                                        <li>热门文章2</li>
+                                        {{list hotMap[st.uri] as item}}
+                                        <li><i class="fi fi-user"></i><a href="#"></a><a href="/{{=st.uri}}/{{item.uri}}.html">{{item.title}}</a></li>
+                                        {{/list}}
                                     </ul>
                                 </div>
                             </div>

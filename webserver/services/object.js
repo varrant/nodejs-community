@@ -736,7 +736,10 @@ exports.findHot = function (sectionId, limit, callback) {
             publishAt: -1,
             viewByCount: -1
         },
-        limit: limit
+        limit: limit,
+        populate: [{
+          path: 'author'
+        }]
     }, callback);
 };
 
