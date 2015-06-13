@@ -3,34 +3,21 @@ $primary-bg-color: #00A2CA;
 $primary-fg-color: lighten($primary-bg-color, 90%);
 $border-color: #e6e6e6;
 
-
-
-
 // m-home
 .home {
   margin: 0;
 
-  li {
-    line-height: 30px;
+  & > li {
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center bottom;
     margin-bottom: 60px;
     border-radius: 6px;
-
-    @media (max-width: 767px){
-      border-radius: 0;
-    }
-  }
-
-  a {
-    position: relative;
-    display: block;
     padding: 20px;
-    color: #fff;
 
-    &:hover {
-      text-decoration: none;
+    @media (max-width: 767px) {
+      border-radius: 0;
+      padding: 10px;
     }
   }
 
@@ -38,11 +25,23 @@ $border-color: #e6e6e6;
   }
 
   &-name {
+    color: #fff;
     font-size: 20px;
     line-height: 60px;
+
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
   }
 
-  &-desc {
-    font-size: 14px;
+  &-items{
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+
+    li{
+      line-height: 20px;
+      margin-bottom: 10px;
+    }
   }
 }

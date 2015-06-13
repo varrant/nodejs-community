@@ -722,6 +722,24 @@ exports.findOneAndRemove = function (operator, conditions, callback) {
 
 
 /**
+ * 查找热门文章
+ * @param limit
+ * @param callback
+ */
+exports.getHot = function (limit, callback) {
+    object.find({
+        isDisplay: true
+    }, {
+        sort: {
+            publishAt: -1,
+            viewByCount: -1,
+            limit: limit
+        }
+    }, callback);
+};
+
+
+/**
  * 取出两个数组中独有的部分
  * @param arr1
  * @param arr2

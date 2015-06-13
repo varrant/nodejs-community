@@ -1,25 +1,27 @@
 .home {
   margin: 0; }
-  .home li {
-    line-height: 30px;
+  .home > li {
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center bottom;
     margin-bottom: 60px;
-    border-radius: 6px; }
+    border-radius: 6px;
+    padding: 20px; }
     @media (max-width: 767px) {
-      .home li {
-        border-radius: 0; } }
-  .home a {
-    position: relative;
-    display: block;
-    padding: 20px;
-    color: #fff; }
-    .home a:hover {
-      text-decoration: none; }
+      .home > li {
+        border-radius: 0;
+        padding: 10px; } }
   .home-name {
+    color: #fff;
     font-size: 20px;
     line-height: 60px; }
-  .home-desc {
-    font-size: 14px; }
+    .home-name:hover {
+      color: #fff;
+      text-decoration: none; }
+  .home-items {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px; }
+    .home-items li {
+      line-height: 20px;
+      margin-bottom: 10px; }
 
