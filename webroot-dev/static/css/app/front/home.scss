@@ -13,7 +13,6 @@ $border-color: #e6e6e6;
     background-position: center bottom;
     margin-bottom: 60px;
     border-radius: 6px;
-    padding: 20px;
 
     @media (max-width: 767px) {
       border-radius: 0;
@@ -22,6 +21,7 @@ $border-color: #e6e6e6;
   }
 
   &-icon {
+    margin-top: 20px;
   }
 
   &-name {
@@ -36,9 +36,8 @@ $border-color: #e6e6e6;
   }
 
   &-items{
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.6);
     padding: 20px;
-    border-radius: 6px;
 
     li{
       line-height: 20px;
