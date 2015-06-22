@@ -24,7 +24,7 @@ module.exports = function (app) {
      * home 页
      * @param req
      * @param res
-     w* @param next
+     * @param next
      */
     exports.getHome = function (req, res, next) {
         var statistics = {};
