@@ -37,7 +37,7 @@ module.exports = function (app) {
         };
         var sectionList = cache.get('app.sectionList');
         var quan = function (item) {
-            item._quan = dato.parseInt(item.commentByCount + item.replyByCount / 2);
+            item._quan = item.commentByCount + item.replyByCount / 2 + item.viewByCount/10;
 
             return item;
         };
