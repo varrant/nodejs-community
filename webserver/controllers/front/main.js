@@ -67,7 +67,9 @@ module.exports = function (app) {
                     return done();
                 }
 
-                object.find({}, {
+                object.find({
+                    section: sec.id
+                }, {
                     sort: {publishAt: -1},
                     limit: 5,
                     populate: ['author']
