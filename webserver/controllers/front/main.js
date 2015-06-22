@@ -29,6 +29,8 @@ module.exports = function (app) {
      */
     exports.getHome = function (req, res, next) {
         var statistics = {};
+        var now = Date.now();
+        var oneMonth = 30 * 24 * 60 * 60 * 1000;
         var data = {
             title: '',
             hotMap: {},
@@ -37,7 +39,10 @@ module.exports = function (app) {
         };
         var sectionList = cache.get('app.sectionList');
         var quan = function (item) {
-            item._quan = 10000 + item.commentByCount + item.replyByCount / 2 + item.viewByCount/10;
+            item._quan = item.commentByCount +
+                item.replyByCount / 2 +
+                item.viewByCount / 10 -
+                (now - item.updateAt) / oneMonth;
 
             return item;
         };
@@ -48,7 +53,7 @@ module.exports = function (app) {
                     return done();
                 }
 
-                object.findHot(sec.id, 10, function (err, docs) {
+                object.findHot(sec.id, 20, function (err, docs) {
                     if (err) {
                         return done(err);
                     }
@@ -85,7 +90,9 @@ module.exports = function (app) {
                         return b._quan - a._quan;
                     });
 
-                    data.hotMap[sec] = docs;
+                    data.hotMap[sec] = docs.slice(0, 9).filter(function (item) {
+                        return item._quan > 0;
+                    });
                 });
 
                 //res.send({
