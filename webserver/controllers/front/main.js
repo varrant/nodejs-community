@@ -31,6 +31,7 @@ module.exports = function (app) {
         var data = {
             title: '',
             hotMap: {},
+            newMap: {},
             statistics: statistics
         };
         var sectionList = cache.get('app.sectionList');
@@ -47,6 +48,23 @@ module.exports = function (app) {
                     }
 
                     data.hotMap[sec.uri] = docs;
+                    done();
+                });
+            })
+            .each(sectionList, function (index, sec, done) {
+                if (sec.uri === 'help') {
+                    return done();
+                }
+
+                object.find({}, {
+                    sort: {publishAt: -1},
+                    limit: 5
+                }, function (err, docs) {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    data.newMap[sec.uri] = docs;
                     done();
                 });
             })
