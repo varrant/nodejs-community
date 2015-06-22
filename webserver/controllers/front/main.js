@@ -37,7 +37,7 @@ module.exports = function (app) {
         };
         var sectionList = cache.get('app.sectionList');
         var quan = function (item) {
-            item._quan = item.commentByCount + item.replyByCount / 2 + item.viewByCount/10;
+            item._quan = 10000 + item.commentByCount + item.replyByCount / 2 + item.viewByCount/10;
 
             return item;
         };
@@ -82,17 +82,17 @@ module.exports = function (app) {
 
                 dato.each(data.hotMap, function (sec, docs) {
                     docs = docs.map(quan).sort(function (a, b) {
-                        return a._quan - b._quan;
+                        return b._quan - a._quan;
                     });
 
                     data.hotMap[sec] = docs;
                 });
 
-                res.send({
-                    code: 200,
-                    data: data
-                });
-                //res.render('front/home.html', data);
+                //res.send({
+                //    code: 200,
+                //    data: data
+                //});
+                res.render('front/home.html', data);
             });
 
 
