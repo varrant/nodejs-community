@@ -8,6 +8,7 @@
 
 var random = require('ydr-utils').random;
 var dato = require('ydr-utils').dato;
+var number = require('ydr-utils').number;
 var typeis = require('ydr-utils').typeis;
 var cache = require('ydr-utils').cache;
 var howdo = require('howdo');
@@ -35,6 +36,11 @@ module.exports = function (app) {
             statistics: statistics
         };
         var sectionList = cache.get('app.sectionList');
+        var quan = function (item) {
+            item._quan = dato.parseInt(item.commentByCount + item.replyByCount / 2);
+
+            return item;
+        };
 
         howdo
             .each(sectionList, function (index, sec, done) {
@@ -58,13 +64,14 @@ module.exports = function (app) {
 
                 object.find({}, {
                     sort: {publishAt: -1},
-                    limit: 5
+                    limit: 5,
+                    populate: ['author']
                 }, function (err, docs) {
                     if (err) {
                         return done(err);
                     }
 
-                    data.newMap[sec.uri] = docs;
+                    data.newMap[sec.uri] = docs.map(quan);
                     done();
                 });
             })
@@ -73,11 +80,19 @@ module.exports = function (app) {
                     return next(err);
                 }
 
-                //res.send({
-                //    code: 200,
-                //    data: data
-                //});
-                res.render('front/home.html', data);
+                dato.each(data.hotMap, function (sec, docs) {
+                    docs = docs.map(quan).sort(function (a, b) {
+                        return a._quan - b._quan;
+                    });
+
+                    data.hotMap[sec] = docs;
+                });
+
+                res.send({
+                    code: 200,
+                    data: data
+                });
+                //res.render('front/home.html', data);
             });
 
 

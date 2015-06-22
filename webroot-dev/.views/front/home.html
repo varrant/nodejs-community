@@ -39,7 +39,7 @@
                                     <ul class="home-items text-muted">
                                         {{list newMap[st.uri] as item}}
                                         <li class="home-item clearfix">
-                                            <span class="home-item-count pull-right">{{item.commentByCount+item.replyByCount}}.{{item.viewByCount}}</span>
+                                            <span class="home-item-count pull-right">{{item._quan}}.{{item.viewByCount}}</span>
                                             <a href="/developer/{{item.author.githubLogin}}/"><img
                                                 src="{{item.author.avatarM}}" alt="avatar" class="img-rounder home-item-avatar" coolieignore/>{{item.author.nickname}}</a>
                                             <i class="text-space"></i>
@@ -48,7 +48,7 @@
                                         {{/list}}
                                         {{list hotMap[st.uri] as item}}
                                         <li class="home-item clearfix">
-                                            <span class="home-item-count pull-right">{{item.commentByCount+item.replyByCount}}.{{item.viewByCount}}</span>
+                                            <span class="home-item-count pull-right">{{item._quan}}.{{item.viewByCount}}</span>
                                             <a href="/developer/{{item.author.githubLogin}}/"><img
                                                 src="{{item.author.avatarM}}" alt="avatar" class="img-rounder home-item-avatar" coolieignore/>{{item.author.nickname}}</a>
                                             <i class="text-space"></i>
