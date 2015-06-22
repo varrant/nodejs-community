@@ -5,6 +5,7 @@
                 "static/css/app/admin/column.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/admin/column.js",
         "deps": [
             "static/js/modules/front/nav.js",
@@ -80,6 +81,7 @@
                 "static/css/app/admin/developer.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/admin/developer-me.js",
         "deps": [
             "static/js/modules/front/nav.js",
@@ -133,6 +135,7 @@
                 "static/css/app/admin/home.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/admin/home.js",
         "deps": [
             "static/js/modules/front/nav.js",
@@ -182,18 +185,22 @@
     },
     ".views/admin/include/column/list.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/developer/me.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/footer.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/header.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/meta.html": {
@@ -207,70 +214,87 @@
                 "static/css/components/front/3-footer.css"
             ]
         },
+        "js": {},
         "main": ""
     },
     ".views/admin/include/object/item-article.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/object/item-help.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/object/item-link.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/object/item-question.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/object/list-article.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/object/list-help.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/object/list-link.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/object/list-question.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/scope.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/setting/alioss.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/setting/oauth.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/setting/roles.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/setting/smtp.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/setting/types.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/setting/website.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/include/sidebar.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/admin/item-article.html": {
@@ -279,6 +303,7 @@
                 "static/css/app/admin/item.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/admin/object-item.js",
         "deps": [
             "static/js/modules/admin/Item.js",
@@ -369,6 +394,7 @@
                 "static/css/app/admin/item.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/admin/object-item.js",
         "deps": [
             "static/js/modules/admin/Item.js",
@@ -459,6 +485,7 @@
                 "static/css/app/admin/item.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/admin/object-item.js",
         "deps": [
             "static/js/modules/admin/Item.js",
@@ -549,6 +576,7 @@
                 "static/css/app/admin/item.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/admin/object-item.js",
         "deps": [
             "static/js/modules/admin/Item.js",
@@ -639,6 +667,7 @@
                 "static/css/app/admin/column.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/admin/object-list.js",
         "deps": [
             "static/js/modules/admin/List.js",
@@ -699,6 +728,7 @@
                 "static/css/app/admin/column.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/admin/object-list.js",
         "deps": [
             "static/js/modules/admin/List.js",
@@ -759,6 +789,7 @@
                 "static/css/app/admin/column.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/admin/object-list.js",
         "deps": [
             "static/js/modules/admin/List.js",
@@ -819,6 +850,7 @@
                 "static/css/app/admin/column.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/admin/object-list.js",
         "deps": [
             "static/js/modules/admin/List.js",
@@ -879,6 +911,7 @@
                 "static/css/app/admin/developer.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/admin/notification.js",
         "deps": [
             "static/js/modules/front/nav.js",
@@ -939,6 +972,7 @@
                 "static/css/app/front/error.css"
             ]
         },
+        "js": {},
         "main": ""
     },
     ".views/front/developer-follower.html": {
@@ -947,6 +981,7 @@
                 "static/css/app/front/developer.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/developer.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -1017,6 +1052,7 @@
                 "static/css/app/front/developer.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/developer.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -1087,6 +1123,7 @@
                 "static/css/app/front/developer.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/developer.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -1157,6 +1194,7 @@
                 "static/css/app/front/home.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/home.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -1214,94 +1252,117 @@
     },
     ".views/front/include/bottom.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/developer/follow.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/developer/main-accept-by.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/developer/main-accept.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/developer/main-agree-by.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/developer/main-agree.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/developer/main-body.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/developer/main-comment-by.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/developer/main-comment.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/developer/main-github.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/developer/main-reply-by.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/developer/main-reply.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/developer/sub-statistics.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/footer.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/list-main-body.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/list-sub-tab1.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/list-sub-tab2.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/list/all-column.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/list/article.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/list/help.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/list/link.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/list/one-column.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/list/question.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/meta.html": {
@@ -1315,22 +1376,27 @@
                 "static/css/components/front/3-footer.css"
             ]
         },
+        "js": {},
         "main": ""
     },
     ".views/front/include/nav.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/object/sub-author.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/object/sub-copyright.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/include/object/sub-statistics.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/front/list-all-column.html": {
@@ -1339,6 +1405,7 @@
                 "static/css/app/front/list.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/list.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -1405,6 +1472,7 @@
                 "static/css/app/front/list.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/list.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -1471,6 +1539,7 @@
                 "static/css/app/front/list.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/list.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -1537,6 +1606,7 @@
                 "static/css/app/front/list.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/list.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -1603,6 +1673,7 @@
                 "static/css/app/front/list.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/list.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -1669,6 +1740,7 @@
                 "static/css/app/front/list.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/list.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -1735,6 +1807,7 @@
                 "static/css/app/front/oauth.css"
             ]
         },
+        "js": {},
         "main": ""
     },
     ".views/front/oauth-callback.html": {
@@ -1743,6 +1816,7 @@
                 "static/css/app/front/oauth.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/oauth-callback.js",
         "deps": [
             "static/js/modules/common/ajax.js",
@@ -1792,6 +1866,7 @@
                 "static/css/app/front/detail.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/object.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -1905,6 +1980,7 @@
                 "static/css/app/front/detail.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/object.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -2018,6 +2094,7 @@
                 "static/css/app/front/detail.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/object.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -2131,6 +2208,7 @@
                 "static/css/app/front/detail.css"
             ]
         },
+        "js": {},
         "main": "static/js/app/front/object.js",
         "deps": [
             "static/js/modules/front/login.js",
@@ -2259,10 +2337,12 @@
                 "static/css/libs/3-font-icon.css"
             ]
         },
+        "js": {},
         "main": ""
     },
     ".views/sadmin/category.html": {
         "css": {},
+        "js": {},
         "main": "static/js/app/sadmin/category.js",
         "deps": [
             "static/js/modules/sadmin/header.js",
@@ -2331,6 +2411,7 @@
     },
     ".views/sadmin/developer-detail.html": {
         "css": {},
+        "js": {},
         "main": "static/js/app/sadmin/developer-detail.js",
         "deps": [
             "static/js/modules/sadmin/header.js",
@@ -2385,6 +2466,7 @@
     },
     ".views/sadmin/developer-list.html": {
         "css": {},
+        "js": {},
         "main": "static/js/app/sadmin/developer-list.js",
         "deps": [
             "static/js/modules/sadmin/List.js",
@@ -2444,6 +2526,7 @@
     },
     ".views/sadmin/home.html": {
         "css": {},
+        "js": {},
         "main": "static/js/app/sadmin/home.js",
         "deps": [
             "static/js/modules/sadmin/header.js",
@@ -2495,38 +2578,47 @@
     },
     ".views/sadmin/include/category/form.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/category/list.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/developer/detail.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/developer/list.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/developer/role.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/developer/statistics.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/footer.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/header.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/home/me.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/meta.html": {
@@ -2538,58 +2630,72 @@
                 "static/css/app/sadmin/3-container.css"
             ]
         },
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/scope.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/section/form.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/section/list.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/setting/alioss.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/setting/default.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/setting/oauth.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/setting/qiniu.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/setting/roles.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/setting/smtp.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/setting/types.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/setting/website.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/include/sidebar.html": {
         "css": {},
+        "js": {},
         "main": ""
     },
     ".views/sadmin/section.html": {
         "css": {},
+        "js": {},
         "main": "static/js/app/sadmin/section.js",
         "deps": [
             "static/js/modules/sadmin/header.js",
@@ -2658,6 +2764,7 @@
     },
     ".views/sadmin/setting.html": {
         "css": {},
+        "js": {},
         "main": "static/js/app/sadmin/setting.js",
         "deps": [
             "static/js/modules/sadmin/header.js",
@@ -2713,10 +2820,12 @@
                 "static/css/app/front/error.css"
             ]
         },
+        "js": {},
         "main": ""
     },
     ".views/test2.html": {
         "css": {},
+        "js": {},
         "main": ""
     }
 }

@@ -12,7 +12,7 @@
             暂无版块信息。
         </td>
     </tr>
-    <tr v-repeat="section:sections" style="background: url(\{{section.background}}) 0/cover">
+    <tr v-repeat="section:sections" style="background: url(\{{section.background}}) 0/cover" coolieignore>
         <td>\{{$index + 1}}</td>
         <td>
             <img v-attr="src: section.cover" alt="cover" width="100" height="100"/>
