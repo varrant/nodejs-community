@@ -42,6 +42,10 @@ Template.addFilter('format', function (val) {
     return number.format(val);
 });
 
+Template.addFilter('abbr', function (val) {
+    return number.abbr(val);
+});
+
 Template.addFilter('datefrom', function (val) {
     return date.from(val);
 });
