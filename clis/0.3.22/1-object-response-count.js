@@ -11,9 +11,8 @@
 var mongoose = require('../../webserver/mongoose.js');
 var developer = require('../../webserver/services/').developer;
 var response = require('../../webserver/services/').response;
-var object = require('../../webserver/services/').object;
+var object = require('../../webserver/models/').object;
 var howdo = require('howdo');
-
 
 mongoose(function (err) {
     if (err) {
@@ -31,15 +30,32 @@ mongoose(function (err) {
         }
 
         howdo
-            .each(docs, function (index, item, done) {
-                object.find({
-                    _id: item.id
-                }, {
+            .each(docs, function (index, item, next) {
+                console.log('do', item.id);
 
-                })
+                howdo
+                    .task(function (next) {
+                        response.count({
+                            object: item.id
+                        }, next);
+                    })
+                    .task(function (next, count) {
+                        object.findOneAndUpdate({
+                            _id: item.id
+                        }, {
+                            commentByCount: count
+                        }, next);
+                    })
+                    .follow(next);
             })
-            .together(function () {
+            .follow(function () {
+                if (err) {
+                    console.log(err.stack);
+                    return process.exit();
+                }
 
+                console.log('do success');
+                return process.exit();
             });
     });
 });
