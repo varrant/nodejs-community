@@ -55,7 +55,7 @@ exports.findOneAndUpdate = response.findOneAndUpdate;
  * @param callback {Function} 回调
  */
 exports.createOne = function (author, data, meta, callback) {
-    var data2 = dato.select(data, ['content', 'parentResponse', 'object']);
+    var data2 = dato.select(data, ['content', 'object']);
     var atList3 = [];
 
     data2.author = author.id;
@@ -81,36 +81,8 @@ exports.createOne = function (author, data, meta, callback) {
                 next(err, doc);
             });
         })
-        // 2. 检查父级评论是否存在
-        .task(function (next, responseObject) {
-            if (!data2.parentResponse) {
-                return next(null, responseObject);
-            }
-
-            response.findOne({
-                _id: data2.parentResponse
-            }, function (err, doc) {
-                if (err) {
-                    return next(err);
-                }
-
-                if (!doc) {
-                    err = new Error('父级评论不存在');
-                    err.type = 'notFound';
-                    err.code = 404;
-                    return next(err);
-                }
-
-                if (doc.parentResponse) {
-                    err = new Error('不能补充他人的回复');
-                    return next(err);
-                }
-
-                next(err, responseObject, doc);
-            });
-        })
         // 3. 写入
-        .task(function (next, responseObject, parentResponse) {
+        .task(function (next, responseObject) {
 
 
             response.validator.validateAll(data2, function (err, data3) {
@@ -137,95 +109,42 @@ exports.createOne = function (author, data, meta, callback) {
                     })
                     .together(function () {
                         response.createOne(data3, function (err, doc) {
-                            next(err, responseObject, parentResponse, doc);
+                            next(err, responseObject, doc);
                         });
                     });
             });
         })
         // 顺序串行
-        .follow(function (err, responseObject, parentResponse, doc) {
+        .follow(function (err, responseObject, doc) {
             callback(err, doc, responseObject);
 
             if (!err && doc) {
                 // 数
-                // 评论
-                if (!doc.parentResponse) {
-                    // 作者的评论数量
-                    developer.increaseCommentCount({_id: author.id.toString()}, 1, log.holdError);
+                // 作者的评论数量
+                developer.increaseCommentCount({_id: author.id.toString()}, 1, log.holdError);
 
-                    // object 作者的被评论数量
-                    developer.increaseCommentByCount({_id: responseObject.author.toString()}, 1, log.holdError);
+                // object 作者的被评论数量
+                developer.increaseCommentByCount({_id: responseObject.author.toString()}, 1, log.holdError);
 
-                    // object 的被评论数量
-                    object.increaseCommentByCount({_id: doc.object}, 1, log.holdError);
+                // object 的被评论数量
+                object.increaseCommentByCount({_id: doc.object}, 1, log.holdError);
 
-                    // 写入交互
-                    interactive.active({
-                        source: author.id.toString(),
-                        target: responseObject.author.toString(),
-                        type: 'comment',
-                        object: responseObject.id.toString(),
-                        response: doc.id.toString()
-                    }, log.holdError);
-                }
-                // 回复
-                else {
-                    // 作者的回复数量
-                    developer.increaseReplyCount({_id: author.id.toString()}, 1, log.holdError);
-
-                    // 被回复评论作者的被回复数量
-                    developer.increaseReplyByCount({_id: parentResponse.author.toString()}, 1, log.holdError);
-
-                    // object 的被回复数量
-                    object.increaseReplyByCount({_id: doc.object}, 1, log.holdError);
-
-                    // response 的被回复数量
-                    response.increase({_id: parentResponse.id.toString()}, 'replyByCount', 1, log.holdError);
-
-                    // 写入交互
-                    interactive.active({
-                        source: author.id.toString(),
-                        target: parentResponse.author.toString(),
-                        type: 'reply',
-                        object: responseObject.id.toString(),
-                        response: doc.id.toString()
-                    }, log.holdError);
-                }
+                // 写入交互
+                interactive.active({
+                    source: author.id.toString(),
+                    target: responseObject.author.toString(),
+                    type: 'comment',
+                    object: responseObject.id.toString(),
+                    response: doc.id.toString()
+                }, log.holdError);
 
 
                 // 分
-                // 评论
-                if (!doc.parentResponse) {
-                    if (author.id.toString() !== responseObject.author.toString()) {
-                        // 增加主动用户评论积分
-                        developer.increaseScore({_id: author.id}, scoreMap.comment, log.holdError);
-                        // 增加被动用户评论积分
-                        developer.increaseScore({_id: responseObject.author.toString()}, scoreUtil.commentBy(author, responseObject.author.toString()), log.holdError);
-                    }
-                }
-                // 回复
-                else {
-                    if (
-                        author.id.toString() !== responseObject.author.toString() &&
-                        author.id.toString() !== parentResponse.author.toString()
-                    ) {
-                        // 增加主动用户回复积分
-                        developer.increaseScore({_id: author.id}, scoreMap.reply, log.holdError);
-                    }
-
-                    if (
-                        author.id.toString() !== responseObject.author.toString()
-                    ) {
-                        // 增加被动回复文章的作者回复积分
-                        developer.increaseScore({_id: responseObject.author.toString()}, scoreUtil.replyBy(author, responseObject.author.toString()), log.holdError);
-                    }
-
-                    if (
-                        author.id.toString() !== parentResponse.author.toString()
-                    ) {
-                        // 增加被评论的作者回复积分
-                        developer.increaseScore({_id: parentResponse.author.toString()}, scoreUtil.replyBy(author, parentResponse.author.toString()), log.holdError);
-                    }
+                if (author.id.toString() !== responseObject.author.toString()) {
+                    // 增加主动用户评论积分
+                    developer.increaseScore({_id: author.id}, scoreMap.comment, log.holdError);
+                    // 增加被动用户评论积分
+                    developer.increaseScore({_id: responseObject.author.toString()}, scoreUtil.commentBy(author, responseObject.author.toString()), log.holdError);
                 }
 
 
@@ -233,20 +152,20 @@ exports.createOne = function (author, data, meta, callback) {
                 // 通知 object 作者
                 _noticeToObjectAuthor(author, responseObject, doc);
 
-                // 回复
-                if (doc.parentResponse) {
-                    // 通知 comment 作者
-                    _noticeToCommentAuthor(author, responseObject, doc, parentResponse);
-                } else {
-                    // 其他
-                    // 推入 object 的 contributors
-                    object.pushContributor({_id: doc.object}, author, log.holdError);
-                }
+                // 推入 object 的 contributors
+                object.pushContributor({_id: doc.object}, author, log.holdError);
 
-                // at
+                // 被 at
                 atList3.forEach(function (atTo) {
+                    // 通知被 AT 的人
                     notice.at(author, atTo, responseObject, doc);
+
+                    // 被 AT 人的被 AT 次数
+                    developer.increaseAtByCount({_id: atTo}, 1, log.holdError);
                 });
+
+                // 评论作者的 at 次数
+                developer.increaseAtByCount({_id: author.id}, atList3.length, log.holdError);
             }
         });
 };
@@ -430,39 +349,6 @@ function _noticeToObjectAuthor(repondAuthor, responseObject, response) {
 
             // 评论通知
             notice.toObjectAuthor(repondAuthor, objectAuthor, responseObject, response);
-        });
-}
-
-
-/**
- * 通知 comment 作者
- * @param replyAuthor {Object} 回复人
- * @param replyInObject {Object} 回复的 object
- * @param replyResponse {Object} 该回复的 response
- * @param parentResponse {Object} 被回复的 response
- * @private
- */
-function _noticeToCommentAuthor(replyAuthor, replyInObject, replyResponse, parentResponse) {
-    howdo
-        // 1. 查找 parentResponse 作者
-        .task(function (next) {
-            developer.findOne({_id: parentResponse.author.toString()}, next);
-        })
-        // 顺序串行
-        .follow(function (err, parentResponseAuthor) {
-            if (err) {
-                return log.holdError(err);
-            }
-
-            if (!parentResponseAuthor) {
-                err = new Error('该评论作者不存在');
-                err.type = 'notFound';
-                err.code = 404;
-                return log.holdError(err);
-            }
-
-            // 回复通知
-            notice.toResponseAuthor(replyAuthor, parentResponseAuthor, replyInObject, replyResponse);
         });
 }
 
