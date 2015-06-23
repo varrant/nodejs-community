@@ -44,13 +44,15 @@ mongoose(function (err) {
 
                     map[author] = map[author] || 0;
                     map[author]++;
+                    done();
                 });
             })
             // 作者的评论次数+1
             .follow(function () {
-                howdo.each(map, function (author, commentByCount, done) {
+                howdo.each(map, function (authorId, commentByCount, done) {
+                    console.log('do', authorId);
                     developer.findOneAndUpdate({
-                        _id: author
+                        _id: authorId
                     }, {
                         commentByCount: commentByCount
                     }, done);
