@@ -7,15 +7,8 @@
             <li><i class="fi fi-clock-o"></i>{{developer.loginAt|datefrom}} 登入</li>
             <li><i class="fi fi-eye"></i>被访问 {{developer.viewByCount|format}} 次</li>
             <li><i class="fi fi-comment"></i>评论 {{developer.commentCount|format}} 次</li>
-            <li><i class="fi fi-reply"></i>回复 {{developer.replyCount|format}} 次</li>
             <li><i class="fi fi-thumbs-up"></i>赞同 {{developer.agreeCount|format}} 次</li>
             <li><i class="fi fi-check-square"></i>采纳 {{developer.acceptCount|format}} 次</li>
-            <!--<li><i class="fi fi-bookmark"></i>31,091,331 个关注</li>-->
-            {{if $developer.id !== developer.id}}
-            <!--<li class="text-center">-->
-                <!--<button class="btn btn-primary"><i class="fi fi-star"></i>关注</button>-->
-            <!--</li>-->
-            {{/if}}
             <li><i class="fi fi-file-text"></i><a href="/article/by/{{=developer.githubLogin}}/">{{sectionStatistics.article}} 篇文章</a></li>
             <li><i class="fi fi-cube"></i><a href="/question/by/{{=developer.githubLogin}}/">{{sectionStatistics.question}} 次提问</a></li>
             <li><i class="fi fi-link"></i><a href="/link/by/{{=developer.githubLogin}}/">{{sectionStatistics.link}} 个链接</a></li>
