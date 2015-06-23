@@ -21,7 +21,7 @@ mongoose(function (err) {
         return process.exit();
     }
 
-
+    // 所有回复
     response.find({}, {
         nor: {
             parentResponse: null
@@ -58,7 +58,7 @@ mongoose(function (err) {
                         _id: resp.id.toString()
                     }, {
                         content: '@' + author.githubLogin + '\n\n' + resp.content,
-                        contentHTML: '<p><a href="/developer/' + author.githubLogin + '" class="at">@' + author.githubLogin + '</a></p>' + resp.contentHTML,
+                        contentHTML: '<p><a href="/developer/' + author.githubLogin + '/" class="at">@' + author.githubLogin + '</a></p>' + resp.contentHTML,
                         parentAuthor: null,
                         parentResponse: null,
                         atList: resp.atList

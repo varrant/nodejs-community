@@ -48,8 +48,6 @@ mongoose(function (err) {
                         }, next);
                     })
                     .follow(next);
-
-
             })
             .follow(function () {
                 if (err) {
