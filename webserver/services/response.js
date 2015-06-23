@@ -120,7 +120,7 @@ exports.createOne = function (author, data, meta, callback) {
 
             if (!err && doc) {
                 // 数
-                // 作者的评论数量
+                // 评论作者的评论数量
                 developer.increaseCommentCount({_id: author.id.toString()}, 1, log.holdError);
 
                 // object 作者的被评论数量
