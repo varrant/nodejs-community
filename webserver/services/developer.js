@@ -267,6 +267,35 @@ exports.increaseCommentByCount = function (conditions, count, callback) {
     developer.increase(conditions, 'commentByCount', count, callback);
 };
 
+/**
+ * 增加 AT 数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseAtCount = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
+    developer.increase(conditions, 'atCount', count, callback);
+};
+
+
+/**
+ * 增加被 AT 数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 更新值
+ * @param callback {Function} 回调
+ */
+exports.increaseAtByCount = function (conditions, count, callback) {
+    if (conditions && typeis.string(conditions.githubLogin)) {
+        conditions.githubLogin = conditions.githubLogin.toLowerCase();
+    }
+
+    developer.increase(conditions, 'atByCount', count, callback);
+};
+
 
 /**
  * 增加回复数量
