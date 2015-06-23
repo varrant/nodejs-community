@@ -49,7 +49,8 @@
                     </h2>
 
                     <div class="card-body post">
-                        <div class="post-content typo" id="content">{{=object.contentHTML}}{{if object.hidden}}
+                        <div class="post-content typo" id="content">{{=object.contentHTML}}
+                            {{if object.hidden}}
                             {{if hasResponsed}}
                             <div class="post-hidden">
                                 {{=object.hiddenHTML}}
@@ -71,7 +72,7 @@
                 <div class="card">
                     <h2 class="card-title">
                         <i class="fi fi-book"></i>
-                        {{object.column.name}}
+                        <a href="/column/{{object.column.uri}}/">{{object.column.name}}</a>
                         <small class="card-subtitle">{{object.column.introduction}}</small>
                     </h2>
                     <div class="card-body">
