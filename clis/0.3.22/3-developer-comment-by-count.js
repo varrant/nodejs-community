@@ -21,40 +21,49 @@ mongoose(function (err) {
         return process.exit();
     }
 
-    developer.find({}, function (err, docs) {
+    response.find({}, function (err, docs) {
         if (err) {
-            console.log('find developer error');
+            console.log('find response error');
             console.error(err.stack);
             return process.exit();
         }
 
+        var map = {};
+
+        // 查找评论的文章的作者
         howdo
-            .each(docs, function (index, item, next) {
-                console.log('do', item.id);
+            .each(docs, function (index, doc, done) {
+                object.findOne({
+                    _id: doc.object
+                }, function (err, objs) {
+                    if (err) {
+                        return done(err);
+                    }
 
-                howdo
-                    .task(function (next) {
-                        response.count({
-                            author: item.id
-                        }, next);
-                    })
-                    .task(function (next, count) {
-                        developer.findOneAndUpdate({
-                            _id: item.id
-                        }, {
-                            commentCount: count
-                        }, next);
-                    })
-                    .follow(next);
+                    var author = objs.author.toString();
+
+                    map[author] = map[author] || 0;
+                    map[author]++;
+                });
             })
+            // 作者的评论次数+1
             .follow(function () {
-                if (err) {
-                    console.log(err.stack);
-                    return process.exit();
-                }
+                howdo.each(map, function (author, commentByCount, done) {
+                    developer.findOneAndUpdate({
+                        _id: author
+                    }, {
+                        commentByCount: commentByCount
+                    }, done);
+                }).together(function (err) {
+                    if (err) {
+                        console.log(err.stack);
+                        return process.exit();
+                    }
 
-                console.log('do success');
-                return process.exit();
+                    console.log('do success');
+                    return process.exit();
+                });
             });
+
     });
 });
