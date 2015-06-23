@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * 回复 => 评论
  * @author ydr.me
  * @create 2015-06-23 19:50
  */
@@ -28,7 +28,7 @@ mongoose(function (err) {
         }
     }, function (err, list) {
         if (err) {
-            console.log('find interactive error');
+            console.log('find response error');
             console.error(err.stack);
             return process.exit();
         }
