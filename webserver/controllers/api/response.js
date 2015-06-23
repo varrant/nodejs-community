@@ -97,7 +97,6 @@ module.exports = function (app) {
     exports.list = function (req, res, next) {
         var options = filter.skipLimit(req.query);
         var objectId = req.query.object;
-        var parentId = req.query.parent;
 
         if (!objectId) {
             return next();
@@ -107,11 +106,11 @@ module.exports = function (app) {
             object: objectId
         };
 
-        if (parentId) {
-            conditions.parentResponse = parentId;
-        } else {
-            conditions.parentResponse = null;
-        }
+        //if (parentId) {
+        //    conditions.parentResponse = parentId;
+        //} else {
+        //    conditions.parentResponse = null;
+        //}
 
         options.populate = ['author', 'agreers'];
         options.sort = {
