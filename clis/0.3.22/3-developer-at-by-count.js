@@ -33,12 +33,18 @@ mongoose(function (err) {
                 var map = {};
 
                 list.forEach(function (item) {
+                    var author = item.author;
+
+                    map[author] = map[author] || {};
+                    map[author].atCount = map[author].atCount || 0;
+                    map[author].atByCount = map[author].atByCount || 0;
+
                     (item.atList || []).forEach(function (atId) {
-                        if (map[atId]) {
-                            map[atId]++;
-                        } else {
-                            map[atId] = 1;
-                        }
+                        map[atId] = map[atId] || {};
+                        map[atId].atCount = map[atId].atCount || 0;
+                        map[atId].atByCount = map[atId].atByCount || 0;
+                        map[author].atCount++;
+                        map[atId].atByCount++;
                     });
                 });
 
@@ -47,14 +53,12 @@ mongoose(function (err) {
         })
         // 统计写入
         .task(function (next, map) {
-            howdo.each(map, function (id, count, done) {
-                console.log('do', id, count);
+            howdo.each(map, function (id, data, done) {
+                console.log('do', id, data);
 
                 developer.findOneAndUpdate({
                     _id: id
-                }, {
-                    atByCount: count
-                }, done);
+                }, data, done);
             }).together(next);
         })
         .follow(function (err) {
