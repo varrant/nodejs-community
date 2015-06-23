@@ -21,7 +21,6 @@ mongoose(function (err) {
         return process.exit();
     }
 
-
     developer.find({}, function (err, docs) {
         if (err) {
             console.log('find developer error');

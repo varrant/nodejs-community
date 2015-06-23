@@ -1,5 +1,5 @@
 /*!
- * response 的评论数量、被评论数量
+ * response 的被评论数量
  * @author ydr.me
  * @create 2015-06-23 19:50
  */
