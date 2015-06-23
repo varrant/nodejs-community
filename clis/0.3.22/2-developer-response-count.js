@@ -1,5 +1,5 @@
 /*!
- * object 的评论数量+=回复数量
+ * response 的评论数量
  * @author ydr.me
  * @create 2015-06-23 19:50
  */
@@ -11,9 +11,8 @@
 var mongoose = require('../../webserver/mongoose.js');
 var developer = require('../../webserver/services/').developer;
 var response = require('../../webserver/services/').response;
-var object = require('../../webserver/services/').object;
+var object = require('../../webserver/models/').object;
 var howdo = require('howdo');
-
 
 mongoose(function (err) {
     if (err) {
@@ -23,9 +22,9 @@ mongoose(function (err) {
     }
 
 
-    object.find({}, function (err, docs) {
+    developer.find({}, function (err, docs) {
         if (err) {
-            console.log('find object error');
+            console.log('find developer error');
             console.error(err.stack);
             return process.exit();
         }
@@ -37,19 +36,17 @@ mongoose(function (err) {
                 howdo
                     .task(function (next) {
                         response.count({
-                            object: item.id
+                            author: item.id
                         }, next);
                     })
                     .task(function (next, count) {
-                        object.find({
+                        developer.findOneAndUpdate({
                             _id: item.id
                         }, {
-                            commentByCount: count
+                            commentCount: count
                         }, next);
                     })
                     .follow(next);
-
-
             })
             .follow(function () {
                 if (err) {
