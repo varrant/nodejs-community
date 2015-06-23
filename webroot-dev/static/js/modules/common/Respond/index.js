@@ -21,7 +21,7 @@ define(function (require, exports, module) {
     var defaults = {
         id: '',
         previewClass: 'typo',
-        minHeight: 100,
+        minHeight: 50,
         avatar: '',
         githubLogin: '#',
         markdownHelp: {
