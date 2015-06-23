@@ -43,7 +43,6 @@ define(function (require, exports, module) {
         url: {
             list: '/api/response/list/',
             post: '/admin/api/response/',
-            count: '/api/response/count/',
             agree: '/admin/api/response/agree/',
             accept: '/admin/api/object/accept/'
         },

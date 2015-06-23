@@ -44,7 +44,7 @@ mongoose(function (err) {
                         _id: resp.parentResponse
                     }, next2);
                 })
-                // 查找父级
+                // 查找父级作者
                 .task(function (next2, parent) {
                     developer.findOne({
                         _id: parent.author

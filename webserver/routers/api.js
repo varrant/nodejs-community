@@ -38,7 +38,7 @@ module.exports = function (app, ctrl) {
     // response
     app.get('/api/response/', ctrl.response.get);
     app.get('/api/response/list/', ctrl.response.list);
-    app.get('/api/response/count/', ctrl.response.count);
+    //app.get('/api/response/count/', ctrl.response.count);
     app.post('/admin/api/response/', ctrl.response.post);
     app.post('/admin/api/response/agree/', ctrl.response.agree);
 
