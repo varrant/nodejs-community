@@ -48,12 +48,10 @@ define(function (require, exports, module) {
             accept: '/admin/api/object/accept/'
         },
         language: {
-            comment: '评论',
-            reply: '回复'
+            comment: '评论'
         },
         count: {
-            comment: 0,
-            reply: 0
+            comment: 0
         },
         query: {
             object: '',
@@ -126,8 +124,7 @@ define(function (require, exports, module) {
             }
         },
         sync: {
-            commentByCountClass: 'j-comment-by-count',
-            replyByCountClass: 'j-reply-by-count'
+            commentByCountClass: 'j-comment-by-count'
         },
         acceptByResponse: '',
         list: {
@@ -155,7 +152,6 @@ define(function (require, exports, module) {
                 language: the._options.language
             });
 
-            the._replyMap = {};
             $parent.innerHTML = html;
             the._$wrap = selector.children($parent)[0];
             the._imgview = new Imgview();
@@ -173,12 +169,10 @@ define(function (require, exports, module) {
         _initEvent: function () {
             var the = this;
             var options = the._options;
-            var replyClass = '.' + alienClass + '-reply';
             var agreeClass = '.' + alienClass + '-agree';
             var acceptClass = '.' + alienClass + '-accept';
             var contentClass = '.' + alienClass + '-content';
 
-            event.on(the._$parent, 'click', replyClass, the._reply.bind(the));
             event.on(the._$parent, 'click', agreeClass, the._agree.bind(the));
             event.on(the._$parent, 'click', acceptClass, function (eve) {
                 var $item = the._getItem(eve.target);
@@ -218,12 +212,10 @@ define(function (require, exports, module) {
             var the = this;
             var options = the._options;
             var commentByCountClass = options.sync.commentByCountClass;
-            var replyByCountClass = options.sync.replyByCountClass;
             var data = {
                 count: options.count,
                 language: options.language,
-                commentByCountClass: commentByCountClass,
-                replyByCountClass: replyByCountClass
+                commentByCountClass: commentByCountClass
             };
             the._renderContainer(data);
             the._pagerOptions = {
@@ -238,7 +230,6 @@ define(function (require, exports, module) {
             the._$listParent = nodes[1];
             the._$paginationParent = nodes[2];
             the._$commentByCount = selector.query('.' + commentByCountClass);
-            the._$replyByCount = selector.query('.' + replyByCountClass);
             the._ajaxFollowing();
             the._ajaxComment();
             the._increaseCount();
@@ -269,10 +260,9 @@ define(function (require, exports, module) {
          * 初始化响应框
          * @params $respondParent {Object} 编辑框父级
          * @params $listParent {Object} 列表父级
-         * @params [$replyNumberBtn] {Object} 回复数字按钮
          * @private
          */
-        _initRespond: function ($respondParent, $listParent, $replyNumberBtn) {
+        _initRespond: function ($respondParent, $listParent) {
             var the = this;
             var options = the._options;
             var respond;
@@ -280,13 +270,7 @@ define(function (require, exports, module) {
             if (options.respond) {
                 var respondOptions = dato.extend({}, options.respond, options.language);
 
-                if ($replyNumberBtn) {
-                    respondOptions.icon = 'reply';
-                    respondOptions.placeholder = '回复补充点什么吧';
-                } else {
-                    respondOptions.placeholder = options.list.canAccept ? '期待你的回答' : '评论说点什么吧';
-                }
-
+                respondOptions.placeholder = options.list.canAccept ? '期待你的回答' : '评论说点什么吧';
                 respond = new Respond($respondParent, respondOptions);
                 respond.on('empty', function () {
                     alert('说点什么吧');
@@ -294,16 +278,12 @@ define(function (require, exports, module) {
                 respond.on('submit', function (content) {
                     respond.disable();
 
-                    the._post(content, this._replyParentId, function (err, resp, obje) {
+                    the._post(content, function (err, resp, obje) {
                         respond.enable();
 
                         if (!err) {
                             respond.reset();
                             the._prependItem($listParent, resp, obje);
-
-                            if ($replyNumberBtn) {
-                                the._increaseHTML($replyNumberBtn, 1);
-                            }
                         }
                     });
                 });
@@ -360,7 +340,7 @@ define(function (require, exports, module) {
         _ajaxFollowing: function () {
             var the = this;
 
-            if(!the._options.developer.id){
+            if (!the._options.developer.id) {
                 return;
             }
 
@@ -403,7 +383,6 @@ define(function (require, exports, module) {
 
                     // 渲染分页
                     if (the._pager) {
-                        the._destroyReply();
                         the._pager.render({
                             page: options.query.page,
                             max: Math.ceil(the._count.comment / options.query.limit)
@@ -472,12 +451,6 @@ define(function (require, exports, module) {
 
             if (the._commentRespond) {
                 the._commentRespond.setAtList(the._atList);
-            }
-
-            if (the._replyMap) {
-                dato.each(the._replyMap, function (id, replyItem) {
-                    replyItem.respond.setAtList(the._atList);
-                });
             }
         },
 
@@ -550,11 +523,10 @@ define(function (require, exports, module) {
         /**
          * 提交评论/回复
          * @param content
-         * @param parentId
          * @param callback
          * @private
          */
-        _post: function (content, parentId, callback) {
+        _post: function (content, callback) {
             var the = this;
             var options = the._options;
             var data = {
@@ -568,28 +540,18 @@ define(function (require, exports, module) {
 
             the._isAjaxing = true;
 
-            if (parentId) {
-                data.parentResponse = parentId;
-            }
-
             ajax({
                 url: options.url.post,
                 method: 'post',
                 body: data,
-                loading: (parentId ? '回复' : '评论') + '中'
+                loading: '评论中'
             })
                 .on('success', function (data) {
                     var resp = data.response;
                     var obje = data.object;
 
                     resp.author = options.list.developer;
-
-                    if (resp.parentResponse) {
-                        the._count.reply++;
-                    } else {
-                        the._count.comment++;
-                    }
-
+                    the._count.comment++;
                     the._increaseCount();
                     callback(null, resp, obje);
                 })
@@ -611,10 +573,6 @@ define(function (require, exports, module) {
 
             the._$commentByCount.forEach(function ($node) {
                 $node.innerHTML = count.comment;
-            });
-
-            the._$replyByCount.forEach(function ($node) {
-                $node.innerHTML = count.reply;
             });
         },
 
@@ -709,160 +667,6 @@ define(function (require, exports, module) {
                 html += '<a href="/developer/' + agreer.githubLogin + '/"><img class="img-rounder" src="' + agreer.avatarM + '"></a>';
             });
             $agreesParent.innerHTML = html;
-        },
-
-
-        /**
-         * 翻页之后销毁回复实例
-         * @private
-         */
-        _destroyReply: function () {
-            var the = this;
-
-            dato.each(the._replyMap, function (id, item) {
-                if (item.respond) {
-                    item.respond.destroy();
-                }
-            });
-
-            the._replyMap = {};
-        },
-
-
-        /**
-         * 回复
-         * @private
-         */
-        _reply: function (eve) {
-            var the = this;
-            var id = the._getResponseId(eve.target);
-            var $btn = selector.closest(eve.target, 'button')[0];
-
-            the._replyMap[id] = the._replyMap[id] || {};
-
-            if (the._replyMap[id].isOpen) {
-                the._replyMap[id].isOpen = false;
-                the._toggleReply($btn, id, false);
-            } else {
-                the._replyMap[id].isOpen = true;
-                the._toggleReply($btn, id, true);
-            }
-        },
-
-
-        /**
-         * 切换评论的收起与展开
-         * @param $btn
-         * @param id
-         * @param boolean {Boolean} 是否展开
-         * @private
-         */
-        _toggleReply: function ($btn, id, boolean) {
-            var the = this;
-            var $li = selector.query('#response-' + id)[0];
-
-            if (!$li) {
-                return;
-            }
-
-            if (boolean) {
-                attribute.addClass($li, alienClass + '-active');
-
-                if (!the._replyMap || !the._replyMap[id] || !the._replyMap[id].respond) {
-                    the._ajaxReply($btn, $li, id);
-                }
-            } else {
-                attribute.removeClass($li, alienClass + '-active');
-            }
-        },
-
-
-        /**
-         * 加载回复
-         * @param $btn
-         * @param $li
-         * @param id
-         * @private
-         */
-        _ajaxReply: function ($btn, $li, id) {
-            var the = this;
-            var options = the._options;
-            var $children = selector.query('.' + alienClass + '-children', $li)[0];
-
-            if (the._isAjaxing) {
-                return alert('正忙，请稍后再试');
-            }
-
-            var $listParent;
-            var $contentParent;
-            //var $pagerParent;
-
-            // 第 2+ 次加载
-            if (the._replyMap[id].$listParent) {
-                $listParent = the._replyMap[id].$listParent;
-                //$pagerParent = the._replyMap[id].$pagerParent;
-                $contentParent = the._replyMap[id].$contentParent;
-            }
-            // 首次加载
-            else {
-                var nodes = selector.query('.j-flag', $children);
-                the._replyMap[id].query = {
-                    page: 1
-                };
-                $listParent = the._replyMap[id].$listParent = nodes[0];
-                //$pagerParent = the._replyMap[id].$pagerParent = nodes[1];
-                $contentParent = the._replyMap[id].$contentParent = nodes[2];
-            }
-
-            the._renderReply($listParent);
-
-            var query = dato.extend({
-                parent: id
-            }, options.query, the._replyMap[id].query);
-
-            ajax({
-                url: options.url.list + '?' + qs.stringify(query),
-                loading: false
-            })
-                .on('success', function (data) {
-                    the._renderReply($listParent, dato.extend({
-                        list: -1
-                    }, options.list, {
-                        type: 'reply'
-                    }, data));
-
-                    the._increaseHTML($btn, data.count, true);
-                    the._scrollTo($listParent);
-
-                    if (!the._replyMap[id].respond) {
-                        the._replyMap[id].respond = the._initRespond($contentParent, $listParent, $btn) || {};
-                        the._replyMap[id].respond._replyParentId = id;
-                    }
-
-                    the._updateAtList(data.list, false);
-                })
-                .on('error', alert)
-                .on('finish', the._ajaxFinish.bind(the));
-        },
-
-
-        /**
-         * 渲染回复
-         * @param $children
-         * @param [data]
-         * @private
-         */
-        _renderReply: function ($children, data) {
-            var the = this;
-            var html;
-
-            if (data) {
-                html = tplList.render(data);
-            } else {
-                html = the._options.loading;
-            }
-
-            $children.innerHTML = html;
         },
 
 
