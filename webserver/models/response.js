@@ -38,22 +38,22 @@ var schema = new mongoose.Schema({
         ref: 'object',
         default: null
     },
-    // 父级作者
-    parentAuthor: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: false,
-        unique: false,
-        ref: 'developer',
-        default: null
-    },
-    // 父级评论
-    parentResponse: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: false,
-        unique: false,
-        ref: 'response',
-        default: null
-    },
+    //// 父级作者
+    //parentAuthor: {
+    //    type: mongoose.Schema.Types.ObjectId,
+    //    required: false,
+    //    unique: false,
+    //    ref: 'developer',
+    //    default: null
+    //},
+    //// 父级评论
+    //parentResponse: {
+    //    type: mongoose.Schema.Types.ObjectId,
+    //    required: false,
+    //    unique: false,
+    //    ref: 'response',
+    //    default: null
+    //},
     // 赞同数量
     agreeByCount: {
         type: Number,
@@ -75,11 +75,11 @@ var schema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'developer'
     }],
-    // 回复数量
-    replyByCount: {
-        type: Number,
-        default: 0
-    },
+    //// 回复数量
+    //replyByCount: {
+    //    type: Number,
+    //    default: 0
+    //},
     // 被采纳的 obejct
     acceptByObject: {
         type: mongoose.Schema.Types.ObjectId,
