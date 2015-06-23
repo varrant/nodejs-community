@@ -186,12 +186,17 @@ module.exports = function (app) {
                             return next(err);
                         }
 
-                        list.forEach(function (item) {
-                            item.author = dato.select(item.author, ['id', 'nickname', 'githubLogin', 'githubId', 'score', 'avatar']);
-                            item.agreers = item.agreers || [];
-                            item.agreers = item.agreers.map(function (agreer) {
+                        list = list.map(function (item) {
+                            var item2 = dato.select(item, ['author', 'contentHTML', 'meta', 'acceptByObject', 'replyByCount',
+                                'agreers', 'agreeByCount', 'parentResponse', 'parentAuthor', 'publishAt', 'updateAt', 'id']);
+
+                            item2.author = dato.select(item2.author, ['id', 'nickname', 'githubLogin', 'githubId', 'score', 'avatar']);
+                            item2.agreers = item2.agreers || [];
+                            item2.agreers = item2.agreers.map(function (agreer) {
                                 return dato.select(agreer, ['id', 'nickname', 'githubLogin', 'avatarM']);
                             });
+
+                            return item2;
                         });
 
                         res.json({
