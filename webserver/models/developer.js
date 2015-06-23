@@ -109,6 +109,16 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    // AT 别人的次数
+    atCount: {
+        type: Number,
+        default: 0
+    },
+    // 被别人 AT 的次数
+    atByCount: {
+        type: Number,
+        default: 0
+    },
     // 回复 comment 次数
     replyCount: {
         type: Number,
