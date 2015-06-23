@@ -391,9 +391,7 @@ define(function (require, exports, module) {
 
                     the._renderComment(dato.extend({
                         list: data.list
-                    }, options.list, {
-                        type: 'comment'
-                    }));
+                    }, options.list));
 
                     if (!the._readyComment) {
                         the._readyComment = true;
