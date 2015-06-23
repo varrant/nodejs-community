@@ -21,41 +21,49 @@ mongoose(function (err) {
         return process.exit();
     }
 
-
-    developer.find({}, function (err, docs) {
-        if (err) {
-            console.log('find developer error');
-            console.error(err.stack);
-            return process.exit();
-        }
-
-        howdo
-            .each(docs, function (index, item, next) {
-                console.log('do', item.id);
-
-                howdo
-                    .task(function (next) {
-                        response.count({
-                            author: item.id
-                        }, next);
-                    })
-                    .task(function (next, count) {
-                        developer.findOneAndUpdate({
-                            _id: item.id
-                        }, {
-                            commentCount: count
-                        }, next);
-                    })
-                    .follow(next);
-            })
-            .follow(function () {
+    howdo
+        // 查找所有at
+        .task(function (next) {
+            response.find({}, function (err, list) {
                 if (err) {
-                    console.log(err.stack);
-                    return process.exit();
+                    return next(err);
                 }
 
-                console.log('do success');
-                return process.exit();
+
+                var map = {};
+
+                list.forEach(function (item) {
+                    (item.atList || []).forEach(function (atId) {
+                        if (map[atId]) {
+                            map[atId]++;
+                        } else {
+                            map[atId] = 1;
+                        }
+                    });
+                });
+
+                next(null, map);
             });
-    });
+        })
+        // 统计写入
+        .task(function (next, map) {
+            howdo.each(map, function (id, count, done) {
+                console.log('do', id, count);
+
+                developer.findOneAndUpdate({
+                    _id: id
+                }, {
+                    atByCount: count
+                }, done);
+            }).together(next);
+        })
+        .follow(function (err) {
+            if (err) {
+                console.log(err.stack);
+                return process.exit();
+            }
+
+            console.log('do success');
+            return process.exit();
+        });
 });
