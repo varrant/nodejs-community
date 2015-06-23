@@ -57,8 +57,8 @@ mongoose(function (err) {
                     response.findOneAndUpdate({
                         _id: resp.id.toString()
                     }, {
-                        content: '@' + author.githubLogin + ' ' + resp.content,
-                        contentHTML: '<a href="/developer/' + author.githubLogin + '" class="at">@' + author.githubLogin + '</a> ' + resp.contentHTML,
+                        content: '@' + author.githubLogin + '\n\n' + resp.content,
+                        contentHTML: '<p><a href="/developer/' + author.githubLogin + '" class="at">@' + author.githubLogin + '</a></p>' + resp.contentHTML,
                         parentAuthor: null,
                         parentResponse: null,
                         atList: resp.atList

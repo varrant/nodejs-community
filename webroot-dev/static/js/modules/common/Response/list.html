@@ -27,12 +27,6 @@
             <div class="alien-ui-response-content typo">{{=item.contentHTML}}</div>
 
             <ul class="alien-ui-response-meta alien-ui-response-action text-light list-left">
-                {{if !item.parentResponse}}
-                <li>
-                    <button class="btn btn-primary btn-sm alien-ui-response-reply"><i class="fi fi-reply"></i><span
-                            class="alien-ui-response-number">{{item.replyByCount}}</span></button>
-                </li>
-                {{/if}}
                 <li>
                     <button class="btn btn-default btn-sm alien-ui-response-agree"><i class="fi fi-thumbs-up"></i><span
                             class="alien-ui-response-number">{{item.agreeByCount}}</span></button>
@@ -57,14 +51,6 @@
             </ul>
         </div>
     </div>
-
-    {{if !item.parentResponse}}
-    <div class="alien-ui-response-children">
-        <ul class="alien-ui-response-list j-flag"></ul>
-        <div class="j-flag text-center"></div>
-        <div class="j-flag text-center"></div>
-    </div>
-    {{/if}}
 </li>
 {{/list}}
 
