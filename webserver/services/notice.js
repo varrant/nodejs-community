@@ -107,19 +107,22 @@ exports.toResponseAuthor = function (sourceDeveloper, commentAuthor, replyInObje
  * @param operator {Object} 操作者
  * @param operatorBy {Object} 被操作者
  * @param group {String} 变动后的分组
+ * @param publishRoles {Array} 变动后的发布权限数组
  */
-exports.role = function (operator, operatorBy, group) {
+exports.role = function (operator, operatorBy, group, publishRoles) {
     // 自己不必通知自己
     if (operator.id.toString() === operatorBy.id.toString()) {
         return;
     }
+
+    var value = (group || '默认') + '组以及' + publishRoles.join('、') + '的发布权限';
 
     // 1. 站内通知
     notification.createOne({
         type: 'role',
         source: operator.id,
         target: operatorBy.id,
-        value: group
+        value: value
     }, log.holdError);
 
     // 2. 邮件通知
@@ -129,7 +132,7 @@ exports.role = function (operator, operatorBy, group) {
         from: configs.smtp.from,
         receiver: {
             nickname: operatorBy.nickname,
-            group: group
+            value: value
         }
     };
     var content = noti.template.render(data);
