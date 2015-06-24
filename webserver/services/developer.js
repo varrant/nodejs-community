@@ -163,7 +163,7 @@ exports.modifyRole = function (operator, developerBy, roleArray, callback) {
         roleCount += _pow(11, maxRole);
 
         sectionList.forEach(function (item) {
-            if (roleArray2.indexOf(item.role)) {
+            if (roleArray2.indexOf(item.role) > -1) {
                 publishRoles.push(item.name);
             }
         });
