@@ -122,6 +122,15 @@ exports.count = function (conditions, callback) {
 exports.modifyRole = function (operator, developerBy, roleArray, callback) {
     var err;
     var sectionList = cache.get('app.sectionList');
+    var map = {};
+    var roleArray2 = [];
+
+    roleArray.forEach(function (role) {
+        if (!map[role]) {
+            map[role] = true;
+            roleArray2.push(role);
+        }
+    });
 
     if (developerBy && typeis.string(developerBy.githubLogin)) {
         developerBy.githubLogin = developerBy.githubLogin.toLowerCase();
@@ -133,7 +142,7 @@ exports.modifyRole = function (operator, developerBy, roleArray, callback) {
         // 不允许修改自己的权限
     operator.id.toString() !== developerBy.id.toString() &&
         // 不允许修改为 founder 的权限
-    roleArray.indexOf(20) === -1
+    roleArray2.indexOf(20) === -1
     ) {
         var group = '';
         var maxRole = 0;
@@ -142,7 +151,7 @@ exports.modifyRole = function (operator, developerBy, roleArray, callback) {
 
         dato.each(configs.group, function (index, gp) {
             if (gp.role !== 20) {
-                if (roleArray.indexOf(gp.role) > -1) {
+                if (roleArray2.indexOf(gp.role) > -1) {
                     group = gp.name;
                     maxRole = gp.role;
                     return false;
@@ -150,14 +159,17 @@ exports.modifyRole = function (operator, developerBy, roleArray, callback) {
             }
         });
 
+        // 继承用户组权限
+        roleCount += _pow(11, maxRole);
+
         sectionList.forEach(function (item) {
-            if (roleArray.indexOf(item.role)) {
+            if (roleArray2.indexOf(item.role)) {
                 publishRoles.push(item.name);
             }
         });
 
         // 取发布权限
-        roleArray.forEach(function (role) {
+        roleArray2.forEach(function (role) {
             if (role < 11) {
                 roleCount += 1 << role;
             }
@@ -188,7 +200,7 @@ exports.modifyRole = function (operator, developerBy, roleArray, callback) {
         return callback(err);
     }
     // 不允许修改为 founder 的权限
-    else if (roleArray.indexOf(20) > -1) {
+    else if (roleArray2.indexOf(20) > -1) {
         err = new Error('不允许修改为 founder 的权限');
         return callback(err);
     } else {
