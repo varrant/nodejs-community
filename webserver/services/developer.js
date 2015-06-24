@@ -150,7 +150,7 @@ exports.modifyRole = function (operator, developerBy, roleArray, callback) {
             }
         });
 
-        sectionList.forEach(function (index, item) {
+        sectionList.forEach(function (item) {
             if (roleArray.indexOf(item.role)) {
                 publishRoles.push(item.name);
             }
