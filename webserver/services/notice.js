@@ -115,7 +115,7 @@ exports.role = function (operator, operatorBy, group, publishRoles) {
         return;
     }
 
-    var value = (group || '默认') + '分组以及' + publishRoles.join('、') + '的发布权限';
+    var value = (group || '默认') + '用户组以及' + publishRoles.join('、') + '版块的发布权限';
 
     // 1. 站内通知
     notification.createOne({
