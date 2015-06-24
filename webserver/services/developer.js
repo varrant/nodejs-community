@@ -121,6 +121,7 @@ exports.count = function (conditions, callback) {
  */
 exports.modifyRole = function (operator, developerBy, roleArray, callback) {
     var err;
+    var sectionList = cache.get('app.sectionList');
 
     if (developerBy && typeis.string(developerBy.githubLogin)) {
         developerBy.githubLogin = developerBy.githubLogin.toLowerCase();
@@ -137,6 +138,7 @@ exports.modifyRole = function (operator, developerBy, roleArray, callback) {
         var group = '';
         var maxRole = 0;
         var roleCount = 0;
+        var publishRoles = [];
 
         dato.each(configs.group, function (index, gp) {
             if (gp.role !== 20) {
@@ -148,15 +150,18 @@ exports.modifyRole = function (operator, developerBy, roleArray, callback) {
             }
         });
 
+        sectionList.forEach(function (index, item) {
+            if (roleArray.indexOf(item.role)) {
+                publishRoles.push(item.name);
+            }
+        });
+
         // 取发布权限
         roleArray.forEach(function (role) {
             if (role < 11) {
                 roleCount += 1 << role;
             }
         });
-
-        // 继承操作权限
-        roleCount += _pow(11, maxRole);
 
         var data = {
             role: roleCount,
@@ -167,7 +172,7 @@ exports.modifyRole = function (operator, developerBy, roleArray, callback) {
             callback(err, newDoc, oldDoc);
 
             if (!err && newDoc) {
-                notice.role(operator, developerBy, group || 'none');
+                notice.role(operator, developerBy, group || '', publishRoles);
             }
         });
     }

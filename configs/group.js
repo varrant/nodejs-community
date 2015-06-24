@@ -30,4 +30,4 @@ module.exports = function (app) {
             introduction: '作者'
         }
     ];
-}
+};
