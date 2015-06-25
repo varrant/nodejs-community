@@ -1,8 +1,11 @@
 {
   "js": {
-    "src": "./static/js/app/**/*.js",
+    "main": "./static/js/app/**/*.js",
     "coolie-config.js": "./static/js/coolie-config.js",
-    "dest": "./static/js/"
+    "dest": "./static/js/",
+    "chunk": [
+      "./static/js/alien/**/*"
+    ]
   },
   "css": {
     "dest": "./static/css/"
@@ -18,7 +21,7 @@
   },
   "dest": {
     "dirname": "../webroot-pro/",
-    "host": "http://s.ydr.me/@/"
+    "host": ""
   },
   "copy": [
     "./static/js/libs/**/*.js",
