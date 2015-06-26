@@ -7,7 +7,7 @@
     "dest": "./static/js/",
     "chunk": [
       "./static/js/alien/core/**/*",
-      "./static/js/alien/*(libs|utils)/**/*",
+      "./static/js/alien/*(libs|utils|3rd)/**/*",
       "./static/js/alien/*(widgets|ui)/**/*"
     ]
   },
