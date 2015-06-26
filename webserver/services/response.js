@@ -156,13 +156,21 @@ exports.createOne = function (author, data, meta, callback) {
                 object.pushContributor({_id: doc.object}, author, log.holdError);
 
                 // 被 at
-                atList3.forEach(function (atTo) {
-                    // 通知被 AT 的人
-                    notice.at(author, atTo, responseObject, doc);
+                howdo.each(atList3, function (index, atTo, done) {
+                    developer.findOne({
+                        _id: atTo
+                    }, function (err, atDeveloper) {
+                        if (atDeveloper) {
+                            // 通知被 AT 的人
+                            notice.at(author, atDeveloper, responseObject, doc);
 
-                    // 被 AT 人的被 AT 次数
-                    developer.increaseAtByCount({_id: atTo}, 1, log.holdError);
-                });
+                            // 被 AT 人的被 AT 次数
+                            developer.increaseAtByCount({_id: atDeveloper.id}, 1, log.holdError);
+                        }
+
+                        done();
+                    });
+                }).together(log.holdError);
 
                 // 评论作者的 at 次数
                 developer.increaseAtByCount({_id: author.id}, atList3.length, log.holdError);

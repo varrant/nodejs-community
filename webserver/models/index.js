@@ -439,7 +439,7 @@ dato.each(models, function (key, model) {
      */
     exports[key].increase = function (conditions, path, count, callback) {
         if (conditions._id !== undefined && !typeis.mongoId(conditions._id)) {
-            return callback(new Error('the id of conditions is invalid'));
+            return callback(new Error('the id `' + conditions._id + '` of conditions is invalid'));
         }
 
         model.findOne(conditions, function (err, doc) {
