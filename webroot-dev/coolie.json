@@ -1,10 +1,14 @@
 {
   "js": {
-    "main": "./static/js/app/**/*.js",
+    "main": [
+      "./static/js/app/**/*"
+    ],
     "coolie-config.js": "./static/js/coolie-config.js",
     "dest": "./static/js/",
     "chunk": [
-      "./static/js/alien/**/*"
+      "./static/js/alien/core/**/*",
+      "./static/js/alien/*(libs|utils)/**/*",
+      "./static/js/alien/*(widgets|ui)/**/*"
     ]
   },
   "css": {
@@ -21,7 +25,7 @@
   },
   "dest": {
     "dirname": "../webroot-pro/",
-    "host": ""
+    "host": "/"
   },
   "copy": [
     "./static/js/libs/**/*.js",
