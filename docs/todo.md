@@ -6,4 +6,4 @@ object 表里的 scoreList.date => scoreList.at
 
 github 信息手动同步
 
-被 at 次数计算错误
+被 at 次数计算错误 √
