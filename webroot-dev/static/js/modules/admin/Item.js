@@ -13,10 +13,10 @@ define(function (require, exports, module) {
     var confirm = require('../../alien/widgets/confirm.js');
     var prompt = require('../common/prompt.js');
     var tip = require('../common/tip.js');
-    var Loading = require('../../alien/ui/Loading/');
+    var Loading = require('../../alien/ui/loading/');
     var selector = require('../../alien/core/dom/selector.js');
     var ui = require('../../alien/ui/');
-    var Editor = require('../../alien/ui/Editor/');
+    var Editor = require('../../alien/ui/editor/');
     var dato = require('../../alien/utils/dato.js');
     var controller = require('../../alien/utils/controller.js');
     var date = require('../../alien/utils/date.js');
