@@ -26,6 +26,11 @@ var schema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    // accessToken，用于及时获取用户的公开信息
+    accessToken: {
+        type: String,
+        required: true
+    },
     // weibo 用户名，由 weibo 授权过来
     // 用户的认证符号
     weibo: {

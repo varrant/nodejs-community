@@ -918,6 +918,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                 //    {"email":"cloudcome@163.com","primary":true,"verified":true},
                 //    {"email":"ben.smith8@pcc.edu","primary":false,"verified":true}
                 // ]
+                // 通过验证的主邮箱
                 dato.each(list, function (item) {
                     if (item.verified && item.primary) {
                         hasFind = true;
@@ -926,6 +927,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                     }
                 });
 
+                // 通过验证的邮箱
                 if (!hasFind) {
                     dato.each(list, function (item) {
                         if (item.verified) {
@@ -936,6 +938,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                     });
                 }
 
+                // 主邮箱
                 if (!hasFind) {
                     dato.each(list, function (item) {
                         if (item.primary) {
@@ -946,6 +949,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                     });
                 }
 
+                // 否则取第一个邮箱
                 if (!hasFind && list.length) {
                     findEmail = list[0].email;
                 }
