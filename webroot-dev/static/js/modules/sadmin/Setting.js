@@ -17,7 +17,7 @@ define(function (require, exports, module) {
     var event = require('../../alien/core/event/base.js');
     var id = hashbang.get('query', 'id');
     var dato = require('../../alien/utils/dato.js');
-    var Upload = require('../../alien/ui/Upload/');
+    var Upload = require('../../alien/ui/img-Upload/index.js');
     var defaults = {
         emptyData: {
             name: '',

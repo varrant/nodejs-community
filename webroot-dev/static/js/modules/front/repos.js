@@ -13,7 +13,7 @@ define(function (require, exports, module) {
 
     var jsonp = require('../../alien/core/communication/jsonp.js');
     var selector = require('../../alien/core/dom/selector.js');
-    var Template = require('../../alien/libs/Template.js');
+    var Template = require('../../alien/libs/template.js');
     var dato = require('../../alien/utils/dato.js');
     var date = require('../../alien/utils/date.js');
     var template = require('./repos.html', 'html');

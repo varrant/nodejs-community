@@ -16,7 +16,7 @@ define(function (require, exports, module) {
     var dato = require('../../alien/utils/dato.js');
     var number = require('../../alien/utils/number.js');
     var qs = require('../../alien/utils/querystring.js');
-    var Pagination = require('../../alien/ui/Pagination/index.js');
+    var Pagination = require('../../alien/ui/pagination/index.js');
     var attribute = require('../../alien/core/dom/attribute.js');
     var defaults = {
         url: '/admin/api/object/list/',

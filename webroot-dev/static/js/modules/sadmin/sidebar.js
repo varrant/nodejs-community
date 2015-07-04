@@ -10,7 +10,7 @@ define(function (require, exports, module) {
 
     var ajax = require('../common/ajax.js');
     var alert = require('../../alien/widgets/alert.js');
-    var Scrollbar = require('../../alien/ui/Scrollbar/');
+    //var Scrollbar = require('../../alien/ui/scrollbar/index.js');
     var dato = require('../../alien/utils/dato.js');
     var selector = require('../../alien/core/dom/selector.js');
     var attribute = require('../../alien/core/dom/attribute.js');
