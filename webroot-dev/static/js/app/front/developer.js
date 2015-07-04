@@ -70,7 +70,7 @@ define(function (require, exports, module) {
 
         pager.on('change', function (page) {
             var url = path + 'page/' + page + '/';
-            history.pushState({
+            history.replaceState({
                 url: url
             }, '', url);
             getList(url);

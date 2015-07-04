@@ -1,9 +1,9 @@
-object 表里的 updateList.date => updateList.at
-
-object 表里的 scoreList.date => scoreList.at
-
-评论扁平化？√
-
-github 信息手动同步
-
-被 at 次数计算错误 √
+1、object 表里的 updateList.date => updateList.at
+2、object 表里的 scoreList.date => scoreList.at
+3、评论扁平化？√
+4、github 信息手动同步
+5、被 at 次数计算错误 √
+6、问答管理，管理员可以手动关闭，并通知到作者
+7、招聘版块
+8、技能树（参考诛仙的技能树）
+9、站内全局搜索

@@ -96,7 +96,7 @@ define(function (require, exports, module) {
 
                 var url = app.buildPath();
 
-                history.pushState({
+                history.replaceState({
                     url: url
                 }, '', url);
                 app.pjax(url);
