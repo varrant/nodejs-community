@@ -1,2 +1,2 @@
 <div class="card" id="list"> <h2 class="card-title"><i class="fi fi-comment"></i>评论记录 </h2> <div class="card-body"> <ul class="simplelist history"> {{if list.length}} {{list list as item}} <li class="clearfix"> <span class="pull-right text-light">{{item.interactiveAt|datefrom}}</span> {{developer.nickname}}对<a href="/{{=sectionURIMap[item.object.section]}}/{{=item.object.uri}}.html">《{{item.object.title}}》</a> 评论道： <blockquote>{{=item.response.contentHTML}}</blockquote> </li> {{/list}} {{else}} <li class="text-center text-muted"> <i class="fi fi-info-circle"></i>暂无相关信息。 </li> {{/if}} </ul> </div> <div class="card-footer text-center"> <div id="pager"></div> </div></div>
-<!--coolie@0.21.6-->
+<!--coolie@0.21.8-->
