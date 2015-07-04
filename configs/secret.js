@@ -11,8 +11,8 @@ module.exports = function(app) {
         session: {
             // session 加密密钥
             secret: '12345',
-            // csrf 的过期时间（单位毫秒），默认1个小时
-            csrfAge: 1 * 60 * 60 * 1000
+            // csrf 的过期时间（单位毫秒），默认 1.5 个小时
+            csrfAge: 1.5 * 60 * 60 * 1000
         },
 
         cookie: {
@@ -27,12 +27,12 @@ module.exports = function(app) {
 
             // 会员 cookie 名称
             userKey: 'fed-user',
-            // cookie有效期（单位毫秒），默认7天
-            userAge: 7 * 24 * 60 * 60 * 1000,
+            // cookie有效期（单位毫秒），默认 30 天
+            userAge: 30 * 24 * 60 * 60 * 1000,
 
             // 访客 cookie 名称
             visitorKey: 'fed-visitor',
-            // cookie有效期（单位毫秒），默认7天
+            // cookie有效期（单位毫秒），默认 7 天
             visitorAge: 7 * 24 * 60 * 60 * 1000
         }
     };
