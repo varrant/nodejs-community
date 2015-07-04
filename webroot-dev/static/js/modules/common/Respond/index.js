@@ -154,7 +154,7 @@ define(function (require, exports, module) {
         }
     });
 
-    modification.importStyle(style);
+    ui.importStyle(style);
     Respond.defaults = defaults;
     module.exports = Respond;
 });

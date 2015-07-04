@@ -771,7 +771,7 @@ define(function (require, exports, module) {
 
 
     require('../Template-filter.js');
-    modification.importStyle(style);
+    ui.importStyle(style);
     Response.defaults = defaults;
     module.exports = Response;
 });
