@@ -13,8 +13,8 @@ define(function (require, exports, module) {
     var modification = require('../../../alien/core/dom/modification.js');
     var event = require('../../../alien/core/event/base.js');
     var dato = require('../../../alien/utils/dato.js');
-    var Editor = require('../../../alien/ui/Editor/');
-    var Template = require('../../../alien/libs/Template.js');
+    var Editor = require('../../../alien/ui/editor/');
+    var Template = require('../../../alien/libs/template.js');
     var template = require('./template.html', 'html');
     var style = require('./style.css', 'css');
     var tpl = new Template(template);

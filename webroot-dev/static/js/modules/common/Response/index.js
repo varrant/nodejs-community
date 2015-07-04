@@ -9,7 +9,7 @@ define(function (require, exports, module) {
     'use strict';
 
     var ui = require('../../../alien/ui/');
-    var Imgview = require('../../../alien/ui/Imgview/');
+    var Imgview = require('../../../alien/ui/img-view/');
     var selector = require('../../../alien/core/dom/selector.js');
     var modification = require('../../../alien/core/dom/modification.js');
     var attribute = require('../../../alien/core/dom/attribute.js');
@@ -24,14 +24,14 @@ define(function (require, exports, module) {
     var alert = require('../../../alien/widgets/alert.js');
     var confirm = require('../../../alien/widgets/confirm.js');
     var tip = require('../tip.js');
-    var Pagination = require('../../../alien/ui/Pagination/');
-    var Loading = require('../../../alien/ui/Loading/');
+    var Pagination = require('../../../alien/ui/pagination/');
+    var Loading = require('../../../alien/ui/loading/');
     var Respond = require('../Respond/');
-    var Template = require('../../../alien/libs/Template.js');
+    var Template = require('../../../alien/libs/template.js');
     var templateWrap = require('./wrap.html', 'html');
     var templateContainer = require('./container.html', 'html');
     var templateList = require('./list.html', 'html');
-    var Prettify = require('../../../alien/ui/Prettify/');
+    var Prettify = require('../../../alien/ui/prettify/');
     var xhr = require('../../../alien/core/communication/xhr.js');
     var style = require('./style.css', 'css');
     var tplWrap = new Template(templateWrap);
