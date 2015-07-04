@@ -8,16 +8,16 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var ui = require('../../alien/ui/');
-    var ajax = require('../common/ajax.js');
-    var alert = require('../../alien/widgets/alert.js');
-    var confirm = require('../../alien/widgets/confirm.js');
-    var hashbang = require('../../alien/core/navigator/hashbang.js');
-    var dato = require('../../alien/utils/dato.js');
-    var number = require('../../alien/utils/number.js');
-    var qs = require('../../alien/utils/querystring.js');
-    var Pagination = require('../../alien/ui/pagination/index.js');
-    var attribute = require('../../alien/core/dom/attribute.js');
+    var ui = require('../../../alien/ui/index');
+    var ajax = require('../../common/ajax.js');
+    var alert = require('../../../alien/widgets/alert.js');
+    var confirm = require('../../../alien/widgets/confirm.js');
+    var hashbang = require('../../../alien/core/navigator/hashbang.js');
+    var dato = require('../../../alien/utils/dato.js');
+    var number = require('../../../alien/utils/number.js');
+    var qs = require('../../../alien/utils/querystring.js');
+    var Pagination = require('../../../alien/ui/pagination/index.js');
+    var attribute = require('../../../alien/core/dom/attribute.js');
     var defaults = {
         listURL: '/admin/api/object/list/',
         itemURL: '/admin/api/object/',
