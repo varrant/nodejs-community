@@ -12,7 +12,7 @@ define(function (require, exports, module) {
     require('../../modules/front/nav.js');
     require('../../modules/front/footer.js');
 
-    var Setting = require('../../modules/admin/Setting.js');
+    var Setting = require('../../modules/admin/setting/index.js');
     new Setting('#column', {
         url: '/admin/api/column/',
         itemKey: 'column',

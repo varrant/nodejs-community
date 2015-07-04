@@ -12,7 +12,7 @@ define(function (require, exports, module) {
     require('../../modules/sadmin/header.js');
     require('../../modules/sadmin/sidebar.js');
 
-    var Setting = require('../../modules/sadmin/Setting.js');
+    var Setting = require('../../modules/sadmin/setting/index.js');
     new Setting('#section', {
         url: '/admin/api/section/',
         itemKey: 'section',

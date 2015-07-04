@@ -11,7 +11,7 @@ define(function (require, exports, module) {
 
     require('../../modules/front/nav.js');
     require('../../modules/front/footer.js');
-    var List = require('../../modules/admin/List.js');
+    var List = require('../../modules/admin/list/index.js');
     var ajax = require('../../modules/common/ajax.js');
     var hashbang = require('../../alien/core/navigator/hashbang.js');
     var selector = require('../../alien/core/dom/selector.js');

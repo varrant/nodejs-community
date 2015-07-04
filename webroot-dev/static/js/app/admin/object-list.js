@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var List = require('../../modules/admin/List.js');
+    var List = require('../../modules/admin/list/index.js');
 
     require('../../modules/front/nav.js');
     require('../../modules/front/footer.js');

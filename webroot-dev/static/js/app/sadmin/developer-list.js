@@ -8,7 +8,7 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var List = require('../../modules/sadmin/List.js');
+    var List = require('../../modules/sadmin/list/index.js');
 
     require('../../modules/sadmin/header.js');
     require('../../modules/sadmin/sidebar.js');

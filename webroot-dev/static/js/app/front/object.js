@@ -17,7 +17,7 @@ define(function (require, exports, module) {
     var attribute = require('../../alien/core/dom/attribute.js');
     var animation = require('../../alien/core/dom/animation.js');
     var event = require('../../alien/core/event/touch.js');
-    var Response = require('../../modules/common/Response/index.js');
+    var Response = require('../../modules/common/response/index.js');
     var Imgview = require('../../alien/ui/img-view/index.js');
     var Prettify = require('../../alien/ui/prettify/');
     var dato = require('../../alien/utils/dato.js');
