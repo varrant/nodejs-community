@@ -1,8 +1,14 @@
 /// base
 
+//:root{
+//  font-size: 14px;
+//  line-height: 1.4286;
+//}
+
 html {
   font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
-  font-size: 62.5%;
+  font-size: 14px;
+  line-height: 1.4286;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -19,24 +25,24 @@ html {
   box-sizing: inherit;
 }
 
-// @link http://mux.alimama.com/posts/1423
-@media only screen and (min-width: 481px) {
-  html {
-    font-size: 94% !important;
-  }
-}
-
-@media only screen and (min-width: 561px) {
-  html {
-    font-size: 109% !important;
-  }
-}
-
-@media only screen and (min-width: 641px) {
-  html {
-    font-size: 125% !important;
-  }
-}
+//// @link http://mux.alimama.com/posts/1423
+//@media only screen and (min-width: 481px) {
+//  html {
+//    font-size: 94% !important;
+//  }
+//}
+//
+//@media only screen and (min-width: 561px) {
+//  html {
+//    font-size: 109% !important;
+//  }
+//}
+//
+//@media only screen and (min-width: 641px) {
+//  html {
+//    font-size: 125% !important;
+//  }
+//}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
