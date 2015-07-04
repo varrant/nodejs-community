@@ -29,10 +29,13 @@ define(function (require, exports, module) {
             win.location.href = url;
         }
     };
+    // <meta name="description"
+    var $meta = selector.query('meta[name="description"]')[0];
+    var description = attribute.attr($meta, 'content');
     var e = encodeURIComponent;
     var shareData = win.shareData || {};
-    var title = e(shareData.title || '写的不错，分享一下啦。《' + document.title + '》');
-    var desc = e(shareData.desc || attribute.attr(selector.query('meta[name="description"]')[0], 'content'));
+    var title = e(shareData.title || '《' + document.title + '》' + description);
+    var desc = e(shareData.desc || description);
     var link = e(shareData.link || location.href);
     var $imgs = selector.query('img:not(.favicon)');
     var img = '';

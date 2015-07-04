@@ -9,3 +9,4 @@
 9、站内全局搜索
 10、首页新风格
 11、新的验证规则 validation
+12、分享描述提取 description
