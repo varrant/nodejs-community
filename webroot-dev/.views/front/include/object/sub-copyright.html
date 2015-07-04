@@ -9,6 +9,7 @@
                 <i class="fi fi-external-link text-light"></i>
             </li>
             {{/if}}
+            <li>{{section.name}}作者：<a href="/developer/{{object.author.githubLogin}}">{{=object.author.nickname}}</a></li>
             <li>{{section.name}}标题：<a href="{{=url}}">《{{=title}}》</a></li>
             <li>{{section.name}}地址：<a href="{{=url}}">{{=url}}</a></li>
             <li>
