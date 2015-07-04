@@ -8,12 +8,12 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var ui = require('../../../alien/ui/');
+    var ui = require('../../../alien/ui/index.js');
     var selector = require('../../../alien/core/dom/selector.js');
     var modification = require('../../../alien/core/dom/modification.js');
     var event = require('../../../alien/core/event/base.js');
     var dato = require('../../../alien/utils/dato.js');
-    var Editor = require('../../../alien/ui/editor/');
+    var Editor = require('../../../alien/ui/editor/index.js');
     var Template = require('../../../alien/libs/template.js');
     var template = require('./template.html', 'html');
     var style = require('./style.css', 'css');

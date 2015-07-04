@@ -8,17 +8,17 @@
 define(function (require, exports, module) {
     'use strict';
 
-    var ui = require('../../alien/ui/');
-    var ajax = require('../common/ajax.js');
-    var alert = require('../../alien/widgets/alert.js');
-    var confirm = require('../../alien/widgets/confirm.js');
-    var tip = require('../common/tip.js');
-    var selector = require('../../alien/core/dom/selector.js');
-    var hashbang = require('../../alien/core/navigator/hashbang.js');
-    var event = require('../../alien/core/event/base.js');
+    var ui = require('../../../alien/ui/index.js');
+    var ajax = require('../../common/ajax.js');
+    var alert = require('../../../alien/widgets/alert.js');
+    var confirm = require('../../../alien/widgets/confirm.js');
+    var tip = require('../../common/tip.js');
+    var selector = require('../../../alien/core/dom/selector.js');
+    var hashbang = require('../../../alien/core/navigator/hashbang.js');
+    var event = require('../../../alien/core/event/base.js');
     var id = hashbang.get('query', 'id');
-    var dato = require('../../alien/utils/dato.js');
-    var Upload = require('../../alien/ui/img-upload/');
+    var dato = require('../../../alien/utils/dato.js');
+    var Upload = require('../../../alien/ui/img-upload/index.js');
     var defaults = {
         emptyData: {
             name: '',

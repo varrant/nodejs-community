@@ -12,7 +12,7 @@ define(function (require, exports, module) {
     var json = 'application/json; charset=utf-8';
     var login = require('./login.js');
     var alert = require('../../alien/widgets/alert.js');
-    var Loading = require('../../alien/ui/loading/');
+    var Loading = require('../../alien/ui/loading/index.js');
     var Emitter = require('../../alien/libs/emitter.js');
     var klass = require('../../alien/utils/class.js');
     var Ajax = klass.extends(Emitter).create(function (options) {
