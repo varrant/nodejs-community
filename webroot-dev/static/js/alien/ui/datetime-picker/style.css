@@ -1,0 +1,118 @@
+.alien-ui-datetimepicker {
+  width: 300px;
+  font-size: 14px;
+  background: #fff;
+  cursor: default;
+  overflow: hidden; }
+  .alien-ui-datetimepicker-popup {
+    border: 2px solid #ccc; }
+    .alien-ui-datetimepicker-popup .alien-ui-popup-content {
+      padding: 0;
+      border-radius: 6px;
+      overflow: hidden; }
+  .alien-ui-datetimepicker * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+  .alien-ui-datetimepicker-wide {
+    width: 600px; }
+    .alien-ui-datetimepicker-wide .alien-ui-datetimepicker-date {
+      border-right: 1px solid #ccc; }
+  .alien-ui-datetimepicker-date,
+  .alien-ui-datetimepicker-time {
+    width: 300px;
+    float: left; }
+  .alien-ui-datetimepicker-toolbar {
+    overflow: hidden;
+    border-bottom: 0; }
+  .alien-ui-datetimepicker-select {
+    float: left;
+    width: 50%;
+    height: 34px;
+    position: relative;
+    overflow: hidden; }
+    .alien-ui-datetimepicker-select:first-child {
+      border-right: 1px solid #ccc; }
+    .alien-ui-datetimepicker-select select {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 0;
+      border-radius: 0;
+      font: inherit;
+      color: inherit;
+      background: #fff; }
+  .alien-ui-datetimepicker table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0; }
+  .alien-ui-datetimepicker th, .alien-ui-datetimepicker td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center; }
+    .alien-ui-datetimepicker th:first-child, .alien-ui-datetimepicker td:first-child {
+      border-left: 0; }
+    .alien-ui-datetimepicker th:last-child, .alien-ui-datetimepicker td:last-child {
+      border-right: 0; }
+  .alien-ui-datetimepicker tr:last-child td {
+    border-bottom: 0; }
+  .alien-ui-datetimepicker th {
+    background: #eee; }
+  .alien-ui-datetimepicker td:hover {
+    background: #f9f9f9; }
+  .alien-ui-datetimepicker-prev {
+    color: #ccc; }
+  .alien-ui-datetimepicker-this {
+    color: #333; }
+  .alien-ui-datetimepicker-next {
+    color: #ccc; }
+  .alien-ui-datetimepicker .alien-ui-datetimepicker-today,
+  .alien-ui-datetimepicker .alien-ui-datetimepicker-today:hover {
+    background: #ddd; }
+  .alien-ui-datetimepicker .alien-ui-datetimepicker-active,
+  .alien-ui-datetimepicker .alien-ui-datetimepicker-active:hover {
+    background: #3AA1DF;
+    color: #FFF; }
+  .alien-ui-datetimepicker-time {
+    padding: 40px 10px; }
+  .alien-ui-datetimepicker-item {
+    position: relative;
+    padding-left: 50px;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 20px; }
+    .alien-ui-datetimepicker-item:last-child {
+      margin-bottom: 0; }
+    .alien-ui-datetimepicker-item-key {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50px;
+      text-align: center; }
+    .alien-ui-datetimepicker-item-val {
+      font-size: 16px;
+      font-weight: 900; }
+  .alien-ui-datetimepicker-action {
+    clear: both;
+    border-top: 1px solid #CCC;
+    overflow: hidden; }
+  .alien-ui-datetimepicker-button {
+    width: 33.33333333%;
+    float: left;
+    text-align: center;
+    height: 34px;
+    line-height: 34px;
+    color: #888;
+    cursor: pointer;
+    border-right: 1px solid #ccc; }
+    .alien-ui-datetimepicker-button:hover {
+      background: #f8f8f8;
+      color: #666; }
+    .alien-ui-datetimepicker-button:last-child {
+      border-right: 0; }
+

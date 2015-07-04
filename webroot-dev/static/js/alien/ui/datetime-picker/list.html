@@ -1,0 +1,22 @@
+<table class="alien-ui-datetimepicker-list">
+    <thead>
+    <tr>
+        {{list thead as th}}
+        <th>{{th}}</th>
+        {{/list}}
+    </tr>
+    </thead>
+    <tbody>
+    {{list tbody as index,tr}}
+    <tr>
+        {{list tr as td}}
+        <td data-id="{{td.id}}"
+            data-year="{{td.year}}"
+            data-month="{{td.month}}"
+            data-date="{{td.date}}"
+            class="alien-ui-datetimepicker-{{td.type}} {{td.active ? 'alien-ui-datetimepicker-active' : ''}} {{td.today ? 'alien-ui-datetimepicker-today' : ''}}">{{td.date}}</td>
+        {{/list}}
+    </tr>
+    {{/list}}
+    </tbody>
+</table>

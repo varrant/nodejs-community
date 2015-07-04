@@ -1,0 +1,21 @@
+.alien-ui-ctrllist{
+  border-radius: 4px;
+  box-shadow: 5px 5px 10px #DDD;
+  background: #f9f9f9;
+  min-width: 200px;
+  overflow: auto;
+  padding: 3px 0;
+
+  &-item{
+    line-height: 14px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 5px 10px;
+
+    &-active{
+      background: #3682f9;
+      color: #FFF;
+    }
+  }
+}
