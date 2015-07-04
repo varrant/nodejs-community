@@ -914,23 +914,32 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                 var hasFind = false;
                 var findEmail = '';
 
+                /**
+                 * 判断是否为 github 提供的隐私邮箱
+                 * @param email
+                 * @returns {boolean}
+                 */
+                var isNotNoReplyEmail = function (email) {
+                    return email.indexOf('users.noreply.github.com') > -1;
+                };
+
                 // [
                 //    {"email":"cloudcome@163.com","primary":true,"verified":true},
                 //    {"email":"ben.smith8@pcc.edu","primary":false,"verified":true}
                 // ]
                 // 通过验证的主邮箱
                 dato.each(list, function (item) {
-                    if (item.verified && item.primary) {
+                    if (item.verified && item.primary && !isNotNoReplyEmail(item.email)) {
                         hasFind = true;
                         findEmail = item.email;
                         return false;
                     }
                 });
 
-                // 通过验证的邮箱
+                // 主邮箱
                 if (!hasFind) {
                     dato.each(list, function (item) {
-                        if (item.verified) {
+                        if (item.primary && !isNotNoReplyEmail(item.email)) {
                             hasFind = true;
                             findEmail = item.email;
                             return false;
@@ -938,10 +947,10 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                     });
                 }
 
-                // 主邮箱
+                // 通过验证的邮箱
                 if (!hasFind) {
                     dato.each(list, function (item) {
-                        if (item.primary) {
+                        if (item.verified && !isNotNoReplyEmail(item.email)) {
                             hasFind = true;
                             findEmail = item.email;
                             return false;
@@ -951,6 +960,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
 
                 // 否则取第一个邮箱
                 if (!hasFind && list.length) {
+                    hasFind = true;
                     findEmail = list[0].email;
                 }
 
