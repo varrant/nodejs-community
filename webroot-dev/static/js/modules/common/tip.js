@@ -11,7 +11,7 @@ define(function (require, exports, module) {
      */
     'use strict';
 
-    var Msg = require('../../alien/ui/Msg/index.js');
+    var Msg = require('../../alien/ui/msg/index.js');
     var modification = require('../../alien/core/dom/modification.js');
     var style = require('./tip.css', 'css');
 
