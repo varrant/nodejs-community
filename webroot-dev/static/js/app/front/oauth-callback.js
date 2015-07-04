@@ -15,10 +15,9 @@ define(function (require) {
     var locals = window.locals || {};
 
     app._login = function () {
-        var $msg = document.getElementById('msg');
-
         if (app.redirect) {
-            return window.location.href = app.redirect;
+            window.location.href = app.redirect;
+            return;
         }
 
         ajax({

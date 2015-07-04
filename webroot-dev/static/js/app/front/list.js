@@ -13,8 +13,8 @@ define(function (require, exports, module) {
     require('../../modules/front/footer.js');
     require('../../modules/common/share.js');
 
-    var Template = require('../../alien/libs/Template.js');
-    var Pagination = require('../../alien/ui/Pagination/');
+    var Template = require('../../alien/libs/template.js');
+    var Pagination = require('../../alien/ui/pagination/index.js');
     var selector = require('../../alien/core/dom/selector.js');
     var animation = require('../../alien/core/dom/animation.js');
     var attribute = require('../../alien/core/dom/attribute.js');

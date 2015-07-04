@@ -15,12 +15,12 @@ define(function (require, exports, module) {
     require('../../modules/common/follow.js');
 
     var app = {};
-    var Pager = require('../../alien/ui/Pager/');
+    var Pager = require('../../alien/ui/pager/index.js');
     var selector = require('../../alien/core/dom/selector.js');
     var animation = require('../../alien/core/dom/animation.js');
     var attribute = require('../../alien/core/dom/attribute.js');
     var event = require('../../alien/core/event/base.js');
-    var Template = require('../../alien/libs/Template.js');
+    var Template = require('../../alien/libs/template.js');
     var dato = require('../../alien/utils/dato.js');
     var win = window;
     var winPager = win['-pager-'];
