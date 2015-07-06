@@ -210,7 +210,7 @@
     },
     ".views/admin/include/meta.html": {
         "css": {
-            "static/css/44fd7727bea53d4b9ec5e3daa6738bcc.css": [
+            "static/css/1abda3abd0905031a923bf5face9ea6a.css": [
                 "static/css/components/front/0-layout.css",
                 "static/css/components/front/1-header.css",
                 "static/css/components/front/2-unit-card.css",
@@ -1393,7 +1393,7 @@
     },
     ".views/front/include/meta.html": {
         "css": {
-            "static/css/bc82a28ae461749874d0ecbf376c170f.css": [
+            "static/css/6e8c2baad6f9638470498a72dacd5406.css": [
                 "static/css/components/front/0-layout.css",
                 "static/css/components/front/1-header.css",
                 "static/css/components/front/2-unit-card.css",
