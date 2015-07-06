@@ -180,13 +180,15 @@ header {
   }
 
   &-join,
+  &-join:link,
+  &-join:visited,
   &-join:hover,
-  &-join:active,
-  &-join:visited{
+  &-join:active{
     display: block;
     text-align: center;
     color: #fff;
     background: #CB4545;
+    text-decoration: none;
   }
 
   &-downlist {

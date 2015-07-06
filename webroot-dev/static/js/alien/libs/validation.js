@@ -25,26 +25,44 @@ define(function (require, exports, module) {
     var howdo = require('../utils/howdo.js');
     var string = require('../utils/string.js');
     var Emitter = require('./emitter.js');
+    /**
+     * @type {{}}
+     * @exmaple
+     * {
+     *     // val 值
+     *     // param 参数值
+     *     // done 验证结束回调
+     *     minLength: function (val, done, param0, param1, ...) {
+     *        // done(null); done(null)表示没有错误
+     *        // done('${path}的长度不足xx字符')
+     *     }
+     * }
+     */
     var validationMap = {};
     var namespace = 'alien-libs-validation';
+    var alienIndex = 0;
     var defaults = {
         // true: 返回单个错误对象
         // false: 返回错误对象组成的数组
         // 浏览器端，默认为 false
         // 服务器端，默认为 true
-        isBreakOnInvalid: typeis.window(window) ? false : true,
+        breakOnInvalid: typeis.window(window) ? false : true,
         defaultMsg: '${path}字段不合法'
     };
     var Validation = klass.extends(Emitter).create({
+        /**
+         * constructor
+         * @extends Emitter
+         * @param options
+         */
         constructor: function (options) {
             var the = this;
 
             the._options = dato.extend({}, defaults, options);
             the._validateList = [];
-            the._validateMap = {};
+            the._validateIndexMap = {};
             the._aliasMap = {};
             the._validationMap = {};
-            the._validateIndex = 0;
         },
 
 
@@ -66,38 +84,48 @@ define(function (require, exports, module) {
          * @returns {*}
          */
         getAlias: function (path) {
-            return this._aliasMap[path] || path;
+            return this._aliasMap[path];
         },
 
 
         /**
          * 注册验证规则，按顺序执行验证
          * @param path {String} 字段
-         * @param rule {String|Array|RegExp|Function} 验证规则，可以是静态规则，也可以添加规则
-         * @param [msg] {String} 验证失败消息
+         * @param nameOrfn {String|Function} 验证规则，可以是静态规则，也可以添加规则
          * @returns {Validation}
          */
-        addRule: function (path, rule, msg) {
+        addRule: function (path, nameOrfn/*arguments*/) {
             var the = this;
-
-            if (typeis.string(rule)) {
-                rule = [rule];
-            } else if (!typeis.array(rule)) {
-                var name = namespace + the._validateIndex++;
-                the._validationMap[name] = _fixValidationRule(rule, msg);
-                rule = [name];
-            }
-
-            var index = the._validateMap[path];
+            var args = allocation.args(arguments);
+            var params = args.slice(2);
+            var index = the._validateIndexMap[path];
 
             if (typeis.undefined(index)) {
-                the._validateMap[path] = the._validateList.length;
+                index = the._validateIndexMap[path] = the._validateList.length;
                 the._validateList.push({
                     path: path,
-                    rules: rule
+                    rules: []
                 });
-            } else {
-                the._validateList[index].rules = the._validateList[index].rules.concat(rule);
+            }
+
+            if (typeis.string(nameOrfn)) {
+                var name = nameOrfn;
+
+                if (!validationMap[name]) {
+                    throw 'can not found `' + name + '` validation';
+                }
+
+                the._validateList[index].rules.push({
+                    name: name,
+                    params: params,
+                    fn: validationMap[name]
+                });
+            } else if (typeis.function(nameOrfn)) {
+                the._validateList[index].rules.push({
+                    name: namespace + alienIndex++,
+                    params: params,
+                    fn: nameOrfn
+                });
             }
 
             return the;
@@ -106,11 +134,16 @@ define(function (require, exports, module) {
 
         /**
          * 获取字段的规则
-         * @param path {String}
+         * @param [path] {String} 字段
          * @returns {Array}
          */
         getRules: function (path) {
             var the = this;
+
+            if (!path) {
+                return the._validateList;
+            }
+
             var rules = [];
 
             dato.each(the._validateList, function (i, validate) {
@@ -122,6 +155,28 @@ define(function (require, exports, module) {
             });
 
             return rules;
+        },
+
+
+        /**
+         * 获取字段验证规则的参数
+         * @param path
+         * @param name
+         * @returns {*|Array}}
+         */
+        getRuleParams: function (path, name) {
+            var the = this;
+            var rules = the.getRules(path);
+            var rule;
+
+            dato.each(rules, function (index, _rule) {
+                if (_rule.name === name) {
+                    rule = _rule;
+                    return false;
+                }
+            });
+
+            return rule && rule.params;
         },
 
 
@@ -150,7 +205,24 @@ define(function (require, exports, module) {
             var the = this;
             var rules = the.getRules(path);
 
-            the._validateOne(data, path, rules, callback);
+            /**
+             * 单个验证之前
+             * @event beforevalidateone
+             * @param path {String} 字段
+             */
+            the.emit('beforevalidateone', path);
+            the._validateOne(data, path, rules, function () {
+                /**
+                 * 单个验证之后
+                 * @event aftervalidateone
+                 * @param path {String} 字段
+                 */
+                the.emit('aftervalidateone', path);
+
+                if (typeis.function(callback)) {
+                    callback.apply(this, arguments);
+                }
+            });
 
             return the;
         },
@@ -173,39 +245,73 @@ define(function (require, exports, module) {
 
             the._isValidating = true;
             the.data = data;
-
+            /**
+             * 全部验证之前
+             * @event beforevalidateall
+             */
+            the.emit('beforevalidateall');
+            var errorLength = 0;
             var complete = function () {
                 if (typeis.function(callback)) {
                     callback.apply(the, arguments);
                 }
 
                 the._isValidating = false;
-                the.emit('complete');
+                /**
+                 * 全部验证之后
+                 * @event aftervalidateall
+                 */
+                the.emit('aftervalidateall');
             };
 
             var hd = howdo
                 // 遍历验证顺序
                 .each(the._validateList, function (i, item, next) {
-                    the._validateOne(data, path = item.path, item.rules, next);
+                    the._validateOne(data, path = item.path, item.rules, function (err, hasError) {
+                        if (hasError) {
+                            errorLength++;
+                        }
+
+                        next(err);
+                    });
                 })
                 .try(function () {
-                    the.emit('success');
+                    if (errorLength) {
+                        /**
+                         * 验证成功
+                         * @event error
+                         */
+                        the.emit('error');
+                    } else {
+                        /**
+                         * 验证成功
+                         * @event success
+                         */
+                        the.emit('success');
+                    }
                 })
                 .catch(function (err) {
-                    err = new Error(string.assign(err || options.defaultMsg, {
-                        path: the._aliasMap[path] || path
-                    }));
+                    if (options.breakOnInvalid) {
+                        err = new Error(string.assign(err || options.defaultMsg, {
+                            path: the._aliasMap[path] || path
+                        }));
 
-                    if (options.isBreakOnInvalid) {
-                        the.emit('error', err, path);
+                        /**
+                         * 验证失败
+                         * @event invalid
+                         * @param error {Object} 错误对象
+                         * @param path {String} 字段
+                         */
+                        the.emit('invalid', err, path);
                     }
-                });
 
-            if (options.isBreakOnInvalid) {
-                hd.follow(complete);
-            } else {
-                hd.together(complete);
-            }
+                    /**
+                     * 验证失败
+                     * @event error
+                     */
+                    the.emit('error');
+                })
+                .follow(complete);
 
             return the;
         },
@@ -222,52 +328,99 @@ define(function (require, exports, module) {
             var the = this;
             var options = the._options;
 
+            /**
+             * 验证之前
+             * @event beforevalidate
+             * @param path {String} 字段
+             */
             the.emit('beforevalidate', path);
             howdo
                 // 遍历验证规则
-                .each(rules, function (j, ruleName, next) {
-                    var rule = the._validationMap[ruleName] || validationMap[ruleName];
+                .each(rules, function (j, rule, next) {
+                    var args = [data[path], next];
 
-                    if (!rule) {
-                        throw 'rule `' + ruleName + '` is not found';
-                    }
-
-                    the.emit('validate', path, ruleName);
-                    rule.call(the, data[path], next);
+                    the.emit('validate', path, rule.name);
+                    args = args.concat(rule.params);
+                    the.path = path;
+                    rule.fn.apply(the, args);
                 })
                 .try(function () {
-                    the.emit('aftervalidate', path);
-                })
-                .catch(function (err) {
-                    if (!options.isBreakOnInvalid) {
-                        err = new Error(string.assign(err || options.defaultMsg, {
-                            path: the._aliasMap[path] || path
-                        }));
-                        the.emit('error', err, path);
-                    }
-                })
-                .follow(function () {
+                    /**
+                     * 验证成功
+                     * @event valid
+                     * @param path {String} 字段
+                     */
+                    the.emit('valid', path);
+
+                    /**
+                     * 验证之后
+                     * @event aftervalidate
+                     * @param path {String} 字段
+                     */
                     the.emit('aftervalidate', path);
 
                     if (typeis.function(callback)) {
-                        callback.apply(the, arguments);
+                        callback.call(the, null, false);
                     }
-                });
+                })
+                .catch(function (err) {
+                    // 验证失败即断开
+                    if (options.breakOnInvalid) {
+                        /**
+                         * 验证之后
+                         * @event aftervalidate
+                         * @param path {String} 字段
+                         */
+                        the.emit('aftervalidate', path);
+
+                        if (typeis.function(callback)) {
+                            callback.call(the, err, true);
+                        }
+                    } else {
+                        err = new Error(string.assign(err || options.defaultMsg, {
+                            path: the._aliasMap[path] || path
+                        }));
+
+                        /**
+                         * 验证失败
+                         * @event invalid
+                         * @param error {Object} 错误对象
+                         * @param path {String} 字段
+                         */
+                        the.emit('invalid', err, path);
+
+                        /**
+                         * 验证之后
+                         * @event aftervalidate
+                         * @param path {String} 字段
+                         */
+                        the.emit('aftervalidate', path);
+
+                        if (typeis.function(callback)) {
+                            callback.call(the, null, true);
+                        }
+                    }
+                })
+                .follow();
         }
     });
 
     /**
      * 注册静态验证规则
      * @param name {String} 规则名称
-     * @param rule {Function|RegExp} 规则回调，如果是异步的话，否则可以直接 return boolean 值
-     * @param [msg] {String} 验证出错的消息，如果 callback 是函数的话，需要在内部传递
+     * @param fn {Function} 规则回调
+     *
+     * @example
+     * Validation.addRule('number', function (val, done, param0, param1, ...) {
+     *    done(/^\d+$/.test(val) ? null : '${path}必须是数字');
+     * });
      */
-    Validation.addRule = function (name, rule, msg) {
+    Validation.addRule = function (name, fn/*arguments*/) {
         if (validationMap[name] && DEBUG) {
             console.warn('override `' + name + '` rule');
         }
 
-        validationMap[name] = _fixValidationRule(rule, msg);
+        validationMap[name] = fn;
     };
 
 
@@ -280,64 +433,7 @@ define(function (require, exports, module) {
         return name ? validationMap[name] : validationMap;
     };
 
+
     Validation.defaults = defaults;
-
-    //Validation.addRule('required', function (value, done) {
-    //    var boolean = typeis(value) === 'file' ? true :
-    //    ( typeis.array(value) || typeis(value) === 'filelist' ? value : (value || '') ).length > 0;
-    //
-    //    done(boolean ? null : '${path}不能为空');
-    //});
-
-    Validation.addRule('number', /^\d+$/, '${path}必须是数字');
-
-    Validation.addRule('mobile', /^1\d{10}$/, '${path}必须是手机号');
-
-    Validation.addRule('email', function (val) {
-        return typeis.email(val);
-    }, '${path}必须是邮箱');
-
-    Validation.addRule('url', function (val) {
-        return typeis.url(val);
-    }, '${path}必须是 url 地址');
-
     module.exports = Validation;
-
-
-    /**
-     * 修正验证规则
-     * @param rule {RegExp|Function} 验证规则
-     * @param [msg] {String} 验证失败消息
-     * @returns {Function} 合法的验证规则
-     * @private
-     */
-    function _fixValidationRule(rule, msg) {
-        var callback;
-
-        // 布尔值
-        if (typeis.regexp(rule)) {
-            callback = function (value, done) {
-                if (typeis.empty(value)) {
-                    return done(msg);
-                }
-
-                done(rule.test(value) ? null : msg);
-            };
-        } else if (typeis.function(rule)) {
-            // 同步的
-            if (rule.length === 1) {
-                callback = function (value, done) {
-                    if (typeis.empty(value)) {
-                        return done(msg);
-                    }
-
-                    done(rule(value) ? null : msg);
-                };
-            } else {
-                callback = rule;
-            }
-        }
-
-        return callback;
-    }
 });

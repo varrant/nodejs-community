@@ -17,6 +17,9 @@ define(function (require, exports, module) {
     var modification = require('../../core/dom/modification.js');
     var event = require('../../core/event/touch.js');
     var Validation = require('../../libs/validation.js');
+    require('../../libs/validation-rules.js')(Validation);
+    require('./validation-rules.js')(Validation);
+    var Emitter = require('../../libs/emitter.js');
     var dato = require('../../utils/dato.js');
     var typeis = require('../../utils/typeis.js');
     var string = require('../../utils/string.js');
@@ -33,14 +36,13 @@ define(function (require, exports, module) {
         textarea: 1,
         select: 1
     };
-    var html5Rules = ['required', 'min', 'max', 'step'];
     var REG_LABEL = /^([^:：]*)/;
     var defaults = {
         // true: 返回单个错误对象
         // false: 返回错误对象组成的数组
         // 浏览器端，默认为 false
         // 服务器端，默认为 true
-        isBreakOnInvalid: typeis.window(window) ? false : true,
+        breakOnInvalid: typeis.window(window) ? false : true,
         defaultMsg: '${path}字段不合法',
         // 规则的 data 属性
         dataAttribute: 'validation',
@@ -49,11 +51,7 @@ define(function (require, exports, module) {
         // data 规则等于符
         dataEqual: ':',
         // 验证的表单项目选择器
-        itemSelector: 'input,select,textarea',
-        // 提交按钮
-        submitSelector: '.form-submit',
-        // 验证事件
-        event: 'focusout change'
+        inputSelector: 'input,select,textarea'
     };
     //var typeRegExpMap = {
     //    number: /^\d+$/,
@@ -65,8 +63,8 @@ define(function (require, exports, module) {
 
             the._options = dato.extend({}, defaults, options);
             the._$form = selector.query($form)[0];
+            the._pathMap = {};
             the.update();
-            the._initEvent();
         },
 
 
@@ -77,20 +75,15 @@ define(function (require, exports, module) {
         update: function () {
             var the = this;
 
-            the._$submit = selector.query(the._options.submitSelector, the._$form)[0];
-
-            //if (!the._$submit) {
-            //    the._$submit = modification.create('button', {
-            //        type: 'submit',
-            //        style: {
-            //            display: 'none'
-            //        }
-            //    });
-            //    modification.insert(the._$submit, the._$form);
-            //}
-
             the._validation = new Validation(the._options);
-            the._validation.pipe(the);
+            Emitter.pipe(the._validation, the, ['!valid', '!invalid']);
+            the._validation
+                .on('valid', function (path) {
+                    the.emit('valid', the._pathMap[path]);
+                })
+                .on('invalid', function (err, path) {
+                    the.emit('invalid', err, the._pathMap[path]);
+                });
             the._parseItems();
 
             return the;
@@ -98,31 +91,30 @@ define(function (require, exports, module) {
 
 
         /**
-         * 触发提交表单
-         * @returns {ValidationUI}
-         */
-        submit: function () {
-            var the = this;
-
-            if (!the._$submit) {
-                throw 'submit button is not found';
-            }
-
-            event.dispatch(the._$submit, 'click');
-
-            return the;
-        },
-
-
-        /**
          * 获取表单数据
+         * @param [$input] {Object} 指定元素
          * @returns {{}}
          */
-        getData: function () {
+        getData: function ($input) {
             var the = this;
             var data = {};
+            var list = $input ? [] : the._$inputs;
 
-            dato.each(the._$items, function (i, $item) {
+            if ($input) {
+                var inputType = the._getType($input);
+
+                switch (inputType) {
+                    case 'checkbox':
+                    case 'radio':
+                        list = selector.query('input[name="' + $input.name + '"]', the._$form);
+                        break;
+
+                    default :
+                        list = [$input];
+                }
+            }
+
+            dato.each(list, function (i, $item) {
                 var path = $item.name;
                 var type = the._getType($item);
                 var val = $item.value;
@@ -189,16 +181,43 @@ define(function (require, exports, module) {
         /**
          * 注册验证规则，按顺序执行验证
          * @param path {String} 字段
-         * @param rule {String|Array|RegExp|Function} 验证规则，可以是静态规则，也可以添加规则
-         * @param [msg] {String} 验证失败消息
+         * @param nameOrfn {String|Function} 验证规则，可以是静态规则，也可以添加规则
          * @returns {ValidationUI}
          */
-        addRule: function (path, rule, msg) {
+        addRule: function (path, nameOrfn/*arguments*/) {
             var the = this;
 
             the._validation.addRule.apply(the._validation, arguments);
 
             return the;
+        },
+
+
+        /**
+         * 单独验证某个输入对象
+         * @param [$ele] {Object} 输入对象，如果为空则验证全部
+         * @param [callback] {Function} 回调
+         * @returns {ValidationUI}
+         */
+        validate: function ($ele, callback) {
+            var the = this;
+            var data = the.getData($ele);
+
+            if ($ele) {
+                the._validation.validateOne(data, callback);
+            } else {
+                the._validation.validateAll(data, callback);
+            }
+
+            return the;
+        },
+
+
+        /**
+         * 销毁实例
+         */
+        destroy: function () {
+            //
         },
 
 
@@ -216,37 +235,20 @@ define(function (require, exports, module) {
 
 
         /**
-         * 初始化事件
-         * @private
-         */
-        _initEvent: function () {
-            var the = this;
-            var options = the._options;
-
-            event.on(the._$form, 'click', options.submitSelector, the._onsubmit = function () {
-                var data = the.getData();
-
-                the._validation.validateAll(data);
-            });
-        },
-
-
-        /**
          * 解析表单项目
          * @private
          */
         _parseItems: function () {
             var the = this;
             var options = the._options;
-            var parseName = {};
 
             the._items = [];
-            the._$items = selector.query(options.itemSelector, the._$form);
-            dato.each(the._$items, function (i, $item) {
+            the._$inputs = selector.query(options.inputSelector, the._$form);
+            dato.each(the._$inputs, function (i, $item) {
                 var name = $item.name;
 
-                if (!parseName[name]) {
-                    parseName[name] = 1;
+                if (!the._pathMap[name]) {
+                    the._pathMap[name] = $item;
                     the._parseRules($item);
                 }
             });
@@ -271,31 +273,28 @@ define(function (require, exports, module) {
             // required => type => minLength => maxLength => pattern => data
 
             if ($item.required) {
-                the._validation.addRule(path, the._getRule('required'));
+                the._validation.addRule(path, 'required');
             }
 
             if ($item.min !== '' && !typeis.empty($item.min)) {
-                the._validation.addRule(path, the._getRule('min', $item.min));
+                the._validation.addRule(path, 'min', $item.min);
             }
 
             if ($item.max !== '' && !typeis.empty($item.max)) {
-                the._validation.addRule(path, the._getRule('max', $item.max));
+                the._validation.addRule(path, 'max', $item.max);
             }
 
             if ($item.accept !== '' && !typeis.empty($item.accept)) {
-                the._validation.addRule(path, the._getRule('accept', $item.accept));
+                the._validation.addRule(path, 'accept', $item.accept);
             }
 
-            // @todo step
-            //if (!typeis.undefined($item.step)) {
-            //    var step = $item.step;
-            //
-            //    if(typeis.undefined($item.min)){
-            //        throw 'the `min` attribute of element is not found';
-            //    }
-            //
-            //    //the._validation.addRule(path, the._getRule('step', $item.step));
-            //}
+            if ($item.pattern !== '' && !typeis.empty($item.pattern)) {
+                the._validation.addRule(path, 'pattern', $item.pattern);
+            }
+
+            if ($item.step !== '' && !typeis.empty($item.step)) {
+                the._validation.addRule(path, 'step', $item.step);
+            }
 
             switch (type) {
                 case 'number':
@@ -309,56 +308,32 @@ define(function (require, exports, module) {
 
             validationList.forEach(function (validation) {
                 var validationName = validation.name;
-                var validationVal = validation.value;
+                var validationVals = validation.values;
 
                 if (validationName === 'alias') {
-                    the._validation.setAlias(path, validationVal);
+                    the._validation.setAlias(path, validationVals.join(''));
                     hasAlias = true;
                     return;
                 }
 
-                if (validationName === 'type') {
-                    the._validation.addRule(path, validationVal);
-                    return;
-                }
+                var args = [path, validationName];
 
-                var rule;
-
-                if ((rule = the._getRule(validationName, validationVal))) {
-                    return the._validation.addRule(path, rule);
-                }
-
-                throw '`' + validationName + '` is not found';
+                args = args.concat(validationVals);
+                the._validation.addRule.apply(the._validation, args);
             });
 
             if (!hasAlias) {
                 var $label = selector.query('label[for="' + id + '"]', the._$form)[0];
 
                 if ($label) {
-                    the._validation.setAlias(path, (attribute.text($label).match(REG_LABEL) || ['', ''])[1].trim());
+                    var alias = (attribute.text($label).match(REG_LABEL) || ['', ''])[1].trim();
+
+                    the._validation.setAlias(path, alias);
                 }
             }
-        },
 
-
-        /**
-         * 获取验证规则
-         * @param ruleName
-         * @param validationVal
-         * @returns {*}
-         * @private
-         */
-        _getRule: function (ruleName, validationVal) {
-            var rule;
-
-            // 1. 当前静态规则
-            if ((rule = validationMap[ruleName])) {
-                return rule.call(this, validationVal);
-            }
-
-            // 2. 库的静态规则
-            if ((rule = Validation.getRule(ruleName))) {
-                return rule;
+            if (!the._validation.getAlias(path)) {
+                the._validation.setAlias(path, $item.placeholder);
             }
         },
 
@@ -385,7 +360,7 @@ define(function (require, exports, module) {
 
                 list2.push({
                     name: temp[0].trim(),
-                    value: temp[1] ? temp[1].trim() : true
+                    values: temp[1] ? temp[1].trim().split('|') : true
                 });
             });
 
@@ -406,7 +381,6 @@ define(function (require, exports, module) {
         validationMap[ruleName] = fn;
     };
 
-    dato.each(require('./rules.js'), ValidationUI.addRule);
     ValidationUI.defaults = defaults;
     module.exports = ValidationUI;
 });

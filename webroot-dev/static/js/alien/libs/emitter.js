@@ -23,7 +23,7 @@ define(function (require, exports, module) {
     var alienId = 0;
 
 
-    module.exports = klass.create({
+    var Emitter = klass.create({
         /**
          * @constructor Emitter
          * @type {Function}
@@ -33,17 +33,17 @@ define(function (require, exports, module) {
 
             // 监听的事件 map
             the._emitterListener = {};
+            // 全局事件监听列表
+            the._emitterCallbacks = [];
             // 监听的事件长度
             the._emitterLimit = 999;
-            // 事件传输目标
-            the._emitterTargetList = [];
         },
         /**
          * 添加事件回调
          * @method on
          * @param {String} eventType 事件类型，多个事件类型使用空格分开
          * @param {Function} listener 事件回调
-         * @returns {this}
+         * @returns {Emitter}
          *
          * @example
          * var emitter = new Emitter();
@@ -51,6 +51,21 @@ define(function (require, exports, module) {
          */
         on: function (eventType, listener) {
             var the = this;
+            var args = allocation.args(arguments);
+
+            if (args.length === 1) {
+                listener = args[0];
+                eventType = null;
+            }
+
+            if (!typeis.function(listener)) {
+                return the;
+            }
+
+            if (!eventType) {
+                the._emitterCallbacks.push(listener);
+                return the;
+            }
 
             _middleware(eventType, function (et) {
                 if (!the._emitterListener[et]) {
@@ -74,7 +89,7 @@ define(function (require, exports, module) {
          * 添加事件触发前事件
          * @param eventType {String} 事件，只有 emit beforesomeevent 的事件才可以被监听
          * @param listener {Function} 事件回调
-         * @returns {this}
+         * @returns {Emitter}
          */
         before: function (eventType, listener) {
             return this.on('before' + eventType, listener);
@@ -85,7 +100,7 @@ define(function (require, exports, module) {
          * 添加事件触发后事件
          * @param eventType {String} 事件，只有 emit beforesomeevent 的事件才可以被监听
          * @param listener {Function} 事件回调
-         * @returns {this}
+         * @returns {Emitter}
          */
         after: function (eventType, listener) {
             return this.on('after' + eventType, listener);
@@ -97,7 +112,7 @@ define(function (require, exports, module) {
          * @method un
          * @param {String} eventType 事件类型，多个事件类型使用空格分开
          * @param {Function} [listener] 事件回调，缺省时将移除该事件类型上的所有事件回调
-         * @returns {this}
+         * @returns {Emitter}
          *
          * @example
          * var emitter = new Emitter();
@@ -145,18 +160,20 @@ define(function (require, exports, module) {
             var emitArgs = dato.toArray(arguments).slice(1);
             var ret = true;
 
-            if (!the._emitterListener) {
-                throw 'can not found emitterListener property';
-            }
-
             _middleware(eventType, function (et) {
-                if (the._pipe(et, emitArgs) === false) {
-                    ret = false;
-                }
+                var time = Date.now();
+
+                dato.each(the._emitterCallbacks, function (index, callback) {
+                    the.alienEmitter = {
+                        type: et,
+                        timestamp: time,
+                        id: alienId++
+                    };
+
+                    callback.apply(the, emitArgs);
+                });
 
                 if (the._emitterListener[et]) {
-                    var time = Date.now();
-
                     dato.each(the._emitterListener[et], function (index, listener) {
                         the.alienEmitter = {
                             type: et,
@@ -172,52 +189,31 @@ define(function (require, exports, module) {
             });
 
             return ret;
-        },
-
-
-        /**
-         * 将所有的事件派发到目标
-         * @param target {Object} 目标
-         * @param [emitters] {Array} 传递的事件数组，默认为全部
-         * @returns {this}
-         */
-        pipe: function (target, emitters) {
-            var the = this;
-
-            the._emitterTargetList.push({
-                source: target,
-                emitters: typeis.array(emitters) ? emitters : []
-            });
-
-            return the;
-        },
-
-
-        /**
-         * 派发事件
-         * @param eventType
-         * @param args
-         * @private
-         */
-        _pipe: function (eventType, args) {
-            var ret = true;
-
-            dato.each(this._emitterTargetList, function (index, target) {
-                if (_matches(eventType, target.emitters)) {
-                    target.source.alienEmitter = {
-                        type: eventType,
-                        timestamp: Date.now(),
-                        id: alienId++
-                    };
-                    args.unshift(eventType);
-                    ret = target.source.emit.apply(target.source, args);
-                }
-            });
-
-            return ret;
         }
     });
 
+
+    /**
+     * 事件传输
+     * @param source {Object} 事件来源
+     * @param target {Object} 事件目的
+     * @param [types] {Array} 允许和禁止的事件类型
+     */
+    Emitter.pipe = function (source, target, types) {
+        source.on(function () {
+            var type = this.alienEmitter.type;
+
+            if (_matches(type, types)) {
+                var args = dato.toArray(arguments);
+
+                args.unshift(this.alienEmitter.type);
+                target.emit.apply(target, args);
+            }
+        });
+    };
+
+
+    module.exports = Emitter;
 
     /**
      * 中间件，处理事件分发
@@ -235,11 +231,13 @@ define(function (require, exports, module) {
     /**
      * 判断是否匹配
      * @param name {String} 待匹配字符串
-     * @param names {Array} 被匹配字符串数组
+     * @param [names] {Array} 被匹配字符串数组
      * @returns {boolean}
      * @private
      */
     function _matches(name, names) {
+        names = names || [];
+
         if (!names.length) {
             return true;
         }

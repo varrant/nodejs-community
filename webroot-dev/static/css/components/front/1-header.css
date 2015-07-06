@@ -121,13 +121,15 @@ header {
     .active .nav-drop {
       background: #3690d7; }
   .nav-join,
+  .nav-join:link,
+  .nav-join:visited,
   .nav-join:hover,
-  .nav-join:active,
-  .nav-join:visited {
+  .nav-join:active {
     display: block;
     text-align: center;
     color: #fff;
-    background: #CB4545; }
+    background: #CB4545;
+    text-decoration: none; }
   .nav-downlist {
     position: absolute;
     width: 140px;

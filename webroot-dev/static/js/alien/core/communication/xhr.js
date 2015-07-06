@@ -24,9 +24,15 @@ define(function (require, exports, module) {
     var urlUtils = require('../../utils/url.js');
     var qs = require('../../utils/querystring.js');
     var Emitter = require('../../libs/emitter.js');
-    var regCache = /\b_=[^&]*&?/;
-    var regEnd = /[?&]$/;
     var REG_DOMAIN = /^([\w-]+:)?\/\/([^\/]+)/;
+    var regProtocol = /^([\w-]+:)\/\//;
+    var contentTypeMap = {
+        json: 'application/json',
+        urlencoded: 'application/x-www-form-urlencoded',
+        //formData: 'multipart/form-data',
+        text: 'plain',
+        plain: 'plain'
+    };
     var defaults = {
         // 请求地址
         url: location.href,
@@ -58,7 +64,6 @@ define(function (require, exports, module) {
         // 请求超时时间，15秒
         timeout: 150000
     };
-    var regProtocol = /^([\w-]+:)\/\//;
     var XHR = klass.extends(Emitter).create({
         constructor: function (options) {
             var the = this;
@@ -191,8 +196,13 @@ define(function (require, exports, module) {
                 xhr.withCredentials = true;
             }
 
+            var contentType = contentTypeMap[options.type];
+
             if (options.mimeType) {
                 xhr.overrideMimeType(options.mimeType);
+            } else if (contentType) {
+                // 复写响应 content-type
+                xhr.overrideMimeType(contentType);
             }
 
             // 当 body 为 FormData 时，删除 content-type header
@@ -266,8 +276,8 @@ define(function (require, exports, module) {
      * @param {String} [options.type=json] 数据类型，默认 json
      * @param {String|Object} [options.query] URL querstring
      * @param {*} [options.body] 请求数据
-     * @param {Boolean} [options.isAsync] 是否异步，默认 true
-     * @param {Boolean} [options.isCache] 是否保留缓存，默认 false
+     * @param {Boolean} [options.async] 是否异步，默认 true
+     * @param {Boolean} [options.cache] 是否保留缓存，默认 false
      * @param {String} [options.username] 请求鉴权用户名
      * @param {String} [options.password] 请求鉴权密码
      * @param {String|null} [options.mimeType=null] 覆盖 MIME
@@ -284,7 +294,7 @@ define(function (require, exports, module) {
     /**
      * ajax GET 请求
      * @param url {String} 请求地址
-     * @param query {String|Object} 请求参数
+     * @param [query] {String|Object} 请求参数
      * @returns {*}
      */
     xhr.get = function (url, query) {
@@ -321,7 +331,7 @@ define(function (require, exports, module) {
      * @private
      */
     function _buildURL(options) {
-        var ret = urlUtils.parse( options.url);
+        var ret = urlUtils.parse(options.url);
         var query = options.query;
         var cacheKey = '_';
 

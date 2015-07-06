@@ -64,8 +64,8 @@ define(function (require, exports, module) {
     var propTransitionKey = 'transition-queue';
     var propKeyframesKey = 'keyframes-queue';
     var propScrollToKey = 'scrollto-queue';
-    var win = window;
-    var requestAnimationFrame = compatible.html5('requestAnimationFrame', win);
+
+
     /**
      * 获取 prop
      * @param $ele
@@ -139,7 +139,7 @@ define(function (require, exports, module) {
                     transitionProperty: ''
                 });
                 event.un($ele, transitionendEventType, onend);
-                win[requestAnimationFrame](next);
+                controller.nextFrame(next);
             };
 
             event.on($ele, transitionendEventType, onend);
@@ -147,7 +147,7 @@ define(function (require, exports, module) {
             var timeid = setTimeout(onend, options.duration + options.delay + 100);
 
             if (see.visibility($ele) === 'visible') {
-                win[requestAnimationFrame](function () {
+                controller.nextFrame(function () {
                     attribute.css($ele, {
                         transitionDuration: durationVal.join(','),
                         transitionDelay: delayVal.join(','),
@@ -156,7 +156,7 @@ define(function (require, exports, module) {
                     });
                 });
             } else {
-                win[requestAnimationFrame](function () {
+                controller.nextFrame(function () {
                     attribute.css($ele, fixTo);
                     next();
                 });
@@ -169,7 +169,7 @@ define(function (require, exports, module) {
                 transitionProperty: ''
             });
 
-            win[requestAnimationFrame](function () {
+            controller.nextFrame(function () {
                 attribute.css($ele, to);
             });
         };
@@ -226,6 +226,10 @@ define(function (require, exports, module) {
     // 帧动画
     var keyframes = function ($ele, name, options) {
         return function (next) {
+            if (options.count === -1) {
+                options.count = 'infinite';
+            }
+
             var easing = eeeing.get(options.easing).toCSS();
             var css = {
                 animationName: name,
@@ -237,7 +241,6 @@ define(function (require, exports, module) {
             };
 
             var onend = function () {
-                clearTimeout(timeid);
                 event.un($ele, animationendEventType, onend);
                 attribute.css($ele, {
                     animationName: '',
@@ -247,12 +250,11 @@ define(function (require, exports, module) {
                     animationIterationCount: '',
                     animationDirection: ''
                 });
-                win[requestAnimationFrame](next);
+                controller.nextFrame(next);
             };
 
-            var timeid = setTimeout(onend, options.duration + options.delay + 100);
             event.on($ele, animationendEventType, onend);
-            win[requestAnimationFrame](function () {
+            controller.nextFrame(function () {
                 attribute.css($ele, css);
             });
         };
@@ -274,7 +276,7 @@ define(function (require, exports, module) {
      * @param [options.delay=0] {Number} 开始动画延迟时间
      * @param [options.easing="in-out"] {String} 动画缓冲类型
      * @param [options.count=1] {Number} 动画次数
-     * @param [options.direction="normal"] {String} 动画方向，可选 normal、alternate
+     * @param [options.direction="normal"] {String} 动画方向，可选 normal、alternate、reverse、alternate-reverse
      * @param [callback] {Function} 帧动画动画运行完毕回调
      */
     exports.keyframes = function ($ele, name, options, callback) {
@@ -357,7 +359,7 @@ define(function (require, exports, module) {
                     return next();
                 }
 
-                win[requestAnimationFrame](function () {
+                controller.nextFrame(function () {
                     pastTime = Date.now() - beginTimestamp;
 
                     var easing = eeeing.get(options.easing);
