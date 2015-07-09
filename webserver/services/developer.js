@@ -928,7 +928,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
                 //    {"email":"ben.smith8@pcc.edu","primary":false,"verified":true}
                 // ]
                 // 通过验证的主邮箱
-                dato.each(list, function (item) {
+                dato.each(list, function (index, item) {
                     if (item.verified && item.primary && !isNotNoReplyEmail(item.email)) {
                         hasFind = true;
                         findEmail = item.email;
@@ -938,7 +938,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
 
                 // 主邮箱
                 if (!hasFind) {
-                    dato.each(list, function (item) {
+                    dato.each(list, function (index, item) {
                         if (item.primary && !isNotNoReplyEmail(item.email)) {
                             hasFind = true;
                             findEmail = item.email;
@@ -949,7 +949,7 @@ exports.oauthCallback = function (oauthSettings, code, callback) {
 
                 // 通过验证的邮箱
                 if (!hasFind) {
-                    dato.each(list, function (item) {
+                    dato.each(list, function (index, item) {
                         if (item.verified && !isNotNoReplyEmail(item.email)) {
                             hasFind = true;
                             findEmail = item.email;
