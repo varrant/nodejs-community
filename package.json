@@ -2,7 +2,7 @@
   "name": "nodejs-community",
   "version": "0.3.36",
   "private": true,
-  "description": "前端开发社区",
+  "description": "基于 nodejs、mongoose、express、alien、coolie 的技术社区",
   "scripts": {
     "ready": "node ./clis/install.js ./settings.json",
     "start": "node ./clis/start.js",
