@@ -10,7 +10,7 @@
   },
   "preferGlobal": false,
   "bin": {},
-  "main": "index.js",
+  "main": "app.js",
   "keywords": [
     "fed",
     "cloudcome",
@@ -30,7 +30,7 @@
     "url": "https://github.com/cloudcome/nodejs-community"
   },
   "bugs": {
-    "url": "http://frontenddev.org/help/bug-feedback.html"
+    "url": "http://FrontEndDev.org/help/bug-feedback.html"
   },
   "dependencies": {
     "body-parser": "^1.12.2",
