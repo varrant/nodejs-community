@@ -50,9 +50,13 @@
   }
 
   &-name{
-    margin: 0 0 20px;
     padding: 0;
     font-weight: normal;
+  }
+
+  &-labels{
+    margin-bottom: 10px;
+    font-size: 12px;
   }
 
   &-intro,
@@ -60,7 +64,6 @@
     max-width: 400px;
     font-size: 13px;
     color: #EAF5FF;
-    margin-bottom: 10px;
   }
 
   &-desc{

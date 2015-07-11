@@ -33,6 +33,13 @@
                 <img class="banner-cover img-rounder img-border-blank" src="{{column.cover}}" alt="cover" coolieignore/>
                 <div class="banner-info">
                     <h1 class="banner-name">{{column.name}}</h1>
+                    {{if column.labels && column.labels.length}}
+                    <p class="banner-labels">
+                    {{list column.labels as label}}
+                    <small class="label label-light">{{label}}</small>
+                    {{/list}}
+                    </p>
+                    {{/if}}
                     <div class="banner-intro">{{column.introduction}}</div>
                     <div class="banner-desc">
                         <i class="fi fi-user"></i><a href="/developer/{{column.author.githubLogin}}/">{{column.author.nickname}}</a>的专辑
