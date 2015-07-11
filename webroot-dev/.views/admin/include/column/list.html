@@ -87,6 +87,7 @@
                     </div>
                     <div class="text-muted">
                         <i class="fi fi-file"></i>\{{column.objectCount}}
+                        <span class="label label-light" v-repeat="label: column.labels">\{{label}}</span>
                     </div>
                     <div class="text-light">\{{column.introduction}}</div>
                 </td>
