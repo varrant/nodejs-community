@@ -11,3 +11,5 @@
 11、新的验证规则 validation
 12、分享描述提取 description √
 13、猜你喜欢，记录用户的行为习惯
+14、introduction => description
+15、column + labels

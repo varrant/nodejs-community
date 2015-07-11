@@ -35,6 +35,11 @@ var schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    // 标签
+    labels: {
+        type: [String],
+        required: false
+    },
     // 项目数量
     objectCount: {
         type: Number,

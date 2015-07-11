@@ -57,3 +57,12 @@ exports.content = function (minLength, maxLength) {
 
     return new RegExp('^' + content + '{' + minLength + ',' + maxLength + '}$');
 };
+
+
+/**
+ * 标签正则
+ * @returns {RegExp}
+ */
+exports.label = function () {
+    return /^[\u4e00-\u9fa5a-z\d _\-]{2,20}$/i;
+};

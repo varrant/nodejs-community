@@ -14,7 +14,6 @@ var validator = new Validator();
 // 标题: 中英文、数字、空格、下划线、短横线、中英文逗号
 var REG_TITLE = regexp.title(5, 100);
 var REG_URI = regexp.uri(5, 200);
-var REG_LABEL = /^[\u4e00-\u9fa5a-z\d _\-]{2,20}$/i;
 var REG_INTRODUCTION = regexp.content(0, 1000);
 var REG_CONTENT = regexp.content(10, 50000);
 var REG_TAG = /<[^>]*?>/g;
@@ -127,7 +126,7 @@ validator.pushRule({
         labels.forEach(function (item) {
             item = String(item).trim();
 
-            if (REG_LABEL.test(item)) {
+            if (regexp.label.test(item)) {
                 ret.push(item);
             }
         });

@@ -56,4 +56,25 @@ validator.pushRule({
     }
 });
 
+
+validator.pushRule({
+    name: 'labels',
+    type: 'array',
+    alias: '标签',
+    exist: true,
+    onafter: function (labels) {
+        var ret = [];
+
+        labels.forEach(function (item) {
+            item = String(item).trim();
+
+            if (regexp.label.test(item)) {
+                ret.push(item);
+            }
+        });
+
+        return ret;
+    }
+});
+
 module.exports = validator;
