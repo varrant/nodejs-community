@@ -1,4 +1,4 @@
-/*coolie@0.21.8*/
+/*coolie@0.21.9*/
 define("0",["2s","1","2"],function(e,i,n){"use strict";e("2s");e("1");e("2")});
 define("2s",["m","6","1g","s"],function(e,t,n){"use strict";var i=e("m"),o=e("6"),c=e("1g"),r=e("s"),u={};u.initDom=function(){var e=o.create("div");o.insert(e,document.body,"beforeend");this.dialog=new c(e,{title:"登录",remote:"/developer/oauth/authorize/"})};u.initEvent=function(){i.on(document.body,"click",".j-login",function(e){e.preventDefault();r()})};u.initEvent()});
 define("s",[],function(e,o,n){"use strict";n.exports=function(){var e=window.screen.width,o=window.screen.height,n=1080,i=600,t=(e-n)/2,r=(o-i)/3,h="/developer/oauth/authorize/";e>1080?window.open(h,"授权 github 登录","width="+n+",height="+i+",top="+r+",left="+t+",scrollbars=no,resizable=no,menubar=no"):window.location.href=h}});

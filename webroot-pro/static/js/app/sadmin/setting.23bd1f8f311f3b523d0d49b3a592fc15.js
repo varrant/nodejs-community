@@ -1,4 +1,4 @@
-/*coolie@0.21.8*/
+/*coolie@0.21.9*/
 define("0",["3j","3k","c","b"],function(n,e,t){"use strict";n("3j");n("3k");var i=n("c"),o=n("b"),s={};s.init=function(){o({url:"/admin/api/setting/"}).on("success",function(n){s.vue=new Vue({el:"#setting",data:n,methods:{onsave:s._onsave}});s.vue.$el.classList.remove("none")}).on("error",i)};s._onsave=function(n){var e=this,t=e.$data[n];o({url:"/admin/api/setting/"+n+"/",method:"put",body:t}).on("success",function(t){e.$data[n]=t}).on("error",i)};s.init()});
 define("3j",["4","7","m"],function(n){"use strict";var e=n("4"),o=n("7"),t=n("m"),r={};r.scrollTop=function(){var n=e.query("header")[0];t.on(n,"selectstart",function(n){n.preventDefault()});t.on(n,"dblclick",function(n){o.scrollTo(window,{y:0},{duration:234});n.preventDefault()})};r.scrollTop()});
 define("3k",["b","c","e","4","5"],function(n,a,v){"use strict";var e=n("b"),i=n("c"),c=n("e"),t=n("4"),d=n("5"),o={};o.nav=function(){var n="nav-"+(window["-nav-"]||"home"),a=t.query("#nav ."+n)[0];d.addClass(a,"active")};o.nav()});

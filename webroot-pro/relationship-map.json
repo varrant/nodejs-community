@@ -1,7 +1,7 @@
 {
     ".views/admin/column.html": {
         "css": {
-            "static/css/8c67dbaf0ba22f2e7fbc26413b86051b.css": [
+            "static/css/fa7482468ba8928b258105e86cf9bda1.css": [
                 "static/css/app/admin/column.css"
             ]
         },
@@ -305,7 +305,7 @@
     ".views/admin/item-article.html": {
         "css": {
             "static/css/fa7482468ba8928b258105e86cf9bda1.css": [
-                "static/css/app/admin/item.css"
+                "static/css/app/admin/column.css"
             ]
         },
         "js": {},
@@ -398,7 +398,7 @@
     ".views/admin/item-help.html": {
         "css": {
             "static/css/fa7482468ba8928b258105e86cf9bda1.css": [
-                "static/css/app/admin/item.css"
+                "static/css/app/admin/column.css"
             ]
         },
         "js": {},
@@ -491,7 +491,7 @@
     ".views/admin/item-link.html": {
         "css": {
             "static/css/fa7482468ba8928b258105e86cf9bda1.css": [
-                "static/css/app/admin/item.css"
+                "static/css/app/admin/column.css"
             ]
         },
         "js": {},
@@ -584,7 +584,7 @@
     ".views/admin/item-question.html": {
         "css": {
             "static/css/fa7482468ba8928b258105e86cf9bda1.css": [
-                "static/css/app/admin/item.css"
+                "static/css/app/admin/column.css"
             ]
         },
         "js": {},
@@ -677,7 +677,7 @@
     ".views/admin/list-article.html": {
         "css": {
             "static/css/8c67dbaf0ba22f2e7fbc26413b86051b.css": [
-                "static/css/app/admin/column.css"
+                "static/css/app/admin/list.css"
             ]
         },
         "js": {},
@@ -739,7 +739,7 @@
     ".views/admin/list-help.html": {
         "css": {
             "static/css/8c67dbaf0ba22f2e7fbc26413b86051b.css": [
-                "static/css/app/admin/column.css"
+                "static/css/app/admin/list.css"
             ]
         },
         "js": {},
@@ -801,7 +801,7 @@
     ".views/admin/list-link.html": {
         "css": {
             "static/css/8c67dbaf0ba22f2e7fbc26413b86051b.css": [
-                "static/css/app/admin/column.css"
+                "static/css/app/admin/list.css"
             ]
         },
         "js": {},
@@ -863,7 +863,7 @@
     ".views/admin/list-question.html": {
         "css": {
             "static/css/8c67dbaf0ba22f2e7fbc26413b86051b.css": [
-                "static/css/app/admin/column.css"
+                "static/css/app/admin/list.css"
             ]
         },
         "js": {},
@@ -1393,7 +1393,7 @@
     },
     ".views/front/include/meta.html": {
         "css": {
-            "static/css/6e8c2baad6f9638470498a72dacd5406.css": [
+            "static/css/ac248d46271cb7735f7396b4df22569f.css": [
                 "static/css/components/front/0-layout.css",
                 "static/css/components/front/1-header.css",
                 "static/css/components/front/2-unit-card.css",
