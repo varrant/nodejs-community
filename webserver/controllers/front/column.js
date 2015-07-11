@@ -122,6 +122,7 @@ module.exports = function (app) {
                     title: '专辑：' + col.name,
                     column: col,
                     objects: objects,
+                    keywords: col.labels.join('，'),
                     description: '专辑：' + col.name + '——' + col.introduction,
                     sectionIDMap: cache.get('app.sectionIDMap'),
                     pager: {
