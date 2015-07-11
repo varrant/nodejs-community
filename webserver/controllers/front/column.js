@@ -119,9 +119,10 @@ module.exports = function (app) {
                 }
 
                 var data = {
-                    title: col.name + ':' + col.author.nickname + '的专辑',
+                    title: '专辑：' + col.name,
                     column: col,
                     objects: objects,
+                    description: '专辑：' + col.name + '——' + col.introduction,
                     sectionIDMap: cache.get('app.sectionIDMap'),
                     pager: {
                         page: listOptions.page,

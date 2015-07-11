@@ -10,6 +10,8 @@ var cache = require('ydr-utils').cache;
 
 
 
+
+
 module.exports = function (app, ctrl) {
     // 中间件
     app.use(/^\/admin\/.*$/i, ctrl.middleware.login);
