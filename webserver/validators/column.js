@@ -14,6 +14,7 @@ var REG_LINES = /[\n\t\v]/g;
 var REG_NAME = regexp.title(1, 50);
 var REG_URI = regexp.uri(1, 50);
 var REG_INTRODUCTION = regexp.content(10, 1000);
+var REG_LABEL = regexp.label();
 
 
 validator.pushRule({
@@ -68,7 +69,7 @@ validator.pushRule({
         labels.forEach(function (item) {
             item = String(item).trim();
 
-            if (regexp.label.test(item)) {
+            if (REG_LABEL.test(item)) {
                 ret.push(item);
             }
         });

@@ -37,6 +37,21 @@
             </li>
 
             <li>
+                <div class="form-key">专辑标签</div>
+                <div class="form-val">
+                    <input class="ipt" type="text" name="label" placeholder="输入标签后回车"
+                           v-model="column.label" v-on="keyup: pushlabel | key 13"
+                           v-attr="disabled: column.labels.length == 5"/>
+
+                    <ul class="list-left form-opt labes">
+                        <li v-repeat="column.labels">\{{$value}}
+                            <a href="javascript:;" class="fi fi-times text-danger" v-on="click: removelabel($index)"></a></li>
+                    </ul>
+                    <p class="form-desc">输入标签后回车。添加合适的标签有助于更快的被检索到。最多可以添加<strong>5</strong>个标签。</p>
+                </div>
+            </li>
+
+            <li>
                 <div class="form-action text-center">
                     <button class="btn btn-danger" v-on="click: onreset" v-attr="disabled: !column.id">重置</button>
                     <button class="btn btn-primary" v-on="click: onsave">\{{column.id ? '保存专辑' : '新建专辑'}}</button>

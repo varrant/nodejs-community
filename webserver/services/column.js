@@ -76,7 +76,7 @@ exports.removeOne = function (author, conditions, callback) {
  * @param callback {Function} 回调
  */
 exports.createOne = function (author, data, callback) {
-    var data2 = dato.select(data, ['name', 'uri', 'cover', 'introduction']);
+    var data2 = dato.select(data, ['name', 'uri', 'cover', 'introduction', 'labels']);
 
     data2.author = author.id;
     column.createOne(data2, function (err, doc) {

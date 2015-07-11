@@ -17,6 +17,7 @@ var REG_URI = regexp.uri(5, 200);
 var REG_INTRODUCTION = regexp.content(0, 1000);
 var REG_CONTENT = regexp.content(10, 50000);
 var REG_TAG = /<[^>]*?>/g;
+var REG_LABEL = regexp.label();
 
 xss.config({
     atLink: '/developer/${at}/'
@@ -126,7 +127,7 @@ validator.pushRule({
         labels.forEach(function (item) {
             item = String(item).trim();
 
-            if (regexp.label.test(item)) {
+            if (REG_LABEL.test(item)) {
                 ret.push(item);
             }
         });

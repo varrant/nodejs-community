@@ -25,7 +25,9 @@ define(function (require, exports, module) {
             uri: '',
             background: '',
             cover: '',
-            introduction: ''
+            introduction: '',
+            label: '',
+            labels: []
         },
         uploadOptions: {
             isClip: true,
@@ -122,6 +124,8 @@ define(function (require, exports, module) {
                             onreset: the._onreset.bind(the),
                             onsave: the._onsave.bind(the),
                             onchoose: the._onchoose.bind(the),
+                            pushlabel: the._onpushlabel.bind(the),
+                            removelabel: the._onremovelabel.bind(the),
                             onremove: the._onremove.bind(the)
                         }
                     });
@@ -206,6 +210,33 @@ define(function (require, exports, module) {
 
 
         /**
+         * 添加标签
+         * @private
+         */
+        _onpushlabel: function () {
+            var vue = this.vue;
+            var itemKey = this._options.itemKey;
+            var label = vue.$data[itemKey].label.trim();
+
+            // 最多 5 个 labels
+            if (label && vue.$data[itemKey].labels.indexOf(label) === -1 && vue.$data[itemKey].labels.length < 5) {
+                vue.$data[itemKey].labels.push(label);
+                vue.$data[itemKey].label = '';
+            }
+        },
+
+
+        /**
+         * 移除标签
+         * @param index
+         * @private
+         */
+        _onremovelabel: function (index) {
+            this.vue.$data[this._options.itemKey].labels.splice(index, 1);
+        },
+
+
+        /**
          * 删除
          * @param index
          * @returns {*}
@@ -269,23 +300,6 @@ define(function (require, exports, module) {
                         _ajax = null;
                     });
             });
-
-            // 实时翻译
-            //vue.$watch(itemKey + '.name', function (word) {
-            //    if (xhr) {
-            //        xhr.abort();
-            //    }
-            //
-            //    xhr = ajax({
-            //        url: '/api/translate/?word=' + encodeURIComponent(word)
-            //    })
-            //        .on('success', function (data) {
-            //            vue.$data[itemKey].uri = data;
-            //        })
-            //        .on('complete', function () {
-            //            xhr = null;
-            //        });
-            //});
         }
     });
 
