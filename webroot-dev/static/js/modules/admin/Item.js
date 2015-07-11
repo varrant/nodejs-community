@@ -199,7 +199,7 @@ define(function (require, exports, module) {
         _onpushlabel: function () {
             var vue = this.vue;
             var object = vue.$data.object;
-            var label = object.label.toLowerCase().trim();
+            var label = object.label.trim();
 
             // 最多 5 个 labels
             if (label && object.labels.indexOf(label) === -1 && object.labels.length < 5) {
