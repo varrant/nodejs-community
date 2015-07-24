@@ -21,7 +21,18 @@
     <div class="container">
         <div class="row">
 
-
+            <ul class="links">
+                {{list list as item}}
+                <li>
+                    <p class="links-type">{{item.type}}</p>
+                    <ul class="links-items list-left">
+                        {{list item.list as linker}}
+                        <li><a href="{{=linker.link}}"><img src="http://f.ydr.me/{{=linker.link}}" class="favicon" width="16" height="16" alt="f"/>{{linker.text}}</a></li>
+                        {{/list}}
+                    </ul>
+                </li>
+                {{/list}}
+            </ul>
 
         </div>
     </div>
