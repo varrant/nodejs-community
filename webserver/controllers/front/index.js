@@ -9,6 +9,7 @@
 module.exports = function (app) {
     return {
         developer: require('./developer.js')(app),
+        discover: require('./discover.js')(app),
         main: require('./main.js')(app),
         object: require('./object.js')(app),
         column: require('./column.js')(app)

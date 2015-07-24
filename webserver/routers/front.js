@@ -166,4 +166,7 @@ module.exports = function (app, ctrl) {
     //app.get('/developer/:githubLogin/agree/page/:page/', ctrl.developer.agree);
     //app.get('/developer/:githubLogin/agree-by/', ctrl.developer.agreeBy);
     //app.get('/developer/:githubLogin/agree-by/page/:page/', ctrl.developer.agreeBy);
+
+    // discover
+    app.get('/discover/', ctrl.discover.getHome);
 };
