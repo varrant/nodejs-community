@@ -106,7 +106,7 @@
                             <td>
                                 <div><a href="#!/?id=\{{category.id}}" v-on="click: onchoose($index)"><strong>\{{category.name}}</strong>（\{{category.uri}}）</a></div>
                                 <div class="text-muted">
-                                    <span v-if="category.type==1">【文章分类】</span>
+                                    <strong>【\{{typeMap[category.type]}}】</strong>
                                     <i class="fi fi-signal"></i>\{{category.index}}
                                     <i class="fi fi-file"></i>\{{category.objectCount}}
                                 </div>
