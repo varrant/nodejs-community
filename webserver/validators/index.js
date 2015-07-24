@@ -13,6 +13,7 @@ module.exports = {
     developer: require('./developer.js'),
     interactive: require('./interactive.js'),
     label: require('./label.js'),
+    link: require('./link.js'),
     notification: require('./notification.js'),
     object: require('./object.js'),
     //scope: require('./scope.js'),
