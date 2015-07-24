@@ -128,3 +128,10 @@
   .m-form-vertical .form-action {
     margin-left: 0; }
 
+.radios {
+  border-bottom: 1px solid #DDD;
+  padding-bottom: 10px;
+  margin-bottom: 20px; }
+  .radios > label {
+    margin-right: 20px; }
+

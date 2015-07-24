@@ -3,9 +3,6 @@ $primary-fg-color: lighten($primary-bg-color, 90%);
 $border-color: #e6e6e6;
 $sidebar-width: 120px;
 
-
-
-
 .m-main {
   .main-title,
   .main-subtitle {
@@ -65,7 +62,6 @@ $sidebar-width: 120px;
   background: lighten($border-color, 7%);
   border-bottom: 1px solid $border-color;
 }
-
 
 .m-types {
   tr {
@@ -203,5 +199,15 @@ $sidebar-width: 120px;
     .form-action {
       margin-left: 0;
     }
+  }
+}
+
+.radios {
+  border-bottom: 1px solid #DDD;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+
+  > label {
+    margin-right: 20px;
   }
 }
