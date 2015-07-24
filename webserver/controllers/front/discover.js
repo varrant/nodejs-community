@@ -38,10 +38,6 @@ module.exports = function (app) {
             text: '开源中国'
         });
         listCommunities.push({
-            link: 'http://www.infoq.com/cn/',
-            text: 'infoQ'
-        });
-        listCommunities.push({
             link: 'http://div.io/',
             text: 'Div.IO'
         });
