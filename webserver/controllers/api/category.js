@@ -36,7 +36,7 @@ module.exports = function (app) {
 
 
     /**
-     * 新建/保存版块
+     * 新建/保存分类
      * @param req
      * @param res
      * @param next
@@ -61,6 +61,7 @@ module.exports = function (app) {
                 dato.each(cache.get('app.categoryList'), function (index, category) {
                     if (category.id.toString() === doc.id.toString()) {
                         cache.get('app.categoryList')[index] = doc;
+                        sync.category(cache.get('app.categoryList'));
                         return false;
                     }
                 });
@@ -116,4 +117,4 @@ module.exports = function (app) {
     };
 
     return exports;
-}
+};

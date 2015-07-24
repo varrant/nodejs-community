@@ -40,7 +40,8 @@ define(function (require, exports, module) {
         url: '',
         itemKey: '',
         listKey: '',
-        type: ''
+        type: '',
+        data: null
     };
     var Setting = ui.create({
         constructor: function (selector, options) {
@@ -112,6 +113,7 @@ define(function (require, exports, module) {
 
                     vueData[listKey] = data;
                     vueData[itemKey] = itemData;
+                    dato.extend(vueData, options.data);
 
                     the.vue = new Vue({
                         el: the._selector,
@@ -255,7 +257,8 @@ define(function (require, exports, module) {
                 }
 
                 xhr = ajax({
-                    url: '/api/translate/?word=' + encodeURIComponent(this.value)
+                    url: '/api/translate/?word=' + encodeURIComponent(this.value),
+                    loading: null
                 })
                     .on('success', function (data) {
                         vue.$data[itemKey].uri = data;

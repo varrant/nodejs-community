@@ -17,6 +17,12 @@ define(function (require, exports, module) {
         url: '/admin/api/category/',
         itemKey: 'category',
         listKey: 'categories',
-        type: '分类'
+        type: '分类',
+        data: {
+            typeMap: {
+                1: '文章分类',
+                2: '导航分类'
+            }
+        }
     });
 });

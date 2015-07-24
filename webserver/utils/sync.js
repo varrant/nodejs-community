@@ -38,6 +38,10 @@ exports.category = function (docs) {
     var categoryIDMap = {};
     var categoryURIMap = {};
 
+    categoryList = categoryList.sort(function (a, b) {
+        return a.index - b.index;
+    });
+
     categoryList.forEach(function (item) {
         categoryIDMap[item.id] = item;
         categoryURIMap[item.uri] = item;
