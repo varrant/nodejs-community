@@ -8,7 +8,7 @@
 
 var category = require('../models/').category;
 var dato = require('ydr-utils').dato;
-var keys = ['type', 'name', 'uri', 'cover', 'introduction'];
+var keys = ['type', 'name', 'uri', 'cover', 'introduction', 'index'];
 
 
 /**

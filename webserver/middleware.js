@@ -50,7 +50,13 @@ module.exports = function (next, app) {
         })
         // 初始化社区分类
         .task(function (done) {
-            category.find({}, function (err, docs) {
+            category.find({
+                type: 1
+            }, {
+                order: {
+                    index: 1
+                }
+            }, function (err, docs) {
                 if (err) {
                     return done(err);
                 }
@@ -95,7 +101,7 @@ module.exports = function (next, app) {
         // 注册人数索引值
         .task(function (done) {
             developer.count({}, function (err, count) {
-                if(err){
+                if (err) {
                     return done(err);
                 }
 
