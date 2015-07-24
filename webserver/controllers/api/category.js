@@ -11,18 +11,21 @@ var permission = require('../../services/').permission;
 var sync = require('../../utils/').sync;
 var dato = require('ydr-utils').dato;
 var cache = require('ydr-utils').cache;
+var number = require('ydr-utils').number;
 
 module.exports = function (app) {
     var exports = {};
 
     /**
-     * 获取所有版块
+     * 获取所有分类
      * @param req
      * @param res
      * @param next
      */
     exports.get = function (req, res, next) {
-        if(!permission.can(res.locals.$developer, 'category')){
+        var type = number.parseInt(req.query.type || 1, 1);
+
+        if (!permission.can(res.locals.$developer, 'category')) {
             var err = new Error('权限不足');
             err.code = 403;
             return next(err);
@@ -30,7 +33,7 @@ module.exports = function (app) {
 
         res.json({
             code: 200,
-            data: cache.get('app.categoryList')
+            data: type === 1 ? cache.get('app.categoryList') : cache.get('app.category2List')
         });
     };
 
@@ -44,7 +47,7 @@ module.exports = function (app) {
     exports.put = function (req, res, next) {
         var id = req.body.id;
 
-        if(!permission.can(res.locals.$developer, 'category')){
+        if (!permission.can(res.locals.$developer, 'category')) {
             var err = new Error('权限不足');
             err.code = 403;
             return next(err);
@@ -89,7 +92,7 @@ module.exports = function (app) {
 
 
     exports.delete = function (req, res, next) {
-        if(!permission.can(res.locals.$developer, 'category')){
+        if (!permission.can(res.locals.$developer, 'category')) {
             var err = new Error('权限不足');
             err.code = 403;
             return next(err);

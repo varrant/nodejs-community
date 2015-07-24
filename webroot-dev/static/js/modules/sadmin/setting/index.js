@@ -251,7 +251,7 @@ define(function (require, exports, module) {
             var vue = this.vue;
             var $translate = selector.query('#translate')[0];
 
-            event.on($translate, 'keyup', function () {
+            event.on($translate, 'input', function () {
                 if (xhr) {
                     xhr.abort();
                 }
@@ -265,7 +265,7 @@ define(function (require, exports, module) {
                     })
                     .on('complete', function () {
                         xhr = null;
-                    });
+                    }).xhr;
             });
 
             // 实时翻译

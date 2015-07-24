@@ -24,7 +24,25 @@ define(function (require, exports, module) {
 
     app.init = function () {
         ajax({
-            url: ''
+            url: '/admin/api/category/',
+            query: {
+                type: 2
+            }
+        }).on('success', function(list){
+            data.categories = list.map(function (item) {
+                return {
+                    text: item.name,
+                    value: item.id
+                };
+            });
+            app.buildVue();
+        });
+    };
+
+    app.buildVue = function () {
+        app.vue = new Vue({
+            el: '#vue',
+            data: data
         });
     };
 
