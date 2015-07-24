@@ -25,6 +25,16 @@ var schema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    // 链接描述
+    description: {
+        type: String,
+        required: false
+    },
+    // logo
+    logo: {
+        type: String,
+        required: false
+    },
     // 是否通过了验证
     verified: {
         type: Boolean,
