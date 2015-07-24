@@ -205,15 +205,31 @@ module.exports = function (app) {
 
     // 读取缓存
     exports.readCache = function (req, res, next) {
+        // 版块
         res.locals.$sectionList = cache.get('app.sectionList');
         res.locals.$sectionIDMap = cache.get('app.sectionIDMap');
         res.locals.$sectionURIMap = cache.get('app.sectionURIMap');
-        res.locals.$categoryList = cache.get('app.category1List');
-        res.locals.$categoryIDMap = cache.get('app.category1IDMap');
-        res.locals.$categoryURIMap = cache.get('app.category1URIMap');
+
+        // 文章分类
+        res.locals.$category1List = cache.get('app.category1List');
+        res.locals.$category1IDMap = cache.get('app.category1IDMap');
+        res.locals.$category1URIMap = cache.get('app.category1URIMap');
+
+        // 导航分类
+        res.locals.$category2List = cache.get('app.category2List');
+        res.locals.$category2IDMap = cache.get('app.category2IDMap');
+        res.locals.$category2URIMap = cache.get('app.category2URIMap');
+
+        // url
         res.locals.$url = urlHelper.parse(req.originalUrl, true, true);
+
+        // 静态配置
         res.locals.$configs = cache.get('app.configs');
+
+        // 动态配置
         res.locals.$settings = cache.get('app.settings');
+
+        // 统计
         res.locals.$count = cache.get('app.count');
         next();
     };
