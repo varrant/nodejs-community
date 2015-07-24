@@ -8,6 +8,13 @@
 
 var mongoose = require('mongoose');
 var schema = new mongoose.Schema({
+    // 类型
+    // 1：文章分类
+    // 2：导航分类
+    type: {
+        type: Number,
+        default: 1
+    },
     // 名称
     name: {
         type: String,

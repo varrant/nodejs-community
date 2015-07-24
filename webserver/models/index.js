@@ -23,6 +23,8 @@ var models = {
     interactive: require('./interactive.js'),
     // 标注
     label: require('./label.js'),
+    // 标注
+    link: require('./link.js'),
     // 提醒
     notification: require('./notification.js'),
     // 对象
