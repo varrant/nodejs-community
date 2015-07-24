@@ -16,12 +16,7 @@ var number = require('ydr-utils').number;
 module.exports = function (app) {
     var exports = {};
 
-    /**
-     * 获取所有分类
-     * @param req
-     * @param res
-     * @param next
-     */
+    // 所有链接
     exports.get = function (req, res, next) {
         var type = number.parseInt(req.query.type || 1, 1);
 
@@ -38,12 +33,7 @@ module.exports = function (app) {
     };
 
 
-    /**
-     * 新建/保存分类
-     * @param req
-     * @param res
-     * @param next
-     */
+    // 新建、保存链接
     exports.put = function (req, res, next) {
         var id = req.body.id;
 
