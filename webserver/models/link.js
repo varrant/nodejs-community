@@ -8,6 +8,13 @@
 
 var mongoose = require('mongoose');
 var schema = new mongoose.Schema({
+    // 类型
+    // 1：导航链接
+    // 2：友情链接
+    type: {
+        type: String,
+        default: 1
+    },
     // 作者
     author: {
         type: mongoose.Schema.Types.ObjectId,
@@ -51,7 +58,7 @@ var schema = new mongoose.Schema({
     }
 });
 
-schema.set('toJSON', { getters: true, virtuals: true });
-schema.set('toObject', { getters: true, virtuals: true });
+schema.set('toJSON', {getters: true, virtuals: true});
+schema.set('toObject', {getters: true, virtuals: true});
 
-module.exports = mongoose.model('label', schema);
+module.exports = mongoose.model('link', schema);
