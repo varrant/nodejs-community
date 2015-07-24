@@ -70,10 +70,17 @@ exports.category = function (docs) {
         }
     });
 
+    // 总分类
     cache.set('app.categoryList', categoryList);
     cache.set('app.categoryIDMap', categoryIDMap);
     cache.set('app.categoryURIMap', categoryURIMap);
 
+    // 类型1：文章分类
+    cache.set('app.category1List', category1List);
+    cache.set('app.category1IDMap', category1IDMap);
+    cache.set('app.category1URIMap', category1URIMap);
+
+    // 类型2：导航分类
     cache.set('app.category2List', category2List);
     cache.set('app.category2IDMap', category2IDMap);
     cache.set('app.category2URIMap', category2URIMap);

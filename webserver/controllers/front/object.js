@@ -112,7 +112,7 @@ module.exports = function (app) {
                             });
                         });
 
-                        data.categoryList = cache.get('app.categoryList');
+                        data.categoryList = cache.get('app.category1List');
                         data.categoryIDMap = cache.get('app.categoryIDMap');
 
                         if (isAJAX) {

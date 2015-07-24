@@ -124,7 +124,7 @@ module.exports = function (app) {
         var body = founder.nickname + '你好，我是' + author.nickname + '，我想申请发布文章权限，我的 github 账号是：' + author.githubLogin;
         var link = 'mailto:' + founder.email + '?subject=' + subject + '&body=' + body;
         var data = {
-            categories: cache.get('app.categoryList')
+            categories: cache.get('app.category1List')
         };
 
         howdo
