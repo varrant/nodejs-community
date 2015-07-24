@@ -79,7 +79,7 @@ module.exports = function (app) {
             })
             // 查找 category
             .task(function (done) {
-                done(null, cache.get('app.categoryList'));
+                done(null, cache.get('app.category1List'));
             })
             // 查找 columns
             .task(function (done) {

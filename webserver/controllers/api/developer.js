@@ -177,7 +177,7 @@ module.exports = function (app) {
                 data: {
                     developer: doc,
                     section: cache.get('app.sectionList'),
-                    category: cache.get('app.categoryList'),
+                    category: cache.get('app.category1List'),
                     group: configs.group
                 }
             });
