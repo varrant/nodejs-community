@@ -31,4 +31,8 @@ module.exports = function (app, ctrl) {
     // developer
     app.get('/sadmin/developer/list/', ctrl.developer.list);
     app.get('/sadmin/developer/', ctrl.developer.get);
+
+
+    // discover
+    app.get('/sadmin/discover/', ctrl.discover.getHome);
 };
