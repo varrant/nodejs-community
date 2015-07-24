@@ -37,7 +37,7 @@ var schema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // 索引值，用于排序
+    // 索引值，用于排序，越大越前
     index: {
         type: Number,
         default: 1

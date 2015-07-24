@@ -39,7 +39,7 @@ exports.category = function (docs) {
     var categoryURIMap = {};
 
     categoryList = categoryList.sort(function (a, b) {
-        return a.index - b.index;
+        return b.index - a.index;
     });
 
     categoryList.forEach(function (item) {

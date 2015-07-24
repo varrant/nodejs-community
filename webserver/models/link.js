@@ -32,6 +32,11 @@ var schema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    // 索引值，用于排序，越大越前
+    index: {
+        type: Number,
+        default: 1
+    },
     // 链接描述
     description: {
         type: String,

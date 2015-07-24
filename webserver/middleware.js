@@ -54,7 +54,7 @@ module.exports = function (next, app) {
                 type: 1
             }, {
                 order: {
-                    index: 1
+                    index: -1
                 }
             }, function (err, docs) {
                 if (err) {

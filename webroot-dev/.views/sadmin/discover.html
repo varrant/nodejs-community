@@ -26,22 +26,33 @@
                 <label for="type-3"><input type="radio" name="type" id="type-3" value="3" v-model="type"/>审核失败</label>
             </div>
 
+            <div>
+                <select class="ipt" options="" v-model="link.type"></select>
+                <input type="text" class="ipt" v-model="link.name" placeholder="链接名称"/>
+                <input type="text" class="ipt" v-model="link.url" placeholder="链接地址"/>
+                <input type="text" class="ipt" v-model="link.index" placeholder="索引值"/>
+                <p>
+                    <button class="btn btn-primary">添加链接</button>
+                </p>
+            </div>
+
             <div id="list">
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
                         <th width="8%">序号</th>
+                        <th width="10%">类型</th>
                         <th width="10%">链接</th>
                         <th width="20%">作者</th>
                         <th width="*">时间</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-repeat="item: list" v-class="danger:developer.isBlock">
-                        <td>\{{item.index + 1}}</td>
-                        <td>\{{item.githubLogin}}</td>
-                        <td>\{{item.email}}</td>
-                        <td><a href="/sadmin/developer/?id=\{{item.id}}">\{{item.nickname}}</a></td>
+                    <tr v-repeat="item: list" v-class="danger:!item.verified">
+                        <td>{{item.index + 1}}</td>
+                        <td>{{item.githubLogin}}</td>
+                        <td>{{item.email}}</td>
+                        <td><a href="/sadmin/developer/?id=\{{item.id}}">{{item.nickname}}</a></td>
                     </tr>
                     </tbody>
                     <tfoot>
