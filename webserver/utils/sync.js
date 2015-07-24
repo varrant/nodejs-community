@@ -39,6 +39,9 @@ exports.category = function (docs) {
     var categoryList = [];
     var categoryIDMap = {};
     var categoryURIMap = {};
+    var category1List = [];
+    var category1IDMap = {};
+    var category1URIMap = {};
     var category2List = [];
     var category2IDMap = {};
     var category2URIMap = {};
@@ -48,11 +51,15 @@ exports.category = function (docs) {
     });
 
     docs.forEach(function (item) {
+        categoryList.push(item);
+        categoryIDMap[item.id] = item;
+        categoryURIMap[item.uri] = item;
+
         switch (item.type) {
             case 1:
-                categoryList.push(item);
-                categoryIDMap[item.id] = item;
-                categoryURIMap[item.uri] = item;
+                category1List.push(item);
+                category1IDMap[item.id] = item;
+                category1URIMap[item.uri] = item;
                 break;
 
             case 2:
