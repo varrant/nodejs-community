@@ -27,12 +27,12 @@
             </div>
 
             <div>
-                <select class="ipt" options="" v-model="link.type"></select>
+                <select class="ipt" options="categories" v-model="link.type"></select>
                 <input type="text" class="ipt" v-model="link.name" placeholder="链接名称"/>
                 <input type="text" class="ipt" v-model="link.url" placeholder="链接地址"/>
                 <input type="text" class="ipt" v-model="link.index" placeholder="索引值"/>
                 <p>
-                    <button class="btn btn-primary">添加链接</button>
+                    <button class="btn btn-primary" v-on="click: onadd">添加链接</button>
                 </p>
             </div>
 

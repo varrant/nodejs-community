@@ -17,7 +17,8 @@ define(function (require, exports, module) {
             url: '',
             index: 1
         },
-        categories: []
+        categories: [],
+        type: 1
     };
     var ajax = require('../../modules/common/ajax.js');
     var app = {};
@@ -39,10 +40,17 @@ define(function (require, exports, module) {
         });
     };
 
+    app.onadd = function () {
+
+    };
+
     app.buildVue = function () {
         app.vue = new Vue({
             el: '#vue',
-            data: data
+            data: data,
+            methods: {
+                onadd: app.onadd
+            }
         });
     };
 
