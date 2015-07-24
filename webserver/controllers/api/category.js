@@ -33,7 +33,7 @@ module.exports = function (app) {
 
         res.json({
             code: 200,
-            data: type === 1 ? cache.get('app.categoryList') : cache.get('app.category2List')
+            data: type === 1 ? cache.get('app.category1List') : cache.get('app.category2List')
         });
     };
 
