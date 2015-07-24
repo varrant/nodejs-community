@@ -68,6 +68,14 @@
                         </li>
 
                         <li>
+                            <div class="form-key">index</div>
+                            <div class="form-val">
+                                <input class="ipt" type="text" v-model="category.index"/>
+                                <p class="form-desc">索引值，用于排序。</p>
+                            </div>
+                        </li>
+
+                        <li>
                             <div class="form-action text-center">
                                 <button class="btn btn-danger" v-on="click: onreset" v-attr="disabled: !category.id">重置</button>
                                 <button class="btn btn-primary" v-on="click: onsave">\{{category.id ? '保存分类' : '新建分类'}}</button>

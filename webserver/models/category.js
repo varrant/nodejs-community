@@ -37,6 +37,11 @@ var schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    // 索引值，用于排序
+    index: {
+        type: Number,
+        default: 1
+    },
     // 项目数量
     objectCount: {
         type: Number,
