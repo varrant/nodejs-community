@@ -21,6 +21,12 @@ var schema = new mongoose.Schema({
         required: true,
         ref: 'developer'
     },
+    // 分类
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'category'
+    },
     // 链接名称
     text: {
         type: String,

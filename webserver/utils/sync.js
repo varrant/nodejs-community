@@ -34,20 +34,40 @@ exports.section = function (docs) {
  * @param docs
  */
 exports.category = function (docs) {
-    var categoryList = docs || [];
+    docs = docs || [];
+
+    var categoryList = [];
     var categoryIDMap = {};
     var categoryURIMap = {};
+    var category2List = [];
+    var category2IDMap = {};
+    var category2URIMap = {};
 
-    categoryList = categoryList.sort(function (a, b) {
+    docs = docs.sort(function (a, b) {
         return b.index - a.index;
     });
 
-    categoryList.forEach(function (item) {
-        categoryIDMap[item.id] = item;
-        categoryURIMap[item.uri] = item;
+    docs.forEach(function (item) {
+        switch (item.type) {
+            case 1:
+                categoryList.push(item);
+                categoryIDMap[item.id] = item;
+                categoryURIMap[item.uri] = item;
+                break;
+
+            case 2:
+                category2List.push(item);
+                category2IDMap[item.id] = item;
+                category2URIMap[item.uri] = item;
+                break;
+        }
     });
 
     cache.set('app.categoryList', categoryList);
     cache.set('app.categoryIDMap', categoryIDMap);
     cache.set('app.categoryURIMap', categoryURIMap);
+
+    cache.set('app.category2List', category2List);
+    cache.set('app.category2IDMap', category2IDMap);
+    cache.set('app.category2URIMap', category2URIMap);
 };

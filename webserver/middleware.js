@@ -50,13 +50,7 @@ module.exports = function (next, app) {
         })
         // 初始化社区分类
         .task(function (done) {
-            category.find({
-                type: 1
-            }, {
-                order: {
-                    index: -1
-                }
-            }, function (err, docs) {
+            category.find({}, function (err, docs) {
                 if (err) {
                     return done(err);
                 }

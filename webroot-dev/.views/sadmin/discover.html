@@ -48,16 +48,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-repeat="item: list" v-class="danger:!item.verified">
+                    <tr v-repeat="item: list" v-class="danger: !item.verified">
                         <td>{{item.index + 1}}</td>
                         <td>{{item.githubLogin}}</td>
                         <td>{{item.email}}</td>
                         <td><a href="/sadmin/developer/?id=\{{item.id}}">{{item.nickname}}</a></td>
+                        <td></td>
                     </tr>
                     </tbody>
                     <tfoot>
                     <tr>
-                        <td colspan="4" id="pagination"></td>
+                        <td colspan="5" id="pagination"></td>
                     </tr>
                     </tfoot>
                 </table>
@@ -71,6 +72,6 @@
 
 <script coolie src="http://s.ydr.me/@/p/j/coolie/0.14.5/coolie.min.js"
         data-config="http://sb.com:18082/static/js/coolie-config.js"
-        data-main="./sadmin/home.js"></script>
+        data-main="./sadmin/discover.js"></script>
 </body>
 </html>
