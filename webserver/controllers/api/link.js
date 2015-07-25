@@ -20,11 +20,11 @@ module.exports = function (app) {
     exports.get = function (req, res, next) {
         var type = number.parseInt(req.query.type || 1, 1);
 
-        if (!permission.can(res.locals.$developer, 'category')) {
-            var err = new Error('权限不足');
-            err.code = 403;
-            return next(err);
-        }
+        //if (!permission.can(res.locals.$developer, 'category')) {
+        //    var err = new Error('权限不足');
+        //    err.code = 403;
+        //    return next(err);
+        //}
 
         res.json({
             code: 200,
@@ -37,11 +37,8 @@ module.exports = function (app) {
     exports.put = function (req, res, next) {
         var id = req.body.id;
 
-        if (!permission.can(res.locals.$developer, 'link')) {
-            var err = new Error('权限不足');
-            err.code = 403;
-            return next(err);
-        }
+        req.body.author = req.session.$developer.id;
+        req.body.verified = permission.can(req.session.$developer, 'link');
 
         if (id) {
             return link.findOneAndUpdate({

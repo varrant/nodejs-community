@@ -8,7 +8,7 @@
 
 var model = require('../models/').link;
 var dato = require('ydr-utils').dato;
-var keys = ['type', 'category', 'text', 'url', 'index'];
+var keys = ['type', 'category', 'author', 'text', 'url', 'index'];
 
 
 /**

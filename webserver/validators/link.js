@@ -24,7 +24,7 @@ validator.pushRule({
 
 validator.pushRule({
     name: 'url',
-    alias: '链接名称',
+    alias: '链接地址',
     type: 'url',
     required: true,
     maxLength: 200
