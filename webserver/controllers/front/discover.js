@@ -7,6 +7,8 @@
 
 'use strict';
 
+var cache = require('ydr-utils').cache;
+
 module.exports = function (app) {
     var exports = {};
 
@@ -108,7 +110,7 @@ module.exports = function (app) {
             title: '发现',
             keywords: '前端，你的世界，等你去发现',
             description: '前端，你的世界，等你去发现',
-            list: list
+            list: cache.get('app.link1List')
         };
 
         res.render('front/discover.html', data);
