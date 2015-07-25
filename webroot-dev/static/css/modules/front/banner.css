@@ -7,14 +7,19 @@
   -webkit-transition: background 500ms;
   transition: background 500ms;
   min-height: 300px;
-  color: #fff; }
+  color: #fff;
+  overflow: hidden; }
   .banner-bg {
     position: absolute;
+    z-index: -1;
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
-    z-index: -1; }
+    width: 100%;
+    height: 100%;
+    -webkit-filter: blur(22px);
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    opacity: 0.8; }
   .banner-center {
     display: table;
     width: 100%; }
