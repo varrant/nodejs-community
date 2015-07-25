@@ -11,11 +11,12 @@
 11、新的验证规则 validation
 12、分享描述提取 description √
 13、猜你喜欢，记录用户的行为习惯
-14、introduction => description
-15、column + labels
-16、uri article/on => item/on
+14、字段修改：introduction => description
+15、专辑添加标签 column + labels √
+16、文章列表页的 uri article/on => item/on
 17、howdo 接口
 18、发现=>链接 √
 19、发现=>文档
 20、发现=>帮助
 21、文章引用链接迁徙到 link 库
+22、倾向团队系列
