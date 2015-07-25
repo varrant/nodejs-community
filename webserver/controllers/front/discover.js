@@ -8,6 +8,8 @@
 'use strict';
 
 var cache = require('ydr-utils').cache;
+var link = require('../../services/').link;
+
 
 module.exports = function (app) {
     var exports = {};
@@ -24,6 +26,21 @@ module.exports = function (app) {
         res.render('front/discover.html', data);
     };
 
+
+    // 链接跳转
+    exports.getRedirect = function (req, res, next) {
+        var id = req.query.id;
+
+        link.findOne({
+            _id: id
+        }, function (err, doc) {
+            if (err || !doc) {
+                return res.redirect('/');
+            }
+
+            res.redirect(doc.url);
+        });
+    };
 
     return exports;
 };

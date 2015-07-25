@@ -112,12 +112,13 @@ exports.link = function (link, category2List, callback) {
 
     var linkList = [];
     var linkMap = {};
+    var categoryMap = {};
 
     howdo.each(category2List, function (index, category, done) {
-        linkMap[category.id] = [];
+        categoryMap[category.id] = [];
         linkList.push({
             type: category.name,
-            list: linkMap[category.id]
+            list: categoryMap[category.id]
         });
         link.find({
             category: category.id,
@@ -132,11 +133,13 @@ exports.link = function (link, category2List, callback) {
             }
 
             docs.forEach(function (doc) {
-                linkMap[category.id].push(doc);
+                categoryMap[category.id].push(doc);
+                linkMap[doc.id] = doc;
             });
             done(null);
         });
     }).together(callback).try(function () {
         cache.set('app.link1List', linkList);
+        cache.set('app.link1Map', linkMap);
     });
 };
