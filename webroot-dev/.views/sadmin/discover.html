@@ -39,19 +39,16 @@
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
-                        <th width="8%">序号</th>
-                        <th width="10%">类型</th>
-                        <th width="10%">链接</th>
-                        <th width="20%">作者</th>
+                        <th width="8%">#</th>
+                        <th width="50%">链接</th>
                         <th width="*">时间</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-repeat="item: list" v-class="danger: !item.verified">
-                        <td>{{item.index + 1}}</td>
-                        <td>{{item.githubLogin}}</td>
-                        <td>{{item.email}}</td>
-                        <td><a href="/sadmin/developer/?id=\{{item.id}}">{{item.nickname}}</a></td>
+                        <td>{{$index + 1}}</td>
+                        <td><a href="{{item.url}}">{{item.text}}</a></td>
+                        <td></td>
                         <td></td>
                     </tr>
                     </tbody>

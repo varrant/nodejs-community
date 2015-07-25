@@ -26,6 +26,10 @@ module.exports = function (app) {
 
         conditions.verified = !(req.query.verified === '0' && can);
 
+        if (req.query.category) {
+            conditions.category = req.query.category;
+        }
+
         link.find(conditions, {
             order: {
                 index: -1

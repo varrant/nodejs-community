@@ -38,12 +38,12 @@ define(function (require, exports, module) {
                 };
             });
 
+            app.buildVue();
+
             if (data.categories.length) {
                 data.link.category = data.categories[0].value;
                 app.getList(data.link.category);
             }
-
-            app.buildVue();
         });
     };
 
