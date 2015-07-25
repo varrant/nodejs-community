@@ -174,5 +174,5 @@ module.exports = function (app, ctrl) {
     app.get('/link/:linkId/', ctrl.link.getRedirect);
 
     // proxy
-    app.get('/proxy/', ctrl.main.getProxy);
+    //app.get('/proxy/', ctrl.main.getProxy);
 };
