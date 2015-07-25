@@ -24,7 +24,9 @@ module.exports = function (app) {
             type: type
         };
 
-        conditions.verified = !(req.query.verified === '0' && can);
+        if (req.query.verified && can) {
+            conditions.verified = req.query.verified === '1';
+        }
 
         if (req.query.category) {
             conditions.category = req.query.category;

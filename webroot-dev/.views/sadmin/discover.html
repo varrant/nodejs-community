@@ -32,6 +32,7 @@
                 <input type="text" class="ipt" v-model="link.index" placeholder="索引值"/>
                 <p>
                     <button class="btn btn-primary" v-on="click: onadd">添加链接</button>
+                    <button class="btn btn-info" v-on="click: onreset">取消编辑</button>
                 </p>
             </div>
 
@@ -41,22 +42,19 @@
                     <tr>
                         <th width="8%">#</th>
                         <th width="50%">链接</th>
-                        <th width="*">时间</th>
+                        <th width="*">操作</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-repeat="item: list" v-class="danger: !item.verified">
                         <td>{{$index + 1}}</td>
                         <td><a href="{{item.url}}">{{item.text}}</a></td>
-                        <td></td>
-                        <td></td>
+                        <td>
+                            <button class="btn btn-success" v-on="click: onedit">编辑</button>
+                            <button class="btn btn-danger" v-on="click: onremove">删除</button>
+                        </td>
                     </tr>
                     </tbody>
-                    <tfoot>
-                    <tr>
-                        <td colspan="5" id="pagination"></td>
-                    </tr>
-                    </tfoot>
                 </table>
             </div>
             {{/ignore}}
