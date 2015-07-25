@@ -22,13 +22,13 @@
     <div class="container">
         <div class="row">
 
-            <ul class="links">
+            <ul class="links" id="list">
                 {{list list as item}}
                 <li>
                     <p class="links-type">{{item.type}}</p>
                     <ul class="links-items list-left">
                         {{list item.list as link}}
-                        <li><a href="{{=link.url}}?src=fed" target="_blank" rel="nofollow"><img src="http://f.ydr.me/{{=link.url}}" class="favicon" width="16" height="16" alt="f" coolieignore/><span class="links-text">{{link.text}}</span><span class="links-views">{{link.viewByCount}}</span></a></li>
+                        <li><a data-id="{{link.id}}" href="{{=link.url}}?src=fed" target="_blank" rel="nofollow"><img src="http://f.ydr.me/{{=link.url}}" class="favicon" width="16" height="16" alt="f" coolieignore/><span class="links-text">{{link.text}}</span><span class="links-views">{{link.viewByCount}}</span></a></li>
                         {{/list}}
                     </ul>
                 </li>
