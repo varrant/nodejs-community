@@ -8,6 +8,7 @@
 'use strict';
 
 var cache = require('ydr-utils').cache;
+var log = require('ydr-utils').log;
 var link = require('../../services/').link;
 
 
@@ -30,6 +31,11 @@ module.exports = function (app) {
     // 链接跳转
     exports.getRedirect = function (req, res, next) {
         var id = req.query.id;
+        var linkMap = cache.get('app.link1Map');
+
+        if(!linkMap[id]){
+            return res.redirect('/');
+        }
 
         link.findOne({
             _id: id
