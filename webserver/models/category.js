@@ -15,12 +15,13 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 1
     },
-    // 名称，不同类型之间的分类可以重复
+    // 名称
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
-    // URI，但 uri 不能重复
+    // URI
     uri: {
         type: String,
         required: true,
