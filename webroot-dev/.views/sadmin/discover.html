@@ -48,7 +48,7 @@
                     <tbody>
                     <tr v-repeat="item: list" v-class="danger: !item.verified">
                         <td>{{$index + 1}}</td>
-                        <td><a href="{{item.url}}">{{item.text}}</a></td>
+                        <td><a href="{{item.url}}"><img v-attr="src: 'http://f.ydr.me/' + item.url" class="favicon" width="16" height="16"/>{{item.text}}</a></td>
                         <td>
                             <button class="btn btn-success" v-on="click: onedit(item)">编辑</button>
                             <button class="btn btn-danger" v-on="click: onremove(item, $inde)">删除</button>

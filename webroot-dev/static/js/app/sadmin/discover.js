@@ -23,6 +23,7 @@ define(function (require, exports, module) {
         edit: false
     };
     var ajax = require('../../modules/common/ajax.js');
+    var confirm = require('../../alien/widgets/confirm.js');
     var app = {};
     var ajaxURL = '/admin/api/link/';
 
@@ -72,7 +73,7 @@ define(function (require, exports, module) {
             method: 'put',
             body: data.link
         }).on('success', function (json) {
-            app.getList(json.category);
+            data.list.push(json);
         });
     };
 
@@ -101,14 +102,16 @@ define(function (require, exports, module) {
 
     // 删除
     app.onremove = function (item, index) {
-        ajax({
-            url: ajaxURL,
-            method: 'delete',
-            body: {
-                id: item.id
-            }
-        }).on('success', function () {
-            data.list.splice(index, 1);
+        confirm('确认需要删除该链接吗').on('sure', function () {
+            ajax({
+                url: ajaxURL,
+                method: 'delete',
+                body: {
+                    id: item.id
+                }
+            }).on('success', function () {
+                data.list.splice(index, 1);
+            });
         });
     };
 
@@ -120,6 +123,7 @@ define(function (require, exports, module) {
             data: data,
             methods: {
                 onsubmit: app.onsubmit,
+                onreset: app.onreset,
                 onedit: app.onedit,
                 onremove: app.onremove
             }
