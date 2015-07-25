@@ -210,13 +210,31 @@
     },
     ".views/admin/include/meta.html": {
         "css": {
+            "static/css/1e0187bda753fa56368fb4adeea18f1f.css": [
+                "static/css/libs/0-normalize.css",
+                "static/css/libs/1-base.css",
+                "static/css/libs/2-unit-alert.css",
+                "static/css/libs/2-unit-badge.css",
+                "static/css/libs/2-unit-breadcrumb.css",
+                "static/css/libs/2-unit-form.css",
+                "static/css/libs/2-unit-ipt.css",
+                "static/css/libs/2-unit-btn.css",
+                "static/css/libs/2-unit-grid.css",
+                "static/css/libs/2-unit-label.css",
+                "static/css/libs/2-unit-table.css",
+                "static/css/libs/2-unit-text.css",
+                "static/css/libs/2-unit-animation.css",
+                "static/css/libs/2-unit-img.css",
+                "static/css/libs/2-unit-typo.css",
+                "static/css/libs/3-font-icon.css"
+            ],
             "static/css/1abda3abd0905031a923bf5face9ea6a.css": [
-                "static/css/components/front/0-layout.css",
-                "static/css/components/front/1-header.css",
-                "static/css/components/front/2-unit-card.css",
-                "static/css/components/front/2-unit-simplelist.css",
-                "static/css/components/front/2-unit-form.css",
-                "static/css/components/front/3-footer.css"
+                "static/css/modules/front/layout.css",
+                "static/css/modules/front/header.css",
+                "static/css/modules/front/card.css",
+                "static/css/modules/front/simplelist.css",
+                "static/css/modules/front/form.css",
+                "static/css/modules/front/footer.css"
             ]
         },
         "js": {},
@@ -1212,6 +1230,70 @@
             "static/js/modules/front/repos.html"
         ]
     },
+    ".views/front/discover.html": {
+        "css": {
+            "static/css/d2963879381203510596559757888399.css": [
+                "static/css/app/front/discover.css"
+            ]
+        },
+        "js": {},
+        "main": "static/js/app/front/discover.js",
+        "deps": [
+            "static/js/modules/front/login.js",
+            "static/js/alien/core/event/base.js",
+            "static/js/alien/utils/allocation.js",
+            "static/js/alien/utils/typeis.js",
+            "static/js/alien/utils/dato.js",
+            "static/js/alien/core/dom/selector.js",
+            "static/js/alien/core/navigator/compatible.js",
+            "static/js/alien/utils/string.js",
+            "static/js/alien/core/dom/modification.js",
+            "static/js/alien/core/dom/attribute.js",
+            "static/js/alien/utils/matrix.js",
+            "static/js/alien/utils/number.js",
+            "static/js/alien/core/dom/see.js",
+            "static/js/alien/ui/dialog/index.js",
+            "static/js/alien/ui/mask/index.js",
+            "static/js/alien/core/event/touch.js",
+            "static/js/alien/3rd/fastclick.js",
+            "static/js/alien/utils/controller.js",
+            "static/js/alien/core/dom/animation.js",
+            "static/js/alien/utils/easing.js",
+            "static/js/alien/libs/queue.js",
+            "static/js/alien/utils/class.js",
+            "static/js/alien/libs/emitter.js",
+            "static/js/alien/ui/index.js",
+            "static/js/alien/ui/mask/style.css",
+            "static/js/alien/ui/window/index.js",
+            "static/js/alien/ui/window/style.css",
+            "static/js/alien/ui/scrollbar/index.js",
+            "static/js/alien/ui/scrollbar/style.css",
+            "static/js/alien/ui/scrollbar/template.html",
+            "static/js/alien/libs/template.js",
+            "static/js/alien/utils/random.js",
+            "static/js/alien/core/event/wheel.js",
+            "static/js/alien/core/event/drag.js",
+            "static/js/alien/ui/dialog/template.html",
+            "static/js/alien/ui/dialog/style.css",
+            "static/js/modules/common/login.js",
+            "static/js/modules/front/nav.js",
+            "static/js/modules/common/ajax.js",
+            "static/js/alien/core/communication/xhr.js",
+            "static/js/alien/utils/url.js",
+            "static/js/alien/utils/querystring.js",
+            "static/js/alien/utils/hashbang.js",
+            "static/js/alien/widgets/alert.js",
+            "static/js/alien/ui/msg/index.js",
+            "static/js/alien/ui/msg/template.html",
+            "static/js/alien/ui/msg/style.css",
+            "static/js/alien/ui/loading/index.js",
+            "static/js/alien/ui/loading/template.html",
+            "static/js/alien/ui/loading/style.css",
+            "static/js/alien/widgets/confirm.js",
+            "static/js/modules/front/footer.js",
+            "static/js/alien/libs/scroll.js"
+        ]
+    },
     ".views/front/home.html": {
         "css": {
             "static/css/3e142b27855965bdfd4d6aa78ace0da7.css": [
@@ -1393,13 +1475,31 @@
     },
     ".views/front/include/meta.html": {
         "css": {
+            "static/css/1e0187bda753fa56368fb4adeea18f1f.css": [
+                "static/css/libs/0-normalize.css",
+                "static/css/libs/1-base.css",
+                "static/css/libs/2-unit-alert.css",
+                "static/css/libs/2-unit-badge.css",
+                "static/css/libs/2-unit-breadcrumb.css",
+                "static/css/libs/2-unit-form.css",
+                "static/css/libs/2-unit-ipt.css",
+                "static/css/libs/2-unit-btn.css",
+                "static/css/libs/2-unit-grid.css",
+                "static/css/libs/2-unit-label.css",
+                "static/css/libs/2-unit-table.css",
+                "static/css/libs/2-unit-text.css",
+                "static/css/libs/2-unit-animation.css",
+                "static/css/libs/2-unit-img.css",
+                "static/css/libs/2-unit-typo.css",
+                "static/css/libs/3-font-icon.css"
+            ],
             "static/css/ac248d46271cb7735f7396b4df22569f.css": [
-                "static/css/components/front/0-layout.css",
-                "static/css/components/front/1-header.css",
-                "static/css/components/front/2-unit-card.css",
-                "static/css/components/front/2-unit-simplelist.css",
-                "static/css/components/front/2-unit-banner.css",
-                "static/css/components/front/3-footer.css"
+                "static/css/modules/front/layout.css",
+                "static/css/modules/front/header.css",
+                "static/css/modules/front/card.css",
+                "static/css/modules/front/simplelist.css",
+                "static/css/modules/front/banner.css",
+                "static/css/modules/front/footer.css"
             ]
         },
         "js": {},
@@ -1902,7 +2002,7 @@
     },
     ".views/front/object-article.html": {
         "css": {
-            "static/css/e97828c227ae2f0a864c06be62b78cb1.css": [
+            "static/css/5fcc569ab64604dadcb15549fed0c57e.css": [
                 "static/css/app/front/detail.css"
             ]
         },
@@ -2016,7 +2116,7 @@
     },
     ".views/front/object-help.html": {
         "css": {
-            "static/css/e97828c227ae2f0a864c06be62b78cb1.css": [
+            "static/css/5fcc569ab64604dadcb15549fed0c57e.css": [
                 "static/css/app/front/detail.css"
             ]
         },
@@ -2130,7 +2230,7 @@
     },
     ".views/front/object-link.html": {
         "css": {
-            "static/css/e97828c227ae2f0a864c06be62b78cb1.css": [
+            "static/css/5fcc569ab64604dadcb15549fed0c57e.css": [
                 "static/css/app/front/detail.css"
             ]
         },
@@ -2244,7 +2344,7 @@
     },
     ".views/front/object-question.html": {
         "css": {
-            "static/css/e97828c227ae2f0a864c06be62b78cb1.css": [
+            "static/css/5fcc569ab64604dadcb15549fed0c57e.css": [
                 "static/css/app/front/detail.css"
             ]
         },
@@ -2357,26 +2457,7 @@
         ]
     },
     ".views/include/meta.html": {
-        "css": {
-            "static/css/62833ead71c754baeab8c4a6c00bc188.css": [
-                "static/css/libs/0-normalize.css",
-                "static/css/libs/1-base.css",
-                "static/css/libs/2-unit-alert.css",
-                "static/css/libs/2-unit-badge.css",
-                "static/css/libs/2-unit-breadcrumb.css",
-                "static/css/libs/2-unit-form.css",
-                "static/css/libs/2-unit-ipt.css",
-                "static/css/libs/2-unit-btn.css",
-                "static/css/libs/2-unit-grid.css",
-                "static/css/libs/2-unit-label.css",
-                "static/css/libs/2-unit-table.css",
-                "static/css/libs/2-unit-text.css",
-                "static/css/libs/2-unit-animation.css",
-                "static/css/libs/2-unit-img.css",
-                "static/css/libs/2-unit-typo.css",
-                "static/css/libs/3-font-icon.css"
-            ]
-        },
+        "css": {},
         "js": {},
         "main": ""
     },
@@ -2560,6 +2641,57 @@
             "static/js/modules/sadmin/sidebar.js"
         ]
     },
+    ".views/sadmin/discover.html": {
+        "css": {},
+        "js": {},
+        "main": "static/js/app/sadmin/discover.js",
+        "deps": [
+            "static/js/modules/sadmin/header.js",
+            "static/js/alien/core/dom/selector.js",
+            "static/js/alien/utils/dato.js",
+            "static/js/alien/utils/typeis.js",
+            "static/js/alien/core/navigator/compatible.js",
+            "static/js/alien/utils/string.js",
+            "static/js/alien/core/dom/animation.js",
+            "static/js/alien/core/dom/attribute.js",
+            "static/js/alien/utils/matrix.js",
+            "static/js/alien/utils/number.js",
+            "static/js/alien/core/dom/see.js",
+            "static/js/alien/utils/allocation.js",
+            "static/js/alien/utils/easing.js",
+            "static/js/alien/utils/controller.js",
+            "static/js/alien/core/event/base.js",
+            "static/js/alien/libs/queue.js",
+            "static/js/alien/utils/class.js",
+            "static/js/alien/libs/emitter.js",
+            "static/js/modules/sadmin/sidebar.js",
+            "static/js/modules/common/ajax.js",
+            "static/js/alien/core/communication/xhr.js",
+            "static/js/alien/utils/url.js",
+            "static/js/alien/utils/querystring.js",
+            "static/js/alien/utils/hashbang.js",
+            "static/js/modules/common/login.js",
+            "static/js/alien/widgets/alert.js",
+            "static/js/alien/ui/index.js",
+            "static/js/alien/core/dom/modification.js",
+            "static/js/alien/ui/msg/index.js",
+            "static/js/alien/ui/mask/index.js",
+            "static/js/alien/core/event/touch.js",
+            "static/js/alien/3rd/fastclick.js",
+            "static/js/alien/ui/mask/style.css",
+            "static/js/alien/ui/window/index.js",
+            "static/js/alien/ui/window/style.css",
+            "static/js/alien/libs/template.js",
+            "static/js/alien/utils/random.js",
+            "static/js/alien/core/event/drag.js",
+            "static/js/alien/ui/msg/template.html",
+            "static/js/alien/ui/msg/style.css",
+            "static/js/alien/ui/loading/index.js",
+            "static/js/alien/ui/loading/template.html",
+            "static/js/alien/ui/loading/style.css",
+            "static/js/alien/widgets/confirm.js"
+        ]
+    },
     ".views/sadmin/home.html": {
         "css": {},
         "js": {},
@@ -2610,16 +2742,6 @@
             "static/js/alien/ui/loading/style.css"
         ]
     },
-    ".views/sadmin/include/category/form.html": {
-        "css": {},
-        "js": {},
-        "main": ""
-    },
-    ".views/sadmin/include/category/list.html": {
-        "css": {},
-        "js": {},
-        "main": ""
-    },
     ".views/sadmin/include/developer/detail.html": {
         "css": {},
         "js": {},
@@ -2657,7 +2779,25 @@
     },
     ".views/sadmin/include/meta.html": {
         "css": {
-            "static/css/966a138c0d4fd33e43357678e3b5ea39.css": [
+            "static/css/1e0187bda753fa56368fb4adeea18f1f.css": [
+                "static/css/libs/0-normalize.css",
+                "static/css/libs/1-base.css",
+                "static/css/libs/2-unit-alert.css",
+                "static/css/libs/2-unit-badge.css",
+                "static/css/libs/2-unit-breadcrumb.css",
+                "static/css/libs/2-unit-form.css",
+                "static/css/libs/2-unit-ipt.css",
+                "static/css/libs/2-unit-btn.css",
+                "static/css/libs/2-unit-grid.css",
+                "static/css/libs/2-unit-label.css",
+                "static/css/libs/2-unit-table.css",
+                "static/css/libs/2-unit-text.css",
+                "static/css/libs/2-unit-animation.css",
+                "static/css/libs/2-unit-img.css",
+                "static/css/libs/2-unit-typo.css",
+                "static/css/libs/3-font-icon.css"
+            ],
+            "static/css/360fa9b9ac4ad62ad2542f7491c4ecf6.css": [
                 "static/css/app/sadmin/0-grid.css",
                 "static/css/app/sadmin/1-header.css",
                 "static/css/app/sadmin/2-footer.css",
