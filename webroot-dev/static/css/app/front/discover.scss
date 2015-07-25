@@ -48,8 +48,20 @@
       }
 
       .favicon {
-        margin-right: 4px;
+        margin-right: 5px;
       }
     }
+  }
+
+  &-text{
+    vertical-align: middle;
+  }
+
+  &-views{
+    vertical-align: middle;
+    background-color: #FFF;
+    border-radius: 4px;
+    padding: 0 4px;
+    margin-left: 5px;
   }
 }

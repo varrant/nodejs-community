@@ -33,5 +33,13 @@
           background-color: #B8DCF7;
           border: 1px solid #A7D4F7; }
       .links-items > li .favicon {
-        margin-right: 4px; }
+        margin-right: 5px; }
+  .links-text {
+    vertical-align: middle; }
+  .links-views {
+    vertical-align: middle;
+    background-color: #FFF;
+    border-radius: 4px;
+    padding: 0 4px;
+    margin-left: 5px; }
 
