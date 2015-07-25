@@ -27,10 +27,6 @@ define(function (require, exports, module) {
             var now = number.parseInt($views.innerHTML, 1);
 
             $views.innerHTML = ++now;
-
-            var img = new Image();
-
-            img.src = '/api/link/views/?id=' + attribute.data($views, 'id');
         });
     };
 
