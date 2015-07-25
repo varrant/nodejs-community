@@ -8,6 +8,8 @@
 define(function (require, exports, module) {
     'use strict';
 
+    require('../../modules/sadmin/header.js');
+    require('../../modules/sadmin/sidebar.js');
     var Vue = window.Vue;
     var data = {
         list: [],
