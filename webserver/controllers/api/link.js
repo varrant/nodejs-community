@@ -19,10 +19,26 @@ module.exports = function (app) {
     // 所有链接
     exports.get = function (req, res, next) {
         var type = number.parseInt(req.query.type || 1, 1);
+        var can = permission.can(req.session.$developer, 'link');
+        var conditions = {
+            type: type
+        };
 
-        res.json({
-            code: 200,
-            data: type === 1 ? cache.get('app.category1List') : cache.get('app.category2List')
+        conditions.verified = !(req.query.verified === '0' && can);
+
+        link.find(conditions, {
+            order: {
+                index: -1
+            }
+        }, function (err, docs) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                code: 200,
+                data: docs
+            });
         });
     };
 

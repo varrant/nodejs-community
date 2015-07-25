@@ -23,6 +23,7 @@ define(function (require, exports, module) {
     var ajax = require('../../modules/common/ajax.js');
     var app = {};
 
+    // 初始化
     app.init = function () {
         ajax({
             url: '/admin/api/category/',
@@ -39,22 +40,40 @@ define(function (require, exports, module) {
 
             if (data.categories.length) {
                 data.link.category = data.categories[0].value;
+                app.getList(data.link.category);
             }
 
             app.buildVue();
         });
     };
 
+
+    // 添加
     app.onadd = function () {
         ajax({
             url: '/admin/api/link/',
             method: 'put',
             body: data.link
-        }).on('success', function () {
-
+        }).on('success', function (json) {
+            app.getList(json.category);
         });
     };
 
+
+    // 获取列表
+    app.getList = function (category) {
+        ajax({
+            url: '/admin/api/link/',
+            query: {
+                category: category
+            }
+        }).on('success', function (list) {
+            data.list = list;
+        });
+    };
+
+
+    // mvvm
     app.buildVue = function () {
         app.vue = new Vue({
             el: '#vue',
@@ -62,6 +81,10 @@ define(function (require, exports, module) {
             methods: {
                 onadd: app.onadd
             }
+        });
+
+        app.vue.$watch('link.category', function (neo) {
+            app.getList(neo);
         });
     };
 
