@@ -14,6 +14,7 @@ module.exports = {
     developer: require('./developer.js'),
     interactive: require('./interactive.js'),
     label: require('./label.js'),
+    link: require('./link.js'),
     notice: require('./notice.js'),
     notification: require('./notification.js'),
     object: require('./object.js'),

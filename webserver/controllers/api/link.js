@@ -6,7 +6,7 @@
 
 'use strict';
 
-var category = require('../../services/').category;
+var link = require('../../services/').link;
 var permission = require('../../services/').permission;
 var sync = require('../../utils/').sync;
 var dato = require('ydr-utils').dato;
@@ -37,14 +37,14 @@ module.exports = function (app) {
     exports.put = function (req, res, next) {
         var id = req.body.id;
 
-        if (!permission.can(res.locals.$developer, 'category')) {
+        if (!permission.can(res.locals.$developer, 'link')) {
             var err = new Error('权限不足');
             err.code = 403;
             return next(err);
         }
 
         if (id) {
-            return category.findOneAndUpdate({
+            return link.findOneAndUpdate({
                 _id: id
             }, req.body, function (err, doc) {
                 if (err) {
@@ -66,13 +66,11 @@ module.exports = function (app) {
             });
         }
 
-        category.createOne(req.body, function (err, doc) {
+        link.createOne(req.body, function (err, doc) {
             if (err) {
                 return next(err);
             }
 
-            cache.get('app.categoryList').push(doc);
-            sync.category(cache.get('app.categoryList'));
             res.json({
                 code: 200,
                 data: doc
@@ -91,7 +89,7 @@ module.exports = function (app) {
 
         var id = req.body.id;
 
-        category.findOneAndRemove({_id: id}, function (err, doc) {
+        link.findOneAndRemove({_id: id}, function (err, doc) {
             if (err) {
                 return next(err);
             }

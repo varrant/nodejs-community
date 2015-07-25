@@ -12,7 +12,7 @@ define(function (require, exports, module) {
     var data = {
         list: [],
         link: {
-            type: 1,
+            category: '',
             text: '',
             url: '',
             index: 1
@@ -29,19 +29,30 @@ define(function (require, exports, module) {
             query: {
                 type: 2
             }
-        }).on('success', function(list){
+        }).on('success', function (list) {
             data.categories = list.map(function (item) {
                 return {
                     text: item.name,
                     value: item.id
                 };
             });
+
+            if (data.categories.length) {
+                data.link.category = data.categories[0].value;
+            }
+
             app.buildVue();
         });
     };
 
     app.onadd = function () {
+        ajax({
+            url: '/admin/api/link/',
+            method: 'put',
+            body: data.link
+        }).on('success', function () {
 
+        });
     };
 
     app.buildVue = function () {

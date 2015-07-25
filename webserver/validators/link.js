@@ -13,7 +13,7 @@ var regexp = require('../utils/').regexp;
 var REG_NAME = regexp.title(1, 50);
 
 validator.pushRule({
-    name: 'name',
+    name: 'text',
     alias: '链接名称',
     type: 'string',
     required: true,

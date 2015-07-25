@@ -73,6 +73,12 @@ module.exports = function (app, ctrl) {
     app.delete('/admin/api/column/', ctrl.column.delete);
 
 
+    // link
+    app.get('/admin/api/link/', ctrl.link.get);
+    app.put('/admin/api/link/', ctrl.link.put);
+    app.delete('/admin/api/link/', ctrl.link.delete);
+
+
     // developer
     app.post('/api/developer/login/', ctrl.developer.login);
     app.post('/api/developer/logout/', ctrl.developer.logout);
