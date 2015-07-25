@@ -12,16 +12,19 @@ define(function (require, exports, module) {
     var data = {
         list: [],
         link: {
+            id: '',
             category: '',
             text: '',
             url: '',
             index: 1
         },
         categories: [],
-        type: 1
+        type: 1,
+        edit: false
     };
     var ajax = require('../../modules/common/ajax.js');
     var app = {};
+    var ajaxURL = '/admin/api/link/';
 
     // 初始化
     app.init = function () {
@@ -48,10 +51,23 @@ define(function (require, exports, module) {
     };
 
 
-    // 添加
-    app.onadd = function () {
+    // 获取列表
+    app.getList = function (category) {
         ajax({
-            url: '/admin/api/link/',
+            url: ajaxURL,
+            query: {
+                category: category
+            }
+        }).on('success', function (list) {
+            data.list = list;
+        });
+    };
+
+
+    // 添加
+    app.onsubmit = function () {
+        ajax({
+            url: ajaxURL,
             method: 'put',
             body: data.link
         }).on('success', function (json) {
@@ -60,15 +76,27 @@ define(function (require, exports, module) {
     };
 
 
-    // 获取列表
-    app.getList = function (category) {
+    // 编辑
+    app.onedit = function (item) {
+        data.edit = true;
+        data.link.id = item.id;
+        data.link.category = item.category;
+        data.link.text = item.text;
+        data.link.url = item.url;
+        data.link.index = item.index;
+    };
+
+
+    // 删除
+    app.onremove = function (item, index) {
         ajax({
-            url: '/admin/api/link/',
-            query: {
-                category: category
+            url: ajaxURL,
+            method: 'delete',
+            body: {
+                id: item.id
             }
-        }).on('success', function (list) {
-            data.list = list;
+        }).on('success', function () {
+            data.list.splice(index, 1);
         });
     };
 
@@ -79,7 +107,9 @@ define(function (require, exports, module) {
             el: '#vue',
             data: data,
             methods: {
-                onadd: app.onadd
+                onsubmit: app.onsubmit,
+                onedit: app.onedit,
+                onremove: app.onremove
             }
         });
 
