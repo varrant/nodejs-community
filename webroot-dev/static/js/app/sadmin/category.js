@@ -12,9 +12,17 @@ define(function (require, exports, module) {
     require('../../modules/sadmin/header.js');
     require('../../modules/sadmin/sidebar.js');
 
+    var APP = window.APP;
+
     var Setting = require('../../modules/sadmin/setting/index.js');
     new Setting('#category', {
         url: '/admin/api/category/',
+        query: {
+            type: APP.type
+        },
+        emptyData: {
+            type: APP.type
+        },
         itemKey: 'category',
         listKey: 'categories',
         type: '分类',

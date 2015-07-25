@@ -8,7 +8,11 @@
 <head>
     {{include ../include/meta.html}}
     {{include ./include/meta.html}}
-    <script>window['-nav-']='category';</script>
+    <script>window['-nav-']='category';
+    var APP = {
+        type: '{{$url.query.type}}'
+    };
+    </script>
 </head>
 <body ontouchstart="">
 
@@ -16,22 +20,11 @@
 {{include ./include/header.html}}
 <div class="g-main">
     <div class="m-main">
-        <h1 class="main-title"><i class="fi fi-folder"></i>{{title}}</h1>
+        <h1 class="main-title"><i class="fi fi-folder"></i>{{title}}<small><a href="?type=1">[文章分类]</a><a href="?type=2">[导航分类]</a></small></h1>
         <div class="main-body">
             <div id="category" class="row none">
                 <div class="col-md-4">
                     <ul class="m-form m-form-vertical">
-                        <li>
-                            <div class="form-key">type<strong class="form-required">*</strong></div>
-                            <div class="form-val">
-                                <select class="ipt" v-model="category.type">
-                                    <option value="1">文章分类</option>
-                                    <option value="2">导航分类</option>
-                                </select>
-                                <p class="form-desc">分类类型。</p>
-                            </div>
-                        </li>
-
                         <li>
                             <div class="form-key">name<strong class="form-required">*</strong></div>
                             <div class="form-val">

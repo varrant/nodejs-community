@@ -38,6 +38,7 @@ define(function (require, exports, module) {
             }
         },
         url: '',
+        query: null,
         itemKey: '',
         listKey: '',
         type: '',
@@ -95,7 +96,8 @@ define(function (require, exports, module) {
             var listKey = options.listKey;
 
             ajax({
-                url: options.url
+                url: options.url,
+                query: options.query
             })
                 .on('success', function (data) {
                     var vueData = {};
