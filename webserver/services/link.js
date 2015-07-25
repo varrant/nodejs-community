@@ -8,7 +8,6 @@
 
 var model = require('../models/').link;
 var dato = require('ydr-utils').dato;
-var keys = ['type', 'category', 'author', 'text', 'url', 'index'];
 
 
 /**
@@ -34,11 +33,7 @@ exports.findOneAndRemove = model.findOneAndRemove;
  * @param data {Object} 数据
  * @param callback {Function} 回调
  */
-exports.createOne = function (data, callback) {
-    var data2 = dato.select(data, keys);
-
-    model.createOne(data2, callback);
-};
+exports.createOne = model.createOne;
 
 
 /**
@@ -47,11 +42,7 @@ exports.createOne = function (data, callback) {
  * @param data {Object} 数据
  * @param callback {Function} 回调
  */
-exports.findOneAndUpdate = function (conditions, data, callback) {
-    var data2 = dato.select(data, keys);
-
-    model.findOneAndUpdate(conditions, data2, callback);
-};
+exports.findOneAndUpdate = model.findOneAndUpdate;
 
 
 /**
@@ -60,9 +51,5 @@ exports.findOneAndUpdate = function (conditions, data, callback) {
  * @param data {Object} 数据
  * @param callback {Function} 回调
  */
-exports.existOne = function (conditions, data, callback) {
-    var data2 = dato.select(data, keys);
-
-    model.existOne(conditions, data2, callback);
-};
+exports.existOne = model.existOne;
 
