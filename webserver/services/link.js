@@ -53,3 +53,15 @@ exports.findOneAndUpdate = model.findOneAndUpdate;
  */
 exports.existOne = model.existOne;
 
+
+
+/**
+ * 增加 link 访问数量
+ * @param conditions {Object} 查询条件
+ * @param count {Number} 数量
+ * @param callback {Function} 回调
+ */
+exports.increaseViewByCount = function (conditions, count, callback) {
+    model.increase(conditions, 'visitByCount', count, callback);
+};
+

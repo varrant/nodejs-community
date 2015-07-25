@@ -60,7 +60,7 @@ var schema = new mongoose.Schema({
         default: false
     },
     // 访问次数
-    viewByCount: {
+    visitByCount: {
         type: Number,
         default: 1
     },
