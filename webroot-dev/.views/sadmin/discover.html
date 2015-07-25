@@ -21,8 +21,8 @@
         <div class="main-body" id="vue">
             {{ignore}}
             <div class="radios">
-                <label for="type-1"><input type="radio" name="type" id="type-1" value="1" v-model="type"/>已审核</label>
-                <label for="type-0"><input type="radio" name="type" id="type-0" value="0" v-model="type"/>未审核</label>
+                <label for="verified-1"><input type="radio" name="type" id="verified-1" value="1" v-model="verified"/>已审核</label>
+                <label for="verified-0"><input type="radio" name="type" id="verified-0" value="0" v-model="verified"/>未审核</label>
             </div>
 
             <div>
@@ -31,8 +31,8 @@
                 <input type="text" class="ipt" v-model="link.url" placeholder="链接地址"/>
                 <input type="text" class="ipt" v-model="link.index" placeholder="索引值"/>
                 <p>
-                    <button class="btn btn-primary" v-on="click: onsubmit">添加链接</button>
-                    <button class="btn btn-info" v-on="click: edit=false" v-if="edit">取消编辑</button>
+                    <button class="btn btn-primary" v-on="click: onsubmit">{{edit ? '保存' : '新建'}}链接</button>
+                    <button class="btn btn-info" v-on="click: onreset" v-if="edit">取消编辑</button>
                 </p>
             </div>
 

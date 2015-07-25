@@ -19,7 +19,7 @@ define(function (require, exports, module) {
             index: 1
         },
         categories: [],
-        type: 1,
+        verified: '1',
         edit: false
     };
     var ajax = require('../../modules/common/ajax.js');
@@ -56,7 +56,8 @@ define(function (require, exports, module) {
         ajax({
             url: ajaxURL,
             query: {
-                category: category
+                category: category,
+                verified: data.verified
             }
         }).on('success', function (list) {
             data.list = list;
@@ -73,6 +74,17 @@ define(function (require, exports, module) {
         }).on('success', function (json) {
             app.getList(json.category);
         });
+    };
+
+
+    // 取消编辑
+    app.onreset = function () {
+        data.edit = false;
+        data.link.id = '';
+        data.link.category = data.categories[0] ? data.categories[0].value : '';
+        data.link.text = '';
+        data.link.url = '';
+        data.link.index = '1';
     };
 
 
@@ -111,6 +123,10 @@ define(function (require, exports, module) {
                 onedit: app.onedit,
                 onremove: app.onremove
             }
+        });
+
+        app.vue.$watch('verified', function (neo) {
+            app.getList();
         });
 
         app.vue.$watch('link.category', function (neo) {
