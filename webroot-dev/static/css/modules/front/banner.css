@@ -14,10 +14,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: -1;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center bottom; }
+    z-index: -1; }
   .banner-center {
     display: table;
     width: 100%; }
