@@ -61,7 +61,7 @@ exports.existOne = model.existOne;
  * @param count {Number} 数量
  * @param callback {Function} 回调
  */
-exports.increaseViewByCount = function (conditions, count, callback) {
+exports.increaseVisitByCount = function (conditions, count, callback) {
     model.increase(conditions, 'visitByCount', count, callback);
 };
 

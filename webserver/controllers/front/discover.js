@@ -33,18 +33,20 @@ module.exports = function (app) {
         var id = req.query.id;
         var linkMap = cache.get('app.link1Map');
 
-        if(!linkMap[id]){
+        if (!linkMap[id]) {
             return res.redirect('/');
         }
 
-        link.findOne({
+        link.increaseVisitByCount({
             _id: id
-        }, function (err, doc) {
-            if (err || !doc) {
-                return res.redirect('/');
+        }, 1, function (err, doc) {
+            if (err) {
+                return log.holdError(err);
             }
 
-            res.redirect(doc.url);
+            if (doc) {
+                linkMap[id].visitByCount++;
+            }
         });
     };
 
