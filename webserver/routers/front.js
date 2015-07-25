@@ -169,4 +169,5 @@ module.exports = function (app, ctrl) {
 
     // discover
     app.get('/discover/', ctrl.discover.getHome);
+    app.get('/link/:linkId/', ctrl.link.getRedirect);
 };

@@ -28,28 +28,6 @@ module.exports = function (app) {
     };
 
 
-    // 链接跳转
-    exports.getRedirect = function (req, res, next) {
-        var id = req.query.id;
-        var linkMap = cache.get('app.link1Map');
-
-        if (!linkMap[id]) {
-            return res.redirect('/');
-        }
-
-        link.increaseVisitByCount({
-            _id: id
-        }, 1, function (err, doc) {
-            if (err) {
-                return log.holdError(err);
-            }
-
-            if (doc) {
-                linkMap[id].visitByCount++;
-            }
-        });
-    };
-
     return exports;
 };
 
