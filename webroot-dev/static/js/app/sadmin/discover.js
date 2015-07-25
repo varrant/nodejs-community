@@ -26,6 +26,7 @@ define(function (require, exports, module) {
     };
     var ajax = require('../../modules/common/ajax.js');
     var confirm = require('../../alien/widgets/confirm.js');
+    var alert = require('../../alien/widgets/alert.js');
     var app = {};
     var ajaxURL = '/admin/api/link/';
 
@@ -50,7 +51,7 @@ define(function (require, exports, module) {
                 data.link.category = data.categories[0].value;
                 app.getList(data.link.category);
             }
-        });
+        }).on('error', alert);
     };
 
 
@@ -75,9 +76,12 @@ define(function (require, exports, module) {
             method: 'put',
             body: data.link
         }).on('success', function (json) {
-            data.list.push(json);
+            if (!data.edit) {
+                data.list.push(json);
+            }
+
             app.onreset();
-        });
+        }).on('error', alert);
     };
 
 
