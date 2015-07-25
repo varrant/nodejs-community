@@ -20,11 +20,6 @@
         <h1 class="main-title"><i class="fi fi-compass"></i>{{title}}</h1>
         <div class="main-body" id="vue">
             {{ignore}}
-            <div class="radios">
-                <label for="verified-1"><input type="radio" name="type" id="verified-1" value="1" v-model="verified"/>已审核</label>
-                <label for="verified-0"><input type="radio" name="type" id="verified-0" value="0" v-model="verified"/>未审核</label>
-            </div>
-
             <div>
                 <select class="ipt" options="categories" v-model="link.category"></select>
                 <input type="text" class="ipt" v-model="link.text" placeholder="链接名称"/>
@@ -51,7 +46,7 @@
                         <td><a href="{{item.url}}" target="_blank"><img v-attr="src: 'http://f.ydr.me/' + item.url" class="favicon" width="16" height="16"/>{{item.text}}</a></td>
                         <td>
                             <button class="btn btn-success" v-on="click: onedit(item)">编辑</button>
-                            <button class="btn btn-danger" v-on="click: onremove(item, $inde)">删除</button>
+                            <button class="btn btn-danger" v-on="click: onremove(item, $index)">删除</button>
                         </td>
                     </tr>
                     </tbody>
