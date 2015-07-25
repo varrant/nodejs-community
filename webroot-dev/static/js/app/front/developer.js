@@ -19,6 +19,7 @@ define(function (require, exports, module) {
     var selector = require('../../alien/core/dom/selector.js');
     var animation = require('../../alien/core/dom/animation.js');
     var attribute = require('../../alien/core/dom/attribute.js');
+    var modification = require('../../alien/core/dom/modification.js');
     var event = require('../../alien/core/event/base.js');
     var Template = require('../../alien/libs/template.js');
     var dato = require('../../alien/utils/dato.js');
@@ -27,13 +28,35 @@ define(function (require, exports, module) {
     var winTa = win['-ta-'];
     var repos = require('../../modules/front/repos.js');
     var ajax = require('../../modules/common/ajax.js');
-    var canvasImg = require('../../alien/canvas/img.js');
-    var canvasBlur = require('../../alien/canvas/blur.js');
+    //var canvasImg = require('../../alien/canvas/img.js');
+    //var canvasBlur = require('../../alien/canvas/blur.js');
 
-    app.banner = function () {
-        var $banner = selector.query('#banner')[0];
-        var $img = selector.query('');
-    };
+    //app.banner = function () {
+    //    var $banner = selector.query('#banner')[0];
+    //    var $img = selector.query('img')[0];
+    //    var src = $img.src;
+    //    var url = '/proxy/?url=' + encodeURIComponent(src);
+    //    var img = new Image();
+    //
+    //    img.src = url;
+    //    img.onload = function () {
+    //        var $canvas = modification.create('canvas', {
+    //            width: img.width,
+    //            height: img.height,
+    //            style: {
+    //                position: 'absolute',
+    //                top: 0,
+    //                left: 0,
+    //                width: '100%',
+    //                height: '100%',
+    //                zIndex: -1
+    //            }
+    //        });
+    //
+    //        canvasImg($canvas, img);
+    //        modification.insert($canvas, $banner);
+    //    };
+    //};
 
 
     // github repos
@@ -94,7 +117,7 @@ define(function (require, exports, module) {
 
 
 
-    app.banner();
+    //app.banner();
     app.repos();
     app.page();
 });
