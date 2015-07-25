@@ -58,7 +58,8 @@
             "static/js/modules/common/tip.css",
             "static/js/alien/core/navigator/hashbang.js",
             "static/js/alien/ui/img-upload/index.js",
-            "static/js/alien/utils/canvas.js",
+            "static/js/alien/canvas/img.js",
+            "static/js/alien/canvas/content.js",
             "static/js/alien/ui/dialog/index.js",
             "static/js/alien/ui/scrollbar/index.js",
             "static/js/alien/ui/scrollbar/style.css",
@@ -1232,7 +1233,7 @@
     },
     ".views/front/discover.html": {
         "css": {
-            "static/css/d2963879381203510596559757888399.css": [
+            "static/css/2bf0b3fcafb4a69ec55e6a4d7de6139a.css": [
                 "static/css/app/front/discover.css"
             ]
         },
@@ -2513,7 +2514,8 @@
             "static/js/alien/widgets/confirm.js",
             "static/js/alien/core/navigator/hashbang.js",
             "static/js/alien/ui/img-Upload/index.js",
-            "static/js/alien/utils/canvas.js",
+            "static/js/alien/canvas/img.js",
+            "static/js/alien/canvas/content.js",
             "static/js/alien/ui/dialog/index.js",
             "static/js/alien/ui/scrollbar/index.js",
             "static/js/alien/ui/scrollbar/style.css",
@@ -2919,7 +2921,8 @@
             "static/js/alien/widgets/confirm.js",
             "static/js/alien/core/navigator/hashbang.js",
             "static/js/alien/ui/img-Upload/index.js",
-            "static/js/alien/utils/canvas.js",
+            "static/js/alien/canvas/img.js",
+            "static/js/alien/canvas/content.js",
             "static/js/alien/ui/dialog/index.js",
             "static/js/alien/ui/scrollbar/index.js",
             "static/js/alien/ui/scrollbar/style.css",
