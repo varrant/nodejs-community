@@ -17,6 +17,8 @@ var developer = require('../../services/').developer;
 var column = require('../../services/').column;
 var filter = require('../../utils/').filter;
 var log = require('ydr-utils').log;
+var http = require('http');
+
 
 module.exports = function (app) {
     var exports = {};
@@ -192,6 +194,17 @@ module.exports = function (app) {
         //        res.render('front/home.html', data);
         //    });
     };
+
+
+    // 代理
+    exports.getProxy = function (req, res, next) {
+        var url = req.query.url;
+
+        http.request(url, function (resp) {
+            resp.pipe(res);
+        }).end();
+    };
+
 
     return exports;
 };

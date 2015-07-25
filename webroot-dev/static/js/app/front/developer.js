@@ -27,6 +27,13 @@ define(function (require, exports, module) {
     var winTa = win['-ta-'];
     var repos = require('../../modules/front/repos.js');
     var ajax = require('../../modules/common/ajax.js');
+    var canvasImg = require('../../alien/canvas/img.js');
+    var canvasBlur = require('../../alien/canvas/blur.js');
+
+    app.banner = function () {
+        var $banner = selector.query('#banner')[0];
+        var $img = selector.query('');
+    };
 
 
     // github repos
@@ -85,6 +92,9 @@ define(function (require, exports, module) {
         });
     };
 
+
+
+    app.banner();
     app.repos();
     app.page();
 });

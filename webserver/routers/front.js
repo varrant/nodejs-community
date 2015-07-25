@@ -169,5 +169,10 @@ module.exports = function (app, ctrl) {
 
     // discover
     app.get('/discover/', ctrl.discover.getHome);
+
+    // link
     app.get('/link/:linkId/', ctrl.link.getRedirect);
+
+    // proxy
+    app.get('/proxy/', ctrl.main.getProxy);
 };
