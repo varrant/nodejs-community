@@ -26,10 +26,8 @@ define(function (require, exports, module) {
     var ajax = require('../../modules/common/ajax.js');
     var confirm = require('../../alien/widgets/confirm.js');
     var alert = require('../../alien/widgets/alert.js');
-    var hashbang = require('../../alien/core/navigator/hashbang.js');
     var app = {};
     var ajaxURL = '/admin/api/link/';
-    var hashCategory = hashbang.get('query', 'category');
 
     // 初始化
     app.init = function () {
@@ -49,7 +47,7 @@ define(function (require, exports, module) {
             app.buildVue();
 
             if (data.categories.length) {
-                data.link.category = hashCategory || data.categories[0].value;
+                data.link.category = data.categories[0].value;
                 app.getList(data.link.category);
             }
         }).on('error', alert);
@@ -141,7 +139,6 @@ define(function (require, exports, module) {
 
         app.vue.$watch('link.category', function (neo) {
             app.getList(neo);
-            hashbang.set('query', 'category', neo);
         });
     };
 

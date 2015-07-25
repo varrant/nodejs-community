@@ -11,6 +11,7 @@ var schema = new mongoose.Schema({
     // 类型
     // 1：导航链接
     // 2：友情链接
+    // 3：文章引用的链接
     type: {
         type: String,
         default: 1
@@ -57,6 +58,11 @@ var schema = new mongoose.Schema({
     verified: {
         type: Boolean,
         default: false
+    },
+    // 访问次数
+    viewByCount: {
+        type: Number,
+        default: 1
     },
     // 元信息（方便扩展）
     // 因为是复合数据，因此不会做数据验证
