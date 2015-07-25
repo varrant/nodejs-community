@@ -28,7 +28,7 @@ var schema = new mongoose.Schema({
         required: true,
         ref: 'category'
     },
-    // 链接名称
+    // 链接文本
     text: {
         type: String,
         required: true

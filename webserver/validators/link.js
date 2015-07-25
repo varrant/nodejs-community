@@ -10,11 +10,11 @@
 var Validator = require('ydr-utils').Validator;
 var validator = new Validator();
 var regexp = require('../utils/').regexp;
-var REG_NAME = regexp.title(1, 50);
+var REG_NAME = regexp.title(1, 30);
 
 validator.pushRule({
     name: 'text',
-    alias: '链接名称',
+    alias: '链接文本',
     type: 'string',
     required: true,
     maxLength: 30,
@@ -27,7 +27,7 @@ validator.pushRule({
     alias: '链接地址',
     type: 'url',
     required: true,
-    maxLength: 200
+    maxLength: 255
 });
 
 module.exports = validator;
