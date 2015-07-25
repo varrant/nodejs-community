@@ -59,7 +59,7 @@ define(function (require, exports, module) {
         ajax({
             url: ajaxURL,
             query: {
-                category: category,
+                category: category || data.link.category,
                 verified: data.verified
             }
         }).on('success', function (list) {
@@ -76,6 +76,7 @@ define(function (require, exports, module) {
             body: data.link
         }).on('success', function (json) {
             data.list.push(json);
+            app.onreset();
         });
     };
 
@@ -84,7 +85,6 @@ define(function (require, exports, module) {
     app.onreset = function () {
         data.edit = false;
         data.link.id = '';
-        data.link.category = data.categories[0] ? data.categories[0].value : '';
         data.link.text = '';
         data.link.url = '';
         data.link.index = '1';

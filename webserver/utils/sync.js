@@ -7,6 +7,9 @@
 'use strict';
 
 var cache = require('ydr-utils').cache;
+var log = require('ydr-utils').log;
+var allocation = require('ydr-utils').allocation;
+var howdo = require('howdo');
 
 
 /**
@@ -84,4 +87,56 @@ exports.category = function (docs) {
     cache.set('app.category2List', category2List);
     cache.set('app.category2IDMap', category2IDMap);
     cache.set('app.category2URIMap', category2URIMap);
+};
+
+
+/**
+ * 同步链接
+ * @param link
+ * @param [category2List]
+ * @param [callback]
+ */
+exports.link = function (link, category2List, callback) {
+    var args = allocation.args(arguments);
+
+    if (args.length === 2) {
+        callback = args[1];
+        category2List = null;
+    } else if (args.length === 1) {
+        callback = log.holdError;
+        category2List = null;
+    }
+
+    // 按导航分类查找链接
+    category2List = category2List || cache.get('app.category2List');
+
+    var linkList = [];
+    var linkMap = {};
+
+    howdo.each(category2List, function (index, category, done) {
+        linkMap[category.id] = [];
+        linkList.push({
+            type: category.name,
+            list: linkMap[category.id]
+        });
+        link.find({
+            category: category.id,
+            verified: true
+        }, {
+            order: {
+                index: -1
+            }
+        }, function (err, docs) {
+            if (err) {
+                return done(err);
+            }
+
+            docs.forEach(function (doc) {
+                linkMap[category.id].push(doc);
+            });
+            done(null);
+        });
+    }).together(callback).try(function () {
+        cache.set('app.link1List', linkList);
+    });
 };

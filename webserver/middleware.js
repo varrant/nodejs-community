@@ -10,6 +10,7 @@ var setting = require('./services/').setting;
 var section = require('./services/').section;
 var category = require('./services/').category;
 var developer = require('./services/').developer;
+var link = require('./services/').link;
 var sync = require('./utils/').sync;
 var howdo = require('howdo');
 var configs = require('../configs/');
@@ -56,7 +57,7 @@ module.exports = function (next, app) {
                 }
 
                 sync.category(docs);
-                done();
+                sync.link(link, done);
             });
         })
         // 初始化注册人数
