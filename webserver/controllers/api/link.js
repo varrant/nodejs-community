@@ -72,6 +72,7 @@ module.exports = function (app) {
                     }
                 });
 
+                sync.link(link);
                 res.json({
                     code: 200,
                     data: doc
@@ -84,6 +85,7 @@ module.exports = function (app) {
                 return next(err);
             }
 
+            sync.link(link);
             res.json({
                 code: 200,
                 data: doc
@@ -107,6 +109,7 @@ module.exports = function (app) {
                 return next(err);
             }
 
+            sync.link(link);
             res.json({
                 code: 200
             });
