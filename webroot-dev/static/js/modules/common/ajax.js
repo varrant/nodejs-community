@@ -37,7 +37,7 @@ define(function (require, exports, module) {
                 the.loading.done();
             }
 
-            the.loading = new Loading(window, options.loading);
+            the.loading = new Loading(window, options.loading).open();
         }
 
         the.xhr = xhr.ajax(options)
