@@ -66,7 +66,7 @@ validator.pushRule({
     onafter: function (labels) {
         var ret = [];
 
-        labels.forEach(function (item) {
+        (labels || []).forEach(function (item) {
             item = String(item).trim();
 
             if (REG_LABEL.test(item)) {

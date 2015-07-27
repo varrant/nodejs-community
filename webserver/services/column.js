@@ -141,7 +141,7 @@ exports.updateOne = function (author, conditions, data, callback) {
         })
         // 2. 更新
         .task(function (next) {
-            var data2 = dato.select(data, ['name', 'uri', 'cover', 'introduction']);
+            var data2 = dato.select(data, ['name', 'uri', 'cover', 'introduction', 'labels']);
             column.findOneAndUpdate(conditions, data2, next);
         })
         // 异步串行

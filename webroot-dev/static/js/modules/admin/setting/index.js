@@ -180,7 +180,7 @@ define(function (require, exports, module) {
             ajax({
                 method: 'put',
                 url: options.url,
-                body: vue.$data[itemKey],
+                body: data,
                 loading: '设置中'
             })
                 .on('success', function (data) {
