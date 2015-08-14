@@ -13,7 +13,9 @@ define(function (require, exports, module) {
     var login = require('./login.js');
     var alert = require('../../alien/widgets/alert.js');
     var Loading = require('../../alien/ui/loading/index.js');
+    var loading = new Loading();
     var Emitter = require('../../alien/libs/emitter.js');
+    var typeis = require('../../alien/utils/typeis.js');
     var klass = require('../../alien/utils/class.js');
     var Ajax = klass.extends(Emitter).create(function (options) {
         var the = this;
@@ -33,11 +35,8 @@ define(function (require, exports, module) {
         }
 
         if (options.loading !== false && options.loading !== null) {
-            if (the.loading) {
-                the.loading.done();
-            }
-
-            the.loading = new Loading(options.loading).open();
+            options.loading = options.loading || '加载中';
+            loading.setText(options.loading).open();
         }
 
         the.xhr = xhr.ajax(options)
@@ -83,10 +82,7 @@ define(function (require, exports, module) {
                 the.emit(this.alienEmitter.type, err, json && json.data);
             })
             .on('complete', function () {
-                if (the.loading) {
-                    the.loading.done();
-                    the.loading = null;
-                }
+                loading.close();
             });
     });
 
