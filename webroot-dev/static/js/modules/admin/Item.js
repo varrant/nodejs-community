@@ -277,7 +277,7 @@ define(function (require, exports, module) {
                     return alert('专辑名称不能为空');
                 }
 
-                var ld = new Loading(window, '正在翻译');
+                var ld = new Loading('正在翻译');
 
                 the._translate(name, function (err, uri) {
                     ld.done();

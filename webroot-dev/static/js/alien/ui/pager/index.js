@@ -52,15 +52,7 @@ define(function (require, exports, module) {
 
             the._$ele = the._$ele[0];
             the._options = dato.extend(true, {}, defaults, options);
-            the._init();
-        },
-        /**
-         * 初始化
-         * @private
-         */
-        _init: function () {
-            var the = this;
-
+            the.destroyed = false;
             attribute.addClass(the._$ele, the._options.addClass);
             the._initEvent();
             the.render();
@@ -113,9 +105,8 @@ define(function (require, exports, module) {
          */
         render: function (data) {
             var the = this;
-            var html = tpl.render(dato.extend(the._options, data));
 
-            the._$ele.innerHTML = html;
+            the._$ele.innerHTML = tpl.render(dato.extend(the._options, data));
             return the;
         },
 
@@ -126,6 +117,11 @@ define(function (require, exports, module) {
         destroy: function () {
             var the = this;
 
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             event.un(the._$ele, 'click', the._onpage);
             the._$ele.innerHTML = '';
         }

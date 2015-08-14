@@ -1,14 +1,28 @@
 .alien-ui-loading {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 10%;
-  text-align: center; }
-  .alien-ui-loading > svg {
-    display: inline-block; }
+  background: #000;
+  padding: 10px;
+  text-align: center;
+  border-radius: 6px; }
+  .alien-ui-loading,
+  .alien-ui-loading * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+  .alien-ui-loading-inner {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  .alien-ui-loading-gif {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    -webkit-background-size: 30px;
+    background-size: 30px; }
   .alien-ui-loading-text {
-    font-size: 14px;
+    color: #fff;
+    font-size: 12px;
     line-height: 1;
-    padding: 0 0 10px 0; }
+    white-space: nowrap;
+    padding-top: 10px; }
 

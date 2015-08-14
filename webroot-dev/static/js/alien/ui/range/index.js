@@ -54,17 +54,7 @@ define(function (require, exports, module) {
 
             the._$parent = selector.query($parent)[0];
             the._options = dato.extend(true, {}, defaults, options);
-            the._init();
-        },
-
-
-        /**
-         * 初始化
-         * @private
-         */
-        _init: function () {
-            var the = this;
-
+            the.destroyed = false;
             the._initData();
             the._initNode();
             the._initEvent();
@@ -399,6 +389,11 @@ define(function (require, exports, module) {
         destroy: function () {
             var the = this;
 
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             event.un(the._$control0, 'dragstart drag dragend');
             event.un(the._$control1, 'dragstart drag dragend');
             the._$parent.innerHTML = '';

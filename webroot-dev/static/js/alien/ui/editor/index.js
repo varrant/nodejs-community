@@ -131,7 +131,7 @@ define(function (require, exports, module) {
                 the._$editor = modification.wrap(the._$input, '<div class="' + alienClass + '"/>')[0];
                 the._$editor.id = alienClass + '-' + the._id;
                 the._$output = modification.create('div', {
-                    class: alienClass + '-output ' + options.previewClass
+                    'class': alienClass + '-output ' + options.previewClass
                 });
                 modification.insert(the._$output, the._$editor);
                 attribute.addClass(the._$editor, alienClass + ' ' + the._options.addClass);
@@ -148,6 +148,7 @@ define(function (require, exports, module) {
                 the._atList = [];
             }
 
+            the.destroyed = false;
             the._initEvent();
 
             if (the._options.canBackup) {
@@ -822,6 +823,12 @@ define(function (require, exports, module) {
          */
         destroy: function () {
             var the = this;
+
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
 
             if (the._adaptMobile) {
                 modification.unwrap(the._$ele, 'div');

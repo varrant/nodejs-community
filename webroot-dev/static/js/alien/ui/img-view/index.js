@@ -64,16 +64,7 @@ define(function (require, exports, module) {
             var the = this;
 
             the._options = dato.extend(true, {}, defaults, options);
-            the._init();
-        },
-
-        /**
-         * 初始化
-         * @private
-         */
-        _init: function () {
-            var the = this;
-
+            the.destroyed = false;
             the._initData();
             the._initNode();
             the._initEvent();
@@ -269,11 +260,8 @@ define(function (require, exports, module) {
             attribute.css(the._$content, 'bottom', number.parseFloat(options.thumbnailSize.height));
 
             if (!the._loading) {
-                the._loading = new Loading(window, {
-                    style: {
-                        border: '1px solid #333'
-                    },
-                    isModal: false
+                the._loading = new Loading({
+                    modal: false
                 });
             }
         },
@@ -408,6 +396,11 @@ define(function (require, exports, module) {
         destroy: function () {
             var the = this;
 
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             event.un(the._$prev, 'click');
             event.un(the._$next, 'click');
             event.un(the._$navList, 'click');

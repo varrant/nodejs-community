@@ -50,15 +50,7 @@ define(function (require, exports, module) {
             var the = this;
 
             the._options = dato.extend(true, {}, defaults, options);
-            the._init();
-        },
-        /**
-         * 初始化
-         * @private
-         */
-        _init: function () {
-            var the = this;
-
+            the.destroyed = false;
             the._isChoosed = false;
             the._isReady = false;
             the._initNode();
@@ -127,7 +119,7 @@ define(function (require, exports, module) {
             var $newFile = modification.create('input', {
                 type: 'file',
                 accept: options.accept,
-                class: alienKey + '-file'
+                'class': alienKey + '-file'
             });
 
             modification.insert($newFile, the._$file, 'afterend');
@@ -493,6 +485,11 @@ define(function (require, exports, module) {
         destroy: function (callback) {
             var the = this;
 
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             event.un(the._$dialog, 'change');
             event.un(the._$cancel, 'click');
             event.un(the._$submit, 'click');

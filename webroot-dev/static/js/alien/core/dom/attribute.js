@@ -31,7 +31,7 @@ define(function (require, exports, module) {
     var selector = require('./selector.js');
     var see = require('./see.js');
     var allocation = require('../../utils/allocation.js');
-    var REG_PX = /margin|width|height|padding|top|right|bottom|left|translate/i;
+    var REG_PX = /margin|width|height|padding|top|right|bottom|left|translate|font/i;
     var REG_DEG = /rotate|skew/i;
     var REG_TRANSFORM_WORD = /translate|scale|skew|rotate|matrix|perspective/i;
     var REG_IMPORTANT = /\s!important$/i;
@@ -380,7 +380,8 @@ define(function (require, exports, module) {
                     return;
                 }
 
-                var ret = ele.dataset[string.humprize(key)];
+                var dataset = ele.dataset || {};
+                var ret = dataset[string.humprize(key)];
 
                 try {
                     ret = JSON.parse(ret);

@@ -59,6 +59,7 @@ define(function (require, exports, module) {
             the._$container = selector.query($container)[0];
             the._options = dato.extend({}, defaults, options);
             the._$nav = selector.query(the._options.navSelector)[0];
+            the.destroyed = false;
             the._init();
         },
 
@@ -320,6 +321,13 @@ define(function (require, exports, module) {
         },
 
         destroy: function () {
+            var the = this;
+
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             event.un(win, 'resize');
             event.un(doc, 'touch1start swipe wheelstart wheelchange wheelend');
         }

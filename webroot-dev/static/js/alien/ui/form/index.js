@@ -84,6 +84,7 @@ define(function (require, exports, module) {
 
             the._$form = selector.query($form)[0];
             the._isForm = the._$form.tagName === 'FORM';
+            the.destroyed = false;
             the._options = dato.extend({}, defaults, options);
             the._validation = new Validation(the._$form, the._options);
             Emitter.pipe(the._validation, the, ['!success', '!error']);
@@ -234,26 +235,16 @@ define(function (require, exports, module) {
                 });
             }
 
-            var $firstInvalidInput = null;
-
             the._validation
                 .on('valid', function ($input) {
-                    if ($input === $firstInvalidInput) {
-                        $firstInvalidInput = null;
-                    }
-
                     the._setMsg($input);
                 })
                 .on('invalid', function (err, $input) {
                     the._setMsg($input, err);
-
-                    if (!$firstInvalidInput) {
-                        $firstInvalidInput = $input;
-                    }
                 })
                 .on('success', the._submit.bind(the))
-                .on('error', function () {
-                    the.focus($firstInvalidInput);
+                .on('error', function ($input) {
+                    the.focus($input);
                 });
         },
 

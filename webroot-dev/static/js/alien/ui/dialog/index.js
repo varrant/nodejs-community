@@ -71,12 +71,8 @@ define(function (require, exports, module) {
             var the = this;
 
             the._$content = selector.query($content)[0];
-            the._options = dato.extend(true, {}, defaults, options);
-            the._init();
-        },
-        _init: function () {
-            var the = this;
-            var options = the._options;
+            options = the._options = dato.extend(true, {}, defaults, options);
+            the.destroyed = false;
 
             if (options.isModal) {
                 the._mask = new Mask(win, {
@@ -243,7 +239,7 @@ define(function (require, exports, module) {
             var options = the._options;
             var $iframe = modification.create('iframe', {
                 src: url,
-                class: alienClass + '-iframe',
+                'class': alienClass + '-iframe',
                 style: {
                     height: options.remoteHeight
                 }
@@ -348,6 +344,11 @@ define(function (require, exports, module) {
         destroy: function (callback) {
             var the = this;
 
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             the._window.destroy(function () {
                 modification.insert(the._$content, the._$pos, 'afterend');
                 modification.remove(the._$pos);

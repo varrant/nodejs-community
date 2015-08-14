@@ -1,18 +1,37 @@
-.alien-ui-loading{
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 10%;
+.alien-ui-loading {
+  background: #000;
+  padding: 10px;
   text-align: center;
+  border-radius: 6px;
 
-  > svg{
-    display: inline-block;
+  &,
+  & * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
-  &-text{
-    font-size: 14px;
+  &-inner {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  &-gif {
+    $size: 30px;
+    display: inline-block;
+    width: $size;
+    height: $size;
+    -webkit-background-size: $size;
+    background-size: $size;
+  }
+
+  &-text {
+    color: #fff;
+    font-size: 12px;
     line-height: 1;
-    padding: 0 0 10px 0;
+    white-space: nowrap;
+    padding-top: 10px;
   }
 }

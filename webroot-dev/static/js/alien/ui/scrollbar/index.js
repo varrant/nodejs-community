@@ -75,16 +75,8 @@ define(function (require, exports, module) {
             }
 
             the._$ele = the._$ele[0];
-            the._options = dato.extend(!0, {}, defaults, options);
+            options = the._options = dato.extend(!0, {}, defaults, options);
             the._id = alienIndex++;
-            the._init();
-        },
-        /**
-         * 初始化
-         */
-        _init: function () {
-            var the = this;
-            var options = the._options;
             var scrollbarData = {
                 id: the._id,
                 isPlaceholderScroll: isPlaceholderScroll
@@ -628,6 +620,11 @@ define(function (require, exports, module) {
         destroy: function () {
             var the = this;
 
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             // 清除拖拽
             var eve1 = 'dragsatrt drag dragend';
             event.un(the._$thumbX, eve1);

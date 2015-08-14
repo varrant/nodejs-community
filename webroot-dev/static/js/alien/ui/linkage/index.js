@@ -63,6 +63,7 @@ define(function (require, exports, module) {
             the._hasPlaceholder = the._options.placeholder && the._options.placeholder.text;
             the._values = [];
             the._cache = {};
+            the.destroyed = false;
             the._initNode();
             the._initEvent();
             // 初始加载第一级
@@ -153,7 +154,7 @@ define(function (require, exports, module) {
          * @param values {Array} 手动值
          * @returns {Linkage}
          */
-        setValues: function (values) {
+        setValue: function (values) {
             var the = this;
 
             the._xhr.abort();
@@ -173,8 +174,18 @@ define(function (require, exports, module) {
          * 获得当前选中的值
          * @returns {Array}
          */
-        getValues: function () {
+        getValue: function () {
             return this._values;
+        },
+
+
+        /**
+         * 获取 select
+         * @param index {Number} 索引值
+         * @returns {*}
+         */
+        getSelect: function (index) {
+            return this._$selects[index];
         },
 
 
@@ -311,6 +322,11 @@ define(function (require, exports, module) {
         destroy: function () {
             var the = this;
 
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             dato.repeat(the._length, function (index) {
                 event.un(the._$selects[index], 'change', the._onchange);
             });

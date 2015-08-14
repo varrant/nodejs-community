@@ -85,15 +85,7 @@ define(function (require, exports, module) {
 
             the._$ele = the._$ele[0];
             the._options = dato.extend(true, {}, defaults, options);
-            the._init();
-        },
-        /**
-         * 初始化
-         * @private
-         */
-        _init: function () {
-            var the = this;
-
+            the.destroyed = false;
             attribute.addClass(the._$ele, alienClass);
             the._initSize();
             the._initEvent();
@@ -166,6 +158,11 @@ define(function (require, exports, module) {
         destroy: function () {
             var the = this;
 
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             event.un(the._$ele, 'input', the._adjust);
         }
     });

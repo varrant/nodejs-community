@@ -47,19 +47,8 @@ define(function (require, exports, module) {
         constructor: function (options) {
             var the = this;
 
-            the._options = dato.extend({}, defaults, options);
-            the._init();
-        },
-
-
-        /**
-         * 初始化
-         * @private
-         */
-        _init: function () {
-            var the = this;
-            var options = the._options;
-
+            options = the._options = dato.extend({}, defaults, options);
+            the.destroyed = false;
             the._popup = new Popup(null, {
                 position: 'top',
                 addClass: alienClass + '-popup',
@@ -114,6 +103,11 @@ define(function (require, exports, module) {
             var the = this;
             var options = the._options;
 
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             event.un(doc, options.openEvent, the._onTooltip);
             event.un(doc, options.closeEvent, the._offTooltip);
             the._popup.destroy();

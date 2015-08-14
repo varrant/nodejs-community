@@ -71,16 +71,7 @@ define(function (require, exports, module) {
 
             the._$target = selector.query($target)[0];
             the._options = dato.extend(true, {}, defaults, options);
-            the._init();
-        },
-
-
-        /**
-         * 初始化
-         * @private
-         */
-        _init: function () {
-            var the = this;
+            the.destroyed = false;
             the._html = tpl.render({
                 id: the._id = alienId++
             });
@@ -494,6 +485,11 @@ define(function (require, exports, module) {
         destroy: function (callback) {
             var the = this;
 
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             the.close(function () {
                 modification.remove(the._$popup);
                 if (typeis.function(callback)) {

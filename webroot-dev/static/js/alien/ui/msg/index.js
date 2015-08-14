@@ -77,12 +77,7 @@ define(function (require, exports, module) {
             the._options.buttons = the._options.buttons || [];
             the.id = alienIndex++;
             the._isReady = false;
-            the._init();
-        },
-
-        _init: function () {
-            var the = this;
-
+            the.destroyed = false;
             the._initNode();
             the._initEvent();
 
@@ -304,6 +299,11 @@ define(function (require, exports, module) {
         destroy: function () {
             var the = this;
 
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             the._window.destroy(function () {
                 event.un(the._$close, 'click');
                 event.un(the._$buttons, 'click');

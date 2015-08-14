@@ -65,19 +65,9 @@ define(function (require, exports, module) {
             var the = this;
 
             the._$content = selector.query($content)[0];
-            the._options = dato.extend(true, {}, defaults, options);
+            options = the._options = dato.extend(true, {}, defaults, options);
             the.visible = false;
-            the._init();
-        },
-
-        /**
-         * 初始化
-         * @returns {Window}
-         * @private
-         */
-        _init: function () {
-            var the = this;
-            var options = the._options;
+            the.destroyed = false;
             var $pos = modification.create('div');
             var setEasing = function (options) {
                 if (typeis.string(options.easing)) {
@@ -91,14 +81,14 @@ define(function (require, exports, module) {
             the.id = alienIndex;
             the._$window = modification.create('div', {
                 id: alienClass + '-' + alienIndex++,
-                class: alienClass,
+                'class': alienClass,
                 style: {
                     display: 'none',
                     position: 'absolute'
                 }
             });
             the._$focus = modification.create('input', {
-                class: alienClass + '-focus'
+                'class': alienClass + '-focus'
             });
             attribute.addClass(the._$window, options.addClass);
             modification.insert(the._$window, options.parentNode);
@@ -121,7 +111,11 @@ define(function (require, exports, module) {
         },
 
 
-        _getSize: function () {
+        /**
+         * 获得窗口的尺寸
+         * @returns {{}}
+         */
+        getSize: function () {
             var the = this;
             var options = the._options;
             var size = {};
@@ -157,7 +151,8 @@ define(function (require, exports, module) {
                 attribute.css(the._$window, 'height', pre.height);
             }
 
-            the._size = size;
+            the.size = size;
+
             return size;
         },
 
@@ -175,14 +170,14 @@ define(function (require, exports, module) {
             var pos = {};
 
             if (options.left === 'center') {
-                pos.left = (winW - the._size.width) / 2;
+                pos.left = (winW - the.size.width) / 2;
                 pos.left = pos.left < 0 ? 0 : pos.left;
             } else if (options.left !== null) {
                 pos.left = options.left;
             }
 
             if (options.top === 'center') {
-                pos.top = (winH - the._size.height) * 2 / 5;
+                pos.top = (winH - the.size.height) * 2 / 5;
                 pos.top = pos.top < options.minOffset ? options.minOffset : pos.top;
             } else if (options.top !== null) {
                 pos.top = options.top;
@@ -195,6 +190,9 @@ define(function (require, exports, module) {
             if (options.bottom !== null) {
                 pos.bottom = options.bottom;
             }
+
+            pos.width = the.size.width;
+            pos.height = the.size.height;
 
             return pos;
         },
@@ -236,15 +234,16 @@ define(function (require, exports, module) {
             };
 
             controller.nextTick(function () {
+                the.getSize();
+
                 /**
                  * 窗口打开之前
                  * @event beforeopen
                  */
-                if (the.emit('beforeopen') === false) {
+                if (the.emit('beforeopen', the.size) === false) {
                     return;
                 }
 
-                the._getSize();
                 var to = the._getPos();
 
                 the.visible = true;
@@ -295,14 +294,14 @@ define(function (require, exports, module) {
 
             dato.extend(true, options, size);
 
-            the._getSize();
+            the.getSize();
             var to = the._getPos();
 
             /**
              * 窗口大小改变之前
              * @event beforeresize
              */
-            if (the.emit('beforeresize', the._size, to) === false) {
+            if (the.emit('beforeresize', the.size, to) === false) {
                 return the;
             }
 
@@ -477,6 +476,12 @@ define(function (require, exports, module) {
                     callback();
                 }
             };
+
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
 
             if (the.visible) {
                 the.close(destroy);

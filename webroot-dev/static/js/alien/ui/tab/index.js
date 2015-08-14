@@ -41,28 +41,8 @@ define(function (require, exports, module) {
 
             the._$ele = the._$ele[0];
             the._options = dato.extend(true, {}, defaults, options);
-            the._init();
-        },
-        /**
-         * 初始化
-         * @private
-         */
-        _init: function () {
-            var the = this;
-
-            the._initData();
-            the._initEvent();
-        },
-
-
-        /**
-         * 初始化数据
-         * @private
-         */
-        _initData: function () {
-            var the = this;
-
             the._index = the._options.index;
+            the._initEvent();
         },
 
 
@@ -164,6 +144,11 @@ define(function (require, exports, module) {
         destroy: function () {
             var the = this;
 
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             // 卸载事件绑定
             event.un(the._$ele, the._options.eventType, the._ontrigger);
         }

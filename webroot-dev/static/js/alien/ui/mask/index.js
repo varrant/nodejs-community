@@ -48,16 +48,8 @@ define(function (require, exports, module) {
             the._$cover = selector.query($cover)[0];
             the._$cover = _isSimilar2Window(the._$cover) ? win : the._$cover;
             the._options = dato.extend(true, {}, defaults, options);
+            the.destroyed = false;
             the.visible = false;
-            the._init();
-        },
-        /**
-         * 初始化
-         * @private
-         */
-        _init: function () {
-            var the = this;
-
             the._initNode();
             the._initEvent();
 
@@ -219,6 +211,11 @@ define(function (require, exports, module) {
         destroy: function () {
             var the = this;
 
+            if (the.destroyed) {
+                return;
+            }
+
+            the.destroyed = true;
             the.close();
             event.un(the._$mask, 'click');
             modification.remove(the._$mask);
@@ -300,28 +297,28 @@ define(function (require, exports, module) {
     });
 
 
-    /**
-     * 获得当前页面的滚动条宽度
-     * @returns {number}
-     * @private
-     */
-    function _getScrollbarWidth() {
-        var $div = modification.create('div', {
-            style: {
-                position: 'absolute',
-                width: 100,
-                height: 100,
-                overflow: 'scroll'
-            }
-        });
-
-        modification.insert($div, document.body);
-
-        var width = $div.offsetWidth - $div.clientWidth;
-        modification.remove($div);
-
-        return width;
-    }
+    ///**
+    // * 获得当前页面的滚动条宽度
+    // * @returns {number}
+    // * @private
+    // */
+    //function _getScrollbarWidth() {
+    //    var $div = modification.create('div', {
+    //        style: {
+    //            position: 'absolute',
+    //            width: 100,
+    //            height: 100,
+    //            overflow: 'scroll'
+    //        }
+    //    });
+    //
+    //    modification.insert($div, document.body);
+    //
+    //    var width = $div.offsetWidth - $div.clientWidth;
+    //    modification.remove($div);
+    //
+    //    return width;
+    //}
 
 
     /**

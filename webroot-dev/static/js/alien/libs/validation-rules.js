@@ -1,5 +1,5 @@
 /*!
- * 文件描述
+ * 验证规则库
  * @author ydr.me
  * @create 2015-07-05 22:40
  */
@@ -16,7 +16,7 @@ define(function (require, exports, module) {
 
     var typeis = require('../utils/typeis.js');
     var number = require('../utils/number.js');
-    var REG_NUMBERIC = /^[\d.]+$/;
+    var REG_NUMBERIC = /^-?[\d.]+$/;
 
     module.exports = function (Validation) {
         Validation.addRule('type', function (val, done, param0) {
@@ -29,7 +29,11 @@ define(function (require, exports, module) {
 
             switch (param0) {
                 case 'number':
-                    return done(/^\d+$/.test(val) ? null : '${path}必须是数字');
+                    return done(/^-?\d+$/.test(val) ? null : '${path}必须是数值格式');
+
+                case 'integer':
+                    val = val.replace(/^-/, '');
+                    return done(/^[1-9]*\d$/.test(val) ? null : '${path}必须是整数');
 
                 case 'mobile':
                     return done(/^1\d{10}$/.test(val) ? null : '${path}必须是手机号');
@@ -48,7 +52,7 @@ define(function (require, exports, module) {
             var boolean = typeis(val) === 'file' ? true :
             (isMultiple ? val : (val || '')).length > 0;
 
-            done(boolean ? null : isMultiple ? '请选择${path}' : '${path}不能为空');
+            done(boolean ? null : '${path}不能为空');
         });
 
 

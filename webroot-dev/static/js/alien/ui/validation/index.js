@@ -31,7 +31,6 @@ define(function (require, exports, module) {
     var Validation = require('../../libs/validation.js');
     require('../../libs/validation-rules.js')(Validation);
     require('./validation-rules.js')(Validation);
-    var Emitter = require('../../libs/emitter.js');
     var dato = require('../../utils/dato.js');
     var typeis = require('../../utils/typeis.js');
     var string = require('../../utils/string.js');
@@ -77,6 +76,7 @@ define(function (require, exports, module) {
             the._options = dato.extend({}, defaults, options);
             the._$form = selector.query($form)[0];
             the._pathMap = {};
+            the.destroyed = false;
             the.update();
         },
 
@@ -89,13 +89,24 @@ define(function (require, exports, module) {
             var the = this;
 
             the._validation = new Validation(the._options);
-            Emitter.pipe(the._validation, the, ['!valid', '!invalid']);
             the._validation
                 .on('valid', function (path) {
                     the.emit('valid', the._pathMap[path]);
                 })
                 .on('invalid', function (err, path) {
                     the.emit('invalid', err, the._pathMap[path]);
+                })
+                .on('error', function (path) {
+                    the.emit('error', the._pathMap[path]);
+                })
+                .on('success', function () {
+                    the.emit('success');
+                })
+                .before('validate', function (path) {
+                    the.emit('beforevalidate', the._pathMap[path]);
+                })
+                .after('validate', function (path) {
+                    the.emit('aftervalidate', the._pathMap[path]);
                 });
             the._parseItems();
 
@@ -272,10 +283,13 @@ define(function (require, exports, module) {
 
             the._items = [];
             the._$inputs = selector.query(options.inputSelector, the._$form);
+            the._$inputs = selector.filter(the._$inputs, function () {
+                return this.name;
+            });
             dato.each(the._$inputs, function (i, $item) {
                 var name = $item.name;
 
-                if (!the._pathMap[name]) {
+                if (name && !the._pathMap[name] && !$item.hidden && !$item.disabled && !$item.readOnly) {
                     the._pathMap[name] = $item;
                     the._parseRules($item);
                 }
@@ -296,7 +310,8 @@ define(function (require, exports, module) {
             var type = the._getType($item);
             var validationStr = attribute.data($item, options.dataValidation);
             var alias = attribute.data($item, options.dataAlias);
-            var validationList = the._parseValidation(validationStr);
+            var validationInfo = the._parseValidation(validationStr);
+            var validationList = validationInfo.list;
 
             // 规则顺序
             // required => type => minLength => maxLength => pattern => data
@@ -325,14 +340,15 @@ define(function (require, exports, module) {
                 the._validation.addRule(path, 'step', $item.step);
             }
 
-            switch (type) {
-                case 'number':
-                case 'email':
-                case 'url':
-                    the._validation.addRule(path, 'type', type);
-                    break;
+            if (!validationInfo.hasType) {
+                switch (type) {
+                    case 'number':
+                    case 'email':
+                    case 'url':
+                        the._validation.addRule(path, 'type', type);
+                        break;
+                }
             }
-
 
             validationList.forEach(function (validation) {
                 var validationName = validation.name;
@@ -378,7 +394,7 @@ define(function (require, exports, module) {
         /**
          * 解析 data 验证规则
          * @param ruleString
-         * @returns {Array}
+         * @returns {Object}
          * @private
          */
         _parseValidation: function (ruleString) {
@@ -386,22 +402,32 @@ define(function (require, exports, module) {
             var options = the._options;
 
             if (!ruleString) {
-                return [];
+                return {
+                    list: [],
+                    hasType: false
+                };
             }
 
             var list1 = ruleString.split(options.dataSep);
             var list2 = [];
+            // 是否重写了 type
+            var hasType = false;
 
             list1.forEach(function (item) {
                 var temp = item.split(options.dataEqual);
+                var name = temp[0].trim();
 
+                hasType = name === 'type';
                 list2.push({
-                    name: temp[0].trim(),
+                    name: name,
                     values: temp[1] ? temp[1].trim().split('|') : true
                 });
             });
 
-            return list2;
+            return {
+                list: list2,
+                hasType: hasType
+            };
         }
     });
 
