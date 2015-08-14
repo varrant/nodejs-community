@@ -28,7 +28,7 @@ var Template = require('ydr-utils').Template;
 // 模板引擎配置
 Template.config({
     cache: 'pro' === configs.app.env,
-    compress: 'pro' === configs.app.env,
+    compress: false,
     debug: 'dev' === configs.app.env
 });
 
